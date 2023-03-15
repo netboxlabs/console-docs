@@ -1,6 +1,8 @@
 site_name: NetBox Labs Documentation
 theme:
   name: material
+  favicon: images/social-square.png
+  logo: images/social-square.png
   features:
     - navigation.tracking
     - navigation.instant
@@ -12,8 +14,6 @@ theme:
     - navigation.prune
     - search.suggest
     # - toc.integrate
-  icon:
-    repo: fontawesome/brands/github
 markdown_extensions:
   - abbr
   - pymdownx.tabbed:
