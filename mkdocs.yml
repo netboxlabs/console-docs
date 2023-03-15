@@ -35,11 +35,13 @@ plugins:
   - search
 nav:
   - Home: index.md
+  - NetBox Cloud:
+      - Upgrading NetBox Cloud: "Administration Console/upgrading-nbc.md"
   - Administration Console:
       - Admin Dashboard Access: "Administration Console/admin-dashboard-access.md"
       - Configuring Ingress Allow Lists: "Administration Console/configuring_ingress_allow_lists.md"
       - Managing Database Snapshots: "Administration Console/managing-database-snapshots.md"
-      - Upgrading NetBox Cloud: "Administration Console/upgrading-nbc.md"
+
 extra:
   social:
     - icon: fontawesome/solid/globe
