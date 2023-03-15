@@ -8,6 +8,8 @@ To complete the set up of your account for access to the admin dashboard, follow
 
 1. When you receive the email with your temporary password and a link to the Cloud Admin Dashboard, simply click on the URL <https://admin.cloud.netboxapp.com/> to login:
 
+![temp password email](../images/dashboard_access/tmp_pwd_email.png) 
+
 <br>
 <img src="../images/dashboard_access/tmp_pwd_email.png" alt="" width="100%" height="100%" title="temp password email">
 
