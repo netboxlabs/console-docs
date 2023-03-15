@@ -1,2 +1,52 @@
 site_name: NetBox Labs Documentation
-theme: material
+theme:
+  name: material
+  features:
+    - navigation.tracking
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.indexes
+    - navigation.sections
+    - navigation.prune
+    - search.suggest
+    # - toc.integrate
+  icon:
+    repo: fontawesome/brands/github
+markdown_extensions:
+  - abbr
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.snippets
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - toc:
+      toc_depth: 3
+plugins:
+  - search
+nav:
+  - Home: index.md
+  - Administration Console:
+      - Admin Dashboard Access: "Administration Console/admin-dashboard-access.md"
+      - Configuring Ingress Allow Lists: "Administration Console/configuring_ingress_allow_lists.md"
+      - Managing Database Snapshots: "Administration Console/managing-database-snapshots.md"
+      - Upgrading NetBox Cloud: "Administration Console/upgrading-nbc.md"
+extra:
+  social:
+    - icon: fontawesome/solid/globe
+      link: https://netboxlabs.com
+    - icon: octicons/mail-24
+      link: "mailto:support@netboxlabs.com"
+  analytics:
+    provider: google
+    property: UA-41778111-9
+copyright: Copyright &copy; 2023 NetBox Labs
