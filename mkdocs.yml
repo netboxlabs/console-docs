@@ -1,4 +1,4 @@
-site_name: NetBox Labs Documentation
+site_name: NetBox Cloud Documentation
 theme:
   name: material
   favicon: images/social-square.png
