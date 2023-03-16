@@ -36,9 +36,12 @@ plugins:
 nav:
   - Home: index.md
   - NetBox Cloud:
-      - Upgrading NetBox Cloud: "Administration Console/upgrading-nbc.md"
+      - Getting Started: "NetBox Cloud/getting-started-with-nbc.md"
+      - Migrating to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
   - Administration Console:
-      - Admin Dashboard Access: "Administration Console/admin-dashboard-access.md"
+      - Admin Dashboard Access: "Administration Console/admin-console-access.md"
+      - Version Upgrades: "Administration Console/upgrading-nbc.md"
+      - Configuring Azure AD SSO: "Administration Console/azure-ad-sso_setup.md"
       - Configuring Ingress Allow Lists: "Administration Console/configuring_ingress_allow_lists.md"
       - Managing Database Snapshots: "Administration Console/managing-database-snapshots.md"
 
