@@ -52,4 +52,4 @@ tar -czf netbox_scripts.tar.gz /opt/netbox/netbox/reports/
 ### 6 - Upload the files to a shared location
 
 Upload the files created in the steps above to a shareable location such as FTP, Dropbox, Box, or Google Drive. If necessary, the
-NS1 team can create a secure, dedicated location for you to use.
+NetBox Labs team can create a secure, dedicated location for you to use.
