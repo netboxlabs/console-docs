@@ -1,4 +1,4 @@
-# NetBox Cloud Ingress Allow Lists
+# Configuring Ingress Allow Lists
 
 You can protect access to your NetBox Cloud instance by adding IPv4 and IPv6 addresses and ranges to an ‘Ingress Allow List’ to control which source IP’s your instance will accept connections from. 
 
@@ -6,25 +6,18 @@ You can protect access to your NetBox Cloud instance by adding IPv4 and IPv6 add
 
 1. Scroll down to the ‘Ingress Allow List’ section of the Admin Dashboard’ and expand the view by clicking on the down arrow on the right hand side: 
 
-<br>
-<img src="images/ingress_allow_list/ingress_allow_list_1.png" alt="" width="100%" height="100%" title="ingress allow list 1">
+    ![ingress allow list 1](../images/ingress_allow_list/ingress_allow_list_1.png)
 
-<br>
 2. Add your IP address or range in CIDR notation. Give the range a description, and click on the green plus symbol to add it to the list: 
 
-<br>
-<img src="images/ingress_allow_list/ingress_allow_list_2.png" alt="" width="100%" height="100%" title="ingress allow list 2">
+    ![ingress allow list 2](../images/ingress_allow_list/ingress_allow_list_2.png)
 
-<br>
 3. When you have finished adding CIDR ranges, click the blue cloud icon to push the change to your NetBox Cloud instance. After a few minutes the Ingress Access List will be updated. 
 
-*Note* - If you wish to undo your change before pushing it just click on the orange ‘revert’ icon next to it. 
+    *Note* - If you wish to undo your change before pushing it just click on the orange ‘revert’ icon next to it. 
 
-<br>
-<img src="images/ingress_allow_list/ingress_allow_list_3.png" alt="" width="100%" height="100%" title="ingress allow list 3">
+    ![ingress allow list 3](../images/ingress_allow_list/ingress_allow_list_3.png)  
 
-<br>
 4. To remove an entry from the Ingress Allow List, click the red ‘Remove CIDR Inbound’ icon next to the entry, and then click the blue cloud icon to push the change to your NetBox cloud instance. After a few minutes the Ingress Access List will be updated:
 
-<br>
-<img src="images/ingress_allow_list/ingress_allow_list_4.png" alt="" width="100%" height="100%" title="ingress allow list 4">
+    ![ingress allow list 4](../images/ingress_allow_list/ingress_allow_list_4.png)
