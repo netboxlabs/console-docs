@@ -39,7 +39,8 @@ nav:
   - Guides:
       - Migrating to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
   - Administration Console:
-      - Admin Dashboard Access: "Administration Console/admin-console-access.md"
+      - Admin Console Overview: "Administration Console/admin-console-overview.md"
+      - Setting up Admin Console Access: "Administration Console/admin-console-access.md"
       - Upgrading NetBox Cloud: "Administration Console/upgrading-nbc.md"
       - Configuring Azure AD SSO: "Administration Console/azure-ad-sso_setup.md"
       - Configuring Ingress Allow Lists: "Administration Console/configuring_ingress_allow_lists.md"
