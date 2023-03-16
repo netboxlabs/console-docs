@@ -7,15 +7,6 @@ This compressed full page screenshot breaks the full Administrative Console down
 
 ## Section Breakdown
 
-1. Information Panel
-2. Secrets
-3. Database
-4. Storage
-5. Backups
-6. Deployment Status
-7. Advanced Configuration
-8. Pod Info/Logs
-
 ### 1. Information Panel
 
 ![information panel](../images/console/info_panel.png)
