@@ -6,69 +6,44 @@ The NetBox Cloud team will set up your account with your email address as the us
 
 To complete the set up of your account for access to the admin dashboard, follow these steps: 
 
-1. When you receive the email with your temporary password and a link to the Cloud Admin Dashboard, simply click on the URL <https://admin.cloud.netboxapp.com/> to login:
+1. You will receive an email advising you of your username, along with a temporary password and a link to the console URL. Click the link to login.
 
-![temp password email](../images/dashboard_access/tmp_pwd_email.png) 
-
-<br>
-<img src="../images/dashboard_access/tmp_pwd_email.png" alt="" width="100%" height="100%" title="temp password email">
-
-<br>
 2. Enter the username (your email address) and the temporary password as per the email, and click ‘Sign in’: 
 
-<br>
-<img src="../images/dashboard_access/sign_in_tmp.png" alt="" width="50%" height="50%" title="temp password signin">
+![temp password signin](../images/dashboard_access/temp_password_signin.png)
 
-<br>
 3. You will then be prompted to change your password: 
 
-<br>
-<img src="images/dashboard_access/change_pwd.png" alt="" width="50%" height="50%" title="change password">
+![change password](../images/dashboard_access/change_password.png)
 
-<br>
 4. Next, add NetBox Cloud to your authenticator app of choice, by scanning the QR code from within the app. Then enter the TOTP code from your authenticator app, and click confirm:
 
-<br>
-<img src="images/dashboard_access/set_up_totp.png" alt="" width="50%" height="50%" title="set up totp">
+![set up totp](../images/dashboard_access/set_up_totp.png)
 
-<br>
 5. The TOTP set up is now complete and you are logged into the NetBox Cloud Admin Dashboard. You will see (and be able to administer) the instances running under your Organization: 
 
-<br>
-<img src="images/dashboard_access/instances_view.png" alt="" width="100%" height="100%" title="view instances">
+![view instances](../images/dashboard_access/instances_view.png)
 
-<br>
 6. That is the set up complete and the next time you log in you will need to enter your email address, the updated password (from step 3), and then you will see the prompt for the TOTP, so enter this from your authenticator app and click ‘Confirm’: 
 
-<br>
-<img src="images/dashboard_access/confirm_totp.png" alt="" width="50%" height="50%" title="confirm totp">
+![confirm totp](../images/dashboard_access/confirm_totp.png)
 
-<br>
 7. To retrieve the password for the Admin user account for the NetBox Cloud web interface, first launch the admin console, by clicking on the link to the instance:
 
-<br>
-<img src="images/dashboard_access/retrieve_admin_pwd.png" alt="" width="100%" height="100%" title="confirm totp">
+![view instances](../images/dashboard_access/instances_view.png)
 
-<br>
 Then scroll down to the ‘Secrets’ section, and click the blue eye icon to reveal the secrets:
 
-<br>
-<img src="images/dashboard_access/retrieve_admin_pwd_2.png" alt="" width="80%" height="80%" title="retrive admin password">
+![retrive admin password](../images/dashboard_access/retrieve_admin_pwd_2.png)
 
-<br>
 8. Once the secrets are revealed, then you can copy the admin user password to your clipboard:
 
-<br>
-<img src="images/dashboard_access/retrieve_admin_pwd_3.png" alt="" width="80%" height="80%" title="retrive admin password">
+![retrive admin password](../images/dashboard_access/retrieve_admin_pwd_3.png)
 
-<br>
 9. Then click the green globe icon in the top right corner of the dashboard (underneath the instance name) to open the URL for your instance’s web interface: 
 
-<br>
-<img src="images/dashboard_access/launch_ui.png" alt="" width="100%" height="100%" title="launch ui">
+![launch ui](../images/dashboard_access/launch_ui.png)
 
-<br>
 10. Login with the Admin user account, username of ‘admin’, and the password you have copied from step 8: 
 
-<br>
-<img src="images/dashboard_access/admin_login.png" alt="" width="50%" height="50%" title="admin login">
+![admin login](../images/dashboard_access/admin_login.png)

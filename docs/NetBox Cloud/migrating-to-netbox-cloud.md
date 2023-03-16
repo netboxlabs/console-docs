@@ -1,6 +1,6 @@
 # Migrating to NetBox Cloud
 
-Migrating from an on-premises NetBoxTM open source instance to an NS1 NetBoxTM Cloud environment is a straightforward
+Migrating from an on-premises NetBox open source instance to a NetBox Labs NetBox Cloud environment is a straightforward
 process. Since NetBox Cloud is built using the same open source software you’re already using, most imports can be
 completed quickly for a timely cutover. This checklist will walk you through the steps, highlighting mandatory and optional
 points in the process.
