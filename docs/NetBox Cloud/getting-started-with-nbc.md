@@ -43,36 +43,3 @@ NetBox Cloud currently supports single sign-on (SSO) authentication for the foll
 We are implementing support for additional backends as customers request them. If you have a need for a specific authentication backend, please let us know.
 
 To enable SSO, select the desired backend and provide the required configuration parameters under the appropriate tab. For information on configuring your specific backend service, you can consult the [SSO configuration guides](https://docs.netbox.dev/en/stable/administration/authentication/overview/) in the NetBox documentation, or contact NetBox Labs for assistance.
-
-### Plugins
-NetBox plugins can be enabled and configured under the NetBox Cloud configuration interface. Select the plugins you wish to enable from the list, and optionally provide any desired plugin
-configuration data. (This should be a JSON data structure equivalent to what you would define for NetBox's [PLUGINS_CONFIG](https://docs.netbox.dev/en/stable/plugins/) parameter.)
-
-![plugins](../images/getting_started/plugins.png)
-
-We continually evaluate new NetBox plugins for inclusion in NetBox Cloud, and plan to offer custom plugin support in the near future. Please let us know if you'd like to propose a new plugin for inclusion.
-
-### Custom Scripts Management
-Custom scripts are a NetBox extension that enables users to write custom Python scripts to perform tasks within NetBox and execute them directly within the NetBox UI. Custom scripts can be uploaded to NetBox Cloud and managed via this control panel.
-
-![custom scripts](../images/getting_started/custom_scripts.png)
-
-To upload a custom script, select the desired Python file and click the "Upload" button. Note that any existing files will not be overwritten unless the "overwrite" checkbox has been checked. Once uploaded, these files will appear in NetBox under `Other > Integrations > Scripts`.
-
-To delete a custom script, select the desired file(s) from the table and click the "Delete" button.
-
-### Reports Management
-Like custom scripts, reports are custom Python scripts that can be executed from the NetBox UI. Reports are intended to evaluate and report on the condition of objects within NetBox. For example, you might write a report to verify that every device has a primary IP address assigned to it.
-
-![reports management](../images/getting_started/reports_management.png)
-
-To upload a report, select the desired Python file and click the "Upload" button. Note that any existing files will not be overwritten unless the "overwrite" checkbox has been checked. Once uploaded, these files will appear in NetBox under `Other > Integrations > Reports`.
-
-To delete a report, select the desired file(s) from the table and click the "Delete" button.
-
-### Database Backup
-NetBox Cloud administrators can download a complete copy of their active database at any time. To do so, navigate to `Cloud > Administration > Database Backup`.
-
-![database backup](../images/getting_started/database_backup.png)
-
-You may optionally omit the changelog, which can comprise a large amount of data, if not desired. Click the "Download" button to perform a SQL dump, which will be returned as a downloadable .sql file.
