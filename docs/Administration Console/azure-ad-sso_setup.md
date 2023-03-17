@@ -1,9 +1,8 @@
 # NetBox Cloud Azure AD SSO Setup
 
 To set up Azure AD SSO for NetBox Cloud, follow these steps:
-<br>
 
-1. Go to **NetBox Configmap ENV** section of the admin dashboard:
+1. Go to **NetBox Configmap ENV** section of the Admin Console:
 
     ![configmap env](../images/netbox_cloud/configmap_env.png)
 

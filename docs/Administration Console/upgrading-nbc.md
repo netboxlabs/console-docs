@@ -2,7 +2,7 @@
 
 To upgrade your version of NetBox Cloud, follow these steps:
 
-1. Scroll down to the "Deployment" section of the admin dashboard:
+1. Scroll down to the "Deployment" section of the admin console:
 
     ![deployment section](..//images/netbox_cloud/deployment_section.png)
 

@@ -15,7 +15,7 @@ within the application. This helps the NetBox team understand which upgrade path
 Use the following command to export your existing NetBox database:
 
 ```shell
-pg_dump --username [netbox] --password --host [localhost] [netbox] > [netbox.sql]
+pg_dump --no-owner --no-privileges --username [netbox] --password --host [localhost] [netbox] > [netbox.sql] 
 ```
 
 > **Warning**

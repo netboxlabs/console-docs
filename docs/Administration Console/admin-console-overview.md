@@ -61,7 +61,7 @@ The Deployment Panel lists various service and configuration status points.  Inc
 
 ### 7. Advanced Configuration
 
-#### 7a Domains & Certificates
+#### 7a. Domains & Certificates
 
 ![domains and certificates](../images/console/domains_and_certs.png)
 
@@ -71,7 +71,7 @@ The Domains & Certificates screen allows you to manage the Domain and Certificat
 
 ![ingress allow list](../images/console/ingress_allow_list.png)
 
-The Ingress Allow List, if configured, inbound Web/API traffic will only be permitted to either IPv4 or IPv6 CIDR ranges listed on the Ingress Allow List. 
+If the Ingress Allow List is configured, then inbound Web/API traffic will only be permitted to either IPv4 or IPv6 CIDR ranges listed on the Ingress Allow List. 
 
 #### 7c. NetBox Configmap ENV
 

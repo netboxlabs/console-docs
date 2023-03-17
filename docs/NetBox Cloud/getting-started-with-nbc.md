@@ -40,7 +40,7 @@ NetBox Cloud currently supports single sign-on (SSO) authentication for the foll
 - Microsoft Azure AD
 - Okta (via OpenID Connect)
 
-We are implementing support for additional backends as well as customers request them. If you have a need for a specific authentication backend, please let us know.
+We are implementing support for additional backends as customers request them. If you have a need for a specific authentication backend, please let us know.
 
 To enable SSO, select the desired backend and provide the required configuration parameters under the appropriate tab. For information on configuring your specific backend service, you can consult the [SSO configuration guides](https://docs.netbox.dev/en/stable/administration/authentication/overview/) in the NetBox documentation, or contact NetBox Labs for assistance.
 
