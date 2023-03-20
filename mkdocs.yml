@@ -54,5 +54,5 @@ extra:
       link: "mailto:support@netboxlabs.com"
   analytics:
     provider: google
-    property: UA-41778111-9
+    property: G-Q107GMDTJM
 copyright: Copyright &copy; 2023 NetBox Labs
