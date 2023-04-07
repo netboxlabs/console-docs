@@ -1,5 +1,17 @@
 # NetBox Cloud: Administrative Console Overview
 
+## Console Access
+To access your NetBox Cloud Administrative Console, follow these steps: 
+
+- Login to the [console](https://console.netboxlabs.com/)
+- Click on the arrow next your **Organization Name** and then click on the **Namespace ID**
+
+    ![org](../images/console/orgs.png)
+
+- Next scroll down and click on the **NetBox** panel, and then click on the the **NetBox ID** link to launch the Administrative console
+
+    ![namespace](../images/console/netbox.png)
+
 ## Summary View
 This compressed full page screenshot breaks the full Administrative Console down into similar sections.  Each section is designed to give you greater insight to your NetBox instance.
 
