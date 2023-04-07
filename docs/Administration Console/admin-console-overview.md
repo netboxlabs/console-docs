@@ -8,7 +8,7 @@ To access your NetBox Cloud Administrative Console, follow these steps:
 
     ![org](../images/console/orgs.png)
 
-- Next scroll down and click on the **NetBox** panel, and then click on the the **NetBox ID** link to launch the Administrative console
+- Next scroll down and click on the **NetBox** panel, and then click on the **NetBox ID** link to launch the Administrative console
 
     ![namespace](../images/console/netbox.png)
 
