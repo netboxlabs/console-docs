@@ -11,61 +11,58 @@ This compressed full page screenshot breaks the full Administrative Console down
 
 ![information panel](../images/console/info_panel.png)
 
-The Information Panel provides a summary view of your NetBox Cloud instance.  Here you will find the instance raw URL, a running count of objects grouped by category, and the status of the major services in your NetBox Cloud instance.  Highly Available instances will contain at least 2 Databases and Load Balancers.
+The Information Panel provides a view of basic information relating to your NetBox Cloud instance.  Here you will find the name of your NetBox Cloud instance within your Organization's Namespace, along with the AWS Region and the NetBox version. You also have a link to the instance raw URL, plus a refresh button for the instance data. 
 
-### 2. Secrets
-
-![secrets](../images/console/secrets.png)
-
-The Secrets Panel provides access to the current secret credentials for the instance local “admin”, API Token, and DB Password.  When the Administrative Console initially loads these values will be hidden.  
-
-- Clicking the open eye will reveal the secret details
-- Clicking the closed eye will conceal the secret details
-
-### 3. Database
-
-![database](../images/console/database.png)
-
-The Database Panel gives the current state of the database configuration for the instance, the number of permitted databases for the instance, their sync status, version, AWS host, Aurora capacity unity consumption and configuration, current configured backup retention period, and security group IDs.
-
-### 4. Storage
-
-![storage](../images/console/storage.png)
-
-The Storage Panel contains information on the storage bucket, user, and access key ID.  
-
-### 5. Database Snapshots
-
-![database snapshots](../images/console/database_snapshots.png)
-
-The Database Snapshots Panel lists all of the snapshots as they exist in storage.  Each snapshot will contain a composite file name to help distinguish snapshots from each other.
-
-- The double arrow refresh button fetches the current list of snapshots
-- The camera icon creates a new snapshot
-- The trash can icon deletes the selected snapshot
-
-### 6. Deployment 
+### 2. NetBox Deployment 
 
 ![deployment](../images/console/deployment.png)
 
-The Deployment Panel lists various service and configuration status points.  Included will be the number of allowed instances, current version, and version upgrade controls.  The instance namespace is also listed here.  A status indicator is also displayed for all of the required underlying NetBox Cloud deployment services.
+The NetBox Deployment panel lists various service and configuration status points.  Included will be the current version, and version upgrade controls, the number of instance replicas, and resource allocations. The instance image and namespace are also listed here.  
 
-- The left circle icon (stop button) will stop all running NetBox Cloud instances.
-- The center circle icon (play button) will start a single NetBox Cloud instance.
-- The right circle icon (play button) will start all possible NetBox Cloud instance.
-
+- The left circle icon (stop button) will stop the running NetBox Cloud instance.
+- The center circle icon (play button) will start the NetBox Cloud instance.
+- The right refresh icon will refresh the data in the panel. 
 - The Version number with the smaller font displays the current NetBox version
 - The Version drop down lists versions of NetBox that can be changed to.
 - The cloud icon will illuminate if you select a different version of NetBox.
 - The cloud icon will change NetBox to the selected version.
 
+The Secrets section provides access to the current secret credentials for the instance API Token, local “admin” user account and Secret Key.  When the Administrative Console initially loads these values will be hidden.  
+
+- Clicking the open eye will reveal the secret details
+- Clicking the closed eye will conceal the secret details
+- Clicking the copy icon will copy the secret to your clipboard
+
+### 3. Ingress
+
+![ingress](../images/console/ingress.png)
+
+The Ingress pannel gives the Name, Domain and DNS Name information for the NetBox Cloud instance, as well as the number of Ingress Pods and the Load Balancer status.
+
+### 4. Storage
+
+![storage](../images/console/storage.png)
+
+The Storage Panel contains information on the storage bucket, user, and access key ID. Clicking the open eye will reveal the Access Key secret details.
+
+### 5. Postgres
+
+![database](../images/console/database.png)
+
+The Postgres Database panel (left) gives the current status of the database, along with details of the host, username and database name for the instance. Clicking the open eye will reveal the Postrges Database secret details.
+
+The Postgres panel (right) gives the number of database instances, their status, instance names, version, Aurora capacity unit consumption, current configured backup retention period, and security group IDs. Clicking the open eye will reveal the Postrges secret details.
+
+### 6. Redis
+
+![database](../images/console/redis.png)
+
+The Redis Database panel (left) gives the name, status, host, user, and ID of the Main and Cache Redis databases. 
+
+The Redis panel (right) gives the name, status, resource, image and version information for the Redis instance. Clicking the open eye will reveal the Redis secret details.
+
+
 ### 7. Advanced Configuration
-
-#### 7a. Domains & Certificates
-
-![domains and certificates](../images/console/domains_and_certs.png)
-
-The Domains & Certificates screen allows you to manage the Domain and Certificate options for the instance.
 
 #### 7b. Ingress Allow List
 
