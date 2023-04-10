@@ -1,10 +1,10 @@
 # Configuring Ingress Allow Lists
 
-You can protect access to your NetBox Cloud instance by adding IPv4 and IPv6 addresses and ranges to an ‘Ingress Allow List’ to control which source IP’s your instance will accept connections from. 
+You can protect access to your NetBox Cloud instance by adding IPv4 and IPv6 addresses and ranges to an **Ingress Allow List** to control which source IP’s your instance will accept connections from. 
 
-*Note* - Be careful as once you add CIDR ranges to the Ingress Allow List you will NOT be able to access the WebUI or API of your instance from any other IP addresses than those covered in the list. However, don’t worry if you make a mistake as you can easily remove CIDR ranges from the list. 
+*Note* - Be careful as once you add CIDR ranges to the **Ingress Allow List** you will NOT be able to access the WebUI or API of your instance from any other IP addresses than those covered in the list. However, don’t worry if you make a mistake as you can easily remove CIDR ranges from the list. 
 
-1. Scroll down to the ‘Ingress Allow List’ section of the Admin Console’ and expand the view by clicking on the down arrow on the right hand side: 
+1. Scroll down to the **Ingress Allow List** section of the Admin Console for your NetBox instance, and expand the view by clicking on the down arrow on the right hand side: 
 
     ![ingress allow list 1](../images/ingress_allow_list/ingress_allow_list_1.png)
 
