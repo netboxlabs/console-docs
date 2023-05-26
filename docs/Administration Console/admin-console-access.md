@@ -2,9 +2,7 @@
 
 ## Account Setup
 
-The NetBox Cloud team will set up your account with your email address as the username, and you will use this to access the cloud admin console. Access to the console is secured using a TOTP (time-based one time password) which you need to generate using an Authenticator app such as Google Authenticator or Authy. 
-
-To complete the set up of your account for access to the Admin console, follow these steps: 
+The NetBox Cloud team will set up your account with your email address as the username, and you will use this to access the cloud admin console. To complete the set up of your account for access to the Admin console, follow these steps: 
 
 1. You will receive an email advising you of your username, along with a temporary password and a link to the console URL. Click the link to login
 
@@ -16,21 +14,13 @@ To complete the set up of your account for access to the Admin console, follow t
 
     ![change password](../images/console_access/change_pwd.png)
 
-4. Next, add NetBox Cloud to your authenticator app of choice, by scanning the QR code from within the app. Then enter the TOTP code from your authenticator app, and click confirm:
-
-    ![set up totp](../images/console_access/set_up_totp.png)
-
-5. The TOTP set up is now complete and you are logged into the NetBox Cloud Admin Console. You will see (and be able to administer) the instances running under your Organization: 
+4. The set up is now complete and you are logged into the NetBox Cloud Admin Console. You will see (and be able to administer) the instances running under your Organization: 
 
     ![view instances](../images/console_access/view_instances.png)
 
-6. That is the set up complete and the next time you log in you will need to enter your email address, the updated password (from step 3), and then you will see the prompt for the TOTP, so enter this from your authenticator app and click ‘Confirm’: 
+5. To retrieve the password for the Admin user account for the NetBox Cloud web interface, first click the arrow next to your Organization name, and then click on the Namespace Name to open the Namespace: 
 
-    ![confirm totp](../images/console_access/confirm_totp.png)
-
-7. To retrieve the password for the Admin user account for the NetBox Cloud web interface, first click the arrow next to your Organization name, and then click on the Namespace ID to open the Namespace: 
-
-    ![click namespace ID](../images/console_access/click_namespace_id.png)
+    ![click namespace ID](../images/console_access/click_namespace_name.png)
 
     Then scroll down to the ‘NetBox’ section, and click to expand the detail:
 
@@ -40,7 +30,7 @@ To complete the set up of your account for access to the Admin console, follow t
 
     ![click on instance ID](../images/console_access/instance_id.png)
 
-8. In the NetBox Deployment section, scroll down to the Secrets section, and click on the eye to reveal the password. Then you can copy the admin user password to your clipboard:
+8. In the NetBox Deployment section, scroll down to the Secrets section, and click on the `password` secret to copy it to your clipboard:
 
     ![retrive admin password](../images/console_access/get_admin_secret.png)
 
