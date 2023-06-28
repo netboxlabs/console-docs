@@ -14,6 +14,6 @@ To log into a NetBox Cloud instance with the **admin** username and password, yo
 
     ![launch ui](../images/console_access/launch_ui.png)
 
-4. Lastly, login to the NetBox Cloud UI with the username and password you have copied from step 5: 
+4. Lastly, login to the NetBox Cloud UI with the username and password you have copied from step 2: 
 
     ![admin login](../images/console_access/admin_login.png)
