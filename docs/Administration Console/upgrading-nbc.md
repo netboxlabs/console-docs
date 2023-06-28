@@ -2,34 +2,32 @@
 
 To upgrade your version of NetBox Cloud, follow these steps:
 
-1. Scroll down to the **NetBox Deployment** section of the admin console:
+1. In the admin console, click on the three dots in the top right corner of the instance you wish to upgrade and click **Manage**
 
-    ![deployment section](..//images/netbox_cloud/deployment_section.png)
+    ![manage instance](..//images/console/manage_instance.png)
 
-2. From the drop-down menu, select the version that you wish to upgrade to. In this example we are upgrading from `v3.4.6` to `v3.4.7`
+2. In the **Version Upgrade** section, select the target version from the drop-down menu. In this example we are upgrading from `v3.4.7` to `v3.5.1`
 
-    ![deployment options](../images/netbox_cloud/deployment_options.png)
+    ![select target version](../images/console/version_upgrade.png)
 
-3. Then click the blue cloud icon to push the change to your NetBox cloud instance: 
+3. Then click **Apply** to start the upgrade process: 
 
-    ![deployment chosen version](../images/netbox_cloud/deployment_upgraded_version.png)
+    ![apply upgrade](../images/console/apply_version_upgrade.png)
 
-4. The upgrade will take a few minutes to complete. you can monitor the progress of the upgrade by navigating down to the **Pods** section, and clicking the refresh icon on the right hand side, and then the drop-down arrow to view the state of each of the application instances.
+4. The upgrade will take a few minutes to complete. you can monitor the progress of the upgrade by navigating down to the **Logs** section, and clicking the refresh icon on the right hand side:
 
-    ![refresh pods](../images/netbox_cloud/refresh_pods.png)
+    ![refresh logs](../images/console/refesh_logs.png)
 
-    Then click the down arrow on the left hand side of the screen to expand the pod data:
+5. Then click on the name of the instance with the latest timestamp (you may see the state change from `pending` to `running`). This will display the output from the log of your upgraded instance as it starts up:
 
-    ![expand pods](../images/netbox_cloud//expand_pods.png)
+    ![view log file](../images/console/view_logs.png)
 
-5. When you see a status of `pending` then this is the upgrade taking place. To view the log output for each pod in real-time, click the **Load Logs Below** icon on the right hand side.
+5. Refresh the logs again, and after a few minutes you should soon see only one running instance (or two if you have a HA deployment):
 
-    ![pending pods](../images/netbox_cloud/pending_pod.png)
+    ![refresh logs](../images/console/view_logs_2.png)
 
-6. Once the status of all the pods is `running` then the upgrade is complete.
+6. When the upgrade is complete, you will see the new version instance has a status of `started` and the new version number will be displayed in the **Service Overview** section: 
 
-    ![complete upgrade](../images/netbox_cloud/complete_upgrade.png)
+    ![complete upgrade](../images/console/complete_upgrade.png)
 
-7. You can then confirm the version in number in the **NetBox Deployment** section (see step 1) or by logging into the Web Interface, where you will find the version number in the bottom right hand corner:
-
-    ![version number](../images/netbox_cloud/version_number.png)    
+7. If you encounter any issues while performing the upgrade, check the logs for error messages and raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com)
