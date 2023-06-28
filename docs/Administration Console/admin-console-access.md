@@ -14,30 +14,18 @@ The NetBox Cloud team will set up your account with your email address as the us
 
     ![change password](../images/console_access/change_pwd.png)
 
-4. The set up is now complete and you are logged into the NetBox Cloud Admin Console. You will see (and be able to administer) the instances running under your Organization: 
+4. The set up is now complete and you are logged into the NetBox Cloud Admin Console. You will see (and be able to administer) all the NetBox Cloud instances running under your Organization. In the example screenshot below there are two instances running (dev and prod): 
 
     ![view instances](../images/console_access/view_instances.png)
 
-5. To retrieve the password for the Admin user account for the NetBox Cloud web interface, first click the arrow next to your Organization name, and then click on the Namespace Name to open the Namespace: 
+5. To retrieve the credentials for the admin user of a NetBox Cloud instance, either click to reveal or copy them from the Secrets section: 
 
-    ![click namespace ID](../images/console_access/click_namespace_name.png)
+    ![retrieve admin credentials](../images/console_access/get_secrets.png)
 
-    Then scroll down to the ‘NetBox’ section, and click to expand the detail:
-
-    ![netbox section](../images/console_access/netbox_section.png)
-
-    Then click on the ID of your NetBox instance to view the deployment configuration:
-
-    ![click on instance ID](../images/console_access/instance_id.png)
-
-8. In the NetBox Deployment section, scroll down to the Secrets section, and click on the `password` secret to copy it to your clipboard:
-
-    ![retrive admin password](../images/console_access/get_admin_secret.png)
-
-9. Then click the green globe icon in the top right corner of the console (underneath the instance name) to open the URL for your instance’s web interface: 
+6. Then click the on either of the two links to open the URL of the instance in a new browser window:
 
     ![launch ui](../images/console_access/launch_ui.png)
 
-10. Login with the Admin user account, username of ‘admin’, and the password you have copied from step 8: 
+7. Lastly, login to the NetBox Cloud UI with the username and password you have copied from step 5: 
 
     ![admin login](../images/console_access/admin_login.png)
