@@ -15,6 +15,8 @@ Under the Azure Active Directory dashboard, navigate to **Add** > **App registra
 
     Under "Redirect URI", select "Web" for the platform and enter the path to your NetBox Cloud installation, ending with /oauth/complete/azuread-oauth2/. 
 
+    Eg. https://{your-domain}.cloud.netboxapp.com/oauth/complete/azuread-oauth2/
+
     ![Add an app registration](../images/Azure%20SSO/azure_ad_app_registration.png)
 
     Once finished, make note of the application (client) ID; this will be used when configuring NetBox Cloud.
