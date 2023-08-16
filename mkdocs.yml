@@ -39,7 +39,7 @@ nav:
   - Guides:
       - Set up Azure AD SSO: "Administration Console/azure-ad-sso-setup.md"
       - Set up Okta SSO: "Administration Console/okta-sso-setup.md"
-      - Configure IP Allow Lists: "Administration Console/configuring_ip_allow_lists.md"
+      - Configure IP Allow List: "Administration Console/configuring_ip_allow_lists.md"
       - Upgrade NetBox Cloud: "Administration Console/upgrading-nbc.md"
       - Migrate to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
   - Administration Console:
