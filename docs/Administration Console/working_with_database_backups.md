@@ -43,3 +43,5 @@ Within the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/) you 
 2. Once the file has been retrieved, click **Download** and the file will be downloaded to your local computer. Note the file is a **gzip compressed archive** of the **SQL** database file so it will end in `.sql.gz`
 
     ![download file](../images/backups/list_backups_8.png)
+
+If you encounter any issues while working with database backups raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com)

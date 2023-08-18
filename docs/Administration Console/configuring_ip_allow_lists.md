@@ -25,3 +25,4 @@ You can protect access to your NetBox Cloud instance by adding IPv4 and IPv6 add
 
     ![Publish IP allow list](../images/ip_allow_list/ip_allow_list_5.png)
 
+If you encounter any issues while working with the IP Allow List raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com)
