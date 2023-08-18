@@ -37,12 +37,12 @@ nav:
   - Home: index.md
   # - Getting Started: "NetBox Cloud/getting-started-with-nbc.md"
   - Guides:
-      - Set up Azure AD SSO: "Administration Console/azure-ad-sso-setup.md"
-      - Set up Okta SSO: "Administration Console/okta-sso-setup.md"
+      - Working with Database Backups: "Administration Console/working_with_database_backups.md"
       - Configure IP Allow List: "Administration Console/configuring_ip_allow_lists.md"
       - Upgrade NetBox Cloud: "Administration Console/upgrading-nbc.md"
+      - Set up Azure AD SSO: "Administration Console/azure-ad-sso-setup.md"
+      - Set up Okta SSO: "Administration Console/okta-sso-setup.md"
       - Migrate to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
-      - Working with Database Backups: "Administration Console/working_with_database_backups.md"
   - Administration Console:
       # - Admin Console Overview: "Administration Console/admin-console-overview.md"
       - Set up Admin Console Access: "Administration Console/admin-console-access.md"
