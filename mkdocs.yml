@@ -42,6 +42,7 @@ nav:
       - Configure IP Allow List: "Administration Console/configuring_ip_allow_lists.md"
       - Upgrade NetBox Cloud: "Administration Console/upgrading-nbc.md"
       - Migrate to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
+      - Working with Database Backups: "Administration Console/working_with_database_backups.md"
   - Administration Console:
       # - Admin Console Overview: "Administration Console/admin-console-overview.md"
       - Set up Admin Console Access: "Administration Console/admin-console-access.md"
