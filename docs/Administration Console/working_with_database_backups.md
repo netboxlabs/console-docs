@@ -6,6 +6,10 @@ Within the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/) you 
 - Take an 'on-demand' backup at any time
 - Retrieve and download a specific backup file  
 
+Watch this quick video or follow the steps outlined below: 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/784IcT8Ij7U?si=zM8tvQMt14nH4TWu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## View a List of Available Database Backups
 
 1. Login to the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/) and then click on the name of the NetBox instance you are working with, on the left-hand side:

@@ -4,6 +4,11 @@ You can protect access to your NetBox Cloud instance by adding IPv4 and IPv6 add
 
 **Note** - Be careful as once you add CIDR ranges to the **IP Allow List** you will NOT be able to access the WebUI or API of your instance from any other IP addresses than those covered in the list. However, don’t worry if you make a mistake as you can easily remove incorrect entries from the list. 
 
+Watch this quick video or follow the steps outlined below: 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/utSGhkWlEzs?si=W21nq5HvlusX0oLd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
 1. Login to the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/) and then click on the name of the NetBox instance you are updating, on the left-hand side.  
     ![select netbox instance](../images/ip_allow_list/ip_allow_list_1.png)
 
@@ -25,4 +30,4 @@ You can protect access to your NetBox Cloud instance by adding IPv4 and IPv6 add
 
     ![Publish IP allow list](../images/ip_allow_list/ip_allow_list_5.png)
 
-If you encounter any issues while working with the IP Allow List raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com)
+If you encounter any issues while working with the IP Allow List raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com)`
