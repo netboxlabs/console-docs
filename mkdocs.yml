@@ -42,6 +42,7 @@ nav:
       - Upgrade NetBox Cloud: "Administration Console/upgrading-nbc.md"
       - Set up Azure AD SSO: "Administration Console/azure-ad-sso-setup.md"
       - Set up Okta SSO: "Administration Console/okta-sso-setup.md"
+      - Set up Two-Factor Authentication: "Administration Console/set_up_2fa.md"
       - Migrate to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
   - Administration Console:
       # - Admin Console Overview: "Administration Console/admin-console-overview.md"
