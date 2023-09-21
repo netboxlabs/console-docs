@@ -30,4 +30,4 @@ Watch this quick video or follow the steps outlined below:
 
     ![Publish IP allow list](../images/ip_allow_list/ip_allow_list_5.png)
 
-If you encounter any issues while working with the IP Allow List raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com)`
+If you encounter any issues while working with the IP Allow List raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com)

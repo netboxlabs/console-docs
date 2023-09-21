@@ -1,6 +1,6 @@
 # Welcome to the NetBox Cloud Documentation Site
 
-![netbox main ui](./images/NetBox-main-ui.png)
+![netbox main ui](./images/docs_home.png)
 
 ## About NetBox Cloud
 

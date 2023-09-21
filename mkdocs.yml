@@ -1,6 +1,7 @@
 site_name: NetBox Cloud Documentation
 theme:
   name: material
+  custom_dir: overrides
   favicon: images/social-square.png
   logo: images/social-square.png
   features:
@@ -48,7 +49,7 @@ nav:
       # - Admin Console Overview: "Administration Console/admin-console-overview.md"
       - Set up Admin Console Access: "Administration Console/admin-console-access.md"
       - Retrieve NetBox Cloud Admin Credentials: "Administration Console/retrieving-nbc-credentials.md"
-
+  - Scheduled Maintenance: "maintenance.md"
 
 extra:
   social:
