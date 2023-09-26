@@ -4,7 +4,7 @@ To upgrade your version of NetBox Cloud, follow the steps outlined below or watc
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9CyJSRCuGXY?si=2bm6fzbT6VI6kxLz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-1. In the admin console, click on the three dots in the top right corner of the instance you wish to upgrade and click **Manage**
+1. In the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/), click on the three dots in the top right corner of the instance you wish to upgrade and click **Manage**
 
     ![manage instance](..//images/console/manage_instance.png)
 
