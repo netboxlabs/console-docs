@@ -4,4 +4,4 @@
 
 ## About NetBox Labs Console
 
-NetBox Labs [Console](https://console.netboxlabs.com/dashboard/) is the management interface for NetBox Cloud, [NetBox Labs'](https://netboxlabs.com/netbox-cloud) enterprise grade, SaaS version of open source NetBox: the world's most popular Network Source of Truth. 
+NetBox Labs [Console](https://console.netboxlabs.com/dashboard/) is the management user interface for [NetBox Cloud](https://netboxlabs.com/netbox-cloud), NetBox Labs' enterprise grade, SaaS version of open source NetBox: the world's most popular Network Source of Truth. 
