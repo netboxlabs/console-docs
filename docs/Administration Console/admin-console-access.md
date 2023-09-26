@@ -1,8 +1,8 @@
-# Admin Console Access Set Up
+# NetBox Labs Console Access Set Up
 
 ## Account Setup
 
-The NetBox Cloud team will set up your account with your email address as the username, and you will use this to access the cloud admin console. To complete the set up of your account for access to the Admin console, follow these steps: 
+The NetBox Cloud team will set up your account with your email address as the username, and you will use this to access the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/). To complete the set up of your account, follow these steps: 
 
 1. You will receive an email advising you of your username, along with a temporary password and a link to the console URL. Click the link to login
 
@@ -14,7 +14,7 @@ The NetBox Cloud team will set up your account with your email address as the us
 
     ![change password](../images/console_access/change_pwd.png)
 
-4. The set up is now complete and you are logged into the NetBox Cloud Admin Console. You will see (and be able to administer) all the NetBox Cloud instances running under your Organization. In the example screenshot below there are two instances running (dev and prod): 
+4. The set up is now complete and you are logged into the NetBox Labs Console. You will see (and be able to administer) all the NetBox Cloud instances running under your Organization. In the example screenshot below there are two instances running (dev and prod): 
 
     ![view instances](../images/console_access/view_instances.png)
 
