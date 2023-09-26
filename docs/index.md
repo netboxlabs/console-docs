@@ -1,4 +1,4 @@
-# Welcome to the NetBox Cloud Documentation Site
+# Welcome to the NetBox Labs Console Documentation Site
 
 ![netbox main ui](./images/docs_home.png)
 
