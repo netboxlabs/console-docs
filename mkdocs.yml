@@ -1,4 +1,4 @@
-site_name: NetBox Cloud Documentation
+site_name: NetBox Labs Console Documentation
 theme:
   name: material
   custom_dir: overrides
@@ -45,10 +45,10 @@ nav:
       - Set up Okta SSO: "Administration Console/okta-sso-setup.md"
       - Set up Two-Factor Authentication: "Administration Console/set_up_2fa.md"
       - Migrate to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
-  - Administration Console:
+  - Console Access:
       # - Admin Console Overview: "Administration Console/admin-console-overview.md"
-      - Set up Admin Console Access: "Administration Console/admin-console-access.md"
-      - Retrieve NetBox Cloud Admin Credentials: "Administration Console/retrieving-nbc-credentials.md"
+      - Set up NetBox Labs Console Access: "Administration Console/admin-console-access.md"
+      - Retrieve NetBox Labs Console Credentials: "Administration Console/retrieving-nbc-credentials.md"
   - Scheduled Maintenance: "maintenance.md"
 
 extra:
