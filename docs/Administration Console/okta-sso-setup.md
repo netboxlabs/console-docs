@@ -31,7 +31,7 @@ Within the Okta administration dashboard, navigate to Applications > Application
 
 ## NetBox Cloud Configuration
 
-Securely share the following configuration parameters with [NetBox Cloud Support](mailto:support@netboxcloud.com), substituting your own values:
+Securely share the following configuration parameters with [NetBox Labs Support](mailto:support@netboxlabs.com), substituting your own values:
 
 REMOTE_AUTH_BACKEND = 'social_core.backends.okta_openidconnect.OktaOpenIdConnect'
 SOCIAL_AUTH_OKTA_OPENIDCONNECT_KEY = '{Client ID}'

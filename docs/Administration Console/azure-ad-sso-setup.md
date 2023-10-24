@@ -44,7 +44,7 @@ Under the Azure Active Directory dashboard, navigate to **Add** > **App registra
 
 ## NetBox Cloud Configuration
 
-Securely share the following configuration parameters with [NetBox Cloud Support](mailto:support@netboxcloud.com), substituting your own values:
+Securely share the following configuration parameters with [NetBox Labs Support](mailto:support@netboxlabs.com), substituting your own values:
 
 REMOTE_AUTH_BACKEND = 'social_core.backends.azuread.AzureADOAuth2'
 SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = '{APPLICATION_ID}'
