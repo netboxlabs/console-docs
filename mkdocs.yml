@@ -45,6 +45,7 @@ nav:
       - Set up Okta SSO: "Administration Console/okta-sso-setup.md"
       - Set up Two-Factor Authentication: "Administration Console/set_up_2fa.md"
       - Migrate to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
+      - NetBox Cloud Plugins: "Administration Console/netbox-cloud-plugins.md"
   - Getting Access:
       # - Admin Console Overview: "Administration Console/console-overview.md"
       - Setting up Console Access: "Administration Console/console-access.md"
