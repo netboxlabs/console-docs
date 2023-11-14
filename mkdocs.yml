@@ -47,7 +47,8 @@ nav:
       - Migrate to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
   - Getting Access:
       # - Admin Console Overview: "Administration Console/admin-console-overview.md"
-      - Setting up NetBox Labs Console Access: "Administration Console/admin-console-access.md"
+      - Setting up Console Access: "Administration Console/admin-console-access.md"
+      - Accessing the Console From the NetBox Cloud UI: "Administration Console/admin-console-access-from-ui.md"
       - Retrieving NetBox Cloud Admin Credentials: "Administration Console/retrieving-nbc-credentials.md"
   - Scheduled Maintenance: "maintenance.md"
 
