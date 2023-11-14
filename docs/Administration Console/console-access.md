@@ -2,6 +2,8 @@
 
 ## Account Setup
 
+Request access to the NetBox Labs Console by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com). 
+
 The NetBox Cloud team will set up your account with your email address as the username, and you will use this to access the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/). To complete the set up of your account, follow these steps: 
 
 1. You will receive an email advising you of your username, along with a temporary password and a link to the console URL. Click the link to login
