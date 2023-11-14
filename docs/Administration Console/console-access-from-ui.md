@@ -2,7 +2,7 @@
 
 From within the NetBox Cloud Web Interface, you can easily switch to the NetBox Labs Console. Simply follow the steps outlined below: 
 
-1. In the left hand main menu, click to expand the the **NetBox Labs plugin** menu, and then click on **Open Console**:
+1. In the left hand main menu, click to expand the **NetBox Labs plugin** menu, and then click on **Open Console**:
 
     ![netbox labs plugin](../images/console/admin_console_from_ui_1.png)
 
