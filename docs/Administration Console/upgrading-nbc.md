@@ -20,11 +20,11 @@ To safely and easily upgrade your NetBox Cloud instance without worrying about a
 
     ![manage instance](..//images/upgrades/upgrades_upgrade_options_3.png)
 
-    Note that in this case the **NetBox BGP** and **NetBox Topology Views** plugins are at a version that is compatible with NetBox version 3.5.9. All Versions higher than this (up to 3.6.6) will require an upgrade to the plugins also, but don't worry the safe upgrade tool will handle all of that for you. 
+    Note that in this case the **NetBox BGP** and **NetBox Topology Views** plugins are at a version that is compatible with NetBox version 3.5.9. All versions higher than this (up to 3.6.6) will require an upgrade to the plugins also, but don't worry the safe upgrade tool will handle all of that for you. 
 
     Also note that we could upgrade to any of the other **potential** options, but that the Safe Upgrade tool is recommending an upgrade to version 3.6.6, and if we select this option, both the plugins will be automatically upgraded to compatible versions as part of the upgrade process.
 
-    Note too that if a plugin is **not compatible** with a certain netbox version then you will see a warning like this: 
+    Note too that if a plugin is **not compatible** with a certain NetBox version then you will see a warning like this: 
 
     ![manage instance](..//images/upgrades/upgrades_incompatible_plugin.png)
 
