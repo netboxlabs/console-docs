@@ -1,10 +1,14 @@
-# Group Mapping For Azure AD Single Sign-on (SSO)
+# Group Mapping For Azure AD Single Sign-On (SSO)
 
-Upgrade your Single Sign-On experience with Group Mapping for Azure SSO – a smarter, more secure way to manage user access. The Group Mapping feature for Azure single sign-on, streamlines the synchronization of group memberships from Azure Active Directory to groups in NetBox Cloud, allowing you to align your user access efficiently and accurately. 
+Upgrade your Single Sign-On experience with Group Mapping for Azure SSO – a smarter, more secure way to manage user access. The Group Mapping feature for Azure Single Sign-On, streamlines the synchronization of group memberships from Azure Active Directory to groups in NetBox Cloud, allowing you to align your user access efficiently and accurately. 
 
 Changes in Azure Active Directory groups are reflected in NetBox Cloud, ensuring up-to-date access management and enhanced security. You can tailor the group mapping to your organizational needs while maintaining strict security and compliance standards.
 
 If you are already securing access to NetBox Cloud using Azure AD for SSO, and would like use the Group Mapping feature it's easy to get set up. Simply create your groups and permissions in NetBox Cloud, then set up your groups in Azure AD and reach out to the support team at NetBox Labs and we will take care of the group mappings for you to suit your requirements. 
+
+> ℹ️ Note
+> 
+> This feature is only available in Pro/Enterprise tiers.
 
 Watch the video below for a step-by-step example of how the Group Mapping feature works, or read on for an explanation. 
 
@@ -31,4 +35,4 @@ The NetBox Labs support team will map your Azure AD Group Object ID's to your Ne
 ## How Do I Get it Set Up?
 Simply provide us with your requirements in terms of object IDs and NetBox groups and we will take care of the rest. 
 
-If you have any questions about Group Mapping for Azure AD Single Sign-on (SSO), please raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com).
+If you have any questions about Group Mapping for Azure AD Single Sign-On (SSO), please raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com).
