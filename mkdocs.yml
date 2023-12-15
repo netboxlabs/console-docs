@@ -42,6 +42,7 @@ nav:
       - Configure IP Allow List: "Administration Console/configuring_ip_allow_lists.md"
       - Upgrade NetBox Cloud: "Administration Console/upgrading-nbc.md"
       - Set up Azure AD SSO: "Administration Console/azure-ad-sso-setup.md"
+      - Azure AD Group Mapping: "Administration Console/azure-group-mapping.md"
       - Set up Okta SSO: "Administration Console/okta-sso-setup.md"
       - Set up Two-Factor Authentication: "Administration Console/set_up_2fa.md"
       - Migrate to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
