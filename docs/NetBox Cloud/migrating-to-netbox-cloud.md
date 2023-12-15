@@ -40,7 +40,7 @@ the example below shows the default file path. Update the path if you have chang
 tar -czf netbox_scripts.tar.gz /opt/netbox/netbox/scripts/
 ```
 
-##### 5 - (Optional) Archive your /reports directory
+### 5 - (Optional) Archive your /reports directory
 
 Optionally, if you have uploaded custom reports to NetBox, use the command below to archive your reports directory. Note
 that the example below shows the default file path. Update the path if you have changed the location of these files.
