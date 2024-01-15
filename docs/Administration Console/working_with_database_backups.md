@@ -3,49 +3,66 @@
 Within the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/) you can access the backups of your NetBox Cloud database, and are able to perform the following actions:  
 
 - View a list of all available database backups
-- Take an 'on-demand' backup at any time
-- Retrieve and download a specific backup file  
+- Take an 'On Demand' backup at any time
+- Download a local copy of a specific backup file  
+- Restore your NetBox Cloud instance from a database backup
 
-Watch this quick video or follow the steps outlined below: 
+Watch this quick video or follow the steps outlined below to get started: 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/784IcT8Ij7U?si=zM8tvQMt14nH4TWu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1YnQhsC6KFQ?si=q4JyPGQIbN-Q_0Yv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## View a List of Available Database Backups
 
-1. Login to the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/) and then click on the name of the NetBox instance you are working with, on the left-hand side:
+1. Login to the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/) and then click on the three dots in the top-right corner of the instance you wish to manage and click **Manage**:
 
-    ![select netbox instance](../images/backups/list_backups_1.png)
+    ![select netbox instance](../images/backups/manage_instance.png)
 
-2. Scroll down to the **Backup and Restore** panel and view the list of available backups.
+2. Scroll down to the **Backup and Restore** panel expand it to view the list of available backups:
 
-    ![view list of backups](../images/backups/list_backups_2.png)
+    ![view list of backups](../images/backups/view_list_backups.png)
 
-## Take an 'On-Demand' Database Backup
+## Take an 'On Demand' Database Backup
 
 1. From within the **Backup and Restore** panel click on **Back Up Now**, on the right-hand side: 
 
-    ![back up now](../images/backups/list_backups_3.png)
+    ![back up now](../images/backups/backup_now.png)
 
-2. Select the NetBox Cloud instance you wish to backup from the drop-down menu, then click **Request Backup**. Note that if you have multiple NetBox Cloud instances then they will appear in this list. 
+2. Click **CONTINUE** to confirm that you want to backup of the current version of NetBox Cloud
 
-    ![request backup](../images/backups/list_backups_4.png)
+    ![confirm backup](../images/backups/confirm_backup.png)
 
-3. After a few seconds you will see the on-demand backup in the list of available backups: 
+3. After a short while you will see the **On Demand** backup you just created appear in the list of available backups: 
 
-    ![on demand backup taken](../images/backups/list_backups_5.png)
+    ![on demand backup taken](../images/backups/list_backups.png)
 
-## Retrieve and Download a Backup File
+## Download a Local Copy of a Backup File
 
-1. Locate the backup file you wish to retrieve, and click **Retrieve** 
+1. Locate the backup file you wish to retrieve, and click on the **Download** icon:
 
-    ![retrieve backup](../images/backups/list_backups_6.png)
+    ![download backup](../images/backups/download_backup.png)
 
-    The retrieval process will then start: 
+2. The download will then be prepared: 
 
-    ![retrieve backup](../images/backups/list_backups_7.png)
+    ![prepare download](../images/backups/prepare_download.png)
 
-2. Once the file has been retrieved, click **Download** and the file will be downloaded to your local computer. Note the file is a **gzip compressed archive** of the **SQL** database file so it will end in `.sql.gz`
+3. Once the backup file has been prepared it will automatically be downloaded into the **Downloads** directory on your local computer's file system. Note the file is a **gzip compressed archive** of the **SQL** database file so it will end in `.sql.gz`.
 
-    ![download file](../images/backups/list_backups_8.png)
+## Restore From a Database Backup File
+
+1. Identify the database backup you wish to restore from, and click **Restore**:
+
+    ![click restore](../images/backups/restore_select.png)
+
+2. Click **CONTINUE** if you are sure you wish to restore the selected backup:
+
+    ![confirm restore](../images/backups/restore_confirm.png)
+
+3. The restore process will take place in the background, and depending on the size of the database should take no longer than a few minutes to complete. Once the restore has completed, you can click on **See Restore History** to view the list of database restores, and you will see your completed restore listed:
+
+    ![completed restore](../images/backups/restore_history_1.png)
+
+    ![completed restore](../images/backups/restore_history_2.png)
+
+4. Your database restore is now complete. 
 
 If you encounter any issues while working with database backups raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com)
