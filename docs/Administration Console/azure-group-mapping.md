@@ -26,9 +26,11 @@ The **Object ID** is mapped to a group in NetBox Cloud, and that group could hav
 
 ![NetBox Permissions](..//images/Azure%20SSO/azure_group_sync_3.png)
 
+Optionally, members of the Azure AD groups can also be members of the NetBox built-in groups **Staff** which allows access to the NetBox admin interface, and **Superuser** which has all permissions without explicitly assigning them.
+
 The NetBox Labs support team will map your Azure AD Group Object ID's to your NetBox Cloud groups, for example: 
 
-| Azure AD Group Object ID | NetBox Cloud Group | User | Super User |
+| Azure AD Group Object ID | NetBox Cloud Group | Staff | Super User |
 | -------- | ------- |-------- | ------- |
 | 1a36bed9-3bdc-4970-ab66-faf9704e0af4 | Circuit Manager | Yes | No | 
 

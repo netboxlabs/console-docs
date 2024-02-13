@@ -36,19 +36,21 @@ plugins:
   - search
 nav:
   - Home: index.md
-  # - Getting Started: "NetBox Cloud/getting-started-with-nbc.md"
   - Guides:
       - Working with Database Backups: "Administration Console/working_with_database_backups.md"
       - Configure IP Allow List: "Administration Console/configuring_ip_allow_lists.md"
       - Upgrade NetBox Cloud: "Administration Console/upgrading-nbc.md"
-      - Set up Azure AD SSO: "Administration Console/azure-ad-sso-setup.md"
-      - Azure AD Group Mapping: "Administration Console/azure-group-mapping.md"
-      - Set up Okta SSO: "Administration Console/okta-sso-setup.md"
       - Set up Two-Factor Authentication: "Administration Console/set_up_2fa.md"
       - Migrate to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
       - NetBox Cloud Plugins: "Administration Console/netbox-cloud-plugins.md"
+      - Single Sign-On (SSO): 
+        - Azure AD:
+          - Set up Azure AD SSO: "Administration Console/azure-ad-sso-setup.md"
+          - Azure AD Group Mapping: "Administration Console/azure-group-mapping.md"
+        - Okta:
+          - Set up Okta SSO: "Administration Console/okta-sso-setup.md"
+          - Okta Group Mapping: "Administration Console/okta-group-mapping.md"
   - Getting Access:
-      # - Admin Console Overview: "Administration Console/console-overview.md"
       - Setting up Console Access: "Administration Console/console-access.md"
       - Accessing the Console From the NetBox Cloud UI: "Administration Console/console-access-from-ui.md"
       - Retrieving NetBox Cloud Admin Credentials: "Administration Console/retrieving-nbc-credentials.md"
