@@ -37,6 +37,7 @@ plugins:
 nav:
   - Home: index.md
   - Guides:
+      - Secrets Manager: "Administration Console/secrets_manager.md"
       - Working with Database Backups: "Administration Console/working_with_database_backups.md"
       - Configure IP Allow List: "Administration Console/configuring_ip_allow_lists.md"
       - Upgrade NetBox Cloud: "Administration Console/upgrading-nbc.md"
