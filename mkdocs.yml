@@ -54,6 +54,7 @@ nav:
       - Setting up Console Access: "Administration Console/console-access.md"
       - Accessing the Console From the NetBox Cloud UI: "Administration Console/console-access-from-ui.md"
       - Retrieving NetBox Cloud Admin Credentials: "Administration Console/retrieving-nbc-credentials.md"
+  - Product and Feature Lifecycle: "product_feature_lifecycle.md"
   - Scheduled Maintenance: "maintenance.md"
 
 extra:
