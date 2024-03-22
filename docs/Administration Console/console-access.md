@@ -16,13 +16,13 @@ The NetBox Cloud team will set up your account with your email address as the us
 
     ![change password](../images/console_access/change_pwd.png)
 
-4. The set up is now complete and you are logged into the NetBox Labs Console. You will see (and be able to administer) all the NetBox Cloud instances running under your Organization. In the example screenshot below there are two instances running (dev and prod): 
+4. The set up is now complete and you are logged into the NetBox Labs Console. You will see (and be able to administer) all the NetBox Cloud instances running under your Organization.
 
     ![view instances](../images/console_access/view_instances.png)
 
-5. To retrieve the credentials for the admin user of a NetBox Cloud instance, either click to reveal or copy them from the Secrets section: 
+5. To retrieve the credentials for the admin user of a NetBox Cloud instance, either click to reveal or copy them from the **Credentials** section: 
 
-    ![retrieve admin credentials](../images/console_access/get_secrets.png)
+    ![retrieve admin credentials](../images/console_access/get_credentials.png)
 
 6. Then click the on either of the two links to open the URL of the instance in a new browser window:
 
