@@ -4,7 +4,7 @@
 
 The Public IP addresses that outbound traffic from your NetBox Cloud instance (eg. webhooks) will been seen to be originating from are listed below. This will vary depending on the region that your instance is located in.   
 
-You can whitelist these IP ranges so that inbound traffic from NetBox cloud is locked down to just these ranges: 
+You can whitelist these IP ranges so that inbound access from your NetBox Cloud instance(s) is restricted to just these addresses: 
 
 ### US-EAST-1
 
@@ -48,9 +48,9 @@ You can whitelist these IP ranges so that inbound traffic from NetBox cloud is l
 2a05:d01c:11e:a800::/56
 ```
 
-## Dedicated IP Addresses for NetBox Cloud Instances
+## Dedicated IP Addresses for Accessing NetBox Cloud Instances
 
-For NetBox Cloud [Enterprise customers](https://netboxlabs.com/pricing/) we do offer dedicated IP addresses for accessing the UI and API. Please speak to your account representative for more information.
+For NetBox Cloud [Enterprise customers](https://netboxlabs.com/pricing/) we offer dedicated IP addresses for accessing the UI and API. Please speak to your account representative for more information.
 
 <br>
 Please don’t hesitate to reach out to the [NetBox Labs Support Team](mailto:support@netboxlabs.com) if you have any questions about this or anything else regarding NetBox Cloud.
