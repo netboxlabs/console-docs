@@ -44,7 +44,6 @@ nav:
       - Migrate to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
       - NetBox Cloud Plugins: "Administration Console/netbox-cloud-plugins.md"
       - Public IP Addressing: "Administration Console/public-ip-addressing.md"
-      - Managing Hostnames: "Administration Console/managing-hostnames.md"
       - Single Sign-On (SSO): 
         - Azure AD:
           - Set up Azure AD SSO: "Administration Console/azure-ad-sso-setup.md"
