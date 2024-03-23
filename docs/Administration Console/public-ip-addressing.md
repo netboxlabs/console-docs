@@ -2,7 +2,7 @@
 
 ## Traffic Originating From NetBox Cloud
 
-The Public IP addresses that outbound traffic from your NetBox Cloud instance (eg. webhooks) will been seen to be originating from are listed below. This will vary depending on the region that your instance is located in.   
+The Public IP addresses that outbound traffic from your NetBox Cloud instance (eg. webhooks) will be seen to be originating from are listed below. This will vary depending on the region that your instance is located in.   
 
 You can whitelist these IP ranges so that inbound access from your NetBox Cloud instance(s) is restricted to just these addresses: 
 
@@ -48,7 +48,7 @@ You can whitelist these IP ranges so that inbound access from your NetBox Cloud 
 2a05:d01c:11e:a800::/56
 ```
 
-## Dedicated IP Addresses for Accessing NetBox Cloud Instances
+## Dedicated Public IP Addresses for Accessing NetBox Cloud Instances
 
 For NetBox Cloud [Enterprise customers](https://netboxlabs.com/pricing/) we offer dedicated IP addresses for accessing the UI and API. Please speak to your account representative for more information.
 
