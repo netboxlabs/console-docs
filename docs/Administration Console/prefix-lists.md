@@ -29,7 +29,7 @@ Watch this quick video or follow the steps outlined below to start managing your
 
     ![name prefix list](../images/prefix-lists/create-prefix-list-non-sync-1.png)
 
-4. Enter the first prefix and give it a description. If you wish to add additional prefixes then you can do that here also by clicking **+ ADD ADDITIONAL PREFIX**, then when you are happy click **CREATE PREFIXES**.
+4. Enter the first prefix and give it a description. If you wish to add additional prefixes then you can also do that here by clicking **+ ADD ADDITIONAL PREFIX**, then when you are happy click **CREATE PREFIXES**.
 
     *Note* - if you wish to add the IP address that you are currently using then click **Use Current IP Address** and this will add it to the prefix list: 
 
