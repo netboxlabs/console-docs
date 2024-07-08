@@ -1,3 +1,3 @@
 Delivery via Private Link between a customer’s existing AWS account and the NetBox Labs AWS account, with VPC endpoints using private IPs. This option has fast turn-up times and standard Internet delivery can optionally be disabled.
 
-![AWS Private Link](../images/enterprise-connectivity/aws-private-link.png)
+![AWS Private Link](../images/cloud-connectivity/aws-private-link.png)

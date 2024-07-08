@@ -1,8 +1,21 @@
-Internet Delivery (Single Region) is the standard product offering for NetBox Cloud. It comes with **TLS Security** and access is controlled by **Prefix Lists** that protect the UI, API and GraphQL interfaces. Separate Prefix Lists can protect each interface:
+[Internet Delivery (Single Region)](../cloud-connectivity/internet-delivery.md) is the standard product offering for NetBox Cloud. It comes with **TLS Security** and access is controlled by **Prefix Lists** that protect the UI, API and GraphQL interfaces.
 
-![Internet Delivery](../images/enterprise-connectivity/internet-delivery.png)
+This solution is suitable for a large majority of customers, however if do you require connectivity over and above the standard offering then there are multiple [options](/docs/cloud-connectivity/which-connectivity-option.md) available. With that said, in a lot of cases where you might think that you need connectivity over and above the standard offering, there are features available that may well address your needs without enterprise connectivity needing to be set up.
 
-This solution is suitable for a large majority of customers, however if do you require connectivity over and above the standard offering then there are multiple [options](/docs/enterprise-connectivity/which-connectivity-option.md) available. With that said, in a lot of cases where you might think that you need connectivity over and above the standard offering, there are features available that may well address your needs without enterprise connectivity needing to be set up. This guide takes look at some of those options.
+This guide takes look at some of those features.
+
+
+## NetBox Cloud Security Features
+Security and convenience are always in focus in the NetBox Cloud Platform and we understand that with any application, getting the balance right between security and convenience is crucial. At NetBox Labs, we believe that you shouldn’t have to compromise in either area. Just a few of the Security features the NetBox Cloud platform offers are:
+
+- Securing Access with [Prefix Lists](https://docs.netboxlabs.com/Administration%20Console/prefix-lists/)
+- mTLS and Dedicated IP Addresses
+- [Database Backup and Restore](https://docs.netboxlabs.com/Administration%20Console/working_with_database_backups/)
+- [Safe Upgrade Tool](https://docs.netboxlabs.com/Administration%20Console/upgrading-nbc/)
+- [Two-Factor Authentication](https://docs.netboxlabs.com/Administration%20Console/set_up_2fa/) for the NetBox Labs Admin Console
+- [SSO Options](https://docs.netboxlabs.com/Administration%20Console/azure-ad-sso-setup/) for NetBox Cloud
+
+Read more about all of these features in this [blog](https://netboxlabs.com/blog/security-and-convenience-are-always-in-focus-in-the-netbox-cloud-platform/?preview_id=19124&preview_nonce=8a862c2421&preview=true) or watch an on-demand [webinar](https://netboxlabs.com/events/webinar-new-security-and-efficiency-enhancements-in-netbox-cloud/) to learn how these NetBox Cloud features are designed to make the lives of the network team easier, whilst at the same time enhancing the security of NetBox Cloud.
 
 ## CRUD (Create/Update/Delete) Access to the NetBox Data Model via REST and GraphQL API
 Out of the box NetBox Cloud allows you to programmatically interact with the NetBox Database to perform CRUD operations. This can be via the REST API or GraphQL interface.
@@ -31,15 +44,3 @@ To read more about how to get started with the Webhooks, check out the [NetBox d
 [NetBox Event Streams](https://netboxlabs.com/blog/netbox-labs-introduces-netbox-event-streams/) unlock event-driven architectures by enabling teams to easily subscribe to network state and management events from the NetBox Cloud Platform, feeding events to other systems or triggering automations. This capability spans various types of events, from operational updates like the addition of new devices, to security-oriented alerts such as unauthorized access attempts.
 
 To learn more about NetBox Event Streams you can sign up for an [on-demand webinar](https://netboxlabs.com/events/event-driven-architectures-for-networking-and-security-webinar/) or read our [blog](https://netboxlabs.com/blog/revolutionizing-netsecops-netbox-event-streams-and-siem-integration/) about how NetBox Event Streams integrated with SIEM tools like Splunk Enterprise and ElasticSearch, is setting a new standard for how networks are managed and secured.
-
-## NetBox Cloud Security Features
-Security and convenience are always in focus in the NetBox Cloud Platform and we understand that with any application, getting the balance right between security and convenience is crucial. At NetBox Labs, we believe that you shouldn’t have to compromise in either area. Just a few of the Security features the NetBox Cloud platform offers are:
-
-- Securing Access with [Prefix Lists](https://docs.netboxlabs.com/Administration%20Console/prefix-lists/)
-- mTLS and Dedicated IP Addresses
-- [Database Backup and Restore](https://docs.netboxlabs.com/Administration%20Console/working_with_database_backups/)
-- [Safe Upgrade Tool](https://docs.netboxlabs.com/Administration%20Console/upgrading-nbc/)
-- [Two-Factor Authentication](https://docs.netboxlabs.com/Administration%20Console/set_up_2fa/) for the NetBox Labs Admin Console
-- [SSO Options](https://docs.netboxlabs.com/Administration%20Console/azure-ad-sso-setup/) for NetBox Cloud
-
-Read more about all of these features in this [blog](https://netboxlabs.com/blog/security-and-convenience-are-always-in-focus-in-the-netbox-cloud-platform/?preview_id=19124&preview_nonce=8a862c2421&preview=true) or watch an on-demand [webinar](https://netboxlabs.com/events/webinar-new-security-and-efficiency-enhancements-in-netbox-cloud/) to learn how these NetBox Cloud features are designed to make the lives of the network team easier, whilst at the same time enhancing the security of NetBox Cloud.

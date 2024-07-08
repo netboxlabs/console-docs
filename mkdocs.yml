@@ -52,21 +52,21 @@ nav:
         - Okta:
           - Set up Okta SSO: "Administration Console/okta-sso-setup.md"
           - Okta Group Mapping: "Administration Console/okta-group-mapping.md"
-      - Connectivity:
-        - Do I Need Enterprise Connectivity?: "enterprise-connectivity/do-i-need-enterprise-connectivity.md"
-        - Enterprise Connectivity Options:
-          - Which Connectivity Option is Right for Me?: "enterprise-connectivity/which-connectivity-option.md"
-          - Internet Delivery (Single Region): "enterprise-connectivity/internet-delivery.md"
-          - AWS Private Link (Single Region): "enterprise-connectivity/aws-private-link.md"
-          - IPSEC VPN Tunnels (Single Region): "enterprise-connectivity/ipsec-vpn-tunnels.md"
-          - AWS Direct Connect (Single Region): "enterprise-connectivity/aws-direct-connect.md"
-          - AWS Direct Connect (Multi-Region): "enterprise-connectivity/aws-direct-connect-multi-region.md"
-        - Implementing Enterprise Connectivity:
-          - AWS Private Link: "enterprise-connectivity/aws-private-link-setup.md"
-          - IPSEC VPN Tunnels (Single Region): "enterprise-connectivity/ipsec-vpn-tunnels-setup.md"
-          - AWS Direct Connect (Single Region): "enterprise-connectivity/aws-direct-connect-setup.md"
-          - AWS Direct Connect (Multi-Region): "enterprise-connectivity/aws-direct-connect-multi-region-setup.md"
-        - Frequently Asked Questions: "enterprise-connectivity/enterprise-connectivity-faq.md"
+      - Cloud Connectivity:
+        - Do I Need Cloud Connectivity?: "cloud-connectivity/do-i-need-cloud-connectivity.md"
+        - Cloud Connectivity Options:
+          - Which Cloud Connectivity Option is Right for Me?: "cloud-connectivity/which-connectivity-option.md"
+          - Internet Delivery (Single Region): "cloud-connectivity/internet-delivery.md"
+          - AWS Private Link (Single Region): "cloud-connectivity/aws-private-link.md"
+          - IPSEC VPN Tunnels (Single Region): "cloud-connectivity/ipsec-vpn-tunnels.md"
+          - AWS Direct Connect (Single Region): "cloud-connectivity/aws-direct-connect.md"
+          - AWS Direct Connect (Multi-Region): "cloud-connectivity/aws-direct-connect-multi-region.md"
+        # - Implementing Cloud Connectivity:
+        #   - AWS Private Link: "cloud-connectivity/aws-private-link-setup.md"
+        #   - IPSEC VPN Tunnels (Single Region): "cloud-connectivity/ipsec-vpn-tunnels-setup.md"
+        #   - AWS Direct Connect (Single Region): "cloud-connectivity/aws-direct-connect-setup.md"
+        #   - AWS Direct Connect (Multi-Region): "cloud-connectivity/aws-direct-connect-multi-region-setup.md"
+        - Frequently Asked Questions: "cloud-connectivity/cloud-connectivity-faq.md"
   - Getting Access:
       - Setting up Console Access: "Administration Console/console-access.md"
       - Accessing the Console From the NetBox Cloud UI: "Administration Console/console-access-from-ui.md"
