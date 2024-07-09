@@ -1,4 +1,4 @@
-site_name: NetBox Labs Console Documentation
+site_name: NetBox Labs Documentation
 theme:
   name: material
   custom_dir: overrides
@@ -37,6 +37,10 @@ plugins:
 nav:
   - Home: index.md
   - Guides:
+      - Getting Access:
+        - Setting up Console Access: "Administration Console/console-access.md"
+        - Accessing the Console From the NetBox Cloud UI: "Administration Console/console-access-from-ui.md"
+        - Retrieving NetBox Cloud Admin Credentials: "Administration Console/retrieving-nbc-credentials.md"
       - Prefix Lists: "Administration Console/prefix-lists.md"
       - Working with Database Backups: "Administration Console/working_with_database_backups.md"
       - Upgrade NetBox Cloud: "Administration Console/upgrading-nbc.md"
@@ -45,17 +49,28 @@ nav:
       - NetBox Cloud Plugins: "Administration Console/netbox-cloud-plugins.md"
       - Public IP Addressing: "Administration Console/public-ip-addressing.md"
       - Managing Hostnames: "Administration Console/managing-hostnames.md"
-      - Single Sign-On (SSO): 
+      - Single Sign-On (SSO):
         - Azure AD:
           - Set up Azure AD SSO: "Administration Console/azure-ad-sso-setup.md"
           - Azure AD Group Mapping: "Administration Console/azure-group-mapping.md"
         - Okta:
           - Set up Okta SSO: "Administration Console/okta-sso-setup.md"
           - Okta Group Mapping: "Administration Console/okta-group-mapping.md"
-  - Getting Access:
-      - Setting up Console Access: "Administration Console/console-access.md"
-      - Accessing the Console From the NetBox Cloud UI: "Administration Console/console-access-from-ui.md"
-      - Retrieving NetBox Cloud Admin Credentials: "Administration Console/retrieving-nbc-credentials.md"
+      - Cloud Connectivity:
+        - Do I Need Cloud Connectivity Options?: "cloud-connectivity/do-i-need-cloud-connectivity.md"
+        - Cloud Connectivity Options:
+          - Which Cloud Connectivity Option is Right for Me?: "cloud-connectivity/which-connectivity-option.md"
+          - Internet Delivery (Single Region): "cloud-connectivity/internet-delivery.md"
+          - AWS Private Link (Single Region): "cloud-connectivity/aws-private-link.md"
+          - IPSEC VPN Tunnels (Single Region): "cloud-connectivity/ipsec-vpn-tunnels.md"
+          - AWS Direct Connect (Single Region): "cloud-connectivity/aws-direct-connect.md"
+          - AWS Direct Connect (Multi-Region): "cloud-connectivity/aws-direct-connect-multi-region.md"
+        # - Implementing Cloud Connectivity:
+        #   - AWS Private Link: "cloud-connectivity/aws-private-link-setup.md"
+        #   - IPSEC VPN Tunnels (Single Region): "cloud-connectivity/ipsec-vpn-tunnels-setup.md"
+        #   - AWS Direct Connect (Single Region): "cloud-connectivity/aws-direct-connect-setup.md"
+        #   - AWS Direct Connect (Multi-Region): "cloud-connectivity/aws-direct-connect-multi-region-setup.md"
+        - Frequently Asked Questions: "cloud-connectivity/cloud-connectivity-faq.md"
   - Product and Feature Lifecycle: "product_feature_lifecycle.md"
   - Scheduled Maintenance: "maintenance.md"
 
