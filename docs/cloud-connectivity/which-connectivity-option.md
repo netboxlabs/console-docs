@@ -1,4 +1,4 @@
-This is a question commonly asked by NetBox Cloud customers, and although in the majority of cases **Internet Delivery (Single Region)** is the most appropriate, there are some general recommendations based on your requirements:
+This is a question commonly asked by NetBox Cloud customers, and although in the majority of cases [Internet Delivery (Single Region)](../cloud-connectivity/internet-delivery.md) is the most appropriate, there are some general recommendations depending on your use case:
 
 ## Recommendations By Use Case
 | Use Case                            | Recommendation                          | Reason                                                                                 |
@@ -21,5 +21,4 @@ This matrix should help you identify the most suitable NetBox Cloud connectivity
 | **Scalability**                   | Limited to single region               | Limited to single region                  | Limited to single region                | Limited to single region               | Supports multi-region scalability      |
 | **Performance**                   | Standard internet performance          | Low latency due to Private Link           | Variable, dependent on VPN quality      | High performance, low latency          | Highest performance, low latency       |
 | **Management Complexity**         | Low                                    | Medium                                    | High                                    | Medium                                 | High                                   |
-| **Flexibility**                   | Limited to standard offering           | Moderate, dependent on AWS setup          | High flexibility with routing options   | Moderate                               | High, with multi-region support        |
 | **Recommended For**               | General use                            | AWS-centric environments                  | Secure, site-to-site connections        | High-performance needs, single region  | High-performance, multi-region needs   |

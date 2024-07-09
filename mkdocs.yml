@@ -53,7 +53,7 @@ nav:
           - Set up Okta SSO: "Administration Console/okta-sso-setup.md"
           - Okta Group Mapping: "Administration Console/okta-group-mapping.md"
       - Cloud Connectivity:
-        - Do I Need Cloud Connectivity?: "cloud-connectivity/do-i-need-cloud-connectivity.md"
+        - Do I Need Enhanced Cloud Connectivity?: "cloud-connectivity/do-i-need-cloud-connectivity.md"
         - Cloud Connectivity Options:
           - Which Cloud Connectivity Option is Right for Me?: "cloud-connectivity/which-connectivity-option.md"
           - Internet Delivery (Single Region): "cloud-connectivity/internet-delivery.md"
