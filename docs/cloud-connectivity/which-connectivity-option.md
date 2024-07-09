@@ -1,4 +1,5 @@
-This is a question commonly asked by NetBox Cloud customers, and although in the majority of cases [Internet Delivery (Single Region)](../cloud-connectivity/internet-delivery.md) is the most appropriate, there are some general recommendations depending on your use case:
+In many cases where cloud connectivity options seem necessary, NetBox Cloud offers [features](../cloud-connectivity/do-i-need-cloud-connectivity.md) that can address your needs without additional setup. In the majority of cases [Internet Delivery (Single Region)](../cloud-connectivity/internet-delivery.md) is the most appropriate connectivity option, but there are some general recommendations depending on your use case:
+
 
 ## Recommendations By Use Case
 | Use Case                            | Recommendation                          | Reason                                                                                 |
@@ -16,7 +17,7 @@ This matrix should help you identify the most suitable NetBox Cloud connectivity
 | Criteria                          | Internet Delivery (Single Region)      | AWS Private Link (Single Region)          | IPSEC VPN Tunnels (Single Region)       | AWS Direct Connect (Single Region)      | AWS Direct Connect (Multi-Region)      |
 |-----------------------------------|----------------------------------------|-------------------------------------------|-----------------------------------------|----------------------------------------|----------------------------------------|
 | **Ease of Setup**                 | Standard product, easy setup           | Fast turn-up times                        | Requires VPN configuration              | Requires Direct Connect setup          | Requires Direct Connect setup          |
-| **Redundancy**                    | Standard single region                 | Single region                             | Single or dual tunnels                  | Single or dual Direct Connect options  | Replicated NetBoxes, dual region       |
+| **Redundancy**                    | Single region. Multiple AZs            | Single region. Multiple AZs               | Single region. Multiple AZs. Single or dual tunnels | Single region. Multiple AZs. Single or dual Direct Connect options  | Multi Region. Multiple AZs. Replicated NetBoxes |
 | **Cost**                          | Included                               | Likely higher due to Private Link         | Medium cost, dependent on VPN setup     | Higher cost due to Direct Connect      | Highest cost due to multi-region setup |
 | **Performance**                   | Standard internet performance          | Low latency due to Private Link           | Variable, dependent on VPN quality      | High performance, low latency          | Highest performance, low latency       |
 | **Management Complexity**         | Low                                    | Medium                                    | High                                    | Medium                                 | High                                   |
