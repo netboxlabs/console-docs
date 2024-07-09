@@ -1,7 +1,6 @@
 [Internet Delivery (Single Region)](../cloud-connectivity/internet-delivery.md) is the standard product offering for NetBox Cloud. It comes with extensive security features (see below) and is suitable for the majority of use cases and environments.
 
-If do you require enhanced connectivity then there are multiple [options](../cloud-connectivity/which-connectivity-option.md) available, but in most cases where you might think you need enhanced cloud connectivity, there are NetBox Cloud features that may well address your needs without any additional set up. This guide takes a look at some of those features.
-
+If you require enhanced connectivity, there are several [options](../cloud-connectivity/which-connectivity-option.md) available. However, in many cases where enhanced cloud connectivity seems necessary, NetBox Cloud offers features that can address your needs without additional setup. This guide explores some of those features.
 
 ## NetBox Cloud Security Features
 Security and convenience are always in focus in the NetBox Cloud Platform and we understand that with any application, getting the balance right between security and convenience is crucial. At NetBox Labs, we believe that you shouldn’t have to compromise in either area. Just a few of the Security features the NetBox Cloud platform offers are:
