@@ -1,6 +1,6 @@
-[Internet Delivery (Single Region)](../cloud-connectivity/internet-delivery.md) is the standard product offering for NetBox Cloud. It comes with **TLS Security** and access is controlled by **Prefix Lists** that can protect the UI, API and GraphQL interfaces.
+[Internet Delivery (Single Region)](../cloud-connectivity/internet-delivery.md) is the standard product offering for NetBox Cloud. It comes with extensive security features (see below) and is suitable for the majority of use cases and environments.
 
-This solution is suitable for a large majority of customers, however if do you require enhanced connectivity then there are multiple [options](/docs/cloud-connectivity/which-connectivity-option.md) available. With that said, in a lot of cases where you might think that you need enhanced cloud connectivity, there are NetBox Cloud features available that may well address your needs without any additional set up. This guide takes a look at some of those features.
+If do you require enhanced connectivity then there are multiple [options](/docs/cloud-connectivity/which-connectivity-option.md) available, but most cases where you might think you need enhanced cloud connectivity, there are NetBox Cloud features that may well address your needs without any additional set up. This guide takes a look at some of those features.
 
 
 ## NetBox Cloud Security Features

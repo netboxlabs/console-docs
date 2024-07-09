@@ -37,6 +37,10 @@ plugins:
 nav:
   - Home: index.md
   - Guides:
+      - Getting Access:
+        - Setting up Console Access: "Administration Console/console-access.md"
+        - Accessing the Console From the NetBox Cloud UI: "Administration Console/console-access-from-ui.md"
+        - Retrieving NetBox Cloud Admin Credentials: "Administration Console/retrieving-nbc-credentials.md"
       - Prefix Lists: "Administration Console/prefix-lists.md"
       - Working with Database Backups: "Administration Console/working_with_database_backups.md"
       - Upgrade NetBox Cloud: "Administration Console/upgrading-nbc.md"
@@ -67,10 +71,6 @@ nav:
         #   - AWS Direct Connect (Single Region): "cloud-connectivity/aws-direct-connect-setup.md"
         #   - AWS Direct Connect (Multi-Region): "cloud-connectivity/aws-direct-connect-multi-region-setup.md"
         - Frequently Asked Questions: "cloud-connectivity/cloud-connectivity-faq.md"
-  - Getting Access:
-      - Setting up Console Access: "Administration Console/console-access.md"
-      - Accessing the Console From the NetBox Cloud UI: "Administration Console/console-access-from-ui.md"
-      - Retrieving NetBox Cloud Admin Credentials: "Administration Console/retrieving-nbc-credentials.md"
   - Product and Feature Lifecycle: "product_feature_lifecycle.md"
   - Scheduled Maintenance: "maintenance.md"
 
