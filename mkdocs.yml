@@ -36,7 +36,7 @@ plugins:
   - search
 nav:
   - Home: index.md
-  - Guides:
+  - Cloud:
       - Getting Access:
         - Setting up Console Access: "Administration Console/console-access.md"
         - Accessing the Console From the NetBox Cloud UI: "Administration Console/console-access-from-ui.md"
@@ -65,12 +65,15 @@ nav:
           - IPSEC VPN Tunnels (Single Region): "cloud-connectivity/ipsec-vpn-tunnels.md"
           - AWS Direct Connect (Single Region): "cloud-connectivity/aws-direct-connect.md"
           - AWS Direct Connect (Multi-Region): "cloud-connectivity/aws-direct-connect-multi-region.md"
-        # - Implementing Cloud Connectivity:
-        #   - AWS Private Link: "cloud-connectivity/aws-private-link-setup.md"
-        #   - IPSEC VPN Tunnels (Single Region): "cloud-connectivity/ipsec-vpn-tunnels-setup.md"
-        #   - AWS Direct Connect (Single Region): "cloud-connectivity/aws-direct-connect-setup.md"
-        #   - AWS Direct Connect (Multi-Region): "cloud-connectivity/aws-direct-connect-multi-region-setup.md"
         - Frequently Asked Questions: "cloud-connectivity/cloud-connectivity-faq.md"
+  - Enterprise:
+    - Deploying NetBox Enterprise: "netbox-enterprise/deploying-netbox-enterprise.md"
+  - Integrations: 
+    - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
+    - pyATS: "netbox-integrations/pyats.md"
+  - Extensions:
+    - Diode: "netbox-extensions/diode.md"
+    - Diode Agent: "netbox-extensions/diode-agent.md"
   - Product and Feature Lifecycle: "product_feature_lifecycle.md"
   - Scheduled Maintenance: "maintenance.md"
 

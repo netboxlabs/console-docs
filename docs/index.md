@@ -1,7 +1,5 @@
-# Welcome to the NetBox Labs Console Documentation Site
+# Welcome to the NetBox Labs Documentation Site
+
+The home of documenation for [NetBox Cloud](Administration%20Console/console-access.md), [NetBox Enterprise](netbox-enterprise/deploying-netbox-enterprise.md), [NetBox Integrations](netbox-integrations/netbox-ansible-collection.md) and [NetBox Extensions](netbox-extensions/diode-agent.md).
 
 ![netbox main ui](./images/docs_home.png)
-
-## About NetBox Labs Console
-
-NetBox Labs [Console](https://console.netboxlabs.com/dashboard/) is the management user interface for [NetBox Cloud](https://netboxlabs.com/netbox-cloud), NetBox Labs' enterprise grade, SaaS version of open source NetBox: the world's most popular Network Source of Truth. 
