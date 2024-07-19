@@ -1,6 +1,6 @@
 # Weekly NetBox Labs Platform Maintenance Window Notice
 
-On the week of Sept 18th, NetBox Labs began weekly maintenance windows on Tuesdays and Thursdays between the hours of 3:00 - 5:00am EDT / 12:00 - 2:00am PDT / 07:00 - 09:00 UTC. 
+There are weekly maintenance windows for the NetBox Cloud Platform on Tuesdays and Thursdays between the hours of 3:00 - 5:00am EDT / 12:00 - 2:00am PDT / 07:00 - 09:00 UTC. 
 
 These windows are used for routine maintenance on the infrastructure supporting the NetBox Labs Console, NetBox Cloud instances, and other cloud products and services offered by NetBox Labs. This includes applying necessary security patches and required upgrades to cloud infrastructure, and/or making other underlying infrastructure changes to increase reliability, security and performance.
 
