@@ -70,7 +70,8 @@ nav:
         - Frequently Asked Questions: "cloud-connectivity/cloud-connectivity-faq.md"
   - Enterprise:
     - Overview: "netbox-enterprise/nbe-overview.md"
-    - Embedded Cluster: "netbox-enterprise/nbe-ec.md"
+    - Deployment models:
+      - Embedded Cluster: "netbox-enterprise/nbe-ec.md"
   - Integrations: 
     - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
     - pyATS: "netbox-integrations/pyats.md"

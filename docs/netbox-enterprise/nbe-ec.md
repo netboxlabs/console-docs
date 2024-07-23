@@ -11,7 +11,6 @@
 #### Host operating system
 
 - Linux (Kernel versions 4.3 and above)
-- Windows Server 2019
 
 #### Architecture
 
@@ -36,7 +35,7 @@ The following steps are required for an Embedded Cluster (EC) installation of Ne
 
    You’ll be requested to create a password for the NetBox Enterprise admin console. A Kubernetes cluster will then be deployed, ready to host all the NetBox application components. The deployment of the cluster is complete with this message:
 
-   ```{.bash
+   ```{.bash .no-copy} 
    Visit the Admin Console to configure and install netbox-enterprise: http://my.netbox-enterprise.host:30000
    ```
 
