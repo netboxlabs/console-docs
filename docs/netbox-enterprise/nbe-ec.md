@@ -11,7 +11,6 @@
 #### Host operating system
 
 - Linux (Kernel versions 4.3 and above)
-- Windows Server 2019
 
 #### Architecture
 
