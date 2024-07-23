@@ -42,7 +42,7 @@ export DIODE_TO_NETBOX_API_KEY=$(head -c20 </dev/urandom|xxd -p); env | grep DIO
 # API key for the NetBox service to interact with Diode
 export NETBOX_TO_DIODE_API_KEY=$(head -c20 </dev/urandom|xxd -p); env | grep NETBOX_TO_DIODE_API_KEY
 # API key for Diode SDKs to ingest data into Diode
-export INGESTION_API_KEY=$(head -c20 </dev/urandom|xxd -p); env | grep INGESTION_API_KEY
+export DIODE_API_KEY=$(head -c20 </dev/urandom|xxd -p); env | grep DIODE_API_KEY
 ```
 
 !!! warning
@@ -62,7 +62,7 @@ The plugin is successfully installed and configured:
 
 - The NetBox Labs DIODE plugin is visible in the right-hand navigation bar
 - Three NetBox users and three corresponding API keys have been created:
-    - `INGESTION`
+    - `DIODE`
     - `DIODE_TO_NETBOX`
     - `NETBOX_TO_DIODE`
 

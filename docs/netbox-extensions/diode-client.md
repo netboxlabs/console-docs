@@ -27,7 +27,7 @@ pip install netboxlabs-diode-sdk
 
 ### Configure the client
 
-Set the following environment variable with the `INGESTION_API_KEY` API key from the plugin installation:
+Set the following environment variable with the `DIODE_API_KEY` API key from the plugin installation:
 
 ```bash
 export DIODE_API_KEY=<API key from Diode plugin installation>

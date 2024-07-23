@@ -27,7 +27,7 @@ Edit the `.env` to match the environment:
 
 * `NETBOX_DIODE_PLUGIN_API_BASE_URL`: URL for NetBox, appended with `/api/plugins/diode`
 * `DIODE_TO_NETBOX_API_KEY`: API key from Diode plugin installation
-* `INGESTION_API_KEY`: API key from Diode plugin installation
+* `DIODE_API_KEY`: API key from Diode plugin installation
 * `NETBOX_TO_DIODE_API_KEY`: API key from Diode plugin installation
 
 ### Run the Diode server
