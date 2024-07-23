@@ -15,6 +15,8 @@ theme:
     - navigation.prune
     - search.suggest
     # - toc.integrate
+    - content.code.copy
+    - content.code.select
 markdown_extensions:
   - abbr
   - pymdownx.tabbed:
@@ -67,15 +69,22 @@ nav:
           - AWS Direct Connect (Multi-Region): "cloud-connectivity/aws-direct-connect-multi-region.md"
         - Frequently Asked Questions: "cloud-connectivity/cloud-connectivity-faq.md"
   - Enterprise:
-    - Deploying NetBox Enterprise: "netbox-enterprise/deploying-netbox-enterprise.md"
+    - Overview: "netbox-enterprise/nbe-overview.md"
+    - Embedded Cluster: "netbox-enterprise/nbe-ec.md"
   - Integrations: 
     - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
     - pyATS: "netbox-integrations/pyats.md"
   - SDKs:
     - Pynetbox: "sdks/pynetbox.md"
   - Extensions:
-    - Diode: "netbox-extensions/diode.md"
-    - Diode Agent: "netbox-extensions/diode-agent.md"
+    - Diode:
+      - Overview: "netbox-extensions/diode-overview.md"
+      - Get started: 
+        - Components: "netbox-extensions/diode-get-started.md"
+        - Installing the Diode plugin: "netbox-extensions/diode-plugin.md"
+        - Running the Diode server: "netbox-extensions/diode-server.md"
+        - Installing the Diode client SDK: "netbox-extensions/diode-client.md"
+      - Diode Agent: "netbox-extensions/diode-agent.md"
   - Product and Feature Lifecycle: "product_feature_lifecycle.md"
   - Scheduled Maintenance: "maintenance.md"
 
