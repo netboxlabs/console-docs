@@ -65,7 +65,7 @@ Watch this quick video or follow the steps outlined below to get started:
 
 4. Your database restore is now complete. 
 
-!!! note
+!!! info
     Once the database restore is complete your NetBox Cloud instance will restart, and you may briefly see a `503 - Service Unavailable` message when you browse to the Web interface. This is normal and will clear after a short while, after which you can log in again. 
     
     Also, please be aware that the NetBox changelog will be empty when you first log in after a database restore.

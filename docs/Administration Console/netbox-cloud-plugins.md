@@ -14,4 +14,5 @@ From within the NetBox Labs Console, you can easily view installed NetBox Cloud 
 
     ![netbox cloud plugins](../images/console/netbox-cloud-plugins_3.png)
 
-    **Note** There are two types of plugin scope - **public** for any plugins that are publicly available and **organization** for custom plugins.
+    !!! info
+        There are two types of plugin scope - **public** for any plugins that are publicly available and **organization** for custom plugins.

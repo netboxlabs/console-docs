@@ -1,6 +1,7 @@
 # Getting Started With NetBox, PyATS and Genie
 
-**Note** - You can view an on-demand Webinar [Getting Started with Network Test Automation: NetBox + pyATS](https://netboxlabs.com/events/webinar-getting-started-with-network-test-automation-netbox-pyats-genie/) hosted by NetBox Labs. 
+!!! info "Learn More"
+    You can view an on-demand Webinar [Getting Started with Network Test Automation: NetBox + pyATS](https://netboxlabs.com/events/webinar-getting-started-with-network-test-automation-netbox-pyats-genie/) hosted by NetBox Labs. 
 
 ## Code Examples
 All code used in the examples below can be found in the NetBox Learning [git repository](https://github.com/netboxlabs/netbox-learning), in the directory `netbox-pyats-webinar`.
@@ -38,12 +39,14 @@ All code used in the examples below can be found in the NetBox Learning [git rep
     pip install pyats[full]
     ```
 
-    *Note* If you are using Zsh on a Mac then you need to quote the install string (this had me stuck for a long time until I figured it out!)
+    !!! tip
+        If you are using Zsh on a Mac then you need to quote the install string.
     ```
     pip install "pyats[full]"
     ```
     
-    *Note* if you plan to run the example script `ospf_neighbor_table.py` then you will also need to install the `prettytable` library with `pip install prettytable` or you can simply run the command `pip install -r requirements.txt` to install this along with pyATS, Genie and the `contrib` library. 
+    !!! Note
+        If you plan to run the example script `ospf_neighbor_table.py` then you will also need to install the `prettytable` library with `pip install prettytable` or you can simply run the command `pip install -r requirements.txt` to install this along with pyATS, Genie and the `contrib` library. 
 
     There is also a [PyATS Docker Image](https://developer.cisco.com/codeexchange/github/repo/CiscoTestAutomation/pyats-docker). This command will pull down the container if you don't have it locally and drop you into a Bash shell: 
     ```

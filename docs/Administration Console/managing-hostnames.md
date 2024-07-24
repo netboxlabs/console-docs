@@ -31,4 +31,5 @@ Hostname categories are defined as follows:
 
 Organization Custom Hostnames are available in NetBox Cloud **Professional** and **Enterprise** plans, and if you would like to set one up please raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com). 
 
-Please note that Organization Custom Hostnames are not available for Starter plans. For more information about pricing plans click [here](https://netboxlabs.com/pricing/) 
+!!! note
+    Organization Custom Hostnames are not available for Starter plans. For more information about pricing plans click [here](https://netboxlabs.com/pricing/) 
