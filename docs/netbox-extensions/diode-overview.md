@@ -1,4 +1,6 @@
-# Diode
+# Extensions
+
+## Diode
 
 !!! info "Currently in Public Preview"
 

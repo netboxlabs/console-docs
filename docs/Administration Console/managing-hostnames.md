@@ -1,6 +1,7 @@
 # Managing NetBox Cloud Hostnames
 
-**Note** - Current functionality of the **Hostnames Manager** is limited to viewing Hostnames along with their associated NetBox Cloud instances and categories. Enhanced functionality to manage Hostnames is coming soon in a future release.
+!!! info
+    Current functionality of the **Hostnames Manager** is limited to viewing Hostnames along with their associated NetBox Cloud instances and categories. Enhanced functionality to manage Hostnames is coming soon in a future release.
 
 1. From within the [NetBox Labs Console](https://console.netboxlabs.com) click on **Settings** in the left-hand main menu to manage the settings for your Organization: 
 

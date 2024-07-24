@@ -1,6 +1,6 @@
-# NetBox Labs Console Access Set Up
+# Cloud
 
-## Account Setup
+## Setting up Console Access
 
 Request access to the NetBox Labs Console by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com). 
 

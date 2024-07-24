@@ -1,4 +1,6 @@
-# NetBox Ansible Collection - Quick Start
+# Integrations
+
+## NetBox Ansible Collection - Quick Start
 
 A short guide to getting started with the Ansible Collection for Netbox. 
 
