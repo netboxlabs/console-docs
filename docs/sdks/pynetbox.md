@@ -62,10 +62,9 @@ nb = pynetbox.api(
 )
 ```
 
-## Alternative Library
+!!! info "Alternative Library"
+    For those interested in a different approach, there is an alternative Python API client library available for NetBox called [netbox-python](https://github.com/netbox-community/netbox-python). This library provides a thin Python wrapper over the NetBox API.
 
-> **Note:** For those interested in a different approach, there is an alternative Python API client library available for NetBox called [netbox-python](https://github.com/netbox-community/netbox-python). This library provides a thin Python wrapper over the NetBox API.
+    [netbox-python](https://github.com/netbox-community/netbox-python) offers a minimalistic interface to interact with NetBox's API. While it may not provide all the features available in pynetbox, it offers a lightweight and straightforward option for interfacing with NetBox.
 
-[netbox-python](https://github.com/netbox-community/netbox-python) offers a minimalistic interface to interact with NetBox's API. While it may not provide all the features available in pynetbox, it offers a lightweight and straightforward option for interfacing with NetBox.
-
-To explore further details and access the documentation, please visit the [netbox-python](https://github.com/netbox-community/netbox-python).
+    To explore further details and access the documentation, please visit the [netbox-python](https://github.com/netbox-community/netbox-python).
