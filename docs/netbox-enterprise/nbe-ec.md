@@ -15,7 +15,6 @@
 #### Architecture
 
 - x86-64
-- ARM64
 
 ### Deploying the cluster
 
