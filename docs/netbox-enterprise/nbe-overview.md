@@ -1,4 +1,4 @@
-# Enterprise
+# NetBox Enterprise
 
 ## Overview
 

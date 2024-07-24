@@ -6,9 +6,8 @@ Changes in Azure Active Directory groups are reflected in NetBox Cloud, ensuring
 
 If you are already securing access to NetBox Cloud using Azure AD for SSO, and would like use the Group Mapping feature it's easy to get set up. Simply create your groups and permissions in NetBox Cloud, then set up your groups in Azure AD and reach out to the support team at NetBox Labs and we will take care of the group mappings for you to suit your requirements. 
 
-> ℹ️ Note
-> 
-> This feature is only available in Pro/Enterprise tiers.
+!!! info
+    This feature is only available in Pro/Enterprise tiers.
 
 Watch the video below for a step-by-step example of how the Group Mapping feature works, or read on for an explanation. 
 

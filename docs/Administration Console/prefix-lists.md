@@ -9,7 +9,8 @@ The following features are available in the NetBox Labs [Admin Console](https://
 
 There is also large list support (~15K prefixes) and separate prefixes can be applied to the NetBox Cloud UI, API and GraphQL interfaces. 
 
-**Note** - When you have built your prefix lists in the Admin Console, raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com) and we will apply them to your NetBox Cloud instances. 
+!!! note
+    When you have built your prefix lists in the Admin Console, raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com) and we will apply them to your NetBox Cloud instances. 
 
 Watch this quick video or follow the steps outlined below to start managing your prefix lists:
 

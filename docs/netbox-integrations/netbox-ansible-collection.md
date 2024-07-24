@@ -1,4 +1,6 @@
-# NetBox Ansible Collection - Quick Start
+# NetBox Integrations
+
+## NetBox Ansible Collection - Quick Start
 
 A short guide to getting started with the Ansible Collection for Netbox. 
 
@@ -26,7 +28,8 @@ This Ansible collection consists of a set of modules to define the intended netw
   - pynetbox
 - Ansible 2.15+
 
-**_NOTE:_** This guide assumes you have a working NetBox installation, populated with some device data of your own. The easiest way to do this is to set up a [NetBox Cloud Free Plan](https://netboxlabs.com/free-netbox-cloud/) instance, and you can be up an running in seconds. The NetBox instance used in this example has 2 sites with some devices already added:
+!!! note
+    This guide assumes you have a working NetBox installation, populated with some device data of your own. The easiest way to do this is to set up a [NetBox Cloud Free Plan](https://netboxlabs.com/free-netbox-cloud/) instance, and you can be up an running in seconds. The NetBox instance used in this example has 2 sites with some devices already added:
 
 ![NetBox Sites and Devices](../images/integrations/ansible-colection/cisco-live-sites-and-devices.png)
 

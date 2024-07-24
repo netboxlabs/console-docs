@@ -20,12 +20,14 @@ Out of the box NetBox Cloud allows you to programmatically interact with the Net
 ### REST API
 REST stands for [Representational State Transfer](https://en.wikipedia.org/wiki/REST). It's a particular type of API which employs HTTP requests and [JavaScript Object Notation (JSON)](https://www.json.org/json-en.html) to facilitate create, retrieve, update, and delete (CRUD) operations on objects within an application.
 
-To read more about how to get started with the REST API, check out the [NetBox docs](https://netbox.readthedocs.io/en/stable/integrations/rest-api/) or this [video](https://youtu.be/Gsarb0elmoA?si=KUli-RLlJeYS5gp4) from the NetBox Zero to Hero training course.
+!!! info
+    To read more about how to get started with the REST API, check out the [NetBox docs](https://netbox.readthedocs.io/en/stable/integrations/rest-api/) or this [video](https://youtu.be/Gsarb0elmoA?si=KUli-RLlJeYS5gp4) from the NetBox Zero to Hero training course.
 
 ### GraphQL API
 NetBox provides a read-only [GraphQL](https://graphql.org/) API to complement its REST API. This API is powered by [Strawberry Django](https://strawberry-graphql.github.io/strawberry-django/). GraphQL enables the client to specify an arbitrary nested list of fields to include in the response. All queries are made to the root /graphql API endpoint.
 
-To read more about how to get started with the GraphQL API, check out the [NetBox docs](https://netbox.readthedocs.io/en/stable/integrations/graphql-api/).
+!!! info
+    To read more about how to get started with the GraphQL API, check out the [NetBox docs](https://netbox.readthedocs.io/en/stable/integrations/graphql-api/).
 
 ## Streaming Change Events with Webhooks and Event Streams
 Events in NetBox can trigger calls to other systems with Webhooks, or other systems can subscribe to Event Streams, and in either case this can trigger other systems to take action based on the event.
@@ -35,9 +37,11 @@ NetBox can be configured via [Event Rules](https://netbox.readthedocs.io/en/stab
 
 For example, suppose you want to automatically configure a monitoring system to start monitoring a device when its operational status is changed to active, and remove it from monitoring for any other status. You can create a webhook in NetBox for the device model and craft its content and destination URL to effect the desired change on the receiving system. Webhooks will be sent automatically by NetBox whenever the configured constraints are met.
 
-To read more about how to get started with the Webhooks, check out the [NetBox docs](hhttps://netbox.readthedocs.io/en/stable/integrations/webhooks/).
+!!! info
+    To read more about how to get started with the Webhooks, check out the [NetBox docs](hhttps://netbox.readthedocs.io/en/stable/integrations/webhooks/).
 
 ### NetBox Event Streams
 [NetBox Event Streams](https://netboxlabs.com/blog/netbox-labs-introduces-netbox-event-streams/) unlock event-driven architectures by enabling teams to easily subscribe to network state and management events from the NetBox Cloud Platform, feeding events to other systems or triggering automations. This capability spans various types of events, from operational updates like the addition of new devices, to security-oriented alerts such as unauthorized access attempts.
 
-To learn more about NetBox Event Streams you can sign up for an [on-demand webinar](https://netboxlabs.com/events/event-driven-architectures-for-networking-and-security-webinar/) or read our [blog](https://netboxlabs.com/blog/revolutionizing-netsecops-netbox-event-streams-and-siem-integration/) about how NetBox Event Streams integrated with SIEM tools like Splunk Enterprise and ElasticSearch, is setting a new standard for how networks are managed and secured.
+!!! info
+    To learn more about NetBox Event Streams you can sign up for an [on-demand webinar](https://netboxlabs.com/events/event-driven-architectures-for-networking-and-security-webinar/) or read our [blog](https://netboxlabs.com/blog/revolutionizing-netsecops-netbox-event-streams-and-siem-integration/) about how NetBox Event Streams integrated with SIEM tools like Splunk Enterprise and ElasticSearch, is setting a new standard for how networks are managed and secured.
