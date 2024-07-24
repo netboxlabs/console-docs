@@ -1,4 +1,4 @@
-# Integrations
+# NetBox Integrations
 
 ## NetBox Ansible Collection - Quick Start
 
