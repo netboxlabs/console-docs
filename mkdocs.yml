@@ -68,6 +68,8 @@ nav:
           - AWS Direct Connect (Single Region): "cloud-connectivity/aws-direct-connect.md"
           - AWS Direct Connect (Multi-Region): "cloud-connectivity/aws-direct-connect-multi-region.md"
         - Frequently Asked Questions: "cloud-connectivity/cloud-connectivity-faq.md"
+      - Maintenance:
+        - Scheduled Maintenance: "maintenance.md"
   - Enterprise:
     - Overview: "netbox-enterprise/nbe-overview.md"
     - Deployment models:
@@ -87,7 +89,6 @@ nav:
         - Installing the Diode client SDK: "netbox-extensions/diode-client.md"
       - Diode Agent: "netbox-extensions/diode-agent.md"
   - Product and Feature Lifecycle: "product_feature_lifecycle.md"
-  - Scheduled Maintenance: "maintenance.md"
 
 extra:
   social:
