@@ -49,11 +49,11 @@ export DIODE_API_KEY=$(head -c20 </dev/urandom|xxd -p); env | grep DIODE_API_KEY
 
     Store the API key strings in a safe place as they will be needed to configure the Diode server
 
-Configure the plugin to use the generated API keys:
+Run migrations to configure the plugin using the generated API keys:
 
 ```shell
 cd /opt/netbox/netbox
-./manage.py configurediodeplugin
+./manage.py migrate netbox_diode_plugin
 ```
 
 ### Verify
