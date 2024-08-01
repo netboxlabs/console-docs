@@ -72,8 +72,12 @@ nav:
         - Scheduled Maintenance: "maintenance.md"
   - Enterprise:
     - Overview: "netbox-enterprise/nbe-overview.md"
-    - Deployment models:
-      - Embedded Cluster: "netbox-enterprise/nbe-ec.md"
+    - Embedded Cluster:
+      - Requirements: "netbox-enterprise/nbe-ec-requirements.md"
+      - Installation: "netbox-enterprise/nbe-ec-installation.md"
+    - KOTS:
+      - Requirements: "netbox-enterprise/nbe-kots-requirements.md"
+      - Installation: "netbox-enterprise/nbe-kots-installation.md"
   - Integrations: 
     - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
     - pyATS: "netbox-integrations/pyats.md"
