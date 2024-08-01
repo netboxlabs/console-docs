@@ -49,7 +49,7 @@ export DIODE_API_KEY=$(head -c20 </dev/urandom|xxd -p); env | grep DIODE_API_KEY
 
     Store the API key strings in a safe place as they will be needed to configure the Diode server
 
-Run migrations to configure the plugin using the generated API keys:
+Run migrations to configure the plugin to use generated API keys:
 
 ```shell
 cd /opt/netbox/netbox
