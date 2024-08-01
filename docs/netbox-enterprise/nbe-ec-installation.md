@@ -1,20 +1,4 @@
-# Embedded Cluster
-
-### Requirements
-
-#### Host system requirements
-
-- 4 Virtual CPU (vCPU)
-- 8 GB Memory (RAM)
-- 40 GB SSD free disk space
-
-#### Host operating system
-
-- Linux (Kernel versions 4.3 and above)
-
-#### Architecture
-
-- x86-64
+# NetBox Enterprise Embedded Cluster Installation
 
 ### Deploying the cluster
 

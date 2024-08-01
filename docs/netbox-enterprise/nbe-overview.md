@@ -13,7 +13,7 @@ NetBox Enterprise supports two different deployment models to best address varyi
 
 The Embedded Cluster (EC) installation provides a fully managed, hands-off installation experience for installing NetBox Enterprise, including deploying and managing an underlying Kubernetes cluster. A bare Linux operating system with adequately sized compute resources is the only requirement. Embedded Cluster deployments deliver all the components and dependencies required to deploy and operate NetBox, including databases, application servers, application load balancers, and object stores. Embedded Cluster deployments still provide the flexibility of leveraging external components, such as a PostgreSQL cluster or an S3 Object Store.
 
-See the [Installing NetBox Enterprise Embedded Cluster](nbe-ec.md) guide for more details.
+See the [NetBox Enterprise Embedded Cluster Installation](nbe-ec-installation.md) guide for more details.
 
 ### KOTS installation
 
