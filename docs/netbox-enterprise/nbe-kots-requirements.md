@@ -33,9 +33,11 @@ The version of Kubernetes running on the cluster must be compatible with the ver
 |v1.102.1 to v1.105.1   |v1.28, v1.27            |
 |v1.100.0 to v1.102.0   |v1.27                   |  
 
+<!--
 #### OpenShift version compatibility
 
 For Red Hat OpenShift clusters, the version of OpenShift must use a supported Kubernetes version.
+-->
 
 #### Port forwarding
 
