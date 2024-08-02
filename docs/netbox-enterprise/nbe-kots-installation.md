@@ -43,7 +43,7 @@ The helm chart was successfully installed when you see this:
   • Go to http://localhost:8800 to access the Admin Console
 ```
 
-### Deploy NetBox
+### Install NetBox
 
 #### Connect to the Admin Console
 
@@ -55,35 +55,33 @@ Access the NetBox Enterprise Admin Console by opening the provided URL in a brow
 
 Once connected, you will be prompted for the password you created earlier:
 
-<img src="/images/netbox-enterprise/admin-console.png" alt="enterprise-admin-console" width="500"/>
+<img src="/images/netbox-enterprise/admin-console.png" alt="enterprise-admin-console" width="400"/>
 
 You will then be prompted to provide your license file. Your license file should have been provided to you by NetBox Labs.
 
-<img src="/images/netbox-enterprise/netbox-enterprise-upload-license.png" alt="enterprise-upload-license" width="500"/>
+<img src="/images/netbox-enterprise/netbox-enterprise-upload-license.png" alt="enterprise-upload-license" width="400"/>
 
 #### Configure NetBox
 
-A wizard will now guide you through the configuration of NetBox for the environment:
+You will now be presented with a form to configure NetBox for your environment:
 
-<img src="/images/netbox-enterprise/configure-netbox-enterprise.png" alt="configure-netbox-enterprise" width="500"/>
+<img src="/images/netbox-enterprise/netbox-enterprise-configure-netbox.png" alt="netbox-enterprise-configure-netbox" width="600"/>
 
-Required configuration information includes:
+You can configure the following NetBox configuration parameters:
 
-- Version of NetBox to deploy:
+- Version of NetBox to deploy
+- NetBox superuser name and password
+- Number of NetBox replicas to run
+- (Optional) External PostgreSQL
+- (Optional) External S3-compatible storage
+- (Optional) External Redis cache
+- Advanced settings: plugins, remote authentication (SSO) and user group sync
 
-<img src="/images/netbox-enterprise/netbox-enterprise-version.png" alt="netbox-enterprise-version" width="500"/>
+You'll also need to accept the NetBox Labs Terms of Service by entering `ACCEPT` before proceeding:
 
-- Built-in or external PostgreSQL:
+<img src="/images/netbox-enterprise/netbox-enterprise-tos.png" alt="netbox-enterprise-tos" width="400"/>
 
-<img src="/images/netbox-enterprise/netbox-enterprise-postgres.png" alt="netbox-enterprise-postgres" width="500"/>
-
-- Built-in or external S3-Compatible object store:
-
-<img src="/images/netbox-enterprise/netbox-enterprise-s3.png" alt="etbox-enterpise-storage" width="500"/>
-
-- Advanced settings to configure plugins and SSO remote authentication:
-
-<img src="/images/netbox-enterprise/netbox-enterprise-overides.png" alt="netbox-enterprise-overides" width="500"/>
+#### Deploy NetBox
 
 The deployment of NetBox Enterprise will then proceed:
 
@@ -93,10 +91,7 @@ The `Unavailable` status will change to `Ready` once the deployment is complete 
 
 <img src="/images/netbox-enterprise/netbox-enterprise-ready.png" alt="netbox-enterprise-ready" width="500"/>
 
-### Verify
-
 NetBox Enterprise should now be fully deployed.
 
-<img src="/images/netbox-enterprise/netbox-enterprise-login.png" alt="netbox-enterprise-login" width="300"/>
-
-<img src="/images/netbox-enterprise/netbox-enterprise-app-home.png" alt="netbox-enterprise-home" width="500"/>
+!!! Tip
+    Though NetBox Enterprise may be fully deployed, it may require configuration of your cluster ingress before you can connect. Please refer to your cluster administrator.
