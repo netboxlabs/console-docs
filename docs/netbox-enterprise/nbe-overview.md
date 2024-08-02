@@ -18,3 +18,5 @@ See the [NetBox Enterprise Embedded Cluster Installation](nbe-ec-installation.md
 ### KOTS installation
 
 The Kubernetes Off-The-Shelf (KOTS) installation provides a more customizable installation experience of NetBox Enterprise. For organizations that are  operating their own Kubernetes environments, the KOTS installation enables them to deploy NetBox in their own k8s cluster. KOTS deployments include all the necessary components and take care of all the dependencies just like the Embedded Cluster deployments. They also provide the same flexibility in leveraging external components, such as a PostgreSQL cluster or an S3 Object Store.
+
+See the [NetBox Enterprise KOTS Installation](nbe-kots-installation.md) guide for more details.
