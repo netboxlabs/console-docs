@@ -94,4 +94,5 @@ The `Unavailable` status will change to `Ready` once the deployment is complete 
 NetBox Enterprise should now be fully deployed.
 
 !!! Tip
-    Though NetBox Enterprise may be fully deployed, it may require configuration of your cluster ingress before you can connect. Please refer to your cluster administrator.
+    Although deployment is complete, you may still need to configure your ingress controller before you can connect without having to use port-forwarding. NetBox Enterprise is configured to expose a ClusterIP service with the name netbox-enterprise on port 80.
+    
