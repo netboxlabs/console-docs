@@ -4,13 +4,13 @@
 
 To install NetBox Enterprise on an existing cluster, the cluster must meet the following requirements:
 
-#### Admin console minimum requirements
+#### NetBox Enterprise minimum requirements
 
-Existing clusters that have LimitRanges specified must support the following minimum requirements for the Admin Console:
+Like an embedded cluster install, we recommend the following _minimum_ system requirements for a deployment of NetBox Enterprise running two replicas. For larger environments with more replicas, additional resources should be allocated.
 
-- **CPU resources and memory**: The Admin Console pod requests 100m CPU resources and 100Mi memory
-- **Disk space**: The Admin Console requires a minimum of 5GB of disk space on the cluster for persistent storage, including 4GB for S3-compatible object store
-- **1GB for rqlite PersistentVolume**: The Admin Console requires 1GB for a rqlite StatefulSet to store version history, application metadata, and other small amounts of data needed to manage the application
+- 4 Virtual CPU (vCPU)
+- 8 GB Memory (RAM)
+- 40 GB SSD free disk space
 
 #### Supported operating systems
 
@@ -25,19 +25,7 @@ The cluster must have an existing StorageClass available. KOTS creates the requi
 
 #### Kubernetes version compatibility
 
-The version of Kubernetes running on the cluster must be compatible with the version of KOTS:
-
-|KOTS Versions          |Kubernetes Compatibility|
-|---                    |---                     |
-|v1.105.2 and later     |v1.29, v1.28, v1.27     |
-|v1.102.1 to v1.105.1   |v1.28, v1.27            |
-|v1.100.0 to v1.102.0   |v1.27                   |  
-
-<!--
-#### OpenShift version compatibility
-
-For Red Hat OpenShift clusters, the version of OpenShift must use a supported Kubernetes version.
--->
+KOTS installation of NetBox Enterprise is supported on most common Kubernetes clusters, running v1.27 or higher.
 
 #### Port forwarding
 
