@@ -22,7 +22,7 @@ The built-in PostgreSQL is deployed using the CrunchyData Postgres Operator.
 
 Since the PostgreSQL CLI tools are already available inside the cluster, all we need to do to dump the database is to call into the correct container and run a `pg_dump` there.
 
-_NOTE: The default namespace for installs is `netbox-enterprise`, but if you have overridden it for your install, replace the argument after `-n` with the proper namespace for your instance._
+_NOTE: The default namespace for installs is `netbox-enterprise`, but if you have overridden it, replace the argument after `-n` with the proper namespace for your instance in the commands below._
 
 #### KOTS Install
 
