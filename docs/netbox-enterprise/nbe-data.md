@@ -38,6 +38,8 @@ If you are running the Embedded Cluster, you will need to first execute a comman
 
 #### All Installs
 
+To perform a database dump, run these commands:
+
 ```shell
 POSTGRESQL_MAIN_POD="$(kubectl get pod -o name -n netbox-enterprise -l 'postgres-operator.crunchydata.com/role=master')"
 kubectl exec "${POSTGRESQL_MAIN_POD}" -n netbox-enterprise -c database -- \
