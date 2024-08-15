@@ -78,6 +78,9 @@ nav:
     - KOTS:
       - Requirements: "netbox-enterprise/nbe-kots-requirements.md"
       - Installation: "netbox-enterprise/nbe-kots-installation.md"
+    - Administration:
+      - Data: "netbox-enterprise/nbe-data.md"
+      - Troubleshooting: "netbox-enterprise/nbe-troubleshooting.md"
   - Integrations: 
     - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
     - pyATS: "netbox-integrations/pyats.md"
