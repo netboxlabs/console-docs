@@ -3,7 +3,7 @@
 Much like the NetBox software itself, NetBox Enterprise uses 2 main datastores: PostgreSQL, and Redis.
 
 PostgreSQL is used for the primary model data in NetBox, including sites, facilities, racks, and so on.
-Redis is used for caching, the task queue, and some other data including stored scripts and such.
+Redis is used for caching, the task queue, and some other data including stored scripts.
 
 Additionally, NetBox Enterprise uses an S3-compatible store for some specific resources, most notably image uploads.
 _NOTE: The built-in S3-compatible store keeps its data in Redis, so it is not necessary to back it up separately._
