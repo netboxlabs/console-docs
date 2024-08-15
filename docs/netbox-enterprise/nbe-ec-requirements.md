@@ -6,7 +6,7 @@ The following are the _minimum_ system requirements for a deployment of NetBox E
 
 - 4 Virtual CPU (vCPU)
 - 8 GB Memory (RAM)
-- 40 GB SSD free disk space
+- 40 GB SSD free disk space in `/var/lib`
 
 ### Host operating system
 
