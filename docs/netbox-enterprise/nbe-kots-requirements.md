@@ -10,7 +10,7 @@ Like an embedded cluster install, we recommend the following _minimum_ system re
 
 - 4 Virtual CPU (vCPU)
 - 8 GB Memory (RAM)
-- 40 GB SSD free disk space
+- 40 GB unallocated cluster disk space
 
 #### Supported operating systems
 
