@@ -24,6 +24,20 @@ Since the PostgreSQL CLI tools are already available inside the cluster, all we 
 
 _NOTE: The default namespace for installs is `netbox-enterprise`, but if you have overridden it for your install, replace the argument after `-n` with the proper namespace for your instance._
 
+#### KOTS Install
+
+If you are running your own cluster, and have installed using KOTS, make sure you have `kubectl` in your `PATH` and that it is able to access your cluster.
+
+#### Embedded Cluster
+
+If you are running the Embedded Cluster, you will need to first execute a command to get a debug shell that knows how to speak to the cluster.  To do this, run:
+
+```shell
+/var/lib/embedded-cluster/bin/netbox-enterprise shell
+```
+
+#### All Installs
+
 ```shell
 POSTGRESQL_MAIN_POD="$(kubectl get pod -o name -n netbox-enterprise -l 'postgres-operator.crunchydata.com/role=master')"
 kubectl exec "${POSTGRESQL_MAIN_POD}" -n netbox-enterprise -c database -- \
