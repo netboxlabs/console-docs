@@ -20,7 +20,7 @@ For each type of datastore you can choose to use a built-in deployment, or confi
 ### Accessing Your Cluster
 
 !!! note inline end
-    _NOTE: The default namespace for installs is `netbox-enterprise`, but if you have overridden it for your installation, replace the argument after `-n` with the proper namespace for your instance in the commands below._
+    NOTE: The default namespace for installs is `netbox-enterprise`, but if you have overridden it for your installation, replace the argument after `-n` with the proper namespace for your instance in the commands below.
 
 Before you can back anything up, you must first make sure you can access the cluster.
 
