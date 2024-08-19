@@ -78,6 +78,9 @@ nav:
     - KOTS:
       - Requirements: "netbox-enterprise/nbe-kots-requirements.md"
       - Installation: "netbox-enterprise/nbe-kots-installation.md"
+    - Administration:
+      - Backups: "netbox-enterprise/nbe-backups.md"
+      - Troubleshooting: "netbox-enterprise/nbe-troubleshooting.md"
   - Integrations: 
     - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
     - pyATS: "netbox-integrations/pyats.md"
@@ -103,4 +106,4 @@ extra:
   analytics:
     provider: google
     property: G-Q107GMDTJM
-copyright: Copyright &copy; 2023 NetBox Labs
+copyright: Copyright &copy; 2024 NetBox Labs
