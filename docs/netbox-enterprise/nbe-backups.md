@@ -15,14 +15,14 @@ For each type of datastore you can choose to use a built-in deployment, or confi
 ### External Datastores
 
 !!! warning
-
-  If you are providing your own database(s) for use by NetBox Enterprise, it is expected that you have your own processes for high availability, backup, and restore.
+    If you are providing your own database(s) for use by NetBox Enterprise, it is expected that you have your own processes for high availability, backup, and restore.
 
 ### Accessing Your Cluster
 
-Before you can back anything up, you must first make sure you can access the cluster.
+!!! note inline end
+    _NOTE: The default namespace for installs is `netbox-enterprise`, but if you have overridden it for your installation, replace the argument after `-n` with the proper namespace for your instance in the commands below._
 
-_NOTE: The default namespace for installs is `netbox-enterprise`, but if you have overridden it for your installation, replace the argument after `-n` with the proper namespace for your instance in the commands below._
+Before you can back anything up, you must first make sure you can access the cluster.
 
 #### KOTS Install
 
@@ -46,17 +46,25 @@ Since the PostgreSQL CLI tools are already available inside the cluster, all we 
 To perform a database dump, run these commands:
 
 ```shell
-POSTGRESQL_MAIN_POD="$(kubectl get pod -o name -n netbox-enterprise -l 'postgres-operator.crunchydata.com/role=master')"
-kubectl exec "${POSTGRESQL_MAIN_POD}" -n netbox-enterprise -c database -- \
+POSTGRESQL_MAIN_POD="$(kubectl get pod \
+  -o name \
+  -n netbox-enterprise \
+  -l 'postgres-operator.crunchydata.com/role=master' \
+  )" && \
+kubectl exec "${POSTGRESQL_MAIN_POD}" \
+  -n netbox-enterprise \
+  -c database \
+  -- \
     pg_dump -Fc -C netbox > netbox.pgsql
 ```
 
 This will create a `netbox.pgsql` file in your local directory.
 Save it somewhere safe for future restores.
 
-_This command uses the `-Fc` argument to `pg_dump`, which instructs it to create a "custom" format dump file.
-This is a binary file that is more efficient than a standard SQL dump, and also provides some additional metadata that makes PostgreSQL handle restores across different versions a bit better.
-You can remove the `-Fc` if you wish to create a readable text file dump instead._
+!!! info
+    The above command uses the `-Fc` argument to `pg_dump`, which instructs it to create a "custom" format dump file.
+    This is a binary file that is more efficient than a standard SQL dump, and also provides some additional metadata that makes PostgreSQL handle restores across different versions a bit better.
+    You can remove the `-Fc` if you wish to create a human-readable SQL text file dump instead.
 
 For more details on backing up NetBox databases, see [the official NetBox documentation](https://netboxlabs.com/docs/netbox/en/stable/administration/replicating-netbox/).
 
@@ -69,8 +77,14 @@ Backing up Redis is straightforward, since it does its work in memory and then w
 All that's necessary to back up the data in your Redis install is a basic tar command to create an archive from the `/data` directory inside the container:
 
 ```shell
-kubectl exec -n netbox-enterprise -c redis \
-  "$(kubectl get pod -o name -n netbox-enterprise -l 'app.kubernetes.io/component=master,app.kubernetes.io/name=redis')" \
+REDIS_MAIN_POD="$(kubectl get pod \
+  -o name \
+  -n netbox-enterprise \
+  -l 'app.kubernetes.io/component=master,app.kubernetes.io/name=redis' \
+  )" && \
+kubectl exec ${REDIS_MAIN_POD} \
+  -n netbox-enterprise \
+  -c redis \
   -- \
-  tar -czf - -C /data . > /tmp/redis-data.tar.gz
+    tar -czf - -C /data . > /tmp/redis-data.tar.gz
 ```
