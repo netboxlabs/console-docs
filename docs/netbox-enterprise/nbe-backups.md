@@ -18,27 +18,30 @@ For each type of datastore you can choose to use a built-in deployment, or confi
 
   If you are providing your own database(s) for use by NetBox Enterprise, it is expected that you have your own processes for high availability, backup, and restore.
 
-### Built-In PostgreSQL
+### Accessing Your Cluster
 
-The built-in PostgreSQL is deployed using the CrunchyData Postgres Operator.
+Before you can back anything up, you must first make sure you can access the cluster.
 
-Since the PostgreSQL CLI tools are already available inside the cluster, all we need to do to dump the database is to call into the correct container and run a `pg_dump` there.
-
-_NOTE: The default namespace for installs is `netbox-enterprise`, but if you have overridden it, replace the argument after `-n` with the proper namespace for your instance in the commands below._
+_NOTE: The default namespace for installs is `netbox-enterprise`, but if you have overridden it for your installation, replace the argument after `-n` with the proper namespace for your instance in the commands below._
 
 #### KOTS Install
 
-If you are running your own cluster, and have installed using KOTS, make sure you have `kubectl` in your `PATH` and that it is able to access your cluster.
+If you are running your own cluster and have installed using KOTS, make sure you have `kubectl` in your `PATH` and that it is able to access your cluster.
+The specifics will depend on the type of cluster and where you are accessing from.
 
 #### Embedded Cluster
 
-If you are running the Embedded Cluster, you will need to first execute a command to get a debug shell that knows how to speak to the cluster.  To do this, run:
+If you are running the Embedded Cluster, you will need to first execute a command to get a shell environment that knows how to interact with it.  To do this, run:
 
 ```shell
 /var/lib/embedded-cluster/bin/netbox-enterprise shell
 ```
 
-#### All Installs
+### Backing Up the Built-In PostgreSQL
+
+The built-in PostgreSQL is deployed using the CrunchyData Postgres Operator.
+
+Since the PostgreSQL CLI tools are already available inside the cluster, all we need to do to dump the database is to call into the correct container and run a `pg_dump` there.
 
 To perform a database dump, run these commands:
 
@@ -56,3 +59,18 @@ This is a binary file that is more efficient than a standard SQL dump, and also 
 You can remove the `-Fc` if you wish to create a readable text file dump instead._
 
 For more details on backing up NetBox databases, see [the official NetBox documentation](https://netboxlabs.com/docs/netbox/en/stable/administration/replicating-netbox/).
+
+### Backing Up the Built-In Redis
+
+The built-in Redis is deployed using the Bitnami Redis Helm chart.
+
+Backing up Redis is straightforward, since it does its work in memory and then writes checkpoints to the filesystem atomically.
+
+All that's necessary to back up the data in your Redis install is a basic tar command to create an archive from the `/data` directory inside the container:
+
+```shell
+kubectl exec -n netbox-enterprise -c redis \
+  "$(kubectl get pod -o name -n netbox-enterprise -l 'app.kubernetes.io/component=master,app.kubernetes.io/name=redis')" \
+  -- \
+  tar -czf - -C /data . > /tmp/redis-data.tar.gz
+```
