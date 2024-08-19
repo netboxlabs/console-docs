@@ -1,4 +1,4 @@
-# NetBox Enterprise Data
+# NetBox Enterprise Backups
 
 Much like the NetBox software itself, NetBox Enterprise uses 2 main datastores: PostgreSQL, and Redis.
 
@@ -14,7 +14,9 @@ For each type of datastore you can choose to use a built-in deployment, or confi
 
 ### External Datastores
 
-If you are providing your own database(s) for use by NetBox Enterprise, it is expected that you have your own processes for high availability, backup, and restore.
+!!! warning
+
+  If you are providing your own database(s) for use by NetBox Enterprise, it is expected that you have your own processes for high availability, backup, and restore.
 
 ### Built-In PostgreSQL
 
