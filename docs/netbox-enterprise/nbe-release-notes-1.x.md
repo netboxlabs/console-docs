@@ -27,4 +27,4 @@ Provides bug fixes encountered during the initial rollout of the NetBox Enterpri
 Provides final cleanup of the Beta stream in preparation for the wider release.
 
 Provides a number of internal changes, and includes fixes for an issue where annotations could render improperly and cause problems with upgrades.
-It also updates NetBox 4.x to version 4.0.7.
+Updated to support NetBox v4.0.7.
