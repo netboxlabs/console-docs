@@ -16,7 +16,7 @@ Fixes issues with preflight checks, and includes minor dependency updates.
 
 ## 1.0.2
 
-1.0.2 is a small update that includes a number of dependency updates and bug fixes, as well as initial alpha support for backups of built-in Redis and PostgreSQL.
+Provides a number of dependency updates and bug fixes, and includes initial support for backups of built-in Redis and PostgreSQL.
 
 ## 1.0.1
 
