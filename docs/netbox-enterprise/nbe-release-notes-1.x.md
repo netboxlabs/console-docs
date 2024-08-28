@@ -4,7 +4,7 @@
 
 Adds support for KOTS installs to scrape Prometheus metrics from NetBox, as well as the embedded PostgreSQL, Redis, and SeaweedFS if they are enabled.
 
-It also updates NetBox to 4.0.9, and includes some bug fixes and improved startup time.
+Updated to support NetBox v4.0.9, and includes additional bug fixes and startup time improvements.
 
 ## 1.0.4
 
