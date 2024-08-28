@@ -8,7 +8,7 @@ Updated to support NetBox v4.0.9, and includes additional bug fixes and startup 
 
 ## 1.0.4
 
-1.0.4 adds OWASP password complexity validation to NetBox, as well as some dependency updates.
+Adds OWASP password complexity validation to NetBox, and includes dependency updates.
 
 ## 1.0.3
 
