@@ -12,7 +12,7 @@ Adds OWASP password complexity validation to NetBox, and includes dependency upd
 
 ## 1.0.3
 
-1.0.3 is a small release that fixes some issues with preflight checks, plus some minor dependency updates.
+Fixes issues with preflight checks, and includes minor dependency updates.
 
 ## 1.0.2
 
