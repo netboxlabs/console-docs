@@ -1,4 +1,4 @@
-# NetBox Enterprise 1.x Release Notes
+# NetBox Enterprise 1.0 Release Notes
 
 ## 1.0.5
 
