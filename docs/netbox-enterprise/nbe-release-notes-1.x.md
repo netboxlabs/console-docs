@@ -20,7 +20,7 @@ Provides a number of dependency updates and bug fixes, and includes initial supp
 
 ## 1.0.1
 
-1.0.1 is focused on bugs encountered during the initial beta rollout of the NetBox Enterprise application.
+Provides bug fixes encountered during the initial rollout of the NetBox Enterprise application.
 
 ## 1.0.0
 
