@@ -26,5 +26,5 @@ Provides a number of dependency updates and bug fixes, and includes initial supp
 
 Provides final cleanup of the Beta stream in preparation for the wider release.
 
-It contains mostly internal changes, plus fixes an issue where annotations could render improperly and cause problems with upgrades.
+Provides a number of internal changes, and includes fixes for an issue where annotations could render improperly and cause problems with upgrades.
 It also updates NetBox 4.x to version 4.0.7.
