@@ -81,8 +81,7 @@ nav:
     - Administration:
       - Backups: "netbox-enterprise/nbe-backups.md"
       - Troubleshooting: "netbox-enterprise/nbe-troubleshooting.md"
-    - Release Notes:
-      - 1.x: "netbox-enterprise/nbe-release-notes-1.x.md"
+    - Release Notes: "netbox-enterprise/nbe-release-notes.md"
   - Integrations: 
     - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
     - pyATS: "netbox-integrations/pyats.md"
