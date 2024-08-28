@@ -24,7 +24,7 @@ Provides a number of dependency updates and bug fixes, and includes initial supp
 
 ## 1.0.0
 
-1.0.0 is a small update in the Beta stream to do some final cleanup as we prepare for a wider release.
+Provides final cleanup of the Beta stream in preparation for the wider release.
 
 It contains mostly internal changes, plus fixes an issue where annotations could render improperly and cause problems with upgrades.
 It also updates NetBox 4.x to version 4.0.7.
