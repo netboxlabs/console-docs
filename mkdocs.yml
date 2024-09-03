@@ -93,7 +93,6 @@ nav:
   - SDKs:
     - Pynetbox: "sdks/pynetbox.md"
   - Extensions:
-    - Overview: "netbox-extensions/index.md"
     - Branching:
       - Overview: "netbox-extensions/branching/index.md"
       - Configuration: "netbox-extensions/branching/configuration.md"
@@ -107,15 +106,14 @@ nav:
         - Change Diffs: "netbox-extensions/branching/models/changediff.md"
         - Object Changes: "netbox-extensions/branching/models/objectchange.md"
     - Diode:
-      - Overview: "netbox-extensions/diode-overview.md"
+      - Overview: "netbox-extensions/diode/index.md"
       - Get started: 
-        - Components: "netbox-extensions/diode-get-started.md"
-        - Installing the Diode plugin: "netbox-extensions/diode-plugin.md"
-        - Running the Diode server: "netbox-extensions/diode-server.md"
-        - Installing the Diode client SDK: "netbox-extensions/diode-client.md"
-      - Diode Agent: "netbox-extensions/diode-agent.md"
+        - Components: "netbox-extensions/diode/diode-get-started.md"
+        - Installing the Diode plugin: "netbox-extensions/diode/diode-plugin.md"
+        - Running the Diode server: "netbox-extensions/diode/diode-server.md"
+        - Installing the Diode client SDK: "netbox-extensions/diode/diode-client.md"
+      - Diode Agent: "netbox-extensions/diode/diode-agent.md"
   - Product and Feature Lifecycle: "product_feature_lifecycle.md"
-
 extra:
   social:
     - icon: fontawesome/solid/globe
