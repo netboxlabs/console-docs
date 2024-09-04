@@ -1,6 +1,4 @@
-# NetBox Extensions
-
-## Diode
+# Diode
 
 !!! info "Currently in Public Preview"
 
