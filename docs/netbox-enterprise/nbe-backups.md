@@ -10,26 +10,19 @@ _NOTE: The built-in S3-compatible store keeps its data in Redis, so it is not ne
 
 For each type of datastore you can choose to use a built-in deployment, or configure NetBox Enterprise to use an existing external resource already in your environment.
 
-## Backing Up Your Data
-
-### External Datastores
+## External Databases
 
 !!! warning
     If you are providing your own database(s) for use by NetBox Enterprise, it is expected that you have your own processes for high availability, backup, and restore.
 
-### Accessing Your Cluster
+## Accessing Your Cluster from the Command Line
 
 !!! note inline end
-    NOTE: The default namespace for installs is `netbox-enterprise`, but if you have overridden it for your installation, replace the argument after `-n` with the proper namespace for your instance in the commands below.
+    NOTE: The default namespace for installs is `netbox-enterprise`, but if you have overridden it in your installation, replace the argument after `-n` in the examples below with the namespace for your instance.
 
 Before you can back anything up, you must first make sure you can access the cluster.
 
-#### KOTS Install
-
-If you are running your own cluster and have installed using KOTS, make sure you have `kubectl` in your `PATH` and that it is able to access your cluster.
-The specifics will depend on the type of cluster and where you are accessing from.
-
-#### Embedded Cluster
+### Embedded Cluster
 
 If you are running the Embedded Cluster, you will need to first execute a command to get a shell environment that knows how to interact with it.  To do this, run:
 
@@ -37,7 +30,68 @@ If you are running the Embedded Cluster, you will need to first execute a comman
 /var/lib/embedded-cluster/bin/netbox-enterprise shell
 ```
 
-### Backing Up the Built-In PostgreSQL
+### KOTS Install
+
+If you are running your own cluster and have installed using KOTS, make sure you have `kubectl` in your `PATH` and that it is able to access your cluster.
+The specifics will depend on the type of cluster and where you are accessing from.
+
+## Accessing Your Cluster from the Web
+
+### Embedded Cluster
+
+On the embedded cluster, the admin console is always available at `https://your-cluster-host-or-ip:30000/`
+
+### KOTS Install
+
+To access the admin console in a KOTS install, run:
+
+```shell
+kubectl kots admin-console --namespace netbox-enterprise
+```
+
+This will create a port-forward into the cluster and provide you with a link to reach the console.
+
+## Using Disaster Recovery for Backups
+
+A disaster recovery backup will preserve the complete state of your NetBox Enterprise install, from allocated volumes to databases to custom configuration.
+
+This feature is included in Embedded Cluster installs, and can be enabled by installing some extra dependencies to your cluster for KOTS installs.
+
+### Backing Up the Embedded Cluster
+
+1. Navigate to the backup configuration by clicking the _^^Backup settings^^_ link in the **Disaster Recovery** section of the admin console.
+   ![Backup settings](../images/netbox-enterprise/netbox-enterprise-ec-backup-settings.png){ width=75% }
+2. Input your S3 bucket, credentials, endpoint, and region.<br>
+   ![Configure S3](../images/netbox-enterprise/netbox-enterprise-ec-configure-s3.png){ width=75% }
+3. Click **Update storage settings** -- it will spend a few moments validating that your settings work.<br>
+   ![Update storage settings](../images/netbox-enterprise/netbox-enterprise-ec-update-settings.png){ width=75% }
+4. Perform a backup by clicking the **Backups** tab, and then clicking **Start backup**.<br>
+   ![Start backup](../images/netbox-enterprise/netbox-enterprise-ec-start-backup.png)
+
+### Restoring the Embedded Cluster
+
+1. Download the latest embedded cluster installer following the same instructions you did for a new install, if you haven't already.
+2. Run: `./netbox-enterprise restore`
+3. Enter the same S3 credentials you use for backups.<br>
+   ![S3 Credentials](../images/netbox-enterprise/netbox-enterprise-ec-restore-s3.png){ width=75% }
+4. Next, it will take a few minutes to bring up the node.
+   When it's complete, you will be prompted to continue the restore:<br>
+   ![Restore from backup instance?](../images/netbox-enterprise/netbox-enterprise-ec-restore-prompt.png)
+5. Enter `Y` to continue, and the restore will launch the cluster.
+6. (Optional) If you plan to have more than one node in the new cluster, you can go to the admin console and configure them when prompted.
+7. Enter `continue` to finish bringing the NetBox Enterprise application up.<br>
+   ![Continue restore](../images/netbox-enterprise/netbox-enterprise-ec-restore-continue.png)
+8. It will take a few more minutes to finish bringing the application up, and then you will see "Application restored!"<br>
+   ![Application restored!](../images/netbox-enterprise/netbox-enterprise-ec-restore-complete.png){ width=90% }<br>
+   NetBox Enterprise and the Admin Console should now be completely restored and available as normal.
+
+<!-- ### KOTS Install -->
+
+
+
+## Manually Backing Up Your Data
+
+### Built-In PostgreSQL
 
 The built-in PostgreSQL is deployed using the CrunchyData Postgres Operator.
 
@@ -68,7 +122,7 @@ Save it somewhere safe for future restores.
 
 For more details on backing up NetBox databases, see [the official NetBox documentation](https://netboxlabs.com/docs/netbox/en/stable/administration/replicating-netbox/).
 
-### Backing Up the Built-In Redis
+### Built-In Redis
 
 The built-in Redis is deployed using the Bitnami Redis Helm chart.
 
