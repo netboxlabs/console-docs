@@ -15,41 +15,14 @@ For each type of datastore you can choose to use a built-in deployment, or confi
 !!! warning
     If you are providing your own database(s) for use by NetBox Enterprise, it is expected that you have your own processes for high availability, backup, and restore.
 
-## Accessing Your Cluster from the Command Line
+## Accessing Your Cluster
 
-!!! note inline end
-    NOTE: The default namespace for installs is `netbox-enterprise`, but if you have overridden it in your installation, replace the argument after `-n` in the examples below with the namespace for your instance.
+Before you can back anything up, you must first make sure you can access the cluster on the command line.
 
-Before you can back anything up, you must first make sure you can access the cluster.
+See the [advanced tools documentation](./nbe-troubleshooting.md#accessing-your-cluster-from-the-command-line) for details on connecting to your NetBox Enterprise cluster.
 
-### Embedded Cluster
-
-If you are running the Embedded Cluster, you will need to first execute a command to get a shell environment that knows how to interact with it.  To do this, run:
-
-```shell
-/var/lib/embedded-cluster/bin/netbox-enterprise shell
-```
-
-### KOTS Install
-
-If you are running your own cluster and have installed using KOTS, make sure you have `kubectl` in your `PATH` and that it is able to access your cluster.
-The specifics will depend on the type of cluster and where you are accessing from.
-
-## Accessing Your Cluster from the Web
-
-### Embedded Cluster
-
-On the embedded cluster, the admin console is always available at `https://your-cluster-host-or-ip:30000/`
-
-### KOTS Install
-
-To access the admin console in a KOTS install, run:
-
-```shell
-kubectl kots admin-console --namespace netbox-enterprise
-```
-
-This will create a port-forward into the cluster and provide you with a link to reach the console.
+!!! note
+    The default namespace for installs is `netbox-enterprise`, but if you have overridden it in your installation, replace the argument after `-n` in the examples below with the namespace for your NetBox Enterprise instance.
 
 ## Using Disaster Recovery for Backups
 

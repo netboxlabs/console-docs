@@ -1,5 +1,11 @@
 # NetBox Enterprise 1.0 Release Notes
 
+## 1.0.6
+
+Adds support for NetBox resource usage adjustment and some improvements to startup time on a first install.
+
+It also adds support for backup and restore in the Embedded Cluster and KOTS installs, depending on your environment and license.
+
 ## 1.0.5
 
 Adds support for KOTS installs to scrape Prometheus metrics from NetBox, as well as the embedded PostgreSQL, Redis, and SeaweedFS if they are enabled.
