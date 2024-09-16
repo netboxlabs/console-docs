@@ -24,46 +24,48 @@ The following steps are required for an Embedded Cluster (EC) installation of Ne
 
 ### Deploying NetBox
 
-Access the NetBox Enterprise admin console and configure NetBox
+Access the NetBox Enterprise admin console and configure NetBox.
 
 Open the provided URL in a browser. A prompt will require the password created in Step 2:
 
-![enterprise-admin-console](../images/netbox-enterprise/admin-console.png)
+![Admin Console](../images/netbox-enterprise/admin-console.png){ width="50%" }
 
 A wizard will guide the configuration of NetBox for the environment:
 
-![configure-netbox-enterprise](../images/netbox-enterprise/configure-netbox-enterprise.png)
+![NetBox Configuration](../images/netbox-enterprise/configure-netbox-enterprise.png)
 
-Required configuration information includes:
-
-- Version of NetBox to deploy:
-
-![netbox-enterprise-version](../images/netbox-enterprise/netbox-enterprise-version.png)
+Configuration information includes:
 
 - Built-in or external PostgreSQL:
-
-![netbox-enterprise-postgres](../images/netbox-enterprise/netbox-enterprise-postgres.png)
+  ![Built-in or external PostgreSQL](../images/netbox-enterprise/netbox-enterprise-postgres.png)
 
 - Built-in or external S3-Compatible object store:
+  ![Built-in or external S3](../images/netbox-enterprise/netbox-enterprise-s3.png)
 
-![netbox-enterpise-storage](../images/netbox-enterprise/netbox-enterprise-s3.png)
+- Built-in or external Redis object store:
+  ![Built-in or external Redis](../images/netbox-enterprise/netbox-enterprise-redis.png)
 
-- Advanced settings to configure plugins and SSO remote authentication:
+- Advanced settings to configure plugins and SSO remote authentication, and IPv4/IPv6 compatibility:
+  ![Advanced Settings](../images/netbox-enterprise/netbox-enterprise-advanced.png)
 
-![netbox-enterprise-overides](../images/netbox-enterprise/netbox-enterprise-overides.png)
+Finally, accept the terms of service by writing "ACCEPT" (case-insensitive) and you can proceed to the deployment.
 
-The deployment of NetBox Enterprise will then proceed:
+![Accept TOS](../images/netbox-enterprise/netbox-enterprise-accept-tos.png)
 
-![netbox-enterprise-deploy](../images/netbox-enterprise/netbox-enterprise-deploy.png)
+### Finish the Deployment
+
+Once you have accepted the terms of service and continued on to the main admin console, deployment will start.
+The first deployment will take some time, as it brings up all subsystems and runs migrations to initialize the database.
+
+![Deployment Started](../images/netbox-enterprise/netbox-enterprise-deploy.png)
 
 The `Unavailable` status will change to `Ready` once the deployment is complete and NetBox has fully initialized:
 
-![netbox-enterprise-ready](../images/netbox-enterprise/netbox-enterprise-ready.png)
+![Deployment Ready](../images/netbox-enterprise/netbox-enterprise-ready.png)
 
-### Verify
+### Verify the Deployment
 
-NetBox Enterprise should now be fully deployed.
+Once you see `Ready`, NetBox Enterprise is fully deployed, and available on ports `80` and `443`.
 
-![netbox-enterprise-login](../images/netbox-enterprise/netbox-enterprise-login.png)
-
-![netbox-enterprise-home](../images/netbox-enterprise/netbox-enterprise-app-home.png)
+- ![NetBox Enterprise Login](../images/netbox-enterprise/netbox-enterprise-login.png)
+- ![NetBox Enterprise Home](../images/netbox-enterprise/netbox-enterprise-app-home.png)
