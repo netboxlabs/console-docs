@@ -74,6 +74,14 @@ sequenceDiagram
 
 ## Getting Started
 
+### Database Preparation
+
+Before installing this plugin, ensure that the PostgreSQL user as which NetBox authenticates has permission to create new schemas in the database. This can be achieved by issuing the following command in the PostgreSQL shell (substituting `$database` and `$user` with their respective values):
+
+```postgresql
+GRANT CREATE ON DATABASE $database TO $user;
+```
+
 ### Plugin Installation
 
 #### 1. Virtual Environment
@@ -97,7 +105,7 @@ pip install netboxlabs-netbox-branching
 
 #### 3. Enable Plugin
 
-Add `netbox_branching` to the list `PLUGINS` list in `configuration.py`.
+Add `netbox_branching` to **the end** of the `PLUGINS` list in `configuration.py`.
 
 ```python
 PLUGINS = [
@@ -105,6 +113,9 @@ PLUGINS = [
     'netbox_branching',
 ]
 ```
+
+!!! warning
+    `netbox_branching` must be the **last** (or only) plugin in the list. Branching support will not be registered for models provided by any plugin appearing later in the list.
 
 !!! note
     If there are no plugins already installed, you might need to create this parameter. If so, be sure to define `PLUGINS` as a list _containing_ the plugin name as above, rather than just the name.
