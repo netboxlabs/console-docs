@@ -12,14 +12,8 @@ For each type of datastore you can choose to use a built-in deployment, or confi
 
 ## External Databases
 
-!!! warning
+!!! info
     If you are providing your own database(s) for use by NetBox Enterprise, it is expected that you have your own processes for high availability, backup, and restore.
-
-## Accessing Your Cluster
-
-Before you can back anything up, you must first make sure you can access the cluster on the command line.
-
-See the [advanced tools documentation](./nbe-troubleshooting.md#accessing-your-cluster-from-the-command-line) for details on connecting to your NetBox Enterprise cluster.
 
 ## Using Disaster Recovery for Backups
 
@@ -61,13 +55,19 @@ This feature is included in Embedded Cluster installs, and can be enabled by ins
 
 Besides disaster recovery, it is also a good idea to keep backups of your data in case you want to view, partially restore, or move your data to another system.
 
-!!! note
+!!! info "NetBox Enterprise Namespace"
     The default namespace for KOTS installs is `netbox-enterprise`, and the Embedded Cluster default is `kotsadm`.
-    The instructions below default to `kotsadm`, but you can make them work for your namespace by changing the `NETBOX_NAMESPACE` export to match your system.
+
+    The instructions below default to `kotsadm`, but you can change the `NETBOX_NAMESPACE` export to match your system.
 
 ### Backing Up Your Data
 
 Backing up NetBox Enterprise's data manually is reasonably simple, and Kubernetes makes it easy to access them from the command-line.
+
+!!! warning "Before You Back Up: Accessing Your Cluster"
+    Before you can back anything up, you must first make sure you can access the cluster on the command line.
+
+    See the [advanced tools documentation](./nbe-troubleshooting.md#accessing-your-cluster-from-the-command-line) for details on connecting to your NetBox Enterprise cluster.
 
 #### Built-In PostgreSQL
 
