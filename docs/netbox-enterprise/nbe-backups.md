@@ -88,7 +88,7 @@ kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
   -c database \
   -- \
-    pg_dump -C -c --if-exists netbox > netbox.pgsql
+    pg_dump netbox > netbox.pgsql
 ```
 
 This will create a `netbox.pgsql` file in your local directory.
@@ -134,8 +134,12 @@ Next, all that's necessary to back up the data in your Redis install is a basic 
 kubectl exec ${REDIS_MAIN_POD} \
   -n "${NETBOX_NAMESPACE}" \
   -c redis \
-  -- \
-    tar -czf - -C /data . > redis-data.tar.gz
+  -- /bin/sh -c ' \
+      cd /data && \
+      tar -czf - \
+      --owner=0 \
+      --group=0 \
+      *' > redis-data.tar.gz
 ```
 
 Finally, turn AOF rewrites back on:
@@ -166,8 +170,12 @@ export S3_VOLUME_POD="$(kubectl get pod \
 kubectl exec ${S3_VOLUME_POD} \
   -n "${NETBOX_NAMESPACE}" \
   -c seaweedfs \
-  -- \
-    tar -czf - -C /data . > seaweedfs-data.tar.gz
+  -- /bin/sh -c ' \
+      cd /data && \
+      tar -czf - \
+      --owner=0 \
+      --group=0 \
+      *' > seaweedfs-data.tar.gz
 ```
 
 ### Restoring Your Backups
@@ -199,11 +207,19 @@ POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -n "${NETBOX_NAMESPACE}" \
   -l 'postgres-operator.crunchydata.com/role=master' \
   )" && \
+kubectl exec "${POSTGRESQL_MAIN_POD}" \
+  -n "${NETBOX_NAMESPACE}" \
+  -c database \
+  -- dropdb --if-exists --force netbox && \
+kubectl exec "${POSTGRESQL_MAIN_POD}" \
+  -n "${NETBOX_NAMESPACE}" \
+  -c database \
+  -- createdb -E UTF8 netbox && \
 cat netbox.pgsql | kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
   -i \
   -c database \
-  -- psql -f-
+  -- psql -d netbox -f-
 ```
 #### Built-In Redis
 
@@ -222,6 +238,8 @@ cat redis-data.tar.gz | kubectl exec ${REDIS_MAIN_POD} \
   -i \
   -c redis \
   -- tar -xvzf - \
+    --no-same-owner \
+    --no-same-permission \
     -C /data
 ```
 
@@ -242,6 +260,8 @@ cat seaweedfs-data.tar.gz | kubectl exec "${S3_VOLUME_POD}" \
   -i \
   -c seaweedfs \
   -- tar -xvzf - \
-    -C /data
-kubectl delete pod -n "${NETBOX_NAMESPACE}" "${S3_VOLUME_POD}"
+    --no-same-owner \
+    --no-same-permission \
+    -C /data && \
+kubectl delete -n "${NETBOX_NAMESPACE}" "${S3_VOLUME_POD}"
 ```
