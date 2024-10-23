@@ -38,7 +38,7 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+          format: '!!python/name:pymdownx.superfences.fence_code_format'
 plugins:
   - search
 nav:
@@ -83,10 +83,11 @@ nav:
     - KOTS:
       - Requirements: "netbox-enterprise/nbe-kots-requirements.md"
       - Installation: "netbox-enterprise/nbe-kots-installation.md"
-    - Administration:
-      - Backups: "netbox-enterprise/nbe-backups.md"
-      - Advanced Tools and Troubleshooting: "netbox-enterprise/nbe-troubleshooting.md"
-    - Release Notes: "netbox-enterprise/nbe-release-notes.md"
+    - "Administration":
+      - "TLS and Ingress": "netbox-enterprise/nbe-tls-ingress.md"
+      - "Backups": "netbox-enterprise/nbe-backups.md"
+      - "Advanced Tools and Troubleshooting": "netbox-enterprise/nbe-troubleshooting.md"
+    - "Release Notes": "netbox-enterprise/nbe-release-notes.md"
   - Integrations: 
     - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
     - pyATS: "netbox-integrations/pyats.md"
