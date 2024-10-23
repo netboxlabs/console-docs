@@ -1,4 +1,12 @@
-# NetBox Enterprise 1.0 Release Notes
+# NetBox Enterprise 1.x Release Notes
+
+## 1.2.0
+
+Improves ingress configuration, adds support for inheriting the TLS configuration from the Embedded Cluster, and adds a "restore mode" for restoring manual backup data, plus many dependency updates and internal improvements.
+
+## 1.1.0
+
+Simplifies the firewall configuration necessary for installation by making sure all initialization downloads go through our proxy domain.
 
 ## 1.0.6
 
