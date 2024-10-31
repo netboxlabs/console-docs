@@ -151,7 +151,7 @@ for COMMAND in \
 done
 ```
 
-Make sure that those commands output `OK` followed by `aof_rewrite_in_progress:0`, then you're ready to proceed.
+Make sure that those commands output `aof_rewrite_in_progress:0`, then you're ready to proceed.
 Otherwise, just run them again until it says 0.
 
 Next, all that's necessary to back up the data in your Redis install is a basic tar command to create an archive from the `/data` directory in the same shell:
