@@ -84,6 +84,7 @@ NETBOX_MAIN_POD="$(kubectl get pod \
   )" && \
 kubectl exec "${NETBOX_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
+  -c netbox \
   -- /bin/sh -c ' \
       cd /opt/netbox/netbox && \
       find media scripts reports -type f > /tmp/files.txt && \
@@ -246,7 +247,6 @@ export NETBOX_RESTORE_POD="$(kubectl get pod \
 cat netbox-data.tar.gz | kubectl exec ${NETBOX_RESTORE_POD} \
   -n "${NETBOX_NAMESPACE}" \
   -i \
-  -c netbox \
   -- tar -xvzf - \
     --no-same-owner \
     --no-same-permission \
