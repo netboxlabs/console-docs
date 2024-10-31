@@ -250,7 +250,7 @@ cat netbox-data.tar.gz | kubectl exec ${NETBOX_RESTORE_POD} \
   -- tar -xvzf - \
     --no-same-owner \
     --no-same-permission \
-    -C /data
+    -C /opt/netbox/netbox
 ```
 
 #### Built-In PostgreSQL
