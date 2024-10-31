@@ -84,7 +84,6 @@ NETBOX_MAIN_POD="$(kubectl get pod \
   )" && \
 kubectl exec "${NETBOX_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
-  -c netbox \
   -- /bin/sh -c ' \
       cd /opt/netbox/netbox && \
       find media scripts reports -type f > /tmp/files.txt && \
