@@ -87,10 +87,11 @@ kubectl exec "${NETBOX_MAIN_POD}" \
   -c netbox \
   -- /bin/sh -c ' \
       cd /opt/netbox/netbox && \
+      find media scripts reports -type f > /tmp/files.txt && \
       tar -czf - \
       --owner=0 \
       --group=0 \
-      media scripts reports' > netbox-data.tar.gz
+      -T /tmp/files.txt' > netbox-data.tar.gz
 ```
 
 #### Built-In PostgreSQL
@@ -162,10 +163,11 @@ kubectl exec ${REDIS_MAIN_POD} \
   -c redis \
   -- /bin/sh -c ' \
       cd /data && \
+      find * -type f > /tmp/files.txt && \
       tar -czf - \
       --owner=0 \
       --group=0 \
-      *' > redis-data.tar.gz
+      -T /tmp/files.txt' > redis-data.tar.gz
 ```
 
 Finally, turn AOF rewrites back on:
