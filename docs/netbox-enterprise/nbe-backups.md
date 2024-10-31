@@ -238,20 +238,20 @@ To restore media, scripts, and reports, you just need to unpack them into the co
 
 ```shell
 export NETBOX_NAMESPACE="kotsadm" && \
-export NETBOX_MAIN_POD="$(kubectl get pod \
+export NETBOX_RESTORE_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
-  -l 'app.kubernetes.io/component=netbox' \
+  -l 'app.kubernetes.io/component=restore-mode' \
   | head -n 1 \
   )" && \
-cat netbox-data.tar.gz | kubectl exec ${NETBOX_MAIN_POD} \
+cat netbox-data.tar.gz | kubectl exec ${NETBOX_RESTORE_POD} \
   -n "${NETBOX_NAMESPACE}" \
   -i \
   -c netbox \
   -- tar -xvzf - \
     --no-same-owner \
     --no-same-permission \
-    -C /opt/netbox/netbox
+    -C /data
 ```
 
 #### Built-In PostgreSQL
