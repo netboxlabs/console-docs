@@ -69,6 +69,31 @@ Backing up NetBox Enterprise's data manually is reasonably simple, and Kubernete
 
     See the [advanced tools documentation](./nbe-troubleshooting.md#accessing-your-cluster-from-the-command-line) for details on connecting to your NetBox Enterprise cluster.
 
+#### Media, Scripts, and Reports
+
+Media, scripts, and reports are stored in a volume accessible from the NetBox containers.
+To back them up, you can run this:
+
+```shell
+export NETBOX_NAMESPACE="kotsadm" && \
+NETBOX_MAIN_POD="$(kubectl get pod \
+  -o name \
+  -n "${NETBOX_NAMESPACE}" \
+  -l 'app.kubernetes.io/component=netbox' \
+  | head -n 1 \
+  )" && \
+kubectl exec "${NETBOX_MAIN_POD}" \
+  -n "${NETBOX_NAMESPACE}" \
+  -c netbox \
+  -- /bin/sh -c ' \
+      cd /opt/netbox/netbox && \
+      find media scripts reports -type f > /tmp/files.txt && \
+      tar -czf - \
+      --owner=0 \
+      --group=0 \
+      -T /tmp/files.txt' > netbox-data.tar.gz
+```
+
 #### Built-In PostgreSQL
 
 The built-in PostgreSQL is deployed using the CrunchyData Postgres Operator.
@@ -83,6 +108,7 @@ POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
   -l 'postgres-operator.crunchydata.com/role=master' \
+  | head -n 1 \
   )" && \
 kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
@@ -110,6 +136,7 @@ export REDIS_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
   -l 'app.kubernetes.io/component=master,app.kubernetes.io/name=redis' \
+  | head -n 1 \
   )" && \
 for COMMAND in \
   "CONFIG SET auto-aof-rewrite-percentage 0" \
@@ -125,7 +152,7 @@ for COMMAND in \
 done
 ```
 
-Make sure that those commands output `OK` followed by `aof_rewrite_in_progress:0`, then you're ready to proceed.
+Make sure that those commands output `aof_rewrite_in_progress:0`, then you're ready to proceed.
 Otherwise, just run them again until it says 0.
 
 Next, all that's necessary to back up the data in your Redis install is a basic tar command to create an archive from the `/data` directory in the same shell:
@@ -136,10 +163,11 @@ kubectl exec ${REDIS_MAIN_POD} \
   -c redis \
   -- /bin/sh -c ' \
       cd /data && \
+      find * -type f > /tmp/files.txt && \
       tar -czf - \
       --owner=0 \
       --group=0 \
-      *' > redis-data.tar.gz
+      -T /tmp/files.txt' > redis-data.tar.gz
 ```
 
 Finally, turn AOF rewrites back on:
@@ -154,6 +182,7 @@ kubectl exec ${REDIS_MAIN_POD} \
     CONFIG SET auto-aof-rewrite-percentage 100'
 ```
 
+<!--
 #### Built-In S3
 
 The built-in S3 implementation uses Bitnami's Helm chart for SeaweedFS, a versatile storage system.
@@ -166,6 +195,7 @@ export S3_VOLUME_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
   -l 'app.kubernetes.io/component=volume,app.kubernetes.io/name=seaweedfs' \
+  | head -n 1 \
   )" && \
 kubectl exec ${S3_VOLUME_POD} \
   -n "${NETBOX_NAMESPACE}" \
@@ -177,6 +207,7 @@ kubectl exec ${S3_VOLUME_POD} \
       --group=0 \
       *' > seaweedfs-data.tar.gz
 ```
+-->
 
 ### Restoring Your Backups
 
@@ -196,6 +227,32 @@ This will shut down NetBox (and the built-in Redis, if you are using it) but lea
 
 When you are done restoring your data, just follow the same steps, unchecking _Enable Restore Mode_ and deploying the updated configuration.
 
+#### Media, Scripts, and Reports
+
+To restore media, scripts, and reports, you just need to unpack them into the correct directory inside a NetBox container.
+
+!!! note
+    The backup instructions above back up all three of the `media/`, `scripts/`, and `reports/` subdirectories in one file.
+
+    If you are restoring a backup from another NetBox instance, you might need to change the name of the tarball and the path after the `-C` at the end of this command to unpack your backup into the right location.
+
+```shell
+export NETBOX_NAMESPACE="kotsadm" && \
+export NETBOX_RESTORE_POD="$(kubectl get pod \
+  -o name \
+  -n "${NETBOX_NAMESPACE}" \
+  -l 'app.kubernetes.io/component=restore-mode' \
+  | head -n 1 \
+  )" && \
+cat netbox-data.tar.gz | kubectl exec ${NETBOX_RESTORE_POD} \
+  -n "${NETBOX_NAMESPACE}" \
+  -i \
+  -- tar -xvzf - \
+    --no-same-owner \
+    --no-same-permission \
+    -C /opt/netbox/netbox
+```
+
 #### Built-In PostgreSQL
 
 To restore from a dump file, pipe the `netbox.pgsql` created during backup into `psql` in the PostgreSQL pod:
@@ -206,6 +263,7 @@ POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
   -l 'postgres-operator.crunchydata.com/role=master' \
+  | head -n 1 \
   )" && \
 kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
@@ -223,7 +281,7 @@ cat netbox.pgsql | kubectl exec "${POSTGRESQL_MAIN_POD}" \
 ```
 #### Built-In Redis
 
-Since Redis doesn't run in restore mode, there is no need to disable and re-enable append mode.
+Since Redis isn't running in restore mode, there is no need to disable and re-enable append mode.
 All that is necessary is to unpack the files back into place.
 
 ```shell
@@ -232,6 +290,7 @@ export REDIS_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
   -l 'app.kubernetes.io/component=master,app.kubernetes.io/name=redis' \
+  | head -n 1 \
   )" && \
 cat redis-data.tar.gz | kubectl exec ${REDIS_MAIN_POD} \
   -n "${NETBOX_NAMESPACE}" \
@@ -243,6 +302,7 @@ cat redis-data.tar.gz | kubectl exec ${REDIS_MAIN_POD} \
     -C /data
 ```
 
+<!--
 #### Built-In S3
 
 SeaweedFS won't have anything written to it while in restore mode, so it is safe to unpack the volume back into place.
@@ -254,6 +314,7 @@ export S3_VOLUME_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
   -l 'app.kubernetes.io/component=volume,app.kubernetes.io/name=seaweedfs' \
+  | head -n 1 \
   )" && \
 cat seaweedfs-data.tar.gz | kubectl exec "${S3_VOLUME_POD}" \
   -n "${NETBOX_NAMESPACE}" \
@@ -265,3 +326,4 @@ cat seaweedfs-data.tar.gz | kubectl exec "${S3_VOLUME_POD}" \
     -C /data && \
 kubectl delete -n "${NETBOX_NAMESPACE}" "${S3_VOLUME_POD}"
 ```
+-->
