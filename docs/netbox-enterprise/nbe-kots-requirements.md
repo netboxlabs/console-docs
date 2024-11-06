@@ -4,13 +4,17 @@
 
 To install NetBox Enterprise on an existing cluster, the cluster must meet the following requirements:
 
-#### NetBox Enterprise minimum requirements
+#### Recommended cluster requirements
 
-Like an embedded cluster install, we recommend the following _minimum_ system requirements for a deployment of NetBox Enterprise running two replicas. For larger environments with more replicas, additional resources should be allocated.
+The following are the _recommended_ system requirements for a **production** deployment of NetBox Enterprise running two replicas. For larger environments with more replicas, additional resources should be allocated.
 
-- 4 Virtual CPU (vCPU)
-- 8 GB Memory (RAM)
-- 40 GB unallocated cluster disk space
+- 8 Virtual CPU (vCPU)
+- 24 GB Memory (RAM)
+- 40 GB SSD free disk space in `/var/lib`
+
+!!! note 
+    For **non-production** deployments of NetBox Enterprise, the _minimum_ system requirements can be reduced to 4 Virtual CPU (vCPU) and 16 GB Memory (RAM). All other requirements remain the same.
+
 
 #### Supported operating systems
 
