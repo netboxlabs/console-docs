@@ -1,5 +1,23 @@
 # NetBox Enterprise 1.x Release Notes
 
+## 1.4.0
+
+Adds support for supplying custom environment variables (eg, for LDAP config).
+It also contains a small auth change to allow curly braces and spaces in the new password validator.
+
+A number of included plugins were updated to their latest compatible versions:
+* `netbox_bgp` was updated to 0.13.3
+* `netbox_floorplan_plugin` was updated to 0.4.1
+* `netbox_plugin_dns` was updated to 1.1.3
+* `netbox_topology_views` was updated to 4.0.1
+* `slurpit_netbox` was updated to 0.9.84
+
+
+## 1.3.0
+
+Compatible with any standard Kubernetes ingress controller now in KOTS installs, rather than only Nginx.
+Also fixes a potential data loss issue with uploaded images, as well as enabling script and report uploads.
+
 ## 1.2.0
 
 Improves ingress configuration, adds support for inheriting the TLS configuration from the Embedded Cluster, and adds a "restore mode" for restoring manual backup data, plus many dependency updates and internal improvements.
