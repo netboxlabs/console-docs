@@ -2,8 +2,8 @@ site_name: NetBox Labs Documentation
 theme:
   name: material
   custom_dir: overrides
-  favicon: images/social-square.png
-  logo: images/social-square.png
+  favicon: images/netbox-favicon.png
+  logo: images/netbox-light-favicon.png
   features:
     - navigation.tracking
     - navigation.instant
@@ -17,6 +17,17 @@ theme:
     # - toc.integrate
     - content.code.copy
     - content.code.select
+  palette:
+    - scheme: nbl-light
+      toggle:
+        icon: material/lightbulb 
+        name: Switch to dark mode
+    - scheme: nbl-dark
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+extra_css:
+  - stylesheets/extra.css
 markdown_extensions:
   - abbr
   - pymdownx.tabbed:
