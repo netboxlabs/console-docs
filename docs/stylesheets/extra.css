@@ -44,6 +44,10 @@
     --md-code-hl-string-color:    #ffffff;
     --md-code-hl-punctuation-color:#ffffffb3;
     --md-code-hl-operator-color:  #ffffffb3;
+    --md-code-hl-comment-color:   #ffffff;
+    --md-code-hl-generic-color:   #ffffff;
+    --md-code-hl-variable-color:  #ffffff;
+  
 
     --md-admonition-fg-color:     #ffffff;
     --md-admonition-bg-color:     #272a35;
