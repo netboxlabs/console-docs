@@ -279,6 +279,29 @@ cat netbox.pgsql | kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -c database \
   -- psql -d netbox -f-
 ```
+
+Following this run the below to ensure all database permissions are correct:
+
+```shell
+export NETBOX_NAMESPACE="kotsadm"
+POSTGRESQL_MAIN_POD="$(kubectl get pod \
+  -o name \
+  -n "${NETBOX_NAMESPACE}" \
+  -l 'postgres-operator.crunchydata.com/role=master' \
+  | head -n 1 \
+  )" && \
+  kubectl exec "${POSTGRESQL_MAIN_POD}" \
+  -n "${NETBOX_NAMESPACE}" \
+  -i \
+  -c database \
+  -- psql -c "ALTER DATABASE netbox OWNER TO netbox;" && \
+kubectl exec "${POSTGRESQL_MAIN_POD}" \
+  -n "${NETBOX_NAMESPACE}" \
+  -i \
+  -c database \
+  -- psql -d netbox -c "GRANT CREATE ON SCHEMA public TO netbox;"
+```
+
 #### Built-In Redis
 
 Since Redis isn't running in restore mode, there is no need to disable and re-enable append mode.
