@@ -90,9 +90,9 @@ Before you can install, you _must_ configure your proxy to allow the following h
 * **proxy.enterprise.netboxlabs.com**
 * **registry.enterprise.netboxlabs.com**
 
-These are required to access various parts of the Enmbedded Cluster and NetBox Enterprise installation resources.
+They are required to access various parts of the Enmbedded Cluster and NetBox Enterprise installation resources.
 
-You _may_ also want to configure a few additional hosts:
+Additionally, you _may_ also want to configure a few more hosts:
 
 * **api.netbox.oss.netboxlabs.com** - used to query an API for information on NetBox plugins
 * **census.netbox.oss.netboxlabs.com** - used to collect anonymized data about your NetBox version. For details, see [the NetBox documentation](https://netboxlabs.com/docs/netbox/en/stable/configuration/miscellaneous/#census_reporting_enabled).
@@ -100,7 +100,7 @@ You _may_ also want to configure a few additional hosts:
 #### Installation
 
 Once you have configured your proxy to allow access to the NetBox Enterprise hosts, you will need to pass some additional arguments to the Embedded Cluster installer.
-Note that the Embedded Cluster will _not_ inherit proxy settings in the environment.
+Note that the Embedded Cluster will _not_ inherit proxy settings from the shell environment.
 
 * `--http-proxy <proxy-url>`
   
@@ -120,7 +120,7 @@ If you are using a MITM proxy (ie, one which uses an internal TLS certificate au
 
 * `--private-ca </path/to/private-ca-bundle>`
 
-This will allow the Embedded Cluster to accept traffic that has been encrypted using the internal CA.
+This will allow the Embedded Cluster to accept traffic that has been encrypted using your internal CA.
 
 ### Firewalld
 
