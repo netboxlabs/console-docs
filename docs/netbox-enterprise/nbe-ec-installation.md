@@ -77,6 +77,52 @@ Once you see `Ready`, NetBox Enterprise is fully deployed, and available on port
 
 ## Advanced Installation
 
+### Proxies
+
+If you are installing in a restrictive environment, you may have to provide extra configuration at install-time.
+NetBox Enterprise as of version 1.6.0 has support for installing through proxies using the following configuration.
+
+#### Proxy Configuration
+
+Before you can install, you _must_ configure your proxy to allow the following hostnames:
+
+* **app.enterprise.netboxlabs.com**
+* **get.enterprise.netboxlabs.com**
+* **proxy.enterprise.netboxlabs.com**
+* **registry.enterprise.netboxlabs.com**
+
+They are required to access various parts of the Enmbedded Cluster and NetBox Enterprise installation resources.
+
+Additionally, you _may_ also want to configure a few more hosts:
+
+* **api.netbox.oss.netboxlabs.com** - used to query an API for information on NetBox plugins
+* **census.netbox.oss.netboxlabs.com** - used to collect anonymized data about your NetBox version. For details, see [the NetBox documentation](https://netboxlabs.com/docs/netbox/en/stable/configuration/miscellaneous/#census_reporting_enabled).
+
+#### Installation
+
+Once you have configured your proxy to allow access to the NetBox Enterprise hosts, you will need to pass some additional arguments to the Embedded Cluster installer.
+Note that the Embedded Cluster will _not_ inherit proxy settings from the shell environment.
+
+* `--http-proxy <proxy-url>`
+  
+  The proxy url should be a complete URL to reach the proxy. (eg, `http://myhost:8888`)
+* `--https-proxy <proxy-url>`
+
+  Like `--http-proxy`, this should be the proxy's URL.
+* `--no-proxy`
+
+  By default, the Embedded Cluster will automatically disable proxying on the internal cluster addresses, as well as the default network interface on your host.
+  
+  In some cases, if it can't autodetect an interface or you have a more complicated network, you may need to specify this manually in the form of a comma-separated list of addresses with CIDR netmasks (`1.2.3.4/32`), or domains (`foo.com`, `*.bar.com`).
+
+#### Man-In-The-Middle (MITM) Proxies
+
+If you are using a MITM proxy (ie, one which uses an internal TLS certificate authority for communication with the proxy, rather than directly passing encrypted traffic), you will need an additional option:
+
+* `--private-ca </path/to/private-ca-bundle>`
+
+This will allow the Embedded Cluster to accept traffic that has been encrypted using your internal CA.
+
 ### Firewalld
 
 If you are using Firewalld (commonly found on RHEL installations, among others), you will need to create a zone for the cluster before installing.
