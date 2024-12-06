@@ -79,7 +79,7 @@ Once you see `Ready`, NetBox Enterprise is fully deployed, and available on port
 
 ### Proxies
 
-If you are installing in an environment, you may have to provide extra configuration at install-time.
+If you are installing in a restrictive environment, you may have to provide extra configuration at install-time.
 
 #### Proxy Configuration
 
