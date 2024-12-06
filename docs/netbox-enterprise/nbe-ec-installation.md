@@ -80,6 +80,7 @@ Once you see `Ready`, NetBox Enterprise is fully deployed, and available on port
 ### Proxies
 
 If you are installing in a restrictive environment, you may have to provide extra configuration at install-time.
+NetBox Enterprise as of version 1.6.0 has support for installing through proxies using the following configuration.
 
 #### Proxy Configuration
 
