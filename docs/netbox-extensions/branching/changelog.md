@@ -1,5 +1,13 @@
 # Change Log
 
+## v0.5.2
+
+### Bug Fixes
+
+* [#163](https://github.com/netboxlabs/netbox-branching/issues/163) - Ensure changelog records for non-branching models are created in main schema
+
+---
+
 ## v0.5.1
 
 ### Enhancements
@@ -9,8 +17,12 @@
 
 ### Bug Fixes
 
+* [#98](https://github.com/netboxlabs/netbox-branching/issues/98) - Cable changes in branch should not impact main schema
 * [#119](https://github.com/netboxlabs/netbox-branching/issues/119) - Fix the dynamic selection of related objects in forms while a branch is active
 * [#120](https://github.com/netboxlabs/netbox-branching/issues/120) - `max_branches` config parameter should disregard archived branches
+* [#138](https://github.com/netboxlabs/netbox-branching/issues/138) - Fix rendering the ID column of the change diffs table
+* [#140](https://github.com/netboxlabs/netbox-branching/issues/140) - Fix representation of branch status in REST API
+* [#142](https://github.com/netboxlabs/netbox-branching/issues/142) - Fix tab record counts for archived branches
 
 ---
 
