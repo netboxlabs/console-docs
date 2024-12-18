@@ -22,10 +22,6 @@ NetBox Assurance continuously compares the documented or intended network state 
 3. **Detect Deviations**: Identify differences between the desired and actual network states.
 4. **Correct and Resolve**: Review deviations and apply or correct as needed.
 
-## Requirements
-- **NetBox Editions**: Available in NetBox Cloud and NetBox Enterprise editions.
-- **NetBox Version**: Compatible starting with NetBox v4.1.
-
 ## Use Cases
 - **Network Drift Detection**: Ensure network configurations remain consistent with the source of truth.
 - **Compliance Audits**: Support compliance efforts by detecting unauthorized changes.

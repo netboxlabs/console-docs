@@ -14,17 +14,12 @@ NetBox Discovery is an advanced network discovery tool designed to simplify docu
 - **Extensible and Scalable**: Open source, lightweight discovery agent is built to scale with enterprise environments and support various network protocols.
 
 ## How It Works
-NetBox Discovery leverages network protocols like SSH and ICMP to discover devices and other network assets. Discovered data is sent to NetBox Assurance to be matched and reconciled with NetBox to identify drift and deviations. The NetBox database can be updated where relevant, ensuring data accuracy and reducing manual entry.
+NetBox Discovery leverages network protocols like SSH, ICMP and TCP  to discover devices and other network assets. Discovered data is sent to NetBox Assurance to be matched and reconciled with NetBox to identify drift and deviations. The NetBox database can be updated where relevant, ensuring data accuracy and reducing manual entry.
 
 ### Discovery Process
 1. **Define Discovery Policies**: Specify targets for scanning, such as IP addresses, IP ranges, IP subnets or resolvable domain names.
 2. **Schedule Discoveries**: Set up automated scans at scheduled intervals.
 3. **Review Deviations**: Analyze discovered information in NetBox Assurance, and synchronize them with NetBox where relevant.
-
-## Requirements
-- **NetBox Editions**: Available in NetBox Cloud and NetBox Enterprise editions.
-- **NetBox Version**: Compatible starting with NetBox v4.1.
-- **Supported Protocols**: ICMP, SSH.
 
 ## Use Cases
 - **Data Center Management**: Keep track of routers, switches, and other network devices.

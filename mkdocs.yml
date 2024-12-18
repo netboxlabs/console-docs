@@ -102,6 +102,7 @@ nav:
       - "Advanced Tools and Troubleshooting": "netbox-enterprise/nbe-troubleshooting.md"
     - "Release Notes": "netbox-enterprise/nbe-release-notes.md"
   - Discovery & Assurance:
+    - Feature overview: "discovery-assurance.md"
     - NetBox Discovery:
       - Overview: "netbox-discovery/index.md"
       - Discovery Agent:
