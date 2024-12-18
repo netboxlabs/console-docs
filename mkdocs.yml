@@ -28,6 +28,7 @@ theme:
         name: Switch to light mode
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/custom.css
 markdown_extensions:
   - abbr
   - pymdownx.tabbed:
@@ -100,6 +101,16 @@ nav:
       - "Backups": "netbox-enterprise/nbe-backups.md"
       - "Advanced Tools and Troubleshooting": "netbox-enterprise/nbe-troubleshooting.md"
     - "Release Notes": "netbox-enterprise/nbe-release-notes.md"
+  - Discovery & Assurance:
+    - NetBox Discovery:
+      - Overview: "netbox-discovery/index.md"
+      - Discovery Agent:
+        - Overview: "netbox-discovery/agent/index.md"
+        - Getting started: "netbox-discovery/agent/get-started.md"
+        - Network Discovery: "netbox-discovery/agent/network_discovery.md"
+        - Device Discovery: "netbox-discovery/agent/device_discovery.md"
+    - NetBox Assurance:
+      - Overview: "netbox-assurance/index.md"
   - Integrations: 
     - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
     - pyATS: "netbox-integrations/pyats.md"
@@ -125,7 +136,6 @@ nav:
         - Installing the Diode plugin: "netbox-extensions/diode/diode-plugin.md"
         - Running the Diode server: "netbox-extensions/diode/diode-server.md"
         - Installing the Diode client SDK: "netbox-extensions/diode/diode-client.md"
-      - Diode Agent: "netbox-extensions/diode/diode-agent.md"
   - Product and Feature Lifecycle: "product_feature_lifecycle.md"
 extra:
   social:
