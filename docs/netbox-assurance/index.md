@@ -8,19 +8,12 @@ NetBox Assurance empowers organizations to continuously detect and address netwo
 
 ## Key Features
 - **Deviation Detection**: Identify configuration drift between NetBox and the network.
-- **Real-Time Alerts**: Receive notifications when deviations are detected.
-- **Automated Remediation**: Correct detected deviations through guided workflows.
+- **Efficient Remediation**: Correct detected deviations through guided workflows.
 - **Seamless Integration**: Enhance NetBox with continuous network validation and state synchronization.
 - **Detailed Reports**: Generate actionable reports highlighting network consistency and detected deviations.
 
 ## How It Works
-NetBox Assurance continuously compares the documented or intended network state stored in NetBox with the observed network state being provided by NetBox Discovery or other network data sources (via the Diode SDK). When deviations are detected, workflows allow resolving deviations by updating NetBox or by taking corrective actions on the network.
-
-### Assurance Process
-1. **Define Desired State**: Establish intended network configurations and baselines in NetBox.
-2. **Enable Monitoring**: Set up continuous monitoring using NetBox Discovery or other discovery solutions for relevant network devices and services.
-3. **Detect Deviations**: Identify differences between the desired and actual network states.
-4. **Correct and Resolve**: Review deviations and apply or correct as needed.
+NetBox Assurance continuously compares the documented or intended network state stored in NetBox with the observed network state being provided by NetBox Discovery and other network data sources. When deviations are detected, workflows allow effecient remediation of deviations by updating NetBox or by taking corrective actions on the network.
 
 ## Use Cases
 - **Network Drift Detection**: Ensure network configurations remain consistent with the source of truth.
@@ -28,8 +21,8 @@ NetBox Assurance continuously compares the documented or intended network state 
 - **Incident Prevention**: Identify and address deviations before they cause major disruptions.
 
 ## Support and Resources
-- **Documentation**: Please refer to [Diode](../netbox-extensions/diode/index.md) project documentation.
-- **Support**: Please contact [support](mailto:support@netboxlabs.com).
+- **Documentation**: Until NetBox Assurance is officially released, please refer to the [Diode](../netbox-extensions/diode/index.md) project documentation.
+- **Community Support**: Connect with the community on [Slack](https://netdev.chat/) in the `#netbox` channel.
 
 ---
-With NetBox Assurance, teams can detect, report, and resolve network deviations in real time, ensuring a consistent and reliable network environment through continuous validation and corrective actions.
+With **NetBox Assurance**, teams can detect, report, and resolve network deviations in real time, ensuring a consistent and reliable network environment through continuous validation and corrective actions.

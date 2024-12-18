@@ -2,80 +2,65 @@
 <span class="pill pill-enterprise">NetBox Enterprise</span>
 <span class="pill pill-community">NetBox Community</span>
 
-## Download agent image
-To run `orb-agent`, first pull the Docker image from [Docker Hub](https://hub.docker.com/r/netboxlabs/orb-agent):
+## Before getting started
+You'll need the following to successfully run the NetBox Discovery agent end-to-end:
 
+- **NetBox**: a running instance of [NetBox](https://github.com/netbox-community/netbox).
+- **Diode plugin**: NetBox Diode [plugin](https://github.com/netboxlabs/diode-netbox-plugin) installed in your NetBox instance.
+- **Diode**: a running instance of [Diode](https://github.com/netboxlabs/diode/tree/develop/diode-server#readme).
+
+## Download agent image
+First pull the Docker image from [Docker Hub](https://hub.docker.com/r/netboxlabs/orb-agent):
 
 ```sh
 docker pull netboxlabs/orb-agent:latest
 ```
 
-## Agent configuration file
-To run, the Orb agent requires a configuration file. This configuration file consists of three main sections: `config_manager`, `backends`, and `policies`.
+NetBox Discovery is based on the Orb open source project, hence the `orb-agent` image name.
 
-
-### Config Manager
-The `config_manager` section specifies how Orb agent should retrieve it's configuration information. The configuration manager is responsible for processing the configuration to retrieve policies and pass them to the appropriate backend.
+## Create an agent configuration file
+The NetBox Discovery agent requires a configuration, specifying what discovery tasks you'd like it to accomplish. Here's a sample configuration:
 
 ```yaml
 orb:
   config_manager:
     active: local
-  ...
-```
-
-Currently, only the `local` manager is supported, which retrieves policies from the local configuration file passed to the agent.
-
-### Backends
-The `backends` section specifies what Orb agent backends should be enabled. Each Orb agent backend offers specific discovery or observability capabilities and may require specific configuration information.  
-
-```yaml
-orb:
-  ...
   backends:
     network_discovery:
-        ...
-    device_discovery:
-        ...
-```
-Only the `network_discovery` and `device_discovery` backends are currently supported. They do not require any special configuration. Refer to [Device Discovery](device_discovery.md) and [Network Discovery](network_discovery.md) for policy settings specific to each backend. 
-
-#### Commons
-A special `common` subsection under `backends` defines configuration settings that are shared with all backends. Currently, it supports passing [diode](https://github.com/netboxlabs/diode) server settings to all backends.
-
-```yaml
-  backends:
-      ...
-      common:
-        diode:
-            target: grpc://192.168.0.22:8080/diode
-            api_key: ${DIODE_API_KEY}
-            agent_name: agent01
+    common:
+      diode:
+        target: grpc://<DIODE_IP_ADDRESS>:8080/diode
+        api_key: ${DIODE_API_KEY}
+        agent_name: agent1
+  policies:
+    network_discovery:
+      policy_1:
+        scope:
+          targets:
+            - 192.168.1.10-20
 ```
 
+Copy the configuration to a file (named `agent.yaml` for these instructions). Edit the file as necessary to match your environment:
 
-### Policies
-The `policies` section specifies what discovery policies should be passed to each backend. Policies define specific settings for discovery (such as scheduling and default properties) and the scope (targets). Backends can run multiple policies simultaneously, but for each backend all policies must have a unique name. These policies are defined in the `policies` section and are grouped under a subsection for each backend:
+- Replace `<DIODE_IP_ADDRESS>` with the IP address or hostname of your Diode server
+- Edit and add `targets` relevant to your environment (they can expressed as a mix of ranges, network prefixes with mask, IP addresses or domain names)
 
-```yaml
-orb:
-    ...
-    policies:
-        device_discovery:
-            device_policy_1:
-                # see device_discovery section
-        network_discovery:
-            network_policy_1:
-                # see network_discovery section
-```
+You can find more complete examples for [Device Discovery](device_discovery.md) and [Network Discovery](network_discovery.md).
 
-## Configuration examples
-You can find complete sample configurations for [Device Discovery](device_discovery.md) and [Network Discovery](network_discovery.md) to configure and run Orb agent.
-
-## Running the agent
-
-To run `orb-agent`, use the following command from the directory where your created your agent configuration file (named `agent.yaml` here):
+## Run the agent
+Run the agent from the same directory where you created your agent configuration file (`agent.yaml`):
 
 ```sh
- docker run -v $(PWD):/opt/orb/ netboxlabs/orb-agent:latest run -c /opt/orb/agent.yaml
+ docker run -v $(PWD):/opt/orb/ \
+   -e DIODE_API_KEY=<api_key>   \
+   netboxlabs/orb-agent:latest run -c /opt/orb/agent.yaml
 ```
+
+Replace `<api_key>` with the actual Diode API key you used in configuring your Diode server.
+
+## View the output
+You can view output from the running agent:
+
+- Agent Docker container logs (displayed in the terminal)
+- Diode server Docker container logs (`docker logs diode-diode-reconciler-1`)
+- `Ingestion Logs` view in Netbox Diode plugin

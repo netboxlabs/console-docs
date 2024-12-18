@@ -9,28 +9,23 @@ NetBox Discovery is an advanced network discovery tool designed to simplify docu
 
 ## Key Features
 - **Automated Network Discovery**: Schedule scans and identify devices and assets across your network.
-- **Seamless Integration**: Fully integrated with NetBox through NetBox Assurance, helping you detect network drift.
+- **Seamless Integration**: Fully integrated with NetBox through Diode (and soon NetBox Assurance), helping you detect network drift.
 - **Customizable Policies**: Define custom discovery policies tailored to specific network environments.
 - **Extensible and Scalable**: Open source, lightweight discovery agent is built to scale with enterprise environments and support various network protocols.
 
 ## How It Works
-NetBox Discovery leverages network protocols like SSH, ICMP and TCP  to discover devices and other network assets. Discovered data is sent to NetBox Assurance to be matched and reconciled with NetBox to identify drift and deviations. The NetBox database can be updated where relevant, ensuring data accuracy and reducing manual entry.
-
-### Discovery Process
-1. **Define Discovery Policies**: Specify targets for scanning, such as IP addresses, IP ranges, IP subnets or resolvable domain names.
-2. **Schedule Discoveries**: Set up automated scans at scheduled intervals.
-3. **Review Deviations**: Analyze discovered information in NetBox Assurance, and synchronize them with NetBox where relevant.
+NetBox Discovery leverages network protocols (such as SSH, ICMP, UDP, TCP) to discover devices and other network assets. Discovered data is sent to Diode (and soon NetBox Assurance) to be matched and reconciled with NetBox to identify drift and deviations. The NetBox database can be updated where relevant, ensuring data accuracy and reducing manual entry.
 
 ## Use Cases
-- **Data Center Management**: Keep track of routers, switches, and other network devices.
+- **Data Center Infrastructure Management**: Keep track of routers, switches, and other network devices.
 - **Network Asset Management**: Maintain an up-to-date inventory of network assets.
 - **Network Audits**: Perform network audits for compliance and troubleshooting.
 
 ## Support and Resources
 - **Documentation**: Get started with the NetBox Discovery agent [documentation](agent/index.md).
 - **GitHub Repository**: Find the NetBox Discovery agent [here](https://github.com/netboxlabs/orb-agent).
-- **Community Support**: Connect with the community on [Slack](https://netdev.chat/) in the `#orb` channel.
+- **Community Support**: Connect with the community on [Slack](https://netdev.chat/) in the `#netbox` channel.
 
 ---
-By leveraging NetBox Discovery, organizations can enhance their network visibility, streamline IT operations, and maintain an accurate source of truth for their network infrastructure.
+By leveraging **NetBox Discovery**, organizations can enhance their network visibility, streamline IT operations, and maintain an accurate source of truth for their network infrastructure.
 
