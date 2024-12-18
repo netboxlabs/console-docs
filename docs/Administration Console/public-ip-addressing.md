@@ -47,10 +47,3 @@ You can whitelist these IP ranges so that inbound access from your NetBox Cloud 
 ```
 2a05:d01c:11e:a800::/56
 ```
-
-## Dedicated Public IP Addresses for Accessing NetBox Cloud Instances
-
-For NetBox Cloud [Enterprise customers](https://netboxlabs.com/pricing/) we offer dedicated IP addresses for accessing the UI and API. Please speak to your account representative for more information.
-
-<br>
-Please don’t hesitate to reach out to the [NetBox Labs Support Team](mailto:support@netboxlabs.com) if you have any questions about this or anything else regarding NetBox Cloud.
