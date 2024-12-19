@@ -17,7 +17,7 @@ The following steps are required for an Embedded Cluster (EC) installation of Ne
 2. Uncompress the package and launch the installation:
 
    ```
-   tar -xvzf netbox-enterprise-unstable.tgz
+   tar -xvzf netbox-enterprise-stable.tgz
    sudo ./netbox-enterprise install --license license.yaml
    ```
 
