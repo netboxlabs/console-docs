@@ -105,6 +105,7 @@ nav:
     - "Release Notes": "netbox-enterprise/nbe-release-notes.md"
   - Discovery & Assurance:
     - Solution Overview: "discovery-assurance.md"
+    - Quickstart Guide: "netbox-discovery/quickstart-guide.md"
     - NetBox Discovery:
       - NetBox Discovery: "netbox-discovery/index.md"
       - Discovery Agent:
