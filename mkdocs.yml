@@ -99,6 +99,7 @@ nav:
       - Requirements: "netbox-enterprise/nbe-kots-requirements.md"
       - Installation: "netbox-enterprise/nbe-kots-installation.md"
     - SSO:
+      - NBE Azure SSO Setup: "netbox-enterprise/nbe-azure-sso.md"
       - NBE Azure Group Mapping: "netbox-enterprise/nbe-azure-group-mapping.md"
     - "Administration":
       - "TLS and Ingress": "netbox-enterprise/nbe-tls-ingress.md"
