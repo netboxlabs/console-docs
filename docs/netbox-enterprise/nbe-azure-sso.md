@@ -1,6 +1,6 @@
 # Microsoft Azure AD Setup
 
-This guide explains how to configure single sign-on (SSO) support for NetBox Cloud using Microsoft Azure Active Directory (AD) as an authentication backend.
+This guide explains how to configure single sign-on (SSO) support for NetBox Enterprise using Microsoft Azure Active Directory (AD) as an authentication backend.
 
 ## Azure AD Configuration
 1. Create a test user (optional)
@@ -13,7 +13,7 @@ Under the Azure Active Directory dashboard, navigate to **Add** > **App registra
 
     Enter a name for the registration (e.g. "NetBox Enterprise") and ensure that the "single tenant" option is selected.
 
-    Under "Redirect URI", select "Web" for the platform and enter the path to your NetBox Cloud installation, ending with /oauth/complete/azuread-oauth2/. 
+    Under "Redirect URI", select "Web" for the platform and enter the path to your NetBox Enterprise installation, ending with /oauth/complete/azuread-oauth2/. 
 
     Eg. https://{your-domain}.com/oauth/complete/azuread-oauth2/
 
@@ -57,7 +57,7 @@ Once added, scroll down to the bottom of the page and click ‘Save config’. F
 <SCREENSHOT> 
 
 ## Testing
-Log out of NetBox Cloud if already authenticated, and click the "Log In" button at top right. You should see the normal login form as well as an option to authenticate using Azure AD. Click that link.
+Log out of NetBox instance if already authenticated, and click the "Log In" button at top right. You should see the normal login form as well as an option to authenticate using Azure AD. Click that link.
 
 ![NetBox Azure AD login form](../images/Azure%20SSO/netbox_azure_ad_login.png)
 
@@ -65,13 +65,13 @@ You should be redirected to Microsoft's authentication portal. Enter the usernam
 
 ![NetBox Azure AD login form](../images/Azure%20SSO/azure_ad_login_portal.png)
 
-If successful, you will be redirected back to the NetBox Cloud UI, and will be logged in as the AD user. You can verify this by navigating to your profile (using the button at top right).
+If successful, you will be redirected back to the NetBox Enterprise UI, and will be logged in as the AD user. You can verify this by navigating to your profile (using the button at top right).
 
-This user account has been replicated locally to NetBox Cloud, and can now be assigned groups and permissions within the NetBox Cloud admin UI.
+This user account has been replicated locally to NetBox Enterprose, and can now be assigned groups and permissions within the NetBox Enterprise admin UI.
 
 ## Troubleshooting
 ### Redirect URI does not Match
 Azure requires that the authenticating client request a redirect URI that matches what you've configured for the app in step two. This URI must begin with https:// 
 
 ### Not Logged in After Authenticating
-If you are redirected to the NetBox Cloud UI after authenticating successfully, but are not logged in, double-check the configured backend and app registration. The instructions in this guide pertain only to the `azuread.AzureADOAuth2` backend using a single-tenant app registration.
+If you are redirected to the NetBox Enterprise UI after authenticating successfully, but are not logged in, double-check the configured backend and app registration. The instructions in this guide pertain only to the `azuread.AzureADOAuth2` backend using a single-tenant app registration.
