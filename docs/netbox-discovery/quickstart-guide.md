@@ -6,5 +6,5 @@ Looking to try NetBox Discovery as quickly and easily as possible? The [Quicksta
 
 You will be able to run simple scripts to explore the NetBox Discovery backends: 
 
-- [Network Discovery](../agent/network_discovery.md)
-- [Device Discovery](../agent/device_discovery.md)
+- [Network Discovery](../netbox-discovery/agent/network_discovery.md)
+- [Device Discovery](../netbox-discovery/agent/device_discovery.md)
