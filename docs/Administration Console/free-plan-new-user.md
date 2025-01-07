@@ -12,10 +12,17 @@ To invite a new user to a NetBox Cloud Free instance, the user will need to have
 
 3. Click **Continue** to confirm the email address to be invited
 
-    ![netbox cloud plugins](../images/console/console_administrators_invite_confirm.png)
+    ![netbox console admin invite confirm](../images/console/console_administrators_invite_confirm.png)
 
 4. An email will be sent containing a temporary password for the Console
 
 5. Have the user login with the tempoary information, and it will prompt for a new password to be set
 
-6. The user can now login to both the Console and the NetBox instance, using the newly set credentials
+6. The user can now login to the Console and click the link to access the instance
+
+    ![netbox console click instance link](../images/console/console_click_instance_link.png)
+
+7. Login to the instance by clicking the auth button and using the same credentials that were just setup
+
+    ![netbox console auth button](../images/console/instance_click_login.png)
+    ![netbox console login](../images/console/instance_login.png)
