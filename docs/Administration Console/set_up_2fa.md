@@ -20,7 +20,7 @@ Watch this quick video or follow the steps outlined below:
 
     ![view list of backups](../images/2fa/2fa_3.png)
 
-4. Click on the **X** in the top-right corner to close the dialog box: 
+4. Click on **Cancel** on the bottom-right corner to close the dialog box: 
 
     ![view list of backups](../images/2fa/2fa_4.png)
 
