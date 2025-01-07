@@ -46,8 +46,11 @@ Under the Azure Active Directory dashboard, navigate to **Add** > **App registra
 
 Once the app registration is completed, navigate to the ‘Config tab’ in the NetBox Enterprise admin console. Scroll down to ‘Advanced Settings’ and in the ‘NetBox Configuration Overrides’ field paste the following value from the previous steps:
 
-```REMOTE_AUTH_BACKEND = 'social_core.backends.azuread.AzureADOAuth2' SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = 'APPLICATION_ID' 
-SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = 'SECRET_VALUE'```
+```shell
+REMOTE_AUTH_BACKEND = 'social_core.backends.azuread.AzureADOAuth2' 
+SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = 'APPLICATION_ID' 
+SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = 'SECRET_VALUE'
+```
 
 Once added, scroll down to the bottom of the page and click ‘Save config’. Follow the prompts to ‘Go to the updated version’ and click the ‘Deploy’ button to deploy the updated version of your app with the configuration changes. 
 
