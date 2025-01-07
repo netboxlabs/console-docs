@@ -11,15 +11,15 @@ Under the Azure Active Directory dashboard, navigate to **Add** > **App registra
 
     ![Add an app registration](../images/Azure%20SSO/azure_ad_add_app_registration.png)
 
-    Enter a name for the registration (e.g. "NetBox Cloud") and ensure that the "single tenant" option is selected.
+    Enter a name for the registration (e.g. "NetBox Enterprise") and ensure that the "single tenant" option is selected.
 
     Under "Redirect URI", select "Web" for the platform and enter the path to your NetBox Cloud installation, ending with /oauth/complete/azuread-oauth2/. 
 
-    Eg. https://{your-domain}.cloud.netboxapp.com/oauth/complete/azuread-oauth2/
+    Eg. https://{your-domain}.com/oauth/complete/azuread-oauth2/
 
     ![Add an app registration](../images/Azure%20SSO/azure_ad_app_registration.png)
 
-    Once finished, make note of the application (client) ID; this will be used when configuring NetBox Cloud.
+    Once finished, make note of the application (client) ID; this will be used when configuring NetBox Enterprise instance.
 
     ![Completed app registration](../images/Azure%20SSO/azure_ad_app_registration_created.png)
 
@@ -38,19 +38,20 @@ Under the Azure Active Directory dashboard, navigate to **Add** > **App registra
 
     ![Client secret parameters](../images/Azure%20SSO/azure_ad_client_secret.png)
 
-    Once finished, make note of the secret value (not the secret ID); this will be used when configuring NetBox Cloud.
+    Once finished, make note of the secret value (not the secret ID); this will be used when configuring your NetBox Enterprise instance.
 
     ![Client secret parameters](../images/Azure%20SSO/azure_ad_client_secret_created.png)
 
-## NetBox Cloud Configuration
+## NetBox Enterprise Configuration
 
-Securely share the following configuration parameters with [NetBox Labs Support](mailto:support@netboxlabs.com), substituting your own values:
+Once the app registration is completed, navigate to the ‘Config tab’ in the NetBox Enterprise admin console. Scroll down to ‘Advanced Settings’ and in the ‘NetBox Configuration Overrides’ field paste the following value from the previous steps:
 
-REMOTE_AUTH_BACKEND = 'social_core.backends.azuread.AzureADOAuth2'
-SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = '{APPLICATION_ID}'
-SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = '{SECRET_VALUE}'
+```REMOTE_AUTH_BACKEND = 'social_core.backends.azuread.AzureADOAuth2' SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = 'APPLICATION_ID' 
+SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = 'SECRET_VALUE'```
 
-The support team will add these parameters to your NetBox Cloud instance and confirm when this is ready for testing.
+Once added, scroll down to the bottom of the page and click ‘Save config’. Follow the prompts to ‘Go to the updated version’ and click the ‘Deploy’ button to deploy the updated version of your app with the configuration changes. 
+
+<SCREENSHOT> 
 
 ## Testing
 Log out of NetBox Cloud if already authenticated, and click the "Log In" button at top right. You should see the normal login form as well as an option to authenticate using Azure AD. Click that link.
