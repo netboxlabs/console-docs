@@ -44,11 +44,11 @@ Under the Azure Active Directory dashboard, navigate to **Add** > **App registra
 
 ## NetBox Enterprise Configuration
 
-Once the app registration is completed, navigate to the `Config tab` in the NetBox Enterprise admin console and croll down to `Advanced Settings` and tick the `Show Advanced Settings` check box. 
+Once the app registration is completed, navigate to the `Config tab` in the NetBox Enterprise admin console and scroll down to `Advanced Settings` and tick the `Show Advanced Settings` check box. 
 
 ![advanced settings](../images/netbox-enterprise/advanced_settings.png)
 
-Then in the  the `NetBox Python Configuration Overrides` field paste the following value from the previous steps:
+Then, in the  the `NetBox Python Configuration Overrides` field paste the following value from the previous steps:
 
 ```shell
 REMOTE_AUTH_BACKEND = 'social_core.backends.azuread.AzureADOAuth2' 
