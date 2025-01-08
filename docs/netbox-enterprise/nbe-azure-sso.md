@@ -56,9 +56,7 @@ SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = 'APPLICATION_ID'
 SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = 'SECRET_VALUE'
 ```
 
-Once added, scroll down to the bottom of the page and click ‘Save config’. Follow the prompts to ‘Go to the updated version’ and click the ‘Deploy’ button to deploy the updated version of your app with the configuration changes. 
-
-<SCREENSHOT> 
+Once added, scroll down to the bottom of the page and click `Save config`. Follow the prompts to `Go to the updated version` and click the `Deploy` button to deploy the updated version of your app with the configuration changes. 
 
 ## Testing
 Log out of NetBox instance if already authenticated, and click the "Log In" button at top right. You should see the normal login form as well as an option to authenticate using Azure AD. Click that link.
