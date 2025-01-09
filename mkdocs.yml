@@ -95,9 +95,9 @@ nav:
     - Embedded Cluster:
       - Requirements: "netbox-enterprise/nbe-ec-requirements.md"
       - Installation: "netbox-enterprise/nbe-ec-installation.md"
-    - KOTS:
-      - Requirements: "netbox-enterprise/nbe-kots-requirements.md"
-      - Installation: "netbox-enterprise/nbe-kots-installation.md"
+    #- KOTS:
+    #  - Requirements: "netbox-enterprise/nbe-kots-requirements.md"
+    #  - Installation: "netbox-enterprise/nbe-kots-installation.md"
     - SSO:
       - NBE Azure Group Mapping: "netbox-enterprise/nbe-azure-group-mapping.md"
     - "Administration":
