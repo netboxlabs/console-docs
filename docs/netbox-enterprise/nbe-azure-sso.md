@@ -44,7 +44,7 @@ Under the Azure Active Directory dashboard, navigate to **Add** > **App registra
 
 ## NetBox Enterprise Configuration
 
-Once the app registration is completed, navigate to the `Config tab` in the NetBox Enterprise admin console and scroll down to `Advanced Settings` and tick the `Show Advanced Settings` check box. 
+After completing the app registration, navigate to the `Config tab` in the NetBox Enterprise admin console, scroll down to `Advanced Settings` and tick the `Show Advanced Settings` check box. 
 
 ![advanced settings](../images/netbox-enterprise/advanced_settings.png)
 
