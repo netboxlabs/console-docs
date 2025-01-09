@@ -54,7 +54,7 @@ This feature is included in Embedded Cluster installs, and can be enabled by ins
 Besides disaster recovery, it is also a good idea to keep backups of your data in case you want to view, partially restore, or move your data to another system.
 
 !!! info "NetBox Enterprise Namespace"
-    The default namespace for the Embedded Cluster dis `kotsadm`.
+    The default namespace for the Embedded Cluster is `kotsadm`.
 
     The instructions below default to `kotsadm`, but you can change the `NETBOX_NAMESPACE` export to match your system.
 
