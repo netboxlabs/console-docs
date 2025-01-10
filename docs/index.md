@@ -38,7 +38,7 @@ The home of documentation for NetBox [Cloud](Administration%20Console/console-ac
 
 <div class="grid cards" markdown>
 
--   ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Discovery__
+-   __NetBox Discovery__
 
     Map your network and infrastructure. 
     Accelerate documentation. 
@@ -47,26 +47,26 @@ The home of documentation for NetBox [Cloud](Administration%20Console/console-ac
     [Learn more about NetBox Discovery](netbox-discovery/index.md)
 
 
--   ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Assurance__
+-   __NetBox Assurance__
 
     Identify, understand, and eliminate 
     operational drift.
 
     [Learn more about NetBox Assurance](netbox-assurance/index.md)
 
--   ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Branching Plugin__
+-   __NetBox Branching Plugin__
 
     This NetBox plugin introduces branching functionality. A branch is a discrete, static snapshot of the NetBox database which can be modified independently and later merged back into the main database. 
 
     [Learn more about NetBox Branching](netbox-extensions/branching/index.md)
   
--   ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Change Management Plugin__
+-   __NetBox Change Management Plugin__
 
     This feature family brings powerful workflows to NetBox for team collaboration in designing, testing, and deploying network and infrastructure changes.
 
     [Learn more about NetBox Change Management](netbox-extensions/changes/index.md)
 
--   ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __Diode__
+-   __Diode__
 
     Diode is a NetBox data ingestion service that greatly simplifies and enhances the process to add and update network data in NetBox, ensuring your network source of truth is always accurate and can be trusted to power your network automation pipelines.
 
@@ -88,13 +88,13 @@ NetBox Labs builds software in the open, with thriving communities. We help deve
 
     [Visit the NetBox Community GitHub page](https://github.com/netbox-community/netbox)
 
--   ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Discovery Agent__
+-   __NetBox Discovery Agent__
 
     NetBox Discovery’s agents map network resources and gather device information to build a comprehensive model of your infrastructure.
 
     [Visit the NetBox Diode GitHub page](https://github.com/netboxlabs/diode)
 
--   ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __Orb Agent__
+-   __Orb Agent__
 
     Orb agent is a component of the NetBox Discovery solution. It provides network discovery and observability capabilities and is developed by NetBox Labs.
 
