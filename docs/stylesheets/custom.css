@@ -18,3 +18,65 @@
 .pill-airgap {
     background-color: #ff0078;
 }
+
+/* Default: Hide dark mode images */
+.nbl-light-img {
+    display: block;
+  }
+  
+  .nbl-dark-img {
+    display: none;
+  }
+  
+  /* Show the correct images based on the data-md-color-scheme attribute */
+  [data-md-color-scheme="nbl-light"] .nbl-light-img {
+    display: block;
+  }
+  
+  [data-md-color-scheme="nbl-light"] .nbl-dark-img {
+    display: none;
+  }
+  
+  [data-md-color-scheme="nbl-dark"] .nbl-light-img {
+    display: none;
+  }
+  
+  [data-md-color-scheme="nbl-dark"] .nbl-dark-img {
+    display: block;
+  }
+
+  /* Ensure light and dark images behave as intended */
+[data-md-color-scheme="nbl-light"] .nbl-light-img {
+    display: inline; /* Inline to align with text */
+  }
+  
+  [data-md-color-scheme="nbl-light"] .nbl-dark-img {
+    display: none;
+  }
+  
+  [data-md-color-scheme="nbl-dark"] .nbl-light-img {
+    display: none;
+  }
+  
+  [data-md-color-scheme="nbl-dark"] .nbl-dark-img {
+    display: inline; /* Inline to align with text */
+  }
+  /* Adjust spacing between the image and the text */
+  ul li img {
+    vertical-align: middle; /* Align images with text */
+    margin-right: 5px; /* Add space after the image */
+  }
+
+  /* Default style for light mode -THIS SECTION NOT WORKING PROPERLY- */
+hr {
+    border: 0;
+    height: 1px;
+    background: #00857d; /* Dark teal for light mode */
+}
+
+/* Style for dark mode */
+@media (prefers-color-scheme: dark) {
+    hr {
+        background: #00857d; /* Dark teal for dark mode */
+    }
+}
