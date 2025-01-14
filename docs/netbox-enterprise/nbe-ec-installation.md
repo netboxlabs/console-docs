@@ -2,15 +2,20 @@
 
 You should be able to follow these instructions for installing the Embedded Cluster in most environments.
 
+!!! Note
+    The hostname and IP address of the host cannot be changed after installation, and must be finalized before proceeding.
+
 ## Deploying the cluster
 
 The following steps are required for an Embedded Cluster (EC) installation of NetBox Enterprise.
 
 1. Download the deployment package and license file to your host (the `Authorization` token should be provided by NetBox Labs):
 
-   ```
-   curl https://replicated.app/embedded/netbox-enterprise/stable -H "Authorization: <provided by NetBox Labs>" -o netbox-enterprise-stable.tgz
-   ```
+  ```
+  curl -f "https://app.enterprise.netboxlabs.com/embedded/netbox-enterprise/stable" -H "Authorization: <provided by NetBox Labs>" -o netbox-enterprise-stable.tgz
+  ```
+  Confirm the file size is ~300MB
+
 2. Uncompress the package and launch the installation:
 
    ```
@@ -32,9 +37,43 @@ Open the provided URL in a browser. A prompt will require the password created i
 
 ![Admin Console](../images/netbox-enterprise/admin-console.png){ width="50%" }
 
+Once signed in you will be greeted by the following warning:
+
+> **Bypass browser TLS warning:**
+> We use a self-signed SSL/TLS Certificate to secure the communication 
+> between your local machine and the Admin Console during setup. 
+> You'll see a warning about this in your browser, but you can be confident 
+> that this is secure.
+
+Click `Continue to Setup`. you can add your certificate later, instruction on how to do can be found [here](https://docs.netboxlabs.com/netbox-enterprise/nbe-tls-ingress/)
+
+![TLS Warning Screen](../images/netbox-enterprise/tls_warning.png)
+
+On the next screen, click `Advanced`, then click `Proceed`. 
+
+On the following page you can add your hostname if it was provisioned prior to the start of the installation. Then click `continue`.
+
+![TLS Warning Screen](../images/netbox-enterprise/hostname.png)
+
+Again, click `Advanced`, then click `Proceed`, and you will be prompted to login to the console once more.
+
+On the next page you be given the option to add additional nodes to the cluster. **DO NOT ADD ADDTIONAL NODES**, as it is not currently supported. 
+!!! warning "Be Advised"
+    Adding addtional nodes to the cluster is not supported. 
+
+Click `Continue` to move on to the final insallation wizard
+![Node Page](../images/netbox-enterprise/nodes_page.png)
+
 A wizard will guide the configuration of NetBox for the environment:
 
+Provisions a Superuser and password:
 ![NetBox Configuration](../images/netbox-enterprise/configure-netbox-enterprise.png)
+
+Next, set the number of replicas and choose a preset for the resources allocated to NetBox
+![NetBox Configuration](../images/netbox-enterprise/replicas_resources.png)
+
+!!! warning "Be Advised"
+    Do not enable Restore Mode when initally setting up NetBox or the installation will fail.
 
 Configuration information includes:
 
