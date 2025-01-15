@@ -25,7 +25,7 @@ The following steps are required for an Embedded Cluster (EC) installation of Ne
 
    You’ll be requested to create a password for the NetBox Enterprise admin console. A Kubernetes cluster will then be deployed, ready to host all the NetBox application components. The deployment of the cluster is complete with this message:
 
-   ```{.bash .no-copy} 
+   ```shell {.bash .no-copy} 
    Visit the Admin Console to configure and install netbox-enterprise: http://my.netbox-enterprise.host:30000
    ```
 
@@ -75,7 +75,7 @@ Next, set the number of replicas and choose a preset for the resources allocated
 !!! warning "Be Advised"
     Do not enable Restore Mode when initally setting up NetBox or the installation will fail.
 
-Configuration information includes:
+Next, configure your PostgreSQL database, S3-compatible storage, and Redis cache:
 
 - Built-in or external PostgreSQL:
   ![Built-in or external PostgreSQL](../images/netbox-enterprise/netbox-enterprise-postgres.png)
@@ -86,8 +86,10 @@ Configuration information includes:
 - Built-in or external Redis object store:
   ![Built-in or external Redis](../images/netbox-enterprise/netbox-enterprise-redis.png)
 
-- Advanced settings to configure plugins and SSO remote authentication, and IPv4/IPv6 compatibility:
-  ![Advanced Settings](../images/netbox-enterprise/netbox-enterprise-advanced.png)
+<!-- Advanced settings to configure plugins and SSO remote authentication, and IPv4/IPv6 compatibility:
+  ![Advanced Settings](../images/netbox-enterprise/netbox-enterprise-advanced.png) -->
+
+For now, skip `Advanced Settings` 
 
 Finally, accept the terms of service by writing "ACCEPT" (case-insensitive) and you can proceed to the deployment.
 
