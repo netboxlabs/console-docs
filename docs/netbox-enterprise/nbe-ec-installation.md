@@ -11,33 +11,33 @@ The following steps are required for an Embedded Cluster (EC) installation of Ne
 
 1. Download the deployment package and license file to your host (the `Authorization` token should be provided by NetBox Labs):
 
-  ```
-  curl -f "https://app.enterprise.netboxlabs.com/embedded/netbox-enterprise/stable" -H "Authorization: <provided by NetBox Labs>" -o netbox-enterprise-stable.tgz
-  ```
-  Confirm the file size is ~300MB
+     ```
+      curl -f "https://app.enterprise.netboxlabs.com/embedded/netbox-enterprise/stable" -H "Authorization: <provided by NetBox Labs>" -o netbox-enterprise-stable.tgz
+     ```
+       Confirm the file size is ~300MB
 
 2. Uncompress the package and launch the installation:
 
-   ```
-   tar -xvzf netbox-enterprise-stable.tgz
-   sudo ./netbox-enterprise install --license license.yaml
-   ```
+      ```
+      tar -xvzf netbox-enterprise-stable.tgz
+      sudo ./netbox-enterprise install --license license.yaml
+      ```
 
-   You’ll be requested to create a password for the NetBox Enterprise admin console. A Kubernetes cluster will then be deployed, ready to host all the NetBox application components. The deployment of the cluster is complete with this message:
+      You’ll be requested to create a password for the NetBox Enterprise admin console. A Kubernetes cluster will then be deployed, ready to host all the NetBox application components. The deployment of the cluster is complete with this message:
 
-   ```shell {.bash .no-copy} 
-   Visit the Admin Console to configure and install netbox-enterprise: http://my.netbox-enterprise.host:30000
-   ```
+      ```{.bash .no-copy} 
+      Visit the Admin Console to configure and install netbox-enterprise: http://my.netbox-enterprise.host:30000
+      ```
 
 ## Deploying NetBox
 
 Access the NetBox Enterprise admin console and configure NetBox.
 
-Open the provided URL in a browser. A prompt will require the password created in Step 2:
+**Open the provided URL in a browser. A prompt will require the password created in Step 2:**
 
 ![Admin Console](../images/netbox-enterprise/admin-console.png){ width="50%" }
 
-Once signed in you will be greeted by the following warning:
+**Once signed in you will be greeted by the following warning:**
 
 > **Bypass browser TLS warning:**
 > We use a self-signed SSL/TLS Certificate to secure the communication 
@@ -45,37 +45,42 @@ Once signed in you will be greeted by the following warning:
 > You'll see a warning about this in your browser, but you can be confident 
 > that this is secure.
 
-Click `Continue to Setup`. you can add your certificate later, instruction on how to do can be found [here](https://docs.netboxlabs.com/netbox-enterprise/nbe-tls-ingress/)
+You can set your TLS certificate now or click `Continue to Setup` to configure it later. TLS configuration instructions are available [here](https://docs.netboxlabs.com/netbox-enterprise/nbe-tls-ingress/)
 
 ![TLS Warning Screen](../images/netbox-enterprise/tls_warning.png)
 
 On the next screen, click `Advanced`, then click `Proceed`. 
 
-On the following page you can add your hostname if it was provisioned prior to the start of the installation. Then click `continue`.
+**You have the option to add your hostname on the following page if it was provisioned before starting the installation; otherwise, simply click `Continue`.**
 
 ![TLS Warning Screen](../images/netbox-enterprise/hostname.png)
 
 Again, click `Advanced`, then click `Proceed`, and you will be prompted to login to the console once more.
 
-On the next page you be given the option to add additional nodes to the cluster. **DO NOT ADD ADDTIONAL NODES**, as it is not currently supported. 
+**Once logged in, you'll be given the option to add additional nodes to the cluster.** 
+
+**DO NOT ADD ADDITIONAL NODES**, as it is not currently supported.
+
 !!! warning "Be Advised"
     Adding addtional nodes to the cluster is not supported. 
 
-Click `Continue` to move on to the final insallation wizard
+Click `Continue` to move on to the final insallation wizard.
 ![Node Page](../images/netbox-enterprise/nodes_page.png)
+
+## Configure NetBox Enterprise
 
 A wizard will guide the configuration of NetBox for the environment:
 
-Provisions a Superuser and password:
+**Provisions a Superuser and password:**
 ![NetBox Configuration](../images/netbox-enterprise/configure-netbox-enterprise.png)
 
-Next, set the number of replicas and choose a preset for the resources allocated to NetBox
+**Next, set the number of replicas and choose a preset for the resources allocated to NetBox**
 ![NetBox Configuration](../images/netbox-enterprise/replicas_resources.png)
 
 !!! warning "Be Advised"
-    Do not enable Restore Mode when initally setting up NetBox or the installation will fail.
+    Do not enable Restore Mode when initially setting up NetBox or the installation will fail.
 
-Next, configure your PostgreSQL database, S3-compatible storage, and Redis cache:
+**Next, configure your PostgreSQL database, S3-compatible storage, and Redis cache:**
 
 - Built-in or external PostgreSQL:
   ![Built-in or external PostgreSQL](../images/netbox-enterprise/netbox-enterprise-postgres.png)
@@ -91,14 +96,13 @@ Next, configure your PostgreSQL database, S3-compatible storage, and Redis cache
 
 For now, skip `Advanced Settings` 
 
-Finally, accept the terms of service by writing "ACCEPT" (case-insensitive) and you can proceed to the deployment.
+**Finally, accept the terms of service by writing "ACCEPT" (case-insensitive) and you can proceed to the deployment.**
 
 ![Accept TOS](../images/netbox-enterprise/netbox-enterprise-accept-tos.png)
 
 ## Finish the Deployment
 
-Once you have accepted the terms of service and continued on to the main admin console, deployment will start.
-The first deployment will take some time, as it brings up all subsystems and runs migrations to initialize the database.
+Once you have accepted the terms of service and started the deployment on the following page, you will be redirected to the console Dashboard. The first deployment will take some time, as it brings up all subsystems and runs migrations to initialize the database.
 
 ![Deployment Started](../images/netbox-enterprise/netbox-enterprise-deploy.png)
 
