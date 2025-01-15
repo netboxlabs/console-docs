@@ -1,0 +1,20 @@
+.pill {
+    display: inline-block;
+    padding: 0.0em 1.0em;
+    border-radius: 99px;
+    background-color: var(--pill-bg, #00f2d4);
+    color: white;
+    font-size: 0.8em;
+}
+.pill-enterprise {
+    background-color: #ffac00;
+}
+.pill-cloud {
+    background-color: #00d9be;
+}
+.pill-community {
+    background-color: #00bee0;
+}
+.pill-airgap {
+    background-color: #ff0078;
+}
