@@ -122,6 +122,8 @@ nav:
   - Integrations: 
     - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
     - pyATS: "netbox-integrations/pyats.md"
+    - ServiceNow: 
+      - Overview: "netbox-integrations/servicenow/index.md"
   - SDKs:
     - Pynetbox: "sdks/pynetbox.md"
   - Extensions:
