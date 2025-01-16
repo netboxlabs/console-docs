@@ -1,13 +1,68 @@
 # NetBox Enterprise 1.x Release Notes
 
+### 1.6.4
+
+Disable unnecessary Redis persistence and redundant PostgreSQL backups,
+plus fix an issue with file upload limits and missing static content
+from enabled plugins.
+
+NetBox Enterprise 1.6.4 includes NetBox 4.1.7, and is anticipated to
+be a release candidate for stable.
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Version | Certified |
+| ------ | ------- | --------- |
+| nbrisk | 41.0.1 | ☐ |
+| netbox-acls | 1.7.0 | ☑︎ |
+| netbox-bgp | 0.14.0 | ☑︎ |
+| netbox-config-diff | 2.7.0 | ☐ |
+| netbox-documents | 0.7.0 | ☐ |
+| netbox-floorplan-plugin | 0.5.0 | ☑︎ |
+| netbox-interface-synchronization | 4.1.4 | ☐ |
+| netbox-inventory | 2.1.0 | ☐ |
+| netbox-lifecycle | 1.1.3 | ☐ |
+| netbox-plugin-dns | 1.1.6 | ☑︎ |
+| netbox-qrcode | 0.0.15 | ☑︎ |
+| netbox-secrets | 2.1.0 | ☐ |
+| netbox-topology-views | 4.1.0 | ☑︎ |
+| netbox-validity | 3.0.5 | ☐ |
+| netboxlabs-diode-netbox-plugin | 0.6.0 | ☑︎ |
+| netboxlabs-netbox-branching | 0.5.2 | ☑︎ |
+| phonebox-plugin | 0.0.10 | ☐ |
+| slurpit_netbox | 1.0.43 | ☑︎ |
+
+### 1.6.3
+
+Just a few small bug fixes, mostly related to internal changes.
+Also contains dependency updates.
+
+
+### 1.6.2
+
+Primarily internal and build-related changes.
+No new features.
+
+### 1.6.1
+
+Fixes a number of bugs related to file uploads and proxy environments.
+
+### 1.6.0
+
+Adds the changes plugin by default, and upgrades NetBox to 4.1.7.
+Fixes some small bugs in plugin initialization and proxied installs.
+
+### 1.5.0
+
+The 1.5.x series was released internally for development
+testing of upgrades to NetBox 4.1 and branching plugin inclusion.
+
 ### 1.4.2
 
 A re-release of 1.4.1 with a fix that makes sure plugin versions
 that are only compatible with NetBox 4.1 are not included.
-
-#### Features
-
-* *netbox:* update to latest 4.0.x-compatible plugins (ENG-3923)
 
 #### Plugins
 
@@ -38,11 +93,6 @@ The following plugins are included in this release:
 
 A small release with some dependency updates and the latest set
 of NetBox 4.0-compatible plugins.
-
-#### Features
-
-* *deps:* update bitnami-common and netbox oss charts
-* *netbox:* update to latest 4.0.x-compatible plugins (ENG-3794)
 
 #### Plugins
 
