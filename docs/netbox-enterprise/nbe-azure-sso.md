@@ -67,7 +67,7 @@ You should be redirected to Microsoft's authentication portal. Enter the usernam
 
 ![NetBox Azure AD login form](../images/Azure%20SSO/azure_ad_login_portal.png)
 
-If successful, you will be redirected back to the NetBox Enterprise UI, and will be logged in as the AD user. You can verify this by navigating to your profile (using the button at top right).
+If successful, you will be redirected back to the NetBox Enterprise UI, and will be logged in as the Entra ID user. You can verify this by navigating to your profile (using the button at top right).
 
 This user account has been replicated locally to NetBox Enterprose, and can now be assigned groups and permissions within the NetBox Enterprise admin UI.
 
