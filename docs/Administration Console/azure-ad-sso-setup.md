@@ -1,13 +1,13 @@
-# Microsoft Azure AD Setup
+# Microsoft Entra ID Setup (formerly Azure Active Directory)
 
-This guide explains how to configure single sign-on (SSO) support for NetBox Cloud using Microsoft Azure Active Directory (AD) as an authentication backend.
+This guide explains how to configure single sign-on (SSO) support for NetBox Cloud using Microsoft Entra ID(formerly Azure Active Directory) as an authentication backend.
 
-## Azure AD Configuration
+## Entra ID Configuration
 1. Create a test user (optional)
-Create a new user in AD to be used for testing. You can skip this step if you already have a suitable account created.
+Create a new Entra ID user to be used for testing. You can skip this step if you already have a suitable account created.
 
 2. Create an app registration
-Under the Azure Active Directory dashboard, navigate to **Add** > **App registration**.
+Under the Microsoft Entra ID dashboard, navigate to **Add** > **App registration**.
 
     ![Add an app registration](../images/Azure%20SSO/azure_ad_add_app_registration.png)
 
@@ -26,7 +26,7 @@ Under the Azure Active Directory dashboard, navigate to **Add** > **App registra
 
     **Multitenant authentication**
 
-    NetBox also supports multitenant authentication via Azure AD, however it requires a different backend and an additional configuration parameter. Please see the `python-social-auth` [documentation](https://python-social-auth.readthedocs.io/en/latest/backends/azuread.html#tenant-support) for details concerning multitenant authentication.
+    NetBox also supports multitenant authentication via Entra ID, however it requires a different backend and an additional configuration parameter. Please see the `python-social-auth` [documentation](https://python-social-auth.readthedocs.io/en/latest/backends/azuread.html#tenant-support) for details concerning multitenant authentication.
 
 3. Create a secret
 
@@ -53,13 +53,13 @@ SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = '{SECRET_VALUE}'
 The support team will add these parameters to your NetBox Cloud instance and confirm when this is ready for testing.
 
 ## Testing
-Log out of NetBox Cloud if already authenticated, and click the "Log In" button at top right. You should see the normal login form as well as an option to authenticate using Azure AD. Click that link.
+Log out of NetBox Cloud if already authenticated, and click the "Log In" button at top right. You should see the normal login form as well as an option to authenticate using Entra ID. Click that link.
 
-![NetBox Azure AD login form](../images/Azure%20SSO/netbox_azure_ad_login.png)
+![NetBox Entra ID login form](../images/Azure%20SSO/netbox_azure_ad_login.png)
 
 You should be redirected to Microsoft's authentication portal. Enter the username/email and password of your account to continue. You may also be prompted to grant this application access to your account.
 
-![NetBox Azure AD login form](../images/Azure%20SSO/azure_ad_login_portal.png)
+![NetBox Entra ID login form](../images/Azure%20SSO/azure_ad_login_portal.png)
 
 If successful, you will be redirected back to the NetBox Cloud UI, and will be logged in as the AD user. You can verify this by navigating to your profile (using the button at top right).
 
