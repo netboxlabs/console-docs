@@ -37,7 +37,7 @@ Once the desired configuration parameters have been set, click the "Save & Resta
 ### Single Sign-On (SSO)
 NetBox Cloud currently supports single sign-on (SSO) authentication for the following providers:
 
-- Microsoft Azure AD
+- Microsoft Entra ID (formerly Azure Active Directory)
 - Okta (via OpenID Connect)
 
 We are implementing support for additional backends as customers request them. If you have a need for a specific authentication backend, please let us know.
