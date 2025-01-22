@@ -73,7 +73,7 @@ This user account has been replicated locally to NetBox Enterprose, and can now 
 
 ## Troubleshooting
 ### Redirect URI does not Match
-Azure requires that the authenticating client request a redirect URI that matches what you've configured for the app in step two. This URI must begin with https:// 
+Entra ID requires that the authenticating client request a redirect URI that matches what you've configured for the app in step two. This URI must begin with https:// 
 
 ### Not Logged in After Authenticating
 If you are redirected to the NetBox Enterprise UI after authenticating successfully, but are not logged in, double-check the configured backend and app registration. The instructions in this guide pertain only to the `azuread.AzureADOAuth2` backend using a single-tenant app registration.
