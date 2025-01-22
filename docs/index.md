@@ -26,7 +26,6 @@ The home of documentation for NetBox [Cloud](Administration%20Console/console-ac
     [Get started with NetBox Enterprise](netbox-enterprise/nbe-overview.md)
 </div>
 
-
 ---
 
 ## NetBox Labs Products & Integrations
