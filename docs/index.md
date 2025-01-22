@@ -7,9 +7,9 @@ hide:
 
 The home of documentation for NetBox [Cloud](Administration%20Console/console-access.md), [Enterprise](netbox-enterprise/nbe-overview.md), [Integrations](netbox-integrations/netbox-ansible-collection.md), [SDKs](sdks/pynetbox.md) and [Extensions](netbox-extensions/diode/index.md).
 
-<div class="grid cards" markdown>
+<div class="grid cards" markdown="1">
 
--  ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Cloud__
+- ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Cloud__
     
     All the power and flexibility of NetBox, rock solid and secure. 
 
@@ -17,7 +17,7 @@ The home of documentation for NetBox [Cloud](Administration%20Console/console-ac
 
     [Get started with NetBox Cloud](Administration%20Console/console-access.md)
 
--  ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Enterprise__
+- ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Enterprise__
     
     The power of NetBox in your own infrastructure, 
     
@@ -36,7 +36,7 @@ The home of documentation for NetBox [Cloud](Administration%20Console/console-ac
 
 ## NetBox Labs Products & Integrations
 
-<div class="grid cards" markdown>
+<div class="grid cards" markdown="1">
 
 -   __NetBox Discovery__
 
@@ -80,7 +80,7 @@ The home of documentation for NetBox [Cloud](Administration%20Console/console-ac
 
 NetBox Labs builds software in the open, with thriving communities. We help develop multiple open source projects, such as NetBox and Orb.
 
-<div class="grid cards" markdown>
+<div class="grid cards" markdown="1">
 
 -  ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Community__
 
