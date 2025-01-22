@@ -69,7 +69,7 @@ nav:
       - Public IP Addressing: "Administration Console/public-ip-addressing.md"
       - Managing Hostnames: "Administration Console/managing-hostnames.md"
       - Single Sign-On (SSO):
-        - Azure:
+        - Entra ID:
           - Microsoft Entra ID SSO: "Administration Console/azure-ad-sso-setup.md"
           - Entra ID Group Mapping: "Administration Console/azure-group-mapping.md"
         - Okta:
@@ -99,7 +99,7 @@ nav:
     #  - Requirements: "netbox-enterprise/nbe-kots-requirements.md"
     #  - Installation: "netbox-enterprise/nbe-kots-installation.md"
     - SSO:
-      - Azure:
+      - Entra ID:
         - NBE Entra ID SSO Setup: "netbox-enterprise/nbe-azure-sso.md"
         - NBE Entra ID Group Mapping: "netbox-enterprise/nbe-azure-group-mapping.md"
     - "Administration":
