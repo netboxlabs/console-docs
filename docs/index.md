@@ -5,7 +5,7 @@ hide:
 ---
 # Welcome to the NetBox Labs Documentation Site 
 
-The home of documentation for NetBox [Cloud](Administration%20Console/console-access.md), [Enterprise](netbox-enterprise/nbe-overview.md), [Integrations](netbox-integrations/netbox-ansible-collection.md), [SDKs](sdks/pynetbox.md) and [Extensions](netbox-extensions/diode/index.md).
+The home of documentation for NetBox [Cloud](Administration%20Console/console-access.md), [Enterprise](netbox-enterprise/nbe-overview.md), [Integrations](netbox-integrations/netbox-ansible-collection.md), [SDKs](sdks/pynetbox.md) and [Extensions](netbox-extensions/diode/index.md). 
 
 <div class="grid cards" markdown="1">
 
@@ -24,13 +24,7 @@ The home of documentation for NetBox [Cloud](Administration%20Console/console-ac
     backed and enhanced by NetBox Labs.
 
     [Get started with NetBox Enterprise](netbox-enterprise/nbe-overview.md)
-
-
-![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="200"}
-![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="200"}
-
 </div>
-
 
 ---
 
