@@ -1,13 +1,13 @@
-# Microsoft Azure AD Setup
+# Microsoft Entra ID Setup (formerly Azure Active Directory)
 
-This guide explains how to configure single sign-on (SSO) support for NetBox Enterprise using Microsoft Azure Active Directory (AD) as an authentication backend.
+This guide explains how to configure single sign-on (SSO) support for NetBox Enterprise using Microsoft Entra ID(formerly Azure Active Directory) as an authentication backend.
 
-## Azure AD Configuration
+## Entra ID Configuration
 1. Create a test user (optional)
-Create a new user in AD to be used for testing. You can skip this step if you already have a suitable account created.
+Create a new Entra ID user to be used for testing. You can skip this step if you already have a suitable account created.
 
 2. Create an app registration
-Under the Azure Active Directory dashboard, navigate to **Add** > **App registration**.
+Under the Microsoft Entra ID dashboard, navigate to **Add** > **App registration**.
 
     ![Add an app registration](../images/Azure%20SSO/azure_ad_add_app_registration.png)
 
@@ -26,7 +26,7 @@ Under the Azure Active Directory dashboard, navigate to **Add** > **App registra
 
     **Multitenant authentication**
 
-    NetBox also supports multitenant authentication via Azure AD, however it requires a different backend and an additional configuration parameter. Please see the `python-social-auth` [documentation](https://python-social-auth.readthedocs.io/en/latest/backends/azuread.html#tenant-support) for details concerning multitenant authentication.
+    NetBox also supports multitenant authentication via Entra ID, however it requires a different backend and an additional configuration parameter. Please see the `python-social-auth` [documentation](https://python-social-auth.readthedocs.io/en/latest/backends/azuread.html#tenant-support) for details concerning multitenant authentication.
 
 3. Create a secret
 
@@ -59,7 +59,7 @@ SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = 'SECRET_VALUE'
 Once added, scroll down to the bottom of the page and click `Save config`. Follow the prompt to `Go to updated version` and click the `Deploy` button to deploy the updated version of your app with the configuration changes. 
 
 ## Testing
-Open your NetBox Instance once it is back up in the `Ready` state. Log out of NetBox instance if already authenticated, and click the "Log In" button at top right. You should see the normal login form as well as an option to authenticate using Azure AD. Click that link.
+Open your NetBox Instance once it is back up in the `Ready` state. Log out of NetBox instance if already authenticated, and click the "Log In" button at top right. You should see the normal login form as well as an option to authenticate using Entra ID. Click that link.
 
 ![NetBox Azure AD login form](../images/Azure%20SSO/netbox_azure_ad_login.png)
 
@@ -67,13 +67,13 @@ You should be redirected to Microsoft's authentication portal. Enter the usernam
 
 ![NetBox Azure AD login form](../images/Azure%20SSO/azure_ad_login_portal.png)
 
-If successful, you will be redirected back to the NetBox Enterprise UI, and will be logged in as the AD user. You can verify this by navigating to your profile (using the button at top right).
+If successful, you will be redirected back to the NetBox Enterprise UI, and will be logged in as the Entra ID user. You can verify this by navigating to your profile (using the button at top right).
 
 This user account has been replicated locally to NetBox Enterprose, and can now be assigned groups and permissions within the NetBox Enterprise admin UI.
 
 ## Troubleshooting
 ### Redirect URI does not Match
-Azure requires that the authenticating client request a redirect URI that matches what you've configured for the app in step two. This URI must begin with https:// 
+Entra ID requires that the authenticating client request a redirect URI that matches what you've configured for the app in step two. This URI must begin with https:// 
 
 ### Not Logged in After Authenticating
 If you are redirected to the NetBox Enterprise UI after authenticating successfully, but are not logged in, double-check the configured backend and app registration. The instructions in this guide pertain only to the `azuread.AzureADOAuth2` backend using a single-tenant app registration.

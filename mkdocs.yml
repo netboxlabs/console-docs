@@ -69,9 +69,9 @@ nav:
       - Public IP Addressing: "Administration Console/public-ip-addressing.md"
       - Managing Hostnames: "Administration Console/managing-hostnames.md"
       - Single Sign-On (SSO):
-        - Azure AD:
-          - Set up Azure AD SSO: "Administration Console/azure-ad-sso-setup.md"
-          - Azure AD Group Mapping: "Administration Console/azure-group-mapping.md"
+        - Entra ID:
+          - Microsoft Entra ID SSO: "Administration Console/azure-ad-sso-setup.md"
+          - Entra ID Group Mapping: "Administration Console/azure-group-mapping.md"
         - Okta:
           - Set up Okta SSO: "Administration Console/okta-sso-setup.md"
           - Okta Group Mapping: "Administration Console/okta-group-mapping.md"
@@ -99,8 +99,9 @@ nav:
     #  - Requirements: "netbox-enterprise/nbe-kots-requirements.md"
     #  - Installation: "netbox-enterprise/nbe-kots-installation.md"
     - SSO:
-      - NBE Azure SSO Setup: "netbox-enterprise/nbe-azure-sso.md"
-      - NBE Azure Group Mapping: "netbox-enterprise/nbe-azure-group-mapping.md"
+      - Entra ID:
+        - NBE Entra ID SSO Setup: "netbox-enterprise/nbe-azure-sso.md"
+        - NBE Entra ID Group Mapping: "netbox-enterprise/nbe-azure-group-mapping.md"
     - "Administration":
       - "TLS and Ingress": "netbox-enterprise/nbe-tls-ingress.md"
       - "Backups": "netbox-enterprise/nbe-backups.md"

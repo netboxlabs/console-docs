@@ -1,4 +1,4 @@
-# NetBox Enterprise Azure Group Mapping
+# NetBox Enterprise Entra ID Group Mapping
 Place the following in configuration overrides python section
 
 # Basic SSO
