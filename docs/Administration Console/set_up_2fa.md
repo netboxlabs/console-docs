@@ -1,10 +1,11 @@
 # Setting up Two-Factor Authentication for the Admin Console
 
+<!-- COMMENTING VIDEO OUT OF CODE! 
 From within the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/) you can easily enable and disable two-factor authentication (2FA) on a per-user basis. 
 
 Watch this quick video or follow the steps outlined below: 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/uli2qNRl7UU?si=meblrHYJ-04Au7fr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uli2qNRl7UU?si=meblrHYJ-04Au7fr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 
 ## Enable Two-Factor Authentication
 
