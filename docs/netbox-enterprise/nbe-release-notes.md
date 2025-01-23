@@ -1,5 +1,69 @@
 # NetBox Enterprise 1.x Release Notes
 
+### 1.7.0
+
+Updates the embedded NetBox to 4.1.11. Also upgrades
+the embedded cluster, which brings many bug fixes and
+features, including better preflight checks, and
+a direct link to the NetBox UI from the admin console.
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| nbrisk | nb_risk | 41.0.1 | ☐ |
+| netbox-acls | netbox_acls | 1.7.0 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.14.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.8.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.0 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.5.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.4 | ☐ |
+| netbox-inventory | netbox_inventory | 2.2.1 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.3 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.1.7 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.15 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.1.2 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.1.0 | ☑︎ |
+| netbox-validity | validity | 3.0.5 | ☐ |
+| netboxlabs-diode-netbox-plugin | netbox_diode_plugin | 0.6.0 | ☑︎ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.2 | ☑︎ |
+| phonebox-plugin | phonebox_plugin | 0.0.10 | ☐ |
+| slurpit_netbox | slurpit_netbox | 1.0.45 | ☑︎ |
+
+### 1.6.5
+
+Fixes a small bug that would cause the admin console to
+improperly display an error on upgrade. Also updates
+a few dependencies.
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Version | Certified |
+| ------ | ------- | --------- |
+| nbrisk | 41.0.1 | ☐ |
+| netbox-acls | 1.7.0 | ☑︎ |
+| netbox-bgp | 0.14.0 | ☑︎ |
+| netbox-config-diff | 2.7.0 | ☐ |
+| netbox-documents | 0.7.0 | ☐ |
+| netbox-floorplan-plugin | 0.5.0 | ☑︎ |
+| netbox-interface-synchronization | 4.1.4 | ☐ |
+| netbox-inventory | 2.1.0 | ☐ |
+| netbox-lifecycle | 1.1.3 | ☐ |
+| netbox-plugin-dns | 1.1.6 | ☑︎ |
+| netbox-qrcode | 0.0.15 | ☑︎ |
+| netbox-secrets | 2.1.0 | ☐ |
+| netbox-topology-views | 4.1.0 | ☑︎ |
+| netbox-validity | 3.0.5 | ☐ |
+| netboxlabs-diode-netbox-plugin | 0.6.0 | ☑︎ |
+| netboxlabs-netbox-branching | 0.5.2 | ☑︎ |
+| phonebox-plugin | 0.0.10 | ☐ |
+| slurpit_netbox | 1.0.43 | ☑︎ |
+
 ### 1.6.4
 
 Disable unnecessary Redis persistence and redundant PostgreSQL backups,
