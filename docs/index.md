@@ -9,7 +9,6 @@ hide:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NetBox Labs Documentation</title>
-  <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
 </head>
 <body>
   <header>
