@@ -137,6 +137,7 @@ nav:
         - Creating a Branch: "netbox-extensions/branching/using-branches/creating-a-branch.md"
         - Syncing & Merging Changes: "netbox-extensions/branching/using-branches/syncing-merging.md"
         - Reverting a Branch: "netbox-extensions/branching/using-branches/reverting-a-branch.md"
+        - Interact with Branches via API: "netbox-extensions/branching/using-branches/api.md"
       - Models:
         - Branches: "netbox-extensions/branching/models/branch.md"
         - Branch Events: "netbox-extensions/branching/models/branchevent.md"
