@@ -3,89 +3,88 @@ hide:
   - navigation
   - toc
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NetBox Labs Documentation</title>
-</head>
-<body>
-  <header>
-    <h1>Welcome to the NetBox Labs Documentation Site</h1>
-    <p>The home of documentation for NetBox <a href="Administration%20Console/console-access.md">Cloud</a>, <a href="netbox-enterprise/nbe-overview.md">Enterprise</a>, <a href="netbox-integrations/netbox-ansible-collection.md">Integrations</a>, <a href="sdks/pynetbox.md">SDKs</a>, and <a href="netbox-extensions/diode/index.md">Extensions</a>.</p>
-  </header>
+# Welcome to the NetBox Labs Documentation Site 
 
-  <section class="grid cards">
-    <div>
-      <img src="/images/netbox-favicon.png" class="nbl-light-img" width="30" alt="NetBox Logo">
-      <img src="/images/netbox-light-favicon.png" class="nbl-dark-img" width="30" alt="NetBox Dark Logo">
-      <strong>NetBox Cloud</strong>
-      <p>All the power and flexibility of NetBox, rock solid and secure.</p>
-      <p>Focus on building and evolving your network.</p>
-      <a href="Administration%20Console/console-access.md">Get started with NetBox Cloud</a>
-    </div>
-    <div>
-      <img src="/images/netbox-favicon.png" class="nbl-light-img" width="30" alt="NetBox Logo">
-      <img src="/images/netbox-light-favicon.png" class="nbl-dark-img" width="30" alt="NetBox Dark Logo">
-      <strong>NetBox Enterprise</strong>
-      <p>The power of NetBox in your own infrastructure, backed and enhanced by NetBox Labs.</p>
-      <a href="netbox-enterprise/nbe-overview.md">Get started with NetBox Enterprise</a>
-    </div>
-  </section>
+The home of documentation for NetBox [Cloud](Administration%20Console/console-access.md), [Enterprise](netbox-enterprise/nbe-overview.md), [Integrations](netbox-integrations/netbox-ansible-collection.md), [SDKs](sdks/pynetbox.md) and [Extensions](netbox-extensions/diode/index.md). 
 
-  <hr>
+<div class="grid cards" markdown="1">
 
-  <section>
-    <h2>NetBox Labs Products & Integrations</h2>
-    <div class="grid cards">
-      <div>
-        <strong>NetBox Discovery</strong>
-        <p>Map your network and infrastructure. Accelerate documentation. Streamline your automation journey.</p>
-        <a href="netbox-discovery/index.md">Learn more about NetBox Discovery</a>
-      </div>
-      <div>
-        <strong>NetBox Assurance</strong>
-        <p>Identify, understand, and eliminate operational drift.</p>
-        <a href="netbox-assurance/index.md">Learn more about NetBox Assurance</a>
-      </div>
-      <div>
-        <strong>NetBox Branching Plugin</strong>
-        <p>This NetBox plugin introduces branching functionality. A branch is a discrete, static snapshot of the NetBox database which can be modified independently and later merged back into the main database.</p>
-        <a href="netbox-extensions/branching/index.md">Learn more about NetBox Branching</a>
-      </div>
-      <div>
-        <strong>NetBox Change Management Plugin</strong>
-        <p>This feature family brings powerful workflows to NetBox for team collaboration in designing, testing, and deploying network and infrastructure changes.</p>
-        <a href="netbox-extensions/changes/index.md">Learn more about NetBox Change Management</a>
-      </div>
-      <div>
-        <strong>Diode</strong>
-        <p>Diode is a NetBox data ingestion service that greatly simplifies and enhances the process to add and update network data in NetBox, ensuring your network source of truth is always accurate and can be trusted to power your network automation pipelines.</p>
-        <a href="netbox-extensions/diode/index.md">Learn more about Diode</a>
-      </div>
-    </div>
-  </section>
+- ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Cloud__
+    
+    All the power and flexibility of NetBox, rock solid and secure. 
 
-  <hr>
+    Focus on building and evolving your network.
 
-  <section>
-    <h2>Open Source Projects</h2>
-    <p>NetBox Labs builds software in the open, with thriving communities. We help develop multiple open source projects, such as NetBox and Orb.</p>
-    <div class="grid cards">
-      <div>
-        <img src="/images/netbox-favicon.png" class="nbl-light-img" width="30" alt="NetBox Logo">
-        <img src="/images/netbox-light-favicon.png" class="nbl-dark-img" width="30" alt="NetBox Dark Logo">
-        <strong>NetBox Community</strong>
-        <p>NetBox exists to empower network engineers. Since its release in 2016, it has become the go-to solution for modeling and documenting network infrastructure for thousands of organizations worldwide.</p>
-        <a href="https://github.com/netbox-community/netbox">Visit the NetBox Community GitHub page</a>
-      </div>
-      <div>
-        <strong>NetBox Discovery Agent</strong>
-        <p>NetBox discovery agents map network resources and gather device information to build a comprehensive model of your infrastructure.</p>
-        <a href="netbox-discovery/agent/index.md">Learn more about the NetBox Discovery Agent</a>
-      </div>
-    </div>
-  </section>
-</body>
-</html>
+    [Get started with NetBox Cloud](Administration%20Console/console-access.md)
+
+- ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Enterprise__
+    
+    The power of NetBox in your own infrastructure, 
+    
+    backed and enhanced by NetBox Labs.
+
+    [Get started with NetBox Enterprise](netbox-enterprise/nbe-overview.md)
+</div>
+
+---
+
+## NetBox Labs Products & Integrations
+
+<div class="grid cards" markdown="1">
+
+-   __NetBox Discovery__
+
+    Map your network and infrastructure. 
+    Accelerate documentation. 
+    Streamline your automation journey.
+
+    [Learn more about NetBox Discovery](netbox-discovery/index.md)
+
+
+-   __NetBox Assurance__
+
+    Identify, understand, and eliminate 
+    operational drift.
+
+    [Learn more about NetBox Assurance](netbox-assurance/index.md)
+
+-   __NetBox Branching Plugin__
+
+    This NetBox plugin introduces branching functionality. A branch is a discrete, static snapshot of the NetBox database which can be modified independently and later merged back into the main database. 
+
+    [Learn more about NetBox Branching](netbox-extensions/branching/index.md)
+  
+-   __NetBox Change Management Plugin__
+
+    This feature family brings powerful workflows to NetBox for team collaboration in designing, testing, and deploying network and infrastructure changes.
+
+    [Learn more about NetBox Change Management](netbox-extensions/changes/index.md)
+
+-   __Diode__
+
+    Diode is a NetBox data ingestion service that greatly simplifies and enhances the process to add and update network data in NetBox, ensuring your network source of truth is always accurate and can be trusted to power your network automation pipelines.
+
+    [Learn more about Diode](netbox-extensions/diode/index.md)
+
+</div>
+
+---
+
+## Open Source Projects
+
+NetBox Labs builds software in the open, with thriving communities. We help develop multiple open source projects, such as NetBox and Orb.
+
+<div class="grid cards" markdown="1">
+
+-  ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Community__
+
+    NetBox exists to empower network engineers. Since its release in 2016, it has become the go-to solution for modeling and documenting network infrastructure for thousands of organizations worldwide.
+
+    [Visit the NetBox Community GitHub page](https://github.com/netbox-community/netbox)
+
+-  __NetBox Discovery Agent__
+
+    NetBox discovery agents map network resources and gather device information to build a comprehensive model of your infrastructure.
+
+    [Learn more about the NetBox Discovery Agent](netbox-discovery/agent/index.md)
+</div>
