@@ -5,7 +5,7 @@ hide:
 ---
 # Welcome to the NetBox Labs Documentation Site 
 
-The home of documentation for NetBox [Cloud](Administration%20Console/console-access.md), [Enterprise](netbox-enterprise/nbe-overview.md), [Integrations](netbox-integrations/netbox-ansible-collection.md), [SDKs](sdks/pynetbox.md) and [Extensions](netbox-extensions/diode/index.md). 
+The home of documentation for NetBox [Cloud](Administration%20Console/console-access), [Enterprise](netbox-enterprise/nbe-overview), [Integrations](netbox-integrations/netbox-ansible-collection), [SDKs](sdks/pynetbox) and [Extensions](netbox-extensions/branching/). 
 
 <div class="grid cards" markdown="1">
 
@@ -15,7 +15,7 @@ The home of documentation for NetBox [Cloud](Administration%20Console/console-ac
 
     Focus on building and evolving your network.
 
-    [Get started with NetBox Cloud](Administration%20Console/console-access.md)
+    [Get started with NetBox Cloud](Administration%20Console/console-access)
 
 - ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Enterprise__
     
@@ -23,7 +23,7 @@ The home of documentation for NetBox [Cloud](Administration%20Console/console-ac
     
     backed and enhanced by NetBox Labs.
 
-    [Get started with NetBox Enterprise](netbox-enterprise/nbe-overview.md)
+    [Get started with NetBox Enterprise](netbox-enterprise/nbe-overview)
 </div>
 
 ---
@@ -38,7 +38,7 @@ The home of documentation for NetBox [Cloud](Administration%20Console/console-ac
     Accelerate documentation. 
     Streamline your automation journey.
 
-    [Learn more about NetBox Discovery](netbox-discovery/index.md)
+    [Learn more about NetBox Discovery](netbox-discovery/)
 
 
 -   __NetBox Assurance__
@@ -46,25 +46,25 @@ The home of documentation for NetBox [Cloud](Administration%20Console/console-ac
     Identify, understand, and eliminate 
     operational drift.
 
-    [Learn more about NetBox Assurance](netbox-assurance/index.md)
+    [Learn more about NetBox Assurance](netbox-assurance/)
 
 -   __NetBox Branching Plugin__
 
     This NetBox plugin introduces branching functionality. A branch is a discrete, static snapshot of the NetBox database which can be modified independently and later merged back into the main database. 
 
-    [Learn more about NetBox Branching](netbox-extensions/branching/index.md)
+    [Learn more about NetBox Branching](netbox-extensions/branching/)
   
 -   __NetBox Change Management Plugin__
 
     This feature family brings powerful workflows to NetBox for team collaboration in designing, testing, and deploying network and infrastructure changes.
 
-    [Learn more about NetBox Change Management](netbox-extensions/changes/index.md)
+    [Learn more about NetBox Change Management](netbox-extensions/changes)
 
 -   __Diode__
 
     Diode is a NetBox data ingestion service that greatly simplifies and enhances the process to add and update network data in NetBox, ensuring your network source of truth is always accurate and can be trusted to power your network automation pipelines.
 
-    [Learn more about Diode](netbox-extensions/diode/index.md)
+    [Learn more about Diode](netbox-extensions/diode/)
 
 </div>
 
@@ -86,5 +86,5 @@ NetBox Labs builds software in the open, with thriving communities. We help deve
 
     NetBox discovery agents map network resources and gather device information to build a comprehensive model of your infrastructure.
 
-    [Learn more about the NetBox Discovery Agent](netbox-discovery/agent/index.md)
+    [Learn more about the NetBox Discovery Agent](netbox-discovery/agent/)
 </div>
