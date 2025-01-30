@@ -24,11 +24,6 @@ The home of documentation for NetBox [Cloud](Administration%20Console/console-ac
     backed and enhanced by NetBox Labs.
 
     [Get started with NetBox Enterprise](netbox-enterprise/nbe-overview.md)
-
-
-![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="200"}
-![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="200"}
-
 </div>
 
 
