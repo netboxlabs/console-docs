@@ -103,6 +103,7 @@ nav:
       - Entra ID:
         - NBE Entra ID SSO Setup: "netbox-enterprise/nbe-azure-sso.md"
         - NBE Entra ID Group Mapping: "netbox-enterprise/nbe-azure-group-mapping.md"
+      - LDAP: "netbox-enterprise/nbe-ldap.md"
     - "Administration":
       - "TLS and Ingress": "netbox-enterprise/nbe-tls-ingress.md"
       - "Backups": "netbox-enterprise/nbe-backups.md"
