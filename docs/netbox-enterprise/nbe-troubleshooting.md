@@ -80,7 +80,7 @@ Enable debug logging to increase log verbosity for troubleshooting issues. Debug
 
 1. Access the admin console
 2. Navigate to "Config" section
-3. Find "Debug Mode" toggle
+3. Find "Enable Debug Logging" toggle
 4. Enable the toggle
 5. Click "Save Config"
 6. Deploy the updated configuration
@@ -95,5 +95,6 @@ Access the logs using:
 kubectl logs netbox-enterprise-<pod_id> -n kotsadm
 ```
 
-Example:
+Log example:
+
 ![Debug Logging Enabled](../images/netbox-enterprise/netbox-enterprise-debug-logging-example.png)
