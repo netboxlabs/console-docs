@@ -1,20 +1,20 @@
 # TLS and Ingress: Accessing NetBox Enterprise
 
-## Embedded Cluster Installs
+## NetBox Enterprise Installs
 
 ### Ingress
 
-The Embedded Cluster provides its own ingress controller.
+The NetBox Enterprise installation provides its own ingress controller.
 No additional configuration is required to reach NetBox on HTTP and HTTPS.
 
 ### TLS
 
 #### Configuration
 
-When you first install the Embedded Cluster and log into the Admin Console, it asks you to configure the TLS certificate.
+When you first install NetBox Enterprise and log into the Admin Console, it asks you to configure the TLS certificate.
 By default, it will generate a self-signed certificate, but you are able to instead upload private key and certificate chain files.
 
-This key and certificate chain are used for any TLS connections to the Embedded Cluster, whether it's the Admin Console (on port 30000) or the main NetBox interface (on port 443).
+This key and certificate chain are used for any TLS connections to the cluster, whether it's the Admin Console (on port 30000) or the main NetBox interface (on port 443).
 
 #### Key Replacement/Rotation
 
@@ -25,7 +25,7 @@ If you configured your Admin Console to use a self-signed certificate on install
     If you're using Let's Encrypt, this will be the `privkeyXX.pem` and `fullchainXX.pem` files.
     For other certificate providers, consult their documentation.
 
-First, access the Embedded Cluster's shell:
+First, access the NetBox Enterprise shell:
 
 ```shell
 /var/lib/embedded-cluster/bin/netbox-enterprise shell
@@ -47,6 +47,7 @@ kubectl -n ingress-nginx delete "${NGINX_POD}" && \
 kubectl -n kotsadm delete "${PROXY_POD}"
 ```
 
+<!--
 ## KOTS Installs
 
 ### Ingress
@@ -74,3 +75,5 @@ controller:
 
 The `default-ssl-certificate` line should point to the cluster location of your secret containing the certificate and key information, tagged with the type `kubernetes.io/tls`.
 For details, see the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets).
+
+-->

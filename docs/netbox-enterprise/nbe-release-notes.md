@@ -2,10 +2,10 @@
 
 ### 1.7.0
 
-Updates the embedded NetBox to 4.1.11. Also upgrades
-the embedded cluster, which brings many bug fixes and
-features, including better preflight checks, and
-a direct link to the NetBox UI from the admin console.
+Updates the included NetBox to 4.1.11. Also upgrades
+the version of the cluster software, which brings many
+bug fixes and features, including better preflight checks,
+and a direct link to the NetBox UI from the admin console.
 
 #### Plugins
 
@@ -202,7 +202,7 @@ Also fixes a potential data loss issue with uploaded images, as well as enabling
 
 ### 1.2.0
 
-Improves ingress configuration, adds support for inheriting the TLS configuration from the Embedded Cluster, and adds a "restore mode" for restoring manual backup data, plus many dependency updates and internal improvements.
+Improves ingress configuration, adds support for inheriting the TLS configuration from the Admin Console configuration, and adds a "restore mode" for restoring manual backup data, plus many dependency updates and internal improvements.
 
 ### 1.1.0
 
@@ -212,11 +212,11 @@ Simplifies the firewall configuration necessary for installation by making sure 
 
 Adds support for NetBox resource usage adjustment and some improvements to startup time on a first install.
 
-It also adds support for backup and restore in the Embedded Cluster and KOTS installs, depending on your environment and license.
+It also adds support for backup and restore, depending on your environment and license.
 
 ### 1.0.5
 
-Adds support for KOTS installs to scrape Prometheus metrics from NetBox, as well as the embedded PostgreSQL, Redis, and SeaweedFS if they are enabled.
+Adds support for scraping Prometheus metrics from NetBox, as well as the embedded PostgreSQL, Redis, and SeaweedFS if they are enabled.
 
 Updated to support NetBox v4.0.9, and includes additional bug fixes and startup time improvements.
 

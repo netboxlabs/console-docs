@@ -93,7 +93,7 @@ nav:
         - Scheduled Maintenance: "maintenance.md"
   - Enterprise:
     - Overview: "netbox-enterprise/nbe-overview.md"
-    - Embedded Cluster:
+    - NetBox Enterprise Installer:
       - Requirements: "netbox-enterprise/nbe-ec-requirements.md"
       - Installation: "netbox-enterprise/nbe-ec-installation.md"
     #- KOTS:

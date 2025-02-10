@@ -16,30 +16,38 @@ The following applications are used for various facets of administration:
   `curl https://krew.sh/support-bundle | bash`
 * [k9s](https://k9scli.io/): a TUI for managing and viewing cluster resources.
 
-_\* provided by the Embedded Cluster install_
+_\* provided by the NetBox Enterprise install_
 
 ## Accessing Your Cluster from the Command Line
 
-### Embedded Cluster
+<!--
+### NetBox Enterprise Installer
+-->
 
-If you are running the Embedded Cluster, you will need to first execute a command to get a shell environment that knows how to interact with it.  To do this, run:
+If you are running the NetBox Enterprise installer, you will need to first execute a command to get a shell environment that knows how to interact with it.  To do this, run:
 
 ```shell
 /var/lib/embedded-cluster/bin/netbox-enterprise shell
 ```
 
+<!--
 ### KOTS Install
 
 If you are running your own cluster and have installed using KOTS, make sure you have `kubectl` in your `PATH` and that it is able to access your cluster.
 
 The specifics will depend on the type of cluster and where you are accessing it from.
 
+-->
+
 ## Accessing Your Cluster from the Web
 
+<!--
 ### Embedded Cluster
+-->
 
-On the embedded cluster, the admin console is always available at `https://your-cluster-host-or-ip:30000/`
+The admin console is always available at `https://your-cluster-host-or-ip:30000/` in a default NetBox Enterprise install.
 
+<!--
 ### KOTS Install
 
 To access the admin console in a KOTS install, run:
@@ -49,6 +57,8 @@ kubectl kots admin-console --namespace netbox-enterprise
 ```
 
 This will create a port-forward into the cluster and provide you with a link to reach the console.
+
+-->
 
 ## Generating a Support Bundle
 

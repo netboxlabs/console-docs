@@ -1,6 +1,6 @@
-# NetBox Enterprise Embedded Cluster Installation
+# NetBox Enterprise Installation
 
-You should be able to follow these instructions for installing the Embedded Cluster in most environments.
+You should be able to follow these instructions for installing NetBox Enterprise in most environments.
 
 !!! Note
     The hostname and IP address of the host cannot be changed after installation, and must be finalized before proceeding.

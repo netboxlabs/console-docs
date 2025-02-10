@@ -1,4 +1,4 @@
-# NetBox Enterprise Embedded Cluster Requirements
+# NetBox Enterprise Requirements
 
 ### Host system requirements
 
@@ -38,14 +38,14 @@ Before you can install, you _must_ configure your proxy to allow the following h
 * **proxy.enterprise.netboxlabs.com**
 * **registry.enterprise.netboxlabs.com**
 
-They are required to access various parts of the Embedded Cluster and NetBox Enterprise installation resources.
+They are required to access various resources used in the NetBox Enterprise installation.
 
 #### Installation
 
-Once you have configured your proxy to allow access to the NetBox Enterprise hosts, you will need to pass some additional arguments to the Embedded Cluster installer when following the [basic installation instructions](./nbe-ec-installation.md).
+Once you have configured your proxy to allow access to the NetBox Enterprise hosts, you will need to pass some additional arguments to the NetBox Enterprise installer when following the [basic installation instructions](./nbe-ec-installation.md).
 
 !!! note
-    The Embedded Cluster will _not_ inherit proxy settings from the shell environment, they must be explicitly provided on the installation command-line.
+    NetBox Enterprise will _not_ inherit proxy settings from the shell environment, they must be explicitly provided on the installation command-line.
 
 * `--http-proxy <proxy-url>` and `--https-proxy <proxy-url>`
 
@@ -53,7 +53,7 @@ Once you have configured your proxy to allow access to the NetBox Enterprise hos
 
 * `--no-proxy`
 
-    By default, the Embedded Cluster will automatically disable proxying on the internal cluster addresses, as well as the default network interface on your host.
+    By default, the installer will automatically disable proxying on the internal cluster addresses, as well as the default network interface on your host.
 
     In some cases, if the installer can't autodetect an interface or if you have a more complicated network, you may need to specify this manually.
     It should be in the form of a comma-separated list of addresses with CIDR netmasks (`1.2.3.4/32`), or domains (`foo.com`, `*.bar.com`).
@@ -64,19 +64,19 @@ If you are using a MITM proxy (ie, one which uses an internal TLS certificate au
 
 * `--private-ca </path/to/private-ca-bundle>`
 
-This will allow the Embedded Cluster to accept traffic that has been encrypted using your internal CA.
+This will allow the cluster to accept traffic that has been encrypted using your internal CA.
 
 ### Firewalld
 
 If you are using Firewalld (commonly found on RHEL installations), you will need to create a zone for the cluster before installing.
 
 1. Determine any host IP addresses or networks (external or otherwise) that might need access to the cluster.
-2. Create a file called `/etc/firewalld/zones/embedded-cluster.xml` with the following contents:
+2. Create a file called `/etc/firewalld/zones/netbox-enterprise.xml` with the following contents:
    ```xml
    <?xml version="1.0" encoding="utf-8"?>
    <zone target="ACCEPT">
-     <short>embedded-cluster</short>
-     <description>Zone for Embedded Cluster communication</description>
+     <short>netbox-enterprise</short>
+     <description>Zone for NetBox Enterprise communication</description>
      <!-- HOST IP ADDRESSES GO HERE -->
      <source address="10.244.0.0/17"/>
      <source address="10.244.128.0/17"/>
@@ -107,7 +107,7 @@ Then you can follow the [basic installation instructions](./nbe-ec-installation.
 
 There are two steps to installing with SELinux enabled with enforcement turned on.
 
-First, before you install the Embedded Cluster, run:
+First, before you install NetBox Enterprise, run:
 ```bash
 sudo setenforce 0
 ```
@@ -116,13 +116,13 @@ This will temporarily disable SELinux enforcement until you explicitly reenable 
 
 Next, follow the [basic installation instructions](./nbe-ec-installation.md).
 
-Finally, run the following commands to make sure your Embedded Cluster installation is accessible with enforcement enabled:
+Finally, run the following commands to make sure your NetBox Enterprise installation is accessible with enforcement enabled:
 
 ```bash
 export EC_DIR="/var/lib/embedded-cluster"
 export KUBE_DIR="${EC_DIR}/k0s"
 
-# tell SELinux the Embedded Cluster directory is owned by Containerd
+# tell SELinux the Cluster directory is owned by Containerd
 sudo semanage fcontext -a -t container_var_lib_t "${EC_DIR}"
 sudo restorecon -R -v "${EC_DIR}"
 
