@@ -7,9 +7,9 @@ You should be able to follow these instructions for installing the Embedded Clus
 
 ## Deploying the cluster
 
-The following steps are required for an Embedded Cluster (EC) installation of NetBox Enterprise.
+The following steps are required for a NetBox Enterprise installation.
 
-1. Download the deployment package and license file to your host (the `Authorization` token should be provided by NetBox Labs):
+1. Download the installer and license file to your host (the `Authorization` token should be provided by NetBox Labs):
 
      ```
       curl -f "https://app.enterprise.netboxlabs.com/embedded/netbox-enterprise/stable" -H "Authorization: <provided by NetBox Labs>" -o netbox-enterprise-stable.tgz
@@ -35,84 +35,91 @@ Access the NetBox Enterprise admin console and configure NetBox.
 
 **Open the provided URL in a browser. A prompt will require the password created in Step 2:**
 
-![Admin Console](../images/netbox-enterprise/admin-console.png){ width="50%" }
+![Screenshot: Welcome to the NetBox Enterprise Admin Console](../images/netbox-enterprise/installation/ent-01-welcome.png){ style="max-width: 75%" }
 
-**Once signed in you will be greeted by the following warning:**
+**Click `Start` and you will be greeted by a warning about self-signed certificates:**
 
-> **Bypass browser TLS warning:**
-> We use a self-signed SSL/TLS Certificate to secure the communication 
-> between your local machine and the Admin Console during setup. 
-> You'll see a warning about this in your browser, but you can be confident 
-> that this is secure.
+![Screenshot: Secure the Admin Console](../images/netbox-enterprise/installation/ent-02a-tls.png){ style="max-width: 75%" }
 
-You can set your TLS certificate now or click `Continue to Setup` to configure it later. TLS configuration instructions are available [here](https://docs.netboxlabs.com/netbox-enterprise/nbe-tls-ingress/)
+**Click `Continue` and accept the self-signed TLS certificate according to the instructions for your browser.**
 
-![TLS Warning Screen](../images/netbox-enterprise/tls_warning.png)
+You will then be prompted to optionally set a hostname and upload a self-signed certificate.
+It is recommended that you set the hostname now, but if you do not upload a TLS certificate you can do it later.
+Instructions for TLS configuration are available in [the TLS and Ingress documentation](nbe-tls-ingress.md)
 
-On the next screen, click `Advanced`, then click `Proceed`. 
+![Screenshot: Secure the Admin Console](../images/netbox-enterprise/installation/ent-02b-tls.png){ style="max-width: 75%" }
 
-**You have the option to add your hostname on the following page if it was provisioned before starting the installation; otherwise, simply click `Continue`.**
+**Log In to the Admin Console**
 
-![TLS Warning Screen](../images/netbox-enterprise/hostname.png)
+Once TLS is configured, you will be prompted to log in to the NetBox Enterprise Admin Console.
+Enter the password you created in the installer CLI.
 
-Again, click `Advanced`, then click `Proceed`, and you will be prompted to login to the console once more.
+![Screenshot: Log In](../images/netbox-enterprise/installation/ent-03-login.png){ style="max-width: 75%" }
 
-**Once logged in, you'll be given the option to add additional nodes to the cluster.** 
+**Once logged in, you'll be presented with the option to add additional nodes to the cluster.** 
 
-**DO NOT ADD ADDITIONAL NODES**, as it is not currently supported.
+**Do not** configure additional nodes, it is currently not supported.
 
-!!! warning "Be Advised"
-    Adding addtional nodes to the cluster is not supported. 
+!!! danger "Multi-Node Clusters"
+    Adding nodes to the cluster is **currently not supported**.
 
-Click `Continue` to move on to the final insallation wizard.
-![Node Page](../images/netbox-enterprise/nodes_page.png)
+![Screenshot: Nodes](../images/netbox-enterprise/installation/ent-04-cluster.png){ style="max-width: 75%" }
+
+**Click `Continue` to move on to the NetBox Enterprise configuration wizard.**
 
 ## Configure NetBox Enterprise
 
 A wizard will guide the configuration of NetBox for the environment:
 
 **Provisions a Superuser and password:**
-![NetBox Configuration](../images/netbox-enterprise/configure-netbox-enterprise.png)
+![Screenshot: NetBox Configuration](../images/netbox-enterprise/installation/ent-05-superuser.png){ style="max-width: 75%" }
 
-**Next, set the number of replicas and choose a preset for the resources allocated to NetBox**
-![NetBox Configuration](../images/netbox-enterprise/replicas_resources.png)
+**Set the number of replicas and choose a preset for the resources allocated to NetBox.**
+
+_It is recommended that you set the number of replicas to `1` until initial installation has completed, and then update it to a higher value._
+
+![Screenshot: Replicas and Resources](../images/netbox-enterprise/installation/ent-06-replicas-and-resources.png){ style="max-width: 75%" }
 
 !!! warning "Be Advised"
     Do not enable Restore Mode when initially setting up NetBox or the installation will fail.
 
-**Next, configure your PostgreSQL database, S3-compatible storage, and Redis cache:**
+**Configure your PostgreSQL database and Redis cache:**
 
-- Built-in or external PostgreSQL:
-  ![Built-in or external PostgreSQL](../images/netbox-enterprise/netbox-enterprise-postgres.png)
+Choose the built-in or external PostgreSQL:
+  ![Screenshot: Built-in or external PostgreSQL](../images/netbox-enterprise/installation/ent-07-postgresql.png){ style="max-width: 75%" }
 
-- Built-in or external S3-Compatible object store:
-  ![Built-in or external S3](../images/netbox-enterprise/netbox-enterprise-s3.png)
-
-- Built-in or external Redis object store:
-  ![Built-in or external Redis](../images/netbox-enterprise/netbox-enterprise-redis.png)
+Choose the built-in or external Redis object store:
+  ![Screenshot: Built-in or external Redis](../images/netbox-enterprise/installation/ent-08-redis.png){ style="max-width: 75%" }
 
 <!-- Advanced settings to configure plugins and SSO remote authentication, and IPv4/IPv6 compatibility:
-  ![Advanced Settings](../images/netbox-enterprise/netbox-enterprise-advanced.png) -->
-
+  ![Advanced Settings](../images/netbox-enterprise/netbox-enterprise-advanced.png)
 For now, skip `Advanced Settings` 
+  -->
 
 **Finally, accept the terms of service by writing "ACCEPT" (case-insensitive) and you can proceed to the deployment.**
 
-![Accept TOS](../images/netbox-enterprise/netbox-enterprise-accept-tos.png)
+![Screenshot: Accept TOS](../images/netbox-enterprise/installation/ent-09-accept.png){ style="max-width: 75%" }
 
 ## Finish the Deployment
 
-Once you have accepted the terms of service and started the deployment on the following page, you will be redirected to the console Dashboard. The first deployment will take some time, as it brings up all subsystems and runs migrations to initialize the database.
+Once you have accepted the terms of service, the installer will run some additional checks to make sure your host can run NetBox Enterprise.
 
-![Deployment Started](../images/netbox-enterprise/netbox-enterprise-deploy.png)
+![Screenshot: Preflights](../images/netbox-enterprise/installation/ent-10-preflights.png){ style="max-width: 75%" }
+
+**Click `Deploy` to launch the first deployment.**
+
+You will then be redirected to the admin console Dashboard.
+The initial deployment will take longer than subsequent ones, as it brings up all subsystems for the first time and runs migrations to initialize the database.
+
+![Screenshot: Deployment "Unavailable"](../images/netbox-enterprise/installation/ent-11-deploying.png){ style="max-width: 75%" }
 
 The `Unavailable` status will change to `Ready` once the deployment is complete and NetBox has fully initialized:
 
-![Deployment Ready](../images/netbox-enterprise/netbox-enterprise-ready.png)
+![Screenshot: Deployment "Ready"](../images/netbox-enterprise/installation/ent-12-ready.png){ style="max-width: 75%" }
 
 ## Verify the Deployment
 
 Once you see `Ready`, NetBox Enterprise is fully deployed, and available on ports `80` and `443`.
 
-- ![NetBox Enterprise Login](../images/netbox-enterprise/netbox-enterprise-login.png)
-- ![NetBox Enterprise Home](../images/netbox-enterprise/netbox-enterprise-app-home.png)
+- ![Screenshot: NetBox Enterprise Login](../images/netbox-enterprise/installation/ent-13-nb-login.png){ style="max-width: 75%" }
+- ![Screenshot: NetBox Enterprise Home](../images/netbox-enterprise/installation/ent-14-nb-home.png)
