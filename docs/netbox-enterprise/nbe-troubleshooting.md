@@ -69,3 +69,32 @@ Typing `s` to save will save a short summary `.txt` file of the output you can s
 Typing `q` to quit will quit without saving the summary.
 In both cases, a `.tar.gz` support bundle will _also_ be created in the current directory.
 This file can be used by NetBox Labs to troubleshoot your system.
+
+## Debug Logging
+
+> ⚠️ **Warning**: Do not enable debug logging in production environments. Debug logging can expose sensitive information to unauthenticated users and significantly impact system performance.
+
+Enable debug logging to increase log verbosity for troubleshooting issues. Debug logs provide detailed information about system operations and can help diagnose problems.
+
+### Enabling Debug Mode
+
+1. Access the admin console
+2. Navigate to "Config" section
+3. Find "Enable Debug Logging" toggle
+4. Enable the toggle
+5. Click "Save Config"
+6. Deploy the updated configuration
+
+![Debug Logging Enabled](../images/netbox-enterprise/netbox-enterprise-debug-checkbox.png)
+
+### Viewing Debug Logs
+
+Access the logs using:
+
+```shell
+kubectl logs netbox-enterprise-<pod_id> -n kotsadm
+```
+
+Log example:
+
+![Debug Logging Enabled](../images/netbox-enterprise/netbox-enterprise-debug-logging-example.png)
