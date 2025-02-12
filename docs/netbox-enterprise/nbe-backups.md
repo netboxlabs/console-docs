@@ -17,9 +17,9 @@ For each type of datastore you can choose to use a built-in deployment, or confi
 
 A disaster recovery backup will preserve the complete state of your NetBox Enterprise install, from allocated volumes to databases to custom configuration.
 
-This feature is included in Embedded Cluster installs, and can be enabled by installing some extra dependencies to your cluster for KOTS installs.
+This feature is included in NetBox Enterprise installs, and can be enabled by installing some extra dependencies to your cluster for KOTS installs.
 
-### Backing Up the Embedded Cluster
+### Backing Up the NetBox Enterprise Installation
 
 1. Navigate to the backup configuration by clicking the _^^Backup settings^^_ link in the **Disaster Recovery** section of the admin console.
    ![Backup settings](../images/netbox-enterprise/netbox-enterprise-ec-backup-settings.png){ width=75% }
@@ -30,9 +30,9 @@ This feature is included in Embedded Cluster installs, and can be enabled by ins
 4. Perform a backup by clicking the **Backups** tab, and then clicking **Start backup**.<br>
    ![Start backup](../images/netbox-enterprise/netbox-enterprise-ec-start-backup.png)
 
-### Restoring the Embedded Cluster
+### Restoring the NetBox Enterprise Installation
 
-1. Download the latest embedded cluster installer following the same instructions you did for a new install, if you haven't already.
+1. Download the latest NetBox Enterprise installer following the same instructions you did for a new install, if you haven't already.
 2. Run: `./netbox-enterprise restore`
 3. Enter the same S3 credentials you use for backups.<br>
    ![S3 Credentials](../images/netbox-enterprise/netbox-enterprise-ec-restore-s3.png){ width=75% }
@@ -54,7 +54,7 @@ This feature is included in Embedded Cluster installs, and can be enabled by ins
 Besides disaster recovery, it is also a good idea to keep backups of your data in case you want to view, partially restore, or move your data to another system.
 
 !!! info "NetBox Enterprise Namespace"
-    The default namespace for the Embedded Cluster is `kotsadm`.
+    The default namespace is `kotsadm`.
 
     The instructions below default to `kotsadm`, but you can change the `NETBOX_NAMESPACE` export to match your system.
 

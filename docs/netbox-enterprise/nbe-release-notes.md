@@ -1,11 +1,56 @@
 # NetBox Enterprise 1.x Release Notes
 
+### 1.8.0
+
+Improves logging in the NetBox containers, and adds support
+for uploading custom plugins.
+
+#### Versions
+
+This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2
+* PostgreSQL 16.6 (if built-in database is enabled)
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| nbrisk | nb_risk | 41.0.1 | ☐ |
+| netbox-acls | netbox_acls | 1.7.0 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.14.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.8.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.0 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.5.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.4 | ☐ |
+| netbox-inventory | netbox_inventory | 2.2.1 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.3 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.1.7 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.15 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.1.2 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.1.0 | ☑︎ |
+| netbox-validity | validity | 3.0.5 | ☐ |
+| netboxlabs-diode-netbox-plugin | netbox_diode_plugin | 0.6.0 | ☑︎ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.2 | ☑︎ |
+| phonebox-plugin | phonebox_plugin | 0.0.10 | ☐ |
+| slurpit_netbox | slurpit_netbox | 1.0.45 | ☑︎ |
+
 ### 1.7.0
 
-Updates the embedded NetBox to 4.1.11. Also upgrades
-the embedded cluster, which brings many bug fixes and
-features, including better preflight checks, and
-a direct link to the NetBox UI from the admin console.
+Updates the included NetBox to 4.1.11. Also upgrades
+the version of the cluster software, which brings many
+bug fixes and features, including better preflight checks,
+and a direct link to the NetBox UI from the admin console.
+
+#### Versions
+
+This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2
+* PostgreSQL 16.6 (if built-in database is enabled)
 
 #### Plugins
 
@@ -202,7 +247,7 @@ Also fixes a potential data loss issue with uploaded images, as well as enabling
 
 ### 1.2.0
 
-Improves ingress configuration, adds support for inheriting the TLS configuration from the Embedded Cluster, and adds a "restore mode" for restoring manual backup data, plus many dependency updates and internal improvements.
+Improves ingress configuration, adds support for inheriting the TLS configuration from the Admin Console configuration, and adds a "restore mode" for restoring manual backup data, plus many dependency updates and internal improvements.
 
 ### 1.1.0
 
@@ -212,11 +257,11 @@ Simplifies the firewall configuration necessary for installation by making sure 
 
 Adds support for NetBox resource usage adjustment and some improvements to startup time on a first install.
 
-It also adds support for backup and restore in the Embedded Cluster and KOTS installs, depending on your environment and license.
+It also adds support for backup and restore, depending on your environment and license.
 
 ### 1.0.5
 
-Adds support for KOTS installs to scrape Prometheus metrics from NetBox, as well as the embedded PostgreSQL, Redis, and SeaweedFS if they are enabled.
+Adds support for scraping Prometheus metrics from NetBox, as well as the embedded PostgreSQL, Redis, and SeaweedFS if they are enabled.
 
 Updated to support NetBox v4.0.9, and includes additional bug fixes and startup time improvements.
 
