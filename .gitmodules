@@ -1,0 +1,9 @@
+[submodule "external-repos/netbox"]
+	path = external-repos/netbox
+	url = https://github.com/netbox-community/netbox.git
+[submodule "external-repos/docusaurus"]
+	path = external-repos/docusaurus
+	url = https://github.com/facebook/docusaurus.git
+[submodule "external-repos/mkdocs"]
+	path = external-repos/mkdocs
+	url = https://github.com/mkdocs/mkdocs.git
