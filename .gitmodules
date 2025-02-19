@@ -1,6 +1,3 @@
-[submodule "external-repos/netbox"]
-	path = external-repos/netbox
-	url = https://github.com/netbox-community/netbox.git
 [submodule "external-repos/docusaurus"]
 	path = external-repos/docusaurus
 	url = https://github.com/facebook/docusaurus.git
