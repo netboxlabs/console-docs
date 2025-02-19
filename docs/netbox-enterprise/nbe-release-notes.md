@@ -8,6 +8,7 @@ for uploading custom plugins.
 #### Versions
 
 This release uses the following upstream software:
+
 * NetBox 4.1.11
 * Redis 7.4.2
 * PostgreSQL 16.6 (if built-in database is enabled)
@@ -48,6 +49,7 @@ and a direct link to the NetBox UI from the admin console.
 #### Versions
 
 This release uses the following upstream software:
+
 * NetBox 4.1.11
 * Redis 7.4.2
 * PostgreSQL 16.6 (if built-in database is enabled)
