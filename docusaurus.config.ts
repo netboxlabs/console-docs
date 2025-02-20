@@ -20,15 +20,15 @@ const config: Config = {
         sidebarPath: require.resolve('./sidebars.js'),
       }
     ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: "mkdocs",
-        path:"external-repos/mkdocs/docs",
-        routeBasePath: "docs/mkdocs",
-        sidebarPath: require.resolve('./sidebars.js'),
-      }
-    ]
+    // [
+    //   '@docusaurus/plugin-content-docs',
+    //   {
+    //     id: "mkdocs",
+    //     path:"external-repos/mkdocs/docs",
+    //     routeBasePath: "docs/mkdocs",
+    //     sidebarPath: require.resolve('./sidebars.js'),
+    //   }
+    // ]
   ],
 
   presets: [
