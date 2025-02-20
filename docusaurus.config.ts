@@ -20,15 +20,15 @@ const config: Config = {
         sidebarPath: require.resolve('./sidebars.js'),
       }
     ],
-    // [
-    //   '@docusaurus/plugin-content-docs',
-    //   {
-    //     id: "mkdocs",
-    //     path:"external-repos/mkdocs/docs",
-    //     routeBasePath: "docs/mkdocs",
-    //     sidebarPath: require.resolve('./sidebars.js'),
-    //   }
-    // ]
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: "docusaurus",
+        path: "external-repos/github-pages-docusaurus/docs",
+        routeBasePath: "docs/docusaurus",
+        sidebarPath: require.resolve('./sidebars.js'),
+      }
+    ]
   ],
 
   presets: [
@@ -56,7 +56,7 @@ const config: Config = {
       },
       items: [
         {to: 'docs/netbox', label: 'NetBox', position: 'left'},
-        {to: 'docs/mkdocs', label: 'MkDocs', position: 'left'},
+        {to: 'docs/docusaurus/intro', label: 'Docusaurus', position: 'left'},
         {
           href: 'https://github.com/netbox-community/netbox/',
           label: 'GitHub',
@@ -67,15 +67,7 @@ const config: Config = {
     footer: {
       style: 'dark',
       links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Tutorial',
-              to: '/docs/intro',
-            },
-          ],
-        },
+
         {
           title: 'Community',
           items: [
@@ -96,10 +88,7 @@ const config: Config = {
         {
           title: 'More',
           items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
+
             {
               label: 'GitHub',
               href: 'https://github.com/facebook/docusaurus',

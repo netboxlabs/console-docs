@@ -4,3 +4,6 @@
 [submodule "external-repos/netbox"]
 	path = external-repos/netbox
 	url = https://github.com/ryanturnerwebdev/netbox.git
+[submodule "external-repos/github-pages-docusaurus"]
+	path = external-repos/github-pages-docusaurus
+	url = https://github.com/LayZeeDK/github-pages-docusaurus.git
