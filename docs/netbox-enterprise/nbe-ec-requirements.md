@@ -37,6 +37,8 @@ Before you can install, you _must_ configure your proxy to allow the following h
 * **get.enterprise.netboxlabs.com**
 * **proxy.enterprise.netboxlabs.com**
 * **registry.enterprise.netboxlabs.com**
+* **replicated.app**
+* **proxy.replicated.com**
 
 They are required to access various resources used in the NetBox Enterprise installation.
 
