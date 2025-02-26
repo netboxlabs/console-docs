@@ -96,6 +96,7 @@ nav:
     - NetBox Enterprise Installer:
       - Requirements: "netbox-enterprise/nbe-ec-requirements.md"
       - Installation: "netbox-enterprise/nbe-ec-installation.md"
+      - Migrating: "netbox-enterprise/nbe-migrating.md"
     #- KOTS:
     #  - Requirements: "netbox-enterprise/nbe-kots-requirements.md"
     #  - Installation: "netbox-enterprise/nbe-kots-installation.md"
