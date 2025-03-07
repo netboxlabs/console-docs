@@ -76,6 +76,7 @@ nav:
         - Okta:
           - Set up Okta SSO: "Administration Console/okta-sso-setup.md"
           - Okta Group Mapping: "Administration Console/okta-group-mapping.md"
+        - SAML: "Administration Console/saml-sso-setup.md"
       - Free Plan:
         - Features: "Administration Console/free-plan-features.md"
         - Add a New User: "Administration Console/free-plan-new-user.md"
