@@ -31,5 +31,6 @@ To facilitate SAML integration, we require the following details from your Ident
 
 - Assertion Consumer Service (ACS) URL: `https://<org-name>.cloud.netboxapp.com/`
 
-## Support
-Should you encounter any difficulties during the configuration process, do not hesitate to contact NetBox Cloud support. Please provide detailed information about the issue to ensure swift and effective assistance.
+## Testing
+
+Once your NetBox Cloud and Identity Provider (IdP) configurations are finalized, you can proceed with testing to confirm that you are able to log in via your SAML provider.
