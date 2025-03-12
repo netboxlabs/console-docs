@@ -57,41 +57,42 @@ plugins:
 nav:
   - Home: index.md
   - Cloud:
-      - Getting Access:
-        - Setting up Console Access: "Administration Console/console-access.md"
-        - Accessing the Console From the NetBox Cloud UI: "Administration Console/console-access-from-ui.md"
-        - Retrieving NetBox Cloud Admin Credentials: "Administration Console/retrieving-nbc-credentials.md"
-      - Prefix Lists: "Administration Console/prefix-lists.md"
-      - Working with Database Backups: "Administration Console/working_with_database_backups.md"
-      - Upgrade NetBox Cloud: "Administration Console/upgrading-nbc.md"
-      - Set up Two-Factor Authentication: "Administration Console/set_up_2fa.md"
-      - Migrate to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
-      - NetBox Cloud Plugins: "Administration Console/netbox-cloud-plugins.md"
-      - Public IP Addressing: "Administration Console/public-ip-addressing.md"
+    - Migrating to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
+    - Administration via Console:
+      - Getting Console Access: "Administration Console/console-access.md"
+      - Setting up Two-Factor Authentication: "Administration Console/set_up_2fa.md"
+      - Retrieving NetBox Admin Credentials: "Administration Console/retrieving-nbc-credentials.md"
+      #- Accessing the Console From the NetBox Cloud UI: "Administration Console/console-access-from-ui.md"
+      - Viewing Installed Plugins: "Administration Console/netbox-cloud-plugins.md"
+      - Database Backups: "Administration Console/working_with_database_backups.md"
+      - Upgrading NetBox: "Administration Console/upgrading-nbc.md"
       - Managing Hostnames: "Administration Console/managing-hostnames.md"
-      - Single Sign-On (SSO):
-        - Entra ID:
-          - Microsoft Entra ID SSO: "Administration Console/azure-ad-sso-setup.md"
-          - Entra ID Group Mapping: "Administration Console/azure-group-mapping.md"
-        - Okta:
-          - Set up Okta SSO: "Administration Console/okta-sso-setup.md"
-          - Okta Group Mapping: "Administration Console/okta-group-mapping.md"
-        - SAML: "Administration Console/saml-sso-setup.md"
-      - Free Plan:
-        - Features: "Administration Console/free-plan-features.md"
-        - Add a New User: "Administration Console/free-plan-new-user.md"
-      - Cloud Connectivity:
-        - Do I Need Cloud Connectivity Options?: "cloud-connectivity/do-i-need-cloud-connectivity.md"
-        - Cloud Connectivity Options:
-          - Which Cloud Connectivity Option is Right for Me?: "cloud-connectivity/which-connectivity-option.md"
-          - Internet Delivery (Single Region): "cloud-connectivity/internet-delivery.md"
-          - AWS Private Link (Single Region): "cloud-connectivity/aws-private-link.md"
-          - IPSEC VPN Tunnels (Single Region): "cloud-connectivity/ipsec-vpn-tunnels.md"
-          - AWS Direct Connect (Single Region): "cloud-connectivity/aws-direct-connect.md"
-          - AWS Direct Connect (Multi-Region): "cloud-connectivity/aws-direct-connect-multi-region.md"
-        - Frequently Asked Questions: "cloud-connectivity/cloud-connectivity-faq.md"
-      - Maintenance:
-        - Scheduled Maintenance: "maintenance.md"
+    - Security:
+        - Prefix Lists: "Administration Console/prefix-lists.md"
+        - Public IP Addressing: "Administration Console/public-ip-addressing.md"
+    - Single Sign-On (SSO):
+      - Entra ID:
+        - Microsoft Entra ID SSO: "Administration Console/azure-ad-sso-setup.md"
+        - Entra ID Group Mapping: "Administration Console/azure-group-mapping.md"
+      - Okta:
+        - Okta SSO: "Administration Console/okta-sso-setup.md"
+        - Okta Group Mapping: "Administration Console/okta-group-mapping.md"
+      - SAML: "Administration Console/saml-sso-setup.md"
+    - Free Plan:
+      - Features: "Administration Console/free-plan-features.md"
+      - Add a New User: "Administration Console/free-plan-new-user.md"
+    - Cloud Connectivity:
+      - Do I Need Cloud Connectivity Options?: "cloud-connectivity/do-i-need-cloud-connectivity.md"
+      - Cloud Connectivity Options:
+        - Which Cloud Connectivity Option is Right for Me?: "cloud-connectivity/which-connectivity-option.md"
+        - Internet Delivery (Single Region): "cloud-connectivity/internet-delivery.md"
+        - AWS Private Link (Single Region): "cloud-connectivity/aws-private-link.md"
+        - IPSEC VPN Tunnels (Single Region): "cloud-connectivity/ipsec-vpn-tunnels.md"
+        - AWS Direct Connect (Single Region): "cloud-connectivity/aws-direct-connect.md"
+        - AWS Direct Connect (Multi-Region): "cloud-connectivity/aws-direct-connect-multi-region.md"
+      - Frequently Asked Questions: "cloud-connectivity/cloud-connectivity-faq.md"
+    - Maintenance:
+      - Scheduled Maintenance: "maintenance.md"
   - Enterprise:
     - Overview: "netbox-enterprise/nbe-overview.md"
     - NetBox Enterprise Installer:
@@ -101,10 +102,10 @@ nav:
     #- KOTS:
     #  - Requirements: "netbox-enterprise/nbe-kots-requirements.md"
     #  - Installation: "netbox-enterprise/nbe-kots-installation.md"
-    - SSO:
+    - Single Sign-On (SSO):
       - Entra ID:
-        - NBE Entra ID SSO Setup: "netbox-enterprise/nbe-azure-sso.md"
-        - NBE Entra ID Group Mapping: "netbox-enterprise/nbe-azure-group-mapping.md"
+        - Microsoft Entra ID SSO: "netbox-enterprise/nbe-azure-sso.md"
+        - Entra ID Group Mapping: "netbox-enterprise/nbe-azure-group-mapping.md"
       - LDAP: "netbox-enterprise/nbe-ldap.md"
     - "Administration":
       - "TLS and Ingress": "netbox-enterprise/nbe-tls-ingress.md"
@@ -136,7 +137,6 @@ nav:
     - Branching:
       - Overview: "netbox-extensions/branching/index.md"
       - Configuration: "netbox-extensions/branching/configuration.md"
-      - Changelog: "netbox-extensions/branching/changelog.md"
       - Using Branches:
         - Creating a Branch: "netbox-extensions/branching/using-branches/creating-a-branch.md"
         - Syncing & Merging Changes: "netbox-extensions/branching/using-branches/syncing-merging.md"
@@ -147,10 +147,10 @@ nav:
         - Branch Events: "netbox-extensions/branching/models/branchevent.md"
         - Change Diffs: "netbox-extensions/branching/models/changediff.md"
         - Object Changes: "netbox-extensions/branching/models/objectchange.md"
+      - Changelog: "netbox-extensions/branching/changelog.md"
     - Change Management:
       - Overview: "netbox-extensions/changes/index.md"
       - Configuration: "netbox-extensions/changes/configuration.md"
-      - Changelog: "netbox-extensions/changes/changelog.md"
       - Models:
         - Change Request: "netbox-extensions/changes/models/changerequest.md"
         - Comment: "netbox-extensions/changes/models/comment.md"
@@ -158,6 +158,7 @@ nav:
         - Policy: "netbox-extensions/changes/models/policy.md"
         - Policy Rule: "netbox-extensions/changes/models/policyrule.md"
         - Review: "netbox-extensions/changes/models/review.md"
+      - Changelog: "netbox-extensions/changes/changelog.md"
     - Diode:
       - Overview: "netbox-extensions/diode/index.md"
       - Get started: 
