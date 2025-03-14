@@ -109,7 +109,7 @@ nav:
     - "Administration":
       - "TLS and Ingress": "netbox-enterprise/nbe-tls-ingress.md"
       - "Backups": "netbox-enterprise/nbe-backups.md"
-      - "Installing Custom NetBox Plugins": "netbox-enterprise/nbe-ec-custom-plugins.md"
+      #- "Installing Custom NetBox Plugins": "netbox-enterprise/nbe-ec-custom-plugins.md"
       - "Advanced Tools and Troubleshooting": "netbox-enterprise/nbe-troubleshooting.md"
     - "Release Notes": "netbox-enterprise/nbe-release-notes.md"
   - Discovery & Assurance:
