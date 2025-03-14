@@ -12,9 +12,10 @@ There is also large list support (~15K prefixes) and separate prefixes can be ap
 !!! note
     When you have built your prefix lists in the Admin Console, raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com) and we will apply them to your NetBox Cloud instances. 
 
+<!-- COMMENTING VIDEO OUT OF CODE! 
 Watch this quick video or follow the steps outlined below to start managing your prefix lists:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nPwL7ve513g?si=gbsuGCvK3s8VXPP8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nPwL7ve513g?si=gbsuGCvK3s8VXPP8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
 
 ## Create a Prefix List (not synchronized with a NetBox)
 

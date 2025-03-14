@@ -7,17 +7,18 @@ Within the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/) you 
 - Download a local copy of a specific backup file  
 - Restore your NetBox Cloud instance from a database backup
 
+<!-- COMMENTING VIDEO OUT OF CODE!
 Watch this quick video or follow the steps outlined below to get started: 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1YnQhsC6KFQ?si=q4JyPGQIbN-Q_0Yv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1YnQhsC6KFQ?si=q4JyPGQIbN-Q_0Yv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 
 ## View a List of Available Database Backups
 
-1. Login to the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/) and then click on the three dots in the top-right corner of the instance you wish to manage and click **Manage**:
+1. Login to the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/) and then click on the three dots in the top-right corner of the instance you wish to manage and click **Backup & Restore**:
 
     ![select netbox instance](../images/backups/manage_instance.png)
 
-2. Scroll down to the **Backup and Restore** panel expand it to view the list of available backups:
+2. Within **Backup and Restore** you can view the list of available backups:
 
     ![view list of backups](../images/backups/view_list_backups.png)
 
@@ -57,7 +58,7 @@ Watch this quick video or follow the steps outlined below to get started:
 
     ![confirm restore](../images/backups/restore_confirm.png)
 
-3. The restore process will take place in the background, and depending on the size of the database should take no longer than a few minutes to complete. Once the restore has completed, you can click on **See Restore History** to view the list of database restores, and you will see your completed restore listed:
+3. The restore process will take place in the background, and depending on the size of the database should take no longer than a few minutes to complete. Once the restore has completed, you can click on **Restore History** to view the list of database restores, and you will see your completed restore listed:
 
     ![completed restore](../images/backups/restore_history_1.png)
 
