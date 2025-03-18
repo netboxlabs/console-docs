@@ -12,27 +12,42 @@ First, create a temporary directory for your plugin downloads to go:
 mkdir /tmp/wheelhouse
 ```
 
-## Use `pip` to download the plugins
+## Create a `requirements.txt`
+
+Create a file called `requirements.txt` in your `/tmp/wheelhouse` directory, listing each of the plugins you'd like to include.
+
+## Dowload the `constraints.txt` file for your release
+
+You can use `kubectl cp` to download a constraints file that contains a complete list of the pre-installed Python modules in your NetBox Enterprise version.
+
+To do so, download it with this command:
+
+```{.bash}
+NBE_SOURCE_POD="$( \
+  kubectl get pods -A \
+  -o go-template='{{ range .items }}{{ .kind }}/{{ .metadata.name }}{{ "\n" }}{{ end }}' \
+  -l com.netboxlabs.netbox-enterprise/custom-plugins-upload=true \
+  | head -n 1 \
+)"
+
+kubectl cp -n kotsadm \
+  "${NBE_SOURCE_POD}:/opt/netbox/netbox/media/constraints.txt" \
+  /tmp/constraints.txt
+```
+
+## Use `pip` to download the plugins and their dependencies
 
 Next, use `pip` to populate the wheelhouse folder, by running it with the `download` command, and the arguments necessary to pull the correct architecture and version to run inside the NetBox Enterprise container:
 
 ```{.bash}
 pip download \
-  --platform="manylinux1_x86_64" \
+  --platform="manylinux_2_17_x86_64" \
   --only-binary=":all:" \
   --python-version="3.12" \
   --dest "/tmp/wheelhouse" \
-  <your plugins>
+  -c /tmp/wheelhouse/constraints.txt \
+  -r /tmp/wheelhouse/requirements.txt
 ```
-
-Replace the `<your plugins>` line at the end with the arguments for your plugins.
-These can be any combination of:
-
-* a bare python package name: `netbox-ipcalculator`
-* a requirements file: `-r path/to/requirements.txt`
-* a VCS path: `https+git://github.com/some-project/plugin-name.git#egg=plugin-name`
-* a local path containing plugin source: `/path/to/source`
-* a plugin tarball: `path/to/plugin.tar.gz`
 
 If all went well, you should see `*.whl` files in the `/tmp/wheelhouse/` folder for each of the packages you specified, as well as their dependencies.
 
@@ -50,21 +65,19 @@ This should create a tarball that contains the `wheelhouse/` directory and every
 
 ## Add your plugins to NetBox Enterprise
 
-In the NetBox Enterprise Admin Console (usually port `30000` on your host), click the `Config` tab at the top-center.
+On your NetBox Enterprise node, you can now upload the wheelhouse to a media directory.
 
-![Screenshot: Config Tab](../images/netbox-enterprise/custom-plugins/ent-config-tab.png){ style="max-width: 50%" }
+To do so, run this:
 
-Then, scroll down to `Advanced Settings` and make sure `Show Advanced Settings` is checked.
+```{.bash}
+NBE_SOURCE_POD="$( \
+  kubectl get pods -A \
+  -o go-template='{{ range .items }}{{ .kind }}/{{ .metadata.name }}{{ "\n" }}{{ end }}' \
+  -l com.netboxlabs.netbox-enterprise/custom-plugins-upload=true \
+  | head -n 1 \
+)"
 
-![Screenshot: Advanced Settings](../images/netbox-enterprise/custom-plugins/ent-show-advanced-settings.png){ style="max-width: 60%" }
-
-Finally, look for the `Custom Plugins` section, and click the box below `Upload a file` and select your wheelhouse tarball.
-
-![Screenshot: Custom Plugins](../images/netbox-enterprise/custom-plugins/ent-custom-plugins.png)
-
-!!! note "Enable Your Plugins"
-    Don't forget to create or update `PLUGINS = []` in the `NetBox Python Configuration Overrides` at the top of the advanced settings to enable your new plugins!
-
-## Deploy your updated configuration
-
-Click `Save config` and then deploy your latest config change to install the plugins.
+kubectl cp -n kotsadm \
+  /tmp/wheelhouse.tar.gz \
+  "${NBE_SOURCE_POD}:/opt/netbox/netbox/media/wheelhouse.tar.gz"
+```
