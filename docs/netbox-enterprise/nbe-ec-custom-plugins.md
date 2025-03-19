@@ -25,7 +25,7 @@ To do so, download it with this command:
 ```{.bash}
 NBE_SOURCE_POD="$( \
   kubectl get pods -A \
-  -o go-template='{{ range .items }}{{ .kind }}/{{ .metadata.name }}{{ "\n" }}{{ end }}' \
+  -o go-template='{{ range .items }}{{ .metadata.name }}{{ "\n" }}{{ end }}' \
   -l com.netboxlabs.netbox-enterprise/custom-plugins-upload=true \
   | head -n 1 \
 )"
@@ -72,7 +72,7 @@ To do so, run this:
 ```{.bash}
 NBE_SOURCE_POD="$( \
   kubectl get pods -A \
-  -o go-template='{{ range .items }}{{ .kind }}/{{ .metadata.name }}{{ "\n" }}{{ end }}' \
+  -o go-template='{{ range .items }}{{ .metadata.name }}{{ "\n" }}{{ end }}' \
   -l com.netboxlabs.netbox-enterprise/custom-plugins-upload=true \
   | head -n 1 \
 )"
