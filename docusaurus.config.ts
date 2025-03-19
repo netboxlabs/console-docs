@@ -7,7 +7,7 @@ const config: Config = {
 	tagline: "Centralised Documentation for NetBox",
 	favicon: "img/favicon.ico",
 	url: "https://netboxlabs.com",
-	baseUrl: "/docs",
+	baseUrl: "/",
 	organizationName: "netbox",
 	projectName: "netbox-docs",
 	plugins: [
@@ -16,7 +16,7 @@ const config: Config = {
 			{
 				id: "netbox-docs",
 				path: "external-repos/netbox/docs",
-				routeBasePath: "netbox",
+				routeBasePath: "docs/netbox",
 				sidebarPath: require.resolve("./sidebars.js"),
 			},
 		],
@@ -25,7 +25,7 @@ const config: Config = {
 			{
 				id: "console",
 				path: "external-repos/console-docs/docs",
-				routeBasePath: "console",
+				routeBasePath: "docs/console",
 				sidebarPath: require.resolve("./sidebars.js"),
 			},
 		],
@@ -55,8 +55,8 @@ const config: Config = {
 				src: "img/logo.svg",
 			},
 			items: [
-				{ to: "netbox", label: "NetBox", position: "left" },
-				{ to: "console", label: "Console", position: "left" },
+				{ to: "docs/netbox", label: "NetBox", position: "left" },
+				{ to: "docs/console", label: "Console", position: "left" },
 				{
 					href: "https://github.com/netbox-community/netbox/",
 					label: "GitHub",
