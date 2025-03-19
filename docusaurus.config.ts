@@ -23,9 +23,9 @@ const config: Config = {
 		[
 			"@docusaurus/plugin-content-docs",
 			{
-				id: "docusaurus",
-				path: "external-repos/github-pages-docusaurus/docs",
-				routeBasePath: "docusaurus",
+				id: "console",
+				path: "external-repos/console-docs/docs",
+				routeBasePath: "console",
 				sidebarPath: require.resolve("./sidebars.js"),
 			},
 		],
@@ -56,7 +56,7 @@ const config: Config = {
 			},
 			items: [
 				{ to: "netbox", label: "NetBox", position: "left" },
-				{ to: "docusaurus/intro", label: "Docusaurus", position: "left" },
+				{ to: "console", label: "Console", position: "left" },
 				{
 					href: "https://github.com/netbox-community/netbox/",
 					label: "GitHub",
