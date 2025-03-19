@@ -66,6 +66,8 @@ This should create a tarball that contains the `wheelhouse/` directory and every
 ## Add your plugins to NetBox Enterprise
 
 On your NetBox Enterprise node, you can now upload the wheelhouse to a media directory.
+Note that this should work whether or not you are in restore mode.
+Both are configured to be able to accept wheelhouse uploads.
 
 To do so, run this:
 
@@ -81,3 +83,10 @@ kubectl cp -n kotsadm \
   /tmp/wheelhouse.tar.gz \
   "${NBE_SOURCE_POD}:/opt/netbox/netbox/media/wheelhouse.tar.gz"
 ```
+
+## Restart the NetBox containers
+
+The next time the NetBox pods restart, they should automatically apply your changes.
+
+If you are in restore mode, switching out of restore mode will enable installation of your plugins.
+If you are not, a "redeploy" in the admin console should do the same.
