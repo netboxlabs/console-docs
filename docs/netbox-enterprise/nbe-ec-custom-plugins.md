@@ -32,7 +32,7 @@ NBE_SOURCE_POD="$( \
 
 kubectl cp -n kotsadm \
   "${NBE_SOURCE_POD}:/opt/netbox/netbox/media/constraints.txt" \
-  /tmp/constraints.txt
+  /tmp/wheelhouse/constraints.txt
 ```
 
 ## Use `pip` to download the plugins and their dependencies
