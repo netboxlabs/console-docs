@@ -13,10 +13,8 @@ AUTH_LDAP_SERVER_URI: "ldaps://xxxxxxx:636"
 AUTH_LDAP_BIND_DN: "cn=administrator,cn=users,DC=nifry,DC=local"
 AUTH_LDAP_BIND_PASSWORD: "xxxxxx"
 AUTH_LDAP_CONNECTION_OPTIONS: "{ ldap.OPT_REFERRALS: 0 }"
-LDAP_IGNORE_CERT_ERRORS: true
 AUTH_LDAP_USER_SEARCH_BASEDN: "cn=users,dc=nifry,dc=local"
 AUTH_LDAP_USER_SEARCH: 'LDAPSearch("cn=users,dc=nifry,dc=local", ldap.SCOPE_SUBTREE, "sAMAccountName=%(user)s")'
-
 AUTH_LDAP_GROUP_TYPE: "NestedGroupOfNamesType"
 AUTH_LDAP_GROUP_SEARCH_BASEDN: "cn=users,DC=nifry,DC=local"
 AUTH_LDAP_FIND_GROUP_PERMS: true
