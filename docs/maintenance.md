@@ -1,10 +1,10 @@
 ## NetBox Upgrade Maintenance Windows
-NetBox Labs designates weekly upgrade windows specifically to upgrade the version of NetBox and NetBox components for NetBox Cloud customers during the following times:
+NetBox Labs designates the following weekly upgrade windows specifically to upgrade the version of NetBox and NetBox components for NetBox Cloud customers on Tuesdays and Thursdays. These upgrade windows are used for patch, minor, and major upgrades to NetBox. Customers are assigned to one of these windows based on their time zone.
 
-- Tuesday and Thursday: 3:00 - 5:00am ET / 12:00 - 2:00am PT / 08:00 - 10:00 UTC
-- Tuesday and Thursday: 6:00 - 8:00am ET / 3:00 - 5:00am PT / 11:00 - 13:00 UTC
-
-These upgrade windows are used for patch, minor, and major upgrades to NetBox. Customers are assigned to one of these windows based on their time zone.
+- London (UK): 7:00–9:00 am (Local London time, year-round)
+- US Eastern Time: 6:00–8:00 am (Local ET, year-round)
+!!! info "Note"
+    These windows always follow local clocks in London and New York. Times automatically adjust with daylight saving.
 
 We will not perform upgrades during these windows without first notifying affected customers. If an upgrade is scheduled, customers will receive advance notice with details about the changes and any potential impact on their service.
 
@@ -12,7 +12,7 @@ If you have any questions about these upgrade windows or anything else related t
 
 
 ## General System Maintenance Windows
-There are weekly maintenance windows for the NetBox Cloud Platform on Tuesdays and Thursdays between the hours of 3:00 - 5:00am EDT / 12:00 - 2:00am PDT / 07:00 - 09:00 UTC.
+There are weekly maintenance windows for the NetBox Cloud Platform on Tuesdays and Thursdays between the hours of 7:00–9:00 am (Local London time, year-round)
 
 These windows are designated for routine maintenance on the infrastructure supporting the NetBox Labs Console, NetBox Cloud instances, and other cloud products and services offered by NetBox Labs. This includes applying necessary security patches and making other infrastructure adjustments to enhance reliability, security, and performance.
 
