@@ -6,7 +6,6 @@ To do so, you will need to create a tarball containing the plugins you wish to i
 
 !!! note
     On each startup, the wheelhouse's contents will be applied to a fresh NetBox Python environment.
-    Also, you will need to create a new wheelhouse archive when the NetBox version provided in the NetBox Enterprise environment changes.
 
 ## Create a working directory
 
@@ -36,6 +35,7 @@ NBE_SOURCE_POD="$( \
   kubectl get pods -A \
   -o go-template='{{ range .items }}{{ .metadata.name }}{{ "\n" }}{{ end }}' \
   -l com.netboxlabs.netbox-enterprise/custom-plugins-upload=true \
+  --field-selector status.phase=Running \
   | head -n 1 \
 )"
 
@@ -87,6 +87,7 @@ NBE_SOURCE_POD="$( \
   kubectl get pods -A \
   -o go-template='{{ range .items }}{{ .metadata.name }}{{ "\n" }}{{ end }}' \
   -l com.netboxlabs.netbox-enterprise/custom-plugins-upload=true \
+  --field-selector status.phase=Running \
   | head -n 1 \
 )"
 
@@ -107,3 +108,14 @@ The next time the NetBox pods restart, your changes should be automatically appl
 
 If you are in restore mode, switching out of restore mode will enable installation of your plugins.
 If you are not, a "redeploy" in the admin console will trigger the same.
+
+# Migrations and Upgrades
+
+When upgrading to a new NetBox Enterprise version which includes a different version of NetBox, you will likely need to generate a new wheelhouse file that matches its changed dependencies.
+
+To do so, you should perform the following steps:
+
+1. Put NetBox Enterprise into "restore mode" in the Admin Console configuration, and deploy the config change.
+2. Deploy the new NetBox Enterprise version.
+3. Follow the instructions above to download the new `constraints.txt` file and then generate and upload a new wheelhouse tarball.
+4. Uncheck "restore mode" and deploy.
