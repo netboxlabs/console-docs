@@ -5,7 +5,7 @@ While NetBox Enterprise comes with a variety of certified and other community pl
 To do so, you will need to create a tarball containing the plugins you wish to install, known as a wheelhouse archive.
 
 !!! note
-    On each startup, the wheelhouse's contents will be applied to a fresh NetBox Python environment.
+    On each startup, the wheelhouse's contents will be re-applied to a fresh NetBox Python environment.
 
 ## Create a working directory
 
@@ -14,13 +14,6 @@ First, create a temporary directory for your plugin downloads to go:
 ```{.bash}
 mkdir /tmp/wheelhouse
 ```
-
-## Create a `requirements.txt`
-
-Create a file called `requirements.txt` in your `/tmp/wheelhouse` directory, listing each of the plugins you'd like to include.
-
-For details on the format of requirements files, please see the [pip documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/).
-However, it is strongly recommended that you use `==` to include a specific known and tested version in your requirements file.
 
 ## Dowload the `constraints.txt` file for your release
 
@@ -40,13 +33,38 @@ NBE_SOURCE_POD="$( \
 )"
 
 kubectl cp -n kotsadm \
-  "${NBE_SOURCE_POD}:/opt/netbox/netbox/media/constraints.txt" \
+  "${NBE_SOURCE_POD}:/opt/netbox/constraints.txt" \
   /tmp/wheelhouse/constraints.txt
 ```
 
+## Create Wheels From Your Custom Modules
+
+If you are including any custom Python modules that aren't in PyPy, you will need to create wheel archives from them.
+You can generate them with `pip wheel`, passing one or more paths or archives, like so:
+
+```{.bash}
+pip wheel \
+  --prefer-binary \
+  --wheel-dir "/tmp/wheelhouse" \
+  --constraint /tmp/wheelhouse/constraints.txt \
+  </path/to/your/python-module-dir|/path/to/your/python-module.tar.gz>
+```
+
+!!! note
+    If your custom modules require compilation, you should build them on an `x86_64` platform running Ubuntu 24 LTS and Python 3.12 so they match NetBox Enterprise's containers.
+
+## Create a `requirements.txt`
+
+Create a file called `requirements.txt` in your `/tmp/wheelhouse` directory, listing each of the plugins you'd like to include.
+
+If you created custom wheels, make sure you add them to `requirements.txt` like any other dependency.
+
+For details on the format of requirements files, please see the [pip documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/).
+However, it is strongly recommended that you use `==` to include a specific known and tested version in your requirements file.
+
 ## Use `pip` to download the plugins and their dependencies
 
-Next, use `pip` to populate the wheelhouse folder, by running it with the `download` command, and the arguments necessary to pull the correct architecture and version to run inside the NetBox Enterprise container:
+Next, use `pip` to populate the wheelhouse folder with any other dependencies, by running it with the `download` command, and the arguments necessary to pull the correct architecture and version to run inside the NetBox Enterprise container:
 
 ```{.bash}
 pip download \
@@ -54,6 +72,7 @@ pip download \
   --only-binary=":all:" \
   --python-version="3.12" \
   --dest "/tmp/wheelhouse" \
+  --find-links "/tmp/wheelhouse" \
   -c /tmp/wheelhouse/constraints.txt \
   -r /tmp/wheelhouse/requirements.txt
 ```
@@ -111,11 +130,11 @@ If you are not, a "redeploy" in the admin console will trigger the same.
 
 # Migrations and Upgrades
 
-When upgrading to a new NetBox Enterprise version which includes a different version of NetBox, you will likely need to generate a new wheelhouse file that matches its changed dependencies.
+When upgrading to a new NetBox Enterprise version which includes a different version of the included NetBox, you will likely need to generate a new wheelhouse file that matches its changed dependencies.
 
 To do so, you should perform the following steps:
 
 1. Put NetBox Enterprise into "restore mode" in the Admin Console configuration, and deploy the config change.
 2. Deploy the new NetBox Enterprise version.
-3. Follow the instructions above to download the new `constraints.txt` file and then generate and upload a new wheelhouse tarball.
+3. Redo the instructions above to download the new `constraints.txt` file, create, and then upload a new wheelhouse tarball.
 4. Uncheck "restore mode" and deploy.
