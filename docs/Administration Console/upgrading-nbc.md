@@ -1,53 +1,44 @@
 # Upgrading NetBox Cloud
 
-To safely and easily upgrade your NetBox Cloud instance without worrying about any Plugin compatibility issues, follow the steps outlined below or watch the video instructions: 
+To safely and easily upgrade your NetBox Cloud instance without worrying about any plugin compatibility issues, follow the steps outlined below:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/eRWaIXODHR4?si=vf-qdZ53tcICodW_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[//]: # (COMMENTING VIDEO OUT OF CODE!)
+[//]: # (<iframe width="560" height="315" src="https://www.youtube.com/embed/eRWaIXODHR4?si=vf-qdZ53tcICodW_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>)
 
-1. In the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/), click on the three dots in the top right corner of the instance you wish to upgrade and click **Manage**. Note the current NetBox version in this example is 3.5.1.  
+1. In the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/), click on the three dots in the top right corner of the instance you wish to upgrade and click **Upgrade**. Note the current NetBox version in this example is 4.1.7.
 
     ![manage instance](..//images/upgrades/upgrades_manage_1.png)
 
-2. Then click on the down arrow next to **Plugins** and note any installed plugins and their versions: 
+2. The **Safe Upgrade tool** will present you with the **potential** and **recommended** versions you can upgrade to.
 
-    ![manage instance](..//images/upgrades/upgrades_plugins_pre.png)
+    You will see the version number, the status, whether installed plugins are compatible with the target NetBox version, and a link to the release notes for that version.
 
-3. Next, click on the down arrow next to **Version Upgrade**:
+    ![upgrade options](..//images/upgrades/upgrades_upgrade_options_3.png)
 
-    ![manage instance](..//images/upgrades/upgrades_version_upgrade_2.png)
+    Note that we could upgrade to any of the other **potential** options, but the Safe Upgrade tool is recommending an upgrade to version 4.1.11. If you select this option, all plugins will be automatically upgraded to compatible versions as part of the upgrade process.
 
-4. The **Safe Upgrade tool** will present you with the **potential** and **recommended** versions you can upgrade to. You will see the version number, the status, and the whether or not installed plugins are compatible with the target NetBox version, plus a link to the release notes for that version.  
+    Note too that if a plugin is **not compatible** with a certain NetBox version, you will see a warning like this:
 
-    ![manage instance](..//images/upgrades/upgrades_upgrade_options_3.png)
+    ![incompatible plugin](..//images/upgrades/upgrades_incompatible_plugin.png)
 
-    Note that in this case the **NetBox BGP** and **NetBox Topology Views** plugins are at a version that is compatible with NetBox version 3.5.9. All versions higher than this (up to 3.6.6) will require an upgrade to the plugins also, but don't worry the safe upgrade tool will handle all of that for you. 
+    In this case, you would not be able to upgrade to that version, and the tool will not allow you to select it. This typically means the plugin developer has not yet released a version compatible with that NetBox version.
 
-    Also note that we could upgrade to any of the other **potential** options, but that the Safe Upgrade tool is recommending an upgrade to version 3.6.6, and if we select this option, both the plugins will be automatically upgraded to compatible versions as part of the upgrade process.
+3. Select the version you wish to upgrade to. In this example, we will select the recommended version 3.6.
 
-    Note too that if a plugin is **not compatible** with a certain NetBox version then you will see a warning like this: 
+4. Click on **UPGRADE VERSION**.
 
-    ![manage instance](..//images/upgrades/upgrades_incompatible_plugin.png)
+    ![click upgrade](..//images/upgrades/upgrades_upgrade_4.png)
 
-    In this case you would not be able to upgrade to this version, and the tool will not let you select it. In these cases it can mean that the plugin developer has not yet released an updated version of the plugin that is compatible with that particular version of NetBox. 
+5. Click on **Continue** if you are sure you want to go ahead with the upgrade.
 
-5. Next, select the version you wish to upgrade to, and in this example we will select the recommended version 3.6.6, and then click on **UPGRADE VERSION**:
+    ![confirmation warning](..//images/upgrades/upgrades_warning_5.png)
 
-    ![manage instance](..//images/upgrades/upgrades_upgrade_4.png)
+6. You will then see a dialog box confirming the upgrade is in progress.
 
-6. Click on **Continue** if you are sure you want to go ahead with the upgrade: 
+    ![upgrade in progress](..//images/upgrades/upgrades_progress_6.png)
 
-    ![manage instance](..//images/upgrades/upgrades_warning_5.png)
+7. A few seconds later, your NetBox Cloud upgrade will be complete. You will see the new version number.
 
-7. You will then see a dialog box confirming the upgrade is in progress: 
+    ![new version](..//images/upgrades/upgrades_new_version_7.png)
 
-    ![manage instance](..//images/upgrades/upgrades_progress_6.png)
-
-8. A few seconds later you will see that your NetBox Cloud upgrade is now complete and you will see the new version number: 
-
-    ![manage instance](..//images/upgrades/upgrades_new_version_7.png)
-
-9. Finally, if you check **Plugins** again, you will now see the updated versions of the plugins: 
-
-    ![manage instance](..//images/upgrades/upgrades_new_plugins_8.png)
-
-If you encounter any issues while performing the upgrades or have any questions, please raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com)
+If you encounter any issues during the upgrade or have any questions, please raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com).

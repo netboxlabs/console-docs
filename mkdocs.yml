@@ -62,6 +62,7 @@ nav:
       - Getting Console Access: "Administration Console/console-access.md"
       - Setting up Two-Factor Authentication: "Administration Console/set_up_2fa.md"
       - Retrieving NetBox Admin Credentials: "Administration Console/retrieving-nbc-credentials.md"
+      - Adding Admin Users to Console: "Administration Console/console-admin-accounts.md"
       #- Accessing the Console From the NetBox Cloud UI: "Administration Console/console-access-from-ui.md"
       - Viewing Installed Plugins: "Administration Console/netbox-cloud-plugins.md"
       - Database Backups: "Administration Console/working_with_database_backups.md"
