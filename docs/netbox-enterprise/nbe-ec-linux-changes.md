@@ -60,5 +60,4 @@ To allow proper operation of the Embedded Cluster, the following network ports m
 | 8800   | TCP      | Admin Console (legacy or diagnostic use)          |
 
 **Note:** Ingress/egress rules must permit internal pod-to-pod communication.
-
-You should ensure that your Linux firewall (e.g., `iptables`, `firewalld`, or `ufw`) allows traffic on these ports. Consider using `firewalld`'s `--permanent` rules or persistent `iptables` configuration to retain settings across reboots.
+For systems in restricted environments, please refer to the [Special Cases for Restricted Environments](https://docs.netboxlabs.com/netbox-enterprise/nbe-ec-requirements/#special-cases-for-restricted-environments) section in the requirements documentation. This provides detailed guidance on configuring firewalls and network policies to ensure proper operation of the Embedded Cluster.
