@@ -1,6 +1,6 @@
 # Linux Root-Level Changes
 
-This document summarizes the system-level changes made to a Linux host when installing a Replicated Embedded Cluster, particularly in relation to directories, files, and runtime configurations affected under `/`.
+This document summarizes the system-level changes made to a Linux host when installing a NetBox Enterprise Embedded Cluster, particularly in relation to directories, files, and runtime configurations affected under `/`.
 
 ## Key Directories Created
 
@@ -56,7 +56,7 @@ To allow proper operation of the Embedded Cluster, the following network ports m
 | 8472   | UDP      | VXLAN (alternative port for Calico)               |
 | 51820  | UDP      | WireGuard (if enabled for Calico networking)      |
 | 179    | TCP      | BGP (used if Calico is in BGP mode)               |
-| 443    | TCP      | Replicated UI and API access                      |
+| 443    | TCP      | NetBox Enterprise UI and API access               |
 | 8800   | TCP      | Admin Console (legacy or diagnostic use)          |
 
 **Note:** Ingress/egress rules must permit internal pod-to-pod communication, as well as access to required container registries (e.g., `quay.io`, `docker.io`, etc.).
