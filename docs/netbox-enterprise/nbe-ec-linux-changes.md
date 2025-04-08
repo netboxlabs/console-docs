@@ -31,9 +31,10 @@ During installation, the Embedded Cluster creates several directories for contai
 
 ## Runtime & Kernel Modifications
 
-- **cgroups** are used extensively to isolate resources:
-  - `kubepods` cgroup under `/sys/fs/cgroup`
-  - Systemd slices for services like `containerd` and `k0scontroller`
+**cgroups** are used extensively to isolate resources:
+
+- `kubepods` cgroup under `/sys/fs/cgroup`
+- Systemd slices for services like `containerd` and `k0scontroller`
 - These modifications may impact systems with strict lockdowns or non-standard cgroup hierarchies.
 
 ## Binaries and Services
@@ -42,9 +43,22 @@ During installation, the Embedded Cluster creates several directories for contai
 - Services for `k0scontroller`, `containerd`, and possibly `calico` will be active post-install.
 - Some services may install unit files in `/etc/systemd/system/`.
 
-## Considerations
+## Firewall Requirements
 
-- Persistent volumes, logs, and container state are stored under `/var/lib` and `/var/log`.
-- Networking components are configured under `/etc/cni` and `/opt/cni`.
-- May conflict with existing Kubernetes or container runtimes already installed on the host.
-- **SELinux**, **AppArmor**, and other security frameworks might require adjustments.
+To allow proper operation of the Embedded Cluster, the following network ports must be open:
+
+| Port   | Protocol | Purpose                                           |
+|--------|----------|---------------------------------------------------|
+| 6443   | TCP      | Kubernetes API server (used by kubelets, kubectl, etc.) |
+| 2379-2380 | TCP   | etcd (Kubernetes backing store – internal traffic) |
+| 10250  | TCP      | Kubelet API for health checks and logs            |
+| 4789   | UDP      | VXLAN overlay (used by Calico)                    |
+| 8472   | UDP      | VXLAN (alternative port for Calico)               |
+| 51820  | UDP      | WireGuard (if enabled for Calico networking)      |
+| 179    | TCP      | BGP (used if Calico is in BGP mode)               |
+| 443    | TCP      | Replicated UI and API access                      |
+| 8800   | TCP      | Admin Console (legacy or diagnostic use)          |
+
+**Note:** Ingress/egress rules must permit internal pod-to-pod communication, as well as access to required container registries (e.g., `quay.io`, `docker.io`, etc.).
+
+You should ensure that your Linux firewall (e.g., `iptables`, `firewalld`, or `ufw`) allows traffic on these ports. Consider using `firewalld`'s `--permanent` rules or persistent `iptables` configuration to retain settings across reboots.
