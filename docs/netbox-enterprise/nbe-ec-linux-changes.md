@@ -41,7 +41,7 @@ During installation, the Embedded Cluster creates several directories for contai
 
 - The `k0s` binary is located at `/usr/local/bin/k0s`.
 - Services for `k0scontroller`, `containerd`, and possibly `calico` will be active post-install.
-- Some services may install unit files in `/etc/systemd/system/`.
+- Services will install unit files in `/etc/systemd/system/`.
 
 ## Firewall Requirements
 
