@@ -59,6 +59,6 @@ To allow proper operation of the Embedded Cluster, the following network ports m
 | 443    | TCP      | NetBox Enterprise UI and API access               |
 | 8800   | TCP      | Admin Console (legacy or diagnostic use)          |
 
-**Note:** Ingress/egress rules must permit internal pod-to-pod communication, as well as access to required container registries (e.g., `quay.io`, `docker.io`, etc.).
+**Note:** Ingress/egress rules must permit internal pod-to-pod communication.
 
 You should ensure that your Linux firewall (e.g., `iptables`, `firewalld`, or `ufw`) allows traffic on these ports. Consider using `firewalld`'s `--permanent` rules or persistent `iptables` configuration to retain settings across reboots.
