@@ -99,6 +99,7 @@ nav:
     - Overview: "netbox-enterprise/nbe-overview.md"
     - NetBox Enterprise Installer:
       - Requirements: "netbox-enterprise/nbe-ec-requirements.md"
+      - Linux System Changes: "netbox-enterprise/nbe-ec-linux-changes.md"
       - Installation: "netbox-enterprise/nbe-ec-installation.md"
       - Migrating: "netbox-enterprise/nbe-migrating.md"
     #- KOTS:
