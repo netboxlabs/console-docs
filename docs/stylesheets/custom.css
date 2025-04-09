@@ -95,10 +95,14 @@ hr {
   color: #ffffff !important;
 }
 
-/* Green highlight for matched terms */
-[data-md-color-scheme="nbl-dark"] mark {
-  background-color: #00f2d4 !important; /* Bright teal green */
-  color: black !important;
+/* Highlight matched terms with text color only (no background) */
+[data-md-color-scheme="nbl-dark"] .md-search-result__teaser mark,
+[data-md-color-scheme="nbl-dark"] .md-search-result__title mark,
+[data-md-color-scheme="nbl-dark"] .md-search-result__meta mark,
+[data-md-color-scheme="nbl-dark"] .md-search-result__article mark,
+[data-md-color-scheme="nbl-dark"] .md-search-result__link mark {
+  background-color: transparent !important;
+  color: #00f2d4 !important;  /* Bright teal */
 }
 
 /* White text in the search input box */
