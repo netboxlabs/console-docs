@@ -80,3 +80,34 @@ hr {
         background: #00857d; /* Dark teal for dark mode */
     }
 }
+/* -------------------------------
+   Search result readability - dark mode
+---------------------------------- */
+
+/* Make all search result text white */
+[data-md-color-scheme="nbl-dark"] .md-search-result__title,
+[data-md-color-scheme="nbl-dark"] .md-search-result__teaser,
+[data-md-color-scheme="nbl-dark"] .md-search-result__meta,
+[data-md-color-scheme="nbl-dark"] .md-search-result__article,
+[data-md-color-scheme="nbl-dark"] a.md-search-result__link,
+[data-md-color-scheme="nbl-dark"] a.md-search-result__link *,
+[data-md-color-scheme="nbl-dark"] a.md-search-result__link article {
+  color: #ffffff !important;
+}
+
+/* Green highlight for matched terms */
+[data-md-color-scheme="nbl-dark"] mark {
+  background-color: #00f2d4 !important; /* Bright teal green */
+  color: black !important;
+}
+
+/* White text in the search input box */
+[data-md-color-scheme="nbl-dark"] .md-search__input {
+  color: #ffffff !important;
+}
+
+/* Optional: hover/focus effect for result titles */
+[data-md-color-scheme="nbl-dark"] a.md-search-result__link:hover,
+[data-md-color-scheme="nbl-dark"] a.md-search-result__link:focus {
+  color: #66ccff !important;
+}
