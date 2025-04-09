@@ -1,0 +1,3641 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../images/netbox-favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>pyATS - NetBox Labs Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-Q107GMDTJM"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-Q107GMDTJM",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q107GMDTJM"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="nbl-light" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#getting-started-with-netbox-pyats-and-genie" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="NetBox Labs Documentation" class="md-header__button md-logo" aria-label="NetBox Labs Documentation" data-md-component="logo">
+      
+  <img src="../../images/netbox-light-favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NetBox Labs Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              pyATS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="nbl-light" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="nbl-dark" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../NetBox%20Cloud/migrating-to-netbox-cloud/" class="md-tabs__link">
+        Cloud
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../netbox-enterprise/nbe-overview/" class="md-tabs__link">
+        Enterprise
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../discovery-assurance/" class="md-tabs__link">
+        Discovery & Assurance
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../netbox-ansible-collection/" class="md-tabs__link md-tabs__link--active">
+        Integrations
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sdks/pynetbox/" class="md-tabs__link">
+        SDKs
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../netbox-extensions/branching/" class="md-tabs__link">
+        Extensions
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../product_feature_lifecycle/" class="md-tabs__link">
+      Product and Feature Lifecycle
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="NetBox Labs Documentation" class="md-nav__button md-logo" aria-label="NetBox Labs Documentation" data-md-component="logo">
+      
+  <img src="../../images/netbox-light-favicon.png" alt="logo">
+
+    </a>
+    NetBox Labs Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Cloud
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Cloud" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Cloud
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NetBox%20Cloud/migrating-to-netbox-cloud/" class="md-nav__link">
+        Migrating to NetBox Cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Administration via Console
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Administration via Console" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Administration via Console
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/console-access/" class="md-nav__link">
+        Getting Console Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/set_up_2fa/" class="md-nav__link">
+        Setting up Two-Factor Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/retrieving-nbc-credentials/" class="md-nav__link">
+        Retrieving NetBox Admin Credentials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/console-admin-accounts/" class="md-nav__link">
+        Adding Admin Users to Console
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/netbox-cloud-plugins/" class="md-nav__link">
+        Viewing Installed Plugins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/working_with_database_backups/" class="md-nav__link">
+        Database Backups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/upgrading-nbc/" class="md-nav__link">
+        Upgrading NetBox
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/managing-hostnames/" class="md-nav__link">
+        Managing Hostnames
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          Security
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Security" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Security
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/prefix-lists/" class="md-nav__link">
+        Prefix Lists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/public-ip-addressing/" class="md-nav__link">
+        Public IP Addressing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          Single Sign-On (SSO)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Single Sign-On (SSO)" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Single Sign-On (SSO)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" type="checkbox" id="__nav_2_4_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_1">
+          Entra ID
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Entra ID" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Entra ID
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/azure-ad-sso-setup/" class="md-nav__link">
+        Microsoft Entra ID SSO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/azure-group-mapping/" class="md-nav__link">
+        Entra ID Group Mapping
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_2" type="checkbox" id="__nav_2_4_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_2">
+          Okta
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Okta" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Okta
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/okta-sso-setup/" class="md-nav__link">
+        Okta SSO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/okta-group-mapping/" class="md-nav__link">
+        Okta Group Mapping
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_3" type="checkbox" id="__nav_2_4_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_3">
+          SAML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="SAML" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          SAML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/saml-sso-setup/" class="md-nav__link">
+        SAML SSO Setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/saml-group-map/" class="md-nav__link">
+        SAML Group Mapping
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Free Plan
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Free Plan" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Free Plan
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/free-plan-features/" class="md-nav__link">
+        Features
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Console/free-plan-new-user/" class="md-nav__link">
+        Add a New User
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Cloud Connectivity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Cloud Connectivity" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Cloud Connectivity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud-connectivity/do-i-need-cloud-connectivity/" class="md-nav__link">
+        Do I Need Cloud Connectivity Options?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" type="checkbox" id="__nav_2_6_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_2">
+          Cloud Connectivity Options
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Cloud Connectivity Options" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Cloud Connectivity Options
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud-connectivity/which-connectivity-option/" class="md-nav__link">
+        Which Cloud Connectivity Option is Right for Me?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud-connectivity/internet-delivery/" class="md-nav__link">
+        Internet Delivery (Single Region)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud-connectivity/aws-private-link/" class="md-nav__link">
+        AWS Private Link (Single Region)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud-connectivity/ipsec-vpn-tunnels/" class="md-nav__link">
+        IPSEC VPN Tunnels (Single Region)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud-connectivity/aws-direct-connect/" class="md-nav__link">
+        AWS Direct Connect (Single Region)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud-connectivity/aws-direct-connect-multi-region/" class="md-nav__link">
+        AWS Direct Connect (Multi-Region)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud-connectivity/cloud-connectivity-faq/" class="md-nav__link">
+        Frequently Asked Questions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Maintenance
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Maintenance" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Maintenance
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maintenance/" class="md-nav__link">
+        Scheduled Maintenance
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Enterprise
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Enterprise" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Enterprise
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-enterprise/nbe-overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          NetBox Enterprise Installer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NetBox Enterprise Installer" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          NetBox Enterprise Installer
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-enterprise/nbe-ec-requirements/" class="md-nav__link">
+        Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-enterprise/nbe-ec-linux-changes/" class="md-nav__link">
+        Linux System Changes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-enterprise/nbe-ec-installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-enterprise/nbe-migrating/" class="md-nav__link">
+        Migrating
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Single Sign-On (SSO)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Single Sign-On (SSO)" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Single Sign-On (SSO)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_1" type="checkbox" id="__nav_3_3_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_1">
+          Entra ID
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Entra ID" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Entra ID
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-enterprise/nbe-azure-sso/" class="md-nav__link">
+        Microsoft Entra ID SSO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-enterprise/nbe-azure-group-mapping/" class="md-nav__link">
+        Entra ID Group Mapping
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-enterprise/nbe-ldap/" class="md-nav__link">
+        LDAP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Administration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Administration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Administration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-enterprise/nbe-tls-ingress/" class="md-nav__link">
+        TLS and Ingress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-enterprise/nbe-backups/" class="md-nav__link">
+        Backups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-enterprise/nbe-troubleshooting/" class="md-nav__link">
+        Advanced Tools and Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-enterprise/nbe-release-notes/" class="md-nav__link">
+        Release Notes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Discovery & Assurance
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Discovery & Assurance" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Discovery & Assurance
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../discovery-assurance/" class="md-nav__link">
+        Solution Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-discovery/quickstart-guide/" class="md-nav__link">
+        Quickstart Guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../netbox-discovery/">NetBox Discovery</a>
+          
+            <label for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="NetBox Discovery" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          NetBox Discovery
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_2" type="checkbox" id="__nav_4_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../netbox-discovery/agent/">Discovery Agent</a>
+          
+            <label for="__nav_4_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Discovery Agent" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Discovery Agent
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-discovery/agent/get-started/" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-discovery/agent/configuration-file/" class="md-nav__link">
+        Configuration format
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-discovery/agent/network_discovery/" class="md-nav__link">
+        Network Discovery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-discovery/agent/device_discovery/" class="md-nav__link">
+        Device Discovery
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../netbox-assurance/">NetBox Assurance</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="NetBox Assurance" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          NetBox Assurance
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Integrations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Integrations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Integrations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../netbox-ansible-collection/" class="md-nav__link">
+        NetBox Ansible Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          pyATS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        pyATS
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    Code Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-up-and-installation" class="md-nav__link">
+    Set Up and Installation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-network" class="md-nav__link">
+    Lab Network
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-the-testbed-file-dynamically-from-netbox-inventory" class="md-nav__link">
+    Generating The testbed file Dynamically from NetBox Inventory
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structured-data-vs-unstructured-data" class="md-nav__link">
+    Structured Data Vs Unstructured Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-your-first-tests-with-the-genie-cli" class="md-nav__link">
+    Running Your First Tests With The Genie CLI
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Your First Tests With The Genie CLI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genie-parsing" class="md-nav__link">
+    Genie Parsing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genie-learning" class="md-nav__link">
+    Genie Learning
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-a-change-to-the-network" class="md-nav__link">
+    Making a Change to The Network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genie-diff" class="md-nav__link">
+    Genie Diff
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyats-and-python" class="md-nav__link">
+    pyATS and Python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyats-test-scripts-and-jobs" class="md-nav__link">
+    pyATS Test Scripts and Jobs
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../servicenow/">ServiceNow</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="ServiceNow" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          ServiceNow
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          SDKs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="SDKs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          SDKs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdks/pynetbox/" class="md-nav__link">
+        Pynetbox
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Extensions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Extensions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Extensions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1" type="checkbox" id="__nav_7_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../netbox-extensions/branching/">Branching</a>
+          
+            <label for="__nav_7_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Branching" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Branching
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/branching/configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1_3" type="checkbox" id="__nav_7_1_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7_1_3">
+          Using Branches
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using Branches" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Using Branches
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/branching/using-branches/creating-a-branch/" class="md-nav__link">
+        Creating a Branch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/branching/using-branches/syncing-merging/" class="md-nav__link">
+        Syncing & Merging Changes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/branching/using-branches/reverting-a-branch/" class="md-nav__link">
+        Reverting a Branch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/branching/using-branches/api/" class="md-nav__link">
+        Interact with Branches via API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1_4" type="checkbox" id="__nav_7_1_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7_1_4">
+          Models
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Models" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Models
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/branching/models/branch/" class="md-nav__link">
+        Branches
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/branching/models/branchevent/" class="md-nav__link">
+        Branch Events
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/branching/models/changediff/" class="md-nav__link">
+        Change Diffs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/branching/models/objectchange/" class="md-nav__link">
+        Object Changes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/branching/changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" type="checkbox" id="__nav_7_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../netbox-extensions/changes/">Change Management</a>
+          
+            <label for="__nav_7_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Change Management" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_2">
+          <span class="md-nav__icon md-icon"></span>
+          Change Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/changes/configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2_3" type="checkbox" id="__nav_7_2_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7_2_3">
+          Models
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Models" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Models
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/changes/models/changerequest/" class="md-nav__link">
+        Change Request
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/changes/models/comment/" class="md-nav__link">
+        Comment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/changes/models/commentreply/" class="md-nav__link">
+        Comment Reply
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/changes/models/policy/" class="md-nav__link">
+        Policy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/changes/models/policyrule/" class="md-nav__link">
+        Policy Rule
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/changes/models/review/" class="md-nav__link">
+        Review
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/changes/changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" type="checkbox" id="__nav_7_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../netbox-extensions/diode/">Diode</a>
+          
+            <label for="__nav_7_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Diode" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          Diode
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_2" type="checkbox" id="__nav_7_3_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7_3_2">
+          Get started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Get started" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Get started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/diode/diode-get-started/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/diode/diode-plugin/" class="md-nav__link">
+        Installing the Diode plugin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/diode/diode-server/" class="md-nav__link">
+        Running the Diode server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-extensions/diode/diode-client/" class="md-nav__link">
+        Installing the Diode client SDK
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product_feature_lifecycle/" class="md-nav__link">
+        Product and Feature Lifecycle
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    Code Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-up-and-installation" class="md-nav__link">
+    Set Up and Installation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-network" class="md-nav__link">
+    Lab Network
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-the-testbed-file-dynamically-from-netbox-inventory" class="md-nav__link">
+    Generating The testbed file Dynamically from NetBox Inventory
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structured-data-vs-unstructured-data" class="md-nav__link">
+    Structured Data Vs Unstructured Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-your-first-tests-with-the-genie-cli" class="md-nav__link">
+    Running Your First Tests With The Genie CLI
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Your First Tests With The Genie CLI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genie-parsing" class="md-nav__link">
+    Genie Parsing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genie-learning" class="md-nav__link">
+    Genie Learning
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-a-change-to-the-network" class="md-nav__link">
+    Making a Change to The Network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genie-diff" class="md-nav__link">
+    Genie Diff
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyats-and-python" class="md-nav__link">
+    pyATS and Python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyats-test-scripts-and-jobs" class="md-nav__link">
+    pyATS Test Scripts and Jobs
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="getting-started-with-netbox-pyats-and-genie">Getting Started With NetBox, PyATS and Genie</h1>
+<div class="admonition info">
+<p class="admonition-title">Learn More</p>
+<p>You can view an on-demand Webinar <a href="https://netboxlabs.com/events/webinar-getting-started-with-network-test-automation-netbox-pyats-genie/">Getting Started with Network Test Automation: NetBox + pyATS</a> hosted by NetBox Labs. </p>
+</div>
+<h2 id="code-examples">Code Examples</h2>
+<p>All code used in the examples below can be found in the NetBox Learning <a href="https://github.com/netboxlabs/netbox-learning">git repository</a>, in the directory <code>netbox-pyats-webinar</code>.</p>
+<h3 id="set-up-and-installation">Set Up and Installation</h3>
+<ol>
+<li>Clone the Git repo and change into the <code>netbox-pyats-webinar</code> directory:
+    <div class="highlight"><pre><span></span><code>git clone https://github.com/netboxlabs/netbox-learning.git
+cd netbox-learning/netbox-pyats-webinar
+</code></pre></div></li>
+<li>Create and activate Python 3 virtual environment:
+    <div class="highlight"><pre><span></span><code>python3 -m venv ./venv
+source venv/bin/activate
+</code></pre></div></li>
+<li>Upgrade pip:
+    <div class="highlight"><pre><span></span><code>python3 -m pip install --upgrade pip
+</code></pre></div></li>
+<li>
+<p>Install PyATS: </p>
+<p>As per the official <a href="https://developer.cisco.com/docs/pyats/api/">documentation</a>, there are a options to perform a minimal installation (option 1) or a full installation (opton 2).  </p>
+<p><strong>Option 1</strong>
+Minimal install that includes the Genie library and that allows you to use the interactive testbed creation command to create your testbed files from NetBox: 
+<div class="highlight"><pre><span></span><code>pip install pyats[library]
+pip install pyats.contrib
+</code></pre></div></p>
+<p><strong>Option 2</strong>
+Full installation that includes all packages and libraries: 
+<div class="highlight"><pre><span></span><code>pip install pyats[full]
+</code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you are using Zsh on a Mac then you need to quote the install string.</p>
+</div>
+<div class="highlight"><pre><span></span><code>pip install &quot;pyats[full]&quot;
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you plan to run the example script <code>ospf_neighbor_table.py</code> then you will also need to install the <code>prettytable</code> library with <code>pip install prettytable</code> or you can simply run the command <code>pip install -r requirements.txt</code> to install this along with pyATS, Genie and the <code>contrib</code> library. </p>
+</div>
+<p>There is also a <a href="https://developer.cisco.com/codeexchange/github/repo/CiscoTestAutomation/pyats-docker">PyATS Docker Image</a>. This command will pull down the container if you don't have it locally and drop you into a Bash shell: 
+<div class="highlight"><pre><span></span><code>docker run -it ciscotestautomation/pyats:latest /bin/bash
+</code></pre></div></p>
+</li>
+</ol>
+<h2 id="lab-network">Lab Network</h2>
+<p>Our lab network consists of 2 x Cisco CSR100V routers and they are documented in NetBox under the Site <code>PyATS Webinar</code> and are directly connected to each other over port <code>GigabitEthernet2</code> on the <code>192.168.1.0/30</code> subnet. They are both running OSPF, and you can find the the configuration for this in the <a href="https://github.com/netboxlabs/netbox-learning/blob/develop/netbox-pyats-webinar/initial_device_configs.md">initial_device_configs.md</a> file: </p>
+<p><img alt="lab topology" src="../../images/integrations/pyats/pyats-webinar-devices.png" /></p>
+<p><img alt="netbox devices" src="../../images/integrations/pyats/topology.png" /></p>
+<h3 id="generating-the-testbed-file-dynamically-from-netbox-inventory">Generating The testbed file Dynamically from NetBox Inventory</h3>
+<p><strong>Option 1</strong>
+Use the <code>pyats create testbed netbox</code> command to build your testbed file. Note that where a value is prefixed with <code>os.getenv</code> or <code>%ENV</code> then these values are being pulled in from the local environment variables that you need to set with the <code>export</code> command eg. <code>export NETBOX_URL=https://example.cloud.netboxapp.com/</code>, <code>export DEF_PYATS_USER=admin</code>: </p>
+<div class="highlight"><pre><span></span><code>pyats create testbed netbox \
+--output testbed.yaml \
+--netbox-url=${NETBOX_URL} \
+--user-token=${NETBOX_USER_TOKEN} \
+--def_user=&#39;%ENV{DEF_PYATS_USER}&#39; \
+--def_pass=&#39;%ENV{DEF_PYATS_PASS}&#39; \
+--url_filter=&#39;site=pyats-webinar&#39; \
+--topology
+</code></pre></div>
+<p>In this example we are generating a testbed file called <code>testbed.yaml</code> and filtering NetBox by the site name <code>pyats-webinar</code>. When you hit enter the output will look like this: </p>
+<p><div class="highlight"><pre><span></span><code>Begin retrieving data from netbox...
+Configuring testbed default credentials.
+Retrieving associated data for CSR1...
+Retrieving associated data for CSR2...
+Testbed file generated: 
+testbed.yaml 
+</code></pre></div>
+<strong>Option 2</strong>
+Run the <code>generate_testbed_file.py</code> Python script. Note that where a value is prefixed with <code>os.getenv</code> or <code>%ENV</code> then these values are being pulled in from the local environment variables that you need to set with the <code>export</code> command eg. <code>export NETBOX_URL=https://example.cloud.netboxapp.com/</code>, <code>export DEF_PYATS_USER=admin</code>.</p>
+<p>In this script we are generating a testbed file called <code>testbed.yaml</code> and filtering NetBox by the site name <code>pyats-webinar</code>, but you could just as easily filter on other fields as in the examples commented out: </p>
+<div class="highlight"><pre><span></span><code># Description: This script generates a testbed file based on the Netbox data
+#              using the pyATS framework. It uses the Netbox class from the
+#              pyats.contrib.creators.netbox module to create the testbed file.
+
+# Import the necessary libraries
+from pyats.contrib.creators.netbox import Netbox
+import yaml
+import os
+
+# Define Netbox URL, user token, and default credentials
+netbox_url = os.getenv(&#39;NETBOX_URL&#39;)
+user_token = os.getenv(&#39;NETBOX_USER_TOKEN&#39;)
+def_user = &#39;%ENV{DEF_PYATS_USER}&#39;
+def_pass = &#39;%ENV{DEF_PYATS_PASS}&#39;
+url_filter = &#39;site=pyats-webinar&#39;
+# url_filter = &#39;site_id=68&#39;
+# url_filter = &#39;site=pyats-webinar&amp;os=ios-xe&#39;
+# url_filter = &#39;platform=ios-xe&#39;
+
+# Create testbed object and build data structure
+nb_testbed = Netbox(
+    netbox_url=netbox_url,
+    user_token=user_token,
+    def_user=def_user,
+    def_pass=def_pass,
+    url_filter=url_filter,
+    ssl_verify=False,
+    topology=True
+)
+
+# Generate testbed file
+tb = nb_testbed._generate()
+tb_yaml = yaml.dump(tb)
+with open(&quot;testbed.yaml&quot;, &quot;w&quot;) as f:
+    f.write(tb_yaml)
+</code></pre></div>
+<p>The resulting testbed file produced by either option will look something like this, depending on your network. Note that as we included the <code>--topology</code> switch the testbed file output includes the interfaces and connections from NetBox also: 
+<div class="highlight"><pre><span></span><code>devices:
+  CSR1:
+    alias: CSR1
+    connections:
+      cli:
+        ip: 10.90.0.35
+        protocol: ssh
+    credentials:
+      default:
+        password: &#39;%ENV{DEF_PYATS_PASS}&#39;
+        username: &#39;%ENV{DEF_PYATS_USER}&#39;
+    os: iosxe
+    platform: iosxe
+    type: CSR1000V
+  CSR2:
+    alias: CSR2
+    connections:
+      cli:
+        ip: 10.90.0.36
+        protocol: ssh
+    credentials:
+      default:
+        password: &#39;%ENV{DEF_PYATS_PASS}&#39;
+        username: &#39;%ENV{DEF_PYATS_USER}&#39;
+    os: iosxe
+    platform: iosxe
+    type: CSR1000V
+testbed:
+  credentials:
+    default:
+      password: &#39;%ENV{DEF_PYATS_PASS}&#39;
+      username: &#39;%ENV{DEF_PYATS_USER}&#39;
+topology:
+  CSR1:
+    interfaces:
+      GigabitEthernet1:
+        alias: CSR1_GigabitEthernet1
+        ipv4: 10.90.0.35/27
+        type: ethernet
+      GigabitEthernet2:
+        alias: CSR1_GigabitEthernet2
+        ipv4: 192.168.1.1/30
+        link: cable_num_34
+        type: ethernet
+      GigabitEthernet3:
+        alias: CSR1_GigabitEthernet3
+        type: ethernet
+      GigabitEthernet4:
+        alias: CSR1_GigabitEthernet4
+        type: ethernet
+      GigabitEthernet5:
+        alias: CSR1_GigabitEthernet5
+        type: ethernet
+  CSR2:
+    interfaces:
+      GigabitEthernet1:
+        alias: CSR2_GigabitEthernet1
+        ipv4: 10.90.0.36/27
+        type: ethernet
+      GigabitEthernet2:
+        alias: CSR2_GigabitEthernet2
+        ipv4: 192.168.1.2/30
+        link: cable_num_34
+        type: ethernet
+      GigabitEthernet3:
+        alias: CSR2_GigabitEthernet3
+        type: ethernet
+      GigabitEthernet4:
+        alias: CSR2_GigabitEthernet4
+        type: ethernet
+      GigabitEthernet5:
+        alias: CSR2_GigabitEthernet5
+        type: ethernet
+</code></pre></div></p>
+<h2 id="structured-data-vs-unstructured-data">Structured Data Vs Unstructured Data</h2>
+<p>When you run a command at the CLI of a network device, you get unstructured data back as the response, which is just a blob of text: 
+<div class="highlight"><pre><span></span><code>CSR1#sh ip interface brief 
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet1       10.0.0.15       YES manual up                    up      
+GigabitEthernet2       192.168.1.1     YES manual up                    up      
+Loopback0              1.1.1.1         YES manual up                    up  
+</code></pre></div></p>
+<p>This is great for humans, as we can read this, but a computer cannot understand this data. Also if the next version of the OS you are using makes a change to the way that the output is formatted then you will have a problem and have to re-write your scripts to handle this. This is where the Genie parser comes into play as it will parse the output into structured data. The data is then represented using key/value pairs in JSON format that can be used by a computer: </p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;interface&quot;: {
+    &quot;GigabitEthernet1&quot;: {
+      &quot;interface_is_ok&quot;: &quot;YES&quot;,
+      &quot;ip_address&quot;: &quot;10.0.0.15&quot;,
+      &quot;method&quot;: &quot;manual&quot;,
+      &quot;protocol&quot;: &quot;up&quot;,
+      &quot;status&quot;: &quot;up&quot;
+    },
+    &quot;GigabitEthernet2&quot;: {
+      &quot;interface_is_ok&quot;: &quot;YES&quot;,
+      &quot;ip_address&quot;: &quot;192.168.1.1&quot;,
+      &quot;method&quot;: &quot;manual&quot;,
+      &quot;protocol&quot;: &quot;up&quot;,
+      &quot;status&quot;: &quot;up&quot;
+    },
+    &quot;Loopback0&quot;: {
+      &quot;interface_is_ok&quot;: &quot;YES&quot;,
+      &quot;ip_address&quot;: &quot;1.1.1.1&quot;,
+      &quot;method&quot;: &quot;manual&quot;,
+      &quot;protocol&quot;: &quot;up&quot;,
+      &quot;status&quot;: &quot;up&quot;
+    }
+  }
+}
+</code></pre></div>
+<h2 id="running-your-first-tests-with-the-genie-cli">Running Your First Tests With The Genie CLI</h2>
+<h3 id="genie-parsing">Genie Parsing</h3>
+<p>There are parsers available for a large number of network OS's (not just Cisco), and you can view the complete list <a href="https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/parsers.">here</a>
+In this example we will run the <code>genie parse</code> command to parse the output of the <code>show ip ospf neighbor</code> command and limit it to just device <code>CSR1</code>: </p>
+<div class="highlight"><pre><span></span><code>genie parse &#39;show ip ospf neighbor&#39; --testbed-file testbed.yaml --device CSR1
+  0%|                                                                                                                                                                | 0/1 [00:00&lt;?, ?it/s]{
+  &quot;interfaces&quot;: {
+    &quot;GigabitEthernet2&quot;: {
+      &quot;neighbors&quot;: {
+        &quot;2.2.2.2&quot;: {
+          &quot;address&quot;: &quot;192.168.1.2&quot;,
+          &quot;dead_time&quot;: &quot;00:00:34&quot;,
+          &quot;priority&quot;: 1,
+          &quot;state&quot;: &quot;FULL/DR&quot;
+        }
+      }
+    }
+  }
+}
+</code></pre></div>
+<p>This will output the parsed data to your terminal, but if you want to save the output just append the directory you wish to save it to with the <code>--output</code> switch. This will save both the <code>_console</code> file (the unstructured data) and the <code>_parsed</code> file (the structured data), along with the <code>connection_</code> log (the raw output of the full connection process) into the chosen directory:</p>
+<div class="highlight"><pre><span></span><code>genie parse &#39;show ip ospf neighbor&#39; --testbed-file testbed.yaml --device CSR1 --output csr1
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01&lt;00:00,  1.01s/it]
++==============================================================================+
+| Genie Parse Summary for CSR1                                                 |
++==============================================================================+
+|  Connected to CSR1                                                           |
+|  -  Log: csr1/connection_CSR1.txt                                            |
+|------------------------------------------------------------------------------|
+|  Parsed command &#39;show ip ospf neighbor&#39;                                      |
+|  -  Parsed structure: csr1/CSR1_show-ip-ospf-neighbor_parsed.txt             |
+|  -  Device Console:   csr1/CSR1_show-ip-ospf-neighbor_console.txt            |
+|------------------------------------------------------------------------------|
+</code></pre></div>
+<h3 id="genie-learning">Genie Learning</h3>
+<p>In this example we will run the <code>genie learn</code> command to learn all about <code>routing</code> and <code>ospf</code> for both devices in our testbed file. We will also save the output into directory called <code>pre-change</code>. Genie will automagically create directories for us if they don't already exist. </p>
+<p>For reference if you run the <code>genie learn all</code> command then for IOS-XE devices the list of features learned is: </p>
+<div class="highlight"><pre><span></span><code>acl, arp, bgp, device, dot1x, eigrp, fdb, hsrp, igmp, interface, isis, lag, lisp, lldp, mcast, mld, msdp, nd, ntp, ospf, pim, platform, prefix_list, rip, route_policy, routing, static_routing, stp, terminal, utils, vlan, vrf, vxlan, config
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>genie learn routing ospf --testbed-file testbed.yaml --output pre-change  
+
+Learning &#39;[&#39;routing&#39;, &#39;ospf&#39;]&#39; on devices &#39;[&#39;CSR1&#39;, &#39;CSR2&#39;]&#39;
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:11&lt;00:00,  5.85s/it]
++==============================================================================+
+| Genie Learn Summary for device CSR1                                          |
++==============================================================================+
+|  Connected to CSR1                                                           |
+|  -   Log: pre-change/connection_CSR1.txt                                     |
+|------------------------------------------------------------------------------|
+|  Learnt feature &#39;routing&#39;                                                    |
+|  -  Ops structure:  pre-change/routing_iosxe_CSR1_ops.txt                    |
+|  -  Device Console: pre-change/routing_iosxe_CSR1_console.txt                |
+|------------------------------------------------------------------------------|
+|  Learnt feature &#39;ospf&#39;                                                       |
+|  -  Ops structure:  pre-change/ospf_iosxe_CSR1_ops.txt                       |
+|  -  Device Console: pre-change/ospf_iosxe_CSR1_console.txt                   |
+|==============================================================================|
+
+
++==============================================================================+
+| Genie Learn Summary for device CSR2                                          |
++==============================================================================+
+|  Connected to CSR2                                                           |
+|  -   Log: pre-change/connection_CSR2.txt                                     |
+|------------------------------------------------------------------------------|
+|  Learnt feature &#39;routing&#39;                                                    |
+|  -  Ops structure:  pre-change/routing_iosxe_CSR2_ops.txt                    |
+|  -  Device Console: pre-change/routing_iosxe_CSR2_console.txt                |
+|------------------------------------------------------------------------------|
+|  Learnt feature &#39;ospf&#39;                                                       |
+|  -  Ops structure:  pre-change/ospf_iosxe_CSR2_ops.txt                       |
+|  -  Device Console: pre-change/ospf_iosxe_CSR2_console.txt                   |
+|==============================================================================|
+</code></pre></div>
+<h2 id="making-a-change-to-the-network">Making a Change to The Network</h2>
+<p>Let's make a small change to the <code>CSR2</code> router in our test network, and remove the <code>network 2.2.2.2 0.0.0.0 area 0</code> statement from the OSPF configuration: </p>
+<div class="highlight"><pre><span></span><code>CSR2#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+CSR2(config)#router ospf 1
+CSR2(config-router)#no network 2.2.2.2 0.0.0.0 area 0
+</code></pre></div>
+<p>Next lets re-learn <code>routing</code> and <code>ospf</code> for both devices in our testbed file. We will also save the output into directory called <code>post-change</code>: </p>
+<div class="highlight"><pre><span></span><code>genie learn routing ospf --testbed-file testbed.yaml --output post-change                  
+
+Learning &#39;[&#39;routing&#39;, &#39;ospf&#39;]&#39; on devices &#39;[&#39;CSR1&#39;, &#39;CSR2&#39;]&#39;
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:11&lt;00:00,  5.84s/it]
++==============================================================================+
+| Genie Learn Summary for device CSR1                                          |
++==============================================================================+
+|  Connected to CSR1                                                           |
+|  -   Log: post-change/connection_CSR1.txt                                    |
+|------------------------------------------------------------------------------|
+|  Learnt feature &#39;routing&#39;                                                    |
+|  -  Ops structure:  post-change/routing_iosxe_CSR1_ops.txt                   |
+|  -  Device Console: post-change/routing_iosxe_CSR1_console.txt               |
+|------------------------------------------------------------------------------|
+|  Learnt feature &#39;ospf&#39;                                                       |
+|  -  Ops structure:  post-change/ospf_iosxe_CSR1_ops.txt                      |
+|  -  Device Console: post-change/ospf_iosxe_CSR1_console.txt                  |
+|==============================================================================|
+
+
++==============================================================================+
+| Genie Learn Summary for device CSR2                                          |
++==============================================================================+
+|  Connected to CSR2                                                           |
+|  -   Log: post-change/connection_CSR2.txt                                    |
+|------------------------------------------------------------------------------|
+|  Learnt feature &#39;routing&#39;                                                    |
+|  -  Ops structure:  post-change/routing_iosxe_CSR2_ops.txt                   |
+|  -  Device Console: post-change/routing_iosxe_CSR2_console.txt               |
+|------------------------------------------------------------------------------|
+|  Learnt feature &#39;ospf&#39;                                                       |
+|  -  Ops structure:  post-change/ospf_iosxe_CSR2_ops.txt                      |
+|  -  Device Console: post-change/ospf_iosxe_CSR2_console.txt                  |
+|==============================================================================|
+</code></pre></div>
+<h2 id="genie-diff">Genie Diff</h2>
+<p>Now let's use the <code>genie diff</code> command to tell us what changed in our network, and we will store the output in a directory called <code>routing-diff</code>: </p>
+<div class="highlight"><pre><span></span><code>genie diff pre-change post-change --output diff 
+1it [00:00, 333.44it/s]
++==============================================================================+
+| Genie Diff Summary between directories pre-change/ and post-change/          |
++==============================================================================+
+|  File: routing_iosxe_CSR2_ops.txt                                            |
+|   - Identical                                                                |
+|------------------------------------------------------------------------------|
+|  File: ospf_iosxe_CSR1_ops.txt                                               |
+|   - Identical                                                                |
+|------------------------------------------------------------------------------|
+|  File: routing_iosxe_CSR1_ops.txt                                            |
+|   - Diff can be found at diff/diff_routing_iosxe_CSR1_ops.txt                |
+|------------------------------------------------------------------------------|
+|  File: ospf_iosxe_CSR2_ops.txt                                               |
+|   - Diff can be found at diff/diff_ospf_iosxe_CSR2_ops.txt                   |
+|------------------------------------------------------------------------------|
+</code></pre></div>
+<p>There are differences in the outputs of both the <code>routing_iosxe_CSR1_ops.txt</code> and <code>ospf_iosxe_CSR2_ops.txt</code> files and we can view the contents of those files to see what has changed: </p>
+<p><div class="highlight"><pre><span></span><code>cat diff/diff_routing_iosxe_CSR1_ops.txt 
+--- pre-change/routing_iosxe_CSR1_ops.txt
++++ post-change/routing_iosxe_CSR1_ops.txt
+ info:
+  vrf:
+   default:
+    address_family:
+     ipv4:
+      routes:
+-      2.2.2.2/32:
+-       active: True
+-       metric: 2
+-       next_hop:
+-        next_hop_list:
+-         1:
+-          index: 1
+-          next_hop: 192.168.1.2
+-          outgoing_interface: GigabitEthernet2
+-          updated: 03:32:43
+-       route: 2.2.2.2/32
+-       route_preference: 110
+-       source_protocol: ospf
+-       source_protocol_codes: O%  
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cat diff/diff_ospf_iosxe_CSR2_ops.txt   
+--- pre-change/ospf_iosxe_CSR2_ops.txt
++++ post-change/ospf_iosxe_CSR2_ops.txt
+ info:
+  vrf:
+   default:
+    address_family:
+     ipv4:
+      instance:
+       1:
+        areas:
+         0.0.0.0:
+          interfaces:
+-          Loopback0:
+-           bfd:
+-            enable: False
+-           cost: 1
+-           demand_circuit: False
+-           enable: True
+-           interface_type: loopback
+-           name: Loopback0% 
+</code></pre></div></p>
+<p>As we can see, CSR1 has lost the the route to the <code>2.2.2.2/32</code> prefix and on CSR2 the interface <code>lo0</code> has been removed from <code>OSPF area 0</code>.</p>
+<h2 id="pyats-and-python">pyATS and Python</h2>
+<p>As you would expect, it is also very easy to work with pyATS and python. Type <code>python</code> in your terminal, and then start by importing the <code>load</code> module from the <code>genie.testbed</code> library and load the testbed file: </p>
+<p><div class="highlight"><pre><span></span><code>from genie.testbed import load
+testbed = load(&#39;testbed.yaml&#39;) 
+</code></pre></div>
+Then connect to the CSR1 device: 
+<div class="highlight"><pre><span></span><code>device = testbed.devices[&#39;CSR1&#39;]
+device.connect()
+</code></pre></div>
+Then parse the command <code>show ip interface brief</code> and print the output nicely using the <code>pprint</code> library:
+<div class="highlight"><pre><span></span><code>parsed_data = device.parse(&#39;show ip interface brief&#39;)
+from pprint import pprint 
+pprint(parsed_data)
+{&#39;interface&#39;: {&#39;GigabitEthernet1&#39;: {&#39;interface_is_ok&#39;: &#39;YES&#39;,
+                                    &#39;ip_address&#39;: &#39;10.0.0.15&#39;,
+                                    &#39;method&#39;: &#39;manual&#39;,
+                                    &#39;protocol&#39;: &#39;up&#39;,
+                                    &#39;status&#39;: &#39;up&#39;},
+               &#39;GigabitEthernet2&#39;: {&#39;interface_is_ok&#39;: &#39;YES&#39;,
+                                    &#39;ip_address&#39;: &#39;192.168.1.1&#39;,
+                                    &#39;method&#39;: &#39;manual&#39;,
+                                    &#39;protocol&#39;: &#39;up&#39;,
+                                    &#39;status&#39;: &#39;up&#39;},
+               &#39;Loopback0&#39;: {&#39;interface_is_ok&#39;: &#39;YES&#39;,
+                             &#39;ip_address&#39;: &#39;1.1.1.1&#39;,
+                             &#39;method&#39;: &#39;manual&#39;,
+                             &#39;protocol&#39;: &#39;up&#39;,
+                             &#39;status&#39;: &#39;up&#39;}}}
+</code></pre></div>
+Lastly, close the connection to the device:
+<div class="highlight"><pre><span></span><code>device.disconnect()
+</code></pre></div></p>
+<p>As you can imagine, the possibilities are endless and you can see an example of a script that gets and prints OSPF Neighbor table for a given device in the file <code>ospf_neighbor_table.py</code>. Run the script and you will get a nicely formatted table of the OSPF neighbors for CRS1:</p>
+<div class="highlight"><pre><span></span><code>python ospf_neighbor_table.py
+
+OSPF Neighbor Table for CSR1
++------------------+----------+-------------+---------+
+|    Interface     | Neighbor |   Address   |  State  |
++------------------+----------+-------------+---------+
+| GigabitEthernet2 | 2.2.2.2  | 192.168.1.2 | FULL/DR |
++------------------+----------+-------------+---------+
+</code></pre></div>
+<h2 id="pyats-test-scripts-and-jobs">pyATS Test Scripts and Jobs</h2>
+<p>So far we have only scratched the surface of what you can do with pyATS, and test scripts will take your automated testing to the next level. Test scripts are written and executed with the <a href="https://developer.cisco.com/docs/pyats/api/">AEtest Python package</a></p>
+<p>I have included an example test script called <code>connectivity_check.py</code>, which is adapted from the example script in the <a href="https://developer.cisco.com/docs/pyats/api/">official documentation</a>. This script tests that both CSR1 and CSR2 can ping each other's loopback addresses. Test scripts are structured Python files that contain/describe the testing you want to do. A clean, elegant test script is scalable, and generates easy-to-read test results and logs.</p>
+<p>To run the example test script, you must also specify the testbed file that is to be used, for example: </p>
+<div class="highlight"><pre><span></span><code>python connectivity_check.py --testbed testbed.yaml
+</code></pre></div>
+<p>Once the test script has been run then the results are displayed in the output: </p>
+<div class="highlight"><pre><span></span><code>2024-04-23T11:50:16: %AETEST-INFO: +------------------------------------------------------------------------------+
+2024-04-23T11:50:16: %AETEST-INFO: |                               Detailed Results                               |
+2024-04-23T11:50:16: %AETEST-INFO: +------------------------------------------------------------------------------+
+2024-04-23T11:50:16: %AETEST-INFO:  SECTIONS/TESTCASES                                                      RESULT   
+2024-04-23T11:50:16: %AETEST-INFO: --------------------------------------------------------------------------------
+2024-04-23T11:50:16: %AETEST-INFO: .
+2024-04-23T11:50:16: %AETEST-INFO: |-- common_setup                                                          PASSED
+2024-04-23T11:50:16: %AETEST-INFO: |   |-- check_topology                                                    PASSED
+2024-04-23T11:50:16: %AETEST-INFO: |   `-- establish_connections                                             PASSED
+2024-04-23T11:50:16: %AETEST-INFO: |       |-- Step 1: Connecting to CSR1                                    PASSED
+2024-04-23T11:50:16: %AETEST-INFO: |       `-- Step 2: Connecting to CSR2                                    PASSED
+2024-04-23T11:50:16: %AETEST-INFO: |-- PingTestcase[device=device1]                                          PASSED
+2024-04-23T11:50:16: %AETEST-INFO: |   |-- ping[destination=192.168.1.1]                                     PASSED
+2024-04-23T11:50:16: %AETEST-INFO: |   `-- ping[destination=192.168.1.2]                                     PASSED
+2024-04-23T11:50:16: %AETEST-INFO: |-- PingTestcase[device=device2]                                          PASSED
+2024-04-23T11:50:16: %AETEST-INFO: |   |-- ping[destination=192.168.1.1]                                     PASSED
+2024-04-23T11:50:16: %AETEST-INFO: |   `-- ping[destination=192.168.1.2]                                     PASSED
+2024-04-23T11:50:16: %AETEST-INFO: `-- common_cleanup                                                        PASSED
+2024-04-23T11:50:16: %AETEST-INFO:     `-- disconnect                                                        PASSED
+2024-04-23T11:50:16: %AETEST-INFO:         |-- Step 1: Disconnecting from CSR1                               PASSED
+2024-04-23T11:50:16: %AETEST-INFO:         `-- Step 2: Disconnecting from CSR2                               PASSED
+2024-04-23T11:50:16: %AETEST-INFO: +------------------------------------------------------------------------------+
+2024-04-23T11:50:16: %AETEST-INFO: |                                   Summary                                    |
+2024-04-23T11:50:16: %AETEST-INFO: +------------------------------------------------------------------------------+
+2024-04-23T11:50:16: %AETEST-INFO:  Number of ABORTED                                                            0 
+2024-04-23T11:50:16: %AETEST-INFO:  Number of BLOCKED                                                            0 
+2024-04-23T11:50:16: %AETEST-INFO:  Number of ERRORED                                                            0 
+2024-04-23T11:50:16: %AETEST-INFO:  Number of FAILED                                                             0 
+2024-04-23T11:50:16: %AETEST-INFO:  Number of PASSED                                                             4 
+2024-04-23T11:50:16: %AETEST-INFO:  Number of PASSX                                                              0 
+2024-04-23T11:50:16: %AETEST-INFO:  Number of SKIPPED                                                            0 
+2024-04-23T11:50:16: %AETEST-INFO:  Total Number                                                                 4 
+2024-04-23T11:50:16: %AETEST-INFO:  Success Rate                                                            100.0% 
+2024-04-23T11:50:16: %AETEST-INFO: --------------------------------------------------------------------------------
+</code></pre></div>
+<p>pyATS Jobs take test scripts to another level and allow the execution of test scripts as tasks. This is beyond the scope of this document but you can read all about pyATS jobs in the <a href="https://developer.cisco.com/docs/pyats/api/">official docs</a></p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../netbox-ansible-collection/" class="md-footer__link md-footer__link--prev" aria-label="Previous: NetBox Ansible Collection" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              NetBox Ansible Collection
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../servicenow/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Overview
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 NetBox Labs
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://netboxlabs.com" target="_blank" rel="noopener" title="netboxlabs.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.1-20.4-4.2-41.8-4.2-64 0-22.2 2.1-43.6 4.2-64h185.4c2.1 20.4 3.3 41.8 3.3 64zm151.9-64c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42.9 3.2-64 0-22-1.1-43.4-3.2-64h123.1zm-10.5-32H376.7c-10-63.86-29.8-117.38-55.3-151.558C399.8 29.09 463.4 85.94 493.4 160zm-149.1 0H167.7c6.1-36.4 15.5-68.62 27-94.65 10.5-23.61 22.2-40.74 33.5-51.54C239.4 3.178 248.7 0 256 0c7.3 0 16.6 3.178 27.8 13.81 11.3 10.8 23 27.93 33.5 51.54 11.5 26.03 20.9 58.25 27 94.65zm-325.69 0C48.59 85.94 112.2 29.09 190.6 8.442 165.1 42.62 145.3 96.14 135.3 160H18.61zm112.59 32c-2.1 20.6-4.1 42-4.1 64 0 21.1 2 43.4 4.1 64H8.065C2.8 299.5 0 278.1 0 256s2.8-43.5 8.065-64H131.2zm63.5 254.6c-11.5-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.7-22.2 40.8-33.5 51.6-11.2 10.6-20.5 13.8-28.7 13.8-6.4 0-15.7-3.2-26.9-13.8-11.3-10.8-23-27.9-33.5-51.6zm-4.1 57C112.2 482.9 48.59 426.1 18.61 352H135.3c10 63.9 29.8 117.4 55.3 151.6zm130.8 0c25.5-34.2 45.3-87.7 55.3-151.6h116.7c-30 74.1-93.6 130.9-172 151.6z"/></svg>
+    </a>
+  
+    
+    
+    <a href="mailto:support@netboxlabs.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M1.75 3A1.75 1.75 0 0 0 0 4.75v14c0 .966.784 1.75 1.75 1.75h20.5A1.75 1.75 0 0 0 24 18.75v-14A1.75 1.75 0 0 0 22.25 3H1.75zM1.5 4.75a.25.25 0 0 1 .25-.25h20.5a.25.25 0 0 1 .25.25v.852l-10.36 7a.25.25 0 0 1-.28 0l-10.36-7V4.75zm0 2.662V18.75c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25V7.412l-9.52 6.433c-.592.4-1.368.4-1.96 0L1.5 7.412z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.indexes", "navigation.sections", "navigation.prune", "search.suggest", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>
