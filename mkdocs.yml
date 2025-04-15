@@ -102,6 +102,7 @@ nav:
       - Requirements: "netbox-enterprise/nbe-ec-requirements.md"
       - Linux System Changes: "netbox-enterprise/nbe-ec-linux-changes.md"
       - Installation: "netbox-enterprise/nbe-ec-installation.md"
+      - Custom Plugin Installation: "netbox-enterprise/nbe-ec-custom-plugins.md"
       - Migrating: "netbox-enterprise/nbe-migrating.md"
     #- KOTS:
     #  - Requirements: "netbox-enterprise/nbe-kots-requirements.md"
