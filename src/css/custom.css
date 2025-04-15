@@ -32,6 +32,24 @@ html[data-theme='dark'] {
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+/* Nav */
+.navbar {
+  border-bottom: 1px solid #252929;
+}
+.navbar__title {
+  display: none;
+}
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar__logo img {
+  max-width: 130px;
+  height: auto;
+}
+
+/* Sidebar */
 .theme-doc-sidebar-container {
   background-color: #131515;
 }
