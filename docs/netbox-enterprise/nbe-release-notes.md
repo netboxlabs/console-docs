@@ -1,16 +1,462 @@
 # NetBox Enterprise 1.x Release Notes
 
+### 1.8.5
+
+Contains a fix for upgrades freezing in some situations.
+
+#### Bug Fixes
+
+* *cluster:* remove unnecessary repository entry in ingress-nginx config
+
+#### Versions
+
+This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| nbrisk | nb_risk | 41.0.1 | ☐ |
+| netbox-acls | netbox_acls | 1.7.0 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.14.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.8.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.0 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.5.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.4 | ☐ |
+| netbox-inventory | netbox_inventory | 2.2.1 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.3 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.1.7 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.15 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.1.2 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.1.0 | ☑︎ |
+| netbox-validity | validity | 3.0.5 | ☐ |
+| netboxlabs-diode-netbox-plugin | netbox_diode_plugin | 0.6.0 | ☑︎ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.3 | ☑︎ |
+| phonebox-plugin | phonebox_plugin | 0.0.10 | ☐ |
+| slurpit_netbox | slurpit_netbox | 1.0.45 | ☑︎ |
+
+### 1.8.4
+
+Provides a number of updates to custom plugin
+installation, as well as other small enhancements
+and bug fixes, included in the 1.7.x series, most
+notably the security fix for the `ingress-nginx`
+controller (CVE-2025-1974).
+
+#### Bug Fixes
+
+* *cluster:* properly show "ready" in restore mode
+* *cluster:* remove the admission controller from status checks
+* *cluster:* repair some shellcheck issues, remove vestigial config
+* *netbox:* a few small cosmetic fixes to plugin install
+* *netbox:* improve plugin installation issues for custom tarballs
+
+#### Versions
+
+This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| nbrisk | nb_risk | 41.0.1 | ☐ |
+| netbox-acls | netbox_acls | 1.7.0 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.14.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.8.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.0 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.5.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.4 | ☐ |
+| netbox-inventory | netbox_inventory | 2.2.1 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.3 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.1.7 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.15 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.1.2 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.1.0 | ☑︎ |
+| netbox-validity | validity | 3.0.5 | ☐ |
+| netboxlabs-diode-netbox-plugin | netbox_diode_plugin | 0.6.0 | ☑︎ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.3 | ☑︎ |
+| phonebox-plugin | phonebox_plugin | 0.0.10 | ☐ |
+| slurpit_netbox | slurpit_netbox | 1.0.45 | ☑︎ |
+
+### 1.8.3
+
+Provides a number of updates to custom plugin
+installation, as well as other small enhancements
+and bug fixes, included in the 1.7.x series, most
+notably the security fix for the `ingress-nginx`
+controller (CVE-2025-1974).
+
+#### Bug Fixes
+
+* *cluster:* properly show "ready" in restore mode
+* *netbox:* a few small cosmetic fixes to plugin install
+* repair some shellcheck issues, remove vestigial config
+
+#### Features
+
+* *cluster:* make a label to tag pods supporting upload
+
+#### Versions
+
+This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.6 (if built-in database is enabled)
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| nbrisk | nb_risk | 41.0.1 | ☐ |
+| netbox-acls | netbox_acls | 1.7.0 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.14.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.8.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.0 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.5.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.4 | ☐ |
+| netbox-inventory | netbox_inventory | 2.2.1 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.3 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.1.7 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.15 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.1.2 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.1.0 | ☑︎ |
+| netbox-validity | validity | 3.0.5 | ☐ |
+| netboxlabs-diode-netbox-plugin | netbox_diode_plugin | 0.6.0 | ☑︎ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.3 | ☑︎ |
+| phonebox-plugin | phonebox_plugin | 0.0.10 | ☐ |
+| slurpit_netbox | slurpit_netbox | 1.0.45 | ☑︎ |
+
+### 1.8.1
+
+Fixes user creation, password validation, and group/SSO
+issues in NetBox.
+
+#### Bug Fixes
+
+* *netbox:* use proper import location of the OWASP validator
+* *docker:* fix nbce-common install, remove deprecated nbc_auth
+* *docker:* make sure nbc_auth_extensions are in the right place
+
+#### Versions
+
+This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.6 (if built-in database is enabled)
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| nbrisk | nb_risk | 41.0.1 | ☐ |
+| netbox-acls | netbox_acls | 1.7.0 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.14.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.8.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.0 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.5.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.4 | ☐ |
+| netbox-inventory | netbox_inventory | 2.2.1 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.3 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.1.7 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.15 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.1.2 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.1.0 | ☑︎ |
+| netbox-validity | validity | 3.0.5 | ☐ |
+| netboxlabs-diode-netbox-plugin | netbox_diode_plugin | 0.6.0 | ☑︎ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.3 | ☑︎ |
+| phonebox-plugin | phonebox_plugin | 0.0.10 | ☐ |
+| slurpit_netbox | slurpit_netbox | 1.0.45 | ☑︎ |
+
 ### 1.8.0
 
 Improves logging in the NetBox containers, and adds support
 for uploading custom plugins.
 
+#### Bug Fixes
+
+* *cluster:* fixed a few pod label macros
+* *config:* feedback - use bash for extra script safety
+* *config:* remove vestigial validation mount
+
+#### Features
+
+* *config:* adding log fixing branch to the CI workflow to create a release in Replicated
+* *config:* allow uploading plugins for `pip install`
+
 #### Versions
 
 This release uses the following upstream software:
-
 * NetBox 4.1.11
-* Redis 7.4.2
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.6 (if built-in database is enabled)
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| nbrisk | nb_risk | 41.0.1 | ☐ |
+| netbox-acls | netbox_acls | 1.7.0 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.14.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.8.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.0 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.5.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.4 | ☐ |
+| netbox-inventory | netbox_inventory | 2.2.1 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.3 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.1.7 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.15 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.1.2 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.1.0 | ☑︎ |
+| netbox-validity | validity | 3.0.5 | ☐ |
+| netboxlabs-diode-netbox-plugin | netbox_diode_plugin | 0.6.0 | ☑︎ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.3 | ☑︎ |
+| phonebox-plugin | phonebox_plugin | 0.0.10 | ☐ |
+| slurpit_netbox | slurpit_netbox | 1.0.45 | ☑︎ |
+
+### 1.7.6
+
+Contains a fix for incorrect permissions in the media folder
+after restore from backup.
+
+#### Bug Fixes
+
+* *cluster:* remove the admission controller from status checks
+* *netbox:* make sure volume permissions are correct
+
+#### Versions
+
+This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| nbrisk | nb_risk | 41.0.1 | ☐ |
+| netbox-acls | netbox_acls | 1.7.0 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.14.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.8.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.0 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.5.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.4 | ☐ |
+| netbox-inventory | netbox_inventory | 2.2.1 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.3 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.1.7 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.15 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.1.2 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.1.0 | ☑︎ |
+| netbox-validity | validity | 3.0.5 | ☐ |
+| netboxlabs-diode-netbox-plugin | netbox_diode_plugin | 0.6.0 | ☑︎ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.3 | ☑︎ |
+| phonebox-plugin | phonebox_plugin | 0.0.10 | ☐ |
+| slurpit_netbox | slurpit_netbox | 1.0.45 | ☑︎ |
+
+### 1.7.5
+
+Contains a security fix for the `ingress-nginx` controller
+(CVE-2025-1974).
+
+#### Bug Fixes
+
+* *cluster:* disable ingress-nginx admission controller
+
+#### Versions
+
+This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.6 (if built-in database is enabled)
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| nbrisk | nb_risk | 41.0.1 | ☐ |
+| netbox-acls | netbox_acls | 1.7.0 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.14.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.8.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.0 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.5.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.4 | ☐ |
+| netbox-inventory | netbox_inventory | 2.2.1 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.3 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.1.7 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.15 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.1.2 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.1.0 | ☑︎ |
+| netbox-validity | validity | 3.0.5 | ☐ |
+| netboxlabs-diode-netbox-plugin | netbox_diode_plugin | 0.6.0 | ☑︎ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.2 | ☑︎ |
+| phonebox-plugin | phonebox_plugin | 0.0.10 | ☐ |
+| slurpit_netbox | slurpit_netbox | 1.0.45 | ☑︎ |
+
+### 1.7.4
+
+Fix missing authentication plugins for group and SSO configs.
+
+#### Bug Fixes
+
+* *docker:* make sure nbc_auth_extensions are in the right place
+
+#### Versions
+
+This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.6 (if built-in database is enabled)
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| nbrisk | nb_risk | 41.0.1 | ☐ |
+| netbox-acls | netbox_acls | 1.7.0 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.14.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.8.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.0 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.5.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.4 | ☐ |
+| netbox-inventory | netbox_inventory | 2.2.1 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.3 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.1.7 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.15 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.1.2 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.1.0 | ☑︎ |
+| netbox-validity | validity | 3.0.5 | ☐ |
+| netboxlabs-diode-netbox-plugin | netbox_diode_plugin | 0.6.0 | ☑︎ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.3 | ☑︎ |
+| phonebox-plugin | phonebox_plugin | 0.0.10 | ☐ |
+| slurpit_netbox | slurpit_netbox | 1.0.45 | ☑︎ |
+
+### 1.7.3
+
+Re-release of 1.7.2 with additional password validator fixes,
+plus reverting to a previous working redis chart.
+
+#### Bug Fixes
+
+* *netbox:* use proper import location of the OWASP validator
+
+#### Versions
+
+This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.6 (if built-in database is enabled)
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| nbrisk | nb_risk | 41.0.1 | ☐ |
+| netbox-acls | netbox_acls | 1.7.0 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.14.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.8.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.0 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.5.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.4 | ☐ |
+| netbox-inventory | netbox_inventory | 2.2.1 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.3 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.1.7 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.15 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.1.2 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.1.0 | ☑︎ |
+| netbox-validity | validity | 3.0.5 | ☐ |
+| netboxlabs-diode-netbox-plugin | netbox_diode_plugin | 0.6.0 | ☑︎ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.3 | ☑︎ |
+| phonebox-plugin | phonebox_plugin | 0.0.10 | ☐ |
+| slurpit_netbox | slurpit_netbox | 1.0.45 | ☑︎ |
+
+### 1.7.2
+
+Fixes a bug where the custom password validator was
+missing.
+
+#### Bug Fixes
+
+* *docker:* fix nbce-common install, remove deprecated nbc_auth
+
+#### Versions
+
+This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.6 (if built-in database is enabled)
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| nbrisk | nb_risk | 41.0.1 | ☐ |
+| netbox-acls | netbox_acls | 1.7.0 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.14.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.8.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.0 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.5.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.4 | ☐ |
+| netbox-inventory | netbox_inventory | 2.2.1 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.3 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.1.7 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.15 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.1.2 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.1.0 | ☑︎ |
+| netbox-validity | validity | 3.0.5 | ☐ |
+| netboxlabs-diode-netbox-plugin | netbox_diode_plugin | 0.6.0 | ☑︎ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.3 | ☑︎ |
+| phonebox-plugin | phonebox_plugin | 0.0.10 | ☐ |
+| slurpit_netbox | slurpit_netbox | 1.0.45 | ☑︎ |
+
+### 1.7.1
+
+Fixes a bug in downloading the ingress Helm chart when
+using a proxy for installation.
+
+#### Bug Fixes
+
+* *cluster:* use the proxy to download the ingress chart
+
+#### Versions
+
+This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
 * PostgreSQL 16.6 (if built-in database is enabled)
 
 #### Plugins
