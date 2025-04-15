@@ -1,0 +1,239 @@
+[
+  {
+    "type": "doc",
+    "id": "index",
+    "label": "Home"
+  },
+  {
+    "type": "category",
+    "label": "Cloud",
+    "items": [
+      {
+        "type": "category",
+        "label": "Getting Access",
+        "items": [
+          {
+            "type": "doc",
+            "id": "Administration Console/console-access",
+            "label": "Setting up Console Access"
+          },
+          {
+            "type": "doc",
+            "id": "Administration Console/console-access-from-ui",
+            "label": "Accessing the Console From the NetBox Cloud UI"
+          },
+          {
+            "type": "doc",
+            "id": "Administration Console/retrieving-nbc-credentials",
+            "label": "Retrieving NetBox Cloud Admin Credentials"
+          }
+        ]
+      },
+      {
+        "type": "doc",
+        "id": "Administration Console/prefix-lists",
+        "label": "Prefix Lists"
+      },
+      {
+        "type": "doc",
+        "id": "Administration Console/working_with_database_backups",
+        "label": "Working with Database Backups"
+      },
+      {
+        "type": "doc",
+        "id": "Administration Console/upgrading-nbc",
+        "label": "Upgrade NetBox Cloud"
+      },
+      {
+        "type": "doc",
+        "id": "Administration Console/set_up_2fa",
+        "label": "Set up Two-Factor Authentication"
+      },
+      {
+        "type": "doc",
+        "id": "NetBox Cloud/migrating-to-netbox-cloud",
+        "label": "Migrate to NetBox Cloud"
+      },
+      {
+        "type": "doc",
+        "id": "Administration Console/netbox-cloud-plugins",
+        "label": "NetBox Cloud Plugins"
+      },
+      {
+        "type": "doc",
+        "id": "Administration Console/public-ip-addressing",
+        "label": "Public IP Addressing"
+      },
+      {
+        "type": "doc",
+        "id": "Administration Console/managing-hostnames",
+        "label": "Managing Hostnames"
+      },
+      {
+        "type": "category",
+        "label": "Single Sign-On (SSO)",
+        "items": [
+          {
+            "type": "category",
+            "label": "Entra ID",
+            "items": [
+              {
+                "type": "doc",
+                "id": "Administration Console/azure-ad-sso-setup",
+                "label": "Microsoft Entra ID SSO"
+              },
+              {
+                "type": "doc",
+                "id": "Administration Console/azure-group-mapping",
+                "label": "Entra ID Group Mapping"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Okta",
+            "items": [
+              {
+                "type": "doc",
+                "id": "Administration Console/okta-sso-setup",
+                "label": "Set up Okta SSO"
+              },
+              {
+                "type": "doc",
+                "id": "Administration Console/okta-group-mapping",
+                "label": "Okta Group Mapping"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "SAML",
+            "items": [
+              {
+                "type": "doc",
+                "id": "Administration Console/saml-sso-setup",
+                "label": "SAML SSO Setup"
+              },
+              {
+                "type": "doc",
+                "id": "Administration Console/saml-group-map",
+                "label": "SAML Group Mapping"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Free Plan",
+        "items": [
+          {
+            "type": "doc",
+            "id": "Administration Console/free-plan-features",
+            "label": "Features"
+          },
+          {
+            "type": "doc",
+            "id": "Administration Console/free-plan-new-user",
+            "label": "Add a New User"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Cloud Connectivity",
+        "items": [
+          {
+            "type": "doc",
+            "id": "cloud-connectivity/do-i-need-cloud-connectivity",
+            "label": "Do I Need Cloud Connectivity Options?"
+          },
+          {
+            "type": "category",
+            "label": "Cloud Connectivity Options",
+            "items": [
+              {
+                "type": "doc",
+                "id": "cloud-connectivity/which-connectivity-option",
+                "label": "Which Cloud Connectivity Option is Right for Me?"
+              },
+              {
+                "type": "doc",
+                "id": "cloud-connectivity/internet-delivery",
+                "label": "Internet Delivery (Single Region)"
+              },
+              {
+                "type": "doc",
+                "id": "cloud-connectivity/aws-private-link",
+                "label": "AWS Private Link (Single Region)"
+              },
+              {
+                "type": "doc",
+                "id": "cloud-connectivity/ipsec-vpn-tunnels",
+                "label": "IPSEC VPN Tunnels (Single Region)"
+              },
+              {
+                "type": "doc",
+                "id": "cloud-connectivity/aws-direct-connect",
+                "label": "AWS Direct Connect (Single Region)"
+              },
+              {
+                "type": "doc",
+                "id": "cloud-connectivity/aws-direct-connect-multi-region",
+                "label": "AWS Direct Connect (Multi-Region)"
+              }
+            ]
+          },
+          {
+            "type": "doc",
+            "id": "cloud-connectivity/cloud-connectivity-faq",
+            "label": "Frequently Asked Questions"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Maintenance",
+        "items": [
+          {
+            "type": "doc",
+            "id": "maintenance",
+            "label": "Scheduled Maintenance"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Enterprise",
+    "items": [
+      {
+        "type": "doc",
+        "id": "netbox-enterprise/nbe-overview",
+        "label": "Overview"
+      },
+      {
+        "type": "category",
+        "label": "NetBox Enterprise Installer",
+        "items": [
+          {
+            "type": "doc",
+            "id": "netbox-enterprise/nbe-ec-requirements",
+            "label": "Requirements"
+          },
+          {
+            "type": "doc",
+            "id": "netbox-enterprise/nbe-ec-installation",
+            "label": "Installation"
+          },
+          {
+            "type": "doc",
+            "id": "netbox-enterprise/nbe-migrating",
+            "label": "Migrating"
+          }
+        ]
+      }
+    ]
+  }
+]

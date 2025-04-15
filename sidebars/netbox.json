@@ -1,0 +1,1375 @@
+[
+  {
+    "type": "doc",
+    "id": "introduction",
+    "label": "Introduction"
+  },
+  {
+    "type": "category",
+    "label": "Features",
+    "items": [
+      {
+        "type": "doc",
+        "id": "features/facilities",
+        "label": "Facilities"
+      },
+      {
+        "type": "doc",
+        "id": "features/devices-cabling",
+        "label": "Devices & Cabling"
+      },
+      {
+        "type": "doc",
+        "id": "features/power-tracking",
+        "label": "Power Tracking"
+      },
+      {
+        "type": "doc",
+        "id": "features/ipam",
+        "label": "IPAM"
+      },
+      {
+        "type": "doc",
+        "id": "features/vlan-management",
+        "label": "VLAN Management"
+      },
+      {
+        "type": "doc",
+        "id": "features/l2vpn-overlay",
+        "label": "L2VPN & Overlay"
+      },
+      {
+        "type": "doc",
+        "id": "features/circuits",
+        "label": "Circuits"
+      },
+      {
+        "type": "doc",
+        "id": "features/wireless",
+        "label": "Wireless"
+      },
+      {
+        "type": "doc",
+        "id": "features/virtualization",
+        "label": "Virtualization"
+      },
+      {
+        "type": "doc",
+        "id": "features/vpn-tunnels",
+        "label": "VPN Tunnels"
+      },
+      {
+        "type": "doc",
+        "id": "features/tenancy",
+        "label": "Tenancy"
+      },
+      {
+        "type": "doc",
+        "id": "features/contacts",
+        "label": "Contacts"
+      },
+      {
+        "type": "doc",
+        "id": "features/search",
+        "label": "Search"
+      },
+      {
+        "type": "doc",
+        "id": "features/context-data",
+        "label": "Context Data"
+      },
+      {
+        "type": "doc",
+        "id": "features/configuration-rendering",
+        "label": "Configuration Rendering"
+      },
+      {
+        "type": "doc",
+        "id": "features/synchronized-data",
+        "label": "Synchronized Data"
+      },
+      {
+        "type": "doc",
+        "id": "features/change-logging",
+        "label": "Change Logging"
+      },
+      {
+        "type": "doc",
+        "id": "features/journaling",
+        "label": "Journaling"
+      },
+      {
+        "type": "doc",
+        "id": "features/event-rules",
+        "label": "Event Rules"
+      },
+      {
+        "type": "doc",
+        "id": "features/notifications",
+        "label": "Notifications"
+      },
+      {
+        "type": "doc",
+        "id": "features/background-jobs",
+        "label": "Background Jobs"
+      },
+      {
+        "type": "doc",
+        "id": "features/authentication-permissions",
+        "label": "Auth & Permissions"
+      },
+      {
+        "type": "doc",
+        "id": "features/api-integration",
+        "label": "API & Integration"
+      },
+      {
+        "type": "doc",
+        "id": "features/customization",
+        "label": "Customization"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Installation & Upgrade",
+    "items": [
+      {
+        "type": "doc",
+        "id": "installation/index",
+        "label": "Installing NetBox"
+      },
+      {
+        "type": "doc",
+        "id": "installation/1-postgresql",
+        "label": "1. PostgreSQL"
+      },
+      {
+        "type": "doc",
+        "id": "installation/2-redis",
+        "label": "2. Redis"
+      },
+      {
+        "type": "doc",
+        "id": "installation/3-netbox",
+        "label": "3. NetBox"
+      },
+      {
+        "type": "doc",
+        "id": "installation/4a-gunicorn",
+        "label": "4a. Gunicorn"
+      },
+      {
+        "type": "doc",
+        "id": "installation/4b-uwsgi",
+        "label": "4b. uWSGI"
+      },
+      {
+        "type": "doc",
+        "id": "installation/5-http-server",
+        "label": "5. HTTP Server"
+      },
+      {
+        "type": "doc",
+        "id": "installation/6-ldap",
+        "label": "6. LDAP (Optional)"
+      },
+      {
+        "type": "doc",
+        "id": "installation/upgrading",
+        "label": "Upgrading NetBox"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Getting Started",
+    "items": [
+      {
+        "type": "doc",
+        "id": "getting-started/planning",
+        "label": "Planning"
+      },
+      {
+        "type": "doc",
+        "id": "getting-started/populating-data",
+        "label": "Populating Data"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Configuration",
+    "items": [
+      {
+        "type": "doc",
+        "id": "configuration/index",
+        "label": "Configuring NetBox"
+      },
+      {
+        "type": "doc",
+        "id": "configuration/required-parameters",
+        "label": "Required Parameters"
+      },
+      {
+        "type": "doc",
+        "id": "configuration/system",
+        "label": "System"
+      },
+      {
+        "type": "doc",
+        "id": "configuration/security",
+        "label": "Security"
+      },
+      {
+        "type": "doc",
+        "id": "configuration/graphql-api",
+        "label": "GraphQL API"
+      },
+      {
+        "type": "doc",
+        "id": "configuration/remote-authentication",
+        "label": "Remote Authentication"
+      },
+      {
+        "type": "doc",
+        "id": "configuration/data-validation",
+        "label": "Data & Validation"
+      },
+      {
+        "type": "doc",
+        "id": "configuration/default-values",
+        "label": "Default Values"
+      },
+      {
+        "type": "doc",
+        "id": "configuration/error-reporting",
+        "label": "Error Reporting"
+      },
+      {
+        "type": "doc",
+        "id": "configuration/plugins",
+        "label": "Plugins"
+      },
+      {
+        "type": "doc",
+        "id": "configuration/miscellaneous",
+        "label": "Miscellaneous"
+      },
+      {
+        "type": "doc",
+        "id": "configuration/development",
+        "label": "Development"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Customization",
+    "items": [
+      {
+        "type": "doc",
+        "id": "customization/custom-fields",
+        "label": "Custom Fields"
+      },
+      {
+        "type": "doc",
+        "id": "customization/custom-links",
+        "label": "Custom Links"
+      },
+      {
+        "type": "doc",
+        "id": "customization/custom-validation",
+        "label": "Custom Validation"
+      },
+      {
+        "type": "doc",
+        "id": "customization/export-templates",
+        "label": "Export Templates"
+      },
+      {
+        "type": "doc",
+        "id": "customization/reports",
+        "label": "Reports"
+      },
+      {
+        "type": "doc",
+        "id": "customization/custom-scripts",
+        "label": "Custom Scripts"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Integrations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "integrations/rest-api",
+        "label": "REST API"
+      },
+      {
+        "type": "doc",
+        "id": "integrations/graphql-api",
+        "label": "GraphQL API"
+      },
+      {
+        "type": "doc",
+        "id": "integrations/webhooks",
+        "label": "Webhooks"
+      },
+      {
+        "type": "doc",
+        "id": "integrations/synchronized-data",
+        "label": "Synchronized Data"
+      },
+      {
+        "type": "doc",
+        "id": "integrations/prometheus-metrics",
+        "label": "Prometheus Metrics"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Plugins",
+    "items": [
+      {
+        "type": "doc",
+        "id": "plugins/index",
+        "label": "About Plugins"
+      },
+      {
+        "type": "doc",
+        "id": "plugins/installation",
+        "label": "Installing a Plugin"
+      },
+      {
+        "type": "doc",
+        "id": "plugins/removal",
+        "label": "Removing a Plugin"
+      },
+      {
+        "type": "category",
+        "label": "Developing Plugins",
+        "items": [
+          {
+            "type": "doc",
+            "id": "plugins/development/index",
+            "label": "Getting Started"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/models",
+            "label": "Models"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/views",
+            "label": "Views"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/navigation",
+            "label": "Navigation"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/templates",
+            "label": "Templates"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/tables",
+            "label": "Tables"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/forms",
+            "label": "Forms"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/filtersets",
+            "label": "Filters & Filter Sets"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/search",
+            "label": "Search"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/event-types",
+            "label": "Event Types"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/data-backends",
+            "label": "Data Backends"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/rest-api",
+            "label": "REST API"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/graphql-api",
+            "label": "GraphQL API"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/background-jobs",
+            "label": "Background Jobs"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/dashboard-widgets",
+            "label": "Dashboard Widgets"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/staged-changes",
+            "label": "Staged Changes"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/exceptions",
+            "label": "Exceptions"
+          },
+          {
+            "type": "doc",
+            "id": "plugins/development/migration-v4",
+            "label": "Migrating to v4.0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Administration",
+    "items": [
+      {
+        "type": "category",
+        "label": "Authentication",
+        "items": [
+          {
+            "type": "doc",
+            "id": "administration/authentication/overview",
+            "label": "Overview"
+          },
+          {
+            "type": "doc",
+            "id": "administration/authentication/google",
+            "label": "Google"
+          },
+          {
+            "type": "doc",
+            "id": "administration/authentication/microsoft-entra-id",
+            "label": "Microsoft Entra ID"
+          },
+          {
+            "type": "doc",
+            "id": "administration/authentication/okta",
+            "label": "Okta"
+          }
+        ]
+      },
+      {
+        "type": "doc",
+        "id": "administration/permissions",
+        "label": "Permissions"
+      },
+      {
+        "type": "doc",
+        "id": "administration/error-reporting",
+        "label": "Error Reporting"
+      },
+      {
+        "type": "doc",
+        "id": "administration/housekeeping",
+        "label": "Housekeeping"
+      },
+      {
+        "type": "doc",
+        "id": "administration/replicating-netbox",
+        "label": "Replicating NetBox"
+      },
+      {
+        "type": "doc",
+        "id": "administration/netbox-shell",
+        "label": "NetBox Shell"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Data Model",
+    "items": [
+      {
+        "type": "category",
+        "label": "Circuits",
+        "items": [
+          {
+            "type": "doc",
+            "id": "models/circuits/circuit",
+            "label": "Circuit"
+          },
+          {
+            "type": "doc",
+            "id": "models/circuits/circuitgroup",
+            "label": "CircuitGroup"
+          },
+          {
+            "type": "doc",
+            "id": "models/circuits/circuitgroupassignment",
+            "label": "CircuitGroupAssignment"
+          },
+          {
+            "type": "doc",
+            "id": "models/circuits/circuittermination",
+            "label": "Circuit Termination"
+          },
+          {
+            "type": "doc",
+            "id": "models/circuits/circuittype",
+            "label": "Circuit Type"
+          },
+          {
+            "type": "doc",
+            "id": "models/circuits/provider",
+            "label": "Provider"
+          },
+          {
+            "type": "doc",
+            "id": "models/circuits/provideraccount",
+            "label": "Provider Account"
+          },
+          {
+            "type": "doc",
+            "id": "models/circuits/providernetwork",
+            "label": "Provider Network"
+          },
+          {
+            "type": "doc",
+            "id": "models/circuits/virtualcircuit",
+            "label": "Virtual Circuit"
+          },
+          {
+            "type": "doc",
+            "id": "models/circuits/virtualcircuittermination",
+            "label": "Virtual Circuit Termination"
+          },
+          {
+            "type": "doc",
+            "id": "models/circuits/virtualcircuittype",
+            "label": "Virtual Circuit Type"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Core",
+        "items": [
+          {
+            "type": "doc",
+            "id": "models/core/datafile",
+            "label": "DataFile"
+          },
+          {
+            "type": "doc",
+            "id": "models/core/datasource",
+            "label": "DataSource"
+          },
+          {
+            "type": "doc",
+            "id": "models/core/job",
+            "label": "Job"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "DCIM",
+        "items": [
+          {
+            "type": "doc",
+            "id": "models/dcim/cable",
+            "label": "Cable"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/consoleport",
+            "label": "ConsolePort"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/consoleporttemplate",
+            "label": "ConsolePortTemplate"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/consoleserverport",
+            "label": "ConsoleServerPort"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/consoleserverporttemplate",
+            "label": "ConsoleServerPortTemplate"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/device",
+            "label": "Device"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/devicebay",
+            "label": "DeviceBay"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/devicebaytemplate",
+            "label": "DeviceBayTemplate"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/devicerole",
+            "label": "DeviceRole"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/devicetype",
+            "label": "DeviceType"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/frontport",
+            "label": "FrontPort"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/frontporttemplate",
+            "label": "FrontPortTemplate"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/interface",
+            "label": "Interface"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/interfacetemplate",
+            "label": "InterfaceTemplate"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/inventoryitem",
+            "label": "InventoryItem"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/inventoryitemrole",
+            "label": "InventoryItemRole"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/inventoryitemtemplate",
+            "label": "InventoryItemTemplate"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/location",
+            "label": "Location"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/macaddress",
+            "label": "MACAddress"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/manufacturer",
+            "label": "Manufacturer"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/module",
+            "label": "Module"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/modulebay",
+            "label": "ModuleBay"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/modulebaytemplate",
+            "label": "ModuleBayTemplate"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/moduletype",
+            "label": "ModuleType"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/platform",
+            "label": "Platform"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/powerfeed",
+            "label": "PowerFeed"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/poweroutlet",
+            "label": "PowerOutlet"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/poweroutlettemplate",
+            "label": "PowerOutletTemplate"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/powerpanel",
+            "label": "PowerPanel"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/powerport",
+            "label": "PowerPort"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/powerporttemplate",
+            "label": "PowerPortTemplate"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/rack",
+            "label": "Rack"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/rackreservation",
+            "label": "RackReservation"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/rackrole",
+            "label": "RackRole"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/racktype",
+            "label": "RackType"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/rearport",
+            "label": "RearPort"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/rearporttemplate",
+            "label": "RearPortTemplate"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/region",
+            "label": "Region"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/site",
+            "label": "Site"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/sitegroup",
+            "label": "SiteGroup"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/virtualchassis",
+            "label": "VirtualChassis"
+          },
+          {
+            "type": "doc",
+            "id": "models/dcim/virtualdevicecontext",
+            "label": "VirtualDeviceContext"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Extras",
+        "items": [
+          {
+            "type": "doc",
+            "id": "models/extras/bookmark",
+            "label": "Bookmark"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/branch",
+            "label": "Branch"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/configcontext",
+            "label": "ConfigContext"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/configtemplate",
+            "label": "ConfigTemplate"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/customfield",
+            "label": "CustomField"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/customfieldchoiceset",
+            "label": "CustomFieldChoiceSet"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/customlink",
+            "label": "CustomLink"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/eventrule",
+            "label": "EventRule"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/exporttemplate",
+            "label": "ExportTemplate"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/imageattachment",
+            "label": "ImageAttachment"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/journalentry",
+            "label": "JournalEntry"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/notification",
+            "label": "Notification"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/notificationgroup",
+            "label": "NotificationGroup"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/savedfilter",
+            "label": "SavedFilter"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/stagedchange",
+            "label": "StagedChange"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/subscription",
+            "label": "Subscription"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/tag",
+            "label": "Tag"
+          },
+          {
+            "type": "doc",
+            "id": "models/extras/webhook",
+            "label": "Webhook"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "IPAM",
+        "items": [
+          {
+            "type": "doc",
+            "id": "models/ipam/asn",
+            "label": "ASN"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/asnrange",
+            "label": "ASNRange"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/aggregate",
+            "label": "Aggregate"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/fhrpgroup",
+            "label": "FHRPGroup"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/fhrpgroupassignment",
+            "label": "FHRPGroupAssignment"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/ipaddress",
+            "label": "IPAddress"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/iprange",
+            "label": "IPRange"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/prefix",
+            "label": "Prefix"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/rir",
+            "label": "RIR"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/role",
+            "label": "Role"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/routetarget",
+            "label": "RouteTarget"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/service",
+            "label": "Service"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/servicetemplate",
+            "label": "ServiceTemplate"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/vlan",
+            "label": "VLAN"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/vlangroup",
+            "label": "VLANGroup"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/vlantranslationpolicy",
+            "label": "VLANTranslationPolicy"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/vlantranslationrule",
+            "label": "VLANTranslationRule"
+          },
+          {
+            "type": "doc",
+            "id": "models/ipam/vrf",
+            "label": "VRF"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Tenancy",
+        "items": [
+          {
+            "type": "doc",
+            "id": "models/tenancy/contact",
+            "label": "Contact"
+          },
+          {
+            "type": "doc",
+            "id": "models/tenancy/contactgroup",
+            "label": "ContactGroup"
+          },
+          {
+            "type": "doc",
+            "id": "models/tenancy/contactrole",
+            "label": "ContactRole"
+          },
+          {
+            "type": "doc",
+            "id": "models/tenancy/tenant",
+            "label": "Tenant"
+          },
+          {
+            "type": "doc",
+            "id": "models/tenancy/tenantgroup",
+            "label": "TenantGroup"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Virtualization",
+        "items": [
+          {
+            "type": "doc",
+            "id": "models/virtualization/cluster",
+            "label": "Cluster"
+          },
+          {
+            "type": "doc",
+            "id": "models/virtualization/clustergroup",
+            "label": "ClusterGroup"
+          },
+          {
+            "type": "doc",
+            "id": "models/virtualization/clustertype",
+            "label": "ClusterType"
+          },
+          {
+            "type": "doc",
+            "id": "models/virtualization/vminterface",
+            "label": "VMInterface"
+          },
+          {
+            "type": "doc",
+            "id": "models/virtualization/virtualdisk",
+            "label": "VirtualDisk"
+          },
+          {
+            "type": "doc",
+            "id": "models/virtualization/virtualmachine",
+            "label": "VirtualMachine"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "VPN",
+        "items": [
+          {
+            "type": "doc",
+            "id": "models/vpn/ikepolicy",
+            "label": "IKEPolicy"
+          },
+          {
+            "type": "doc",
+            "id": "models/vpn/ikeproposal",
+            "label": "IKEProposal"
+          },
+          {
+            "type": "doc",
+            "id": "models/vpn/ipsecpolicy",
+            "label": "IPSecPolicy"
+          },
+          {
+            "type": "doc",
+            "id": "models/vpn/ipsecprofile",
+            "label": "IPSecProfile"
+          },
+          {
+            "type": "doc",
+            "id": "models/vpn/ipsecproposal",
+            "label": "IPSecProposal"
+          },
+          {
+            "type": "doc",
+            "id": "models/vpn/l2vpn",
+            "label": "L2VPN"
+          },
+          {
+            "type": "doc",
+            "id": "models/vpn/l2vpntermination",
+            "label": "L2VPNTermination"
+          },
+          {
+            "type": "doc",
+            "id": "models/vpn/tunnel",
+            "label": "Tunnel"
+          },
+          {
+            "type": "doc",
+            "id": "models/vpn/tunnelgroup",
+            "label": "TunnelGroup"
+          },
+          {
+            "type": "doc",
+            "id": "models/vpn/tunneltermination",
+            "label": "TunnelTermination"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Wireless",
+        "items": [
+          {
+            "type": "doc",
+            "id": "models/wireless/wirelesslan",
+            "label": "WirelessLAN"
+          },
+          {
+            "type": "doc",
+            "id": "models/wireless/wirelesslangroup",
+            "label": "WirelessLANGroup"
+          },
+          {
+            "type": "doc",
+            "id": "models/wireless/wirelesslink",
+            "label": "WirelessLink"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Reference",
+    "items": [
+      {
+        "type": "doc",
+        "id": "reference/filtering",
+        "label": "Filtering"
+      },
+      {
+        "type": "doc",
+        "id": "reference/conditions",
+        "label": "Conditions"
+      },
+      {
+        "type": "doc",
+        "id": "reference/markdown",
+        "label": "Markdown"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Development",
+    "items": [
+      {
+        "type": "doc",
+        "id": "development/index",
+        "label": "Introduction"
+      },
+      {
+        "type": "doc",
+        "id": "development/getting-started",
+        "label": "Getting Started"
+      },
+      {
+        "type": "doc",
+        "id": "development/style-guide",
+        "label": "Style Guide"
+      },
+      {
+        "type": "doc",
+        "id": "development/models",
+        "label": "Models"
+      },
+      {
+        "type": "doc",
+        "id": "development/adding-models",
+        "label": "Adding Models"
+      },
+      {
+        "type": "doc",
+        "id": "development/extending-models",
+        "label": "Extending Models"
+      },
+      {
+        "type": "doc",
+        "id": "development/signals",
+        "label": "Signals"
+      },
+      {
+        "type": "doc",
+        "id": "development/search",
+        "label": "Search"
+      },
+      {
+        "type": "doc",
+        "id": "development/application-registry",
+        "label": "Application Registry"
+      },
+      {
+        "type": "doc",
+        "id": "development/user-preferences",
+        "label": "User Preferences"
+      },
+      {
+        "type": "doc",
+        "id": "development/web-ui",
+        "label": "Web UI"
+      },
+      {
+        "type": "doc",
+        "id": "development/internationalization",
+        "label": "Internationalization"
+      },
+      {
+        "type": "doc",
+        "id": "development/translations",
+        "label": "Translations"
+      },
+      {
+        "type": "doc",
+        "id": "development/release-checklist",
+        "label": "Release Checklist"
+      },
+      {
+        "type": "doc",
+        "id": "development/git-cheat-sheet",
+        "label": "git Cheat Sheet"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Release Notes",
+    "items": [
+      {
+        "type": "doc",
+        "id": "release-notes/index",
+        "label": "Summary"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-4.2",
+        "label": "Version 4.2"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-4.1",
+        "label": "Version 4.1"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-4.0",
+        "label": "Version 4.0"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-3.7",
+        "label": "Version 3.7"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-3.6",
+        "label": "Version 3.6"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-3.5",
+        "label": "Version 3.5"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-3.4",
+        "label": "Version 3.4"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-3.3",
+        "label": "Version 3.3"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-3.2",
+        "label": "Version 3.2"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-3.1",
+        "label": "Version 3.1"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-3.0",
+        "label": "Version 3.0"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-2.11",
+        "label": "Version 2.11"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-2.10",
+        "label": "Version 2.10"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-2.9",
+        "label": "Version 2.9"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-2.8",
+        "label": "Version 2.8"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-2.7",
+        "label": "Version 2.7"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-2.6",
+        "label": "Version 2.6"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-2.5",
+        "label": "Version 2.5"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-2.4",
+        "label": "Version 2.4"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-2.3",
+        "label": "Version 2.3"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-2.2",
+        "label": "Version 2.2"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-2.1",
+        "label": "Version 2.1"
+      },
+      {
+        "type": "doc",
+        "id": "release-notes/version-2.0",
+        "label": "Version 2.0"
+      }
+    ]
+  }
+]
