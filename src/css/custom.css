@@ -32,6 +32,16 @@ html[data-theme='dark'] {
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+/* Hide specific div based on inline style */
+div:has( > img[src$="#only-light"]) {
+  display: none;
+}
+
+div[style="height: 100px; margin-bottom: 3em; background: none;"] img {
+  height:100%;
+  width:auto;
+}
+
 /* Nav */
 .navbar {
   border-bottom: 1px solid #252929;
