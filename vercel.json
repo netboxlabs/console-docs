@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/docs/netbox",
+      "permanent": true
+    },
+    {
+      "source": "/docs",
+      "destination": "/docs/netbox",
+      "permanent": true
+    }
+  ]
+
+}
