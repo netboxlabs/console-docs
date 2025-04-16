@@ -12,6 +12,13 @@ interface TransformRule {
 }
 
 const transformRules: TransformRule[] = [
+    // Convert :material-icon-name: to an <i> tag
+    {
+        find: /:material-([a-zA-Z0-9_-]+):/g,
+        replace: (match: string, iconName: string): string => {
+         return '';
+        }
+    },
     // Escape bare <> symbols.
     { find: /<>/g, replace: '\\<\\>' },
     // Standardise <br> and </br> to self-closing <br/> with a newline.
@@ -236,11 +243,9 @@ const processFile = async (sourceFilePath: string, outputBaseDir: string, source
             const content = await readFile(sourceFilePath, 'utf-8');
             const transformedContent = await transformContent(content);
             await writeFile(outputFilePath, transformedContent);
-            console.log(`Transformed and copied: ${sourceFilePath} -> ${outputFilePath}`);
         } else {
             // For non-markdown files, just copy them
             await copyFile(sourceFilePath, outputFilePath);
-            console.log(`Copied: ${sourceFilePath} -> ${outputFilePath}`);
         }
 
     } catch (error) {
@@ -255,8 +260,6 @@ const transformDocs = async (): Promise<void> => {
         const outputBaseDir = path.join('docs', output); // Define output path within project 'docs' folder
 
         try {
-            console.log(`
-Processing source directory: ${source}`);
             const files = await new Promise<string[]>((resolve, reject) => {
                 // Update glob pattern to find all files, not just markdown
                 glob(`${source}/**/*`, { nodir: true }, (err, matches) => {
