@@ -25,7 +25,6 @@ const config: Config = {
 			} satisfies Preset.Options,
 		],
 	],
-
 	themeConfig: {
 		image: "img/docusaurus-social-card.jpg",
 		colorMode: {
@@ -38,10 +37,11 @@ const config: Config = {
 			logo: {
 				alt: "NetBox Logo",
 				src: "img/logo.svg",
+				href: "/docs/netbox",
 			},
 			items: [
-				{ to: "docs/netbox", label: "NetBox", position: "left" },
-				{ to: "docs/console", label: "Console", position: "left" },
+				// { to: "docs/netbox", label: "NetBox", position: "left" },
+				// { to: "docs/console", label: "Console", position: "left" },
 				{
 					href: "https://github.com/netbox-community/netbox/",
 					label: "GitHub",

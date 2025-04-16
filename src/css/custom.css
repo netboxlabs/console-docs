@@ -32,6 +32,10 @@ html[data-theme='dark'] {
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+.footer {
+  --ifm-footer-background-color: #02060A;
+}
+
 /* Hide specific div based on inline style */
 div:has( > img[src$="#only-light"]) {
   display: none;
