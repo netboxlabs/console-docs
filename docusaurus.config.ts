@@ -10,26 +10,6 @@ const config: Config = {
 	baseUrl: "/",
 	organizationName: "netbox",
 	projectName: "netbox-docs",
-	plugins: [
-		[
-			"@docusaurus/plugin-content-docs",
-			{
-				id: "netbox-docs",
-				path: "external-repos/netbox/docs",
-				routeBasePath: "docs/netbox",
-				sidebarPath: require.resolve("./sidebars.js"),
-			},
-		],
-		[
-			"@docusaurus/plugin-content-docs",
-			{
-				id: "console",
-				path: "external-repos/console-docs/docs",
-				routeBasePath: "docs/console",
-				sidebarPath: require.resolve("./sidebars.js"),
-			},
-		],
-	],
 
 	presets: [
 		[

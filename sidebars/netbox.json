@@ -1,7 +1,12 @@
 [
   {
     "type": "doc",
-    "id": "introduction",
+    "id": "netbox/index",
+    "label": "Home"
+  },
+  {
+    "type": "doc",
+    "id": "netbox/introduction",
     "label": "Introduction"
   },
   {
@@ -10,122 +15,122 @@
     "items": [
       {
         "type": "doc",
-        "id": "features/facilities",
+        "id": "netbox/features/facilities",
         "label": "Facilities"
       },
       {
         "type": "doc",
-        "id": "features/devices-cabling",
+        "id": "netbox/features/devices-cabling",
         "label": "Devices & Cabling"
       },
       {
         "type": "doc",
-        "id": "features/power-tracking",
+        "id": "netbox/features/power-tracking",
         "label": "Power Tracking"
       },
       {
         "type": "doc",
-        "id": "features/ipam",
+        "id": "netbox/features/ipam",
         "label": "IPAM"
       },
       {
         "type": "doc",
-        "id": "features/vlan-management",
+        "id": "netbox/features/vlan-management",
         "label": "VLAN Management"
       },
       {
         "type": "doc",
-        "id": "features/l2vpn-overlay",
+        "id": "netbox/features/l2vpn-overlay",
         "label": "L2VPN & Overlay"
       },
       {
         "type": "doc",
-        "id": "features/circuits",
+        "id": "netbox/features/circuits",
         "label": "Circuits"
       },
       {
         "type": "doc",
-        "id": "features/wireless",
+        "id": "netbox/features/wireless",
         "label": "Wireless"
       },
       {
         "type": "doc",
-        "id": "features/virtualization",
+        "id": "netbox/features/virtualization",
         "label": "Virtualization"
       },
       {
         "type": "doc",
-        "id": "features/vpn-tunnels",
+        "id": "netbox/features/vpn-tunnels",
         "label": "VPN Tunnels"
       },
       {
         "type": "doc",
-        "id": "features/tenancy",
+        "id": "netbox/features/tenancy",
         "label": "Tenancy"
       },
       {
         "type": "doc",
-        "id": "features/contacts",
+        "id": "netbox/features/contacts",
         "label": "Contacts"
       },
       {
         "type": "doc",
-        "id": "features/search",
+        "id": "netbox/features/search",
         "label": "Search"
       },
       {
         "type": "doc",
-        "id": "features/context-data",
+        "id": "netbox/features/context-data",
         "label": "Context Data"
       },
       {
         "type": "doc",
-        "id": "features/configuration-rendering",
+        "id": "netbox/features/configuration-rendering",
         "label": "Configuration Rendering"
       },
       {
         "type": "doc",
-        "id": "features/synchronized-data",
+        "id": "netbox/features/synchronized-data",
         "label": "Synchronized Data"
       },
       {
         "type": "doc",
-        "id": "features/change-logging",
+        "id": "netbox/features/change-logging",
         "label": "Change Logging"
       },
       {
         "type": "doc",
-        "id": "features/journaling",
+        "id": "netbox/features/journaling",
         "label": "Journaling"
       },
       {
         "type": "doc",
-        "id": "features/event-rules",
+        "id": "netbox/features/event-rules",
         "label": "Event Rules"
       },
       {
         "type": "doc",
-        "id": "features/notifications",
+        "id": "netbox/features/notifications",
         "label": "Notifications"
       },
       {
         "type": "doc",
-        "id": "features/background-jobs",
+        "id": "netbox/features/background-jobs",
         "label": "Background Jobs"
       },
       {
         "type": "doc",
-        "id": "features/authentication-permissions",
+        "id": "netbox/features/authentication-permissions",
         "label": "Auth & Permissions"
       },
       {
         "type": "doc",
-        "id": "features/api-integration",
+        "id": "netbox/features/api-integration",
         "label": "API & Integration"
       },
       {
         "type": "doc",
-        "id": "features/customization",
+        "id": "netbox/features/customization",
         "label": "Customization"
       }
     ]
@@ -136,47 +141,47 @@
     "items": [
       {
         "type": "doc",
-        "id": "installation/index",
+        "id": "netbox/installation/index",
         "label": "Installing NetBox"
       },
       {
         "type": "doc",
-        "id": "installation/1-postgresql",
+        "id": "netbox/installation/postgresql",
         "label": "1. PostgreSQL"
       },
       {
         "type": "doc",
-        "id": "installation/2-redis",
+        "id": "netbox/installation/redis",
         "label": "2. Redis"
       },
       {
         "type": "doc",
-        "id": "installation/3-netbox",
+        "id": "netbox/installation/netbox",
         "label": "3. NetBox"
       },
       {
         "type": "doc",
-        "id": "installation/4a-gunicorn",
+        "id": "netbox/installation/4a-gunicorn",
         "label": "4a. Gunicorn"
       },
       {
         "type": "doc",
-        "id": "installation/4b-uwsgi",
+        "id": "netbox/installation/4b-uwsgi",
         "label": "4b. uWSGI"
       },
       {
         "type": "doc",
-        "id": "installation/5-http-server",
+        "id": "netbox/installation/http-server",
         "label": "5. HTTP Server"
       },
       {
         "type": "doc",
-        "id": "installation/6-ldap",
+        "id": "netbox/installation/ldap",
         "label": "6. LDAP (Optional)"
       },
       {
         "type": "doc",
-        "id": "installation/upgrading",
+        "id": "netbox/installation/upgrading",
         "label": "Upgrading NetBox"
       }
     ]
@@ -187,12 +192,12 @@
     "items": [
       {
         "type": "doc",
-        "id": "getting-started/planning",
+        "id": "netbox/getting-started/planning",
         "label": "Planning"
       },
       {
         "type": "doc",
-        "id": "getting-started/populating-data",
+        "id": "netbox/getting-started/populating-data",
         "label": "Populating Data"
       }
     ]
@@ -203,62 +208,62 @@
     "items": [
       {
         "type": "doc",
-        "id": "configuration/index",
+        "id": "netbox/configuration/index",
         "label": "Configuring NetBox"
       },
       {
         "type": "doc",
-        "id": "configuration/required-parameters",
+        "id": "netbox/configuration/required-parameters",
         "label": "Required Parameters"
       },
       {
         "type": "doc",
-        "id": "configuration/system",
+        "id": "netbox/configuration/system",
         "label": "System"
       },
       {
         "type": "doc",
-        "id": "configuration/security",
+        "id": "netbox/configuration/security",
         "label": "Security"
       },
       {
         "type": "doc",
-        "id": "configuration/graphql-api",
+        "id": "netbox/configuration/graphql-api",
         "label": "GraphQL API"
       },
       {
         "type": "doc",
-        "id": "configuration/remote-authentication",
+        "id": "netbox/configuration/remote-authentication",
         "label": "Remote Authentication"
       },
       {
         "type": "doc",
-        "id": "configuration/data-validation",
+        "id": "netbox/configuration/data-validation",
         "label": "Data & Validation"
       },
       {
         "type": "doc",
-        "id": "configuration/default-values",
+        "id": "netbox/configuration/default-values",
         "label": "Default Values"
       },
       {
         "type": "doc",
-        "id": "configuration/error-reporting",
+        "id": "netbox/configuration/error-reporting",
         "label": "Error Reporting"
       },
       {
         "type": "doc",
-        "id": "configuration/plugins",
+        "id": "netbox/configuration/plugins",
         "label": "Plugins"
       },
       {
         "type": "doc",
-        "id": "configuration/miscellaneous",
+        "id": "netbox/configuration/miscellaneous",
         "label": "Miscellaneous"
       },
       {
         "type": "doc",
-        "id": "configuration/development",
+        "id": "netbox/configuration/development",
         "label": "Development"
       }
     ]
@@ -269,32 +274,32 @@
     "items": [
       {
         "type": "doc",
-        "id": "customization/custom-fields",
+        "id": "netbox/customization/custom-fields",
         "label": "Custom Fields"
       },
       {
         "type": "doc",
-        "id": "customization/custom-links",
+        "id": "netbox/customization/custom-links",
         "label": "Custom Links"
       },
       {
         "type": "doc",
-        "id": "customization/custom-validation",
+        "id": "netbox/customization/custom-validation",
         "label": "Custom Validation"
       },
       {
         "type": "doc",
-        "id": "customization/export-templates",
+        "id": "netbox/customization/export-templates",
         "label": "Export Templates"
       },
       {
         "type": "doc",
-        "id": "customization/reports",
+        "id": "netbox/customization/reports",
         "label": "Reports"
       },
       {
         "type": "doc",
-        "id": "customization/custom-scripts",
+        "id": "netbox/customization/custom-scripts",
         "label": "Custom Scripts"
       }
     ]
@@ -305,27 +310,27 @@
     "items": [
       {
         "type": "doc",
-        "id": "integrations/rest-api",
+        "id": "netbox/integrations/rest-api",
         "label": "REST API"
       },
       {
         "type": "doc",
-        "id": "integrations/graphql-api",
+        "id": "netbox/integrations/graphql-api",
         "label": "GraphQL API"
       },
       {
         "type": "doc",
-        "id": "integrations/webhooks",
+        "id": "netbox/integrations/webhooks",
         "label": "Webhooks"
       },
       {
         "type": "doc",
-        "id": "integrations/synchronized-data",
+        "id": "netbox/integrations/synchronized-data",
         "label": "Synchronized Data"
       },
       {
         "type": "doc",
-        "id": "integrations/prometheus-metrics",
+        "id": "netbox/integrations/prometheus-metrics",
         "label": "Prometheus Metrics"
       }
     ]
@@ -336,17 +341,17 @@
     "items": [
       {
         "type": "doc",
-        "id": "plugins/index",
+        "id": "netbox/plugins/index",
         "label": "About Plugins"
       },
       {
         "type": "doc",
-        "id": "plugins/installation",
+        "id": "netbox/plugins/installation",
         "label": "Installing a Plugin"
       },
       {
         "type": "doc",
-        "id": "plugins/removal",
+        "id": "netbox/plugins/removal",
         "label": "Removing a Plugin"
       },
       {
@@ -355,92 +360,92 @@
         "items": [
           {
             "type": "doc",
-            "id": "plugins/development/index",
+            "id": "netbox/plugins/development/index",
             "label": "Getting Started"
           },
           {
             "type": "doc",
-            "id": "plugins/development/models",
+            "id": "netbox/plugins/development/models",
             "label": "Models"
           },
           {
             "type": "doc",
-            "id": "plugins/development/views",
+            "id": "netbox/plugins/development/views",
             "label": "Views"
           },
           {
             "type": "doc",
-            "id": "plugins/development/navigation",
+            "id": "netbox/plugins/development/navigation",
             "label": "Navigation"
           },
           {
             "type": "doc",
-            "id": "plugins/development/templates",
+            "id": "netbox/plugins/development/templates",
             "label": "Templates"
           },
           {
             "type": "doc",
-            "id": "plugins/development/tables",
+            "id": "netbox/plugins/development/tables",
             "label": "Tables"
           },
           {
             "type": "doc",
-            "id": "plugins/development/forms",
+            "id": "netbox/plugins/development/forms",
             "label": "Forms"
           },
           {
             "type": "doc",
-            "id": "plugins/development/filtersets",
+            "id": "netbox/plugins/development/filtersets",
             "label": "Filters & Filter Sets"
           },
           {
             "type": "doc",
-            "id": "plugins/development/search",
+            "id": "netbox/plugins/development/search",
             "label": "Search"
           },
           {
             "type": "doc",
-            "id": "plugins/development/event-types",
+            "id": "netbox/plugins/development/event-types",
             "label": "Event Types"
           },
           {
             "type": "doc",
-            "id": "plugins/development/data-backends",
+            "id": "netbox/plugins/development/data-backends",
             "label": "Data Backends"
           },
           {
             "type": "doc",
-            "id": "plugins/development/rest-api",
+            "id": "netbox/plugins/development/rest-api",
             "label": "REST API"
           },
           {
             "type": "doc",
-            "id": "plugins/development/graphql-api",
+            "id": "netbox/plugins/development/graphql-api",
             "label": "GraphQL API"
           },
           {
             "type": "doc",
-            "id": "plugins/development/background-jobs",
+            "id": "netbox/plugins/development/background-jobs",
             "label": "Background Jobs"
           },
           {
             "type": "doc",
-            "id": "plugins/development/dashboard-widgets",
+            "id": "netbox/plugins/development/dashboard-widgets",
             "label": "Dashboard Widgets"
           },
           {
             "type": "doc",
-            "id": "plugins/development/staged-changes",
+            "id": "netbox/plugins/development/staged-changes",
             "label": "Staged Changes"
           },
           {
             "type": "doc",
-            "id": "plugins/development/exceptions",
+            "id": "netbox/plugins/development/exceptions",
             "label": "Exceptions"
           },
           {
             "type": "doc",
-            "id": "plugins/development/migration-v4",
+            "id": "netbox/plugins/development/migration-v4",
             "label": "Migrating to v4.0"
           }
         ]
@@ -457,49 +462,49 @@
         "items": [
           {
             "type": "doc",
-            "id": "administration/authentication/overview",
+            "id": "netbox/administration/authentication/overview",
             "label": "Overview"
           },
           {
             "type": "doc",
-            "id": "administration/authentication/google",
+            "id": "netbox/administration/authentication/google",
             "label": "Google"
           },
           {
             "type": "doc",
-            "id": "administration/authentication/microsoft-entra-id",
+            "id": "netbox/administration/authentication/microsoft-entra-id",
             "label": "Microsoft Entra ID"
           },
           {
             "type": "doc",
-            "id": "administration/authentication/okta",
+            "id": "netbox/administration/authentication/okta",
             "label": "Okta"
           }
         ]
       },
       {
         "type": "doc",
-        "id": "administration/permissions",
+        "id": "netbox/administration/permissions",
         "label": "Permissions"
       },
       {
         "type": "doc",
-        "id": "administration/error-reporting",
+        "id": "netbox/administration/error-reporting",
         "label": "Error Reporting"
       },
       {
         "type": "doc",
-        "id": "administration/housekeeping",
+        "id": "netbox/administration/housekeeping",
         "label": "Housekeeping"
       },
       {
         "type": "doc",
-        "id": "administration/replicating-netbox",
+        "id": "netbox/administration/replicating-netbox",
         "label": "Replicating NetBox"
       },
       {
         "type": "doc",
-        "id": "administration/netbox-shell",
+        "id": "netbox/administration/netbox-shell",
         "label": "NetBox Shell"
       }
     ]
@@ -514,57 +519,57 @@
         "items": [
           {
             "type": "doc",
-            "id": "models/circuits/circuit",
+            "id": "netbox/models/circuits/circuit",
             "label": "Circuit"
           },
           {
             "type": "doc",
-            "id": "models/circuits/circuitgroup",
+            "id": "netbox/models/circuits/circuitgroup",
             "label": "CircuitGroup"
           },
           {
             "type": "doc",
-            "id": "models/circuits/circuitgroupassignment",
+            "id": "netbox/models/circuits/circuitgroupassignment",
             "label": "CircuitGroupAssignment"
           },
           {
             "type": "doc",
-            "id": "models/circuits/circuittermination",
+            "id": "netbox/models/circuits/circuittermination",
             "label": "Circuit Termination"
           },
           {
             "type": "doc",
-            "id": "models/circuits/circuittype",
+            "id": "netbox/models/circuits/circuittype",
             "label": "Circuit Type"
           },
           {
             "type": "doc",
-            "id": "models/circuits/provider",
+            "id": "netbox/models/circuits/provider",
             "label": "Provider"
           },
           {
             "type": "doc",
-            "id": "models/circuits/provideraccount",
+            "id": "netbox/models/circuits/provideraccount",
             "label": "Provider Account"
           },
           {
             "type": "doc",
-            "id": "models/circuits/providernetwork",
+            "id": "netbox/models/circuits/providernetwork",
             "label": "Provider Network"
           },
           {
             "type": "doc",
-            "id": "models/circuits/virtualcircuit",
+            "id": "netbox/models/circuits/virtualcircuit",
             "label": "Virtual Circuit"
           },
           {
             "type": "doc",
-            "id": "models/circuits/virtualcircuittermination",
+            "id": "netbox/models/circuits/virtualcircuittermination",
             "label": "Virtual Circuit Termination"
           },
           {
             "type": "doc",
-            "id": "models/circuits/virtualcircuittype",
+            "id": "netbox/models/circuits/virtualcircuittype",
             "label": "Virtual Circuit Type"
           }
         ]
@@ -575,17 +580,17 @@
         "items": [
           {
             "type": "doc",
-            "id": "models/core/datafile",
+            "id": "netbox/models/core/datafile",
             "label": "DataFile"
           },
           {
             "type": "doc",
-            "id": "models/core/datasource",
+            "id": "netbox/models/core/datasource",
             "label": "DataSource"
           },
           {
             "type": "doc",
-            "id": "models/core/job",
+            "id": "netbox/models/core/job",
             "label": "Job"
           }
         ]
@@ -596,212 +601,212 @@
         "items": [
           {
             "type": "doc",
-            "id": "models/dcim/cable",
+            "id": "netbox/models/dcim/cable",
             "label": "Cable"
           },
           {
             "type": "doc",
-            "id": "models/dcim/consoleport",
+            "id": "netbox/models/dcim/consoleport",
             "label": "ConsolePort"
           },
           {
             "type": "doc",
-            "id": "models/dcim/consoleporttemplate",
+            "id": "netbox/models/dcim/consoleporttemplate",
             "label": "ConsolePortTemplate"
           },
           {
             "type": "doc",
-            "id": "models/dcim/consoleserverport",
+            "id": "netbox/models/dcim/consoleserverport",
             "label": "ConsoleServerPort"
           },
           {
             "type": "doc",
-            "id": "models/dcim/consoleserverporttemplate",
+            "id": "netbox/models/dcim/consoleserverporttemplate",
             "label": "ConsoleServerPortTemplate"
           },
           {
             "type": "doc",
-            "id": "models/dcim/device",
+            "id": "netbox/models/dcim/device",
             "label": "Device"
           },
           {
             "type": "doc",
-            "id": "models/dcim/devicebay",
+            "id": "netbox/models/dcim/devicebay",
             "label": "DeviceBay"
           },
           {
             "type": "doc",
-            "id": "models/dcim/devicebaytemplate",
+            "id": "netbox/models/dcim/devicebaytemplate",
             "label": "DeviceBayTemplate"
           },
           {
             "type": "doc",
-            "id": "models/dcim/devicerole",
+            "id": "netbox/models/dcim/devicerole",
             "label": "DeviceRole"
           },
           {
             "type": "doc",
-            "id": "models/dcim/devicetype",
+            "id": "netbox/models/dcim/devicetype",
             "label": "DeviceType"
           },
           {
             "type": "doc",
-            "id": "models/dcim/frontport",
+            "id": "netbox/models/dcim/frontport",
             "label": "FrontPort"
           },
           {
             "type": "doc",
-            "id": "models/dcim/frontporttemplate",
+            "id": "netbox/models/dcim/frontporttemplate",
             "label": "FrontPortTemplate"
           },
           {
             "type": "doc",
-            "id": "models/dcim/interface",
+            "id": "netbox/models/dcim/interface",
             "label": "Interface"
           },
           {
             "type": "doc",
-            "id": "models/dcim/interfacetemplate",
+            "id": "netbox/models/dcim/interfacetemplate",
             "label": "InterfaceTemplate"
           },
           {
             "type": "doc",
-            "id": "models/dcim/inventoryitem",
+            "id": "netbox/models/dcim/inventoryitem",
             "label": "InventoryItem"
           },
           {
             "type": "doc",
-            "id": "models/dcim/inventoryitemrole",
+            "id": "netbox/models/dcim/inventoryitemrole",
             "label": "InventoryItemRole"
           },
           {
             "type": "doc",
-            "id": "models/dcim/inventoryitemtemplate",
+            "id": "netbox/models/dcim/inventoryitemtemplate",
             "label": "InventoryItemTemplate"
           },
           {
             "type": "doc",
-            "id": "models/dcim/location",
+            "id": "netbox/models/dcim/location",
             "label": "Location"
           },
           {
             "type": "doc",
-            "id": "models/dcim/macaddress",
+            "id": "netbox/models/dcim/macaddress",
             "label": "MACAddress"
           },
           {
             "type": "doc",
-            "id": "models/dcim/manufacturer",
+            "id": "netbox/models/dcim/manufacturer",
             "label": "Manufacturer"
           },
           {
             "type": "doc",
-            "id": "models/dcim/module",
+            "id": "netbox/models/dcim/module",
             "label": "Module"
           },
           {
             "type": "doc",
-            "id": "models/dcim/modulebay",
+            "id": "netbox/models/dcim/modulebay",
             "label": "ModuleBay"
           },
           {
             "type": "doc",
-            "id": "models/dcim/modulebaytemplate",
+            "id": "netbox/models/dcim/modulebaytemplate",
             "label": "ModuleBayTemplate"
           },
           {
             "type": "doc",
-            "id": "models/dcim/moduletype",
+            "id": "netbox/models/dcim/moduletype",
             "label": "ModuleType"
           },
           {
             "type": "doc",
-            "id": "models/dcim/platform",
+            "id": "netbox/models/dcim/platform",
             "label": "Platform"
           },
           {
             "type": "doc",
-            "id": "models/dcim/powerfeed",
+            "id": "netbox/models/dcim/powerfeed",
             "label": "PowerFeed"
           },
           {
             "type": "doc",
-            "id": "models/dcim/poweroutlet",
+            "id": "netbox/models/dcim/poweroutlet",
             "label": "PowerOutlet"
           },
           {
             "type": "doc",
-            "id": "models/dcim/poweroutlettemplate",
+            "id": "netbox/models/dcim/poweroutlettemplate",
             "label": "PowerOutletTemplate"
           },
           {
             "type": "doc",
-            "id": "models/dcim/powerpanel",
+            "id": "netbox/models/dcim/powerpanel",
             "label": "PowerPanel"
           },
           {
             "type": "doc",
-            "id": "models/dcim/powerport",
+            "id": "netbox/models/dcim/powerport",
             "label": "PowerPort"
           },
           {
             "type": "doc",
-            "id": "models/dcim/powerporttemplate",
+            "id": "netbox/models/dcim/powerporttemplate",
             "label": "PowerPortTemplate"
           },
           {
             "type": "doc",
-            "id": "models/dcim/rack",
+            "id": "netbox/models/dcim/rack",
             "label": "Rack"
           },
           {
             "type": "doc",
-            "id": "models/dcim/rackreservation",
+            "id": "netbox/models/dcim/rackreservation",
             "label": "RackReservation"
           },
           {
             "type": "doc",
-            "id": "models/dcim/rackrole",
+            "id": "netbox/models/dcim/rackrole",
             "label": "RackRole"
           },
           {
             "type": "doc",
-            "id": "models/dcim/racktype",
+            "id": "netbox/models/dcim/racktype",
             "label": "RackType"
           },
           {
             "type": "doc",
-            "id": "models/dcim/rearport",
+            "id": "netbox/models/dcim/rearport",
             "label": "RearPort"
           },
           {
             "type": "doc",
-            "id": "models/dcim/rearporttemplate",
+            "id": "netbox/models/dcim/rearporttemplate",
             "label": "RearPortTemplate"
           },
           {
             "type": "doc",
-            "id": "models/dcim/region",
+            "id": "netbox/models/dcim/region",
             "label": "Region"
           },
           {
             "type": "doc",
-            "id": "models/dcim/site",
+            "id": "netbox/models/dcim/site",
             "label": "Site"
           },
           {
             "type": "doc",
-            "id": "models/dcim/sitegroup",
+            "id": "netbox/models/dcim/sitegroup",
             "label": "SiteGroup"
           },
           {
             "type": "doc",
-            "id": "models/dcim/virtualchassis",
+            "id": "netbox/models/dcim/virtualchassis",
             "label": "VirtualChassis"
           },
           {
             "type": "doc",
-            "id": "models/dcim/virtualdevicecontext",
+            "id": "netbox/models/dcim/virtualdevicecontext",
             "label": "VirtualDeviceContext"
           }
         ]
@@ -812,92 +817,92 @@
         "items": [
           {
             "type": "doc",
-            "id": "models/extras/bookmark",
+            "id": "netbox/models/extras/bookmark",
             "label": "Bookmark"
           },
           {
             "type": "doc",
-            "id": "models/extras/branch",
+            "id": "netbox/models/extras/branch",
             "label": "Branch"
           },
           {
             "type": "doc",
-            "id": "models/extras/configcontext",
+            "id": "netbox/models/extras/configcontext",
             "label": "ConfigContext"
           },
           {
             "type": "doc",
-            "id": "models/extras/configtemplate",
+            "id": "netbox/models/extras/configtemplate",
             "label": "ConfigTemplate"
           },
           {
             "type": "doc",
-            "id": "models/extras/customfield",
+            "id": "netbox/models/extras/customfield",
             "label": "CustomField"
           },
           {
             "type": "doc",
-            "id": "models/extras/customfieldchoiceset",
+            "id": "netbox/models/extras/customfieldchoiceset",
             "label": "CustomFieldChoiceSet"
           },
           {
             "type": "doc",
-            "id": "models/extras/customlink",
+            "id": "netbox/models/extras/customlink",
             "label": "CustomLink"
           },
           {
             "type": "doc",
-            "id": "models/extras/eventrule",
+            "id": "netbox/models/extras/eventrule",
             "label": "EventRule"
           },
           {
             "type": "doc",
-            "id": "models/extras/exporttemplate",
+            "id": "netbox/models/extras/exporttemplate",
             "label": "ExportTemplate"
           },
           {
             "type": "doc",
-            "id": "models/extras/imageattachment",
+            "id": "netbox/models/extras/imageattachment",
             "label": "ImageAttachment"
           },
           {
             "type": "doc",
-            "id": "models/extras/journalentry",
+            "id": "netbox/models/extras/journalentry",
             "label": "JournalEntry"
           },
           {
             "type": "doc",
-            "id": "models/extras/notification",
+            "id": "netbox/models/extras/notification",
             "label": "Notification"
           },
           {
             "type": "doc",
-            "id": "models/extras/notificationgroup",
+            "id": "netbox/models/extras/notificationgroup",
             "label": "NotificationGroup"
           },
           {
             "type": "doc",
-            "id": "models/extras/savedfilter",
+            "id": "netbox/models/extras/savedfilter",
             "label": "SavedFilter"
           },
           {
             "type": "doc",
-            "id": "models/extras/stagedchange",
+            "id": "netbox/models/extras/stagedchange",
             "label": "StagedChange"
           },
           {
             "type": "doc",
-            "id": "models/extras/subscription",
+            "id": "netbox/models/extras/subscription",
             "label": "Subscription"
           },
           {
             "type": "doc",
-            "id": "models/extras/tag",
+            "id": "netbox/models/extras/tag",
             "label": "Tag"
           },
           {
             "type": "doc",
-            "id": "models/extras/webhook",
+            "id": "netbox/models/extras/webhook",
             "label": "Webhook"
           }
         ]
@@ -908,92 +913,92 @@
         "items": [
           {
             "type": "doc",
-            "id": "models/ipam/asn",
+            "id": "netbox/models/ipam/asn",
             "label": "ASN"
           },
           {
             "type": "doc",
-            "id": "models/ipam/asnrange",
+            "id": "netbox/models/ipam/asnrange",
             "label": "ASNRange"
           },
           {
             "type": "doc",
-            "id": "models/ipam/aggregate",
+            "id": "netbox/models/ipam/aggregate",
             "label": "Aggregate"
           },
           {
             "type": "doc",
-            "id": "models/ipam/fhrpgroup",
+            "id": "netbox/models/ipam/fhrpgroup",
             "label": "FHRPGroup"
           },
           {
             "type": "doc",
-            "id": "models/ipam/fhrpgroupassignment",
+            "id": "netbox/models/ipam/fhrpgroupassignment",
             "label": "FHRPGroupAssignment"
           },
           {
             "type": "doc",
-            "id": "models/ipam/ipaddress",
+            "id": "netbox/models/ipam/ipaddress",
             "label": "IPAddress"
           },
           {
             "type": "doc",
-            "id": "models/ipam/iprange",
+            "id": "netbox/models/ipam/iprange",
             "label": "IPRange"
           },
           {
             "type": "doc",
-            "id": "models/ipam/prefix",
+            "id": "netbox/models/ipam/prefix",
             "label": "Prefix"
           },
           {
             "type": "doc",
-            "id": "models/ipam/rir",
+            "id": "netbox/models/ipam/rir",
             "label": "RIR"
           },
           {
             "type": "doc",
-            "id": "models/ipam/role",
+            "id": "netbox/models/ipam/role",
             "label": "Role"
           },
           {
             "type": "doc",
-            "id": "models/ipam/routetarget",
+            "id": "netbox/models/ipam/routetarget",
             "label": "RouteTarget"
           },
           {
             "type": "doc",
-            "id": "models/ipam/service",
+            "id": "netbox/models/ipam/service",
             "label": "Service"
           },
           {
             "type": "doc",
-            "id": "models/ipam/servicetemplate",
+            "id": "netbox/models/ipam/servicetemplate",
             "label": "ServiceTemplate"
           },
           {
             "type": "doc",
-            "id": "models/ipam/vlan",
+            "id": "netbox/models/ipam/vlan",
             "label": "VLAN"
           },
           {
             "type": "doc",
-            "id": "models/ipam/vlangroup",
+            "id": "netbox/models/ipam/vlangroup",
             "label": "VLANGroup"
           },
           {
             "type": "doc",
-            "id": "models/ipam/vlantranslationpolicy",
+            "id": "netbox/models/ipam/vlantranslationpolicy",
             "label": "VLANTranslationPolicy"
           },
           {
             "type": "doc",
-            "id": "models/ipam/vlantranslationrule",
+            "id": "netbox/models/ipam/vlantranslationrule",
             "label": "VLANTranslationRule"
           },
           {
             "type": "doc",
-            "id": "models/ipam/vrf",
+            "id": "netbox/models/ipam/vrf",
             "label": "VRF"
           }
         ]
@@ -1004,27 +1009,27 @@
         "items": [
           {
             "type": "doc",
-            "id": "models/tenancy/contact",
+            "id": "netbox/models/tenancy/contact",
             "label": "Contact"
           },
           {
             "type": "doc",
-            "id": "models/tenancy/contactgroup",
+            "id": "netbox/models/tenancy/contactgroup",
             "label": "ContactGroup"
           },
           {
             "type": "doc",
-            "id": "models/tenancy/contactrole",
+            "id": "netbox/models/tenancy/contactrole",
             "label": "ContactRole"
           },
           {
             "type": "doc",
-            "id": "models/tenancy/tenant",
+            "id": "netbox/models/tenancy/tenant",
             "label": "Tenant"
           },
           {
             "type": "doc",
-            "id": "models/tenancy/tenantgroup",
+            "id": "netbox/models/tenancy/tenantgroup",
             "label": "TenantGroup"
           }
         ]
@@ -1035,32 +1040,32 @@
         "items": [
           {
             "type": "doc",
-            "id": "models/virtualization/cluster",
+            "id": "netbox/models/virtualization/cluster",
             "label": "Cluster"
           },
           {
             "type": "doc",
-            "id": "models/virtualization/clustergroup",
+            "id": "netbox/models/virtualization/clustergroup",
             "label": "ClusterGroup"
           },
           {
             "type": "doc",
-            "id": "models/virtualization/clustertype",
+            "id": "netbox/models/virtualization/clustertype",
             "label": "ClusterType"
           },
           {
             "type": "doc",
-            "id": "models/virtualization/vminterface",
+            "id": "netbox/models/virtualization/vminterface",
             "label": "VMInterface"
           },
           {
             "type": "doc",
-            "id": "models/virtualization/virtualdisk",
+            "id": "netbox/models/virtualization/virtualdisk",
             "label": "VirtualDisk"
           },
           {
             "type": "doc",
-            "id": "models/virtualization/virtualmachine",
+            "id": "netbox/models/virtualization/virtualmachine",
             "label": "VirtualMachine"
           }
         ]
@@ -1071,52 +1076,52 @@
         "items": [
           {
             "type": "doc",
-            "id": "models/vpn/ikepolicy",
+            "id": "netbox/models/vpn/ikepolicy",
             "label": "IKEPolicy"
           },
           {
             "type": "doc",
-            "id": "models/vpn/ikeproposal",
+            "id": "netbox/models/vpn/ikeproposal",
             "label": "IKEProposal"
           },
           {
             "type": "doc",
-            "id": "models/vpn/ipsecpolicy",
+            "id": "netbox/models/vpn/ipsecpolicy",
             "label": "IPSecPolicy"
           },
           {
             "type": "doc",
-            "id": "models/vpn/ipsecprofile",
+            "id": "netbox/models/vpn/ipsecprofile",
             "label": "IPSecProfile"
           },
           {
             "type": "doc",
-            "id": "models/vpn/ipsecproposal",
+            "id": "netbox/models/vpn/ipsecproposal",
             "label": "IPSecProposal"
           },
           {
             "type": "doc",
-            "id": "models/vpn/l2vpn",
+            "id": "netbox/models/vpn/l2vpn",
             "label": "L2VPN"
           },
           {
             "type": "doc",
-            "id": "models/vpn/l2vpntermination",
+            "id": "netbox/models/vpn/l2vpntermination",
             "label": "L2VPNTermination"
           },
           {
             "type": "doc",
-            "id": "models/vpn/tunnel",
+            "id": "netbox/models/vpn/tunnel",
             "label": "Tunnel"
           },
           {
             "type": "doc",
-            "id": "models/vpn/tunnelgroup",
+            "id": "netbox/models/vpn/tunnelgroup",
             "label": "TunnelGroup"
           },
           {
             "type": "doc",
-            "id": "models/vpn/tunneltermination",
+            "id": "netbox/models/vpn/tunneltermination",
             "label": "TunnelTermination"
           }
         ]
@@ -1127,17 +1132,17 @@
         "items": [
           {
             "type": "doc",
-            "id": "models/wireless/wirelesslan",
+            "id": "netbox/models/wireless/wirelesslan",
             "label": "WirelessLAN"
           },
           {
             "type": "doc",
-            "id": "models/wireless/wirelesslangroup",
+            "id": "netbox/models/wireless/wirelesslangroup",
             "label": "WirelessLANGroup"
           },
           {
             "type": "doc",
-            "id": "models/wireless/wirelesslink",
+            "id": "netbox/models/wireless/wirelesslink",
             "label": "WirelessLink"
           }
         ]
@@ -1150,17 +1155,17 @@
     "items": [
       {
         "type": "doc",
-        "id": "reference/filtering",
+        "id": "netbox/reference/filtering",
         "label": "Filtering"
       },
       {
         "type": "doc",
-        "id": "reference/conditions",
+        "id": "netbox/reference/conditions",
         "label": "Conditions"
       },
       {
         "type": "doc",
-        "id": "reference/markdown",
+        "id": "netbox/reference/markdown",
         "label": "Markdown"
       }
     ]
@@ -1171,77 +1176,77 @@
     "items": [
       {
         "type": "doc",
-        "id": "development/index",
+        "id": "netbox/development/index",
         "label": "Introduction"
       },
       {
         "type": "doc",
-        "id": "development/getting-started",
+        "id": "netbox/development/getting-started",
         "label": "Getting Started"
       },
       {
         "type": "doc",
-        "id": "development/style-guide",
+        "id": "netbox/development/style-guide",
         "label": "Style Guide"
       },
       {
         "type": "doc",
-        "id": "development/models",
+        "id": "netbox/development/models",
         "label": "Models"
       },
       {
         "type": "doc",
-        "id": "development/adding-models",
+        "id": "netbox/development/adding-models",
         "label": "Adding Models"
       },
       {
         "type": "doc",
-        "id": "development/extending-models",
+        "id": "netbox/development/extending-models",
         "label": "Extending Models"
       },
       {
         "type": "doc",
-        "id": "development/signals",
+        "id": "netbox/development/signals",
         "label": "Signals"
       },
       {
         "type": "doc",
-        "id": "development/search",
+        "id": "netbox/development/search",
         "label": "Search"
       },
       {
         "type": "doc",
-        "id": "development/application-registry",
+        "id": "netbox/development/application-registry",
         "label": "Application Registry"
       },
       {
         "type": "doc",
-        "id": "development/user-preferences",
+        "id": "netbox/development/user-preferences",
         "label": "User Preferences"
       },
       {
         "type": "doc",
-        "id": "development/web-ui",
+        "id": "netbox/development/web-ui",
         "label": "Web UI"
       },
       {
         "type": "doc",
-        "id": "development/internationalization",
+        "id": "netbox/development/internationalization",
         "label": "Internationalization"
       },
       {
         "type": "doc",
-        "id": "development/translations",
+        "id": "netbox/development/translations",
         "label": "Translations"
       },
       {
         "type": "doc",
-        "id": "development/release-checklist",
+        "id": "netbox/development/release-checklist",
         "label": "Release Checklist"
       },
       {
         "type": "doc",
-        "id": "development/git-cheat-sheet",
+        "id": "netbox/development/git-cheat-sheet",
         "label": "git Cheat Sheet"
       }
     ]
@@ -1252,122 +1257,122 @@
     "items": [
       {
         "type": "doc",
-        "id": "release-notes/index",
+        "id": "netbox/release-notes/index",
         "label": "Summary"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-4.2",
+        "id": "netbox/release-notes/version-4.2",
         "label": "Version 4.2"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-4.1",
+        "id": "netbox/release-notes/version-4.1",
         "label": "Version 4.1"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-4.0",
+        "id": "netbox/release-notes/version-4.0",
         "label": "Version 4.0"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-3.7",
+        "id": "netbox/release-notes/version-3.7",
         "label": "Version 3.7"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-3.6",
+        "id": "netbox/release-notes/version-3.6",
         "label": "Version 3.6"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-3.5",
+        "id": "netbox/release-notes/version-3.5",
         "label": "Version 3.5"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-3.4",
+        "id": "netbox/release-notes/version-3.4",
         "label": "Version 3.4"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-3.3",
+        "id": "netbox/release-notes/version-3.3",
         "label": "Version 3.3"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-3.2",
+        "id": "netbox/release-notes/version-3.2",
         "label": "Version 3.2"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-3.1",
+        "id": "netbox/release-notes/version-3.1",
         "label": "Version 3.1"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-3.0",
+        "id": "netbox/release-notes/version-3.0",
         "label": "Version 3.0"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-2.11",
+        "id": "netbox/release-notes/version-2.11",
         "label": "Version 2.11"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-2.10",
+        "id": "netbox/release-notes/version-2.10",
         "label": "Version 2.10"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-2.9",
+        "id": "netbox/release-notes/version-2.9",
         "label": "Version 2.9"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-2.8",
+        "id": "netbox/release-notes/version-2.8",
         "label": "Version 2.8"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-2.7",
+        "id": "netbox/release-notes/version-2.7",
         "label": "Version 2.7"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-2.6",
+        "id": "netbox/release-notes/version-2.6",
         "label": "Version 2.6"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-2.5",
+        "id": "netbox/release-notes/version-2.5",
         "label": "Version 2.5"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-2.4",
+        "id": "netbox/release-notes/version-2.4",
         "label": "Version 2.4"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-2.3",
+        "id": "netbox/release-notes/version-2.3",
         "label": "Version 2.3"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-2.2",
+        "id": "netbox/release-notes/version-2.2",
         "label": "Version 2.2"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-2.1",
+        "id": "netbox/release-notes/version-2.1",
         "label": "Version 2.1"
       },
       {
         "type": "doc",
-        "id": "release-notes/version-2.0",
+        "id": "netbox/release-notes/version-2.0",
         "label": "Version 2.0"
       }
     ]
