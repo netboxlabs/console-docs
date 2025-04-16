@@ -1,4 +1,4 @@
-const { readFile, writeFile } = require('fs/promises');
+const { readFile, writeFile, mkdir, copyFile } = require('fs/promises');
 const glob = require('glob');
 const { exec } = require('child_process');
 const { promisify } = require('util');
@@ -66,9 +66,14 @@ const transformRules: TransformRule[] = [
     { find: /(?<![}\\])}(?!})/g, replace: '\\}' },
 ];
 
-const docsDirectories = [
-  'external-repos/netbox/docs',
-  'external-repos/console-docs/docs',
+interface DocsDirectoryConfig {
+    source: string;
+    output: string;
+}
+
+const docsDirectories: DocsDirectoryConfig[] = [
+  { source: 'external-repos/netbox/docs', output: 'netbox' },
+  { source: 'external-repos/console-docs/docs', output: 'console' },
 ];
 
 // Helper to get leading indentation
@@ -214,71 +219,69 @@ const transformContent = async (content: string): Promise<string> => {
     return transformedContentWithPlaceholders;
 };
 
-const processFile = async (filePath: string): Promise<void> => {
+const processFile = async (sourceFilePath: string, outputBaseDir: string, sourceBaseDir: string): Promise<void> => {
+    // Determine the relative path from the source base directory
+    const relativeFilePath = path.relative(sourceBaseDir, sourceFilePath);
+    // Construct the full output path
+    const outputFilePath = path.join(outputBaseDir, relativeFilePath);
+
     try {
-        const content = await readFile(filePath, 'utf-8');
-        const transformedContent = await transformContent(content);
-        await writeFile(filePath, transformedContent);
+        // Ensure the output directory exists
+        await mkdir(path.dirname(outputFilePath), { recursive: true });
+
+        // Check if the file is markdown
+        const isMarkdown = /\.(md|mdx)$/i.test(sourceFilePath);
+
+        if (isMarkdown) {
+            const content = await readFile(sourceFilePath, 'utf-8');
+            const transformedContent = await transformContent(content);
+            await writeFile(outputFilePath, transformedContent);
+            console.log(`Transformed and copied: ${sourceFilePath} -> ${outputFilePath}`);
+        } else {
+            // For non-markdown files, just copy them
+            await copyFile(sourceFilePath, outputFilePath);
+            console.log(`Copied: ${sourceFilePath} -> ${outputFilePath}`);
+        }
+
     } catch (error) {
-        console.error(`Error processing ${filePath}:`, error);
+        console.error(`Error processing ${sourceFilePath} to ${outputFilePath}:`, error);
     }
 };
 
 const transformDocs = async (): Promise<void> => {
-    const originalCwd = process.cwd();
+    console.log('\nStarting documentation transformation and copy...');
+    for (const dirConfig of docsDirectories) {
+        const { source, output } = dirConfig;
+        const outputBaseDir = path.join('docs', output); // Define output path within project 'docs' folder
 
-    console.log('Reverting any existing uncommitted changes in documentation submodules...');
-    // Determine unique submodule root directories
-    const submoduleRoots = [...
-        new Set(docsDirectories.map(dir => path.join(dir.split('/')[0], dir.split('/')[1])))
-    ];
-
-    for (const submoduleRoot of submoduleRoots) {
-        console.log(`\nProcessing submodule: ${submoduleRoot}`);
         try {
-            process.chdir(submoduleRoot);
-            console.log(`Changed directory to ${submoduleRoot}`);
-            console.log(`Running: git checkout -- .`);
-            const { stdout, stderr } = await execAsync(`git checkout -- .`);
-            if (stdout) console.log('Git stdout:', stdout);
-            if (stderr) console.error('Git stderr:', stderr);
-            console.log(`Existing changes reverted in submodule ${submoduleRoot}.`);
-        } catch (error) {
-            console.error(`Error reverting changes in submodule ${submoduleRoot}:`, error);
-            // Optionally, decide if you want to stop the whole script if reverting fails
-            // For now, just log the error and continue
-        } finally {
-            // Always change back, even if checkout failed
-            process.chdir(originalCwd);
-            console.log(`Changed directory back to ${originalCwd}`);
-        }
-    }
-    console.log('\nFinished reverting existing submodule changes.');
-
-    console.log('\nStarting documentation transformation...');
-    for (const dir of docsDirectories) {
-        try {
+            console.log(`
+Processing source directory: ${source}`);
             const files = await new Promise<string[]>((resolve, reject) => {
-                glob(`${dir}/**/*.{md,mdx}`, { nodir: true }, (err, matches) => {
+                // Update glob pattern to find all files, not just markdown
+                glob(`${source}/**/*`, { nodir: true }, (err, matches) => {
                     if (err) reject(err);
                     else resolve(matches);
                 });
             });
 
             if (!files || files.length === 0) {
-                console.warn(`No files found in ${dir}`);
-                continue;
+                console.warn(`No files found in ${source}`);
+                continue; // Skip to the next directory config
             }
-            console.log(`Found ${files.length} files in ${dir}, processing...`);
-            await Promise.all(files.map(processFile));
+            console.log(`Found ${files.length} files in ${source}. Transforming and copying to ${outputBaseDir}...`);
+
+            // Process each file found
+            await Promise.all(files.map(file => processFile(file, outputBaseDir, source)));
+
         } catch (error) {
-            console.error(`Error processing directory ${dir}:`, error);
+            console.error(`Error processing directory configuration ${JSON.stringify(dirConfig)}:`, error);
         }
     }
 };
 
 transformDocs()
-    .then(() => console.log('\nDocumentation transformation complete'))
+    .then(() => console.log('\nDocumentation transformation and copy complete'))
     .catch(error => {
-        console.error('\nAn error occurred during transformation:', error);
+        console.error('\nAn error occurred during the process:', error);
     });
