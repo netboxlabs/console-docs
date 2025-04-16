@@ -1,5 +1,10 @@
 const { readFile, writeFile } = require('fs/promises');
 const glob = require('glob');
+const { exec } = require('child_process');
+const { promisify } = require('util');
+const path = require('path');
+
+const execAsync = promisify(exec);
 
 interface TransformRule {
     find: string | RegExp;
@@ -17,12 +22,8 @@ const transformRules: TransformRule[] = [
     { find: /!\[(.*?)\]\((.*?)\)\{\s*style="max-width:\s*(\d+)\s*%"\s*\}/g, replace: '<div style={{ maxWidth: "$3%" }}>![$1]($2)</div>' },
     // Escape angle brackets around raw URLs.
     { find: /<https?:\/\/[^>]+>/g, replace: (match: string) => `\\<${match.slice(1, -1)}\\>` },
-    // Escape <pk\\> tag.
+    // Escape <pk\> tag.
     { find: /<pk\\>/g, replace: '\\<pk\\>' },
-    // Escape single quotes before opening curly braces for JSX.
-    { find: /(?<!\\)'(?={)/g, replace: "'\\" },
-    // Escape single quotes after closing curly braces for JSX.
-    { find: /(?<=})'(?!\\)/g, replace: "\\'" },
     // Convert markdown image with MkDocs-style class and width attributes to a styled div.
     { find: /!\[(.*?)\]\((.*?)\)\{:class="([^"]+)" width="(\d+)"\}/g, replace: '<div className="$3" style={{ width: "$4px" }}>![$1]($2)</div>' },
     // Convert markdown image with complex inline styles attribute to a styled div with React style object.
@@ -58,31 +59,11 @@ const transformRules: TransformRule[] = [
     },
     // Remove leading slash from image paths starting with /images/.
     { find: /!\[(.*?)\]\(\/(images\/[^)]+)\)/g, replace: '![$1]($2)' },
-    // Escape curly braces within double-slash comments.
-    { find: /\/\/\{([^}]+)\}/g, replace: (match: string) => `//\\{${match.slice(3, -1)}\\}` },
 
-
-
-
-    // { find: /(?<!\{)\{/g, replace: '\\{' },
-    // { find: /\}(?!\})/g, replace: '\\}' },
-
-
-    // // Convert MkDocs-style admonition closing to Docusaurus
-    // { find: /!!!\s*\n/g, replace: ':::\n' },
-
-    // // Handle mkdocs-material specific syntax
-    // { find: /{: target=_blank }/g, replace: '' }, // Remove material-specific link attributes
-    // { find: /\{: \..*?\}/g, replace: '' }, // Remove material-specific classes
-
-    // // Convert MkDocs footnotes to Docusaurus format
-    // { find: /\[\^(\d+)\]:/g, replace: '[^$1]:' },
-
-    // // Handle mkdocs variables/macros
-    // { find: /\{\{ *config\..*? *\}\}/g, replace: '' }, // Remove mkdocs config variables
-
-    // // Convert MkDocs metadata format to Docusaurus frontmatter if at start of file
-    // { find: /^---\ntitle: (.*?)\n(.*?)---/s, replace: '---\ntitle: $1\n$2---' },
+    // Escape standalone { unless part of {{ or escaped \{
+    { find: /(?<![{\\]){(?!{)/g, replace: '\\{' },
+    // Escape standalone } unless part of }} or escaped \}
+    { find: /(?<![}\\])}(?!})/g, replace: '\\}' },
 ];
 
 const docsDirectories = [
@@ -96,8 +77,45 @@ const getIndent = (line: string): string => {
   return match ? match[1] : '';
 };
 
+// Find the URL rule specifically
+const urlRule = transformRules.find(rule => rule.find.toString() === /<https?:\/\/[^>]+>/g.toString());
+// Filter out the URL rule from the main list to avoid applying it twice
+const otherRules = transformRules.filter(rule => rule !== urlRule);
+
 const transformContent = async (content: string): Promise<string> => {
-    const lines = content.split('\n');
+    const fencedCodeBlocks: string[] = [];
+    const inlineCodeBlocks: string[] = [];
+    let tempContent = content;
+
+    // 0. Apply URL escaping rule FIRST to the entire content
+    if (urlRule) {
+        if (typeof urlRule.replace === 'string') {
+            tempContent = tempContent.replace(urlRule.find, urlRule.replace);
+        } else {
+            tempContent = tempContent.replace(urlRule.find, urlRule.replace);
+        }
+    }
+
+    // 1. Extract and replace fenced code blocks (from already URL-escaped content)
+    // Regex captures the full match including delimiters and content
+    tempContent = tempContent.replace(/^```([a-zA-Z0-9-+]*)?\n([\s\S]*?)\n```$/gm, (match) => {
+        const placeholder = `__FENCED_CODE_BLOCK_${fencedCodeBlocks.length}__`;
+        fencedCodeBlocks.push(match); // Store the full block
+        return placeholder;
+    });
+
+    // 2. Extract and replace inline code blocks (from already URL-escaped content)
+    // Regex captures the content including backticks
+    tempContent = tempContent.replace(/`([^`\n]+?)`/g, (match) => {
+        // Basic check to avoid matching within already replaced fenced block placeholders
+        if (match.includes('__FENCED_CODE_BLOCK_')) return match;
+        const placeholder = `__INLINE_CODE_BLOCK_${inlineCodeBlocks.length}__`;
+        inlineCodeBlocks.push(match); // Store the inline code including backticks
+        return placeholder;
+    });
+
+    // 3. Process content with placeholders (including admonition logic)
+    const lines = tempContent.split('\n');
     const outputLines: string[] = [];
     const admonitionIndentStack: string[] = []; // Stack to store indent strings
     const admonitionStartRegex = /^(\s*)!!!\s+(\w+)(?:\s+["'](.*?)["'])?\s*$/;
@@ -107,54 +125,55 @@ const transformContent = async (content: string): Promise<string> => {
         const currentIndent = getIndent(currentLine);
         const currentIndentLength = currentIndent.length;
 
-        // Close admonitions if indentation decreases or stays the same (and not starting new admonition)
+        // Admonition closing logic (adjusted for placeholders)
         while (admonitionIndentStack.length > 0) {
             const lastIndent = admonitionIndentStack[admonitionIndentStack.length - 1];
             const lastIndentLength = lastIndent.length;
-
-            // Check if the current line's indentation means we should close the block.
-            // Close if: current indent is strictly less than the block's indent OR
-            // current indent is the same as block's indent AND the line is not blank
-            // AND the line is not starting a new admonition.
             let shouldClose = false;
             if (currentIndentLength < lastIndentLength) {
                 shouldClose = true;
             } else if (currentIndentLength === lastIndentLength &&
                        currentLine.trim() !== '' &&
+                       !currentLine.includes('__FENCED_CODE_BLOCK_') && // Don't close for code blocks
+                       !currentLine.includes('__INLINE_CODE_BLOCK_') && // Don't close for code blocks
                        !admonitionStartRegex.test(currentLine)) {
                 shouldClose = true;
             }
 
             if (shouldClose) {
                 admonitionIndentStack.pop();
-                outputLines.push(`${lastIndent}:::`);
+                // Add closing ::: marker, attempting to place it before placeholders if necessary
+                let insertIndex = outputLines.length;
+                while (insertIndex > 0 &&
+                       (outputLines[insertIndex - 1]?.includes('__FENCED_CODE_BLOCK_') ||
+                        outputLines[insertIndex - 1]?.includes('__INLINE_CODE_BLOCK_'))) {
+                    insertIndex--;
+                }
+                outputLines.splice(insertIndex, 0, `${lastIndent}:::`);
             } else {
-                // If not closing, break the inner loop
-                break;
+                break; // Don't close, break the inner loop
             }
         }
 
-        // Check for and transform new admonition starts
+        // Admonition starting logic (unchanged)
         const admonitionMatch = currentLine.match(admonitionStartRegex);
         if (admonitionMatch) {
             const [, indent, type, title] = admonitionMatch;
-            admonitionIndentStack.push(indent); // Push the indent level onto the stack
+            admonitionIndentStack.push(indent);
             let newLine = `${indent}:::${type.toLowerCase()}`;
             if (title) {
-                const cleanTitle = title.replace(/]/g, '\\]'); // Basic escape
+                const cleanTitle = title.replace(/]/g, '\\]'); // Basic escape for title
                 newLine += `[${cleanTitle}]`;
             }
-            currentLine = newLine; // Replace the line content
+            currentLine = newLine;
         }
 
-        // Apply other simple transformations AFTER handling admonition start/end
+        // Apply OTHER transformation rules to the line (placeholders won't match rule patterns)
         let processedLine = currentLine;
-        transformRules.forEach(rule => {
+        otherRules.forEach(rule => { // Use the filtered list of rules
             if (typeof rule.replace === 'string') {
-                // Use global flag for string replacements if the pattern has 'g'
                 processedLine = processedLine.replace(rule.find, rule.replace);
             } else {
-                // Function replacements handle global matching internally if regex has 'g'
                 processedLine = processedLine.replace(rule.find, rule.replace);
             }
         });
@@ -162,15 +181,37 @@ const transformContent = async (content: string): Promise<string> => {
         outputLines.push(processedLine);
     }
 
-    // Close any remaining open admonitions at the end of the file
+    // Close any remaining open admonitions at the end
     while (admonitionIndentStack.length > 0) {
         const closingIndent = admonitionIndentStack.pop();
         if (closingIndent !== undefined) {
-            outputLines.push(`${closingIndent}:::`);
+             // Add closing ::: marker, attempting to place it before placeholders if necessary
+            let insertIndex = outputLines.length;
+            while (insertIndex > 0 &&
+                   (outputLines[insertIndex - 1]?.includes('__FENCED_CODE_BLOCK_') ||
+                    outputLines[insertIndex - 1]?.includes('__INLINE_CODE_BLOCK_'))) {
+                insertIndex--;
+            }
+            outputLines.splice(insertIndex, 0, `${closingIndent}:::`);
         }
     }
 
-    return outputLines.join('\n');
+    let transformedContentWithPlaceholders = outputLines.join('\n');
+
+    // 4. Restore inline code blocks
+    inlineCodeBlocks.forEach((block, index) => {
+        const placeholder = `__INLINE_CODE_BLOCK_${index}__`;
+        // Use split/join for global replacement
+        transformedContentWithPlaceholders = transformedContentWithPlaceholders.split(placeholder).join(block);
+    });
+
+    // 5. Restore fenced code blocks
+    fencedCodeBlocks.forEach((block, index) => {
+        const placeholder = `__FENCED_CODE_BLOCK_${index}__`;
+        transformedContentWithPlaceholders = transformedContentWithPlaceholders.split(placeholder).join(block);
+    });
+
+    return transformedContentWithPlaceholders;
 };
 
 const processFile = async (filePath: string): Promise<void> => {
@@ -184,6 +225,37 @@ const processFile = async (filePath: string): Promise<void> => {
 };
 
 const transformDocs = async (): Promise<void> => {
+    const originalCwd = process.cwd();
+
+    console.log('Reverting any existing uncommitted changes in documentation submodules...');
+    // Determine unique submodule root directories
+    const submoduleRoots = [...
+        new Set(docsDirectories.map(dir => path.join(dir.split('/')[0], dir.split('/')[1])))
+    ];
+
+    for (const submoduleRoot of submoduleRoots) {
+        console.log(`\nProcessing submodule: ${submoduleRoot}`);
+        try {
+            process.chdir(submoduleRoot);
+            console.log(`Changed directory to ${submoduleRoot}`);
+            console.log(`Running: git checkout -- .`);
+            const { stdout, stderr } = await execAsync(`git checkout -- .`);
+            if (stdout) console.log('Git stdout:', stdout);
+            if (stderr) console.error('Git stderr:', stderr);
+            console.log(`Existing changes reverted in submodule ${submoduleRoot}.`);
+        } catch (error) {
+            console.error(`Error reverting changes in submodule ${submoduleRoot}:`, error);
+            // Optionally, decide if you want to stop the whole script if reverting fails
+            // For now, just log the error and continue
+        } finally {
+            // Always change back, even if checkout failed
+            process.chdir(originalCwd);
+            console.log(`Changed directory back to ${originalCwd}`);
+        }
+    }
+    console.log('\nFinished reverting existing submodule changes.');
+
+    console.log('\nStarting documentation transformation...');
     for (const dir of docsDirectories) {
         try {
             const files = await new Promise<string[]>((resolve, reject) => {
@@ -197,7 +269,7 @@ const transformDocs = async (): Promise<void> => {
                 console.warn(`No files found in ${dir}`);
                 continue;
             }
-            console.log(`Found ${files.length} files in ${dir}`);
+            console.log(`Found ${files.length} files in ${dir}, processing...`);
             await Promise.all(files.map(processFile));
         } catch (error) {
             console.error(`Error processing directory ${dir}:`, error);
@@ -206,5 +278,7 @@ const transformDocs = async (): Promise<void> => {
 };
 
 transformDocs()
-    .then(() => console.log('Documentation transformation complete'))
-    .catch(console.error);
+    .then(() => console.log('\nDocumentation transformation complete'))
+    .catch(error => {
+        console.error('\nAn error occurred during transformation:', error);
+    });
