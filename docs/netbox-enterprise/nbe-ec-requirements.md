@@ -9,6 +9,7 @@ The following are the _recommended_ system requirements for a **production** dep
 - 8 Virtual CPU (vCPU)
 - 24 GB Memory (RAM)
 - 100 GB SSD free disk space in `/var/lib`
+- disable swap if enabled
 
 !!! note
     For **non-production** deployments of NetBox Enterprise, the _minimum_ system requirements can be reduced to 4 Virtual CPU (vCPU) and 16 GB Memory (RAM). All other requirements remain the same.
@@ -16,6 +17,9 @@ The following are the _recommended_ system requirements for a **production** dep
 ### Host operating system
 
 - Linux (Kernel versions 4.3 and above)
+
+!!! note
+    For **Red Hat Enterprise Linux (RHEL)** deployments please see additional requirements [here](./nbe-ec-requirements-rhel.md).
 
 ### Architecture
 
@@ -75,7 +79,8 @@ If you are using Firewalld (commonly found on RHEL installations), you will need
 
 1. Determine any host IP addresses or networks (external or otherwise) that might need access to the cluster.
 2. Create a file called `/etc/firewalld/zones/netbox-enterprise.xml` with the following contents:
-   ```xml
+
+3. ```xml
    <?xml version="1.0" encoding="utf-8"?>
    <zone target="ACCEPT">
      <short>netbox-enterprise</short>
@@ -96,13 +101,16 @@ If you are using Firewalld (commonly found on RHEL installations), you will need
      <port protocol="tcp" port="22"/>
    </zone>
    ```
-3. In the spot where it says `<!-- HOST IP ADDRESSES GO HERE -->`, add a `<source />` tag for each host or network you want to allow.
+
+4. In the spot where it says `<!-- HOST IP ADDRESSES GO HERE -->`, add a `<source />` tag for each host or network you want to allow.
    For example, if your external IP is `1.2.3.4`, and you also have a private class C network `192.168.123.0`, you would add two lines:
+
    ```xml
    <source address="1.2.3.4/32" />
    <source address="192.168.123.0/24" />
    ```
-4. Run `sudo firewall-cmd --reload` to load the zone configuration.
+
+5. Run `sudo firewall-cmd --reload` to load the zone configuration.
 
 Then you can follow the [basic installation instructions](./nbe-ec-installation.md) as normal.
 
@@ -111,6 +119,7 @@ Then you can follow the [basic installation instructions](./nbe-ec-installation.
 There are two steps to installing with SELinux enabled with enforcement turned on.
 
 First, before you install NetBox Enterprise, run:
+
 ```bash
 sudo setenforce 0
 ```

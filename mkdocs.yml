@@ -51,7 +51,7 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+          format: pymdownx.superfences.fence_code_format
 plugins:
   - search
 nav:
@@ -100,6 +100,8 @@ nav:
     - Overview: "netbox-enterprise/nbe-overview.md"
     - NetBox Enterprise Installer:
       - Requirements: "netbox-enterprise/nbe-ec-requirements.md"
+      - Distribution Specific Requirements:
+        - RHEL: "netbox-enterprise/nbe-ec-requirements-rhel.md"
       - Linux System Changes: "netbox-enterprise/nbe-ec-linux-changes.md"
       - Installation: "netbox-enterprise/nbe-ec-installation.md"
       - Custom Plugin Installation: "netbox-enterprise/nbe-ec-custom-plugins.md"
