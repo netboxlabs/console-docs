@@ -115,6 +115,7 @@ nav:
         - Entra ID Group Mapping: "netbox-enterprise/nbe-azure-group-mapping.md"
       - SAML: 
         - SAML SSO Setup: "netbox-enterprise/nbe-saml.md"
+        - SAML Group Mapping: "netbox-enterprise/nbe-saml-group-map.md"
       - LDAP: "netbox-enterprise/nbe-ldap.md"
     - "Administration":
       - "TLS and Ingress": "netbox-enterprise/nbe-tls-ingress.md"
