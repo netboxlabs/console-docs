@@ -7,7 +7,7 @@ const config: Config = {
 	tagline: "Centralised Documentation for NetBox",
 	favicon: "img/favicon.ico",
 	url: "https://netboxlabs.com",
-	baseUrl: "/",
+	baseUrl: "/docs/",
 	organizationName: "netbox",
 	projectName: "netbox-docs",
 
@@ -16,9 +16,10 @@ const config: Config = {
 			"classic",
 			{
 				docs: {
+					routeBasePath: "/",
 					sidebarPath: "./sidebars.ts",
 				},
-
+				blog: false,
 				theme: {
 					customCss: "./src/css/custom.css",
 				},
