@@ -11,6 +11,21 @@ const config: Config = {
 	organizationName: "netbox",
 	projectName: "netbox-docs",
 
+	plugins: [
+		async function myPlugin(context, options) {
+			return {
+				name: "docusaurus-tailwindcss",
+				configurePostCss(postcssOptions) {
+					// Appends TailwindCSS and AutoPrefixer.
+					postcssOptions.plugins.push(require("tailwindcss"));
+					postcssOptions.plugins.push(require("autoprefixer"));
+					return postcssOptions;
+				},
+			};
+		},
+		'docusaurus-plugin-sass',
+	],
+
 	presets: [
 		[
 			"classic",
@@ -21,7 +36,7 @@ const config: Config = {
 				},
 				blog: false,
 				theme: {
-					customCss: "./src/css/custom.css",
+					customCss: require.resolve("./src/css/globals.scss"),
 				},
 			} satisfies Preset.Options,
 		],

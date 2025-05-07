@@ -1,0 +1,23 @@
+@use "sass:math";
+
+@function between($from, $to, $fromWidth, $toWidth) {
+	$slope: math.div($from - $to, $fromWidth - $toWidth);
+	$base: $to - $slope * $toWidth;
+	@return calc(#{$base} + #{100vw * $slope});
+}
+
+@mixin clamp($property, $from, $to, $fromWidth, $toWidth) {
+	#{$property}: $from;
+
+	@media (min-width: $fromWidth) {
+		#{$property}: between($from, $to, $fromWidth, $toWidth);
+	}
+
+	@media (min-width: $toWidth) {
+		#{$property}: $to;
+	}
+}
+
+@function rem($size) {
+	@return math.div($size, 16px) * 1rem;
+}

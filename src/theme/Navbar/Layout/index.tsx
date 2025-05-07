@@ -1,32 +1,25 @@
-import React, {type ComponentProps, type ReactNode} from 'react';
+import React, { type ComponentProps, type ReactNode } from 'react';
 import clsx from 'clsx';
-import {useThemeConfig} from '@docusaurus/theme-common';
+import { useThemeConfig } from '@docusaurus/theme-common';
 import {
   useHideableNavbar,
   useNavbarMobileSidebar,
 } from '@docusaurus/theme-common/internal';
-import {translate} from '@docusaurus/Translate';
-import NavbarMobileSidebar from '@theme/Navbar/MobileSidebar';
-import type {Props} from '@theme/Navbar/Layout';
+import { translate } from '@docusaurus/Translate';
+
+import type { Props } from '@theme/Navbar/Layout';
 
 import styles from './styles.module.css';
+import Header from '../../../components/global/header/Header';
+import { options } from '../../../components/global/options'
 
-function NavbarBackdrop(props: ComponentProps<'div'>) {
-  return (
-    <div
-      role="presentation"
-      {...props}
-      className={clsx('navbar-sidebar__backdrop', props.className)}
-    />
-  );
-}
 
-export default function NavbarLayout({children}: Props): ReactNode {
+export default function NavbarLayout({ children }: Props): ReactNode {
   const {
-    navbar: {hideOnScroll, style},
+    navbar: { hideOnScroll, style },
   } = useThemeConfig();
   const mobileSidebar = useNavbarMobileSidebar();
-  const {navbarRef, isNavbarVisible} = useHideableNavbar(hideOnScroll);
+  const { navbarRef, isNavbarVisible } = useHideableNavbar(hideOnScroll);
   return (
     <nav
       ref={navbarRef}
@@ -48,9 +41,9 @@ export default function NavbarLayout({children}: Props): ReactNode {
           'navbar-sidebar--show': mobileSidebar.shown,
         },
       )}>
-      {children}
-      <NavbarBackdrop onClick={mobileSidebar.toggle} />
-      <NavbarMobileSidebar />
+      {/* <NavbarContent /> */}
+      <Header options={options} />
+
     </nav>
   );
 }

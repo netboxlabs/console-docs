@@ -1,10 +1,46 @@
+@use "./_fonts.scss";
+@use "./_mixins.scss" as *;
+@use "./_navbar.scss";
+@use "./_typography.scss" as *;
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.padding-x {
+	@apply px-4;
+
+	@media (min-width: $sm) {
+		@apply px-8;
+	}
+
+	@media (min-width: $md) {
+		@apply px-12;
+	}
+}
+
+// Container
+.container {
+	@apply padding-x mx-auto box-content w-auto max-w-[76rem];
+
+	.container {
+		@apply px-0;
+	}
+
+	&.container-force-width {
+		@apply box-border w-full max-w-[82rem] #{!important};
+	}
+}
+
+
 :root {
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
@@ -16,17 +52,9 @@
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-h1-font-size: 2.25rem;
-}
-
-.theme-doc-markdown.markdown {
-  @media (min-width: 996px) {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
-
-.theme-doc-markdown.markdown h1:first-child {
-  --ifm-h1-font-size: 2.25rem;
+  --ifm-navbar-height: 4.0625rem;
+  --ifm-navbar-padding-vertical:0;
+  --ifm-navbar-padding-horizontal:0;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -44,6 +72,21 @@ html[data-theme='dark'] {
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+
+
+
+
+.theme-doc-markdown.markdown {
+  @media (min-width: 996px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.theme-doc-markdown.markdown h1:first-child {
+  --ifm-h1-font-size: 2.25rem;
+}
+
 .footer {
   --ifm-footer-background-color: #02060A;
 }
@@ -52,23 +95,6 @@ html[data-theme='dark'] {
 div:has( > img[src$="#only-light"]),
 div:has( > img[src$="#only-dark"]) {
   display: none;
-}
-
-/* Nav */
-.navbar {
-  border-bottom: 1px solid #252929;
-}
-.navbar__title {
-  display: none;
-}
-.navbar__logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.navbar__logo img {
-  max-width: 130px;
-  height: auto;
 }
 
 /* Sidebar */

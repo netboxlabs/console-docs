@@ -1,0 +1,341 @@
+@use "./_mixins.scss" as *;
+
+$xxs: rem(400px);
+$xs: rem(480px);
+$sm: rem(640px);
+$md: rem(768px);
+$lg: rem(1024px);
+$xl: rem(1280px);
+$xxl: rem(1440px);
+$responsive_size_modifier: 0.825;
+$responsive_size_modifier_large: 0.5;
+
+html {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	scroll-behavior: smooth;
+	@apply bg-grey-16 font-openSauceTwo;
+}
+
+// Headings
+.text-h1 {
+	@include clamp("font-size", rem(58px * $responsive_size_modifier_large), rem(56px), $sm, $xl);
+	@apply leading-[1.2] tracking-[-1.68px] sm:leading-[1.1];
+}
+
+.text-h2 {
+	@include clamp("font-size", rem(52px * $responsive_size_modifier_large), rem(48px), $sm, $xl);
+	@apply leading-[1.2] tracking-[-1.44px] sm:leading-[1.15];
+}
+
+.text-h2-mobLarger {
+	@include clamp("font-size", rem(64px * $responsive_size_modifier_large), rem(48px), $sm, $xl);
+	@apply leading-[1.2] tracking-[-1.44px] sm:leading-[1.15];
+}
+
+.text-h3 {
+	@include clamp("font-size", rem(44px * $responsive_size_modifier_large), rem(32px), $sm, $xl);
+	@apply leading-[1.3] tracking-[-0.32px] sm:leading-[1.2];
+}
+
+.text-h3-mobSmaller {
+	@include clamp("font-size", rem(36px * $responsive_size_modifier_large), rem(32px), $sm, $xl);
+	@apply leading-[1.4] tracking-[-0.32px] sm:leading-[1.2];
+}
+
+.text-h4 {
+	@include clamp("font-size", rem(40px * $responsive_size_modifier_large), rem(28px), $sm, $xl);
+	@apply leading-[1.2] tracking-[-0.28px];
+}
+
+.text-h5 {
+	@include clamp("font-size", rem(38px * $responsive_size_modifier_large), rem(26px), $sm, $xl);
+	@apply leading-[1.2] tracking-[-0.26px];
+}
+
+.text-h5-mobSmaller {
+	@include clamp("font-size", rem(34px * $responsive_size_modifier_large), rem(26px), $sm, $xl);
+	@apply leading-[1.4] tracking-[-0.26px] sm:leading-[1.2];
+}
+
+.text-h6 {
+	@include clamp("font-size", rem(36px * $responsive_size_modifier_large), rem(20px), $sm, $xl);
+	@apply leading-[1.28] tracking-[0.26px];
+}
+
+.text-h6-mobSmaller {
+	@include clamp("font-size", rem(32px * $responsive_size_modifier_large), rem(20px), $sm, $xl);
+	@apply leading-[1.28] tracking-[0.26px];
+}
+
+.text-h7 {
+	@include clamp("font-size", rem(32px * $responsive_size_modifier_large), rem(18px), $sm, $xl);
+	@apply leading-[1.5] tracking-[0.18px];
+}
+
+// Body
+
+.text-38 {
+	@include clamp("font-size", rem(48px * $responsive_size_modifier_large), rem(38px), $sm, $xl);
+	@apply leading-[1.18] tracking-[-0.38px];
+}
+
+.text-36 {
+	@include clamp("font-size", rem(44px * $responsive_size_modifier_large), rem(36px), $sm, $xl);
+	@apply leading-[1.21] tracking-[-0.36px];
+}
+
+.text-24-quote {
+	@include clamp("font-size", rem(36px * $responsive_size_modifier_large), rem(24px), $sm, $xl);
+	@apply leading-[1.5] tracking-[-0.24px];
+}
+
+.text-20 {
+	@include clamp("font-size", rem(30px * $responsive_size_modifier_large), rem(20px), $sm, $xl);
+	@apply leading-[1.4] tracking-[0.2px] sm:leading-[1.36];
+}
+
+.text-20-mobLarger {
+	@include clamp("font-size", rem(36px * $responsive_size_modifier_large), rem(20px), $sm, $xl);
+	@apply leading-[1.5] tracking-[0.2px] sm:leading-[1.36];
+}
+
+.text-18 {
+	@include clamp("font-size", rem(30px * $responsive_size_modifier_large), rem(18px), $sm, $xl);
+	@apply leading-[1.4] tracking-[0.18px] sm:leading-[1.28];
+}
+
+.text-18-mobSmaller {
+	@include clamp("font-size", rem(26px * $responsive_size_modifier_large), rem(18px), $sm, $xl);
+	@apply leading-[1.4] tracking-[0.18px] sm:leading-[1.28];
+}
+
+.text-18-mobLarger {
+	@include clamp("font-size", rem(32px * $responsive_size_modifier_large), rem(18px), $sm, $xl);
+	@apply leading-[1.4] tracking-[0.18px] sm:leading-[1.28];
+}
+
+.text-17 {
+	@include clamp("font-size", rem(30px * $responsive_size_modifier_large), rem(17px), $sm, $xl);
+	@apply leading-[1.48] tracking-[0.17px];
+}
+
+.text-17-article {
+	@include clamp("font-size", rem(30px * $responsive_size_modifier_large), rem(17px), $sm, $xl);
+	@apply leading-[1.48] tracking-[0.17px];
+}
+
+.text-16 {
+	@include clamp("font-size", rem(28px * $responsive_size_modifier_large), rem(16px), $sm, $xl);
+	@apply leading-[1.5] tracking-[0.16px];
+}
+
+.text-16-mobSmaller {
+	@include clamp("font-size", rem(26px * $responsive_size_modifier_large), rem(16px), $sm, $xl);
+	@apply leading-[1.5] tracking-[0.16px];
+}
+
+.text-15 {
+	@include clamp("font-size", rem(26px * $responsive_size_modifier_large), rem(15px), $sm, $xl);
+	@apply leading-[1.4] tracking-[0.15px];
+}
+
+.text-15-mobSmaller {
+	@include clamp("font-size", rem(24px * $responsive_size_modifier_large), rem(15px), $sm, $xl);
+	@apply leading-[1.4] tracking-[0.15px];
+}
+
+.text-15-mono {
+	@include clamp("font-size", rem(22px * $responsive_size_modifier_large), rem(15px), $sm, $xl);
+	@apply font-mono leading-[1.5] tracking-[0.15px];
+}
+
+.text-14 {
+	@include clamp("font-size", rem(26px * $responsive_size_modifier_large), rem(14px), $sm, $xl);
+	@apply leading-[1.5] tracking-[0.28px];
+}
+
+.text-14-mobSmaller {
+	@include clamp("font-size", rem(24px * $responsive_size_modifier_large), rem(14px), $sm, $xl);
+	@apply leading-[1.5] tracking-[0.28px];
+}
+
+.text-13 {
+	@include clamp("font-size", rem(24px * $responsive_size_modifier_large), rem(13px), $sm, $xl);
+	@apply leading-[1.4] tracking-[0.26px];
+}
+
+.text-12 {
+	@include clamp("font-size", rem(24px * $responsive_size_modifier_large), rem(12px), $sm, $xl);
+	@apply leading-[1.5] tracking-[0.12px];
+}
+
+.text-12-footer {
+	@include clamp("font-size", rem(24px * $responsive_size_modifier_large), rem(12px), $sm, $xl);
+	@apply leading-none tracking-[0.24px];
+}
+
+.text-11 {
+	@include clamp("font-size", rem(20px * $responsive_size_modifier_large), rem(11px), $sm, $xl);
+	@apply leading-[1.5] tracking-[0.11px];
+}
+
+// Prose
+.prose {
+	max-width: 100%;
+	color: inherit;
+	// Todo - text size on parent so light can be too?
+	p {
+		@apply text-17-article;
+	}
+	a {
+		@apply font-medium text-teal no-underline transition-opacity duration-200 hover:opacity-80;
+	}
+	ul {
+		@apply mb-10 mt-10 list-none space-y-10 p-0 first:mt-0 last:mb-0;
+		li {
+			@apply text-17-article relative m-0 pl-6;
+			&::before {
+				content: "";
+				@apply text-17-article absolute left-0 top-0 h-[1.48em] w-[0.1875rem] rounded-full bg-teal;
+			}
+		}
+	}
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply mt-10 text-inherit first:mt-0;
+		font-weight: inherit;
+	}
+	h2 {
+		@apply text-h2;
+	}
+	h3 {
+		@apply text-h3;
+	}
+	h4 {
+		@apply text-h4;
+	}
+	h5 {
+		@apply text-h5;
+	}
+	h6 {
+		@apply text-h6;
+	}
+}
+
+// .light {
+// 	p {
+// 		@apply leading-[1.65];
+// 	}
+// 	ul {
+// 		li {
+// 			@apply leading-[1.65];
+// 			&::before {
+// 				@apply h-[1.65em] leading-[1.65];
+// 			}
+// 		}
+// 	}
+// }
+
+.prose-16 {
+	p {
+		@apply text-16;
+	}
+	ul {
+		li {
+			@apply text-16;
+			&::before {
+				@apply text-16 h-[1.5em] leading-[1.5];
+			}
+		}
+	}
+	&.prose-16-mobSmaller {
+		p {
+			@apply text-16-mobSmaller;
+		}
+		ul {
+			li {
+				@apply text-16-mobSmaller;
+			}
+		}
+	}
+}
+
+.prose-18 {
+	p {
+		@apply text-18;
+	}
+	ul {
+		li {
+			@apply text-18;
+			&::before {
+				@apply text-18 h-[1.28em] leading-[1.28];
+			}
+		}
+	}
+	&.prose-18-moreLeading {
+		p {
+			@apply leading-[1.5] #{!important};
+		}
+		ul {
+			li {
+				@apply leading-[1.5];
+				&::before {
+					@apply h-[1.5em] leading-[1.5];
+				}
+			}
+		}
+	}
+}
+
+.prose-grey-5 {
+	@apply text-grey-5;
+}
+
+.prose-grey-10 {
+	@apply text-grey-10;
+}
+
+.prose-grey-8 {
+	@apply text-grey-8;
+}
+
+// Mobile Nav
+.text-13-mobHeading {
+	@apply text-[0.9375rem] leading-none tracking-[0.3px] lg:text-[0.8125rem] lg:tracking-[0.26px];
+}
+
+.text-13-mobSubText {
+	@apply text-[0.875rem] leading-[1.5] tracking-[0.28px] lg:text-[0.8125rem] lg:leading-none lg:tracking-[0.26px];
+}
+
+// Misc
+.custom-ul {
+	@apply list-none space-y-3 p-0 sm:space-y-4;
+	li {
+		@apply text-15 relative m-0 pl-3.5;
+		&::before {
+			content: "";
+			@apply text-15 absolute left-0 top-0 h-[1.4em] w-0.5 rounded-full bg-white;
+		}
+	}
+}
+
+.text-15-shrunken {
+	@include clamp("font-size", rem(19.5936px * $responsive_size_modifier_large), rem(11.304px), $sm, $xl);
+	@apply leading-[1.5] tracking-[0.15px];
+}
+
+.text-18-shrunken {
+	@include clamp("font-size", rem(22.608px * $responsive_size_modifier_large), rem(13.565px), $sm, $xl);
+	@apply leading-[1.5] tracking-[0.18px];
+}
+
+.span-opacity {
+	span {
+		@apply text-white;
+	}
+}
