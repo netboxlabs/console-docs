@@ -435,11 +435,6 @@
           },
           {
             "type": "doc",
-            "id": "netbox/plugins/development/staged-changes",
-            "label": "Staged Changes"
-          },
-          {
-            "type": "doc",
             "id": "netbox/plugins/development/exceptions",
             "label": "Exceptions"
           },
@@ -721,6 +716,11 @@
           },
           {
             "type": "doc",
+            "id": "netbox/models/dcim/moduletypeprofile",
+            "label": "ModuleTypeProfile"
+          },
+          {
+            "type": "doc",
             "id": "netbox/models/dcim/platform",
             "label": "Platform"
           },
@@ -822,11 +822,6 @@
           },
           {
             "type": "doc",
-            "id": "netbox/models/extras/branch",
-            "label": "Branch"
-          },
-          {
-            "type": "doc",
             "id": "netbox/models/extras/configcontext",
             "label": "ConfigContext"
           },
@@ -887,13 +882,13 @@
           },
           {
             "type": "doc",
-            "id": "netbox/models/extras/stagedchange",
-            "label": "StagedChange"
+            "id": "netbox/models/extras/subscription",
+            "label": "Subscription"
           },
           {
             "type": "doc",
-            "id": "netbox/models/extras/subscription",
-            "label": "Subscription"
+            "id": "netbox/models/extras/tableconfig",
+            "label": "TableConfig"
           },
           {
             "type": "doc",
@@ -1259,6 +1254,11 @@
         "type": "doc",
         "id": "netbox/release-notes/index",
         "label": "Summary"
+      },
+      {
+        "type": "doc",
+        "id": "netbox/release-notes/version-4.3",
+        "label": "Version 4.3"
       },
       {
         "type": "doc",

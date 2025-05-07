@@ -12,6 +12,8 @@ import netboxSidebar from "./sidebars/netbox.json";
 
  Create as many sidebars as you want.
  */
+
+
 const sidebars: SidebarsConfig = {
 	defaultSidebar: [
 		{

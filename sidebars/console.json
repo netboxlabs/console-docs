@@ -9,65 +9,71 @@
     "label": "Cloud",
     "items": [
       {
+        "type": "doc",
+        "id": "console/NetBox Cloud/migrating-to-netbox-cloud",
+        "label": "Migrating to NetBox Cloud"
+      },
+      {
         "type": "category",
-        "label": "Getting Access",
+        "label": "Administration via Console",
         "items": [
           {
             "type": "doc",
             "id": "console/Administration Console/console-access",
-            "label": "Setting up Console Access"
+            "label": "Getting Console Access"
           },
           {
             "type": "doc",
-            "id": "console/Administration Console/console-access-from-ui",
-            "label": "Accessing the Console From the NetBox Cloud UI"
+            "id": "console/Administration Console/set_up_2fa",
+            "label": "Setting up Two-Factor Authentication"
           },
           {
             "type": "doc",
             "id": "console/Administration Console/retrieving-nbc-credentials",
-            "label": "Retrieving NetBox Cloud Admin Credentials"
+            "label": "Retrieving NetBox Admin Credentials"
+          },
+          {
+            "type": "doc",
+            "id": "console/Administration Console/console-admin-accounts",
+            "label": "Adding Admin Users to Console"
+          },
+          {
+            "type": "doc",
+            "id": "console/Administration Console/netbox-cloud-plugins",
+            "label": "Viewing Installed Plugins"
+          },
+          {
+            "type": "doc",
+            "id": "console/Administration Console/working_with_database_backups",
+            "label": "Database Backups"
+          },
+          {
+            "type": "doc",
+            "id": "console/Administration Console/upgrading-nbc",
+            "label": "Upgrading NetBox"
+          },
+          {
+            "type": "doc",
+            "id": "console/Administration Console/managing-hostnames",
+            "label": "Managing Hostnames"
           }
         ]
       },
       {
-        "type": "doc",
-        "id": "console/Administration Console/prefix-lists",
-        "label": "Prefix Lists"
-      },
-      {
-        "type": "doc",
-        "id": "console/Administration Console/working_with_database_backups",
-        "label": "Working with Database Backups"
-      },
-      {
-        "type": "doc",
-        "id": "console/Administration Console/upgrading-nbc",
-        "label": "Upgrade NetBox Cloud"
-      },
-      {
-        "type": "doc",
-        "id": "console/Administration Console/set_up_2fa",
-        "label": "Set up Two-Factor Authentication"
-      },
-      {
-        "type": "doc",
-        "id": "console/NetBox Cloud/migrating-to-netbox-cloud",
-        "label": "Migrate to NetBox Cloud"
-      },
-      {
-        "type": "doc",
-        "id": "console/Administration Console/netbox-cloud-plugins",
-        "label": "NetBox Cloud Plugins"
-      },
-      {
-        "type": "doc",
-        "id": "console/Administration Console/public-ip-addressing",
-        "label": "Public IP Addressing"
-      },
-      {
-        "type": "doc",
-        "id": "console/Administration Console/managing-hostnames",
-        "label": "Managing Hostnames"
+        "type": "category",
+        "label": "Security",
+        "items": [
+          {
+            "type": "doc",
+            "id": "console/Administration Console/prefix-lists",
+            "label": "Prefix Lists"
+          },
+          {
+            "type": "doc",
+            "id": "console/Administration Console/public-ip-addressing",
+            "label": "Public IP Addressing"
+          }
+        ]
       },
       {
         "type": "category",
@@ -96,7 +102,7 @@
               {
                 "type": "doc",
                 "id": "console/Administration Console/okta-sso-setup",
-                "label": "Set up Okta SSO"
+                "label": "Okta SSO"
               },
               {
                 "type": "doc",
@@ -223,6 +229,22 @@
             "label": "Requirements"
           },
           {
+            "type": "category",
+            "label": "Distribution Specific Requirements",
+            "items": [
+              {
+                "type": "doc",
+                "id": "console/netbox-enterprise/nbe-ec-requirements-rhel",
+                "label": "RHEL"
+              }
+            ]
+          },
+          {
+            "type": "doc",
+            "id": "console/netbox-enterprise/nbe-ec-linux-changes",
+            "label": "Linux System Changes"
+          },
+          {
             "type": "doc",
             "id": "console/netbox-enterprise/nbe-ec-installation",
             "label": "Installation"
@@ -231,9 +253,357 @@
             "type": "doc",
             "id": "console/netbox-enterprise/nbe-migrating",
             "label": "Migrating"
+          },
+          {
+            "type": "doc",
+            "id": "console/netbox-enterprise/nbe-ec-built-in-plugins",
+            "label": "Built-in Plugin Installation"
+          },
+          {
+            "type": "doc",
+            "id": "console/netbox-enterprise/nbe-ec-custom-plugins",
+            "label": "Custom Plugin Installation"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Single Sign-On (SSO)",
+        "items": [
+          {
+            "type": "category",
+            "label": "Entra ID",
+            "items": [
+              {
+                "type": "doc",
+                "id": "console/netbox-enterprise/nbe-azure-sso",
+                "label": "Microsoft Entra ID SSO"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-enterprise/nbe-azure-group-mapping",
+                "label": "Entra ID Group Mapping"
+              }
+            ]
+          },
+          {
+            "type": "doc",
+            "id": "console/netbox-enterprise/nbe-ldap",
+            "label": "LDAP"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Administration",
+        "items": [
+          {
+            "type": "doc",
+            "id": "console/netbox-enterprise/nbe-tls-ingress",
+            "label": "TLS and Ingress"
+          },
+          {
+            "type": "doc",
+            "id": "console/netbox-enterprise/nbe-backups",
+            "label": "Backups"
+          },
+          {
+            "type": "doc",
+            "id": "console/netbox-enterprise/nbe-troubleshooting",
+            "label": "Advanced Tools and Troubleshooting"
+          }
+        ]
+      },
+      {
+        "type": "doc",
+        "id": "console/netbox-enterprise/nbe-release-notes",
+        "label": "Release Notes"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Discovery & Assurance",
+    "items": [
+      {
+        "type": "doc",
+        "id": "console/discovery-assurance",
+        "label": "Solution Overview"
+      },
+      {
+        "type": "doc",
+        "id": "console/netbox-discovery/quickstart-guide",
+        "label": "Quickstart Guide"
+      },
+      {
+        "type": "category",
+        "label": "NetBox Discovery",
+        "items": [
+          {
+            "type": "doc",
+            "id": "console/netbox-discovery/index",
+            "label": "NetBox Discovery"
+          },
+          {
+            "type": "category",
+            "label": "Discovery Agent",
+            "items": [
+              {
+                "type": "doc",
+                "id": "console/netbox-discovery/agent/index",
+                "label": "Overview"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-discovery/agent/get-started",
+                "label": "Getting started"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-discovery/agent/configuration-file",
+                "label": "Configuration format"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-discovery/agent/network_discovery",
+                "label": "Network Discovery"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-discovery/agent/device_discovery",
+                "label": "Device Discovery"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "NetBox Assurance",
+        "items": [
+          {
+            "type": "doc",
+            "id": "console/netbox-assurance/index",
+            "label": "NetBox Assurance"
           }
         ]
       }
     ]
+  },
+  {
+    "type": "category",
+    "label": "Integrations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "console/netbox-integrations/netbox-ansible-collection",
+        "label": "NetBox Ansible Collection"
+      },
+      {
+        "type": "doc",
+        "id": "console/netbox-integrations/pyats",
+        "label": "pyATS"
+      },
+      {
+        "type": "category",
+        "label": "ServiceNow",
+        "items": [
+          {
+            "type": "doc",
+            "id": "console/netbox-integrations/servicenow/index",
+            "label": "Overview"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "SDKs",
+    "items": [
+      {
+        "type": "doc",
+        "id": "console/sdks/pynetbox",
+        "label": "Pynetbox"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Extensions",
+    "items": [
+      {
+        "type": "category",
+        "label": "Branching",
+        "items": [
+          {
+            "type": "doc",
+            "id": "console/netbox-extensions/branching/index",
+            "label": "Overview"
+          },
+          {
+            "type": "doc",
+            "id": "console/netbox-extensions/branching/configuration",
+            "label": "Configuration"
+          },
+          {
+            "type": "category",
+            "label": "Using Branches",
+            "items": [
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/branching/using-branches/creating-a-branch",
+                "label": "Creating a Branch"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/branching/using-branches/syncing-merging",
+                "label": "Syncing & Merging Changes"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/branching/using-branches/reverting-a-branch",
+                "label": "Reverting a Branch"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/branching/using-branches/api",
+                "label": "Interact with Branches via API"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Models",
+            "items": [
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/branching/models/branch",
+                "label": "Branches"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/branching/models/branchevent",
+                "label": "Branch Events"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/branching/models/changediff",
+                "label": "Change Diffs"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/branching/models/objectchange",
+                "label": "Object Changes"
+              }
+            ]
+          },
+          {
+            "type": "doc",
+            "id": "console/netbox-extensions/branching/changelog",
+            "label": "Changelog"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Change Management",
+        "items": [
+          {
+            "type": "doc",
+            "id": "console/netbox-extensions/changes/index",
+            "label": "Overview"
+          },
+          {
+            "type": "doc",
+            "id": "console/netbox-extensions/changes/configuration",
+            "label": "Configuration"
+          },
+          {
+            "type": "category",
+            "label": "Models",
+            "items": [
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/changes/models/changerequest",
+                "label": "Change Request"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/changes/models/comment",
+                "label": "Comment"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/changes/models/commentreply",
+                "label": "Comment Reply"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/changes/models/policy",
+                "label": "Policy"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/changes/models/policyrule",
+                "label": "Policy Rule"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/changes/models/review",
+                "label": "Review"
+              }
+            ]
+          },
+          {
+            "type": "doc",
+            "id": "console/netbox-extensions/changes/changelog",
+            "label": "Changelog"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Diode",
+        "items": [
+          {
+            "type": "doc",
+            "id": "console/netbox-extensions/diode/index",
+            "label": "Overview"
+          },
+          {
+            "type": "category",
+            "label": "Get started",
+            "items": [
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/diode/diode-get-started",
+                "label": "Components"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/diode/diode-plugin",
+                "label": "Installing the Diode plugin"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/diode/diode-server",
+                "label": "Running the Diode server"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-extensions/diode/diode-client",
+                "label": "Installing the Diode client SDK"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "doc",
+    "id": "console/product_feature_lifecycle",
+    "label": "Product and Feature Lifecycle"
   }
 ]

@@ -3,6 +3,25 @@ const glob = require('glob');
 const { exec } = require('child_process');
 const { promisify } = require('util');
 const path = require('path');
+const yaml = require('js-yaml');
+
+// Custom YAML schema to handle !ENV tags
+const EnvYamlType = new yaml.Type('!ENV', {
+    kind: 'scalar',
+    construct: () => null, // Treat !ENV tags as null
+});
+
+// Custom YAML type for !!python/name:* tags
+const PythonNameYamlType = new yaml.Type('tag:yaml.org,2002:python/name', {
+    kind: 'scalar', // Or 'mapping'/'sequence' if these tags can apply to complex structures
+    multi: true, // Indicates this type can match multiple specific tags if needed, but here it's for the prefix
+    representName: (tag) => tag.startsWith('tag:yaml.org,2002:python/name:'),
+    construct: () => null, // Treat these Python-specific tags as null
+});
+
+const CUSTOM_YAML_SCHEMA = yaml.DEFAULT_SCHEMA.extend({
+    explicit: [EnvYamlType, PythonNameYamlType],
+});
 
 const execAsync = promisify(exec);
 
@@ -93,6 +112,65 @@ const getIndent = (line: string): string => {
 const urlRule = transformRules.find(rule => rule.find.toString() === /<https?:\/\/[^>]+>/g.toString());
 // Filter out the URL rule from the main list to avoid applying it twice
 const otherRules = transformRules.filter(rule => rule !== urlRule);
+
+interface MkDocsNavItem {
+    [key: string]: string | MkDocsNavItem[] | undefined;
+}
+
+interface DocusaurusSidebarItem {
+    type: 'category' | 'doc';
+    label: string;
+    id?: string; // Present for 'doc', absent for 'category'
+    items?: DocusaurusSidebarItem[]; // Present for 'category', absent for 'doc'
+    link?: { // Optional: For generated category index pages
+        type: 'generated-index';
+        title?: string;
+    };
+}
+
+const mapNavToDocusaurus = (navItems: MkDocsNavItem[], basePathForId: string): DocusaurusSidebarItem[] => {
+    return navItems.map((item) => {
+        const key = Object.keys(item)[0];
+        const value = item[key];
+
+        if (typeof value === 'string') {
+            // Remove .md extension
+            let docPath = value.replace(/\.md$/, '');
+            const pathParts = docPath.split('/');
+            let filename = pathParts.pop() || ''; // Get the last part, the filename
+
+            // Regex to match a number prefix like "1-", "01-", etc.
+            const numericPrefixRegex = /^\d+-/;
+            // Regex to match an alphanumeric prefix like "4a-", "1b-", etc.
+            const alphanumericPrefixRegex = /^\d+[a-zA-Z]+-/;
+
+            if (numericPrefixRegex.test(filename) && !alphanumericPrefixRegex.test(filename)) {
+                // If it has a purely numeric prefix (e.g., "1-thing"), remove it
+                filename = filename.replace(numericPrefixRegex, '');
+            }
+
+            // Reconstruct the docPath with the potentially modified filename
+            docPath = pathParts.length > 0 ? `${pathParts.join('/')}/${filename}` : filename;
+
+            return {
+                type: 'doc',
+                id: `${basePathForId}/${docPath}`,
+                label: key,
+            };
+        }
+
+        if (Array.isArray(value)) {
+            return {
+                type: 'category',
+                label: key,
+                items: mapNavToDocusaurus(value, basePathForId),
+            };
+        }
+
+        console.warn('Skipping unexpected nav item format:', item);
+        return null;
+    }).filter(item => item !== null) as DocusaurusSidebarItem[];
+};
 
 const transformContent = async (content: string): Promise<string> => {
     const fencedCodeBlocks: string[] = [];
@@ -276,6 +354,28 @@ const transformDocs = async (): Promise<void> => {
 
             // Process each file found
             await Promise.all(files.map(file => processFile(file, outputBaseDir, source)));
+
+            // After processing files, generate the sidebar
+            console.log(`Generating sidebar for ${output}...`);
+            const mkdocsConfigPath = path.join(source, '..', 'mkdocs.yml');
+            console.log(`Using mkdocs.yml at ${mkdocsConfigPath}`);
+            try {
+                const mkdocsConfigContent = await readFile(mkdocsConfigPath, 'utf-8');
+                const mkdocsConfig = yaml.load(mkdocsConfigContent, { schema: CUSTOM_YAML_SCHEMA }) as { nav?: MkDocsNavItem[] };
+
+                if (mkdocsConfig?.nav) {
+
+                    const docusaurusSidebarItems = mapNavToDocusaurus(mkdocsConfig.nav, output).filter(item => item.label !== 'Home' && item.id !== `${output}/index`);
+                    docusaurusSidebarItems.unshift({ type: 'doc', id: `${output}/index`, label: 'Home' });
+                    const sidebarJsonPath = path.join('sidebars', `${output}.json`); // Dynamic output path
+                    await writeFile(sidebarJsonPath, JSON.stringify(docusaurusSidebarItems, null, 2));
+                    console.log(`Successfully generated and wrote sidebar to ${sidebarJsonPath}`);
+                } else {
+                    console.warn(`'nav' section not found in ${mkdocsConfigPath}. Sidebar not generated.`);
+                }
+            } catch (error) {
+                console.error(`Error processing mkdocs.yml for ${output}:`, error);
+            }
 
         } catch (error) {
             console.error(`Error processing directory configuration ${JSON.stringify(dirConfig)}:`, error);
