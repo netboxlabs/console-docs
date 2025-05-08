@@ -5,7 +5,8 @@
   }
 
   a {
-    @apply no-underline font-openSauceTwo;
+    @apply font-openSauceTwo;
+    text-decoration: none!important;
   }
 
   ul {
