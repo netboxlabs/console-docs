@@ -80,14 +80,17 @@ export default function Header({ options: { header }, theme = "black" }: HeaderP
 					setShowMobileNav,
 				}}
 			>
-				<div className="sticky inset-x-0 top-0 z-[101] w-full font-openSauceTwo">
+				<div
+					className="sticky inset-x-0 top-0 z-[101] w-full font-openSauceTwo"
+					onMouseLeave={handleCloseSubmenu}
+				>
 					<header
 						className={clsx(
 							"relative z-10 flex h-[var(--ifm-navbar-height)] w-full transition-shadow duration-300",
 							theme === "black" ? "bg-grey-16 text-white" : "bg-grey-1 text-black"
 						)}
 					>
-						<div className="container flex flex-1 items-center justify-between py-3 sm:py-4">
+						<div className="container !max-w-[76rem] flex flex-1 items-center justify-between py-3 sm:py-4">
 							<a
 								href="/"
 								aria-label="Back to Home"

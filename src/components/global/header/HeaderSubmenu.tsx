@@ -24,8 +24,6 @@ export default function HeaderSubmenu({ navItems = [], className = "" }: HeaderS
 				className
 			)}
 		>
-			<div className="absolute inset-0" onMouseEnter={() => setIsSubmenuOpen(false)} />
-
 			<div className="container-force-width container relative z-10">
 				<AnimatePresence mode="popLayout">
 					{navItems?.map(
