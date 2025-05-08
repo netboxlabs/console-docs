@@ -16,16 +16,13 @@ import netboxSidebar from "./sidebars/netbox.json";
 
 const sidebars: SidebarsConfig = {
 	defaultSidebar: [
+
 		{
 			type: "category",
 			label: "NetBox",
 			items: netboxSidebar as any
 		},
-		{
-			type: "category",
-			label: "Console",
-			items: consoleSidebar as any
-		}
+		...consoleSidebar
 	],
 };
 
