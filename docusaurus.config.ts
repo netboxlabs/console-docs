@@ -42,7 +42,7 @@ const config: Config = {
 		],
 	],
 	themeConfig: {
-		image: "img/docusaurus-social-card.jpg",
+		image: "img/netbox-social-card.jpg",
 		colorMode: {
       defaultMode: "dark",
       disableSwitch: true,
