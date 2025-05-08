@@ -11,10 +11,10 @@ import type { Props } from '@theme/Navbar/Layout';
 
 import styles from './styles.module.css';
 import Header from '../../../components/global/header/Header';
-import { options } from '../../../components/global/options'
+import { options } from '../../../components/global/options.data'
 
 
-export default function NavbarLayout({ children }: Props): ReactNode {
+export default function NavbarLayout({ children }: Props | { children?: any }): ReactNode {
   const {
     navbar: { hideOnScroll, style },
   } = useThemeConfig();
@@ -41,9 +41,7 @@ export default function NavbarLayout({ children }: Props): ReactNode {
           'navbar-sidebar--show': mobileSidebar.shown,
         },
       )}>
-      {/* <NavbarContent /> */}
       <Header options={options} />
-
     </nav>
   );
 }
