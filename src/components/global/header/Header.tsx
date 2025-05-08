@@ -94,7 +94,7 @@ export default function Header({ options: { header }, theme = "black" }: HeaderP
 								className="block h-5 transition-opacity duration-200 hover:opacity-70 sm:h-[1.3125rem]"
 								onMouseEnter={() => setIsSubmenuOpen(false)}
 							>
-								<Logo className="w-auto will-change-transform" />
+								<Logo className="w-auto will-change-transform text-white" />
 							</a>
 
 							{hasNavLinks && !isBelowDesktop && (
