@@ -301,7 +301,9 @@ const transformContent = async (content: string): Promise<string> => {
         transformedContentWithPlaceholders = transformedContentWithPlaceholders.split(placeholder).join(block);
     });
 
-    return transformedContentWithPlaceholders;
+    // 6. Hotfix to escape {} tags
+    const hotfixedContent = transformedContentWithPlaceholders.replace(/(?<!\\){([^{}]+)}(?!})/g, '\\{$1\\}');
+    return hotfixedContent;
 };
 
 const processFile = async (sourceFilePath: string, outputBaseDir: string, sourceBaseDir: string): Promise<void> => {
@@ -320,6 +322,7 @@ const processFile = async (sourceFilePath: string, outputBaseDir: string, source
         if (isMarkdown) {
             const content = await readFile(sourceFilePath, 'utf-8');
             const transformedContent = await transformContent(content);
+
             await writeFile(outputFilePath, transformedContent);
         } else {
             // For non-markdown files, just copy them
