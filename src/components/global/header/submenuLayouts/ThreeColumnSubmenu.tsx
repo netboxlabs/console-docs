@@ -114,25 +114,26 @@ function FeaturedResourceModule({ featured_resource, handleCloseAll }: ModulePro
 		<div className="space-y-5">
 			{subheading && <div className={clsx("text-13-mobHeading", theme === "black" ? "text-grey-8" : "text-black/50")}>{subheading}</div>}
 
-			<a href={resource?.permalink} target={resource?.permalink_target} className="group block space-y-8" onClick={handleCloseAll}>
-				<div className="w-full lg:max-w-[16.25rem]">
-					<div className={clsx("text-13-subText transition-colors duration-200 group-hover:text-teal", theme === "black" ? "text-white" : "text-black")}>
-						{resource?.post_title}
+			{resource?.permalink ? (
+				<a href={resource?.permalink} target={resource?.permalink_target} className="group block space-y-8" onClick={handleCloseAll}>
+					<div className="w-full lg:max-w-[16.25rem]">
+						<div className={clsx("text-13-subText transition-colors duration-200 group-hover:text-teal", theme === "black" ? "text-white" : "text-black")}>
+							{resource?.post_title}
+						</div>
+
+						<div className="mt-4 inline-flex gap-x-2">
+							<div className="rounded bg-grey-12 px-2 py-1 text-[0.6875rem] text-white">{resourceType}</div>
+
+							{resource?.categories?.length > 0 && (
+								<div className="rounded bg-grey-12 px-2 py-1 text-[0.6875rem] text-white">{resource?.categories[0]?.name}</div>
+							)}
+						</div>
 					</div>
 
-					<div className="mt-4 inline-flex gap-x-2">
-						<div className="rounded bg-grey-12 px-2 py-1 text-[0.6875rem] text-white">{resourceType}</div>
-
-						{resource?.categories?.length > 0 && (
-							<div className="rounded bg-grey-12 px-2 py-1 text-[0.6875rem] text-white">{resource?.categories[0]?.name}</div>
-						)}
+					<div className="relative aspect-[300/170] overflow-hidden rounded transition-opacity duration-200 group-hover:opacity-80">
+						<img src={resource?.featured_image?.src} alt={resource?.featured_image?.alt || resource?.post_title} className="w-full object-cover" />
 					</div>
-				</div>
-
-				<div className="relative aspect-[300/170] overflow-hidden rounded transition-opacity duration-200 group-hover:opacity-80">
-					<img src={resource?.featured_image?.src} alt={resource?.featured_image?.alt || resource?.post_title} className="w-full object-cover" />
-				</div>
-			</a>
+				</a>) : null}
 		</div>
 	);
 }
@@ -140,7 +141,7 @@ function FeaturedResourceModule({ featured_resource, handleCloseAll }: ModulePro
 function CardCtaModule({ card_cta, handleCloseAll }: ModuleProps) {
 	const { link, asset } = card_cta;
 
-	return (
+	return link?.url ? (
 		<a
 			href={link?.url}
 			target={link?.target}
@@ -151,14 +152,14 @@ function CardCtaModule({ card_cta, handleCloseAll }: ModuleProps) {
 
 			<div className="absolute left-3 top-3 rounded bg-grey-12 px-2 py-1 text-[0.8125rem] leading-[1.5] tracking-[0.26px] text-white">{link?.title}</div>
 		</a>
-	);
+	) : null;
 }
 
 function TileCtaModule({ tile_cta, handleCloseAll }: ModuleProps) {
 	const { link, asset, description = "" } = tile_cta;
 	const { theme } = useHeaderContext();
 
-	return (
+	return link?.url ? (
 		<a href={link?.url} target={link?.target} className="group flex flex-col-reverse gap-y-6 lg:max-w-[21.75rem] lg:flex-col" onClick={handleCloseAll}>
 			<div className="relative block aspect-[348/220] w-full overflow-hidden rounded transition-opacity duration-200 group-hover:opacity-80">
 				<img src={asset?.url} alt={asset?.alt} className="w-full object-cover" />
@@ -170,5 +171,5 @@ function TileCtaModule({ tile_cta, handleCloseAll }: ModuleProps) {
 				{description && <div className={clsx("text-13-mobSubText lg:!leading-none", theme === "black" ? "text-grey-7" : "text-grey-9")}>{description}</div>}
 			</div>
 		</a>
-	);
+	) : null;
 }

@@ -125,10 +125,10 @@ export const options = {
                       "asset": {
                         "type": "image",
                         "image": {
-                          "url": "https://netboxlabscms.kinsta.cloud/wp-content/uploads/2025/04/nav-nitro-ai.png",
-                          "alt": "Nav Nitro Ai",
-                          "width": 900,
-                          "height": 657
+                          "url": "https://netboxlabscms.kinsta.cloud/wp-content/uploads/2025/05/nitro-ai-nav-thumbnail.png",
+                          "alt": "Nitro Ai Nav Thumbnail",
+                          "width": 600,
+                          "height": 438
                         },
                         "animation": {
                           "rive_file": false,
@@ -274,7 +274,7 @@ export const options = {
                         {
                           "link": {
                             "title": "Data Center Infrastructure",
-                            "url": "/data-centre/",
+                            "url": "/datacenter-infrastructure-management/",
                             "target": ""
                           },
                           "icon": false,
@@ -336,39 +336,7 @@ export const options = {
                     "acf_fc_layout": "featured_resource",
                     "featured_resource": {
                       "subheading": "Featured",
-                      "resource": {
-                        "ID": 177,
-                        "post_title": "Event-Driven Network Automation with NetBox and Ansible Automation Platform",
-                        "post_type": "post",
-                        "permalink": "/blog/event-driven-network-automation-with-netbox-and-ansible-automation-platform-2/",
-                        "featured_image": {
-                          "src": "https://netboxlabscms.kinsta.cloud/wp-content/uploads/2024/05/Resource-Thumbnail.png",
-                          "width": 760,
-                          "height": 460
-                        },
-                        "post_date_gmt": "4th Mar 2025",
-                        "read_time": 1,
-                        "author": {
-                          "name": "Together Developers",
-                          "acf": {
-                            "name": "Together",
-                            "job_role": "Web Developer",
-                            "avatar": {
-                              "url": "https://netboxlabscms.kinsta.cloud/wp-content/uploads/2025/03/together-avatar.png",
-                              "alt": "Together Avatar",
-                              "width": 84,
-                              "height": 84
-                            }
-                          }
-                        },
-                        "categories": [
-                          {
-                            "id": 1,
-                            "name": "Uncategorized",
-                            "slug": "uncategorized"
-                          }
-                        ]
-                      }
+                      "resource": false
                     }
                   }
                 ]
@@ -400,7 +368,7 @@ export const options = {
                             "target": ""
                           },
                           "icon": false,
-                          "description": "Description here"
+                          "description": "Discover the latest insights."
                         },
                         {
                           "link": {
@@ -409,7 +377,7 @@ export const options = {
                             "target": ""
                           },
                           "icon": false,
-                          "description": "Description here"
+                          "description": "Download one of our guides."
                         },
                         {
                           "link": {
@@ -418,7 +386,7 @@ export const options = {
                             "target": ""
                           },
                           "icon": false,
-                          "description": "Description here"
+                          "description": "Sign up for a NetBox event."
                         },
                         {
                           "link": {
@@ -427,7 +395,7 @@ export const options = {
                             "target": ""
                           },
                           "icon": false,
-                          "description": "Description here"
+                          "description": "Hear from industry experts."
                         },
                         {
                           "link": {
@@ -436,7 +404,7 @@ export const options = {
                             "target": ""
                           },
                           "icon": false,
-                          "description": "Description here"
+                          "description": "Get the latest company updates."
                         },
                         {
                           "link": {
@@ -445,7 +413,7 @@ export const options = {
                             "target": ""
                           },
                           "icon": false,
-                          "description": "How customers succeed with NetBox."
+                          "description": "See how customers succeed with NetBox."
                         }
                       ]
                     }
@@ -497,39 +465,7 @@ export const options = {
                     "acf_fc_layout": "featured_resource",
                     "featured_resource": {
                       "subheading": "Featured",
-                      "resource": {
-                        "ID": 177,
-                        "post_title": "Event-Driven Network Automation with NetBox and Ansible Automation Platform",
-                        "post_type": "post",
-                        "permalink": "/blog/event-driven-network-automation-with-netbox-and-ansible-automation-platform-2/",
-                        "featured_image": {
-                          "src": "https://netboxlabscms.kinsta.cloud/wp-content/uploads/2024/05/Resource-Thumbnail.png",
-                          "width": 760,
-                          "height": 460
-                        },
-                        "post_date_gmt": "4th Mar 2025",
-                        "read_time": 1,
-                        "author": {
-                          "name": "Together Developers",
-                          "acf": {
-                            "name": "Together",
-                            "job_role": "Web Developer",
-                            "avatar": {
-                              "url": "https://netboxlabscms.kinsta.cloud/wp-content/uploads/2025/03/together-avatar.png",
-                              "alt": "Together Avatar",
-                              "width": 84,
-                              "height": 84
-                            }
-                          }
-                        },
-                        "categories": [
-                          {
-                            "id": 1,
-                            "name": "Uncategorized",
-                            "slug": "uncategorized"
-                          }
-                        ]
-                      }
+                      "resource": false
                     }
                   }
                 ]
@@ -627,7 +563,7 @@ export const options = {
                             "location": "London",
                             "dates": [
                               {
-                                "date": "05/01/2025",
+                                "date": "06/20/2025",
                                 "time": "5 PM"
                               }
                             ]
@@ -821,7 +757,7 @@ export const options = {
           {
             "link": {
               "title": "Docs",
-              "url": "/#",
+              "url": "/docs/netbox/",
               "target": ""
             }
           }
@@ -872,8 +808,8 @@ export const options = {
           },
           {
             "link": {
-              "title": "Data Centres",
-              "url": "/data-centre/",
+              "title": "Data Centers",
+              "url": "/datacenter-infrastructure-management/",
               "target": ""
             }
           },
@@ -940,7 +876,7 @@ export const options = {
           },
           {
             "link": {
-              "title": "Champion Netbox",
+              "title": "Champion NetBox",
               "url": "/#",
               "target": ""
             }
@@ -1007,11 +943,11 @@ export const options = {
       }
     ],
     "newsletter_signup": {
-      "heading": "Join the |Netbox Labs community.|",
+      "heading": "Join the |NetBox Labs community.|",
       "": null
     },
     "legal": {
-      "copyright_text": "2025 Netbox Labs",
+      "copyright_text": "Netbox Labs",
       "nav": [
         {
           "link": {
@@ -1036,6 +972,20 @@ export const options = {
         "heading": "Sign-up to be the first to know about NetBox news",
         "portal_id": "23319422",
         "form_id": "3cdf548c-e305-4932-99d4-f0729b3177b5"
+      }
+    },
+    "resources": {
+      "": null,
+      "events": {
+        "speakers_heading": "Featured Guest Speakers"
+      },
+      "news": {
+        "thumbnail_fallback": {
+          "url": "https://netboxlabscms.kinsta.cloud/wp-content/uploads/2025/05/news-thumbnail-fallback.png",
+          "alt": "News Thumbnail Fallback",
+          "width": 888,
+          "height": 501
+        }
       }
     }
   },
