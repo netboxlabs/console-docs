@@ -11,6 +11,10 @@ const config: Config = {
 	organizationName: "netbox",
 	projectName: "netbox-docs",
 
+	markdown: {
+		mermaid: true,
+	},
+
 	plugins: [
 		async function myPlugin(context, options) {
 			return {
@@ -25,7 +29,7 @@ const config: Config = {
 		},
 		'docusaurus-plugin-sass',
 	],
-
+	themes: ['@docusaurus/theme-mermaid'],
 	presets: [
 		[
 			"classic",

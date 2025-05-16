@@ -287,6 +287,22 @@
             ]
           },
           {
+            "type": "category",
+            "label": "SAML",
+            "items": [
+              {
+                "type": "doc",
+                "id": "console/netbox-enterprise/nbe-saml",
+                "label": "SAML SSO Setup"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-enterprise/nbe-saml-group-map",
+                "label": "SAML Group Mapping"
+              }
+            ]
+          },
+          {
             "type": "doc",
             "id": "console/netbox-enterprise/nbe-ldap",
             "label": "LDAP"
