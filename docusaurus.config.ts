@@ -8,6 +8,7 @@ const config: Config = {
 	favicon: "img/favicon.ico",
 	url: "https://netboxlabs.com",
 	baseUrl: "/docs/",
+	trailingSlash: true,
 	organizationName: "netbox",
 	projectName: "netbox-docs",
 
