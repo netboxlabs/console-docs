@@ -3,7 +3,7 @@
 
 # Production
 /build
-
+/src/components/global/options.data.ts
 /docs/*
 
 # Generated files
