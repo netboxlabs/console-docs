@@ -1,5 +1,206 @@
 # NetBox Enterprise 1.x Release Notes
 
+### 1.9.2
+
+Updates NetBox to 4.2.9, plus includes an update to
+the cluster software which improves the handling of
+upgrades.
+
+NOTE: This update will upgrade NetBox to 4.2.9.
+If you have custom plugins installed, you will need
+to upgrade to NetBox Enterprise 1.9.2 and then create
+a new wheelhouse that contains plugins compatible
+with 4.2.9.
+
+Please review the [upstream NetBox release
+notes](https://github.com/netbox-community/netbox/releases)
+from your current version through 4.2.9 for a
+complete list of breaking changes, enhancements,
+and bug fixes.
+
+#### Features
+
+* **cluster:** bump to 2.4.0
+* **netbox:** bump to NetBox 4.2.9
+
+#### Versions
+
+This release uses the following upstream software:
+* NetBox 4.2.9
+* Redis 7.4.2 (if built-in Redis is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| netbox-acls | netbox_acls | 1.8.1 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.15.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.9.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.1 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.6.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.6 | ☐ |
+| netbox-inventory | netbox_inventory | 2.3.0 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.5 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.2.6 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.17 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.2.0 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.2.1 | ☑︎ |
+| netbox-validity | validity | 3.1.3 | ☐ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.4 | ☑︎ |
+| slurpit_netbox | slurpit_netbox | 1.1.13 | ☑︎ |
+
+### 1.9.1
+
+A minor release that contains build process updates
+under the covers, plus the Python XML fixes introduced
+in NetBox Enterprise 1.8.6.
+
+#### Versions
+
+This release uses the following upstream software:
+* NetBox 4.2.6
+* Redis 7.4.2 (if built-in Redis is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| netbox-acls | netbox_acls | 1.8.1 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.15.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.9.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.1 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.6.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.6 | ☐ |
+| netbox-inventory | netbox_inventory | 2.3.0 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.5 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.2.6 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.17 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.2.0 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.2.1 | ☑︎ |
+| netbox-validity | validity | 3.1.3 | ☐ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.4 | ☑︎ |
+| slurpit_netbox | slurpit_netbox | 1.1.13 | ☑︎ |
+
+### 1.9.0
+
+Updates the embedded NetBox to 4.2.6. Also upgrades
+a number of dependencies to their latest versions,
+adds some extra system consistency validation checks,
+and reduces the number of proxied domains necessary to
+install NetBox Enterprise.
+
+#### Bug Fixes
+
+* **netbox:** update to docker image with pydantic fix (NBE-185)
+* add exit statements for better error handling in configmap-executable.yaml
+* adjust formatting in cronjob-backup-labeler.yaml for consistency
+* remove branch reference for command bar disabling from CI workflow and update Docker image tag
+* remove unnecessary conditional for nodeSelector in cronjob-backup-labeler.yaml
+* replace hardcoded imagePullPolicy with configurable value in cronjob-backup-labeler.yaml
+* restore TTL and backoff limit in backup labeler CronJob configuration
+* update Docker image tag to indicate command bar disabling
+* update imagePullPolicy to 'IfNotPresent' in cronjob-backup-labeler.yaml
+* update system validation query to use jq and change backup labeler image to netboxlabs/nbe-utils:latest
+* update system validation query image version to netboxlabs/nbe-utils:1
+
+#### Features
+
+* add CronJob for netbox sidecar task to do system validation
+* add system validation check CronJob with service account and role binding
+* add TTL and backoff limit to backup labeler CronJob configuration
+* **cluster:** add settings for the improved proxy support
+* **cluster:** update to 2.3.1
+* **config:** create some macros for nbe-utils and replace busybox
+* **deps:** update pgo to 5.7.4, replicated-sdk to 1.5.0
+* increase replicas for postgres instance to improve availability
+* **netbox:** bump to netbox 4.2.6 and ensure versions are correct
+* rename replicas_node_count to node_count for consistency in postgres configuration
+* update backup labeler configuration with TTL and backoff limit
+* update backup labeler to routines labeler and improve system validation error handling
+* update dependencies in Chart.lock for netbox-enterprise
+* update netbox sidecar CronJob to run every 5 minutes and improve error handling
+* update postgres replica configuration to use dynamic node count
+
+#### Versions
+
+This release uses the following upstream software:
+* NetBox 4.2.6
+* Redis 7.4.2 (if built-in Redis is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| netbox-acls | netbox_acls | 1.8.1 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.15.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.9.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.1 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.6.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.6 | ☐ |
+| netbox-inventory | netbox_inventory | 2.3.0 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.5 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.2.6 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.17 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.2.0 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.2.1 | ☑︎ |
+| netbox-validity | validity | 3.1.3 | ☐ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.4 | ☑︎ |
+
+### 1.8.6
+
+Contains a fix for mismatched XML modules used by
+some 3rd-party plugins.
+
+#### Bug Fixes
+
+* *docker:* ignore low-priority trivy warning about KOTS dep
+* *docker:* make sure lxml and xmlsec match (NBE-193)
+
+#### Versions
+
+This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| nbrisk | nb_risk | 41.0.1 | ☐ |
+| netbox-acls | netbox_acls | 1.7.0 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.14.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.8.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.0 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.5.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.4 | ☐ |
+| netbox-inventory | netbox_inventory | 2.2.1 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.3 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.1.7 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.15 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.1.2 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.1.0 | ☑︎ |
+| netbox-validity | validity | 3.0.5 | ☐ |
+| netboxlabs-diode-netbox-plugin | netbox_diode_plugin | 0.6.0 | ☑︎ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.3 | ☑︎ |
+| phonebox-plugin | phonebox_plugin | 0.0.10 | ☐ |
+| slurpit_netbox | slurpit_netbox | 1.0.45 | ☑︎ |
+
 ### 1.8.5
 
 Contains a fix for upgrades freezing in some situations.
@@ -114,6 +315,7 @@ This release uses the following upstream software:
 * NetBox 4.1.11
 * Redis 7.4.2 (if built-in database is enabled)
 * PostgreSQL 16.6 (if built-in database is enabled)
+
 #### Plugins
 
 The following plugins are included in this release:
@@ -487,15 +689,20 @@ The following plugins are included in this release:
 
 ### 1.7.0
 
-Updates the included NetBox to 4.1.11. Also upgrades
-the version of the cluster software, which brings many
-bug fixes and features, including better preflight checks,
-and a direct link to the NetBox UI from the admin console.
+Updates the embedded NetBox to 4.1.11. Also upgrades
+the cluster software, which brings many bug fixes and
+features, including better preflight checks, and
+a direct link to the NetBox UI from the admin console.
+
+#### Features
+
+* *cluster:* update to 1.19.0
+* *cluster:* add a link to the NetBox UI from the admin console
+* *deps:* update to NetBox 4.1.11 + latest NetBox chart
 
 #### Versions
 
 This release uses the following upstream software:
-
 * NetBox 4.1.11
 * Redis 7.4.2
 * PostgreSQL 16.6 (if built-in database is enabled)
@@ -531,6 +738,16 @@ The following plugins are included in this release:
 Fixes a small bug that would cause the admin console to
 improperly display an error on upgrade. Also updates
 a few dependencies.
+
+#### Bug Fixes
+
+* *cluster:* move ingress back to `ingress-nginx` namespace
+
+#### Features
+
+* *deps:* bump to latest docker image + current plugins
+* *deps:* update bitnami-common and netbox oss charts
+* *netbox:* update to latest 4.0.x-compatible plugins
 
 #### Plugins
 
