@@ -7,7 +7,7 @@ const config: Config = {
 	tagline: "Centralised Documentation for NetBox",
 	favicon: "img/favicon.ico",
 	url: "https://netboxlabs.com",
-	baseUrl: "/docs/",
+	baseUrl: process.env.VERCEL_ENV === "production" ? "/docs/" : "/",
 	trailingSlash: true,
 	organizationName: "netbox",
 	projectName: "netbox-docs",
