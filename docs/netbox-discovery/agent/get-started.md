@@ -1,6 +1,6 @@
-<span class="pill pill-cloud">NetBox Cloud</span>
-<span class="pill pill-enterprise">NetBox Enterprise</span>
-<span class="pill pill-community">NetBox Community</span>
+🟢 **NetBox Cloud**
+🟠 **NetBox Enterprise**
+🔵 **NetBox Community**
 
 ## Before getting started
 You'll need the following to successfully run the NetBox Discovery agent end-to-end:

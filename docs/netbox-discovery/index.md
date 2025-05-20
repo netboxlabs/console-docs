@@ -1,6 +1,6 @@
-<span class="pill pill-cloud">NetBox Cloud</span>
-<span class="pill pill-enterprise">NetBox Enterprise</span>
-<span class="pill pill-community">NetBox Community</span>
+🟢 **NetBox Cloud**
+🟠 **NetBox Enterprise**
+🔵 **NetBox Community**
 
 !!! info "*Public Preview*"
     **NetBox Discovery** is currently in Public Preview. Please refer to [NetBox Labs Product and Feature Lifecycle](https://docs.netboxlabs.com/product_feature_lifecycle/) to get more details. We actively welcome feedback to help identify and prioritize bugs, new features and areas of improvement.

@@ -1,6 +1,6 @@
-<span class="pill pill-cloud">NetBox Cloud</span>
-<span class="pill pill-enterprise">NetBox Enterprise</span>
-<span class="pill pill-community">NetBox Community</span>
+🟢 **NetBox Cloud**
+🟠 **NetBox Enterprise**
+🔵 **NetBox Community**
 
 ## Agent configuration file
 To run, the NetBox Discovery agent requires a YAML configuration file. This configuration file consists of three main sections: `config_manager`, `backends`, and `policies`.

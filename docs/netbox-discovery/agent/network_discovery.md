@@ -1,8 +1,8 @@
 # Network Discovery
 
-<span class="pill pill-cloud">NetBox Cloud</span>
-<span class="pill pill-enterprise">NetBox Enterprise</span>
-<span class="pill pill-community">NetBox Community</span>
+🟢 **NetBox Cloud**
+🟠 **NetBox Enterprise**
+🔵 **NetBox Community**
 
 The network discovery backend leverages [NMAP](https://nmap.org/) to scan networks and discover IP information.
 

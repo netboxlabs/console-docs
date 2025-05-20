@@ -1,5 +1,5 @@
-<span class="pill pill-cloud">NetBox Cloud</span>
-<span class="pill pill-enterprise">NetBox Enterprise</span>
+🟢 **NetBox Cloud**
+🟠 **NetBox Enterprise**
 
 !!! info "*Coming early 2025*"
     Be among the first to experience **NetBox Assurance**. [Sign up](https://netboxlabs.com/netbox-assurance/) to be notified when we launch.
