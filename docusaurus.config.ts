@@ -36,7 +36,7 @@ const config: Config = {
 			"classic",
 			{
 				docs: {
-					routeBasePath: "/",
+					routeBasePath: process.env.VERCEL_ENV === "production" ? "/" : "/docs/",
 					sidebarPath: "./sidebars.ts",
 				},
 				blog: false,
