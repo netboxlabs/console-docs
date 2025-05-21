@@ -187,7 +187,7 @@ const transformContent = async (content: string): Promise<string> => {
     }
 
     // Targeted fix for SAML placeholders to prevent MDX parsing errors
-    tempContent = tempContent.replace(/"\{NetBox Enterprise URL\}"/g, '"`{NetBox Enterprise URL}`"');
+    tempContent = tempContent.replace(/\{NetBox Enterprise URL\}/g, '`{NetBox Enterprise URL}`');
 
     // 1. Extract and replace fenced code blocks (from already URL-escaped content)
     // Regex captures the full match including delimiters and content
