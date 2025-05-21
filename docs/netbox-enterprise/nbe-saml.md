@@ -19,8 +19,8 @@ openssl req -new -x509 -key saml_private_key.pem -out saml_cert.pem -days <speci
 ## Configure the IdP
 Set up the IdP using the public key from the previous section, and the ACS URL (based on the NetBox Enterprise URL). These steps will vary depending on the IdP in use.
 
-**ACS URL**: "{NetBox Enterprise URL}/oauth/complete/saml/"
-**SP Entity ID**: "{NetBox Enterprise URL}"
+**ACS URL**: "`{NetBox Enterprise URL}`/oauth/complete/saml/"
+**SP Entity ID**: "`{NetBox Enterprise URL}`"
 
 Example:
 
