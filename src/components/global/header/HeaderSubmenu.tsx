@@ -1,49 +1,42 @@
-import { useHeaderContext } from "../../../components/global/header/Header";
-import ThreeColumnSubmenu, { ThreeColumnSubmenuProps } from "../../../components/global/header/submenuLayouts/ThreeColumnSubmenu";
-import { AnimatePresence, motion } from "motion/react";
-import clsx from "clsx";
 import React from "react";
+import { AnimatePresence, motion } from "motion/react";
+import ThreeColumnSubmenu from "./submenuLayouts/ThreeColumnSubmenu";
+import clsx from "clsx";
 
 type HeaderSubmenuProps = {
 	navItems: any;
 	className?: string;
+	isSubmenuOpen?: boolean;
+	activeMenuItem?: number | null;
+	theme?: string;
 };
 
-export default function HeaderSubmenu({ navItems = [], className = "" }: HeaderSubmenuProps) {
-	const { theme, isSubmenuOpen, setIsSubmenuOpen, activeMenuItem } = useHeaderContext();
+export default function HeaderSubmenu({ navItems, className, isSubmenuOpen, activeMenuItem, theme = "black" }: HeaderSubmenuProps) {
+	const activeItemData = activeMenuItem !== null && navItems?.[activeMenuItem]?.has_submenu ? navItems[activeMenuItem] : null;
+	const SubmenuComponent = SUBMENU_COMPONENTS[activeItemData?.submenu_layout] || null;
 
 	return (
-		<motion.div
-			initial={{ opacity: 0 }}
-			animate={{ opacity: isSubmenuOpen ? 1 : 0 }}
-			transition={{ duration: 0.3 }}
-			className={clsx(
-				"flex flex-col",
-				theme === "black" ? "bg-grey-16 text-white" : "bg-grey-1 text-black",
-				isSubmenuOpen ? "pointer-events-auto" : "pointer-events-none",
-				className
-			)}
-		>
-			<div className="container-force-width container relative z-10">
-				<AnimatePresence mode="popLayout">
-					{navItems?.map(
-						({ has_submenu = false, submenu = { three_column_submenu: {} as ThreeColumnSubmenuProps } }, index: number) =>
-							has_submenu &&
-							activeMenuItem === index && (
-								<motion.div
-									key={`tagline-${index}`}
-									initial={{ opacity: 0, x: 40 }}
-									animate={{ opacity: 1, x: 0 }}
-									exit={{ opacity: 0, x: -40 }}
-									transition={{ duration: 0.5, ease: [0.5, 0.16, 0.1, 1] }}
-									className="will-change-transform"
-								>
-									<ThreeColumnSubmenu {...submenu?.three_column_submenu} />
-								</motion.div>
-							)
+		<AnimatePresence>
+			{isSubmenuOpen && activeItemData && SubmenuComponent && (
+				<motion.div
+					key={`submenu-${activeMenuItem}`}
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+					transition={{ duration: 0.3, ease: "easeInOut" }}
+					className={clsx(
+						"absolute inset-x-0 top-full",
+						theme === "black" ? "bg-grey-16 text-white" : "bg-grey-1 text-grey-16",
+						className
 					)}
-				</AnimatePresence>
-			</div>
-		</motion.div>
+				>
+					<SubmenuComponent {...activeItemData} theme={theme} />
+				</motion.div>
+			)}
+		</AnimatePresence>
 	);
 }
+
+const SUBMENU_COMPONENTS = {
+	"3col": ThreeColumnSubmenu,
+};

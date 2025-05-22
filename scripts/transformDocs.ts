@@ -2,7 +2,7 @@ const { readFile, writeFile, mkdir, copyFile } = require('fs/promises');
 const glob = require('glob');
 const { exec } = require('child_process');
 const { promisify } = require('util');
-const path = require('path');
+const pathModule = require('path');
 const yaml = require('js-yaml');
 
 // Custom YAML schema to handle !ENV tags
@@ -319,13 +319,13 @@ const transformContent = async (content: string): Promise<string> => {
 
 const processFile = async (sourceFilePath: string, outputBaseDir: string, sourceBaseDir: string): Promise<void> => {
     // Determine the relative path from the source base directory
-    const relativeFilePath = path.relative(sourceBaseDir, sourceFilePath);
+    const relativeFilePath = pathModule.relative(sourceBaseDir, sourceFilePath);
     // Construct the full output path
-    const outputFilePath = path.join(outputBaseDir, relativeFilePath);
+    const outputFilePath = pathModule.join(outputBaseDir, relativeFilePath);
 
     try {
         // Ensure the output directory exists
-        await mkdir(path.dirname(outputFilePath), { recursive: true });
+        await mkdir(pathModule.dirname(outputFilePath), { recursive: true });
 
         // Check if the file is markdown
         const isMarkdown = /\.(md|mdx)$/i.test(sourceFilePath);
@@ -349,7 +349,7 @@ const transformDocs = async (): Promise<void> => {
     console.log('\nStarting documentation transformation and copy...');
     for (const dirConfig of docsDirectories) {
         const { source, output } = dirConfig;
-        const outputBaseDir = path.join('docs', output); // Define output path within project 'docs' folder
+        const outputBaseDir = pathModule.join('docs', output); // Define output path within project 'docs' folder
 
         try {
             const files = await new Promise<string[]>((resolve, reject) => {
@@ -371,7 +371,7 @@ const transformDocs = async (): Promise<void> => {
 
             // After processing files, generate the sidebar
             console.log(`Generating sidebar for ${output}...`);
-            const mkdocsConfigPath = path.join(source, '..', 'mkdocs.yml');
+            const mkdocsConfigPath = pathModule.join(source, '..', 'mkdocs.yml');
             console.log(`Using mkdocs.yml at ${mkdocsConfigPath}`);
             try {
                 const mkdocsConfigContent = await readFile(mkdocsConfigPath, 'utf-8');
@@ -381,7 +381,7 @@ const transformDocs = async (): Promise<void> => {
 
                     const docusaurusSidebarItems = mapNavToDocusaurus(mkdocsConfig.nav, output).filter(item => item.label !== 'Home' && item.id !== `${output}/index`);
                     docusaurusSidebarItems.unshift({ type: 'doc', id: `${output}/index`, label: 'Home' });
-                    const sidebarJsonPath = path.join('sidebars', `${output}.json`); // Dynamic output path
+                    const sidebarJsonPath = pathModule.join('sidebars', `${output}.json`); // Dynamic output path
                     await writeFile(sidebarJsonPath, JSON.stringify(docusaurusSidebarItems, null, 2));
                     console.log(`Successfully generated and wrote sidebar to ${sidebarJsonPath}`);
                 } else {

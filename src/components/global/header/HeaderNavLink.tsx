@@ -1,71 +1,73 @@
-import { useHeaderContext } from "../../../components/global/header/Header";
-import { motion, AnimatePresence } from "motion/react";
 import React, { useState } from "react";
+import HeaderSubmenu from "./HeaderSubmenu";
+import { motion } from "motion/react";
+import Link from "@docusaurus/Link";
+import clsx from "clsx";
 
 type HeaderNavLinkProps = {
 	link: any;
-	has_submenu?: boolean;
+	has_submenu: boolean;
 	index: number;
+	activeMenuItem?: number | null;
+	setActiveMenuItem?: (index: number | null) => void;
+	isSubmenuOpen?: boolean;
+	setIsSubmenuOpen?: (isOpen: boolean) => void;
+	theme?: string;
 };
 
-export default function HeaderNavLink({ link, has_submenu = false, index }: HeaderNavLinkProps) {
-	const { title, url, target = "_self" } = link;
-	const [isHovered, setIsHovered] = useState(false);
-	const { theme, isSubmenuOpen, setIsSubmenuOpen, activeMenuItem, setActiveMenuItem } = useHeaderContext();
-
-	const handleOpenSubmenu = () => {
-		setIsHovered(true);
-		setIsSubmenuOpen(has_submenu);
-		setActiveMenuItem(index);
+export default function HeaderNavLink({ link, has_submenu, index, activeMenuItem, setActiveMenuItem, isSubmenuOpen, setIsSubmenuOpen, theme = "black" }: HeaderNavLinkProps) {
+	const handleSubmenuToggle = (itemIndex) => {
+		if (setActiveMenuItem && setIsSubmenuOpen) {
+			if (activeMenuItem === itemIndex && isSubmenuOpen) {
+				setIsSubmenuOpen(false);
+				setActiveMenuItem(null);
+			} else {
+				setIsSubmenuOpen(true);
+				setActiveMenuItem(itemIndex);
+			}
+		}
 	};
 
-	const handleMouseLeave = () => {
-		setIsHovered(false);
+	const handleCloseSubmenu = () => {
+		if (setIsSubmenuOpen && setActiveMenuItem) {
+			setIsSubmenuOpen(false);
+			setActiveMenuItem(null);
+		}
 	};
 
-	const linkClasses = "text-13 text-white relative block !px-3.5 xl:!px-[0.9375rem] !py-2.5 !leading-none appearance-none border-none bg-transparent";
-	const isSubmenuActive = isSubmenuOpen && activeMenuItem === index;
-
-	return (
-		<li>
-			{has_submenu ? (
-				<button type="button" className={linkClasses} onMouseEnter={handleOpenSubmenu} onMouseLeave={handleMouseLeave}>
-					<span className={`relative z-10 transition-opacity duration-200 ${isHovered || isSubmenuActive ? "opacity-100" : "opacity-70"}`}>{title}</span>
-					<HoverBackground isHovered={isHovered || isSubmenuActive} theme={theme} />
-				</button>
-			) : (
-				<a href={url} target={target} className={linkClasses} onMouseEnter={handleOpenSubmenu} onMouseLeave={handleMouseLeave}>
-					<span className={`relative z-10 transition-opacity duration-200 ${isHovered ? "opacity-100" : "opacity-70"}`}>{title}</span>
-					<HoverBackground isHovered={isHovered} theme={theme} />
-				</a>
-			)}
-		</li>
+	const linkClasses = clsx(
+		"nav-link relative block whitespace-nowrap px-2.5 py-3.5 text-13 font-medium transition-opacity duration-200 hover:opacity-70 lg:px-3 xl:px-4",
+		{
+			"opacity-70": activeMenuItem === index && isSubmenuOpen,
+		}
 	);
-}
 
-type HoverBackgroundProps = {
-	isHovered: boolean;
-	theme: any;
-};
+	const submenuToggleClasses = clsx(
+		linkClasses,
+		"flex cursor-pointer items-center gap-x-1.5",
+		{
+			"is-active": activeMenuItem === index && isSubmenuOpen,
+		}
+	);
 
-function HoverBackground({ isHovered, theme = "black" }: HoverBackgroundProps) {
+	const Tag = has_submenu ? "button" : Link;
+
+	const commonProps = {
+		className: has_submenu ? submenuToggleClasses : linkClasses,
+		...(has_submenu ? { onClick: () => handleSubmenuToggle(index) } : { href: link?.url, target: link?.target, onClick: handleCloseSubmenu }),
+	};
+
 	return (
-		<AnimatePresence>
-			{isHovered && (
-				<motion.div
-					layoutId="headerNavHover"
-					className={`absolute inset-x-[0.3125rem] inset-y-0 rounded-[0.1875rem] ${theme === "black" ? "bg-grey-12" : "bg-grey-3"}`}
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
-					transition={{
-						opacity: { duration: 0.2 },
-						visualDuration: 0.4,
-						type: "spring",
-						bounce: 0.1,
-					}}
-				/>
-			)}
-		</AnimatePresence>
+		<motion.li initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: index * 0.05 }}>
+			<Tag {...commonProps}>
+				{link?.title}
+				{has_submenu && (
+					<svg className={`mt-px h-2 w-2 shrink-0 transition-transform duration-300 ${activeMenuItem === index && isSubmenuOpen ? "rotate-180" : ""}`} viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M4 5L1 2" stroke={theme === "black" ? "white" : "#141414"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+						<path d="M7 2L4 5" stroke={theme === "black" ? "white" : "#141414"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+					</svg>
+				)}
+			</Tag>
+		</motion.li>
 	);
 }
