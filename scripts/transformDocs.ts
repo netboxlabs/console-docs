@@ -186,6 +186,9 @@ const transformContent = async (content: string): Promise<string> => {
         }
     }
 
+    // Targeted fix for SAML placeholders to prevent MDX parsing errors
+    tempContent = tempContent.replace(/\{NetBox Enterprise URL\}/g, '`{NetBox Enterprise URL}`');
+
     // 1. Extract and replace fenced code blocks (from already URL-escaped content)
     // Regex captures the full match including delimiters and content
     tempContent = tempContent.replace(/^```([a-zA-Z0-9-+]*)?\n([\s\S]*?)\n```$/gm, (match) => {
@@ -288,6 +291,16 @@ const transformContent = async (content: string): Promise<string> => {
 
     let transformedContentWithPlaceholders = outputLines.join('\n');
 
+    // Hotfix to escape {} tags (applied before restoring code blocks)
+    // Regex: (?<!\\){([^{}]+)}(?!}) - Explanation:
+    // (?<!\\) - Negative lookbehind for a literal backslash (ensuring we don't escape already escaped braces like \{)
+    // {       - Matches the literal opening curly brace
+    // ([^{}]+) - Captures one or more characters that are NOT curly braces (this is group 1, $1)
+    // }       - Matches the literal closing curly brace
+    // (?!})   - Negative lookahead to ensure the closing brace is not followed by another (to avoid {{ a }} issues)
+    // Replacement: \\{$1\\} - Escapes the captured group with literal backslashes
+    transformedContentWithPlaceholders = transformedContentWithPlaceholders.replace(/(?<!\\\\){([^{}]+)}(?!})/g, '\\\\{$1\\\\}');
+
     // 4. Restore inline code blocks
     inlineCodeBlocks.forEach((block, index) => {
         const placeholder = `__INLINE_CODE_BLOCK_${index}__`;
@@ -301,9 +314,7 @@ const transformContent = async (content: string): Promise<string> => {
         transformedContentWithPlaceholders = transformedContentWithPlaceholders.split(placeholder).join(block);
     });
 
-    // 6. Hotfix to escape {} tags
-    const hotfixedContent = transformedContentWithPlaceholders.replace(/(?<!\\){([^{}]+)}(?!})/g, '\\{$1\\}');
-    return hotfixedContent;
+    return transformedContentWithPlaceholders;
 };
 
 const processFile = async (sourceFilePath: string, outputBaseDir: string, sourceBaseDir: string): Promise<void> => {
