@@ -61,8 +61,12 @@ const config: Config = {
 				href: "/docs/netbox",
 			},
 			items: [
-				// { to: "docs/netbox", label: "NetBox", position: "left" },
-				// { to: "docs/console", label: "Console", position: "left" },
+				{
+					type: 'docSidebar',
+					sidebarId: 'defaultSidebar',
+					label: 'Docs Menu',
+					position: 'left',
+				},
 				{
 					href: "https://github.com/netbox-community/netbox/",
 					label: "GitHub",

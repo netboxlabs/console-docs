@@ -1,4 +1,4 @@
-import React, { type ComponentProps, type ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 import clsx from 'clsx';
 import { useThemeConfig } from '@docusaurus/theme-common';
 import {
@@ -6,27 +6,25 @@ import {
   useNavbarMobileSidebar,
 } from '@docusaurus/theme-common/internal';
 import { translate } from '@docusaurus/Translate';
-
+import NavbarMobileSidebar from '@theme/Navbar/MobileSidebar';
 import type { Props } from '@theme/Navbar/Layout';
-
 import styles from './styles.module.css';
+
+// Import your custom Header component
 import Header from '../../../components/global/header/Header';
-import { options } from '../../../components/global/options.data'
 
-
-export default function NavbarLayout({ children }: Props | { children?: any }): ReactNode {
-  const {
-    navbar: { hideOnScroll, style },
-  } = useThemeConfig();
+export default function NavbarLayout({ children }: Props): React.ReactElement {
+  const themeConfig = useThemeConfig();
+  const { navbar: { hideOnScroll, style } } = themeConfig;
   const mobileSidebar = useNavbarMobileSidebar();
   const { navbarRef, isNavbarVisible } = useHideableNavbar(hideOnScroll);
+  
   return (
     <nav
       ref={navbarRef}
       aria-label={translate({
         id: 'theme.NavBar.navAriaLabel',
         message: 'Main',
-        description: 'The ARIA label for the main navigation',
       })}
       className={clsx(
         'navbar',
@@ -41,7 +39,8 @@ export default function NavbarLayout({ children }: Props | { children?: any }): 
           'navbar-sidebar--show': mobileSidebar.shown,
         },
       )}>
-      <Header options={options} />
+      <Header options={{ header: themeConfig.navbar }} />
+      <NavbarMobileSidebar />
     </nav>
   );
 }

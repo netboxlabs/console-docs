@@ -1,47 +1,95 @@
 import useResourcePreviewData from "../../../../hooks/useResourcePreviewData";
-import { useHeaderContext } from "../../../../components/global/header/Header";
-import { ExternalArrowIcon } from "../../../../components/global/SiteIcons";
-
+import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import React from "react";
+import { ExternalArrowIcon } from "../../../../components/global/SiteIcons";
 
 export type ThreeColumnSubmenuProps = {
+	title?: string;
+	title_link?: any;
+	columns?: any[];
+	theme?: string;
+	handleCloseSubmenu?: () => void;
+	handleCloseMobileNav?: () => void;
 	left_column?: { submenu_modules?: any[] };
 	middle_column?: { submenu_modules?: any[] };
 	right_column?: { submenu_modules?: any[] };
 };
 
-export default function ThreeColumnSubmenu({ left_column = {}, middle_column = {}, right_column = {} }: ThreeColumnSubmenuProps) {
+export default function ThreeColumnSubmenu({ title, title_link, columns, theme = "black", handleCloseSubmenu = () => {}, handleCloseMobileNav = () => {}, left_column = {}, middle_column = {}, right_column = {} }: ThreeColumnSubmenuProps) {
 	const hasSubmenuModules = (column: any) => column?.submenu_modules?.length > 0;
 
-	const { handleCloseSubmenu, handleCloseMobileNav } = useHeaderContext();
-
-	const handleCloseAll = () => {
-		handleCloseSubmenu();
-		handleCloseMobileNav();
-	};
-
-	const commonProps = {
-		handleCloseAll,
-	};
+	const hasTitle = title || title_link?.title;
+	const TitleLink = title_link?.url ? Link : "div";
 
 	return (
-		<div className="flex flex-col gap-9 pb-9 pt-2 lg:flex-row lg:justify-between lg:gap-12 lg:pb-20 lg:pt-[3.25rem]">
-			<div className="grid flex-1 gap-9 lg:max-w-[42.5rem] lg:grid-cols-2 lg:gap-20">
-				{hasSubmenuModules(left_column) && <ModuleRenderer modules={left_column?.submenu_modules} {...commonProps} />}
-
-				{hasSubmenuModules(middle_column) && <ModuleRenderer modules={middle_column?.submenu_modules} {...commonProps} />}
-			</div>
-
-			<div className="w-full shrink-0 lg:w-1/4 lg:max-w-[18.75rem]">
-				{hasSubmenuModules(right_column) && <ModuleRenderer modules={right_column?.submenu_modules} {...commonProps} />}
-			</div>
+		<div className="grid grid-cols-12 gap-x-responsive py-10 text-sm">
+			{hasTitle && (
+				<div className="col-span-3">
+					<TitleLink
+						href={title_link?.url}
+						target={title_link?.target}
+						className={clsx("mb-4 block text-lg font-medium", title_link?.url && "hover:opacity-70")}
+						onClick={() => { handleCloseSubmenu(); handleCloseMobileNav(); }}
+					>
+						{title_link?.title || title}
+					</TitleLink>
+				</div>
+			)}
+			{columns?.map((column, index) => (
+				<div key={`col-${index}`} className={clsx("col-span-3", !hasTitle && index === 0 && "col-start-1")}>
+					<Column column={column} theme={theme} handleCloseSubmenu={handleCloseSubmenu} handleCloseMobileNav={handleCloseMobileNav} />
+				</div>
+			))}
 		</div>
 	);
 }
 
+function Column({ column, theme, handleCloseSubmenu, handleCloseMobileNav }) {
+	return (
+		<ul className="flex flex-col gap-y-1.5">
+			{column?.heading && <li className="mb-1.5 text-[0.8125rem] font-medium leading-tight text-grey-8">{column.heading}</li>}
+			{column?.items?.map((item, index) => (
+				<Item key={`item-${index}`} item={item} theme={theme} handleCloseSubmenu={handleCloseSubmenu} handleCloseMobileNav={handleCloseMobileNav} />
+			))}
+		</ul>
+	);
+}
+
+function Item({ item, theme, handleCloseSubmenu, handleCloseMobileNav }) {
+	return (
+		<li>
+			<ItemLink item={item} theme={theme} handleCloseSubmenu={handleCloseSubmenu} handleCloseMobileNav={handleCloseMobileNav}>
+				{item.icon?.url && <img src={item.icon.url} alt={item.icon.alt || ""} className="mr-2 h-4 w-4" />}
+				{item.title}
+			</ItemLink>
+		</li>
+	);
+}
+
+function ItemLink({ item, children, theme, handleCloseSubmenu, handleCloseMobileNav }) {
+	const commonClasses = clsx("flex items-center rounded px-2 py-1.5 transition-colors duration-200", {
+		"text-grey-8 hover:text-white": item.dimmed,
+	});
+
+	const themeClasses = theme === "black" ? "hover:bg-grey-13" : "hover:bg-grey-2";
+
+	const onClickActions = () => {
+		handleCloseSubmenu();
+		handleCloseMobileNav();
+	};
+
+	return item.url ? (
+		<Link href={item.url} target={item.target} className={`${commonClasses} ${themeClasses}`} onClick={onClickActions}>
+			{children}
+		</Link>
+	) : (
+		<div className={`${commonClasses} cursor-default`}>{children}</div>
+	);
+}
+
 type ModuleRendererProps = {
-	modules: WpHeaderNavSubmenuModule[];
+	modules: any[];
 	handleCloseAll: () => void;
 };
 
@@ -70,14 +118,13 @@ type ModuleProps = any & { handleCloseAll: () => void };
 
 function LinkListModule({ link_list = {}, handleCloseAll }: ModuleProps) {
 	const { subheading = "", links = [] } = link_list;
-	const { theme } = useHeaderContext();
 
 	return (
-		<div className="space-y-6 lg:space-y-5">
-			{subheading && <div className={clsx("text-13-mobHeading", theme === "black" ? "text-grey-8" : "text-black/50")}>{subheading}</div>}
+		<div className="space-y-6">
+			{subheading && <div className="text-13-mobHeading">{subheading}</div>}
 
 			{links.length > 0 && (
-				<ul className="space-y-6 lg:space-y-[1.875rem]">
+				<ul className="space-y-6">
 					{links.map(
 						({ link, icon, description = "" }) =>
 							link?.url && (
@@ -85,14 +132,14 @@ function LinkListModule({ link_list = {}, handleCloseAll }: ModuleProps) {
 									<a href={link?.url} target={link?.target} className="group flex items-start gap-x-3" onClick={handleCloseAll}>
 										{icon?.url && <img src={icon?.url} alt={icon?.alt} className="w-6" />}
 
-										<div className={clsx("block space-y-1 leading-none", theme === "black" ? "text-white" : "text-black")}>
+										<div className="block space-y-1 leading-none">
 											<div className="inline-flex gap-x-2 transition-colors duration-200 group-hover:text-teal">
 												<span className="text-13-mobHeading !leading-none" dangerouslySetInnerHTML={{ __html: link?.title }} />
 												{link?.target === "_blank" && <ExternalArrowIcon className="w-3" />}
 											</div>
 
 											{description && (
-												<div className={clsx("text-13-mobSubText lg:!leading-none", theme === "black" ? "text-grey-7" : "text-grey-9")}>{description}</div>
+												<div className="text-13-mobSubText">{description}</div>
 											)}
 										</div>
 									</a>
@@ -108,16 +155,15 @@ function LinkListModule({ link_list = {}, handleCloseAll }: ModuleProps) {
 function FeaturedResourceModule({ featured_resource, handleCloseAll }: ModuleProps) {
 	const { subheading = "", resource } = featured_resource;
 	const { resourceType } = useResourcePreviewData(resource);
-	const { theme } = useHeaderContext();
 
 	return (
 		<div className="space-y-5">
-			{subheading && <div className={clsx("text-13-mobHeading", theme === "black" ? "text-grey-8" : "text-black/50")}>{subheading}</div>}
+			{subheading && <div className="text-13-mobHeading">{subheading}</div>}
 
 			{resource?.permalink ? (
 				<a href={resource?.permalink} target={resource?.permalink_target} className="group block space-y-8" onClick={handleCloseAll}>
-					<div className="w-full lg:max-w-[16.25rem]">
-						<div className={clsx("text-13-subText transition-colors duration-200 group-hover:text-teal", theme === "black" ? "text-white" : "text-black")}>
+					<div className="w-full">
+						<div className="text-13-subText transition-colors duration-200 group-hover:text-teal">
 							{resource?.post_title}
 						</div>
 
@@ -145,7 +191,7 @@ function CardCtaModule({ card_cta, handleCloseAll }: ModuleProps) {
 		<a
 			href={link?.url}
 			target={link?.target}
-			className="group relative block aspect-[300/220] w-full overflow-hidden rounded lg:max-w-[18.75rem]"
+			className="group relative block aspect-[300/220] w-full overflow-hidden rounded"
 			onClick={handleCloseAll}
 		>
 			<img src={asset?.url} alt={asset?.alt} className="w-full object-cover transition-opacity duration-200 group-hover:opacity-80" />
@@ -157,18 +203,17 @@ function CardCtaModule({ card_cta, handleCloseAll }: ModuleProps) {
 
 function TileCtaModule({ tile_cta, handleCloseAll }: ModuleProps) {
 	const { link, asset, description = "" } = tile_cta;
-	const { theme } = useHeaderContext();
 
 	return link?.url ? (
-		<a href={link?.url} target={link?.target} className="group flex flex-col-reverse gap-y-6 lg:max-w-[21.75rem] lg:flex-col" onClick={handleCloseAll}>
-			<div className="relative block aspect-[348/220] w-full overflow-hidden rounded transition-opacity duration-200 group-hover:opacity-80">
+		<a href={link?.url} target={link?.target} className="group flex flex-col-reverse gap-y-6">
+			<div className="relative block aspect-[348/220] w-full overflow-hidden rounded">
 				<img src={asset?.url} alt={asset?.alt} className="w-full object-cover" />
 			</div>
 
-			<div className={clsx("space-y-1 leading-none max-lg:pt-2 lg:space-y-2", theme === "black" ? "text-white" : "text-black")}>
-				<div className="text-13-mobHeading !leading-none transition-colors duration-200 group-hover:text-teal">{link?.title}</div>
+			<div className="space-y-1 leading-none">
+				<div className="text-13-mobHeading">{link?.title}</div>
 
-				{description && <div className={clsx("text-13-mobSubText lg:!leading-none", theme === "black" ? "text-grey-7" : "text-grey-9")}>{description}</div>}
+				{description && <div className="text-13-mobSubText">{description}</div>}
 			</div>
 		</a>
 	) : null;

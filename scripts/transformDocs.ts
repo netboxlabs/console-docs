@@ -2,7 +2,6 @@ const { readFile, writeFile, mkdir, copyFile } = require('fs/promises');
 const glob = require('glob');
 const { exec } = require('child_process');
 const { promisify } = require('util');
-const path = require('path');
 const yaml = require('js-yaml');
 
 // Custom YAML schema to handle !ENV tags
