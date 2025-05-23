@@ -31,11 +31,18 @@ interface TransformRule {
 }
 
 const transformRules: TransformRule[] = [
-    // Convert :material-icon-name: to an <i> tag
+    // Convert :material-icon-name: and its optional attributes like { .lg .middle } to an empty string
     {
-        find: /:material-([a-zA-Z0-9_-]+):/g,
+        find: /:material-([a-zA-Z0-9_-]+):(?:\{[^}]*\})?/g,
         replace: (match: string, iconName: string): string => {
-         return '';
+         return ''; // Remove the icon and its attributes
+        }
+    },
+    // New rule for [:octicons-...
+    {
+        find: /^\s*\[:(octicons-[a-zA-Z0-9_-]+):\s*(.*?)\]/gm, // Matches [:octicons-name: Label Text] with optional leading whitespace
+        replace: (match: string, iconName: string, label: string): string => {
+            return label; // Return only the label text for now
         }
     },
     // Escape bare <> symbols.
@@ -90,6 +97,18 @@ const transformRules: TransformRule[] = [
     { find: /(?<![{\\]){(?!{)/g, replace: '\\{' },
     // Escape standalone } unless part of }} or escaped \}
     { find: /(?<![}\\])}(?!})/g, replace: '\\}' },
+    // New rule for specific emoji-like icons (e.g., :bug:, :bulb:)
+    {
+        find: /:(bug|bulb|arrow_heading_up|jigsaw|rescue_worker_helmet|heart|information_source|thumbsup|thumbsdown):/g,
+        replace: (match: string, iconName: string): string => {
+            return iconName; // Remove colons, leave the name (hoping for unicode rendering or just text)
+        }
+    },
+    // Rule for :warning:
+    {
+        find: /:warning:/g,
+        replace: '⚠️' // Replace with unicode warning emoji
+    },
 ];
 
 interface DocsDirectoryConfig {
@@ -290,6 +309,17 @@ const transformContent = async (content: string, sourceFilePath: string): Promis
     }
 
     let transformedContentWithPlaceholders = outputLines.join('\n');
+
+    // Transform the "Eager to Get Started" block into a Docusaurus note
+    const eagerBlockRegex = /<div class="grid cards" markdown>\s*-\s+__([^_]+)__\s*---\s*([\s\S]*?)\s*(.+?)\((https?:\/\/[^)]+)\)\s*<\/div>/gm;
+    transformedContentWithPlaceholders = transformedContentWithPlaceholders.replace(eagerBlockRegex, (match, title, body, linkText, linkUrl) => {
+        const cleanedTitle = title.trim();
+        const cleanedBody = body.trim();
+        const cleanedLinkText = linkText.trim();
+        const cleanedLinkUrl = linkUrl.trim();
+        // Use Docusaurus button classes for the link
+        return `:::note[${cleanedTitle}]\n\n${cleanedBody}\n\n<a href="${cleanedLinkUrl}" className="button button--primary">${cleanedLinkText}</a>\n:::`;
+    });
 
     // Hotfix to escape {} tags (applied before restoring code blocks)
     // Regex: (?<!\){([^{}]+)}(?!}) - Explanation:
