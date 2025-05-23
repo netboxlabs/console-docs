@@ -172,7 +172,7 @@ const mapNavToDocusaurus = (navItems: MkDocsNavItem[], basePathForId: string): D
     }).filter(item => item !== null) as DocusaurusSidebarItem[];
 };
 
-const transformContent = async (content: string): Promise<string> => {
+const transformContent = async (content: string, sourceFilePath: string): Promise<string> => {
     const fencedCodeBlocks: string[] = [];
     const inlineCodeBlocks: string[] = [];
     let tempContent = content;
@@ -191,7 +191,7 @@ const transformContent = async (content: string): Promise<string> => {
 
     // 1. Extract and replace fenced code blocks (from already URL-escaped content)
     // Regex captures the full match including delimiters and content
-    tempContent = tempContent.replace(/^```([a-zA-Z0-9-+]*)?\n([\s\S]*?)\n```$/gm, (match) => {
+    tempContent = tempContent.replace(/^```\s*([a-zA-Z0-9-+]*)?\s*\n([\s\S]*?)\n```$/gm, (match, lang, blockContent) => {
         const placeholder = `__FENCED_CODE_BLOCK_${fencedCodeBlocks.length}__`;
         fencedCodeBlocks.push(match); // Store the full block
         return placeholder;
@@ -292,14 +292,14 @@ const transformContent = async (content: string): Promise<string> => {
     let transformedContentWithPlaceholders = outputLines.join('\n');
 
     // Hotfix to escape {} tags (applied before restoring code blocks)
-    // Regex: (?<!\\){([^{}]+)}(?!}) - Explanation:
-    // (?<!\\) - Negative lookbehind for a literal backslash (ensuring we don't escape already escaped braces like \{)
+    // Regex: (?<!\){([^{}]+)}(?!}) - Explanation:
+    // (?<!\) - Negative lookbehind for a literal backslash (ensuring we don't escape already escaped braces like \{)
     // {       - Matches the literal opening curly brace
     // ([^{}]+) - Captures one or more characters that are NOT curly braces (this is group 1, $1)
     // }       - Matches the literal closing curly brace
     // (?!})   - Negative lookahead to ensure the closing brace is not followed by another (to avoid {{ a }} issues)
     // Replacement: \\{$1\\} - Escapes the captured group with literal backslashes
-    transformedContentWithPlaceholders = transformedContentWithPlaceholders.replace(/(?<!\\\\){([^{}]+)}(?!})/g, '\\\\{$1\\\\}');
+    transformedContentWithPlaceholders = transformedContentWithPlaceholders.replace(/(?<!\\){([^{}]+)}(?!})/g, '\\\\{$1\\\\}');
 
     // 4. Restore inline code blocks
     inlineCodeBlocks.forEach((block, index) => {
@@ -332,7 +332,7 @@ const processFile = async (sourceFilePath: string, outputBaseDir: string, source
 
         if (isMarkdown) {
             const content = await readFile(sourceFilePath, 'utf-8');
-            const transformedContent = await transformContent(content);
+            const transformedContent = await transformContent(content, sourceFilePath);
 
             await writeFile(outputFilePath, transformedContent);
         } else {
