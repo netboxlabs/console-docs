@@ -112,8 +112,9 @@ For managing multiple environments or integrating with CI/CD pipelines, avoid co
 ## Step 2: Run the Embedded Installer
 
 ```bash
-bash -s embedded-install \
-  --embedded-values ./values.yaml
+./netbox-enterprise \
+    --license ./license.yaml \
+    --embedded-values ./values.yaml
 ```
 
 ---
@@ -145,7 +146,8 @@ bash -s embedded-install \
     # For example, using a templating step or secrets manager:
     # cat ci/template.values.yaml | envsubst > values.yaml
     
-    bash -s embedded-install \
+    ./netbox-enterprise \
+      --license ./license.yaml \
       --embedded-values ./values.yaml
 ```
 
