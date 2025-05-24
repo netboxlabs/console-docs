@@ -1,3 +1,5 @@
 docs/images/.DS_Store
 .DS_Store
 venv/
+embedded-values.yaml
+values.yaml

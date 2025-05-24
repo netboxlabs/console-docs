@@ -103,7 +103,9 @@ nav:
       - Distribution Specific Requirements:
         - RHEL: "netbox-enterprise/nbe-ec-requirements-rhel.md"
       - Linux System Changes: "netbox-enterprise/nbe-ec-linux-changes.md"
-      - Installation: "netbox-enterprise/nbe-ec-installation.md"
+      - Installation:
+        - Standard Installation Guide: "netbox-enterprise/nbe-ec-installation.md"
+        - Automated Installation (for Advanced Users): "netbox-enterprise/nbe-ec-automated-installation.md"
       - Migrating: "netbox-enterprise/nbe-migrating.md"
       - Built-in Plugin Installation: "netbox-enterprise/nbe-ec-built-in-plugins.md"
       - Custom Plugin Installation: "netbox-enterprise/nbe-ec-custom-plugins.md"

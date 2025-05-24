@@ -1,0 +1,292 @@
+# values.yaml.sample for NetBox Enterprise Automated Installation
+# -----------------------------------------------------------------
+# This is a sample file. Copy this to 'values.yaml' and customize it.
+# REVIEW CAREFULLY: You MUST replace placeholders and paste your license.
+
+apiVersion: kots.io/v1beta1
+kind: ConfigValues
+metadata:
+  name: netbox # This should match the application slug used by Replicated KOTS
+spec:
+  values:
+    # --- License Configuration ---
+    # Download your NetBox Enterprise license file from the NetBox Enterprise Portal.
+    # Then, paste the ENTIRE content of that license YAML file below, under the 'value:' key.
+    licenseFile:
+      value: |-
+        # PASTE YOUR ENTIRE NETBOX ENTERPRISE LICENSE YAML HERE
+        # Example structure of what you'll paste:
+        # apiVersion: kots.io/v1beta1
+        # kind: License
+        # metadata:
+        #   name: <your-license-name>
+        # spec:
+        #   licenseID: <your-license-id>
+        #   appSlug: netbox-enterprise
+        #   customerName: <your-customer-name>
+        #   # ... and other fields from your license file
+
+    # --- General Application Settings ---
+    hostname:
+      value: "<YOUR_NETBOX_HOSTNAME>"  # e.g., netbox.yourcompany.com
+
+    # tlsBootstrapType: # Uncomment and set if needed. Options: self-signed, letsencrypt, existing-certs
+    #   value: "self-signed" 
+
+    # --- Superuser Account (for initial login) ---
+    superuser_name:
+      default: "admin" # You can change the default username
+      value: "admin"
+    superuser_email:
+      value: "<ADMIN_EMAIL@YOURCOMPANY.COM>"
+    superuser_password:
+      value: "<CHOOSE_A_STRONG_AND_UNIQUE_PASSWORD>" # For production, use a strong, unique password.
+                                                     # Some installers might prompt if this is left blank or too simple.
+    # superuser_token: # Optional: pre-seed an API token for the superuser
+    #   value: "<GENERATE_A_SECURE_API_TOKEN_IF_NEEDED>"
+
+    # --- Terms of Service Acceptance ---
+    # Check if your NetBox Enterprise version requires a specific TOS acceptance flag.
+    # Example from your embedded-values.yaml (adjust date/key if needed for your version):
+    accept_tos_2024_05_24:
+      value: ACCEPT
+
+    # --- NetBox Application Specific Configuration ---
+    # These are settings that directly configure NetBox itself.
+    # The structure and available keys depend on the NetBox Enterprise application chart.
+    # Refer to NetBox Enterprise documentation for specifics.
+    # Based on your embedded-values.yaml, some settings were under 'netbox_settings_env' or 'netbox_configuration_py'.
+    # The common way in newer charts is often a 'netboxConfigOverrides' or 'netboxSettings' block.
+    netboxConfigOverrides: # Or 'netboxSettings', check application documentation
+      ALLOWED_HOSTS:
+        - "<YOUR_NETBOX_HOSTNAME>"
+        - "localhost" # Add any other hosts/IPs that need access
+      LOGIN_REQUIRED: true
+      # Email settings for NetBox notifications (customize for your SMTP server)
+      EMAIL:
+        SERVER: "<SMTP_SERVER.YOURCOMPANY.COM>"
+        PORT: 587 # Common ports: 587 (TLS), 465 (SSL), 25 (unencrypted - not recommended)
+        USER: "<SMTP_USERNAME>"
+        PASSWORD: "<SMTP_PASSWORD>" # Use a secure way to manage this in production
+        USE_TLS: true # Or USE_SSL: true, depending on your server
+        FROM_EMAIL: "netbox@<YOUR_NETBOX_HOSTNAME>" # Email address NetBox will send from
+      # Add other NetBox settings as key-value pairs, for example:
+      # BANNER_TOP: "Welcome to Our Production NetBox Instance!"
+      # BANNER_LOGIN: "Please log in to continue."
+      # CHANGELOG_RETENTION: 90
+      # PREFER_IPV4: true
+
+    # --- Embedded Services Configuration ---
+    # Configure whether to use services embedded with the installer or external ones.
+    embedded_postgres_enabled:
+      default: "1" # "1" to use embedded, "0" for external
+      value: "1"
+    # embedded_postgres_enabled_value: # Some charts use this key instead or in addition
+    #   value: "1"
+    embedded_redis_enabled:
+      default: "1" # "1" to use embedded, "0" for external
+      value: "1"
+    # embedded_redis_password: # Only set if you want to override auto-generated password for embedded Redis
+    #   value: "<YOUR_SECURE_PASSWORD_FOR_EMBEDDED_REDIS>"
+    embedded_s3_enabled: # For embedded MinIO/S3 storage for media/attachments
+      default: "1" # "1" to use embedded, "0" for external
+      value: "1"
+    # embedded_s3_access_key: # Typically auto-generated if not provided
+    #   value: "<YOUR_ACCESS_KEY_FOR_EMBEDDED_S3>"
+    # embedded_s3_secret_key: # Typically auto-generated if not provided
+    #   value: "<YOUR_SECRET_KEY_FOR_EMBEDDED_S3>"
+    # embedded_s3_bucket_name: # Typically auto-generated if not provided
+    #   value: "netbox-enterprise-storage"
+
+    # --- Deployment Settings ---
+    replicas: # Number of NetBox application pods/instances
+      default: "1" # Default from your embedded-values.yaml was "4", value was "1"
+      value: "1"   # Adjust based on expected load. Start with 1 for testing.
+
+    # --- Resource Allocation ---
+    # Define CPU and memory requests/limits for NetBox components.
+    # Adjust these based on your environment and expected load.
+    # Using values from your embedded-values.yaml as a base.
+    resources_netbox: # For the main NetBox web/application pods
+      value: |-
+        requests:
+          cpu: "200m"
+          memory: "750Mi"
+        limits:
+          cpu: "1000m"
+          memory: "1500Mi"
+    resources_netbox_worker: # For the NetBox background worker pods
+      value: |-
+        requests:
+          cpu: "100m"
+          memory: "128Mi"
+        limits:
+          cpu: "1000m"
+          memory: "3000Mi"
+    # resources_redis: # If using embedded Redis, its resources might also be configurable
+    #   value: |
+    #     requests:
+    #       cpu: "100m"
+    #       memory: "64Mi"
+    #     limits:
+    #       cpu: "300m"
+    #       memory: "512Mi"
+    # resources_postgres: # If using embedded PostgreSQL, its resources might also be configurable
+    #   value: |
+    #     requests:
+    #       cpu: "200m"
+    #       memory: "512Mi"
+    #     limits:
+    #       cpu: "1000m"
+    #       memory: "2048Mi"
+
+    # --- External Services Configuration (if not using embedded) ---
+    # If you set any 'embedded_*_enabled.value' to "0" above,
+    # you MUST configure the corresponding external service details below.
+
+    # postgres_external_host:
+    #   value: "<YOUR_EXTERNAL_POSTGRES_HOST>"
+    # postgres_external_port:
+    #   value: "5432"
+    # postgres_external_username:
+    #   value: "<YOUR_POSTGRES_USERNAME>"
+    # postgres_external_password:
+    #   value: "<YOUR_POSTGRES_PASSWORD>"
+    # postgres_external_database: # Name of the database for NetBox
+    #   value: "netbox" 
+    # postgres_external_sslmode: # e.g., require, verify-full
+    #   value: "prefer"
+    # postgres_ca_certificate_file: # If your PG server uses a custom CA or self-signed cert
+    #   value: |
+    #     -----BEGIN CERTIFICATE-----
+    #     <PASTE_YOUR_EXTERNAL_PG_CA_CERT_CONTENT_HERE>
+    #     -----END CERTIFICATE-----
+
+    # redis_external_host:
+    #   value: "<YOUR_EXTERNAL_REDIS_HOST>"
+    # redis_external_port:
+    #   value: "6379"
+    # redis_external_password: # If your Redis requires a password
+    #   value: "<YOUR_REDIS_PASSWORD>"
+    # redis_external_ssl: # Set to "1" if your external Redis uses SSL/TLS
+    #   value: "0" 
+    # redis_external_username: # If your Redis requires a username (e.g., Redis ACLs)
+    #   value: "<YOUR_REDIS_USERNAME>"
+
+    # s3_endpoint_url: 
+    #   value: "https://<YOUR_EXTERNAL_S3_ENDPOINT_URL>" # e.g., s3.amazonaws.com or your MinIO endpoint
+    # s3_access_key_id:
+    #   value: "<YOUR_S3_ACCESS_KEY_ID>"
+    # s3_secret_access_key:
+    #   value: "<YOUR_S3_SECRET_ACCESS_KEY>"
+    # s3_bucket_name:
+    #   value: "netbox-enterprise-attachments" # Choose a unique bucket name
+    # s3_region_name: # If your S3 provider requires a region (e.g., "us-east-1" for AWS)
+    #   value: "<YOUR_S3_REGION>"
+    # s3_ca_certificate_file: # If your S3 endpoint uses a custom CA or self-signed certificate
+    #   value: |
+    #     -----BEGIN CERTIFICATE-----
+    #     <PASTE_YOUR_S3_ENDPOINT_CA_CERT_CONTENT_HERE>
+    #     -----END CERTIFICATE-----
+
+    # --- Advanced Kubernetes & Application Settings ---
+    # These settings are for more advanced configurations.
+    # Many of these are derived from the structure of your 'embedded-values.yaml'.
+    # Only modify these if you understand their impact. Defaults are often sufficient.
+
+    # show_advanced_settings: # Controls visibility of some settings in the KOTS Admin Console
+    #   default: "0"
+    #   value: "0" # Set to "1" to show more advanced options in the UI
+
+    # The following keys (DIODE_*, INGESTER_*, NETBOX_TO_DIODE_*, session_key) are typically
+    # auto-generated secrets for inter-component communication or session management.
+    # For a fresh installation, it's usually best to OMIT them from values.yaml
+    # to allow the installer/application to generate them securely.
+    # If you have a specific reason to pre-define them (e.g., disaster recovery, specific integration needs),
+    # ensure they are strong, cryptographically random values.
+    # DIODE_API_KEY:
+    #   value: "<OMIT_OR_PROVIDE_PRE_GENERATED_SECURE_KEY>"
+    # ... (similar for other secret keys like DIODE_TO_NETBOX_API_KEY, etc.)
+    # session_key:
+    #   value: "<OMIT_TO_AUTO_GENERATE_OR_PROVIDE_PRE_EXISTING_SECURE_KEY>"
+
+    # extra_envs: # Define additional environment variables for NetBox application/worker pods
+    #   value: |-
+        # Example from your embedded-values.yaml:
+    #     - name: prometheus_multiproc_dir
+    #       value: /tmp/prometheus
+    #     - name: REMOTE_AUTH_ENABLED 
+    #       value: "false" 
+    #     - name: REMOTE_AUTH_BACKEND
+    #       value: "netbox.authentication.LDAPBackend"
+    #     - name: LDAP_IGNORE_CERT_ERRORS
+    #       value: "false"
+    #     # Add other custom environment variables here:
+    #     # - name: MY_CUSTOM_SETTING
+    #     #   value: "my_custom_value"
+
+    # The following sections (extra_main_mounts, extra_volume_mounts, extra_volumes, extra_worker_mounts)
+    # allow for advanced Kubernetes volume and mount configurations.
+    # These are highly specific to your deployment needs and Kubernetes environment.
+    # The structures below are based on your embedded-values.yaml but are commented out.
+    # Uncomment and adapt if you have specific requirements for custom volumes, configmaps, or secrets.
+    # extra_main_mounts:
+    #   value: |-
+    #     - name: "media" # Example from your embedded-values
+    #       mountPath: /opt/netbox/netbox/scripts
+    #       subPath: scripts
+    #       readOnly: false
+    #     - name: "netbox-static" # Example from your embedded-values
+    #       mountPath: /opt/netbox/netbox/static
+    #       readOnly: false
+    # extra_volume_mounts:
+    #   value: |-
+    #     # Example: Mounting a custom configmap
+    #     # - name: my-custom-config
+    #     #   mountPath: /etc/my-app/custom.conf
+    #     #   subPath: custom.conf
+    #     #   readOnly: true
+    #     # ... other volume mounts based on your embedded-values.yaml structure if needed ...
+    # extra_volumes:
+    #   value: |-
+    #     # Example: Defining the custom configmap volume
+    #     # - name: my-custom-config
+    #     #   configMap:
+    #     #     name: "my-app-custom-configmap" # Ensure this ConfigMap exists in your K8s cluster
+    #     # ... other volumes based on your embedded-values.yaml structure if needed ...
+    # extra_worker_mounts: # Similar to extra_main_mounts but for worker pods
+    #   value: |-
+    #     # ...
+
+    # Other settings from your embedded-values.yaml (review if needed):
+    # ipv4_enabled:
+    #   default: "1"
+    # ipv6_enabled:
+    #   default: "1"
+    # max_body_size: # Max HTTP request body size
+    #   value: "26214400" # From your embedded-values.yaml
+    # nbe_utils_version: # Application-specific utility version
+    #   value: "4" # From your embedded-values.yaml
+
+    # The 'netbox_configuration_py' and 'netbox_settings_env' from your embedded-values.yaml
+    # are ways to inject custom Python code or environment-based settings into NetBox.
+    # If your NetBox Enterprise chart supports these directly, you can use them.
+    # Otherwise, try to map these settings to 'netboxConfigOverrides' or similar structured config.
+    # netbox_configuration_py:
+    #   default: |-
+    #     # from pathlib import Path
+    #     # import yaml
+    #     # def _load_secret(name, key):
+    #     #   path = "/run/secrets/{name}/{key}".format(name=name, key=key)
+    #     #   with open(path, "r") as f:
+    #     #     return f.read()
+    #     # # PLUGINS=["netbox_topology_views"]
+    #     # print("NetBox custom python extension loaded via values.yaml.")
+    # netbox_settings_env: # This is a way to set NetBox settings via environment variables
+    #   default: |-
+    #     # REMOTE_AUTH_ENABLED: "false"
+    #     # REMOTE_AUTH_BACKEND: "netbox.authentication.LDAPBackend"
+    #     # LDAP_IGNORE_CERT_ERRORS: "false"
+    #     # ... other settings from your embedded-values.yaml LDAP example ...
+
+status: {} # This is standard in KOTS ConfigValues, leave as is. 
