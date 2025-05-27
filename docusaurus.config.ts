@@ -48,6 +48,19 @@ const config: Config = {
 	],
 	themeConfig: {
 		image: "img/netbox-social-card.jpg",
+		algolia: {
+			appId: "XCF0TW7MCD",
+			apiKey: "a2b488046dfbbbf27aa204269640af66",
+			indexName: "netboxlabs",
+			contextualSearch: true, // Optional: Recommended for versioned/translated sites
+			// Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+			// externalUrlRegex: 'external\\.com|domain\\.com',
+			// Optional: Algolia search parameters
+			// searchParameters: {},
+			// Optional: path for search page that enabled by default (`false` to disable it)
+			// searchPagePath: 'search',
+			// insights: true, // Optional, automatically send insights if you have an Algolia account with this feature enabled
+		},
 		colorMode: {
       defaultMode: "dark",
       disableSwitch: true,
