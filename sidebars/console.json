@@ -10,6 +10,11 @@
     "items": [
       {
         "type": "doc",
+        "id": "netbox/index",
+        "label": "Introduction"
+      },
+      {
+        "type": "doc",
         "id": "console/NetBox Cloud/migrating-to-netbox-cloud",
         "label": "Migrating to NetBox Cloud"
       },
@@ -214,6 +219,11 @@
     "type": "category",
     "label": "Enterprise",
     "items": [
+      {
+        "type": "doc",
+        "id": "netbox/index",
+        "label": "Introduction"
+      },
       {
         "type": "doc",
         "id": "console/netbox-enterprise/nbe-overview",
