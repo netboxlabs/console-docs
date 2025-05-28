@@ -9,7 +9,431 @@
       "source": "/docs",
       "destination": "/docs/netbox",
       "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbs-backups",
+      "destination": "/docs/console/netbox-enterprise/nbe-backups/",
+      "permanent": true
+    },
+    {
+      "source": "/index",
+      "destination": "/docs/console/index/",
+      "permanent": true
+    },
+    {
+      "source": "/NetBox Cloud/migrating-to-netbox-cloud",
+      "destination": "/docs/console/NetBox Cloud/migrating-to-netbox-cloud/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/console-access",
+      "destination": "/docs/console/Administration Console/console-access/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/set_up_2fa",
+      "destination": "/docs/console/Administration Console/set_up_2fa/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/retrieving-nbc-credentials",
+      "destination": "/docs/console/Administration Console/retrieving-nbc-credentials/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/console-admin-accounts",
+      "destination": "/docs/console/Administration Console/console-admin-accounts/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/netbox-cloud-plugins",
+      "destination": "/docs/console/Administration Console/netbox-cloud-plugins/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/working_with_database_backups",
+      "destination": "/docs/console/Administration Console/working_with_database_backups/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/upgrading-nbc",
+      "destination": "/docs/console/Administration Console/upgrading-nbc/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/managing-hostnames",
+      "destination": "/docs/console/Administration Console/managing-hostnames/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/prefix-lists",
+      "destination": "/docs/console/Administration Console/prefix-lists/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/public-ip-addressing",
+      "destination": "/docs/console/Administration Console/public-ip-addressing/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/azure-ad-sso-setup",
+      "destination": "/docs/console/Administration Console/azure-ad-sso-setup/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/azure-group-mapping",
+      "destination": "/docs/console/Administration Console/azure-group-mapping/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/okta-sso-setup",
+      "destination": "/docs/console/Administration Console/okta-sso-setup/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/okta-group-mapping",
+      "destination": "/docs/console/Administration Console/okta-group-mapping/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/saml-sso-setup",
+      "destination": "/docs/console/Administration Console/saml-sso-setup/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/saml-group-map",
+      "destination": "/docs/console/Administration Console/saml-group-map/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/free-plan-features",
+      "destination": "/docs/console/Administration Console/free-plan-features/",
+      "permanent": true
+    },
+    {
+      "source": "/Administration Console/free-plan-new-user",
+      "destination": "/docs/console/Administration Console/free-plan-new-user/",
+      "permanent": true
+    },
+    {
+      "source": "/cloud-connectivity/do-i-need-cloud-connectivity",
+      "destination": "/docs/console/cloud-connectivity/do-i-need-cloud-connectivity/",
+      "permanent": true
+    },
+    {
+      "source": "/cloud-connectivity/which-connectivity-option",
+      "destination": "/docs/console/cloud-connectivity/which-connectivity-option/",
+      "permanent": true
+    },
+    {
+      "source": "/cloud-connectivity/internet-delivery",
+      "destination": "/docs/console/cloud-connectivity/internet-delivery/",
+      "permanent": true
+    },
+    {
+      "source": "/cloud-connectivity/aws-private-link",
+      "destination": "/docs/console/cloud-connectivity/aws-private-link/",
+      "permanent": true
+    },
+    {
+      "source": "/cloud-connectivity/ipsec-vpn-tunnels",
+      "destination": "/docs/console/cloud-connectivity/ipsec-vpn-tunnels/",
+      "permanent": true
+    },
+    {
+      "source": "/cloud-connectivity/aws-direct-connect",
+      "destination": "/docs/console/cloud-connectivity/aws-direct-connect/",
+      "permanent": true
+    },
+    {
+      "source": "/cloud-connectivity/aws-direct-connect-multi-region",
+      "destination": "/docs/console/cloud-connectivity/aws-direct-connect-multi-region/",
+      "permanent": true
+    },
+    {
+      "source": "/cloud-connectivity/cloud-connectivity-faq",
+      "destination": "/docs/console/cloud-connectivity/cloud-connectivity-faq/",
+      "permanent": true
+    },
+    {
+      "source": "/maintenance",
+      "destination": "/docs/console/maintenance/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbe-overview",
+      "destination": "/docs/console/netbox-enterprise/nbe-overview/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbe-ec-requirements",
+      "destination": "/docs/console/netbox-enterprise/nbe-ec-requirements/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbe-ec-requirements-rhel",
+      "destination": "/docs/console/netbox-enterprise/nbe-ec-requirements-rhel/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbe-ec-linux-changes",
+      "destination": "/docs/console/netbox-enterprise/nbe-ec-linux-changes/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbe-ec-installation",
+      "destination": "/docs/console/netbox-enterprise/nbe-ec-installation/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbe-migrating",
+      "destination": "/docs/console/netbox-enterprise/nbe-migrating/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbe-ec-built-in-plugins",
+      "destination": "/docs/console/netbox-enterprise/nbe-ec-built-in-plugins/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbe-ec-custom-plugins",
+      "destination": "/docs/console/netbox-enterprise/nbe-ec-custom-plugins/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbe-azure-sso",
+      "destination": "/docs/console/netbox-enterprise/nbe-azure-sso/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbe-azure-group-mapping",
+      "destination": "/docs/console/netbox-enterprise/nbe-azure-group-mapping/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbe-saml",
+      "destination": "/docs/console/netbox-enterprise/nbe-saml/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbe-saml-group-map",
+      "destination": "/docs/console/netbox-enterprise/nbe-saml-group-map/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbe-ldap",
+      "destination": "/docs/console/netbox-enterprise/nbe-ldap/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbe-tls-ingress",
+      "destination": "/docs/console/netbox-enterprise/nbe-tls-ingress/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbe-troubleshooting",
+      "destination": "/docs/console/netbox-enterprise/nbe-troubleshooting/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-enterprise/nbe-release-notes",
+      "destination": "/docs/console/netbox-enterprise/nbe-release-notes/",
+      "permanent": true
+    },
+    {
+      "source": "/discovery-assurance",
+      "destination": "/docs/console/discovery-assurance/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-discovery/quickstart-guide",
+      "destination": "/docs/console/netbox-discovery/quickstart-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-discovery/",
+      "destination": "/docs/console/netbox-discovery/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-discovery/agent/",
+      "destination": "/docs/console/netbox-discovery/agent/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-discovery/agent/get-started",
+      "destination": "/docs/console/netbox-discovery/agent/get-started/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-discovery/agent/configuration-file",
+      "destination": "/docs/console/netbox-discovery/agent/configuration-file/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-discovery/agent/network_discovery",
+      "destination": "/docs/console/netbox-discovery/agent/network_discovery/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-discovery/agent/device_discovery",
+      "destination": "/docs/console/netbox-discovery/agent/device_discovery/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-assurance/",
+      "destination": "/docs/console/netbox-assurance/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-integrations/netbox-ansible-collection",
+      "destination": "/docs/console/netbox-integrations/netbox-ansible-collection/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-integrations/pyats",
+      "destination": "/docs/console/netbox-integrations/pyats/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-integrations/servicenow/",
+      "destination": "/docs/console/netbox-integrations/servicenow/",
+      "permanent": true
+    },
+    {
+      "source": "/sdks/pynetbox",
+      "destination": "/docs/console/sdks/pynetbox/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/branching/",
+      "destination": "/docs/console/netbox-extensions/branching/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/branching/configuration",
+      "destination": "/docs/console/netbox-extensions/branching/configuration/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/branching/using-branches/creating-a-branch",
+      "destination": "/docs/console/netbox-extensions/branching/using-branches/creating-a-branch/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/branching/using-branches/syncing-merging",
+      "destination": "/docs/console/netbox-extensions/branching/using-branches/syncing-merging/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/branching/using-branches/reverting-a-branch",
+      "destination": "/docs/console/netbox-extensions/branching/using-branches/reverting-a-branch/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/branching/using-branches/api",
+      "destination": "/docs/console/netbox-extensions/branching/using-branches/api/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/branching/models/branch",
+      "destination": "/docs/console/netbox-extensions/branching/models/branch/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/branching/models/branchevent",
+      "destination": "/docs/console/netbox-extensions/branching/models/branchevent/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/branching/models/changediff",
+      "destination": "/docs/console/netbox-extensions/branching/models/changediff/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/branching/models/objectchange",
+      "destination": "/docs/console/netbox-extensions/branching/models/objectchange/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/branching/changelog",
+      "destination": "/docs/console/netbox-extensions/branching/changelog/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/changes/",
+      "destination": "/docs/console/netbox-extensions/changes/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/changes/configuration",
+      "destination": "/docs/console/netbox-extensions/changes/configuration/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/changes/models/changerequest",
+      "destination": "/docs/console/netbox-extensions/changes/models/changerequest/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/changes/models/comment",
+      "destination": "/docs/console/netbox-extensions/changes/models/comment/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/changes/models/commentreply",
+      "destination": "/docs/console/netbox-extensions/changes/models/commentreply/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/changes/models/policy",
+      "destination": "/docs/console/netbox-extensions/changes/models/policy/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/changes/models/policyrule",
+      "destination": "/docs/console/netbox-extensions/changes/models/policyrule/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/changes/models/review",
+      "destination": "/docs/console/netbox-extensions/changes/models/review/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/changes/changelog",
+      "destination": "/docs/console/netbox-extensions/changes/changelog/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/diode/",
+      "destination": "/docs/console/netbox-extensions/diode/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/diode/diode-get-started",
+      "destination": "/docs/console/netbox-extensions/diode/diode-get-started/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/diode/diode-plugin",
+      "destination": "/docs/console/netbox-extensions/diode/diode-plugin/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/diode/diode-server",
+      "destination": "/docs/console/netbox-extensions/diode/diode-server/",
+      "permanent": true
+    },
+    {
+      "source": "/netbox-extensions/diode/diode-client",
+      "destination": "/docs/console/netbox-extensions/diode/diode-client/",
+      "permanent": true
+    },
+    {
+      "source": "/product_feature_lifecycle",
+      "destination": "/docs/console/product_feature_lifecycle/",
+      "permanent": true
     }
   ]
-
 }
