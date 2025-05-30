@@ -9,6 +9,7 @@ const config: Config = {
 	url: "https://netboxlabs.com",
 	baseUrl: process.env.VERCEL_ENV === "production" ? "/docs/" : "/",
 	trailingSlash: true,
+	staticDirectories: ['static', 'docs/console/images'],
 	organizationName: "netbox",
 	projectName: "netbox-docs",
 
