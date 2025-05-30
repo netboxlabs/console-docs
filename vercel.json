@@ -454,6 +454,11 @@
       "source": "/docs/netbox/netbox_logo_dark.svg",
       "destination": "https://raw.githubusercontent.com/netbox-community/netbox/main/docs/netbox_logo_dark.svg",
       "permanent": true
+    },
+    {
+      "source": "/docs/netbox/en/stable",
+      "destination": "/docs/netbox",
+      "permanent": true
     }
   ]
 }
