@@ -191,10 +191,33 @@ const mapNavToDocusaurus = (navItems: MkDocsNavItem[], basePathForId: string): D
     }).filter(item => item !== null) as DocusaurusSidebarItem[];
 };
 
-const transformContent = async (content: string, sourceFilePath: string): Promise<string> => {
+const transformContent = async (content: string, sourceFilePath: string, outputBaseDir: string): Promise<string> => {
     const fencedCodeBlocks: string[] = [];
     const inlineCodeBlocks: string[] = [];
     let tempContent = content;
+
+    // Transformation for console docs image paths
+    if (outputBaseDir === 'console') {
+        // Calculate depth from docs/console/sub/path/file.md to docs/console/images/
+        // Example: docs/console/netbox-integrations/servicenow/index.md
+        // Relative path to docs/console/ is ../../ (2 levels up)
+        // So, image path should be ../../images/integrations/service-now/actual-image.png
+        const relativePathPrefix = sourceFilePath
+            .replace(/^external-repos\/console-docs\/docs\//, '') // Remove base path
+            .split('/')
+            .slice(0, -1) // Remove filename
+            .map(() => '..')
+            .join('/');
+
+        // Regex to find <img src="/images/...">
+        const imgTagRegex = /<img\s+([^>]*?)src="\/images\/([^"]+)"([^>]*?)>/g;
+        tempContent = tempContent.replace(imgTagRegex, (match, beforeSrc, imgPath, afterSrc) => {
+            // imgPath will be like "integrations/service-now/service-now-object-map.png"
+            // Prepend a slash to make it root-relative, served by staticDirectories config.
+            const newSrc = `/${imgPath}`;
+            return `<img ${beforeSrc}src="${newSrc}"${afterSrc}>`;
+        });
+    }
 
     // 0. Apply URL escaping rule FIRST to the entire content
     if (urlRule) {
@@ -348,22 +371,15 @@ const transformContent = async (content: string, sourceFilePath: string): Promis
 };
 
 const processFile = async (sourceFilePath: string, outputBaseDir: string, sourceBaseDir: string): Promise<void> => {
-    // Determine the relative path from the source base directory
-    const relativeFilePath = pathModule.relative(sourceBaseDir, sourceFilePath);
-    // Construct the full output path
-    const outputFilePath = pathModule.join(outputBaseDir, relativeFilePath);
+    const relativePath = pathModule.relative(sourceBaseDir, sourceFilePath);
+    const outputFilePath = pathModule.join('docs', outputBaseDir, relativePath);
 
     try {
-        // Ensure the output directory exists
         await mkdir(pathModule.dirname(outputFilePath), { recursive: true });
 
-        // Check if the file is markdown
-        const isMarkdown = /\.(md|mdx)$/i.test(sourceFilePath);
-
-        if (isMarkdown) {
+        if (sourceFilePath.endsWith('.md')) {
             const content = await readFile(sourceFilePath, 'utf-8');
-            const transformedContent = await transformContent(content, sourceFilePath);
-
+            const transformedContent = await transformContent(content, sourceFilePath, outputBaseDir);
             await writeFile(outputFilePath, transformedContent);
         } else {
             // For non-markdown files, just copy them
@@ -392,7 +408,7 @@ const transformDocs = async (): Promise<void> => {
             console.log(`Found ${files.length} files in ${source}. Transforming and copying to ${outputBaseDir}...`);
 
             // Process each file found
-            await Promise.all(files.map(file => processFile(file, outputBaseDir, source)));
+            await Promise.all(files.map(file => processFile(file, output, source)));
 
             // After processing files, generate the sidebar
             console.log(`Generating sidebar for ${output}...`);
