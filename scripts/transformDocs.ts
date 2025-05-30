@@ -1,5 +1,5 @@
 const { readFile, writeFile, mkdir, copyFile } = require('fs/promises');
-const glob = require('glob');
+const { glob } = require('glob');
 const { exec } = require('child_process');
 const { promisify } = require('util');
 const pathModule = require('path');
@@ -382,13 +382,8 @@ const transformDocs = async (): Promise<void> => {
         const outputBaseDir = pathModule.join('docs', output); // Define output path within project 'docs' folder
 
         try {
-            const files = await new Promise<string[]>((resolve, reject) => {
-                // Update glob pattern to find all files, not just markdown
-                glob(`${source}/**/*`, { nodir: true }, (err, matches) => {
-                    if (err) reject(err);
-                    else resolve(matches);
-                });
-            });
+            // Use the modern glob API which returns a Promise
+            const files = await glob(`${source}/**/*`, { nodir: true });
 
             if (!files || files.length === 0) {
                 console.warn(`No files found in ${source}`);

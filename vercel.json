@@ -434,6 +434,31 @@
       "source": "/product_feature_lifecycle",
       "destination": "/docs/console/product_feature_lifecycle/",
       "permanent": true
+    },
+    {
+      "source": "/docs/netbox/media/screenshots/home-light.png",
+      "destination": "https://raw.githubusercontent.com/netbox-community/netbox/0c6726d40f7ac0648bea42a83cd28a8025280c38/docs/media/screenshots/home-light.png",
+      "permanent": true
+    },
+    {
+      "source": "/docs/netbox/media/screenshots/home-dark.png",
+      "destination": "https://raw.githubusercontent.com/netbox-community/netbox/main/docs/media/screenshots/home-dark.png",
+      "permanent": true
+    },
+    {
+      "source": "/docs/netbox/netbox_logo_light.svg",
+      "destination": "https://raw.githubusercontent.com/netbox-community/netbox/main/docs/netbox_logo_light.svg",
+      "permanent": true
+    },
+    {
+      "source": "/docs/netbox/netbox_logo_dark.svg",
+      "destination": "https://raw.githubusercontent.com/netbox-community/netbox/main/docs/netbox_logo_dark.svg",
+      "permanent": true
+    },
+    {
+      "source": "/docs/netbox/en/stable",
+      "destination": "/docs/netbox",
+      "permanent": true
     }
   ]
 }
