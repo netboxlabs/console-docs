@@ -687,11 +687,10 @@ def process_file(file_path: str) -> bool:
 
 def main():
     """Main function to process all markdown files."""
-    # Find all markdown files in the docs directories
+    # Find all markdown files in the docs directories (not external-repos)
     doc_patterns = [
         'docs/netbox/**/*.md',
         'docs/console/**/*.md',
-        'external-repos/netbox/docs/**/*.md',  # Add external NetBox docs
     ]
     
     total_files = 0
