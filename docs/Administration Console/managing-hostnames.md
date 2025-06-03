@@ -1,4 +1,4 @@
-# Managing NetBox Cloud Hostnames
+# NetBox Cloud Hostnames
 
 1. From within the [NetBox Labs Console](https://console.netboxlabs.com) click on **Settings** and then **Hostnames Manager** in the left-hand main menu to manage the settings for your Organization: 
 
@@ -9,7 +9,7 @@
     ![netbox labs console](../images/console/hostnames_view.png)
 
 
-### Hostname Categories: 
+## Hostname Categories: 
 
 Hostname categories are defined as follows: 
 
@@ -19,10 +19,10 @@ Hostname categories are defined as follows:
 | `platform custom` | A custom hostname on the NetBox Cloud platform (e.g., `abcwidgets.cloud.netboxapp.com`) - available for all paid plans. |   
 | `org custom` | A custom hostname using your organization's own domain (e.g., `netbox-prod.abcwidgets.com`) - available for Professional and Enterprise plans. |  
 
-### Custom Hostnames 
+# Custom Hostnames
 
-#### Platform Custom Hostnames
+## Platform Custom Hostnames
 Platform Custom Hostnames (e.g., `yourcompany.cloud.netboxapp.com`) are available for all NetBox Cloud paid plans and are typically set up automatically when you subscribe to a paid plan.
 
-#### Organization Custom Hostnames 
+## Organization Custom Hostnames 
 Organization Custom Hostnames allow you to use your own domain name (e.g., `netbox.yourcompany.com`) and are available for NetBox Cloud **Professional** and **Enterprise** plans. If you would like to set up an organization custom hostname, please raise a support ticket by emailing the [NetBox Labs Support Team](mailto:support@netboxlabs.com). 
