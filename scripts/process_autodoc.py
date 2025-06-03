@@ -342,7 +342,8 @@ def extract_class_from_file(file_path: str, class_name: str) -> Optional[Dict[st
                     'description': '',
                     'methods': [],
                     'bases': [],
-                    'attributes': []
+                    'attributes': [],
+                    'nested_classes': []
                 }
                 
                 # Get class docstring
@@ -376,7 +377,7 @@ def extract_class_from_file(file_path: str, class_name: str) -> Optional[Dict[st
                     except:
                         continue
                 
-                # Extract methods
+                # Extract methods and nested classes
                 for item in node.body:
                     if isinstance(item, ast.FunctionDef):
                         # Skip private methods except special ones
@@ -390,6 +391,42 @@ def extract_class_from_file(file_path: str, class_name: str) -> Optional[Dict[st
                         method_info = extract_method_from_ast(item)
                         # Include all public methods, not just those with descriptions
                         class_info['methods'].append(method_info)
+                    elif isinstance(item, ast.ClassDef):
+                        # Extract nested classes
+                        nested_class_info = {
+                            'name': item.name,
+                            'description': '',
+                            'bases': [],
+                            'methods': []
+                        }
+                        
+                        # Get nested class docstring
+                        if (item.body and 
+                            isinstance(item.body[0], ast.Expr) and 
+                            isinstance(item.body[0].value, ast.Constant) and 
+                            isinstance(item.body[0].value.value, str)):
+                            
+                            nested_class_info['description'] = item.body[0].value.value.strip()
+                        
+                        # Get nested class bases
+                        for base in item.bases:
+                            try:
+                                if isinstance(base, ast.Name):
+                                    nested_class_info['bases'].append(base.id)
+                                else:
+                                    base_name = ast.unparse(base)
+                                    nested_class_info['bases'].append(base_name.split('.')[-1])
+                            except:
+                                continue
+                        
+                        # Extract methods from nested class
+                        for nested_item in item.body:
+                            if isinstance(nested_item, ast.FunctionDef):
+                                if not nested_item.name.startswith('_') or nested_item.name in ['__str__', '__init__']:
+                                    method_info = extract_method_from_ast(nested_item)
+                                    nested_class_info['methods'].append(method_info)
+                        
+                        class_info['nested_classes'].append(nested_class_info)
                 
                 return class_info
         
@@ -723,6 +760,34 @@ def generate_documentation(module_info: Dict[str, str]) -> str:
                     # Regular method documentation
                     method_doc = generate_method_documentation(method, indent)
                     doc_parts.append(method_doc)
+        
+        # Add nested classes documentation immediately after methods but still within the main class section
+        if class_info.get('nested_classes'):
+            for nested_class in class_info['nested_classes']:
+                # Use #### (H4) for nested classes to nest them under the main ### (H3) class
+                doc_parts.append(f"{indent}#### {nested_class['name']}")
+                doc_parts.append("")
+                
+                # Bases for nested class
+                if nested_class['bases']:
+                    doc_parts.append(f"{indent}**Bases:** {', '.join(nested_class['bases'])}")
+                    doc_parts.append("")
+                
+                # Description for nested class
+                if nested_class['description']:
+                    doc_parts.append(f"{indent}{escape_mdx_content(nested_class['description'])}")
+                else:
+                    doc_parts.append(f"{indent}The {nested_class['name'].lower()} class.")
+                doc_parts.append("")
+                
+                # Methods for nested class - use ##### (H5) to nest under #### nested class
+                for method in nested_class.get('methods', []):
+                    if method['description'] or method['parameters']:
+                        # Generate method documentation with increased indent for nested class methods
+                        nested_method_doc = generate_method_documentation(method, indent)
+                        # Change #### to ##### for nested class methods
+                        nested_method_doc = nested_method_doc.replace(f"{indent}#### ", f"{indent}##### ")
+                        doc_parts.append(nested_method_doc)
         
         return '\n'.join(doc_parts)
 
