@@ -530,8 +530,6 @@ Serial: Not Available
 
 ### Community Resources
 - **Blog**: [How to Generate Device Configurations with NetBox](https://netboxlabs.com/blog/how-to-generate-device-configurations-with-netbox/)
-- **HCD**: [Juniper + NetBox Configuration Generation](https://github.com/jeremyschulman/netbox-hcd-juniper) 
-- **JPMens**: [Configuration Contexts Deep Dive](https://jpmens.net/2019/10/16/netbox-configuration-contexts/)
 
 ### GitHub Discussions & Community
 - [Template Best Practices Discussion #17372](https://github.com/netbox-community/netbox/discussions/17372)
