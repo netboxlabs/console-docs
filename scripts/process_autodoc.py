@@ -288,6 +288,14 @@ def extract_method_from_ast(method_node: ast.FunctionDef) -> Dict[str, str]:
             param_str += f"={param['default']}"
         param_strs.append(param_str)
     
+    # Add *args if present
+    if method_node.args.vararg:
+        param_strs.append(f"*{method_node.args.vararg.arg}")
+    
+    # Add **kwargs if present
+    if method_node.args.kwarg:
+        param_strs.append(f"**{method_node.args.kwarg.arg}")
+    
     method_info['signature'] = f"({', '.join(param_strs)})"
     
     return method_info
@@ -576,8 +584,8 @@ def generate_documentation(module_info: Dict[str, str]) -> str:
         # Generate documentation sections
         doc_parts = []
         
-        # Class header
-        doc_parts.append(f"{indent}## {item_name}")
+        # Class header - use ### to nest under main sections like "Columns"
+        doc_parts.append(f"{indent}### {item_name}")
         doc_parts.append("")
         
         # Bases (if available)
@@ -629,7 +637,8 @@ def generate_documentation(module_info: Dict[str, str]) -> str:
             
             # Generate simple __init__ signature if it has meaningful parameters
             if init_method:
-                doc_parts.append(f"{indent}**__init__{init_method['signature']}**")
+                # Escape the double underscores to prevent markdown emphasis
+                doc_parts.append(f"{indent}#### \\_\\_init\\_\\_{init_method['signature']}")
                 doc_parts.append("")
                 
                 # Parameters table for __init__
@@ -671,7 +680,7 @@ def generate_fallback_documentation(module_info: Dict[str, str]) -> str:
     indent = module_info['indent']
     
     doc_parts = []
-    doc_parts.append(f"{indent}## {class_name}")
+    doc_parts.append(f"{indent}### {class_name}")
     doc_parts.append("")
     doc_parts.append(f"{indent}This class provides specific functionality for NetBox plugin development. Refer to the NetBox source code for detailed implementation.")
     doc_parts.append("")
