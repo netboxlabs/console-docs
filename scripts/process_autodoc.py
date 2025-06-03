@@ -54,17 +54,22 @@ def escape_mdx_content(text: str) -> str:
     if not text:
         return text
     
-    # Escape angle brackets that might be interpreted as HTML tags
-    # Specifically target Django URL patterns like <int:pk>
-    import re
+    # Only replace the exact problematic strings that cause MDX compilation errors
     
-    # Replace angle brackets in URL patterns
-    text = re.sub(r'<(\w+:\w+)>', r'&lt;\1&gt;', text)
-    # Also handle standalone angle brackets
-    text = text.replace('<', '&lt;').replace('>', '&gt;')
+    # Replace specific template filter examples that cause acorn parsing errors
+    text = text.replace('{{ data_dict|json }}', '`{{ data_dict|json }}`')
+    text = text.replace('{{ md_source_text|markdown }}', '`{{ md_source_text|markdown }}`')
     
-    # Escape Django template syntax {{ }} to prevent MDX from interpreting as JS expressions
-    text = text.replace('{{', '\\{\\{').replace('}}', '\\}\\}')
+    # Replace the specific Django URL pattern that causes JSX parsing issues
+    text = text.replace('<int:pk>', '&lt;int:pk&gt;')
+    
+    # Replace specific kwargs patterns that cause acorn parsing errors
+    text = text.replace("{'model': Site}", "\\{'model': Site\\}")
+    text = text.replace("kwargs={'model': Site}", "kwargs=\\{'model': Site\\}")
+    
+    # Replace any other Django template syntax that might cause issues
+    # Look for {{ variable|filter }} patterns
+    text = re.sub(r'\{\{\s*[^}]+\|[^}]+\s*\}\}', lambda m: f'`{m.group(0)}`', text)
     
     return text
 
@@ -667,12 +672,13 @@ def process_file(file_path: str) -> bool:
                         i += 1
                     continue
             
-            # Add non-autodoc lines as-is
+            # Add non-autodoc lines as-is (no comprehensive escaping)
             processed_lines.append(line)
             i += 1
         
-        # Write back to file if content changed
+        # Apply targeted escaping only to specific known problematic content
         new_content = '\n'.join(processed_lines)
+        new_content = escape_mdx_content(new_content)
         
         if new_content != original_content:
             with open(file_path, 'w', encoding='utf-8') as f:
