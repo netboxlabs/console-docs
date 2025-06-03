@@ -392,6 +392,10 @@ def extract_class_from_file(file_path: str, class_name: str) -> Optional[Dict[st
                         # Include all public methods, not just those with descriptions
                         class_info['methods'].append(method_info)
                     elif isinstance(item, ast.ClassDef):
+                        # Skip Django Model Meta classes - they are internal configuration
+                        if item.name == 'Meta':
+                            continue
+                            
                         # Extract nested classes
                         nested_class_info = {
                             'name': item.name,
@@ -667,6 +671,34 @@ def generate_documentation(module_info: Dict[str, str]) -> str:
             
             doc_parts.append("")
         
+        # Add nested classes documentation BEFORE methods
+        if class_info.get('nested_classes'):
+            for nested_class in class_info['nested_classes']:
+                # Use #### (H4) for nested classes to nest them under the main ### (H3) class
+                doc_parts.append(f"{indent}#### {nested_class['name']}")
+                doc_parts.append("")
+                
+                # Bases for nested class
+                if nested_class['bases']:
+                    doc_parts.append(f"{indent}**Bases:** {', '.join(nested_class['bases'])}")
+                    doc_parts.append("")
+                
+                # Description for nested class
+                if nested_class['description']:
+                    doc_parts.append(f"{indent}{escape_mdx_content(nested_class['description'])}")
+                else:
+                    doc_parts.append(f"{indent}The {nested_class['name'].lower()} class.")
+                doc_parts.append("")
+                
+                # Methods for nested class - use ##### (H5) to nest under #### nested class
+                for method in nested_class.get('methods', []):
+                    if method['description'] or method['parameters']:
+                        # Generate method documentation with increased indent for nested class methods
+                        nested_method_doc = generate_method_documentation(method, indent)
+                        # Change #### to ##### for nested class methods
+                        nested_method_doc = nested_method_doc.replace(f"{indent}#### ", f"{indent}##### ")
+                        doc_parts.append(nested_method_doc)
+        
         # Methods (directly without "Methods" header)
         if class_info['methods']:
             # For model feature mixins, include all meaningful public methods
@@ -760,34 +792,6 @@ def generate_documentation(module_info: Dict[str, str]) -> str:
                     # Regular method documentation
                     method_doc = generate_method_documentation(method, indent)
                     doc_parts.append(method_doc)
-        
-        # Add nested classes documentation immediately after methods but still within the main class section
-        if class_info.get('nested_classes'):
-            for nested_class in class_info['nested_classes']:
-                # Use #### (H4) for nested classes to nest them under the main ### (H3) class
-                doc_parts.append(f"{indent}#### {nested_class['name']}")
-                doc_parts.append("")
-                
-                # Bases for nested class
-                if nested_class['bases']:
-                    doc_parts.append(f"{indent}**Bases:** {', '.join(nested_class['bases'])}")
-                    doc_parts.append("")
-                
-                # Description for nested class
-                if nested_class['description']:
-                    doc_parts.append(f"{indent}{escape_mdx_content(nested_class['description'])}")
-                else:
-                    doc_parts.append(f"{indent}The {nested_class['name'].lower()} class.")
-                doc_parts.append("")
-                
-                # Methods for nested class - use ##### (H5) to nest under #### nested class
-                for method in nested_class.get('methods', []):
-                    if method['description'] or method['parameters']:
-                        # Generate method documentation with increased indent for nested class methods
-                        nested_method_doc = generate_method_documentation(method, indent)
-                        # Change #### to ##### for nested class methods
-                        nested_method_doc = nested_method_doc.replace(f"{indent}#### ", f"{indent}##### ")
-                        doc_parts.append(nested_method_doc)
         
         return '\n'.join(doc_parts)
 
