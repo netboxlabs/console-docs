@@ -67,6 +67,13 @@ def escape_mdx_content(text: str) -> str:
     text = text.replace("{'model': Site}", "\\{'model': Site\\}")
     text = text.replace("kwargs={'model': Site}", "kwargs=\\{'model': Site\\}")
     
+    # Fix the specific Site model reference that causes "Site is not defined" JavaScript error
+    text = text.replace("kwargs=\\{'model': Site\\}", "kwargs=\\{'model': 'Site'\\}")
+    
+    # Fix template string patterns that cause "app is not defined" JavaScript errors
+    text = text.replace('"{app}/{model}.html"', '"`{app}/{model}.html`"')
+    text = text.replace("'{app}/{model}.html'", "'{app}/{model}.html'")
+    
     # Replace any other Django template syntax that might cause issues
     # Look for {{ variable|filter }} patterns
     text = re.sub(r'\{\{\s*[^}]+\|[^}]+\s*\}\}', lambda m: f'`{m.group(0)}`', text)
@@ -618,58 +625,97 @@ def generate_documentation(module_info: Dict[str, str]) -> str:
         
         # Methods (directly without "Methods" header)
         if class_info['methods']:
-            # Only include __init__ method if it has meaningful parameters
-            init_method = None
-            for method in class_info['methods']:
-                if method['name'] == '__init__':
-                    # Check if __init__ has meaningful parameters (beyond self)
-                    meaningful_params = []
-                    for param in method['parameters']:
-                        if (param['description'] and 
-                            param['description'] != 'No description available' and 
-                            param['description'].strip()):
-                            meaningful_params.append(param)
-                    
-                    # Only include __init__ if it has meaningful parameters
-                    if meaningful_params:
-                        init_method = method
-                    break
+            # For model feature mixins, include all meaningful public methods
+            # For table columns, only include __init__ method if it has meaningful parameters
             
-            # Generate simple __init__ signature if it has meaningful parameters
-            if init_method:
-                # Escape the double underscores to prevent markdown emphasis
-                doc_parts.append(f"{indent}#### \\_\\_init\\_\\_{init_method['signature']}")
-                doc_parts.append("")
+            methods_to_show = []
+            
+            # Check if this is a table column class (from netbox.tables module)
+            is_table_column = module_path == 'netbox.tables'
+            
+            if is_table_column:
+                # For table columns, only include __init__ method if it has meaningful parameters
+                init_method = None
+                for method in class_info['methods']:
+                    if method['name'] == '__init__':
+                        # Check if __init__ has meaningful parameters (beyond self)
+                        meaningful_params = []
+                        for param in method['parameters']:
+                            if (param['description'] and 
+                                param['description'] != 'No description available' and 
+                                param['description'].strip()):
+                                meaningful_params.append(param)
+                        
+                        # Only include __init__ if it has meaningful parameters
+                        if meaningful_params:
+                            init_method = method
+                        break
                 
-                # Parameters table for __init__
-                if init_method['parameters']:
-                    meaningful_params = []
-                    for param in init_method['parameters']:
-                        if (param['description'] and 
-                            param['description'] != 'No description available' and 
-                            param['description'].strip()):
-                            meaningful_params.append(param)
+                if init_method:
+                    methods_to_show.append(('init', init_method))
+            else:
+                # For model feature mixins and other classes, include all meaningful public methods
+                for method in class_info['methods']:
+                    # Skip private methods except special ones
+                    if method['name'].startswith('_') and method['name'] not in ['__str__', '__init__']:
+                        continue
                     
-                    if meaningful_params:
-                        doc_parts.append(f"{indent}**Parameters:**")
-                        doc_parts.append("")
-                        doc_parts.append(f"{indent}| Name | Type | Description | Default |")
-                        doc_parts.append(f"{indent}| --- | --- | --- | --- |")
+                    # Skip certain internal/permission methods that shouldn't be documented
+                    if method['name'] in ['get_required_permission', 'dispatch', 'clean', 'save', 'delete']:
+                        continue
+                    
+                    # Include methods with descriptions or meaningful parameters
+                    if (method['description'] and 
+                        method['description'].strip() and 
+                        method['description'] != 'No description available'):
+                        methods_to_show.append(('method', method))
+                    elif method['parameters']:
+                        # Include methods with meaningful parameters even if no description
+                        meaningful_params = [p for p in method['parameters'] 
+                                           if p['description'] and p['description'] != 'No description available']
+                        if meaningful_params:
+                            methods_to_show.append(('method', method))
+            
+            # Generate documentation for selected methods
+            for method_type, method in methods_to_show:
+                if method_type == 'init':
+                    # Escape the double underscores to prevent markdown emphasis
+                    doc_parts.append(f"{indent}#### \\_\\_init\\_\\_{method['signature']}")
+                    doc_parts.append("")
+                    
+                    # Parameters table for __init__
+                    if method['parameters']:
+                        meaningful_params = []
+                        for param in method['parameters']:
+                            if (param['description'] and 
+                                param['description'] != 'No description available' and 
+                                param['description'].strip()):
+                                meaningful_params.append(param)
                         
-                        for param in meaningful_params:
-                            name = param['name']
-                            param_type = param['type'] if param['type'] != 'Any' else ''
-                            description = escape_mdx_content(param['description'])
+                        if meaningful_params:
+                            doc_parts.append(f"{indent}**Parameters:**")
+                            doc_parts.append("")
+                            doc_parts.append(f"{indent}| Name | Type | Description | Default |")
+                            doc_parts.append(f"{indent}| --- | --- | --- | --- |")
                             
-                            # Handle default values
-                            if param['default'] and param['default'] not in ['-', 'None']:
-                                default = param['default']
-                            else:
-                                default = 'required'
+                            for param in meaningful_params:
+                                name = param['name']
+                                param_type = param['type'] if param['type'] != 'Any' else ''
+                                description = escape_mdx_content(param['description'])
+                                
+                                # Handle default values
+                                if param['default'] and param['default'] not in ['-', 'None']:
+                                    default = param['default']
+                                else:
+                                    default = 'required'
+                                
+                                doc_parts.append(f"{indent}| {name} | {param_type} | {description} | {default} |")
                             
-                            doc_parts.append(f"{indent}| {name} | {param_type} | {description} | {default} |")
-                        
-                        doc_parts.append("")
+                            doc_parts.append("")
+                else:
+                    # Regular method documentation
+                    method_doc = generate_method_documentation(method, indent)
+                    doc_parts.append(method_doc)
         
         return '\n'.join(doc_parts)
 
