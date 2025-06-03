@@ -120,7 +120,7 @@ kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
   -c database \
   -- \
-    pg_dumpall $EXCLUDE_DATABASES > netbox.pgsql
+    pg_dumpall --no-role-passwords --no-privileges --no-owner $EXCLUDE_DATABASES > netbox.pgsql
 ```
 
 This will create a `netbox.pgsql` file in your local directory.
