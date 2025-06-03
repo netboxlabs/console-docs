@@ -45,6 +45,162 @@ const transformRules: TransformRule[] = [
             return label; // Return only the label text for now
         }
     },
+    // Transform mkdocstrings autodoc syntax "::: module.path" to better Docusaurus format
+    {
+        find: /^(\s*)::: (netbox\.[a-zA-Z0-9_.]+)(?:\n((?:(?:\1\s+.*|\s*)\n)*?))?(?=\n(?:\1\S|\s*\n|$))/gm,
+        replace: (match: string, indent: string, modulePath: string, configLines?: string): string => {
+            // Extract the class/function name from the module path
+            const pathParts = modulePath.split('.');
+            const className = pathParts[pathParts.length - 1];
+            
+            // Define specific descriptions for NetBox feature mixins
+            const mixinDescriptions: { [key: string]: string } = {
+                'BookmarksMixin': 'Enables support for user bookmarks. Users can bookmark instances of this model for quick access.',
+                'ChangeLoggingMixin': 'Automatically records changes to model instances in the change log. All create, update, and delete operations are tracked.',
+                'CloningMixin': 'Provides the `clone()` method to prepare a copy of an instance with a new primary key for duplication.',
+                'ContactsMixin': 'Enables association of Contact objects with model instances. Introduced in NetBox v4.3.',
+                'CustomLinksMixin': 'Allows the assignment of custom links that appear in the object\'s view. Links can be conditionally displayed based on object attributes.',
+                'CustomFieldsMixin': 'Enables the addition of user-defined custom fields to the model. Custom fields are dynamically added to forms and API serializers.',
+                'CustomValidationMixin': 'Supports the enforcement of custom validation rules beyond Django\'s built-in validation.',
+                'EventRulesMixin': 'Enables event rules that can send webhooks or run custom scripts automatically in response to object changes.',
+                'ExportTemplatesMixin': 'Allows users to create custom export templates for rendering object data in various formats.',
+                'JobsMixin': 'Enables background jobs to be scheduled for model instances. Jobs are executed asynchronously by background workers.',
+                'JournalingMixin': 'Supports persistent historical commentary through journal entries. Users can add notes and comments to object instances.',
+                'TagsMixin': 'Enables tagging of model instances with user-defined tags for organization and filtering.',
+                // View classes
+                'BaseObjectView': 'Base class for single-object views. Provides common functionality for displaying individual model instances.',
+                'ObjectView': 'Generic view for displaying a single object instance with full detail information.',
+                'ObjectEditView': 'Generic view for creating and updating object instances through a web form interface.',
+                'ObjectDeleteView': 'Generic view for confirming and processing object deletion.',
+                'ObjectChildrenView': 'Generic view for displaying child objects related to a parent instance.',
+                'BaseMultiObjectView': 'Base class for views that handle multiple objects simultaneously.',
+                'ObjectListView': 'Generic view for displaying a paginated list of objects with filtering and search capabilities.',
+                'BulkImportView': 'Generic view for bulk importing objects from CSV or other data sources.',
+                'BulkEditView': 'Generic view for editing multiple objects simultaneously.',
+                'BulkDeleteView': 'Generic view for deleting multiple objects in a single operation.',
+                'ObjectChangeLogView': 'Generic view for displaying the change log history of an object.',
+                'ObjectJournalView': 'Generic view for displaying and managing journal entries for an object.',
+                // Search and API classes
+                'SearchIndex': 'Base class for defining search indexes that enable global search functionality for plugin models.',
+                'EventType': 'Base class for defining custom event types that can trigger webhooks and scripts.',
+                'DataBackend': 'Base class for implementing data source backends that can synchronize external data.',
+                'JobRunner': 'Base class for implementing background job executors with scheduling and error handling.',
+                // GraphQL classes
+                'BaseObjectType': 'Base GraphQL object type for exposing plugin models through the GraphQL API.',
+                'NetBoxObjectType': 'NetBox-specific GraphQL object type that includes common NetBox model fields and relationships.',
+                // Table column classes
+                'BooleanColumn': 'Table column for displaying boolean values with checkmarks or icons.',
+                'ChoiceFieldColumn': 'Table column for displaying choice field values with their human-readable labels.',
+                'ColorColumn': 'Table column for displaying color values as colored indicators.',
+                'ColoredLabelColumn': 'Table column for displaying values as colored labels or badges.',
+                'ContentTypeColumn': 'Table column for displaying Django ContentType references.',
+                'ContentTypesColumn': 'Table column for displaying multiple ContentType references.',
+                'MarkdownColumn': 'Table column for rendering Markdown content as HTML.',
+                'TagColumn': 'Table column for displaying model tags.',
+                'TemplateColumn': 'Table column that renders content using a custom template.'
+            };
+            
+            const description = mixinDescriptions[className] || 'This class provides specific functionality for NetBox plugin development. Refer to the NetBox source code for detailed implementation.';
+            
+            // Create a detailed documentation block
+            let result = `${indent}#### ${className}\n\n`;
+            result += `${indent}**Module:** \`${modulePath}\`\n\n`;
+            result += `${indent}${description}\n\n`;
+            
+            // Add usage information for known mixins
+            if (mixinDescriptions[className]) {
+                result += `${indent}**Usage:**\n`;
+                result += `${indent}\`\`\`python\n`;
+                result += `${indent}from netbox.models.features import ${className}\n`;
+                result += `${indent}from django.db import models\n\n`;
+                result += `${indent}class MyModel(${className}, models.Model):\n`;
+                result += `${indent}    # Your model fields here\n`;
+                result += `${indent}    pass\n`;
+                result += `${indent}\`\`\`\n\n`;
+            }
+            
+            // Process configuration lines if present
+            if (configLines && configLines.trim()) {
+                const lines = configLines.split('\n').filter(line => line.trim());
+                let inMembers = false;
+                let members: string[] = [];
+                
+                for (const line of lines) {
+                    const trimmedLine = line.trim();
+                    if (trimmedLine.startsWith('options:') || trimmedLine.startsWith('members:')) {
+                        inMembers = trimmedLine.startsWith('members:');
+                        // Extract inline members if present (e.g., "members: false" or "members: get_object")
+                        const inlineValue = trimmedLine.split(':')[1]?.trim();
+                        if (inlineValue && inlineValue !== 'false' && !inlineValue.startsWith('[')) {
+                            members.push(inlineValue);
+                        }
+                    } else if (inMembers && trimmedLine.startsWith('-')) {
+                        // Extract list item (e.g., "- get_object")
+                        const member = trimmedLine.substring(1).trim();
+                        if (member) {
+                            members.push(member);
+                        }
+                    }
+                }
+                
+                // Add members information if found
+                if (members.length > 0) {
+                    result += `${indent}**Key Methods:**\n`;
+                    for (const member of members) {
+                        result += `${indent}- \`${member}()\`\n`;
+                    }
+                    result += `\n`;
+                }
+            }
+            
+            return result;
+        }
+    },
+    // Remove orphaned mkdocstrings configuration blocks that appear after autodoc transformation
+    {
+        find: /^\s*options:\s*\n(?:\s*members?:\s*(?:false|true|\[.*?\]|.*?)\n?(?:\s*- .*\n)*)?/gm,
+        replace: ''
+    },
+    // Remove standalone members configuration lines with list items
+    {
+        find: /^\s*members?:\s*(?:false|true|\[.*?\]|.*?)\n?(?:\s*- .*\n)*/gm,
+        replace: ''
+    },
+    // Remove orphaned list items that start with dash (from member lists)
+    {
+        find: /^\s*- [a-zA-Z_][a-zA-Z0-9_]*\n/gm,
+        replace: ''
+    },
+    // Remove options blocks with blank lines and indented list items
+    {
+        find: /^\s*options:\s*\n\s*\n(?:\s+- [a-zA-Z_][a-zA-Z0-9_]*\n)*/gm,
+        replace: ''
+    },
+    // Remove members lines followed by list items
+    {
+        find: /^\s*members:\s*\n(?:\s+- [a-zA-Z_][a-zA-Z0-9_]*\n)*/gm,
+        replace: ''
+    },
+    // Remove standalone options: lines
+    {
+        find: /^\s*options:\s*\n/gm,
+        replace: ''
+    },
+    // Remove standalone members: lines (including false/true values)
+    {
+        find: /^\s*members:\s*(?:false|true)?\s*\n/gm,
+        replace: ''
+    },
+    // Remove complete configuration block patterns with options and list items
+    {
+        find: /\n\s*options:\s*\n\s*\n(?:\s+- [a-zA-Z_][a-zA-Z0-9_]*\s*\n)*/gm,
+        replace: '\n'
+    },
+    // Remove remaining orphaned configuration blocks
+    {
+        find: /\n\s*options:\s*\n(?:\s+- [a-zA-Z_][a-zA-Z0-9_]*\s*\n)*/gm,
+        replace: '\n'
+    },
     // Escape bare <> symbols.
     { find: /<>/g, replace: '\\<\\>' },
     // Standardise <br> and </br> to self-closing <br/> with a newline.
@@ -109,6 +265,44 @@ const transformRules: TransformRule[] = [
         find: /:warning:/g,
         replace: '⚠️' // Replace with unicode warning emoji
     },
+    // Remove leading slash from image paths starting with /images/.
+    { find: /!\[(.*?)\]\(\/(images\/[^)]+)\)/g, replace: '![$1]($2)' },
+
+    // Escape standalone { unless part of {{ or escaped \{
+    { find: /(?<![{\\]){(?!{)/g, replace: '\\{' },
+    // Escape standalone } unless part of }} or escaped \}
+    { find: /(?<![}\\])}(?!})/g, replace: '\\}' },
+    // New rule for specific emoji-like icons (e.g., :bug:, :bulb:)
+    {
+        find: /:(bug|bulb|arrow_heading_up|jigsaw|rescue_worker_helmet|heart|information_source|thumbsup|thumbsdown):/g,
+        replace: (match: string, iconName: string): string => {
+            return iconName; // Remove colons, leave the name (hoping for unicode rendering or just text)
+        }
+    },
+    // Rule for :warning:
+    {
+        find: /:warning:/g,
+        replace: '⚠️' // Replace with unicode warning emoji
+    },
+    // Remove standalone mkdocstrings configuration blocks that weren't captured above
+    {
+        find: /```\n\n\n    options:\n(?:      .*\n)*/gm,
+        replace: '```\n\n'
+    }
+];
+
+// Add a final cleanup transformation rule at the end
+const finalCleanupRules: TransformRule[] = [
+    // Final cleanup: remove any remaining configuration blocks
+    {
+        find: /(?:^|\n)\s*options:\s*\n(?:\s*\n)?\s*(?:- [a-zA-Z_][a-zA-Z0-9_]*\s*\n)*/gm,
+        replace: '\n'
+    },
+    // Final cleanup: remove any remaining member configuration lines  
+    {
+        find: /(?:^|\n)\s*members:\s*(?:false|true|\[.*?\]|[a-zA-Z_][a-zA-Z0-9_]*)?(?:\s*\n(?:\s*- [a-zA-Z_][a-zA-Z0-9_]*\s*\n)*)?/gm,
+        replace: '\n'
+    }
 ];
 
 interface DocsDirectoryConfig {
@@ -365,6 +559,15 @@ const transformContent = async (content: string, sourceFilePath: string, outputB
     fencedCodeBlocks.forEach((block, index) => {
         const placeholder = `__FENCED_CODE_BLOCK_${index}__`;
         transformedContentWithPlaceholders = transformedContentWithPlaceholders.split(placeholder).join(block);
+    });
+
+    // 6. Apply final cleanup rules to remove any remaining configuration blocks
+    finalCleanupRules.forEach(rule => {
+        if (typeof rule.replace === 'string') {
+            transformedContentWithPlaceholders = transformedContentWithPlaceholders.replace(rule.find, rule.replace);
+        } else {
+            transformedContentWithPlaceholders = transformedContentWithPlaceholders.replace(rule.find, rule.replace);
+        }
     });
 
     return transformedContentWithPlaceholders;

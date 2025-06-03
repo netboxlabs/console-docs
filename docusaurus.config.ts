@@ -48,6 +48,11 @@ const config: Config = {
 		],
 	],
 	themeConfig: {
+		// Configure table of contents to show h2, h3, and h4 headings
+		tableOfContents: {
+			minHeadingLevel: 2,
+			maxHeadingLevel: 4,
+		},
 		image: "img/netbox-social-card.jpg",
 		algolia: {
 			appId: "XCF0TW7MCD",
