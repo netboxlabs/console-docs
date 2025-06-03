@@ -20,7 +20,7 @@ MODULE_FILE_MAP = {
     'netbox.models.features': os.path.join(BASE_DIR, 'external-repos/netbox/netbox/netbox/models/features.py'),
     'netbox.views.generic': os.path.join(BASE_DIR, 'external-repos/netbox/netbox/netbox/views/generic'),  # Directory
     'netbox.views.generic.base': os.path.join(BASE_DIR, 'external-repos/netbox/netbox/netbox/views/generic/base.py'),
-    'netbox.tables': os.path.join(BASE_DIR, 'external-repos/netbox/netbox/utilities/tables.py'),
+    'netbox.tables': os.path.join(BASE_DIR, 'external-repos/netbox/netbox/netbox/tables/columns.py'),  # Table column classes
     'netbox.search': os.path.join(BASE_DIR, 'external-repos/netbox/netbox/netbox/search'),
     'netbox.jobs': os.path.join(BASE_DIR, 'external-repos/netbox/netbox/netbox/jobs.py'),
     'netbox.data_backends': os.path.join(BASE_DIR, 'external-repos/netbox/netbox/netbox/data_backends.py'),
@@ -610,15 +610,57 @@ def generate_documentation(module_info: Dict[str, str]) -> str:
         
         # Methods (directly without "Methods" header)
         if class_info['methods']:
-            # Sort methods: public methods first, then special methods
-            public_methods = [m for m in class_info['methods'] if not m['name'].startswith('_')]
-            special_methods = [m for m in class_info['methods'] if m['name'].startswith('_')]
+            # Only include __init__ method if it has meaningful parameters
+            init_method = None
+            for method in class_info['methods']:
+                if method['name'] == '__init__':
+                    # Check if __init__ has meaningful parameters (beyond self)
+                    meaningful_params = []
+                    for param in method['parameters']:
+                        if (param['description'] and 
+                            param['description'] != 'No description available' and 
+                            param['description'].strip()):
+                            meaningful_params.append(param)
+                    
+                    # Only include __init__ if it has meaningful parameters
+                    if meaningful_params:
+                        init_method = method
+                    break
             
-            all_methods = public_methods + special_methods
-            
-            for method in all_methods:
-                method_doc = generate_method_documentation(method, indent)
-                doc_parts.append(method_doc)
+            # Generate simple __init__ signature if it has meaningful parameters
+            if init_method:
+                doc_parts.append(f"{indent}**__init__{init_method['signature']}**")
+                doc_parts.append("")
+                
+                # Parameters table for __init__
+                if init_method['parameters']:
+                    meaningful_params = []
+                    for param in init_method['parameters']:
+                        if (param['description'] and 
+                            param['description'] != 'No description available' and 
+                            param['description'].strip()):
+                            meaningful_params.append(param)
+                    
+                    if meaningful_params:
+                        doc_parts.append(f"{indent}**Parameters:**")
+                        doc_parts.append("")
+                        doc_parts.append(f"{indent}| Name | Type | Description | Default |")
+                        doc_parts.append(f"{indent}| --- | --- | --- | --- |")
+                        
+                        for param in meaningful_params:
+                            name = param['name']
+                            param_type = param['type'] if param['type'] != 'Any' else ''
+                            description = escape_mdx_content(param['description'])
+                            
+                            # Handle default values
+                            if param['default'] and param['default'] not in ['-', 'None']:
+                                default = param['default']
+                            else:
+                                default = 'required'
+                            
+                            doc_parts.append(f"{indent}| {name} | {param_type} | {description} | {default} |")
+                        
+                        doc_parts.append("")
         
         return '\n'.join(doc_parts)
 
