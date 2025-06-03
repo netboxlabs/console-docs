@@ -30,6 +30,7 @@ MODULE_FILE_MAP = {
     'utilities.tables': os.path.join(BASE_DIR, 'external-repos/netbox/netbox/utilities/tables.py'),
     'utilities.templatetags.builtins.tags': os.path.join(BASE_DIR, 'external-repos/netbox/netbox/utilities/templatetags/builtins/tags.py'),
     'utilities.templatetags.builtins': os.path.join(BASE_DIR, 'external-repos/netbox/netbox/utilities/templatetags/builtins'),
+    'extras.dashboard.widgets': os.path.join(BASE_DIR, 'external-repos/netbox/netbox/extras/dashboard/widgets.py'),
 }
 
 # Specific class to file mappings for netbox.views.generic
@@ -526,8 +527,14 @@ def generate_method_documentation(method: Dict[str, str], indent: str = "") -> s
     """Generate documentation for a single method."""
     doc_parts = []
     
-    # Method header
-    doc_parts.append(f"{indent}#### {method['name']}{method['signature']}")
+    # Method header - escape double underscores for __init__ and other special methods
+    method_name = method['name']
+    if method_name.startswith('__') and method_name.endswith('__'):
+        # Escape double underscores to prevent markdown emphasis
+        escaped_name = method_name.replace('__', '\\_\\_')
+        doc_parts.append(f"{indent}#### {escaped_name}{method['signature']}")
+    else:
+        doc_parts.append(f"{indent}#### {method_name}{method['signature']}")
     doc_parts.append("")
     
     # Description
@@ -748,7 +755,7 @@ def process_file(file_path: str) -> bool:
             line = lines[i]
             
             # Check if this line is an autodoc directive
-            if line.strip().startswith('::: netbox.') or line.strip().startswith('::: utilities.'):
+            if line.strip().startswith('::: netbox.') or line.strip().startswith('::: utilities.') or line.strip().startswith('::: extras.'):
                 module_info = extract_module_info(line)
                 if module_info:
                     # Generate documentation for this class
