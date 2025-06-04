@@ -1,14 +1,15 @@
-# 📚 Documentation Update: Latest NetBox and Console Documentation
+# 📚 Documentation Update: Latest NetBox and Console Documentation with Configuration Enhancements
 
 ## Summary
 
-This PR updates the external documentation repositories to pull in the latest changes from both NetBox Community and NetBox Enterprise documentation sources.
+This PR updates the external documentation repositories to pull in the latest changes from both NetBox Community and NetBox Enterprise documentation sources, and includes configuration improvements to ensure proper display of console documentation.
 
 ## 🔄 Submodule Updates
 
 ### NetBox Console Documentation (`console-docs`)
-- **Updated from:** `eaee5e6` → `9e72e47`
+- **Updated from:** `9e72e47` → `e42e74b`
 - **Key Changes:**
+  - ✨ **Database Dump Documentation**: Added comprehensive database dump documentation (PR #123)
   - ✨ **ServiceNow Integration Documentation**: Added expanded ServiceNow documentation (PR #126)
   - 📝 **Hostname Management Updates**: Updated headings in managing hostnames documentation for consistency
   - 📊 **File Count**: Increased from 320 to 324 files (+4 new documentation files)
@@ -23,12 +24,20 @@ This PR updates the external documentation repositories to pull in the latest ch
     - Show description on provider account detail view (#19623)
   - 📝 **Documentation Consistency**: Updated documentation for improved consistency (#19619)
 
+## 🔧 Configuration Improvements
+
+### Docusaurus Configuration Enhancements
+- **Enhanced File Processing**: Added explicit `include: ['**/*.md', '**/*.mdx']` to ensure all markdown files are processed
+- **Improved Asset Serving**: Updated `staticDirectories` to include both console and netbox media directories
+- **Better Documentation Visibility**: Configuration changes ensure console documentation appears properly in the unified site
+
 ## 📈 Impact
 
 - **Total Documentation Files Processed**: 349 files
 - **Files Requiring Transformation**: 12 files modified during MDX conversion
-- **New Content Areas**: Enhanced ServiceNow integration documentation
+- **New Content Areas**: Enhanced ServiceNow integration documentation + Database dump guides
 - **API Documentation**: Updated GraphQL filtering capabilities
+- **Site Configuration**: Improved console documentation integration and asset serving
 
 ## 🔧 Technical Changes
 
@@ -36,6 +45,7 @@ This PR updates the external documentation repositories to pull in the latest ch
 - Regenerated Docusaurus sidebars (`sidebars/console.json`, `sidebars/netbox.json`)
 - Processed all documentation through MkDocs → MDX transformation pipeline
 - Applied automated processing for Django model documentation
+- **Enhanced Docusaurus configuration for better console documentation display**
 
 ## ✅ Verification
 
@@ -44,12 +54,18 @@ This PR updates the external documentation repositories to pull in the latest ch
 - [x] Sidebar configurations regenerated
 - [x] All 349 files processed successfully
 - [x] 12 files properly transformed for Docusaurus compatibility
+- [x] Configuration improvements applied for console documentation visibility
+- [x] Static directories configured for proper asset serving
 
 ## 🚀 Deployment Notes
 
-This update brings the latest documentation improvements to the unified NetBox Labs documentation site, including enhanced ServiceNow integration guides and improved API documentation.
+This update brings the latest documentation improvements to the unified NetBox Labs documentation site, including:
+- Enhanced ServiceNow integration guides
+- Comprehensive database dump documentation
+- Improved console documentation display through configuration enhancements
+- Better API documentation with GraphQL filtering updates
 
 ---
 
-**Branch:** `docs-update-20250604`  
-**Affected Areas:** External documentation, sidebars, transformed MDX files 
+**Branch:** `docs-update-20250604-2`  
+**Affected Areas:** External documentation, sidebars, transformed MDX files, Docusaurus configuration 
