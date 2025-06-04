@@ -142,6 +142,10 @@ nav:
     - pyATS: "netbox-integrations/pyats.md"
     - ServiceNow: 
       - Overview: "netbox-integrations/servicenow/index.md"
+      - Installation: "netbox-integrations/servicenow/snow-installation.md"
+      - Technical Info: "netbox-integrations/servicenow/snow-technical-info.md"
+      - FAQ and Troubleshooting: "netbox-integrations/servicenow/snow-faq.md"
+      - Upgrading: "netbox-integrations/servicenow/snow-upgrading.md"
   - SDKs:
     - Pynetbox: "sdks/pynetbox.md"
   - Extensions:
