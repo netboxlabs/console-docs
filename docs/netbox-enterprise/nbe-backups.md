@@ -56,7 +56,7 @@ Besides disaster recovery, it is also a good idea to keep backups of your data i
 !!! info "NetBox Enterprise Namespace"
     The default namespace is `kotsadm`.
 
-    The instructions below default to `kotsadm`, but you can change the `NETBOX_NAMESPACE` export to match your system.
+    The instructions below default to `kotsadm`, but you can change the `NETBOX_NAMESPACE` variable to match your system.
 
 ### Backing Up Your Data
 
@@ -73,7 +73,7 @@ Runtime files are stored in a volume accessible from the NetBox containers.
 To back them up, you can run this:
 
 ```shell
-export NETBOX_NAMESPACE="kotsadm" && \
+NETBOX_NAMESPACE="kotsadm" && \
 NETBOX_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
@@ -101,18 +101,26 @@ Since the PostgreSQL CLI tools are already available inside the cluster, all we 
 To perform a database dump, run these commands:
 
 ```shell
-export NETBOX_NAMESPACE="kotsadm" && \
+NETBOX_NAMESPACE="kotsadm" && \
 POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
   -l 'postgres-operator.crunchydata.com/role=master' \
   | head -n 1 \
   )" && \
+EXCLUDE_DATABASES="$(kubectl exec "${POSTGRESQL_MAIN_POD}" \
+  -n "${NETBOX_NAMESPACE}" \
+  -c database \
+  -- \
+    psql -t -c "SELECT CONCAT('--exclude-database=', datname) \
+      FROM pg_database \
+      WHERE datname <> ALL ('{template0,template1,postgres,netbox,diode,hydra}')" \
+)" && \
 kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
   -c database \
   -- \
-    pg_dump netbox > netbox.pgsql
+    pg_dumpall --no-role-passwords --no-privileges --no-owner $EXCLUDE_DATABASES > netbox.pgsql
 ```
 
 This will create a `netbox.pgsql` file in your local directory.
@@ -148,8 +156,8 @@ To restore media, scripts, and reports, you just need to unpack them into the co
     If you are restoring a backup from another NetBox instance, you might need to change the name of the tarball and the path after the `-C` at the end of this command to unpack your backup into the right location.
 
 ```shell
-export NETBOX_NAMESPACE="kotsadm" && \
-export NETBOX_RESTORE_POD="$(kubectl get pod \
+NETBOX_NAMESPACE="kotsadm" && \
+NETBOX_RESTORE_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
   -l 'app.kubernetes.io/component=restore-mode' \
@@ -169,46 +177,41 @@ cat netbox-data.tar.gz | kubectl exec ${NETBOX_RESTORE_POD} \
 To restore from a dump file, pipe the `netbox.pgsql` created during backup into `psql` in the PostgreSQL pod:
 
 ```shell
-export NETBOX_NAMESPACE="kotsadm"
+NETBOX_NAMESPACE="kotsadm"
 POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
   -l 'postgres-operator.crunchydata.com/role=master' \
   | head -n 1 \
   )" && \
-kubectl exec "${POSTGRESQL_MAIN_POD}" \
-  -n "${NETBOX_NAMESPACE}" \
-  -c database \
-  -- dropdb --if-exists --force netbox && \
-kubectl exec "${POSTGRESQL_MAIN_POD}" \
-  -n "${NETBOX_NAMESPACE}" \
-  -c database \
-  -- createdb -E UTF8 netbox && \
+for DB in netbox diode hydra; do \
+  kubectl exec "${POSTGRESQL_MAIN_POD}" \
+    -n "${NETBOX_NAMESPACE}" \
+    -c database \
+    -- dropdb --if-exists --force "${DB}"; \
+done && \
 cat netbox.pgsql | kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
   -i \
   -c database \
-  -- psql -d netbox -f-
+  -- psql -d template1 -f-
 ```
 
 Following this run the below to ensure all database permissions are correct:
 
 ```shell
-export NETBOX_NAMESPACE="kotsadm"
+NETBOX_NAMESPACE="kotsadm"
 POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
   -l 'postgres-operator.crunchydata.com/role=master' \
   | head -n 1 \
   )" && \
+for DB in netbox diode hydra; do \
   kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
   -i \
   -c database \
-  -- psql -c "ALTER DATABASE netbox OWNER TO netbox;" && \
-kubectl exec "${POSTGRESQL_MAIN_POD}" \
-  -n "${NETBOX_NAMESPACE}" \
-  -i \
-  -c database \
-  -- psql -d netbox -c "GRANT CREATE ON SCHEMA public TO netbox;"
+  -- psql -c "ALTER DATABASE ${DB} OWNER TO ${DB}; GRANT CREATE ON SCHEMA public TO ${DB};";
+done
 ```
