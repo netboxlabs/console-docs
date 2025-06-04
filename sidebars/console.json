@@ -428,6 +428,26 @@
             "type": "doc",
             "id": "console/netbox-integrations/servicenow/index",
             "label": "Overview"
+          },
+          {
+            "type": "doc",
+            "id": "console/netbox-integrations/servicenow/snow-installation",
+            "label": "Installation"
+          },
+          {
+            "type": "doc",
+            "id": "console/netbox-integrations/servicenow/snow-technical-info",
+            "label": "Technical Info"
+          },
+          {
+            "type": "doc",
+            "id": "console/netbox-integrations/servicenow/snow-faq",
+            "label": "FAQ and Troubleshooting"
+          },
+          {
+            "type": "doc",
+            "id": "console/netbox-integrations/servicenow/snow-upgrading",
+            "label": "Upgrading"
           }
         ]
       }
