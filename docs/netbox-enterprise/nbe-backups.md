@@ -120,10 +120,10 @@ kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
   -c database \
   -- \
-    pg_dumpall --no-role-passwords --no-privileges --no-owner $EXCLUDE_DATABASES > netbox.pgsql
+    pg_dumpall --no-role-passwords --no-privileges --no-owner $EXCLUDE_DATABASES > netbox-enterprise.pgsql
 ```
 
-This will create a `netbox.pgsql` file in your local directory.
+This will create a `netbox-enterprise.pgsql` file in your local directory.
 Save it somewhere safe for future restores.
 
 For more details on backing up NetBox databases, see [the official NetBox documentation](https://netboxlabs.com/docs/netbox/en/stable/administration/replicating-netbox/).
@@ -174,7 +174,7 @@ cat netbox-data.tar.gz | kubectl exec ${NETBOX_RESTORE_POD} \
 
 #### Built-In PostgreSQL
 
-To restore from a dump file, pipe the `netbox.pgsql` created during backup into `psql` in the PostgreSQL pod:
+To restore from a dump file, pipe the `netbox-enterprise.pgsql` created during backup into `psql` in the PostgreSQL pod:
 
 ```shell
 NETBOX_NAMESPACE="kotsadm"
@@ -190,7 +190,7 @@ for DB in netbox diode hydra; do \
     -c database \
     -- dropdb --if-exists --force "${DB}"; \
 done && \
-cat netbox.pgsql | kubectl exec "${POSTGRESQL_MAIN_POD}" \
+cat netbox-enterprise.pgsql | kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
   -i \
   -c database \
