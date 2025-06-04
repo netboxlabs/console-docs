@@ -9,7 +9,7 @@ const config: Config = {
 	url: "https://netboxlabs.com",
 	baseUrl: process.env.VERCEL_ENV === "production" ? "/docs/" : "/",
 	trailingSlash: true,
-	staticDirectories: ['static', 'docs/console/images'],
+	staticDirectories: ['static', 'docs/console/images', 'docs/netbox/media'],
 	organizationName: "netbox",
 	projectName: "netbox-docs",
 
@@ -39,6 +39,8 @@ const config: Config = {
 				docs: {
 					routeBasePath: process.env.VERCEL_ENV === "production" ? "/" : "/docs/",
 					sidebarPath: "./sidebars.ts",
+					// Ensure all MDX files are processed
+					include: ['**/*.md', '**/*.mdx'],
 				},
 				blog: false,
 				theme: {
