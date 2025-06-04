@@ -128,6 +128,31 @@ Save it somewhere safe for future restores.
 
 For more details on backing up NetBox databases, see [the official NetBox documentation](https://netboxlabs.com/docs/netbox/en/stable/administration/replicating-netbox/).
 
+#### Diode and Hydra Secrets (NetBox 1.10 and Up)
+
+To ensure that Diode OAuth login information is not lost, you will also need to save the Diode and Hydra secrets from the cluster.
+
+Run this set of commands:
+
+```shell
+NETBOX_NAMESPACE="kotsadm" && \
+kubectl get secrets \
+  --namespace "${NETBOX_NAMESPACE}" \
+  --no-headers \
+  --output name \
+| grep secret/diode \
+| while read -r SECRET; do \
+  echo "---" && \
+  kubectl apply view-last-applied \
+    "${SECRET}" \
+    --namespace "${NETBOX_NAMESPACE}" \
+    -o yaml; \
+done \
+> netbox-enterprise-diode-secrets.yaml
+```
+
+Save it alongside your `netbox-enterprise.pgsql` for future restores.
+
 ### Restoring Your Backups
 
 Restoring is almost as simple as backing up.
@@ -170,6 +195,17 @@ cat netbox-data.tar.gz | kubectl exec ${NETBOX_RESTORE_POD} \
     --no-same-owner \
     --no-same-permission \
     -C /opt/netbox/netbox
+```
+
+#### Diode and Hydra Secrets (NetBox 1.10 and Up)
+
+To restore from a secrets yaml file, pass it to `kubectl apply` like so:
+
+```shell
+NETBOX_NAMESPACE="kotsadm" && \
+kubectl apply \
+  --namespace "${NETBOX_NAMESPACE}" \
+  --filename netbox-enterprise-diode-secrets.yaml
 ```
 
 #### Built-In PostgreSQL
