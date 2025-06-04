@@ -25,7 +25,6 @@
    - `x_990381_netbox_cl_devices_import_set`
    - `x_990381_netbox_cl_device_types_import_set`
    - `x_990381_netbox_cl_netbox_sites_import`
-   - Other import set tables (see [Section 5.1](#51-new-tables-in-servicenow))
 3. **Extended Fields**: Verify NetBox fields are added to existing tables:
    - `cmdb_ci.x_990381_netbox_cl_netbox_correlation_id`
    - `cmn_location.x_990381_netbox_cl_netbox_synchronize`
@@ -46,8 +45,6 @@
 **Configuration Tables:**
 - `x_990381_netbox_cl_netbox_parameters` - Application configuration parameters
 - `x_990381_netbox_cl_netbox_notification_queue` - NetBox notification queue
-
-*For complete details, see [Section 5.1](#51-new-tables-in-servicenow)*
 
 ### Under which license should I subscribe the new tables?
 
