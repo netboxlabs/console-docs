@@ -1,0 +1,113 @@
+name: Auto-merge Documentation Updates
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [master]
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    if: >
+      github.actor == 'github-actions[bot]' &&
+      startsWith(github.head_ref, 'automated-docs-update-') &&
+      contains(github.event.pull_request.labels.*.name, 'automated')
+    permissions:
+      contents: write
+      pull-requests: write
+      checks: read
+
+    steps:
+      - name: Wait for checks to complete
+        uses: fountainhead/action-wait-for-check@v1.2.0
+        id: wait-for-checks
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: 'build' # Adjust this to match your build check name
+          ref: ${{ github.event.pull_request.head.sha }}
+          timeoutSeconds: 600
+          intervalSeconds: 10
+
+      - name: Check if PR is ready for auto-merge
+        id: ready-check
+        run: |
+          # Check if all required checks passed
+          if [ "${{ steps.wait-for-checks.outputs.conclusion }}" = "success" ]; then
+            echo "checks_passed=true" >> $GITHUB_OUTPUT
+          else
+            echo "checks_passed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Auto-merge PR
+        if: steps.ready-check.outputs.checks_passed == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            try {
+              // First check if the PR is still open and mergeable
+              const { data: pr } = await github.rest.pulls.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number
+              });
+
+              if (pr.state !== 'open') {
+                console.log('PR is not open, skipping auto-merge');
+                return;
+              }
+
+              if (pr.mergeable === false) {
+                console.log('PR is not mergeable, skipping auto-merge');
+                return;
+              }
+
+              // Check for merge conflicts
+              if (pr.mergeable_state === 'dirty') {
+                console.log('PR has merge conflicts, skipping auto-merge');
+                return;
+              }
+
+              // Perform the merge
+              const result = await github.rest.pulls.merge({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number,
+                commit_title: `🤖 Auto-merge: ${pr.title}`,
+                commit_message: 'Automatically merged documentation updates that passed all checks.',
+                merge_method: 'squash'
+              });
+
+              if (result.status === 200) {
+                console.log('✅ Successfully auto-merged PR');
+                
+                // Add a comment to explain the auto-merge
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.payload.pull_request.number,
+                  body: '🤖 **Auto-merged**: This automated documentation update passed all checks and was automatically merged.\n\n✅ All CI checks passed\n✅ No merge conflicts\n✅ Automated PR from trusted source'
+                });
+              }
+            } catch (error) {
+              console.error('Failed to auto-merge:', error);
+              
+              // Add a comment explaining why auto-merge failed
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                body: `⚠️ **Auto-merge failed**: ${error.message}\n\nThis PR requires manual review and merging.`
+              });
+            }
+
+      - name: Handle failed checks
+        if: steps.ready-check.outputs.checks_passed == 'false'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: '❌ **Auto-merge blocked**: Some required checks failed.\n\nThis automated documentation update requires manual review before merging.\n\nPlease check the failed CI jobs and resolve any issues.'
+            }); 
