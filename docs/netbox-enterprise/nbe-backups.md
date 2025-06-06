@@ -260,8 +260,13 @@ while read -r DB; do
   -i \
   -c database \
   -- \
-    psql -c "ALTER DATABASE ${DB} OWNER TO ${DB}; \
+    psql --dbname "${DB}" -c "\
+      ALTER DATABASE ${DB} OWNER TO ${DB}; \
       GRANT ALL PRIVILEGES ON DATABASE ${DB} TO ${DB}; \
-      GRANT CREATE ON SCHEMA public TO ${DB};"; \
+      GRANT CREATE ON SCHEMA public TO ${DB}; \
+      GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO ${DB}; \
+      GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO ${DB}; \
+      GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO ${DB}; \
+    "; \
 done
 ```
