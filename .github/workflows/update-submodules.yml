@@ -185,7 +185,7 @@ jobs:
               repo: context.repo.repo,
               title: '🤖 Automated Documentation Updates',
               head: process.env.BRANCH_NAME,
-              base: 'main',
+              base: 'master',
               body: prBody,
               draft: false
             });
