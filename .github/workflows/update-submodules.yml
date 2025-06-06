@@ -1,0 +1,212 @@
+name: Update Documentation Submodules
+
+on:
+  schedule:
+    # Run every hour at minute 0
+    - cron: '0 * * * *'
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: 'Force update even if no changes detected'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  update-submodules:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Check current submodule commits
+        id: check-before
+        run: |
+          echo "netbox_before=$(git ls-tree HEAD external-repos/netbox | awk '{print $3}')" >> $GITHUB_OUTPUT
+          echo "console_before=$(git ls-tree HEAD external-repos/console-docs | awk '{print $3}')" >> $GITHUB_OUTPUT
+
+      - name: Update submodules to latest
+        run: |
+          git submodule update --remote --merge
+          
+      - name: Check updated submodule commits
+        id: check-after
+        run: |
+          echo "netbox_after=$(git ls-tree HEAD external-repos/netbox | awk '{print $3}')" >> $GITHUB_OUTPUT
+          echo "console_after=$(git ls-tree HEAD external-repos/console-docs | awk '{print $3}')" >> $GITHUB_OUTPUT
+
+      - name: Detect changes
+        id: changes
+        run: |
+          NETBOX_CHANGED="false"
+          CONSOLE_CHANGED="false"
+          
+          if [ "${{ steps.check-before.outputs.netbox_before }}" != "${{ steps.check-after.outputs.netbox_after }}" ]; then
+            NETBOX_CHANGED="true"
+          fi
+          
+          if [ "${{ steps.check-before.outputs.console_before }}" != "${{ steps.check-after.outputs.console_after }}" ]; then
+            CONSOLE_CHANGED="true"
+          fi
+          
+          echo "netbox_changed=$NETBOX_CHANGED" >> $GITHUB_OUTPUT
+          echo "console_changed=$CONSOLE_CHANGED" >> $GITHUB_OUTPUT
+          
+          if [ "$NETBOX_CHANGED" = "true" ] || [ "$CONSOLE_CHANGED" = "true" ] || [ "${{ inputs.force_update }}" = "true" ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup Node.js
+        if: steps.changes.outputs.has_changes == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        if: steps.changes.outputs.has_changes == 'true'
+        run: yarn install --frozen-lockfile
+
+      - name: Run documentation transformation
+        if: steps.changes.outputs.has_changes == 'true'
+        run: yarn transform-docs
+
+      - name: Create pull request branch
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          BRANCH_NAME="automated-docs-update-$(date +%Y%m%d-%H%M%S)"
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          git checkout -b "$BRANCH_NAME"
+
+      - name: Commit changes
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git add .
+          
+          # Create detailed commit message
+          COMMIT_MSG="chore: automated documentation submodule updates"
+          
+          if [ "${{ steps.changes.outputs.netbox_changed }}" = "true" ]; then
+            NETBOX_SHORT_BEFORE="${{ steps.check-before.outputs.netbox_before }}"
+            NETBOX_SHORT_AFTER="${{ steps.check-after.outputs.netbox_after }}"
+            COMMIT_MSG="$COMMIT_MSG"$'\n\n'"- NetBox docs: ${NETBOX_SHORT_BEFORE:0:7} → ${NETBOX_SHORT_AFTER:0:7}"
+          fi
+          
+          if [ "${{ steps.changes.outputs.console_changed }}" = "true" ]; then
+            CONSOLE_SHORT_BEFORE="${{ steps.check-before.outputs.console_before }}"
+            CONSOLE_SHORT_AFTER="${{ steps.check-after.outputs.console_after }}"
+            COMMIT_MSG="$COMMIT_MSG"$'\n\n'"- Console docs: ${CONSOLE_SHORT_BEFORE:0:7} → ${CONSOLE_SHORT_AFTER:0:7}"
+          fi
+          
+          COMMIT_MSG="$COMMIT_MSG"$'\n\n'"Automated by GitHub Actions - includes transformed documentation files"
+          
+          git commit -m "$COMMIT_MSG"
+
+      - name: Push branch
+        if: steps.changes.outputs.has_changes == 'true'
+        run: git push origin "$BRANCH_NAME"
+
+      - name: Create Pull Request
+        if: steps.changes.outputs.has_changes == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Build the PR body content
+            let netboxStatus = '';
+            let consoleStatus = '';
+            
+            if (process.env.NETBOX_CHANGED === 'true') {
+              netboxStatus = `- ✅ **NetBox Documentation**: Updated from \`${{ steps.check-before.outputs.netbox_before }}\` to \`${{ steps.check-after.outputs.netbox_after }}\``;
+            } else {
+              netboxStatus = '- ⚪ **NetBox Documentation**: No changes';
+            }
+            
+            if (process.env.CONSOLE_CHANGED === 'true') {
+              consoleStatus = `- ✅ **Console Documentation**: Updated from \`${{ steps.check-before.outputs.console_before }}\` to \`${{ steps.check-after.outputs.console_after }}\``;
+            } else {
+              consoleStatus = '- ⚪ **Console Documentation**: No changes';
+            }
+            
+            const prBody = [
+              '## 🔄 Automated Submodule Updates',
+              '',
+              'This PR contains automated updates to documentation submodules and their transformed content.',
+              '',
+              '### Changes Detected',
+              '',
+              netboxStatus,
+              '',
+              consoleStatus,
+              '',
+              '### What\'s Included',
+              '',
+              '- 📚 Updated submodule references to latest commits',
+              '- 🔄 Regenerated transformed documentation files',
+              '- 🗂️ Updated sidebar configurations',
+              '- 🖼️ Copied new/updated static assets',
+              '',
+              '### Review Checklist',
+              '',
+              '- [ ] Check that new/updated documentation renders correctly',
+              '- [ ] Verify no broken links or missing images',
+              '- [ ] Confirm sidebar navigation is working properly',
+              '- [ ] Test build process completes successfully',
+              '',
+              '### Auto-merge Criteria',
+              '',
+              'This PR can be safely auto-merged if:',
+              '- [ ] All CI checks pass',
+              '- [ ] No conflicts with base branch',
+              '- [ ] Documentation transformation completed successfully',
+              '',
+              '---',
+              '',
+              '*This PR was automatically generated by the `update-submodules` GitHub Action.*',
+              `*Triggered: ${new Date().toISOString()}*`
+            ].join('\n');
+
+            const { data: pr } = await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🤖 Automated Documentation Updates',
+              head: process.env.BRANCH_NAME,
+              base: 'main',
+              body: prBody,
+              draft: false
+            });
+
+            // Add labels
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+              labels: ['documentation', 'automated', 'submodule-update']
+            });
+
+            console.log(`Created PR #${pr.number}: ${pr.html_url}`);
+
+      - name: Summary
+        if: always()
+        run: |
+          if [ "${{ steps.changes.outputs.has_changes }}" = "true" ]; then
+            echo "✅ Documentation updates detected and PR created"
+            echo "- NetBox changed: ${{ steps.changes.outputs.netbox_changed }}"
+            echo "- Console changed: ${{ steps.changes.outputs.console_changed }}"
+          else
+            echo "ℹ️ No documentation changes detected - no action taken"
+          fi 
