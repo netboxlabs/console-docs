@@ -1,111 +1,289 @@
 # NetBox Labs Documentation Hub
 
-This repository contains the Docusaurus v3 site for the NetBox Labs documentation, accessible at [https://netboxlabs.com/docs/](https://netboxlabs.com/docs/) (via Next.js rewrites from the main website to this dedicated Docusaurus instance).
+This repository creates a unified documentation site for NetBox Labs products, accessible at [https://netboxlabs.com/docs/](https://netboxlabs.com/docs/). It consolidates documentation from multiple repositories into a single, cohesive Docusaurus-powered site.
 
-## Project Overview
+## 🏗️ Architecture Overview
 
-The primary function of this site is to consolidate and present documentation from two main external sources:
+This project implements a **unified documentation architecture** that brings together documentation from two primary sources:
 
-1.  **NetBox**: Documentation for the core NetBox product.
-2.  **NetBox Console**: Documentation for the NetBox Cloud console.
+### Documentation Sources
 
-These documentation sets are originally written in MkDocs format and reside in their respective repositories. This Docusaurus project uses Git submodules to pull in these external docs and then transforms them into a Docusaurus-compatible format.
+1. **NetBox Community Documentation**
+   - **Source**: [`netbox-community/netbox`](https://github.com/netbox-community/netbox) repository (`docs/` directory)
+   - **Local Path**: `external-repos/netbox/docs/`
+   - **Output**: Transformed to `docs/netbox/`
+   - **Format**: MkDocs → Docusaurus MDX
 
-## How it Works
+2. **NetBox Enterprise Documentation** 
+   - **Source**: [`netboxlabs/console-docs`](https://github.com/netboxlabs/console-docs) repository
+   - **Local Path**: `external-repos/console-docs/docs/`
+   - **Output**: Transformed to `docs/console/`
+   - **Format**: MkDocs → Docusaurus MDX
 
-The documentation aggregation and transformation process involves several key steps:
-
-1.  **Git Submodules**: The `external-repos/console-docs` and `external-repos/netbox` directories are Git submodules pointing to the respective external documentation repositories. The `postinstall` script (`git submodule update --init --recursive`) ensures these are fetched and updated.
-
-2.  **Transformation Script (`scripts/transformDocs.ts`)**: This TypeScript script is the core of the documentation processing. It performs the following actions for each external repository:
-    *   **Reads MkDocs Files**: Recursively traverses the `docs/` folder within each submodule (e.g., `external-repos/netbox/docs`).
-    *   **Transforms Markdown**: Applies a series of rules to convert MkDocs-specific markdown syntax (like material icons, specific admonition styles, image formatting) to MDX-compatible syntax suitable for Docusaurus. This includes escaping certain characters and restructuring elements.
-    *   **Copies Transformed Files**: Saves the transformed markdown files into the corresponding Docusaurus content directory (e.g., `docs/netbox/`, `docs/console/`). Non-markdown files (like images) are copied directly.
-    *   **Generates Sidebars**: Reads the `mkdocs.yml` file from each submodule to understand its navigation structure. It then converts this MkDocs navigation into a Docusaurus sidebar configuration file (e.g., `sidebars/netbox.json`, `sidebars/console.json`), which defines the menu structure for that section of the documentation.
-
-3.  **Docusaurus Build**: Docusaurus then uses the transformed markdown files in the `docs/` directory and the generated sidebar configurations in `sidebars/` to build the static documentation site.
-
-4.  **Next.js Rewrites**: The main NetBox Labs website, which is a Next.js application hosted at `https://netboxlabs.com`, is configured with URL rewrites. This Docusaurus documentation site operates as a standalone application (e.g., on its own port or internal service). The Next.js application acts as a reverse proxy for any requests to paths starting with `/docs/*`. It fetches the content from this Docusaurus instance and serves it under the `https://netboxlabs.com/docs/` path. This provides a seamless user experience, making the documentation appear as an integrated part of the main website without requiring the Docusaurus site to be a sub-application of the Next.js project directly.
-
-## Key Directory Structure
+### Integration Flow
 
 ```
-.
-├── docs/                     # Transformed Docusaurus-ready documentation files
-│   ├── console/              # Transformed console documentation
-│   └── netbox/               # Transformed NetBox documentation
-├── external-repos/           # Git submodules for external documentation
-│   ├── console-docs/         # Submodule for console documentation source
-│   └── netbox/               # Submodule for NetBox documentation source
+External Repos (MkDocs) → Git Submodules → Transformation Script → Docusaurus → Next.js Rewrites → netboxlabs.com/docs
+```
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+ 
+- Yarn (preferred package manager)
+- Git
+
+### Local Development Setup
+
+1. **Clone with submodules**:
+   ```bash
+   git clone --recurse-submodules https://github.com/netboxlabs/netboxlabs-website-dochub.git
+   cd netboxlabs-website-dochub
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   yarn install
+   ```
+   *Note: The `postinstall` script automatically initializes and updates git submodules*
+
+3. **Start development server**:
+   ```bash
+   yarn dev
+   ```
+   This will:
+   - Transform documentation from submodules
+   - Start Docusaurus dev server on `http://localhost:3001`
+   - Enable hot reloading for local changes
+
+### Production Build
+
+```bash
+yarn build    # Creates static build in build/ directory
+```
+
+## 🔄 How the Transformation Works
+
+The heart of this system is the **transformation pipeline** that converts MkDocs documentation to Docusaurus-compatible format:
+
+### 1. Git Submodules
+- `external-repos/console-docs` and `external-repos/netbox` are Git submodules
+- Automatically updated via `postinstall` script
+- Point to specific commits/branches of external repositories
+
+### 2. Transformation Script (`scripts/transformDocs.ts`)
+
+This TypeScript script performs several critical functions:
+
+**Content Processing:**
+- Converts MkDocs-specific markdown syntax to MDX
+- Transforms Material for MkDocs admonitions (notes, warnings, etc.)
+- Handles image references and file paths
+- Escapes special characters for React/MDX compatibility
+- Processes internal links and cross-references
+
+**File Operations:**
+- Recursively processes all markdown files
+- Copies static assets (images, etc.) preserving directory structure
+- Generates clean file structures in `docs/netbox/` and `docs/console/`
+
+**Sidebar Generation:**
+- Parses `mkdocs.yml` navigation structure
+- Converts to Docusaurus sidebar format
+- Outputs `sidebars/netbox.json` and `sidebars/console.json`
+- Maintains hierarchical navigation structure
+
+### 3. Docusaurus Integration
+- Uses transformed MDX files from `docs/` directory
+- Applies custom theme and styling from `src/theme/`
+- Leverages generated sidebars for navigation
+- Builds static site optimized for production
+
+### 4. Next.js Integration
+- Main NetBox Labs website (`netboxlabs.com`) uses URL rewrites
+- Documentation served seamlessly under `/docs/*` path
+- Provides unified user experience across all NetBox Labs properties
+
+## 📁 Project Structure
+
+```
+netboxlabs-website-dochub/
+├── docs/                          # 🎯 Transformed documentation (Docusaurus input)
+│   ├── console/                   # Transformed NetBox Enterprise docs
+│   └── netbox/                    # Transformed NetBox Community docs
+├── external-repos/                # 📚 Git submodules (source documentation)
+│   ├── console-docs/              # NetBox Enterprise docs submodule
+│   │   └── docs/                  # Original MkDocs source
+│   └── netbox/                    # NetBox Community docs submodule
+│       └── docs/                  # Original MkDocs source
 ├── scripts/
-│   └── transformDocs.ts      # Core script for transforming MkDocs to Docusaurus format
-├── sidebars/
-│   ├── console.json          # Generated Docusaurus sidebar for console docs
-│   └── netbox.json           # Generated Docusaurus sidebar for NetBox docs
+│   └── transformDocs.ts           # 🔄 Core transformation logic
+├── sidebars/                      # 🧭 Generated navigation
+│   ├── console.json               # Console documentation sidebar
+│   └── netbox.json                # NetBox documentation sidebar
 ├── src/
-│   ├── css/                  # Custom CSS and SCSS styles
-│   ├── pages/                # Custom Docusaurus pages
-│   └── theme/                # Docusaurus theme customizations (swizzled components)
-├── docusaurus.config.js      # Main Docusaurus configuration file
-├── package.json              # Project dependencies and scripts
-└── yarn.lock                 # Yarn lockfile
+│   ├── css/                       # 🎨 Custom styles
+│   ├── pages/                     # Custom Docusaurus pages
+│   └── theme/                     # Theme customizations
+├── static/                        # Static assets
+├── docusaurus.config.ts           # ⚙️ Docusaurus configuration
+├── sidebars.ts                    # Sidebar imports and setup
+└── package.json                   # Dependencies and scripts
 ```
 
-## Setup Instructions
+## 👥 For Contributors
 
-To set up and run this project locally:
+### Contributing to External Documentation
 
-1.  **Clone the Repository**:
-    ```bash
-    git clone <repository-url>
-    cd <repository-name>
-    ```
+If you're contributing to the **NetBox** or **Console Documentation** repositories:
 
-2.  **Initialise Submodules**:
-    If you cloned without `--recurse-submodules`, or if they are not yet initialised:
-    ```bash
-    git submodule update --init --recursive
-    ```
-    This command is also run automatically during `yarn install` due to the `postinstall` script in `package.json`.
+#### NetBox Community Contributors
+- **Repository**: [`netbox-community/netbox`](https://github.com/netbox-community/netbox)
+- **Documentation Path**: `docs/` directory in the NetBox repo
+- **Format**: Standard MkDocs markdown
+- **Preview**: Changes appear in this unified site after submodule updates
 
-3.  **Install Dependencies**:
-    This project uses Yarn as the package manager.
-    ```bash
-    yarn install
-    ```
+#### NetBox Enterprise Contributors  
+- **Repository**: [`netboxlabs/console-docs`](https://github.com/netboxlabs/console-docs)
+- **Documentation Path**: Root `docs/` directory
+- **Format**: MkDocs with Material theme extensions
+- **Preview**: Changes appear in this unified site after submodule updates
 
-## Development Workflow
+#### Documentation Guidelines
 
-To start the local development server:
+**Supported MkDocs Features:**
+- Standard markdown syntax
+- Material for MkDocs admonitions (`!!! note`, `!!! warning`, etc.)
+- Code blocks with syntax highlighting
+- Images and static assets
+- Internal linking
+- Navigation via `mkdocs.yml`
+
+**Limitations & Considerations:**
+- Complex MkDocs plugins may not translate perfectly
+- Custom HTML should be minimal and MDX-compatible
+- Image paths are preserved but copied to unified structure
+- Cross-references between NetBox/Console docs require careful path handling
+
+### Testing Documentation Changes
+
+#### For External Repo Contributors:
+1. Make changes in your respective repository
+2. Test locally in that repository first
+3. Submit PR to the external repository
+
+#### For Documentation Hub Maintainers:
+1. **Update submodules** to pull latest changes:
+   ```bash
+   git submodule update --remote
+   ```
+
+2. **Test transformation**:
+   ```bash
+   yarn transform-docs  # Run transformation only
+   yarn dev             # Full development workflow
+   ```
+
+3. **Review output** in `docs/netbox/` or `docs/console/`
+
+4. **Commit submodule updates**:
+   ```bash
+   git add external-repos/
+   git commit -m "Update documentation submodules"
+   ```
+
+## 🛠️ Development Workflows
+
+### Daily Development
 
 ```bash
+# Start development with fresh transformation
 yarn dev
-```
 
-This command performs the following actions:
+# Transform docs only (after external changes)
+yarn transform-docs
 
-1.  `npm run fetch-options`: (Note: As per instructions, this part's specifics are not the focus, but it runs as part of the dev script).
-2.  `npm run transform-docs`: Executes the `scripts/transformDocs.ts` script to process and copy documentation from the submodules.
-3.  `docusaurus start --port 3001`: Starts the Docusaurus development server, typically accessible at `http://localhost:3001`.
-
-Any changes made to the source markdown files in the `external-repos/` submodules will require re-running `yarn dev` (or at least `yarn transform-docs` and restarting the server if it doesn't pick up changes automatically) to see the updates reflected in the Docusaurus site.
-
-## Build Process
-
-To generate a static build of the documentation site for production:
-
-```bash
+# Build for production testing
 yarn build
 ```
 
-This command performs the following actions:
+### Updating External Documentation
 
-1.  `npm run fetch-options`.
-2.  `npm run transform-docs`: Ensures all documentation is transformed and up-to-date.
-3.  `docusaurus build`: Creates the static site in the `build/` directory.
+```bash
+# Update all submodules to latest
+git submodule update --remote
 
-The contents of the `build/` directory can then be deployed to a static hosting service.
+# Update specific submodule
+cd external-repos/netbox
+git pull origin main
+cd ../..
 
-## Production URL
+# Commit submodule updates
+git add external-repos/
+git commit -m "Update NetBox docs to latest"
+```
 
-The live documentation is served under [https://netboxlabs.com/docs/](https://netboxlabs.com/docs/).
+### Troubleshooting
+
+**Common Issues:**
+
+1. **Submodules not initialized**: Run `git submodule update --init --recursive`
+2. **Transformation errors**: Check `scripts/transformDocs.ts` output for specific file issues
+3. **Missing images**: Ensure image paths in source docs are relative and correct
+4. **Sidebar not updating**: Delete and regenerate with `yarn transform-docs`
+
+**Debug Mode:**
+```bash
+# Enable verbose transformation logging
+DEBUG=true yarn transform-docs
+```
+
+## 🚀 Deployment
+
+### Production Deployment
+- Hosted via Vercel (or similar platform)  
+- Automatic deployments on main branch changes
+- Submodule updates trigger rebuilds
+- Served under `netboxlabs.com/docs/` via Next.js rewrites
+
+### Manual Deployment
+```bash
+yarn build
+# Deploy contents of build/ directory to your hosting provider
+```
+
+## 📋 Key Commands Reference
+
+| Command | Description |
+|---------|-------------|
+| `yarn dev` | Start development server with transformation |
+| `yarn build` | Build production site |
+| `yarn transform-docs` | Run documentation transformation only |
+| `yarn start` | Serve built site locally |
+| `git submodule update --remote` | Update all submodules |
+| `git submodule update --init --recursive` | Initialize submodules |
+
+## 🤝 Contributing to This Repository
+
+### Development Preferences
+- **Package Manager**: Use Yarn (not npm) - no `package-lock.json` files
+- **Language**: Prefer TypeScript over JavaScript for new code
+- **Code Style**: Follow existing patterns in the codebase
+
+### Making Changes
+1. Fork this repository
+2. Create feature branch: `git checkout -b feature/description`
+3. Test changes locally: `yarn dev`
+4. Update documentation if needed
+5. Submit pull request
+
+## 📞 Support
+
+- **NetBox Community**: [NetBox Discussions](https://github.com/netbox-community/netbox/discussions)
+- **NetBox Enterprise**: [NetBox Labs Support](https://netboxlabs.com/support/)
+- **Documentation Issues**: Open issues in respective repositories
+- **Site Issues**: Open issues in this repository
+
+---
+
+This unified documentation system ensures that all NetBox-related documentation is easily discoverable and accessible from a single location while maintaining the flexibility for teams to work in their preferred repositories and formats.
