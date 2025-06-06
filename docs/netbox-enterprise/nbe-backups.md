@@ -102,6 +102,7 @@ To perform a database dump, run these commands:
 
 ```shell
 NETBOX_NAMESPACE="kotsadm" && \
+NETBOX_DATABASE_FILE="netbox-enterprise.pgsql" && \
 POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
@@ -114,13 +115,18 @@ EXCLUDE_DATABASES="$(kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -- \
     psql -t -c "SELECT CONCAT('--exclude-database=', datname) \
       FROM pg_database \
-      WHERE datname <> ALL ('{template0,template1,postgres,netbox,diode,hydra}')" \
+      WHERE datname <> ALL ('{netbox,diode,hydra}')" \
 )" && \
 kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
   -c database \
   -- \
-    pg_dumpall --no-role-passwords --no-privileges --no-owner $EXCLUDE_DATABASES > netbox.pgsql
+    pg_dumpall \
+      --no-role-passwords \
+      --no-privileges \
+      --no-owner \
+      $EXCLUDE_DATABASES \
+    > "${NETBOX_DATABASE_FILE}"
 ```
 
 This will create a `netbox.pgsql` file in your local directory.
@@ -177,49 +183,46 @@ cat netbox-data.tar.gz | kubectl exec ${NETBOX_RESTORE_POD} \
 To restore from a dump file, pipe the `netbox.pgsql` created during backup into `psql` in the PostgreSQL pod:
 
 ```shell
-NETBOX_NAMESPACE="kotsadm"
+NETBOX_NAMESPACE="kotsadm" && \
+NETBOX_DATABASE_FILE="netbox-enterprise.pgsql" && \
 POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
   -l 'postgres-operator.crunchydata.com/role=master' \
   | head -n 1 \
   )" && \
-DATABASES="$(kubectl exec "${POSTGRESQL_MAIN_POD}" \
-  -n "${NETBOX_NAMESPACE}" \
-  -c database \
-  -- \
-    psql -t -c "SELECT datname \
-      FROM pg_database \
-      WHERE datname IN ('netbox', 'hydra', 'diode')" \
-)" && \
-for DB in $DATABASES; do \
+grep -E '^CREATE DATABASE ' "${NETBOX_DATABASE_FILE}" | awk '{ print $3 }' | \
+while read -r DB; do
   kubectl exec "${POSTGRESQL_MAIN_POD}" \
     -n "${NETBOX_NAMESPACE}" \
     -c database \
     -- dropdb --if-exists --force "${DB}"; \
 done && \
-cat netbox.pgsql | kubectl exec "${POSTGRESQL_MAIN_POD}" \
-  -n "${NETBOX_NAMESPACE}" \
-  -i \
-  -c database \
-  -- psql -d template1 -f-
+cat "${NETBOX_DATABASE_FILE}" \
+  | kubectl exec "${POSTGRESQL_MAIN_POD}" \
+    -n "${NETBOX_NAMESPACE}" \
+    -i \
+    -c database \
+      -- psql -d template1 -f-
 ```
 
 Following this run the below to ensure all database permissions are correct:
 
 ```shell
-NETBOX_NAMESPACE="kotsadm"
+NETBOX_NAMESPACE="kotsadm" && \
+NETBOX_DATABASE_FILE="netbox-enterprise.pgsql" && \
 POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
   -l 'postgres-operator.crunchydata.com/role=master' \
   | head -n 1 \
   )" && \
-for DB in netbox diode hydra; do \
+grep -E '^CREATE DATABASE ' "${NETBOX_DATABASE_FILE}" | awk '{ print $3 }' | \
+while read -r DB; do
   kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
   -i \
   -c database \
-  -- psql -c "ALTER DATABASE ${DB} OWNER TO ${DB}; GRANT CREATE ON SCHEMA public TO ${DB};";
+  -- psql -c "ALTER DATABASE ${DB} OWNER TO ${DB}; GRANT ALL PRIVILEGES ON DATABASE ${DB} TO ${DB};";
 done
 ```
