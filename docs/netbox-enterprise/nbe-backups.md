@@ -184,7 +184,15 @@ POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -l 'postgres-operator.crunchydata.com/role=master' \
   | head -n 1 \
   )" && \
-for DB in netbox diode hydra; do \
+DATABASES="$(kubectl exec "${POSTGRESQL_MAIN_POD}" \
+  -n "${NETBOX_NAMESPACE}" \
+  -c database \
+  -- \
+    psql -t -c "SELECT datname \
+      FROM pg_database \
+      WHERE datname IN ('netbox', 'hydra', 'diode')" \
+)" && \
+for DB in $DATABASES; do \
   kubectl exec "${POSTGRESQL_MAIN_POD}" \
     -n "${NETBOX_NAMESPACE}" \
     -c database \
