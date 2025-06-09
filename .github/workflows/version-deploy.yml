@@ -3,7 +3,6 @@ name: Deploy Documentation Version
 permissions:
   contents: write
   actions: read
-  secrets: read
 
 on:
   push:
@@ -91,22 +90,18 @@ jobs:
           fi
 
       - name: Create Release Notes
-        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.version.outputs.full_version }}
-          release_name: NetBox Enterprise Documentation ${{ steps.version.outputs.full_version }}
-          body: |
-            ## NetBox Enterprise Documentation ${{ steps.version.outputs.full_version }}
-            
-            Documentation for NetBox Enterprise ${{ steps.version.outputs.major_minor }}.
-            
-            ### View Documentation
-            - [Latest Documentation](https://netboxlabs.com/docs/)
-            - [Version ${{ steps.version.outputs.major_minor }} Documentation](https://netboxlabs.com/docs/${{ steps.version.outputs.major_minor }}/)
-            
-            ### Changes
-            This release includes documentation updates for NetBox Enterprise ${{ steps.version.outputs.full_version }}.
-          draft: false
-          prerelease: false 
+        run: |
+          gh release create "${{ steps.version.outputs.full_version }}" \
+            --title "NetBox Enterprise Documentation ${{ steps.version.outputs.full_version }}" \
+            --notes "## NetBox Enterprise Documentation ${{ steps.version.outputs.full_version }}
+
+          Documentation for NetBox Enterprise ${{ steps.version.outputs.major_minor }}.
+
+          ### View Documentation
+          - [Latest Documentation](https://netboxlabs.com/docs/)
+          - [Version ${{ steps.version.outputs.major_minor }} Documentation](https://netboxlabs.com/docs/${{ steps.version.outputs.major_minor }}/)
+
+          ### Changes
+          This release includes documentation updates for NetBox Enterprise ${{ steps.version.outputs.full_version }}." 
