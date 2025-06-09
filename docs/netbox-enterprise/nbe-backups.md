@@ -142,19 +142,21 @@ Run this set of commands:
 
 ```shell
 NETBOX_NAMESPACE="kotsadm" && \
-kubectl get secrets \
-  --namespace "${NETBOX_NAMESPACE}" \
-  --no-headers \
-  --output name \
-| grep secret/diode \
-| while read -r SECRET; do \
-  echo "---" && \
-  kubectl apply view-last-applied \
-    "${SECRET}" \
+(
+  kubectl get secrets \
     --namespace "${NETBOX_NAMESPACE}" \
-    -o yaml; \
-done \
-> netbox-enterprise-diode-secrets.yaml
+    --no-headers \
+    --output name \
+  | grep secret/diode \
+  | while read -r SECRET; do \
+    echo "---" && \
+    kubectl get \
+      "${SECRET}" \
+      --namespace "${NETBOX_NAMESPACE}" \
+      -o yaml \
+    | grep -v -E '^  (creationTimestamp|resourceVersion|uid):'; \
+  done \
+) > netbox-enterprise-diode-secrets.yaml
 ```
 
 Save it alongside your `netbox-enterprise.pgsql` for future restores.
@@ -210,6 +212,7 @@ To restore from a secrets yaml file, pass it to `kubectl apply` like so:
 ```shell
 NETBOX_NAMESPACE="kotsadm" && \
 kubectl apply \
+  --server-side \
   --namespace "${NETBOX_NAMESPACE}" \
   --filename netbox-enterprise-diode-secrets.yaml
 ```
