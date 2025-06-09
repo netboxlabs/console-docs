@@ -210,9 +210,11 @@ cat netbox-data.tar.gz | kubectl exec ${NETBOX_RESTORE_POD} \
 To restore from a secrets yaml file, pass it to `kubectl apply` like so:
 
 ```shell
+# add/replace existing diode secrets
 NETBOX_NAMESPACE="kotsadm" && \
 kubectl apply \
   --server-side \
+  --force-conflicts \
   --namespace "${NETBOX_NAMESPACE}" \
   --filename netbox-enterprise-diode-secrets.yaml
 ```
