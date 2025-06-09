@@ -29,6 +29,45 @@ INFO    -  [13:37:39] Watching paths for changes: 'docs', 'mkdocs.yml'
 INFO    -  [13:37:39] Serving on http://127.0.0.1:8000/
 ```
 
+## Versioning
+
+This repository supports versioned documentation using [Mike](https://github.com/jimporter/mike). Versions are managed automatically via GitHub Actions when tags are pushed.
+
+### Current Versions
+- **v1.11** (Latest) - Current development branch
+- **v1.10** - Supported version  
+- **v1.9** (Stable) - Customer stable channel
+
+### Creating a New Version
+
+1. **Tag a release** (automatic deployment):
+   ```bash
+   git tag v1.11.2
+   git push origin v1.11.2
+   ```
+
+2. **Manual deployment** (if needed):
+   ```bash
+   mike deploy v1.11 latest --title="v1.11 (Latest)" --push --update-aliases
+   mike set-default latest --push
+   ```
+
+3. **List versions**:
+   ```bash
+   mike list
+   ```
+
+### Version Configuration
+
+Version settings are defined in:
+- `versions.json` - Version metadata and branch mapping
+- `mkdocs.yml` - MkDocs version configuration
+- `.github/workflows/version-deploy.yml` - Automated deployment
+
+### Integration with Dochub
+
+This repository integrates with `netboxlabs-website-dochub` for unified documentation. Version deployments automatically trigger integration updates.
+
 ## :warning:
 
 If you see errors like this...

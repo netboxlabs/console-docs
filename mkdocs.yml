@@ -183,6 +183,14 @@ nav:
         - Installing the Diode client SDK: "netbox-extensions/diode/diode-client.md"
   - Product and Feature Lifecycle: "product_feature_lifecycle.md"
 extra:
+  version:
+    provider: mike
+    default: v1.11
+    current: v1.11
+    available:
+      - v1.11 (Latest)
+      - v1.10
+      - v1.9 (Stable)
   social:
     - icon: fontawesome/solid/globe
       link: https://netboxlabs.com

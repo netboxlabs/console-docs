@@ -1,0 +1,25 @@
+{
+  "versions": [
+    {
+      "version": "v1.11",
+      "branch": "main", 
+      "title": "v1.11 (Latest)",
+      "default": true,
+      "status": "latest"
+    },
+    {
+      "version": "v1.10",
+      "branch": "v1.10",
+      "title": "v1.10",
+      "status": "supported"
+    },
+    {
+      "version": "v1.9", 
+      "branch": "v1.9",
+      "title": "v1.9 (Stable)",
+      "status": "stable"
+    }
+  ],
+  "default_version": "v1.11",
+  "stable_version": "v1.9"
+} 
