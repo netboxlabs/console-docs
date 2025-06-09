@@ -37,8 +37,8 @@ This repository supports versioned documentation using [Mike](https://github.com
 - **v1.9** (Current) - Customer stable channel
 
 ### Future Versions
-- **v1.10** (Beta) - Upcoming release
-- **v1.11** (Alpha) - Future release
+- **v1.10** (Beta) - NetBox Enterprise with Assurance capabilities
+- **v1.11** (Alpha) - NetBox Enterprise with Helm capabilities
 
 ### Creating a New Version
 
@@ -77,15 +77,15 @@ This repository integrates with `netboxlabs-website-dochub` for unified document
 Our documentation follows the NetBox Enterprise release cycle with these version states:
 
 - **Current Version (v1.9)**: Live customer documentation, displayed to users
-- **Beta Version (v1.10)**: Near-release version, prepared infrastructure, hidden from users until release
-- **Alpha Version (v1.11)**: Early development version, prepared infrastructure, hidden from users until release
+- **Beta Version (v1.10)**: NetBox Enterprise with Assurance capabilities, near-release version, hidden from users until release
+- **Alpha Version (v1.11)**: NetBox Enterprise with Helm capabilities, early development version, hidden from users until release
 
 ### Branch and Content Strategy
 
 #### Branch Structure
 ```
-main              # Latest alpha development (v1.11 content)
-├── v1.10         # v1.10 beta branch (when ready)
+main              # Latest alpha development (v1.11 - Helm capabilities)
+├── v1.10         # v1.10 beta branch (Assurance capabilities, when ready)
 ├── v1.9          # v1.9 current release branch
 └── feature/*     # Feature branches for new content
 ```
@@ -94,9 +94,9 @@ main              # Latest alpha development (v1.11 content)
 
 | Content Type | Target Branch | When to Use |
 |-------------|---------------|-------------|
-| **New features for alpha release** | `main` | Writing docs for v1.11 (Alpha) features |
+| **Helm capabilities (alpha)** | `main` | Writing docs for v1.11 Helm features |
 | **Updates to current release** | `v1.9` | Bug fixes, clarifications for current customers |
-| **Preparing beta release** | `v1.10` | Writing docs for v1.10 (Beta) features (when branch exists) |
+| **Assurance capabilities (beta)** | `v1.10` | Writing docs for v1.10 Assurance features (when branch exists) |
 
 ### Tagging and Release Workflow
 
@@ -120,16 +120,16 @@ main              # Latest alpha development (v1.11 content)
    ```
    **Result**: Documentation automatically deploys to production
 
-2. **Alpha version content (v1.11)**:
+2. **Alpha version content (v1.11) - Helm capabilities**:
    ```bash
    # Work on main branch for alpha features
    git checkout main
    git pull origin main
    
-   # Make your documentation changes for new features
+   # Make your documentation changes for Helm features
    # Commit and push changes
    git add .
-   git commit -m "Add documentation for new Jinja2 features in v1.11 (Alpha)"
+   git commit -m "Add documentation for Helm deployment in v1.11 (Alpha)"
    git push origin main
    
    # Don't tag yet - wait for v1.11 alpha release
@@ -171,16 +171,16 @@ When preparing a new major/minor version (like v1.10 or v1.11):
 - **Avoid**: Documentation for unreleased features
 - **Review**: Test all examples and procedures
 
-#### Alpha Version (v1.11) Content  
-- **Focus**: New features, major changes, future functionality
-- **Updates**: Draft documentation, work-in-progress content
-- **Include**: Feature flags, alpha warnings if applicable
+#### Alpha Version (v1.11) Content - Helm Capabilities
+- **Focus**: NetBox Enterprise with Helm features, major architectural changes
+- **Updates**: Draft documentation for Helm deployment, work-in-progress content
+- **Include**: Feature flags, alpha warnings, Helm-specific installation guides
 - **Note**: Content won't be visible to customers until release
 
-#### Beta Version (v1.10) Content
-- **Focus**: Near-final features, stabilized functionality
-- **Updates**: Refined documentation, final examples
-- **Include**: Beta status indicators if applicable
+#### Beta Version (v1.10) Content - Assurance Capabilities
+- **Focus**: NetBox Enterprise with Assurance features, stabilized functionality
+- **Updates**: Refined documentation for Assurance workflows, final examples
+- **Include**: Beta status indicators, Assurance-specific configuration guides
 - **Note**: Content ready for review but hidden from customers until release
 
 ### Common Workflows
@@ -199,10 +199,10 @@ git push origin v1.9.4
 
 #### Scenario 2: Document New Feature for Alpha Release
 ```bash
-# New Jinja2 template feature added to v1.11 (Alpha)
+# New Helm deployment feature added to v1.11 (Alpha)
 git checkout main
 # Add comprehensive documentation
-git commit -m "Add Jinja2 conditional logic documentation"
+git commit -m "Add Helm installation and configuration documentation"
 git push origin main
 # Content staged for v1.11 alpha release, not visible to customers yet
 ```

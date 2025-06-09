@@ -14,13 +14,15 @@
     {
       "version": "v1.10",
       "branch": "v1.10",
-      "title": "v1.10 (Beta)",
+      "title": "v1.10 (Beta) - NetBox Enterprise with Assurance",
+      "description": "NetBox Enterprise with Assurance capabilities",
       "status": "beta"
     },
     {
       "version": "v1.11",
       "branch": "main",
-      "title": "v1.11 (Alpha)",
+      "title": "v1.11 (Alpha) - NetBox Enterprise with Helm",
+      "description": "NetBox Enterprise with Helm capabilities",
       "status": "alpha"
     }
   ]
