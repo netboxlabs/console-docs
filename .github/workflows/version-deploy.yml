@@ -1,5 +1,10 @@
 name: Deploy Documentation Version
 
+permissions:
+  contents: write
+  actions: read
+  secrets: read
+
 on:
   push:
     tags: ['v*']
