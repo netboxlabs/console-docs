@@ -1,0 +1,82 @@
+name: Update Unreleased Changelog
+
+on:
+  schedule:
+    # Run weekly on Mondays at 9 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: 'Force update even if no new commits'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  update-unreleased:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check for new commits since last update
+        id: check_commits
+        run: |
+          # Get the date of the last changelog update
+          LAST_UPDATE=""
+          if [ -f "CHANGELOG.md" ]; then
+            LAST_UPDATE=$(git log -1 --format=%ct --follow CHANGELOG.md 2>/dev/null || echo "0")
+          else
+            LAST_UPDATE="0"
+          fi
+          
+          # Get commits since last update
+          RECENT_COMMITS=$(git log --since="@$LAST_UPDATE" --oneline --no-merges | wc -l)
+          
+          echo "last_update_timestamp=$LAST_UPDATE" >> $GITHUB_OUTPUT
+          echo "recent_commits=$RECENT_COMMITS" >> $GITHUB_OUTPUT
+          echo "has_new_commits=$([ "$RECENT_COMMITS" -gt 0 ] && echo true || echo false)" >> $GITHUB_OUTPUT
+          
+          echo "Last changelog update: $(date -d @$LAST_UPDATE 2>/dev/null || echo 'Never')"
+          echo "Recent commits: $RECENT_COMMITS"
+
+      - name: Trigger changelog update
+        if: steps.check_commits.outputs.has_new_commits == 'true' || inputs.force_update == true
+        run: |
+          gh workflow run generate-changelog.yml \
+            --ref master \
+            -f update_unreleased=true
+          
+          echo "Triggered changelog update for unreleased section"
+          echo "Recent commits: ${{ steps.check_commits.outputs.recent_commits }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Weekly Changelog Update Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Recent commits**: ${{ steps.check_commits.outputs.recent_commits }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Action taken**: $([ "${{ steps.check_commits.outputs.has_new_commits }}" = "true" ] || [ "${{ inputs.force_update }}" = "true" ] && echo "Triggered changelog update" || echo "No update needed")" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.check_commits.outputs.has_new_commits }}" = "true" ] || [ "${{ inputs.force_update }}" = "true" ]; then
+            echo "### Next Steps" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "1. 🔄 **Changelog workflow** has been triggered" >> $GITHUB_STEP_SUMMARY
+            echo "2. 📝 **Pull request** will be created automatically" >> $GITHUB_STEP_SUMMARY
+            echo "3. 👀 **Review the PR** when it's ready" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### Status" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "✅ **No new commits** since last changelog update" >> $GITHUB_STEP_SUMMARY
+            echo "📋 **Changelog is up to date**" >> $GITHUB_STEP_SUMMARY
+          fi 

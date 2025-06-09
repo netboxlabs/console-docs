@@ -1,0 +1,377 @@
+name: Generate Changelog
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+      - 'v*.*.*-*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to generate changelog for (optional, defaults to latest tag)'
+        required: false
+        type: string
+      update_unreleased:
+        description: 'Update unreleased section instead of creating version entry'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  generate-changelog:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Determine version and previous version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ inputs.version }}" ]; then
+            VERSION="${{ inputs.version }}"
+          elif [ "${{ github.event_name }}" = "push" ] && [[ "${{ github.ref }}" =~ ^refs/tags/ ]]; then
+            VERSION=${GITHUB_REF#refs/tags/}
+          else
+            VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.1.0")
+          fi
+          
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          
+          # Get previous version
+          if [[ "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            PREV_VERSION=$(git tag --sort=-version:refname | grep -A1 "^$VERSION$" | tail -1 || echo "")
+          else
+            PREV_VERSION=$(git describe --tags --abbrev=0 HEAD~1 2>/dev/null || echo "")
+          fi
+          
+          if [ -z "$PREV_VERSION" ]; then
+            # If no previous version, use first commit
+            PREV_VERSION=$(git rev-list --max-parents=0 HEAD)
+          fi
+          
+          echo "previous_version=$PREV_VERSION" >> $GITHUB_OUTPUT
+          echo "Current version: $VERSION"
+          echo "Previous version: $PREV_VERSION"
+
+      - name: Generate changelog content
+        id: changelog
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          PREV_VERSION="${{ steps.version.outputs.previous_version }}"
+          DATE=$(date +%Y-%m-%d)
+          
+          # Create temporary changelog file
+          TEMP_CHANGELOG=$(mktemp)
+          
+          echo "# Changelog" > $TEMP_CHANGELOG
+          echo "" >> $TEMP_CHANGELOG
+          echo "All notable changes to the NetBox Labs Documentation Hub will be documented in this file." >> $TEMP_CHANGELOG
+          echo "" >> $TEMP_CHANGELOG
+          echo "The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)," >> $TEMP_CHANGELOG
+          echo "and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)." >> $TEMP_CHANGELOG
+          echo "" >> $TEMP_CHANGELOG
+          
+          if [ "${{ inputs.update_unreleased }}" = "true" ]; then
+            echo "## [Unreleased]" >> $TEMP_CHANGELOG
+            echo "" >> $TEMP_CHANGELOG
+          else
+            echo "## [Unreleased]" >> $TEMP_CHANGELOG
+            echo "" >> $TEMP_CHANGELOG
+            echo "## [$VERSION] - $DATE" >> $TEMP_CHANGELOG
+            echo "" >> $TEMP_CHANGELOG
+          fi
+          
+          # Get commits between versions
+          if [ "$PREV_VERSION" = "$(git rev-list --max-parents=0 HEAD)" ]; then
+            COMMITS=$(git log --pretty=format:"%H|%s|%an|%ae" --no-merges)
+          else
+            COMMITS=$(git log ${PREV_VERSION}..HEAD --pretty=format:"%H|%s|%an|%ae" --no-merges)
+          fi
+          
+          # Initialize sections
+          ADDED=""
+          CHANGED=""
+          DEPRECATED=""
+          REMOVED=""
+          FIXED=""
+          SECURITY=""
+          INFRASTRUCTURE=""
+          DOCUMENTATION=""
+          OTHER=""
+          
+          # Process commits
+          while IFS='|' read -r hash subject author email; do
+            if [ -z "$hash" ]; then continue; fi
+            
+            # Extract conventional commit type
+            TYPE=""
+            SCOPE=""
+            DESCRIPTION="$subject"
+            
+            if [[ "$subject" =~ ^([a-z]+)(\([^)]+\))?!?:\ (.+)$ ]]; then
+              TYPE="${BASH_REMATCH[1]}"
+              SCOPE="${BASH_REMATCH[2]}"
+              DESCRIPTION="${BASH_REMATCH[3]}"
+            fi
+            
+            # Format entry
+            SHORT_HASH=${hash:0:7}
+            ENTRY="- $DESCRIPTION ([${SHORT_HASH}](https://github.com/${GITHUB_REPOSITORY}/commit/${hash}))"
+            
+            if [ -n "$author" ] && [ "$author" != "github-actions[bot]" ]; then
+              ENTRY="$ENTRY by @${author}"
+            fi
+            
+            # Categorize by conventional commit type or keywords
+            case "$TYPE" in
+              "feat"|"feature")
+                ADDED="$ADDED$ENTRY\n"
+                ;;
+              "fix"|"bugfix")
+                FIXED="$FIXED$ENTRY\n"
+                ;;
+              "docs"|"doc")
+                DOCUMENTATION="$DOCUMENTATION$ENTRY\n"
+                ;;
+              "refactor"|"perf"|"style")
+                CHANGED="$CHANGED$ENTRY\n"
+                ;;
+              "build"|"ci"|"chore")
+                INFRASTRUCTURE="$INFRASTRUCTURE$ENTRY\n"
+                ;;
+              "revert")
+                REMOVED="$REMOVED$ENTRY\n"
+                ;;
+              "security"|"sec")
+                SECURITY="$SECURITY$ENTRY\n"
+                ;;
+              *)
+                # Categorize by keywords in subject
+                if [[ "$subject" =~ [Aa]dd|[Nn]ew|[Ii]ntroduc|[Ii]mplement ]]; then
+                  ADDED="$ADDED$ENTRY\n"
+                elif [[ "$subject" =~ [Ff]ix|[Rr]esolv|[Cc]orrect ]]; then
+                  FIXED="$FIXED$ENTRY\n"
+                elif [[ "$subject" =~ [Uu]pdat|[Ii]mprov|[Ee]nhanc|[Mm]odif ]]; then
+                  CHANGED="$CHANGED$ENTRY\n"
+                elif [[ "$subject" =~ [Rr]emov|[Dd]elet ]]; then
+                  REMOVED="$REMOVED$ENTRY\n"
+                elif [[ "$subject" =~ [Dd]oc|[Rr]eadme ]]; then
+                  DOCUMENTATION="$DOCUMENTATION$ENTRY\n"
+                elif [[ "$subject" =~ [Bb]uild|[Cc]i|[Dd]eploy|[Cc]hore ]]; then
+                  INFRASTRUCTURE="$INFRASTRUCTURE$ENTRY\n"
+                elif [[ "$subject" =~ [Ss]ecurity|[Vv]ulner ]]; then
+                  SECURITY="$SECURITY$ENTRY\n"
+                else
+                  OTHER="$OTHER$ENTRY\n"
+                fi
+                ;;
+            esac
+          done <<< "$COMMITS"
+          
+          # Write sections to changelog
+          if [ -n "$ADDED" ]; then
+            echo "### Added" >> $TEMP_CHANGELOG
+            echo "" >> $TEMP_CHANGELOG
+            echo -e "$ADDED" >> $TEMP_CHANGELOG
+          fi
+          
+          if [ -n "$CHANGED" ]; then
+            echo "### Changed" >> $TEMP_CHANGELOG
+            echo "" >> $TEMP_CHANGELOG
+            echo -e "$CHANGED" >> $TEMP_CHANGELOG
+          fi
+          
+          if [ -n "$DEPRECATED" ]; then
+            echo "### Deprecated" >> $TEMP_CHANGELOG
+            echo "" >> $TEMP_CHANGELOG
+            echo -e "$DEPRECATED" >> $TEMP_CHANGELOG
+          fi
+          
+          if [ -n "$REMOVED" ]; then
+            echo "### Removed" >> $TEMP_CHANGELOG
+            echo "" >> $TEMP_CHANGELOG
+            echo -e "$REMOVED" >> $TEMP_CHANGELOG
+          fi
+          
+          if [ -n "$FIXED" ]; then
+            echo "### Fixed" >> $TEMP_CHANGELOG
+            echo "" >> $TEMP_CHANGELOG
+            echo -e "$FIXED" >> $TEMP_CHANGELOG
+          fi
+          
+          if [ -n "$SECURITY" ]; then
+            echo "### Security" >> $TEMP_CHANGELOG
+            echo "" >> $TEMP_CHANGELOG
+            echo -e "$SECURITY" >> $TEMP_CHANGELOG
+          fi
+          
+          if [ -n "$DOCUMENTATION" ]; then
+            echo "### Documentation" >> $TEMP_CHANGELOG
+            echo "" >> $TEMP_CHANGELOG
+            echo -e "$DOCUMENTATION" >> $TEMP_CHANGELOG
+          fi
+          
+          if [ -n "$INFRASTRUCTURE" ]; then
+            echo "### Infrastructure" >> $TEMP_CHANGELOG
+            echo "" >> $TEMP_CHANGELOG
+            echo -e "$INFRASTRUCTURE" >> $TEMP_CHANGELOG
+          fi
+          
+          if [ -n "$OTHER" ]; then
+            echo "### Other" >> $TEMP_CHANGELOG
+            echo "" >> $TEMP_CHANGELOG
+            echo -e "$OTHER" >> $TEMP_CHANGELOG
+          fi
+          
+          # If existing CHANGELOG.md exists, preserve previous entries
+          if [ -f "CHANGELOG.md" ]; then
+            # Extract previous entries (everything after the first version section)
+            if [ "${{ inputs.update_unreleased }}" = "true" ]; then
+              # Replace only the unreleased section
+              awk '/^## \[Unreleased\]/{exit} {print}' CHANGELOG.md > temp_header.md
+              awk '/^## \[[0-9]/{found=1} found {print}' CHANGELOG.md > temp_versions.md
+              cat temp_header.md >> $TEMP_CHANGELOG
+              awk '/^## \[Unreleased\]/{skip=1; next} /^## \[/{skip=0} !skip {print}' $TEMP_CHANGELOG >> $TEMP_CHANGELOG.tmp
+              cat temp_versions.md >> $TEMP_CHANGELOG.tmp
+              mv $TEMP_CHANGELOG.tmp $TEMP_CHANGELOG
+              rm -f temp_header.md temp_versions.md
+            else
+              # Add new version entry
+              awk '/^## \[Unreleased\]/{print; print ""; getline; while(/^$/ || /^###/ || /^-/) {if(/^## \[/) break; getline}; print "## [Unreleased]"; print ""} /^## \[[0-9]/{found=1} found {print}' CHANGELOG.md >> $TEMP_CHANGELOG
+            fi
+          fi
+          
+          # Move temporary file to CHANGELOG.md
+          mv $TEMP_CHANGELOG CHANGELOG.md
+          
+          echo "temp_changelog=$TEMP_CHANGELOG" >> $GITHUB_OUTPUT
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if [ -f "CHANGELOG.md" ]; then
+            git add CHANGELOG.md
+            if git diff --staged --quiet; then
+              echo "has_changes=false" >> $GITHUB_OUTPUT
+              echo "No changes to commit"
+            else
+              echo "has_changes=true" >> $GITHUB_OUTPUT
+              echo "Changes detected in CHANGELOG.md"
+            fi
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create pull request for protected branch
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          BRANCH_NAME="automated-changelog-update-$(date +%Y%m%d-%H%M%S)"
+          
+          # Create and switch to new branch
+          git checkout -b "$BRANCH_NAME"
+          
+                    # Commit changes
+          if [ "${{ inputs.update_unreleased }}" = "true" ]; then
+            git commit -m "docs: update unreleased section in CHANGELOG.md" \
+                       -m "" \
+                       -m "- Automated changelog update for unreleased changes" \
+                       -m "- Generated from commit history using conventional commit parsing" \
+                       -m "- Added categorized change entries with commit links"
+          else
+            git commit -m "docs: add $VERSION entry to CHANGELOG.md" \
+                       -m "" \
+                       -m "- Automated changelog generation for version $VERSION" \
+                       -m "- Generated from commit history using conventional commit parsing" \
+                       -m "- Added categorized change entries with commit links" \
+                       -m "- Follows Keep a Changelog format"
+          fi
+          
+          # Push branch
+          git push origin "$BRANCH_NAME"
+          
+          # Create pull request
+          TITLE="📝 Automated Changelog Update"
+          if [ "${{ inputs.update_unreleased }}" = "true" ]; then
+            TITLE="$TITLE - Unreleased Changes"
+          else
+            TITLE="$TITLE - $VERSION"
+          fi
+          
+          BODY="## 🤖 Automated Changelog Generation"
+          BODY="$BODY"$'\n\n'"This PR contains automated updates to the project changelog."
+          BODY="$BODY"$'\n\n'"### Changes Include"$'\n\n'
+          
+          if [ "${{ inputs.update_unreleased }}" = "true" ]; then
+            BODY="$BODY""- 📋 **Updated unreleased section** with recent changes"
+          else
+            BODY="$BODY""- 📋 **Added changelog entry** for version \`$VERSION\`"
+          fi
+          
+          BODY="$BODY"$'\n'"- 🔗 **Commit links** for easy reference to specific changes"
+          BODY="$BODY"$'\n'"- 📝 **Categorized entries** following Keep a Changelog format"
+          BODY="$BODY"$'\n'"- ⚡ **Conventional commit parsing** for automatic categorization"
+          BODY="$BODY"$'\n\n'"### How It Works"$'\n\n'"The changelog is automatically generated by:"
+          BODY="$BODY"$'\n'"1. Analyzing git commit history since the last version"
+          BODY="$BODY"$'\n'"2. Parsing conventional commit messages (feat:, fix:, docs:, etc.)"
+          BODY="$BODY"$'\n'"3. Categorizing changes into appropriate sections"
+          BODY="$BODY"$'\n'"4. Adding commit links and author information"
+          BODY="$BODY"$'\n'"5. Following Keep a Changelog format guidelines"
+          BODY="$BODY"$'\n\n'"### Review Guidelines"$'\n\n'"- ✅ **Verify accuracy**: Check that categorization makes sense"
+          BODY="$BODY"$'\n'"- ✅ **Check formatting**: Ensure markdown renders correctly"
+          BODY="$BODY"$'\n'"- ✅ **Validate links**: Confirm commit links work properly"
+          BODY="$BODY"$'\n'"- ✅ **Content review**: Make sure no sensitive info is included"
+          BODY="$BODY"$'\n\n'"---"$'\n\n'"*This PR was automatically generated by the changelog automation workflow.*"
+          BODY="$BODY"$'\n'"*Triggered: $(date -u +%Y-%m-%dT%H:%M:%SZ)*"
+
+          gh pr create \
+            --title "$TITLE" \
+            --body "$BODY" \
+            --head "$BRANCH_NAME" \
+            --base master \
+            --label "documentation" \
+            --label "automated" \
+            --label "changelog"
+          
+          echo "Pull request created for changelog updates"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Changelog Generation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version**: ${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Previous Version**: ${{ steps.version.outputs.previous_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Changes Detected**: ${{ steps.changes.outputs.has_changes }}" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.changes.outputs.has_changes }}" = "true" ]; then
+            echo "- **Action**: Pull request created for protected branch" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- **Action**: No changes required" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Next Steps" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.changes.outputs.has_changes }}" = "true" ]; then
+            echo "1. Review the generated pull request" >> $GITHUB_STEP_SUMMARY
+            echo "2. Verify changelog accuracy and formatting" >> $GITHUB_STEP_SUMMARY
+            echo "3. Approve and merge when ready" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "1. No action required - changelog is up to date" >> $GITHUB_STEP_SUMMARY
+          fi 

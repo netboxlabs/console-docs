@@ -1,0 +1,136 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+      - 'v*.*.*-*'
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract version info
+        id: version
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "version_name=${VERSION#v}" >> $GITHUB_OUTPUT
+          
+          # Check if this is a pre-release
+          if [[ "$VERSION" =~ -[a-zA-Z] ]]; then
+            echo "prerelease=true" >> $GITHUB_OUTPUT
+          else
+            echo "prerelease=false" >> $GITHUB_OUTPUT
+          fi
+          
+          echo "Version: $VERSION"
+          echo "Prerelease: $([ "$VERSION" =~ -[a-zA-Z] ] && echo true || echo false)"
+
+      - name: Trigger changelog generation
+        run: |
+          gh workflow run generate-changelog.yml \
+            --ref ${{ github.ref_name }} \
+            -f version="${{ steps.version.outputs.version }}" \
+            -f update_unreleased=false
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Wait for changelog generation
+        run: |
+          echo "Waiting for changelog generation to complete..."
+          sleep 30
+
+      - name: Extract release notes from changelog
+        id: release_notes
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          
+          # Create release notes from CHANGELOG.md
+          if [ -f "CHANGELOG.md" ]; then
+            # Extract the section for this version
+            RELEASE_NOTES=$(awk "/^## \\[$VERSION\\]/ { found=1; next } found && /^## \\[/ { exit } found && !/^\$/ { print }" CHANGELOG.md | sed '/^$/d' | head -50)
+            
+            if [ -z "$RELEASE_NOTES" ]; then
+              RELEASE_NOTES="### Changes in $VERSION"$'\n\n'"See the [full changelog](https://github.com/${{ github.repository }}/blob/master/CHANGELOG.md) for details."$'\n\n'"This release includes updates to the NetBox Labs Documentation Hub with improvements to documentation, infrastructure, and automated workflows."
+            fi
+          else
+            RELEASE_NOTES="### Changes in $VERSION"$'\n\n'"See the repository for details about this release."$'\n\n'"This release includes updates to the NetBox Labs Documentation Hub."
+          fi
+          
+          # Write to temporary file for multiline output
+          echo "$RELEASE_NOTES" > release_notes.txt
+          echo "release_notes_file=release_notes.txt" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.version.outputs.version }}
+          name: "NetBox Labs Documentation Hub ${{ steps.version.outputs.version }}"
+          bodyFile: ${{ steps.release_notes.outputs.release_notes_file }}
+          draft: false
+          prerelease: ${{ steps.version.outputs.prerelease }}
+          generateReleaseNotes: true
+          makeLatest: ${{ steps.version.outputs.prerelease == 'false' }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update documentation version references
+        if: steps.version.outputs.prerelease == 'false'
+        run: |
+          VERSION="${{ steps.version.outputs.version_name }}"
+          
+          # Update package.json version if it exists and differs
+          if [ -f "package.json" ]; then
+            CURRENT_VERSION=$(node -p "require('./package.json').version" 2>/dev/null || echo "")
+            if [ -n "$CURRENT_VERSION" ] && [ "$CURRENT_VERSION" != "$VERSION" ]; then
+              echo "Updating package.json version from $CURRENT_VERSION to $VERSION"
+              npm version "$VERSION" --no-git-tag-version --allow-same-version
+            fi
+          fi
+          
+          # Check if there are changes to commit
+          if ! git diff --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            
+            git add -A
+            git commit -m "chore: update version references to $VERSION"
+            git push origin HEAD:master
+          fi
+
+      - name: Trigger documentation rebuild
+        run: |
+          # Trigger the documentation update workflow if it exists
+          if [ -f ".github/workflows/update-submodules.yml" ]; then
+            gh workflow run update-submodules.yml --ref master
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify about release
+        run: |
+          echo "## 🚀 Release Created Successfully!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version**: ${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Type**: $([ "${{ steps.version.outputs.prerelease }}" = "true" ] && echo "Pre-release" || echo "Stable release")" >> $GITHUB_STEP_SUMMARY
+          echo "- **Release URL**: https://github.com/${{ github.repository }}/releases/tag/${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### What's Next?" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "1. 📖 **Release notes** have been automatically generated" >> $GITHUB_STEP_SUMMARY
+          echo "2. 📝 **Changelog** has been updated with this version" >> $GITHUB_STEP_SUMMARY
+          echo "3. 🔄 **Documentation** rebuild has been triggered" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.version.outputs.prerelease }}" = "false" ]; then
+            echo "4. ✅ **Latest release** tag has been updated" >> $GITHUB_STEP_SUMMARY
+          fi 

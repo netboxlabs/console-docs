@@ -42,7 +42,7 @@ const config: Config = {
 					// Ensure all MDX files are processed
 					include: ['**/*.md', '**/*.mdx'],
 					// Exclude internal documentation files
-					exclude: ['**/AUTOMATED_DOCS_SYSTEM.md'],
+					exclude: ['**/AUTOMATED_DOCS_SYSTEM.md', '**/CHANGELOG_SYSTEM.md'],
 				},
 				blog: false,
 				theme: {
