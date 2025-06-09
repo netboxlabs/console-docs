@@ -185,11 +185,10 @@ nav:
 extra:
   version:
     provider: mike
-    default: v1.10
-    current: v1.10
+    default: v1.9
+    current: v1.9
     available:
-      - v1.10 (Latest)
-      - v1.9 (Stable)
+      - v1.9 (Current)
   social:
     - icon: fontawesome/solid/globe
       link: https://netboxlabs.com
