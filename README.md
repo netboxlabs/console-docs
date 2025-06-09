@@ -37,8 +37,8 @@ This repository supports versioned documentation using [Mike](https://github.com
 - **v1.9** (Current) - Customer stable channel
 
 ### Future Versions
-- **v1.10** (Development) - Upcoming release
-- **v1.11** (Development) - Future release
+- **v1.10** (Beta) - Upcoming release
+- **v1.11** (Alpha) - Future release
 
 ### Creating a New Version
 
@@ -77,15 +77,16 @@ This repository integrates with `netboxlabs-website-dochub` for unified document
 Our documentation follows the NetBox Enterprise release cycle with these version states:
 
 - **Current Version (v1.9)**: Live customer documentation, displayed to users
-- **Development Versions (v1.10, v1.11)**: Prepared infrastructure, hidden from users until release
+- **Beta Version (v1.10)**: Near-release version, prepared infrastructure, hidden from users until release
+- **Alpha Version (v1.11)**: Early development version, prepared infrastructure, hidden from users until release
 
 ### Branch and Content Strategy
 
 #### Branch Structure
 ```
-main              # Latest development (v1.11 content)
-├── v1.10         # v1.10 maintenance branch (when ready)
-├── v1.9          # v1.9 maintenance branch (current)
+main              # Latest alpha development (v1.11 content)
+├── v1.10         # v1.10 beta branch (when ready)
+├── v1.9          # v1.9 current release branch
 └── feature/*     # Feature branches for new content
 ```
 
@@ -93,9 +94,9 @@ main              # Latest development (v1.11 content)
 
 | Content Type | Target Branch | When to Use |
 |-------------|---------------|-------------|
-| **New features for future release** | `main` | Writing docs for v1.11 features |
+| **New features for alpha release** | `main` | Writing docs for v1.11 (Alpha) features |
 | **Updates to current release** | `v1.9` | Bug fixes, clarifications for current customers |
-| **Preparing next release** | `v1.10` | Writing docs for v1.10 features (when branch exists) |
+| **Preparing beta release** | `v1.10` | Writing docs for v1.10 (Beta) features (when branch exists) |
 
 ### Tagging and Release Workflow
 
@@ -119,21 +120,21 @@ main              # Latest development (v1.11 content)
    ```
    **Result**: Documentation automatically deploys to production
 
-2. **Future version content (v1.11)**:
+2. **Alpha version content (v1.11)**:
    ```bash
-   # Work on main branch for future features
+   # Work on main branch for alpha features
    git checkout main
    git pull origin main
    
    # Make your documentation changes for new features
    # Commit and push changes
    git add .
-   git commit -m "Add documentation for new Jinja2 features in v1.11"
+   git commit -m "Add documentation for new Jinja2 features in v1.11 (Alpha)"
    git push origin main
    
-   # Don't tag yet - wait for v1.11 release
+   # Don't tag yet - wait for v1.11 alpha release
    ```
-   **Result**: Content ready for v1.11 but not visible to customers yet
+   **Result**: Content ready for v1.11 alpha but not visible to customers yet
 
 #### For Major Release Preparation
 
@@ -170,11 +171,17 @@ When preparing a new major/minor version (like v1.10 or v1.11):
 - **Avoid**: Documentation for unreleased features
 - **Review**: Test all examples and procedures
 
-#### Development Version (v1.11) Content  
+#### Alpha Version (v1.11) Content  
 - **Focus**: New features, major changes, future functionality
 - **Updates**: Draft documentation, work-in-progress content
-- **Include**: Feature flags, beta warnings if applicable
+- **Include**: Feature flags, alpha warnings if applicable
 - **Note**: Content won't be visible to customers until release
+
+#### Beta Version (v1.10) Content
+- **Focus**: Near-final features, stabilized functionality
+- **Updates**: Refined documentation, final examples
+- **Include**: Beta status indicators if applicable
+- **Note**: Content ready for review but hidden from customers until release
 
 ### Common Workflows
 
@@ -190,14 +197,14 @@ git push origin v1.9.4
 # Documentation automatically updates for customers
 ```
 
-#### Scenario 2: Document New Feature for Next Release
+#### Scenario 2: Document New Feature for Alpha Release
 ```bash
-# New Jinja2 template feature added to v1.11
+# New Jinja2 template feature added to v1.11 (Alpha)
 git checkout main
 # Add comprehensive documentation
 git commit -m "Add Jinja2 conditional logic documentation"
 git push origin main
-# Content staged for v1.11 release, not visible to customers yet
+# Content staged for v1.11 alpha release, not visible to customers yet
 ```
 
 #### Scenario 3: Backport Important Update

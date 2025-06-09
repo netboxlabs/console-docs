@@ -14,14 +14,14 @@
     {
       "version": "v1.10",
       "branch": "v1.10",
-      "title": "v1.10 (Development)",
-      "status": "development"
+      "title": "v1.10 (Beta)",
+      "status": "beta"
     },
     {
       "version": "v1.11",
       "branch": "main",
-      "title": "v1.11 (Development)",
-      "status": "development"
+      "title": "v1.11 (Alpha)",
+      "status": "alpha"
     }
   ]
 } 
