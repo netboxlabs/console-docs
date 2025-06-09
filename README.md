@@ -34,21 +34,20 @@ INFO    -  [13:37:39] Serving on http://127.0.0.1:8000/
 This repository supports versioned documentation using [Mike](https://github.com/jimporter/mike). Versions are managed automatically via GitHub Actions when tags are pushed.
 
 ### Current Versions
-- **v1.11** (Latest) - Current development branch
-- **v1.10** - Supported version  
+- **v1.10** (Latest) - Current production version
 - **v1.9** (Stable) - Customer stable channel
 
 ### Creating a New Version
 
 1. **Tag a release** (automatic deployment):
    ```bash
-   git tag v1.11.2
-   git push origin v1.11.2
+   git tag v1.10.3
+   git push origin v1.10.3
    ```
 
 2. **Manual deployment** (if needed):
    ```bash
-   mike deploy v1.11 latest --title="v1.11 (Latest)" --push --update-aliases
+   mike deploy v1.10 latest --title="v1.10 (Latest)" --push --update-aliases
    mike set-default latest --push
    ```
 

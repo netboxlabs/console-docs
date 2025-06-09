@@ -1,17 +1,11 @@
 {
   "versions": [
     {
-      "version": "v1.11",
-      "branch": "main", 
-      "title": "v1.11 (Latest)",
-      "default": true,
-      "status": "latest"
-    },
-    {
       "version": "v1.10",
       "branch": "v1.10",
-      "title": "v1.10",
-      "status": "supported"
+      "title": "v1.10 (Latest)",
+      "default": true,
+      "status": "latest"
     },
     {
       "version": "v1.9", 
@@ -20,6 +14,14 @@
       "status": "stable"
     }
   ],
-  "default_version": "v1.11",
-  "stable_version": "v1.9"
+  "default_version": "v1.10",
+  "stable_version": "v1.9",
+  "future_versions": [
+    {
+      "version": "v1.11",
+      "branch": "main",
+      "title": "v1.11 (Development)",
+      "status": "development"
+    }
+  ]
 } 

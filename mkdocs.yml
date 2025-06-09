@@ -185,11 +185,10 @@ nav:
 extra:
   version:
     provider: mike
-    default: v1.11
-    current: v1.11
+    default: v1.10
+    current: v1.10
     available:
-      - v1.11 (Latest)
-      - v1.10
+      - v1.10 (Latest)
       - v1.9 (Stable)
   social:
     - icon: fontawesome/solid/globe
