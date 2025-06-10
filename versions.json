@@ -1,0 +1,29 @@
+{
+  "versions": [
+    {
+      "version": "v1.9", 
+      "branch": "v1.9",
+      "title": "v1.9 (Current)",
+      "default": true,
+      "status": "current"
+    }
+  ],
+  "default_version": "v1.9",
+  "stable_version": "v1.9",
+  "future_versions": [
+    {
+      "version": "v1.10",
+      "branch": "v1.10",
+      "title": "v1.10 (Beta) - NetBox Enterprise with Assurance",
+      "description": "NetBox Enterprise with Assurance capabilities",
+      "status": "beta"
+    },
+    {
+      "version": "v1.11",
+      "branch": "main",
+      "title": "v1.11 (Alpha) - NetBox Enterprise with Helm",
+      "description": "NetBox Enterprise with Helm capabilities",
+      "status": "alpha"
+    }
+  ]
+} 

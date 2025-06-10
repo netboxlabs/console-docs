@@ -1,0 +1,107 @@
+name: Deploy Documentation Version
+
+permissions:
+  contents: write
+  actions: read
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to deploy (e.g., v1.11.2)'
+        required: true
+        type: string
+
+jobs:
+  deploy-version:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install mike
+
+      - name: Extract version info
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+          else
+            VERSION=${GITHUB_REF#refs/tags/}
+          fi
+          
+          # Extract major.minor from version (e.g., v1.11.2 -> v1.11)
+          MAJOR_MINOR=$(echo $VERSION | sed -E 's/^v([0-9]+\.[0-9]+)\.[0-9]+$/v\1/')
+          
+          echo "full_version=$VERSION" >> $GITHUB_OUTPUT
+          echo "major_minor=$MAJOR_MINOR" >> $GITHUB_OUTPUT
+          
+          # Determine if this is latest
+          LATEST_VERSION="v1.9"
+          if [ "$MAJOR_MINOR" == "$LATEST_VERSION" ]; then
+            echo "is_latest=true" >> $GITHUB_OUTPUT
+          else
+            echo "is_latest=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Deploy with Mike
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          VERSION="${{ steps.version.outputs.major_minor }}"
+          FULL_VERSION="${{ steps.version.outputs.full_version }}"
+          
+          # Deploy the version
+          if [ "${{ steps.version.outputs.is_latest }}" == "true" ]; then
+            mike deploy $VERSION latest --title="$VERSION (Latest)" --push --update-aliases
+            mike set-default latest --push
+          else
+            mike deploy $VERSION --title="$VERSION" --push
+          fi
+
+      - name: Trigger Dochub Integration
+        env:
+          DOCHUB_WEBHOOK_URL: ${{ secrets.DOCHUB_WEBHOOK_URL }}
+        run: |
+          if [ -n "$DOCHUB_WEBHOOK_URL" ]; then
+            curl -X POST "$DOCHUB_WEBHOOK_URL" \
+              -H "Content-Type: application/json" \
+              -d '{
+                "version": "${{ steps.version.outputs.major_minor }}",
+                "full_version": "${{ steps.version.outputs.full_version }}",
+                "repository": "console-docs",
+                "is_latest": ${{ steps.version.outputs.is_latest }}
+              }'
+          fi
+
+      - name: Create Release Notes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ steps.version.outputs.full_version }}" \
+            --title "NetBox Enterprise Documentation ${{ steps.version.outputs.full_version }}" \
+            --notes "## NetBox Enterprise Documentation ${{ steps.version.outputs.full_version }}
+
+          Documentation for NetBox Enterprise ${{ steps.version.outputs.major_minor }}.
+
+          ### View Documentation
+          - [Latest Documentation](https://netboxlabs.com/docs/)
+          - [Version ${{ steps.version.outputs.major_minor }} Documentation](https://netboxlabs.com/docs/${{ steps.version.outputs.major_minor }}/)
+
+          ### Changes
+          This release includes documentation updates for NetBox Enterprise ${{ steps.version.outputs.full_version }}." 
