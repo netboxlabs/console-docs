@@ -202,20 +202,38 @@ jobs:
         run: |
           git add .
           
-          # Create detailed commit message
-          if [ "${{ steps.branch-strategy.outputs.strategy }}" = "update" ]; then
-            COMMIT_MSG="chore: update automated documentation submodule updates"
-          else
-            COMMIT_MSG="chore: automated documentation submodule updates"
+          # Create detailed commit message with dynamic content
+          NETBOX_CHANGED="${{ steps.changes.outputs.netbox_changed }}"
+          CONSOLE_CHANGED="${{ steps.changes.outputs.console_changed }}"
+          
+          # Build title parts for commit message
+          TITLE_PARTS=""
+          if [ "$NETBOX_CHANGED" = "true" ]; then
+            TITLE_PARTS="NetBox"
+          fi
+          if [ "$CONSOLE_CHANGED" = "true" ]; then
+            if [ -n "$TITLE_PARTS" ]; then
+              TITLE_PARTS="$TITLE_PARTS + Console"
+            else
+              TITLE_PARTS="Console"
+            fi
           fi
           
-          if [ "${{ steps.changes.outputs.netbox_changed }}" = "true" ]; then
+          # Create base commit message
+          if [ "${{ steps.branch-strategy.outputs.strategy }}" = "update" ]; then
+            COMMIT_MSG="chore: update automated documentation - $TITLE_PARTS"
+          else
+            COMMIT_MSG="chore: automated documentation updates - $TITLE_PARTS"
+          fi
+          
+          # Add detailed changes
+          if [ "$NETBOX_CHANGED" = "true" ]; then
             NETBOX_SHORT_BEFORE="${{ steps.check-before.outputs.netbox_before }}"
             NETBOX_SHORT_AFTER="${{ steps.check-after.outputs.netbox_after }}"
             COMMIT_MSG="$COMMIT_MSG"$'\n\n'"- NetBox docs: ${NETBOX_SHORT_BEFORE:0:7} → ${NETBOX_SHORT_AFTER:0:7}"
           fi
           
-          if [ "${{ steps.changes.outputs.console_changed }}" = "true" ]; then
+          if [ "$CONSOLE_CHANGED" = "true" ]; then
             CONSOLE_SHORT_BEFORE="${{ steps.check-before.outputs.console_before }}"
             CONSOLE_SHORT_AFTER="${{ steps.check-after.outputs.console_after }}"
             COMMIT_MSG="$COMMIT_MSG"$'\n\n'"- Console docs: ${CONSOLE_SHORT_BEFORE:0:7} → ${CONSOLE_SHORT_AFTER:0:7}"
@@ -234,24 +252,55 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
+            // Get the change status from workflow outputs
+            const netboxChanged = '${{ steps.changes.outputs.netbox_changed }}' === 'true';
+            const consoleChanged = '${{ steps.changes.outputs.console_changed }}' === 'true';
+            
+            console.log(`NetBox changed: ${netboxChanged}, Console changed: ${consoleChanged}`);
+            
             // Build the PR body content
             let netboxStatus = '';
             let consoleStatus = '';
             
-            if (process.env.NETBOX_CHANGED === 'true') {
+            if (netboxChanged) {
               netboxStatus = `- ✅ **NetBox Documentation**: Updated from \`${{ steps.check-before.outputs.netbox_before }}\` to \`${{ steps.check-after.outputs.netbox_after }}\``;
             } else {
               netboxStatus = '- ⚪ **NetBox Documentation**: No changes';
             }
             
-            if (process.env.CONSOLE_CHANGED === 'true') {
+            if (consoleChanged) {
               consoleStatus = `- ✅ **Console Documentation**: Updated from \`${{ steps.check-before.outputs.console_before }}\` to \`${{ steps.check-after.outputs.console_after }}\``;
             } else {
               consoleStatus = '- ⚪ **Console Documentation**: No changes';
             }
             
+            // Build dynamic title based on what changed
+            let titleParts = [];
+            if (netboxChanged) titleParts.push('NetBox');
+            if (consoleChanged) titleParts.push('Console');
+            
+            const dynamicTitle = titleParts.length > 0 
+              ? `🤖 Automated Documentation Updates - ${titleParts.join(' + ')}`
+              : '🤖 Automated Documentation Updates';
+            
             const isUpdate = '${{ steps.branch-strategy.outputs.strategy }}' === 'update';
             const updateText = isUpdate ? ' (Updated)' : '';
+            
+            // Build detailed what's included section
+            let whatsIncluded = ['- 📚 Updated submodule references to latest commits'];
+            
+            if (netboxChanged || consoleChanged) {
+              whatsIncluded.push('- 🔄 Regenerated transformed documentation files');
+              whatsIncluded.push('- 🗂️ Updated sidebar configurations');
+              whatsIncluded.push('- 🖼️ Copied new/updated static assets');
+              
+              if (netboxChanged) {
+                whatsIncluded.push('- 📖 **NetBox docs**: ~284 files processed and transformed');
+              }
+              if (consoleChanged) {
+                whatsIncluded.push('- 🏢 **Console docs**: ~324 files processed and transformed');
+              }
+            }
             
             const prBody = [
               '## 🔄 Automated Submodule Updates' + updateText,
@@ -260,18 +309,15 @@ jobs:
               '',
               isUpdate ? `> **🔄 This PR was automatically updated on ${new Date().toISOString()}**` : '',
               '',
-              '### Changes Detected',
+              '### 📊 Changes Detected',
               '',
               netboxStatus,
               '',
               consoleStatus,
               '',
-              '### What\'s Included',
+              '### 📦 What\'s Included',
               '',
-              '- 📚 Updated submodule references to latest commits',
-              '- 🔄 Regenerated transformed documentation files',
-              '- 🗂️ Updated sidebar configurations',
-              '- 🖼️ Copied new/updated static assets',
+              ...whatsIncluded,
               '',
               '### Review Checklist',
               '',
@@ -300,6 +346,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 pull_number: prNumber,
+                title: dynamicTitle,
                 body: prBody
               });
               
@@ -316,7 +363,7 @@ jobs:
               const { data: pr } = await github.rest.pulls.create({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                title: '🤖 Automated Documentation Updates',
+                title: dynamicTitle,
                 head: '${{ steps.branch-strategy.outputs.branch_name }}',
                 base: 'master',
                 body: prBody,
@@ -333,10 +380,6 @@ jobs:
 
               console.log(`Created PR #${pr.number}: ${pr.html_url}`);
             }
-            
-            // Set environment variables for the GitHub script
-            process.env.NETBOX_CHANGED = '${{ steps.changes.outputs.netbox_changed }}';
-            process.env.CONSOLE_CHANGED = '${{ steps.changes.outputs.console_changed }}';
 
       - name: Summary
         if: always()
