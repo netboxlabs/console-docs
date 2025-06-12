@@ -40,19 +40,30 @@ jobs:
 
       - name: Update submodules to latest
         run: |
+          echo "=== Before submodule update ==="
+          git submodule status
+          echo "=== Running submodule update ==="
           git submodule update --remote --merge
+          echo "=== After submodule update ==="
+          git submodule status
           
       - name: Check updated submodule commits
         id: check-after
         run: |
-          echo "netbox_after=$(git ls-tree HEAD external-repos/netbox | awk '{print $3}')" >> $GITHUB_OUTPUT
-          echo "console_after=$(git ls-tree HEAD external-repos/console-docs | awk '{print $3}')" >> $GITHUB_OUTPUT
+          echo "netbox_after=$(cd external-repos/netbox && git rev-parse HEAD)" >> $GITHUB_OUTPUT
+          echo "console_after=$(cd external-repos/console-docs && git rev-parse HEAD)" >> $GITHUB_OUTPUT
 
       - name: Detect changes
         id: changes
         run: |
           NETBOX_CHANGED="false"
           CONSOLE_CHANGED="false"
+          
+          echo "=== Change Detection Debug ==="
+          echo "NetBox before: ${{ steps.check-before.outputs.netbox_before }}"
+          echo "NetBox after:  ${{ steps.check-after.outputs.netbox_after }}"
+          echo "Console before: ${{ steps.check-before.outputs.console_before }}"
+          echo "Console after:  ${{ steps.check-after.outputs.console_after }}"
           
           if [ "${{ steps.check-before.outputs.netbox_before }}" != "${{ steps.check-after.outputs.netbox_after }}" ]; then
             NETBOX_CHANGED="true"
@@ -61,6 +72,10 @@ jobs:
           if [ "${{ steps.check-before.outputs.console_before }}" != "${{ steps.check-after.outputs.console_after }}" ]; then
             CONSOLE_CHANGED="true"
           fi
+          
+          echo "NetBox changed: $NETBOX_CHANGED"
+          echo "Console changed: $CONSOLE_CHANGED"
+          echo "Force update: ${{ inputs.force_update }}"
           
           echo "netbox_changed=$NETBOX_CHANGED" >> $GITHUB_OUTPUT
           echo "console_changed=$CONSOLE_CHANGED" >> $GITHUB_OUTPUT

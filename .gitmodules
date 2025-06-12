@@ -1,6 +1,8 @@
 [submodule "external-repos/netbox"]
 	path = external-repos/netbox
 	url = https://github.com/netbox-community/netbox
+	branch = main
 [submodule "external-repos/console-docs"]
 	path = external-repos/console-docs
 	url = https://github.com/netboxlabs/console-docs/
+	branch = main
