@@ -1,60 +1,15 @@
-name: Enable Auto-merge for Documentation PRs
+name: Disabled - Auto-merge for Documentation PRs
+
+# This workflow has been disabled - functionality moved to auto-merge-docs.yml
+# to avoid conflicts between multiple auto-merge attempts
 
 on:
-  pull_request:
-    types: [opened, labeled]
-    branches: [master]
+  workflow_dispatch: # Manual trigger only
 
 jobs:
-  enable-auto-merge:
+  disabled:
     runs-on: ubuntu-latest
-    if: >
-      github.actor == 'github-actions[bot]' &&
-      startsWith(github.head_ref, 'automated-docs-update-') &&
-      contains(github.event.pull_request.labels.*.name, 'automated')
-    permissions:
-      contents: write
-      pull-requests: write
-
+    if: false  # Workflow disabled
     steps:
-      - name: Enable auto-merge
-        uses: actions/github-script@v7
-        with:
-          script: |
-            try {
-              // Enable GitHub's built-in auto-merge feature
-              // This will auto-merge once all required checks pass and approvals are met
-              await github.rest.pulls.updateBranch({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: context.payload.pull_request.number
-              });
-
-              await github.rest.pulls.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: context.payload.pull_request.number,
-                auto_merge: {
-                  merge_method: 'squash'
-                }
-              });
-
-              // Add a helpful comment
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: context.payload.pull_request.number,
-                body: `🤖 **Auto-merge enabled**: This PR will automatically merge once:\n\n✅ All required status checks pass\n✅ Required reviews are approved\n✅ Branch protection rules are satisfied\n\n*This automated system respects all branch protection settings.*`
-              });
-
-              console.log('✅ Auto-merge enabled for automated documentation PR');
-            } catch (error) {
-              console.error('Failed to enable auto-merge:', error);
-              
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: context.payload.pull_request.number,
-                body: `ℹ️ **Manual Review Required**: Auto-merge could not be enabled due to branch protection settings.\n\nThis automated documentation update is ready for manual review and approval.`
-              });
-            } 
+      - name: Disabled
+        run: echo "This workflow is disabled - see auto-merge-docs.yml instead" 

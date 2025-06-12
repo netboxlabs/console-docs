@@ -608,38 +608,17 @@
             "label": "Overview"
           },
           {
-            "type": "category",
-            "label": "Get started",
-            "items": [
-              {
-                "type": "doc",
-                "id": "console/netbox-extensions/diode/diode-get-started",
-                "label": "Components"
-              },
-              {
-                "type": "doc",
-                "id": "console/netbox-extensions/diode/diode-plugin",
-                "label": "Installing the Diode plugin"
-              },
-              {
-                "type": "doc",
-                "id": "console/netbox-extensions/diode/diode-server",
-                "label": "Running the Diode server"
-              },
-              {
-                "type": "doc",
-                "id": "console/netbox-extensions/diode/diode-client",
-                "label": "Installing the Diode client SDK"
-              }
-            ]
+            "type": "doc",
+            "id": "console/netbox-extensions/diode/diode-get-started",
+            "label": "Get Started"
           }
         ]
+      },
+      {
+        "type": "doc",
+        "id": "console/product_feature_lifecycle",
+        "label": "Product and Feature Lifecycle"
       }
     ]
-  },
-  {
-    "type": "doc",
-    "id": "console/product_feature_lifecycle",
-    "label": "Product and Feature Lifecycle"
   }
 ]
