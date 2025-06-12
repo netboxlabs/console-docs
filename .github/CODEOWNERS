@@ -2,27 +2,7 @@
 # These users will be automatically requested for review on all PRs
 
 # Default reviewers for all documentation changes
-* @tom
-
-# Workflow and automation files require DevOps review
-/.github/ @tom
-/scripts/ @tom
-
-# Configuration files
-*.json @tom
-*.yml @tom  
-*.yaml @tom
-*.ts @tom
-*.js @tom
-
-# Submodule updates (automated PRs) - lighter review needed
-/external-repos/ @tom
-
-# Documentation content
-/docs/ @tom
-
-# Static assets
-/static/ @tom
+* @tom @nbl-csling @cruse1977 @richbibby @rboucher-me @DanBeckDev
 
 # Add additional reviewers by uncommenting and updating:
 # * @tom @additional-teammate1 @additional-teammate2
