@@ -462,13 +462,19 @@ const transformContent = async (content: string, sourceFilePath: string, outputB
             const lastIndent = admonitionIndentStack[admonitionIndentStack.length - 1];
             const lastIndentLength = lastIndent.length;
             let shouldClose = false;
+            
+            // Always close if current line has less indentation
             if (currentIndentLength < lastIndentLength) {
                 shouldClose = true;
-            } else if (currentIndentLength === lastIndentLength &&
-                       currentLine.trim() !== '' &&
-                       !currentLine.includes('__FENCED_CODE_BLOCK_') && // Don't close for code blocks
-                       !currentLine.includes('__INLINE_CODE_BLOCK_') && // Don't close for code blocks
-                       !admonitionStartRegex.test(currentLine)) {
+            } 
+            // For same indentation level, close if:
+            // 1. Line is not empty AND
+            // 2. It's not a code block placeholder AND  
+            // 3. Either it's not an admonition start OR it IS an admonition start (new admonition at same level should close previous)
+            else if (currentIndentLength === lastIndentLength &&
+                     currentLine.trim() !== '' &&
+                     !currentLine.includes('__FENCED_CODE_BLOCK_') && 
+                     !currentLine.includes('__INLINE_CODE_BLOCK_')) {
                 shouldClose = true;
             }
 
