@@ -1,0 +1,145 @@
+name: Manual Cleanup - Automated Documentation PRs
+
+on:
+  workflow_dispatch:
+    inputs:
+      close_all:
+        description: 'Close all automated PRs (true) or just outdated ones (false)'
+        required: false
+        default: false
+        type: boolean
+      max_age_days:
+        description: 'Close automated PRs older than X days (0 = no age limit)'
+        required: false
+        default: 7
+        type: number
+
+jobs:
+  manual-cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Find and close automated PRs
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: prs } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              base: 'master',
+              per_page: 100
+            });
+            
+            // Find automated documentation PRs
+            const automatedPRs = prs.filter(pr => 
+              pr.head.ref.startsWith('automated-docs-update') || 
+              pr.title.includes('🤖 Automated Documentation Updates')
+            );
+            
+            console.log(`Found ${automatedPRs.length} automated PRs`);
+            
+            if (automatedPRs.length === 0) {
+              console.log('No automated PRs found');
+              return;
+            }
+            
+            const closeAll = '${{ inputs.close_all }}' === 'true';
+            const maxAgeDays = parseInt('${{ inputs.max_age_days }}');
+            const cutoffDate = maxAgeDays > 0 ? new Date(Date.now() - maxAgeDays * 24 * 60 * 60 * 1000) : null;
+            
+            console.log(`Cleanup mode: ${closeAll ? 'Close all' : 'Close outdated only'}`);
+            if (cutoffDate) {
+              console.log(`Age cutoff: ${cutoffDate.toISOString()} (${maxAgeDays} days ago)`);
+            }
+            
+            let closedCount = 0;
+            let keptCount = 0;
+            
+            // Sort by creation date (newest first)
+            automatedPRs.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+            
+            for (let i = 0; i < automatedPRs.length; i++) {
+              const pr = automatedPRs[i];
+              const prAge = new Date(pr.created_at);
+              let shouldClose = false;
+              let reason = '';
+              
+              if (closeAll) {
+                shouldClose = true;
+                reason = 'Manual cleanup - close all requested';
+              } else {
+                // Keep the newest PR unless it's too old
+                if (i === 0) {
+                  // This is the newest automated PR
+                  if (cutoffDate && prAge < cutoffDate) {
+                    shouldClose = true;
+                    reason = `Automated PR is older than ${maxAgeDays} days`;
+                  } else {
+                    reason = 'Keeping newest automated PR';
+                  }
+                } else {
+                  // This is an older PR
+                  shouldClose = true;
+                  reason = 'Superseded by newer automated PR';
+                }
+              }
+              
+              if (shouldClose) {
+                console.log(`Closing PR #${pr.number}: ${reason}`);
+                
+                await github.rest.pulls.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: pr.number,
+                  state: 'closed'
+                });
+                
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  body: [
+                    `🧹 **Manual Cleanup**: ${reason}`,
+                    '',
+                    `This automated PR was closed as part of manual cleanup.`,
+                    '',
+                    '**Cleanup Parameters:**',
+                    `- Close all: \`${closeAll}\``,
+                    `- Max age: \`${maxAgeDays} days\``,
+                    `- PR age: \`${Math.floor((Date.now() - prAge.getTime()) / (1000 * 60 * 60 * 24))} days\``,
+                    '',
+                    '*Manual cleanup triggered via workflow dispatch.*'
+                  ].join('\n')
+                });
+                
+                closedCount++;
+              } else {
+                console.log(`Keeping PR #${pr.number}: ${reason}`);
+                keptCount++;
+              }
+            }
+            
+            console.log(`\n📊 Cleanup Summary:`);
+            console.log(`- Closed: ${closedCount} PRs`);
+            console.log(`- Kept: ${keptCount} PRs`);
+            
+            // Set outputs for the summary
+            core.setOutput('closed_count', closedCount);
+            core.setOutput('kept_count', keptCount);
+
+      - name: Summary
+        run: |
+          echo "🧹 Manual cleanup completed"
+          echo "- Closed: ${{ steps.find-and-close-automated-prs.outputs.closed_count }} PRs"
+          echo "- Kept: ${{ steps.find-and-close-automated-prs.outputs.kept_count }} PRs"
+          echo ""
+          echo "Settings used:"
+          echo "- Close all: ${{ inputs.close_all }}"
+          echo "- Max age: ${{ inputs.max_age_days }} days" 
