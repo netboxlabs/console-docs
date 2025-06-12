@@ -2,7 +2,7 @@
 # These users will be automatically requested for review on all PRs
 
 # Default reviewers for all documentation changes
-* @tom @nbl-csling @cruse1977 @richbibby @rboucher-me @DanBeckDev
+* @magicalyak @nbl-csling @cruse1977 @richbibby @rboucher-me @DanBeckDev
 
 # Add additional reviewers by uncommenting and updating:
 # * @tom @additional-teammate1 @additional-teammate2
