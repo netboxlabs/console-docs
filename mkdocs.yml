@@ -176,12 +176,8 @@ nav:
       - Changelog: "netbox-extensions/changes/changelog.md"
     - Diode:
       - Overview: "netbox-extensions/diode/index.md"
-      - Get started: 
-        - Components: "netbox-extensions/diode/diode-get-started.md"
-        - Installing the Diode plugin: "netbox-extensions/diode/diode-plugin.md"
-        - Running the Diode server: "netbox-extensions/diode/diode-server.md"
-        - Installing the Diode client SDK: "netbox-extensions/diode/diode-client.md"
-  - Product and Feature Lifecycle: "product_feature_lifecycle.md"
+      - Get Started: "netbox-extensions/diode/diode-get-started.md"
+    - Product and Feature Lifecycle: "product_feature_lifecycle.md"
 extra:
   version:
     provider: mike
