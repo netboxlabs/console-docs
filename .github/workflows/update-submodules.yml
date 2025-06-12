@@ -32,6 +32,54 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+      - name: Check for existing automated PRs
+        id: check-existing-prs
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: prs } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              base: 'master'
+            });
+            
+            // Find automated documentation PRs
+            const automatedPRs = prs.filter(pr => 
+              pr.head.ref.startsWith('automated-docs-update') || 
+              pr.title.includes('🤖 Automated Documentation Updates')
+            );
+            
+            console.log(`Found ${automatedPRs.length} existing automated PRs`);
+            
+            if (automatedPRs.length > 0) {
+              const latestPR = automatedPRs[0]; // Most recent
+              console.log(`Latest automated PR: #${latestPR.number} - ${latestPR.title}`);
+              core.setOutput('has_existing_pr', 'true');
+              core.setOutput('existing_pr_number', latestPR.number);
+              core.setOutput('existing_pr_branch', latestPR.head.ref);
+              
+              // Close older automated PRs (keep only the latest)
+              for (let i = 1; i < automatedPRs.length; i++) {
+                const oldPR = automatedPRs[i];
+                console.log(`Closing outdated automated PR #${oldPR.number}`);
+                await github.rest.pulls.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: oldPR.number,
+                  state: 'closed'
+                });
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: oldPR.number,
+                  body: `🤖 **Auto-closed**: This automated PR has been superseded by a newer update (#${latestPR.number}).`
+                });
+              }
+            } else {
+              core.setOutput('has_existing_pr', 'false');
+            }
+
       - name: Check current submodule commits
         id: check-before
         run: |
@@ -86,6 +134,28 @@ jobs:
             echo "has_changes=false" >> $GITHUB_OUTPUT
           fi
 
+      - name: Close existing automated PR if no changes
+        if: steps.changes.outputs.has_changes == 'false' && steps.check-existing-prs.outputs.has_existing_pr == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = ${{ steps.check-existing-prs.outputs.existing_pr_number }};
+            console.log(`No changes detected - closing existing automated PR #${prNumber}`);
+            
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+              state: 'closed'
+            });
+            
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              body: `🤖 **Auto-closed**: No new documentation changes detected. All submodules are up to date.`
+            });
+
       - name: Setup Node.js
         if: steps.changes.outputs.has_changes == 'true'
         uses: actions/setup-node@v4
@@ -101,12 +171,31 @@ jobs:
         if: steps.changes.outputs.has_changes == 'true'
         run: yarn transform-docs
 
-      - name: Create pull request branch
+      - name: Determine branch strategy
         if: steps.changes.outputs.has_changes == 'true'
+        id: branch-strategy
         run: |
-          BRANCH_NAME="automated-docs-update-$(date +%Y%m%d-%H%M%S)"
-          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
-          git checkout -b "$BRANCH_NAME"
+          if [ "${{ steps.check-existing-prs.outputs.has_existing_pr }}" = "true" ]; then
+            echo "strategy=update" >> $GITHUB_OUTPUT
+            echo "branch_name=${{ steps.check-existing-prs.outputs.existing_pr_branch }}" >> $GITHUB_OUTPUT
+            echo "pr_number=${{ steps.check-existing-prs.outputs.existing_pr_number }}" >> $GITHUB_OUTPUT
+          else
+            BRANCH_NAME="automated-docs-update-$(date +%Y%m%d)"
+            echo "strategy=create" >> $GITHUB_OUTPUT
+            echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Checkout existing PR branch
+        if: steps.changes.outputs.has_changes == 'true' && steps.branch-strategy.outputs.strategy == 'update'
+        run: |
+          git fetch origin ${{ steps.branch-strategy.outputs.branch_name }}
+          git checkout ${{ steps.branch-strategy.outputs.branch_name }}
+          git rebase master
+
+      - name: Create new PR branch
+        if: steps.changes.outputs.has_changes == 'true' && steps.branch-strategy.outputs.strategy == 'create'
+        run: |
+          git checkout -b "${{ steps.branch-strategy.outputs.branch_name }}"
 
       - name: Commit changes
         if: steps.changes.outputs.has_changes == 'true'
@@ -114,7 +203,11 @@ jobs:
           git add .
           
           # Create detailed commit message
-          COMMIT_MSG="chore: automated documentation submodule updates"
+          if [ "${{ steps.branch-strategy.outputs.strategy }}" = "update" ]; then
+            COMMIT_MSG="chore: update automated documentation submodule updates"
+          else
+            COMMIT_MSG="chore: automated documentation submodule updates"
+          fi
           
           if [ "${{ steps.changes.outputs.netbox_changed }}" = "true" ]; then
             NETBOX_SHORT_BEFORE="${{ steps.check-before.outputs.netbox_before }}"
@@ -134,9 +227,9 @@ jobs:
 
       - name: Push branch
         if: steps.changes.outputs.has_changes == 'true'
-        run: git push origin "$BRANCH_NAME"
+        run: git push origin "${{ steps.branch-strategy.outputs.branch_name }}" --force-with-lease
 
-      - name: Create Pull Request
+      - name: Create or Update Pull Request
         if: steps.changes.outputs.has_changes == 'true'
         uses: actions/github-script@v7
         with:
@@ -157,10 +250,15 @@ jobs:
               consoleStatus = '- ⚪ **Console Documentation**: No changes';
             }
             
+            const isUpdate = '${{ steps.branch-strategy.outputs.strategy }}' === 'update';
+            const updateText = isUpdate ? ' (Updated)' : '';
+            
             const prBody = [
-              '## 🔄 Automated Submodule Updates',
+              '## 🔄 Automated Submodule Updates' + updateText,
               '',
               'This PR contains automated updates to documentation submodules and their transformed content.',
+              '',
+              isUpdate ? `> **🔄 This PR was automatically updated on ${new Date().toISOString()}**` : '',
               '',
               '### Changes Detected',
               '',
@@ -192,40 +290,65 @@ jobs:
               '---',
               '',
               '*This PR was automatically generated by the `update-submodules` GitHub Action.*',
-              `*Triggered: ${new Date().toISOString()}*`
+              `*Last updated: ${new Date().toISOString()}*`
             ].join('\n');
 
-            const { data: pr } = await github.rest.pulls.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: '🤖 Automated Documentation Updates',
-              head: process.env.BRANCH_NAME,
-              base: 'master',
-              body: prBody,
-              draft: false
-            });
+            if (isUpdate) {
+              // Update existing PR
+              const prNumber = ${{ steps.branch-strategy.outputs.pr_number }};
+              await github.rest.pulls.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: prNumber,
+                body: prBody
+              });
+              
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body: `🤖 **Auto-updated** with latest documentation changes (${new Date().toISOString()})`
+              });
+              
+              console.log(`Updated existing PR #${prNumber}`);
+            } else {
+              // Create new PR
+              const { data: pr } = await github.rest.pulls.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: '🤖 Automated Documentation Updates',
+                head: '${{ steps.branch-strategy.outputs.branch_name }}',
+                base: 'master',
+                body: prBody,
+                draft: false
+              });
 
-            // Add labels
-            await github.rest.issues.addLabels({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: pr.number,
-              labels: ['documentation', 'automated', 'submodule-update']
-            });
+              // Add labels
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                labels: ['documentation', 'automated', 'submodule-update']
+              });
+
+              console.log(`Created PR #${pr.number}: ${pr.html_url}`);
+            }
             
             // Set environment variables for the GitHub script
             process.env.NETBOX_CHANGED = '${{ steps.changes.outputs.netbox_changed }}';
             process.env.CONSOLE_CHANGED = '${{ steps.changes.outputs.console_changed }}';
 
-            console.log(`Created PR #${pr.number}: ${pr.html_url}`);
-
       - name: Summary
         if: always()
         run: |
           if [ "${{ steps.changes.outputs.has_changes }}" = "true" ]; then
-            echo "✅ Documentation updates detected and PR created"
+            echo "✅ Documentation updates detected and PR ${{ steps.branch-strategy.outputs.strategy }}d"
             echo "- NetBox changed: ${{ steps.changes.outputs.netbox_changed }}"
             echo "- Console changed: ${{ steps.changes.outputs.console_changed }}"
+            echo "- Strategy: ${{ steps.branch-strategy.outputs.strategy }}"
           else
             echo "ℹ️ No documentation changes detected - no action taken"
+            if [ "${{ steps.check-existing-prs.outputs.has_existing_pr }}" = "true" ]; then
+              echo "🧹 Closed existing automated PR as no changes were needed"
+            fi
           fi 

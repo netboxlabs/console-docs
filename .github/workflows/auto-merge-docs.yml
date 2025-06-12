@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     if: >
       github.actor == 'github-actions[bot]' &&
-      startsWith(github.head_ref, 'automated-docs-update-') &&
+      startsWith(github.head_ref, 'automated-docs-update') &&
       contains(github.event.pull_request.labels.*.name, 'automated')
     permissions:
       contents: write

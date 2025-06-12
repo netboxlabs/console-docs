@@ -1,0 +1,160 @@
+name: Cleanup Automated Documentation PRs
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [master]
+
+jobs:
+  cleanup-automated-prs:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check if merged PR contains submodule updates
+        id: check-submodule-updates
+        run: |
+          # Check if the merged PR modified submodule references
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          
+          # Get the files changed in the merged PR
+          git diff --name-only HEAD~1 HEAD > changed_files.txt
+          
+          # Check if submodule directories were updated
+          SUBMODULE_UPDATED="false"
+          if grep -q "external-repos/netbox" changed_files.txt || grep -q "external-repos/console-docs" changed_files.txt; then
+            SUBMODULE_UPDATED="true"
+          fi
+          
+          # Also check if .gitmodules was updated (submodule configuration changes)
+          if grep -q ".gitmodules" changed_files.txt; then
+            SUBMODULE_UPDATED="true"
+          fi
+          
+          echo "submodule_updated=$SUBMODULE_UPDATED" >> $GITHUB_OUTPUT
+          echo "PR #$PR_NUMBER submodule updates: $SUBMODULE_UPDATED"
+
+      - name: Find and close redundant automated PRs
+        if: steps.check-submodule-updates.outputs.submodule_updated == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: prs } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              base: 'master'
+            });
+            
+            // Find automated documentation PRs
+            const automatedPRs = prs.filter(pr => 
+              pr.head.ref.startsWith('automated-docs-update') || 
+              pr.title.includes('🤖 Automated Documentation Updates')
+            );
+            
+            console.log(`Found ${automatedPRs.length} open automated PRs to evaluate`);
+            
+            if (automatedPRs.length === 0) {
+              console.log('No automated PRs found - nothing to clean up');
+              return;
+            }
+            
+            // Get the current submodule commit hashes after the merge
+            const { execSync } = require('child_process');
+            const currentNetboxCommit = execSync('git ls-tree HEAD external-repos/netbox | awk \'{print $3}\'', { encoding: 'utf8' }).trim();
+            const currentConsoleCommit = execSync('git ls-tree HEAD external-repos/console-docs | awk \'{print $3}\'', { encoding: 'utf8' }).trim();
+            
+            console.log(`Current submodule commits after merge:`);
+            console.log(`- NetBox: ${currentNetboxCommit}`);
+            console.log(`- Console: ${currentConsoleCommit}`);
+            
+            for (const pr of automatedPRs) {
+              try {
+                // Check the submodule commits in each automated PR
+                const { data: prFiles } = await github.rest.pulls.listFiles({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: pr.number
+                });
+                
+                // Look for submodule updates in the automated PR
+                const netboxUpdate = prFiles.find(file => file.filename === 'external-repos/netbox');
+                const consoleUpdate = prFiles.find(file => file.filename === 'external-repos/console-docs');
+                
+                let shouldClose = false;
+                let reason = '';
+                
+                // If the automated PR has the same or older submodule commits, close it
+                if (netboxUpdate) {
+                  // For submodule changes, the 'patch' contains the commit hash changes
+                  if (netboxUpdate.patch && netboxUpdate.patch.includes(currentNetboxCommit)) {
+                    shouldClose = true;
+                    reason += 'NetBox submodule update already included in merged PR. ';
+                  }
+                }
+                
+                if (consoleUpdate) {
+                  if (consoleUpdate.patch && consoleUpdate.patch.includes(currentConsoleCommit)) {
+                    shouldClose = true;
+                    reason += 'Console submodule update already included in merged PR. ';
+                  }
+                }
+                
+                // If no specific submodule files found, assume it might be redundant if it's older
+                if (!netboxUpdate && !consoleUpdate && pr.created_at < '${{ github.event.pull_request.created_at }}') {
+                  shouldClose = true;
+                  reason = 'Automated PR predates manual PR with submodule updates. ';
+                }
+                
+                if (shouldClose) {
+                  console.log(`Closing automated PR #${pr.number}: ${reason}`);
+                  
+                  await github.rest.pulls.update({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    pull_number: pr.number,
+                    state: 'closed'
+                  });
+                  
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: pr.number,
+                    body: [
+                      `🤖 **Auto-closed**: ${reason}`,
+                      '',
+                      `This automated PR has been superseded by manual PR #${{ github.event.pull_request.number }} which included the same or newer documentation updates.`,
+                      '',
+                      '**Submodule versions after merge:**',
+                      `- NetBox: \`${currentNetboxCommit}\``,
+                      `- Console: \`${currentConsoleCommit}\``,
+                      '',
+                      '*Automated cleanup triggered by PR merge event.*'
+                    ].join('\n')
+                  });
+                } else {
+                  console.log(`Keeping automated PR #${pr.number} - contains newer updates`);
+                }
+                
+              } catch (error) {
+                console.error(`Error processing automated PR #${pr.number}:`, error.message);
+              }
+            }
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "🧹 Automated PR cleanup completed"
+          echo "- Merged PR: #${{ github.event.pull_request.number }}"
+          echo "- Submodule updates detected: ${{ steps.check-submodule-updates.outputs.submodule_updated }}"
+          if [ "${{ steps.check-submodule-updates.outputs.submodule_updated }}" = "true" ]; then
+            echo "- Redundant automated PRs have been closed"
+          else
+            echo "- No cleanup needed (no submodule updates)"
+          fi 
