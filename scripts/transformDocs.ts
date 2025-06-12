@@ -211,6 +211,9 @@ const transformRules: TransformRule[] = [
     { find: /!\[(.*?)\]\((.*?)\)\{\s*style="max-width:\s*(\d+)\s*%"\s*\}/g, replace: '<div style={{ maxWidth: "$3%" }}>![$1]($2)</div>' },
     // Escape angle brackets around raw URLs.
     { find: /<https?:\/\/[^>]+>/g, replace: (match: string) => `\\<${match.slice(1, -1)}\\>` },
+    // Escape placeholder patterns in angle brackets (e.g., <netbox-server>, <diode-server:port>)
+    // Only escape patterns that contain hyphens or colons (typical of placeholders, not HTML tags)
+    { find: /<([a-zA-Z0-9_-]*(?:-|:)[a-zA-Z0-9_:-]+)>/g, replace: (match: string, placeholder: string) => `\\<${placeholder}\\>` },
     // Escape <pk\> tag.
     { find: /<pk\\>/g, replace: '\\<pk\\>' },
     // Convert markdown image with MkDocs-style class and width attributes to a styled div.
