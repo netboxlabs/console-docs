@@ -1,0 +1,27 @@
+# Global code owners for NetBox Labs Documentation Hub
+# These users will be automatically requested for review on all PRs
+
+# Default reviewers for all files
+* @netboxlabs/docs-team
+
+# Workflow and automation files require additional review
+/.github/ @netboxlabs/devops @netboxlabs/docs-team
+
+# Documentation transformation scripts
+/scripts/ @netboxlabs/devops @netboxlabs/docs-team
+
+# Configuration files
+*.json @netboxlabs/devops
+*.yml @netboxlabs/devops
+*.yaml @netboxlabs/devops
+*.ts @netboxlabs/devops
+*.js @netboxlabs/devops
+
+# Submodule updates (automated PRs)
+/external-repos/ @netboxlabs/docs-team
+
+# Documentation content
+/docs/ @netboxlabs/docs-team
+
+# Static assets
+/static/ @netboxlabs/docs-team 

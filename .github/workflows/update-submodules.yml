@@ -212,6 +212,10 @@ jobs:
               issue_number: pr.number,
               labels: ['documentation', 'automated', 'submodule-update']
             });
+            
+            // Set environment variables for the GitHub script
+            process.env.NETBOX_CHANGED = '${{ steps.changes.outputs.netbox_changed }}';
+            process.env.CONSOLE_CHANGED = '${{ steps.changes.outputs.console_changed }}';
 
             console.log(`Created PR #${pr.number}: ${pr.html_url}`);
 
