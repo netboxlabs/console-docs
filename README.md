@@ -56,47 +56,63 @@ mkdocs serve
 
 We use **branch-based versioning** to control what customers see on the live documentation site:
 
+#### **Current State (Transition Period)**
 | Version | Status | Branch | Customer Visibility | Purpose |
 |---------|--------|--------|-------------------|---------|
-| **v1.9** | 🟢 **LIVE** | `v1.9` | ✅ **Visible** | Current customer documentation |
+| **v1.9** | 🟢 **LIVE** | `main` | ✅ **Visible** | Current customer documentation |
+| **v1.10** | 🟡 **Beta** | *not created yet* | ❌ **Hidden** | NetBox Enterprise + Assurance features |
+| **v1.11** | 🔴 **Alpha** | *future* | ❌ **Hidden** | NetBox Enterprise + Helm features |
+
+#### **Future State (After Transition)**
+| Version | Status | Branch | Customer Visibility | Purpose |
+|---------|--------|--------|-------------------|---------|
+| **v1.9** | 🟢 **STABLE** | `v1.9` | ✅ **Visible** | Maintenance updates for current customers |
 | **v1.10** | 🟡 **Beta** | `v1.10` | ❌ **Hidden** | NetBox Enterprise + Assurance features |
 | **v1.11** | 🔴 **Alpha** | `main` | ❌ **Hidden** | NetBox Enterprise + Helm features |
 
+**🔄 Transition Note**: Currently, `main` branch contains v1.9 content. We will create dedicated version branches as we prepare for v1.10 and v1.11 releases.
+
 ### Where to Add New Documentation
 
-#### ✅ **For Current Customer Issues/Fixes (v1.9)**
+#### ✅ **For Current Customer Issues/Fixes (v1.9) - CURRENT WORKFLOW**
 ```bash
-git checkout v1.9
+git checkout main  # Currently contains v1.9 content
 # Edit documentation for current features
 git add docs/path/to/file.md
 git commit -m "Fix SSL certificate installation steps"
-git push origin v1.9
+git push origin main
 git tag v1.9.1  # Automatically deploys to live site
 git push origin v1.9.1
 ```
 **Result**: ✅ Changes appear immediately on https://netboxlabs.com/docs
 
-#### 🔄 **For NetBox Enterprise + Assurance Features (v1.10 Beta)**
+#### 🔄 **For NetBox Enterprise + Assurance Features (v1.10 Beta) - PREPARE FOR FUTURE**
 ```bash
-git checkout v1.10  # (when branch exists)
+# Branch doesn't exist yet - will be created when v1.10 development starts
+# For now, document in feature branches and merge when ready
+
+git checkout -b feature/assurance-monitoring
 # Add documentation for Assurance features
 git add docs/netbox-assurance/new-feature.md
 git commit -m "Add documentation for network monitoring workflows"
-git push origin v1.10
-# DON'T tag yet - content stays hidden until v1.10 release
+git push origin feature/assurance-monitoring
+# DON'T merge to main yet - wait for v1.10 branch creation
 ```
-**Result**: ❌ Content written but not visible to customers until activated
+**Result**: ❌ Content prepared but not visible to customers until v1.10 branch exists
 
-#### 🚀 **For NetBox Enterprise + Helm Features (v1.11 Alpha)**
+#### 🚀 **For NetBox Enterprise + Helm Features (v1.11 Alpha) - FUTURE WORKFLOW**
 ```bash
-git checkout main
+# After v1.9 branch is created, main will be used for v1.11 development
+# For now, use feature branches
+
+git checkout -b feature/helm-deployment
 # Add documentation for Helm deployment features
 git add docs/netbox-enterprise/helm-installation.md
 git commit -m "Add Helm deployment guide"
-git push origin main
-# DON'T tag yet - content stays hidden until v1.11 release
+git push origin feature/helm-deployment
+# DON'T merge to main yet - wait for branch strategy transition
 ```
-**Result**: ❌ Content written but not visible to customers until activated
+**Result**: ❌ Content prepared but not visible to customers until workflow transition
 
 ### How Integration with Dochub Works
 
@@ -206,40 +222,62 @@ git push origin v1.10
 ### 🚨 **Critical Rules**
 
 #### **DO:**
-- ✅ **Always work on the correct version branch** for your content
-- ✅ **Tag v1.9 changes immediately** (they go live instantly)
+- ✅ **Always work on the correct branch** for your content type
+- ✅ **Tag main branch changes immediately** (they go live as v1.9 instantly)  
 - ✅ **Test your changes locally** before committing
 - ✅ **Use clear commit messages** describing what changed
 - ✅ **Check if your update applies to multiple versions**
 
 #### **DON'T:**
-- ❌ **Never tag v1.10 or v1.11 branches** until release is approved
-- ❌ **Don't merge development features into v1.9** branch
+- ❌ **Never tag future version branches** until release is approved
+- ❌ **Don't merge unreleased features into main** (currently v1.9 live content)
 - ❌ **Don't assume all versions need the same content**
-- ❌ **Don't work directly on main branch** for production fixes
+- ❌ **Don't commit untested changes** to main branch (goes live immediately)
 
 ### 🎯 **Quick Decision Guide**
 
 **Ask yourself**: *"Should customers see this immediately?"*
 
-- **YES** → Work on `v1.9` branch and tag when ready
+#### **FOR TODAY (Current Workflow):**
+- **YES** → Work on `main` branch and tag when ready (deploys v1.9 immediately)
+- **NO, it's for Assurance features** → Work on feature branch (wait for v1.10 branch)
+- **NO, it's for Helm features** → Work on feature branch (wait for transition)
+
+#### **FOR FUTURE (After Transition):**
+- **YES** → Work on `v1.9` branch and tag when ready  
 - **NO, it's for Assurance features** → Work on `v1.10` branch (don't tag)
 - **NO, it's for Helm features** → Work on `main` branch (don't tag)
 
 ### 📋 **Before You Start Writing**
 
+#### **Today's Checklist:**
+1. **Is this for current customers?** → Use `main` branch and tag when ready
+2. **Is this for future features?** → Use feature branch, don't merge yet
+3. **Test locally** before committing to `main`
+4. **Ask DevOps if unsure** about version targeting or transition timing
+
+#### **Future Checklist (After Transition):**
 1. **Check which NetBox Enterprise version** the feature is targeting
-2. **Confirm the correct branch** to work on
+2. **Confirm the correct version branch** to work on (v1.9, v1.10, or main)
 3. **Understand if it's customer-ready** or still in development
 4. **Ask DevOps if unsure** about version targeting
 
 ### 🔧 **Technical Reference**
 
 #### Branch Structure
+
+**Current State:**
+```
+main              # v1.9 current (Live customer docs) - VISIBLE to customers
+├── feature/*     # Feature branches for future content preparation
+└── versioning/*  # Infrastructure branches (like feature/versioning-system)
+```
+
+**Future State (After Transition):**
 ```
 main              # v1.11 alpha (Helm capabilities) - HIDDEN from customers
 ├── v1.10         # v1.10 beta (Assurance capabilities) - HIDDEN from customers  
-├── v1.9          # v1.9 current (Live customer docs) - VISIBLE to customers
+├── v1.9          # v1.9 stable (Maintenance for current customers) - VISIBLE to customers
 └── feature/*     # Feature branches for new content
 ```
 
@@ -247,6 +285,37 @@ main              # v1.11 alpha (Helm capabilities) - HIDDEN from customers
 - `versions.json` - Controls which versions are visible to customers
 - `mkdocs.yml` - Local development configuration  
 - `.github/workflows/version-deploy.yml` - Automated deployment system
+
+### 🔄 **Transition Plan**
+
+#### **Phase 1: Current State (Today)**
+- `main` branch contains v1.9 documentation (customer-facing)
+- Tagging `main` deploys v1.9 updates to live site
+- Future feature development uses feature branches
+
+#### **Phase 2: Branch Creation (When v1.10 Development Starts)**
+1. **Create v1.9 maintenance branch**:
+   ```bash
+   git checkout main
+   git checkout -b v1.9
+   git push origin v1.9
+   ```
+
+2. **Update main for v1.10 development**:
+   ```bash
+   git checkout main
+   # Begin v1.10 (Assurance) content development
+   # DON'T tag main branch anymore
+   ```
+
+#### **Phase 3: Future State (When v1.11 Development Starts)**
+1. **Create v1.10 maintenance branch**
+2. **Use main for v1.11 (Helm) development**
+
+#### **Team Communication Points**
+- 📢 **Before Phase 2**: Announce transition timeline to documentation team
+- 📢 **During Phase 2**: Update team workflows and training
+- 📢 **After Phase 2**: Monitor and refine new branch strategy
 
 ## 🛠️ For DevOps/Maintainers: Technical Details
 
