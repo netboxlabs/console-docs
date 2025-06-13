@@ -226,6 +226,8 @@ To restore from a dump file, pipe the `netbox-enterprise.pgsql` created during b
 ```shell
 NETBOX_NAMESPACE="kotsadm" && \
 NETBOX_DATABASE_FILE="netbox-enterprise.pgsql" && \
+HAS_DIODE="$(kubectl get deployments -n "${NETBOX_NAMESPACE}" -o name | grep -c diode)" && \
+HAS_HYDRA="$(kubectl get deployments -n "${NETBOX_NAMESPACE}" -o name | grep -c hydra)" && \
 POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
@@ -238,12 +240,26 @@ for DB in netbox diode hydra; do
     -c database \
     -- dropdb --if-exists --force "${DB}"; \
 done && \
-cat "${NETBOX_DATABASE_FILE}" \
-  | kubectl exec "${POSTGRESQL_MAIN_POD}" \
-    -n "${NETBOX_NAMESPACE}" \
-    -i \
-    -c database \
-      -- psql -d template1 -f-
+( \
+  if ! grep --quiet -E '^CREATE DATABASE ' "${NETBOX_DATABASE_FILE}"; then \
+    if [ "${HAS_DIODE}" -gt 0 ]; then \
+      echo "CREATE DATABASE diode WITH TEMPLATE = template0 ENCODING = 'UTF8';"; \
+    fi && \
+    if [ "${HAS_HYDRA}" -gt 0 ]; then \
+      echo "CREATE DATABASE hydra WITH TEMPLATE = template0 ENCODING = 'UTF8';"; \
+    fi && \
+    echo "CREATE DATABASE netbox WITH TEMPLATE = template0 ENCODING = 'UTF8';" && \
+    echo "" && \
+    echo "\\connect netbox" && \
+    echo ""
+  fi && \
+  cat "${NETBOX_DATABASE_FILE}" \
+) \
+| kubectl exec "${POSTGRESQL_MAIN_POD}" \
+  -n "${NETBOX_NAMESPACE}" \
+  -i \
+  -c database \
+    -- psql -d template1 -f-
 ```
 
 Following this run the below to ensure all database permissions are correct:
