@@ -232,8 +232,7 @@ POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -l 'postgres-operator.crunchydata.com/role=master' \
   | head -n 1 \
   )" && \
-grep -E '^CREATE DATABASE ' "${NETBOX_DATABASE_FILE}" | awk '{ print $3 }' | \
-while read -r DB; do
+for DB in netbox diode hydra; do
   kubectl exec "${POSTGRESQL_MAIN_POD}" \
     -n "${NETBOX_NAMESPACE}" \
     -c database \
@@ -251,21 +250,24 @@ Following this run the below to ensure all database permissions are correct:
 
 ```shell
 NETBOX_NAMESPACE="kotsadm" && \
-NETBOX_DATABASE_FILE="netbox-enterprise.pgsql" && \
 POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
   -l 'postgres-operator.crunchydata.com/role=master' \
   | head -n 1 \
   )" && \
-grep -E '^CREATE DATABASE ' "${NETBOX_DATABASE_FILE}" | awk '{ print $3 }' | \
-while read -r DB; do
+for DB in $(kubectl exec "${POSTGRESQL_MAIN_POD}" \
+  -n "${NETBOX_NAMESPACE}" \
+  -c database \
+  -- \
+    psql -t -c "SELECT datname FROM pg_database WHERE datname IN ('netbox', 'hydra', 'diode');"; \
+); do \
   kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
   -i \
   -c database \
   -- \
-    psql --dbname "${DB}" -c "\
+    psql --dbname "${DB}" -e -c "\
       ALTER DATABASE ${DB} OWNER TO ${DB}; \
       GRANT ALL PRIVILEGES ON DATABASE ${DB} TO ${DB}; \
       GRANT CREATE ON SCHEMA public TO ${DB}; \
