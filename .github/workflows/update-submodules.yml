@@ -2,11 +2,11 @@ name: Update Documentation Submodules
 
 on:
   schedule:
-    # Business hours: Every hour from 9 AM to 5 PM UTC (Monday-Friday)
-    - cron: '0 9-17 * * 1-5'
+    # Business hours: Every hour from 7 AM to 6 PM EST (12 PM to 11 PM UTC, Monday-Friday)
+    - cron: '0 12-23 * * 1-5'
     # Off hours: Every 6 hours outside business hours
     - cron: '0 0,6,12,18 * * 0,6'  # Weekends every 6 hours
-    - cron: '0 0,6,18 * * 1-5'     # Weekdays off-hours (midnight, 6 AM, 6 PM)
+    - cron: '0 0,6 * * 1-5'        # Weekdays off-hours (midnight, 6 AM UTC)
   workflow_dispatch:
     inputs:
       force_update:
