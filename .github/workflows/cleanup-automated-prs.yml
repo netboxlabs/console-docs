@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # Fetch at least two commits for HEAD~1 reference
 
       - name: Check if merged PR contains submodule updates
         id: check-submodule-updates
