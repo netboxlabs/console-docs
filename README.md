@@ -252,6 +252,126 @@ yarn build
 # Deploy contents of build/ directory to your hosting provider
 ```
 
+## 🤖 GitHub Actions Workflows
+
+This repository uses several GitHub Actions workflows for automation. Here's a comprehensive overview:
+
+### 🔄 Documentation Automation
+
+#### `update-submodules.yml` - **Automated Documentation Updates**
+- **Trigger**: Hourly during EST business hours (7 AM - 6 PM), every 6 hours off-hours
+- **Purpose**: Automatically checks for and pulls latest documentation from external repositories
+- **What it does**:
+  - Updates git submodules (`netbox` and `console-docs`)
+  - Detects changes in documentation content
+  - Transforms MkDocs content to Docusaurus format
+  - Creates/updates automated PRs with detailed change summaries
+  - Analyzes file-level changes (added/modified/removed pages)
+- **Smart Features**: Only creates PRs when actual changes detected, prevents PR buildup
+
+#### `auto-merge-docs.yml` - **Automated PR Merging**
+- **Trigger**: When automated documentation PRs are opened
+- **Purpose**: Safely auto-merges documentation updates after validation
+- **What it does**:
+  - Waits for Vercel deployment checks to pass
+  - Auto-approves PRs from `github-actions[bot]`
+  - Enables GitHub's auto-merge feature
+  - Provides clear status comments on PRs
+- **Safety**: Only merges if all deployment checks pass
+
+#### `cleanup-automated-prs.yml` - **PR Cleanup**
+- **Trigger**: When any PR is merged to master
+- **Purpose**: Cleans up redundant automated PRs after manual merges
+- **What it does**:
+  - Detects if merged PR contains submodule updates
+  - Compares automated PRs against new submodule versions
+  - Closes outdated automated PRs with explanatory comments
+  - Prevents accumulation of obsolete automation PRs
+
+#### `manual-cleanup-automated-prs.yml` - **Manual PR Management**
+- **Trigger**: Manual workflow dispatch only
+- **Purpose**: Provides manual control over automated PR cleanup
+- **What it does**:
+  - Lists all open automated documentation PRs
+  - Option to close all or just outdated PRs
+  - Configurable age-based cleanup (default: 7 days)
+  - Detailed cleanup summary and reporting
+
+### 📋 Release Management
+
+#### `release.yml` - **Automated Releases**
+- **Trigger**: When version tags (`v*.*.*`) are pushed
+- **Purpose**: Creates GitHub releases with auto-generated release notes
+- **What it does**:
+  - Extracts version info from git tags
+  - Generates release notes from commits since last version
+  - Creates GitHub release with proper categorization
+  - Supports both release and pre-release versions
+
+#### `generate-changelog.yml` - **Changelog Generation**
+- **Trigger**: Manual workflow dispatch
+- **Purpose**: Generates comprehensive changelogs following Keep a Changelog format
+- **What it does**:
+  - Analyzes commits between versions using conventional commit patterns
+  - Categorizes changes (Added, Changed, Fixed, etc.)
+  - Generates markdown changelog with links to commits
+  - Supports both full releases and unreleased sections
+
+#### `update-changelog-weekly.yml` - **Weekly Changelog Updates**
+- **Trigger**: Weekly schedule (Mondays at 9 AM UTC)
+- **Purpose**: Automatically updates unreleased changelog section
+- **What it does**:
+  - Tracks recent commits since last update
+  - Updates "Unreleased" section in CHANGELOG.md
+  - Creates PR with weekly documentation activity summary
+  - Helps maintain current changelog without manual effort
+
+### 🔧 Workflow Optimization & Best Practices
+
+#### **Redundancy Elimination**
+- ✅ **Removed**: `protected-branch-merge.yml` (superseded by `auto-merge-docs.yml`)
+- ✅ **Optimized**: Single auto-merge workflow prevents conflicts
+- ✅ **Smart Triggers**: Workflows only run when necessary
+
+#### **Performance Optimizations**
+- **Efficient Scheduling**: Business hours optimization for documentation updates
+- **Smart Caching**: Workflows use appropriate `fetch-depth` settings
+- **Conditional Execution**: Workflows skip unnecessary work when no changes detected
+
+#### **Error Handling & Recovery**
+- **Comprehensive Validation**: All `$GITHUB_OUTPUT` variables validated before use
+- **Graceful Fallbacks**: Branch protection compatibility with manual review options
+- **Debug Support**: Built-in debugging steps for troubleshooting
+
+#### **Security & Permissions**
+- **Minimal Permissions**: Each workflow requests only necessary permissions
+- **Bot Account Safety**: Automated actions clearly identified and scoped
+- **Safe Defaults**: Conservative auto-merge conditions with multiple validation checks
+
+### 📊 Workflow Dependencies
+
+```mermaid
+graph TD
+    A[External Repo Changes] --> B[update-submodules.yml]
+    B --> C[Creates/Updates PR]
+    C --> D[auto-merge-docs.yml]
+    D --> E[PR Merged]
+    E --> F[cleanup-automated-prs.yml]
+    
+    G[Manual Tag Push] --> H[release.yml]
+    H --> I[GitHub Release Created]
+    
+    J[Weekly Schedule] --> K[update-changelog-weekly.yml]
+    L[Manual Trigger] --> M[generate-changelog.yml]
+    L --> N[manual-cleanup-automated-prs.yml]
+```
+
+### 🚨 When to Use Manual Workflows
+
+- **`manual-cleanup-automated-prs.yml`**: When automated PRs accumulate or need bulk cleanup
+- **`generate-changelog.yml`**: Before major releases or when updating project documentation
+- **`update-changelog-weekly.yml`**: Can be triggered manually if weekly run fails
+
 ## 📋 Key Commands Reference
 
 | Command | Description |

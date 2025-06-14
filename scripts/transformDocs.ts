@@ -472,7 +472,7 @@ const transformContent = async (content: string, sourceFilePath: string, outputB
             // 2. It's not a code block placeholder AND  
             // 3. Either it's not an admonition start OR it IS an admonition start (new admonition at same level should close previous)
             else if (currentIndentLength === lastIndentLength &&
-                     currentLine.trim() !== '' &&
+                       currentLine.trim() !== '' &&
                      !currentLine.includes('__FENCED_CODE_BLOCK_') && 
                      !currentLine.includes('__INLINE_CODE_BLOCK_')) {
                 shouldClose = true;
