@@ -2,8 +2,11 @@ name: Update Documentation Submodules
 
 on:
   schedule:
-    # Run every hour at minute 0
-    - cron: '0 * * * *'
+    # Business hours: Every hour from 9 AM to 5 PM UTC (Monday-Friday)
+    - cron: '0 9-17 * * 1-5'
+    # Off hours: Every 6 hours outside business hours
+    - cron: '0 0,6,12,18 * * 0,6'  # Weekends every 6 hours
+    - cron: '0 0,6,18 * * 1-5'     # Weekdays off-hours (midnight, 6 AM, 6 PM)
   workflow_dispatch:
     inputs:
       force_update:
@@ -56,7 +59,7 @@ jobs:
               const latestPR = automatedPRs[0]; // Most recent
               console.log(`Latest automated PR: #${latestPR.number} - ${latestPR.title}`);
               core.setOutput('has_existing_pr', 'true');
-              core.setOutput('existing_pr_number', latestPR.number);
+              core.setOutput('existing_pr_number', latestPR.number.toString());
               core.setOutput('existing_pr_branch', latestPR.head.ref);
               
               // Close older automated PRs (keep only the latest)
@@ -78,13 +81,33 @@ jobs:
               }
             } else {
               core.setOutput('has_existing_pr', 'false');
+              core.setOutput('existing_pr_number', '');
+              core.setOutput('existing_pr_branch', '');
             }
 
       - name: Check current submodule commits
         id: check-before
         run: |
-          echo "netbox_before=$(git ls-tree HEAD external-repos/netbox | awk '{print $3}')" >> $GITHUB_OUTPUT
-          echo "console_before=$(git ls-tree HEAD external-repos/console-docs | awk '{print $3}')" >> $GITHUB_OUTPUT
+          echo "=== Checking current submodule commits ==="
+          
+          NETBOX_BEFORE=$(git ls-tree HEAD external-repos/netbox | awk '{print $3}' || echo "")
+          CONSOLE_BEFORE=$(git ls-tree HEAD external-repos/console-docs | awk '{print $3}' || echo "")
+          
+          echo "NetBox before: $NETBOX_BEFORE"
+          echo "Console before: $CONSOLE_BEFORE"
+          
+          # Validate output values before writing to GITHUB_OUTPUT
+          if [ -n "$NETBOX_BEFORE" ] && [ "$NETBOX_BEFORE" != "" ]; then
+            echo "netbox_before=$NETBOX_BEFORE" >> $GITHUB_OUTPUT
+          else
+            echo "netbox_before=undefined" >> $GITHUB_OUTPUT
+          fi
+          
+          if [ -n "$CONSOLE_BEFORE" ] && [ "$CONSOLE_BEFORE" != "" ]; then
+            echo "console_before=$CONSOLE_BEFORE" >> $GITHUB_OUTPUT
+          else
+            echo "console_before=undefined" >> $GITHUB_OUTPUT
+          fi
 
       - name: Update submodules to latest
         run: |
@@ -98,8 +121,32 @@ jobs:
       - name: Check updated submodule commits
         id: check-after
         run: |
-          echo "netbox_after=$(cd external-repos/netbox && git rev-parse HEAD)" >> $GITHUB_OUTPUT
-          echo "console_after=$(cd external-repos/console-docs && git rev-parse HEAD)" >> $GITHUB_OUTPUT
+          echo "=== Checking updated submodule commits ==="
+          
+          NETBOX_AFTER=$(cd external-repos/netbox && git rev-parse HEAD 2>/dev/null || echo "")
+          CONSOLE_AFTER=$(cd external-repos/console-docs && git rev-parse HEAD 2>/dev/null || echo "")
+          
+          echo "NetBox after: $NETBOX_AFTER"
+          echo "Console after: $CONSOLE_AFTER"
+          
+          # Validate output values before writing to GITHUB_OUTPUT
+          if [ -n "$NETBOX_AFTER" ] && [ "$NETBOX_AFTER" != "" ]; then
+            echo "netbox_after=$NETBOX_AFTER" >> $GITHUB_OUTPUT
+          else
+            echo "netbox_after=undefined" >> $GITHUB_OUTPUT
+          fi
+          
+          if [ -n "$CONSOLE_AFTER" ] && [ "$CONSOLE_AFTER" != "" ]; then
+            echo "console_after=$CONSOLE_AFTER" >> $GITHUB_OUTPUT
+          else
+            echo "console_after=undefined" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Debug GITHUB_OUTPUT contents
+        run: |
+          echo "=== GITHUB_OUTPUT contents ==="
+          cat $GITHUB_OUTPUT
+          echo "=== End GITHUB_OUTPUT ==="
 
       - name: Detect changes
         id: changes
@@ -113,11 +160,15 @@ jobs:
           echo "Console before: ${{ steps.check-before.outputs.console_before }}"
           echo "Console after:  ${{ steps.check-after.outputs.console_after }}"
           
-          if [ "${{ steps.check-before.outputs.netbox_before }}" != "${{ steps.check-after.outputs.netbox_after }}" ]; then
+          if [ "${{ steps.check-before.outputs.netbox_before }}" != "${{ steps.check-after.outputs.netbox_after }}" ] && \
+             [ "${{ steps.check-before.outputs.netbox_before }}" != "undefined" ] && \
+             [ "${{ steps.check-after.outputs.netbox_after }}" != "undefined" ]; then
             NETBOX_CHANGED="true"
           fi
           
-          if [ "${{ steps.check-before.outputs.console_before }}" != "${{ steps.check-after.outputs.console_after }}" ]; then
+          if [ "${{ steps.check-before.outputs.console_before }}" != "${{ steps.check-after.outputs.console_after }}" ] && \
+             [ "${{ steps.check-before.outputs.console_before }}" != "undefined" ] && \
+             [ "${{ steps.check-after.outputs.console_after }}" != "undefined" ]; then
             CONSOLE_CHANGED="true"
           fi
           
@@ -204,19 +255,16 @@ jobs:
             # Find added files
             grep "^A.*docs/netbox/.*\.md$" /tmp/git-status.txt | sed 's/^A[[:space:]]*//' | while read file; do
               basename "$file" .md >> /tmp/doc-changes/netbox-added.txt
-              NETBOX_ADDED=$((NETBOX_ADDED + 1))
             done
             
             # Find modified files  
             grep "^M.*docs/netbox/.*\.md$" /tmp/git-status.txt | sed 's/^M[[:space:]]*//' | while read file; do
               basename "$file" .md >> /tmp/doc-changes/netbox-modified.txt
-              NETBOX_MODIFIED=$((NETBOX_MODIFIED + 1))
             done
             
             # Find removed files
             grep "^D.*docs/netbox/.*\.md$" /tmp/git-status.txt | sed 's/^D[[:space:]]*//' | while read file; do
               basename "$file" .md >> /tmp/doc-changes/netbox-removed.txt
-              NETBOX_REMOVED=$((NETBOX_REMOVED + 1))
             done
           fi
           
@@ -227,44 +275,57 @@ jobs:
             # Find added files
             grep "^A.*docs/console/.*\.md$" /tmp/git-status.txt | sed 's/^A[[:space:]]*//' | while read file; do
               basename "$file" .md >> /tmp/doc-changes/console-added.txt
-              CONSOLE_ADDED=$((CONSOLE_ADDED + 1))
             done
             
             # Find modified files
             grep "^M.*docs/console/.*\.md$" /tmp/git-status.txt | sed 's/^M[[:space:]]*//' | while read file; do
               basename "$file" .md >> /tmp/doc-changes/console-modified.txt
-              CONSOLE_MODIFIED=$((CONSOLE_MODIFIED + 1))
             done
             
             # Find removed files
             grep "^D.*docs/console/.*\.md$" /tmp/git-status.txt | sed 's/^D[[:space:]]*//' | while read file; do
               basename "$file" .md >> /tmp/doc-changes/console-removed.txt
-              CONSOLE_REMOVED=$((CONSOLE_REMOVED + 1))
             done
           fi
           
           # Count files manually since variables don't persist in subshells
-          NETBOX_ADDED=$(grep -c "^.*" /tmp/doc-changes/netbox-added.txt 2>/dev/null || echo "0")
-          NETBOX_MODIFIED=$(grep -c "^.*" /tmp/doc-changes/netbox-modified.txt 2>/dev/null || echo "0")
-          NETBOX_REMOVED=$(grep -c "^.*" /tmp/doc-changes/netbox-removed.txt 2>/dev/null || echo "0")
-          CONSOLE_ADDED=$(grep -c "^.*" /tmp/doc-changes/console-added.txt 2>/dev/null || echo "0")
-          CONSOLE_MODIFIED=$(grep -c "^.*" /tmp/doc-changes/console-modified.txt 2>/dev/null || echo "0")
-          CONSOLE_REMOVED=$(grep -c "^.*" /tmp/doc-changes/console-removed.txt 2>/dev/null || echo "0")
+          # Use safer counting that handles empty files properly
+          NETBOX_ADDED=$(grep -c "^.*" /tmp/doc-changes/netbox-added.txt 2>/dev/null | grep -v "^0$" || echo "0")
+          NETBOX_MODIFIED=$(grep -c "^.*" /tmp/doc-changes/netbox-modified.txt 2>/dev/null | grep -v "^0$" || echo "0")
+          NETBOX_REMOVED=$(grep -c "^.*" /tmp/doc-changes/netbox-removed.txt 2>/dev/null | grep -v "^0$" || echo "0")
+          CONSOLE_ADDED=$(grep -c "^.*" /tmp/doc-changes/console-added.txt 2>/dev/null | grep -v "^0$" || echo "0")
+          CONSOLE_MODIFIED=$(grep -c "^.*" /tmp/doc-changes/console-modified.txt 2>/dev/null | grep -v "^0$" || echo "0")
+          CONSOLE_REMOVED=$(grep -c "^.*" /tmp/doc-changes/console-removed.txt 2>/dev/null | grep -v "^0$" || echo "0")
           
           # Filter out empty lines if any
           sed -i '/^$/d' /tmp/doc-changes/*.txt 2>/dev/null || true
+          
+          # Re-count after filtering empty lines
+          NETBOX_ADDED=$(wc -l < /tmp/doc-changes/netbox-added.txt 2>/dev/null || echo "0")
+          NETBOX_MODIFIED=$(wc -l < /tmp/doc-changes/netbox-modified.txt 2>/dev/null || echo "0") 
+          NETBOX_REMOVED=$(wc -l < /tmp/doc-changes/netbox-removed.txt 2>/dev/null || echo "0")
+          CONSOLE_ADDED=$(wc -l < /tmp/doc-changes/console-added.txt 2>/dev/null || echo "0")
+          CONSOLE_MODIFIED=$(wc -l < /tmp/doc-changes/console-modified.txt 2>/dev/null || echo "0")
+          CONSOLE_REMOVED=$(wc -l < /tmp/doc-changes/console-removed.txt 2>/dev/null || echo "0")
           
           echo "=== Change Summary ==="
           echo "NetBox: +$NETBOX_ADDED ~$NETBOX_MODIFIED -$NETBOX_REMOVED"
           echo "Console: +$CONSOLE_ADDED ~$CONSOLE_MODIFIED -$CONSOLE_REMOVED"
           
-          # Set outputs
-          echo "netbox_added=$NETBOX_ADDED" >> $GITHUB_OUTPUT
-          echo "netbox_modified=$NETBOX_MODIFIED" >> $GITHUB_OUTPUT  
-          echo "netbox_removed=$NETBOX_REMOVED" >> $GITHUB_OUTPUT
-          echo "console_added=$CONSOLE_ADDED" >> $GITHUB_OUTPUT
-          echo "console_modified=$CONSOLE_MODIFIED" >> $GITHUB_OUTPUT
-          echo "console_removed=$CONSOLE_REMOVED" >> $GITHUB_OUTPUT
+          # Validate and set outputs - ensure they're valid integers
+          NETBOX_ADDED_SAFE=$(echo "$NETBOX_ADDED" | grep -E '^[0-9]+$' || echo "0")
+          NETBOX_MODIFIED_SAFE=$(echo "$NETBOX_MODIFIED" | grep -E '^[0-9]+$' || echo "0")
+          NETBOX_REMOVED_SAFE=$(echo "$NETBOX_REMOVED" | grep -E '^[0-9]+$' || echo "0")
+          CONSOLE_ADDED_SAFE=$(echo "$CONSOLE_ADDED" | grep -E '^[0-9]+$' || echo "0")
+          CONSOLE_MODIFIED_SAFE=$(echo "$CONSOLE_MODIFIED" | grep -E '^[0-9]+$' || echo "0")
+          CONSOLE_REMOVED_SAFE=$(echo "$CONSOLE_REMOVED" | grep -E '^[0-9]+$' || echo "0")
+          
+          echo "netbox_added=$NETBOX_ADDED_SAFE" >> $GITHUB_OUTPUT
+          echo "netbox_modified=$NETBOX_MODIFIED_SAFE" >> $GITHUB_OUTPUT  
+          echo "netbox_removed=$NETBOX_REMOVED_SAFE" >> $GITHUB_OUTPUT
+          echo "console_added=$CONSOLE_ADDED_SAFE" >> $GITHUB_OUTPUT
+          echo "console_modified=$CONSOLE_MODIFIED_SAFE" >> $GITHUB_OUTPUT
+          echo "console_removed=$CONSOLE_REMOVED_SAFE" >> $GITHUB_OUTPUT
 
       - name: Determine branch strategy
         if: steps.changes.outputs.has_changes == 'true'
