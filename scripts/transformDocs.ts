@@ -270,6 +270,11 @@ const transformRules: TransformRule[] = [
     {
         find: /```\n\n\n    options:\n(?:      .*\n)*/gm,
         replace: '```\n\n'
+    },
+    // Fix broken anchor links that reference the old autodoc format
+    {
+        find: /\(([^)]+)#netbox\.search\.SearchIndex\)/g,
+        replace: '($1#searchindex)'
     }
 ];
 
