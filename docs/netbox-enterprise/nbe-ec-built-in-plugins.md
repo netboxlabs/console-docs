@@ -1,4 +1,9 @@
-# Built-in Plugins in NetBox Enterprise
+---
+title: Built-in Plugins in NetBox Enterprise
+tags:
+  - netbox-enterprise
+  - netbox-community
+---# Built-in Plugins in NetBox Enterprise
 
 NetBox Enterprise ships with a curated set of built-in plugins that extend the platform's core capabilities—offering enhanced features without the complexity of manual setup. These plugins are pre-integrated and supported within the platform, ensuring streamlined deployment and reliable performance.
 

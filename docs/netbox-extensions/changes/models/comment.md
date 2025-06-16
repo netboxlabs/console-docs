@@ -1,4 +1,9 @@
-# Comments
+---
+title: Comments
+tags:
+  - netbox-community
+  - netbox-enterprise
+---# Comments
 
 As part of the review process, users can leave comments on [change requests](./changerequest.md) to ask question or suggest changes. Each comment may start a thread of [replies](./commentreply.md) and can be marked resolved, which will hide the reply thread.
 

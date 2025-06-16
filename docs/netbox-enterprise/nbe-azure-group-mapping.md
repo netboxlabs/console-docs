@@ -1,4 +1,8 @@
-# NetBox Enterprise Entra ID Group Mapping
+---
+title: NetBox Enterprise Entra ID Group Mapping
+tags:
+  - netbox-enterprise
+---# NetBox Enterprise Entra ID Group Mapping
 Place the following in configuration overrides python section
 
 # Basic SSO

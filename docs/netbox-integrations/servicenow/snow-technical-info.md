@@ -1,4 +1,10 @@
-# Technical Information
+---
+title: Technical Information
+tags:
+  - netbox-cloud
+  - netbox-enterprise
+  - netbox-community
+---# Technical Information
 
 
 ## New Tables in ServiceNow

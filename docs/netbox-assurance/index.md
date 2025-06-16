@@ -1,7 +1,8 @@
-<span class="pill pill-cloud">NetBox Cloud</span>
-<span class="pill pill-enterprise">NetBox Enterprise</span>
-
-!!! info "*Coming early 2025*"
+---
+tags:
+  - netbox-cloud
+  - netbox-enterprise
+---!!! info "*Coming early 2025*"
     Be among the first to experience **NetBox Assurance**. [Sign up](https://netboxlabs.com/netbox-assurance/) to be notified when we launch.
 
 NetBox Assurance empowers organizations to continuously detect and address network drift by identifying deviations between the intended state in NetBox and the actual state of the network. It extends NetBox with automated deviation detection and corrective actions, helping teams maintain a consistent and reliable network infrastructure.
