@@ -54,12 +54,52 @@ async function fileExists(filePath) {
 async function fetchAndSaveOptions() {
   try {
     console.log(`Fetching options from ${TARGET_URL}...`);
-    const response = await fetch(TARGET_URL);
+    
+    // Create abort controller for timeout
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+    
+    const response = await fetch(TARGET_URL, {
+      signal: controller.signal,
+      headers: {
+        'Accept': 'application/json',
+        'User-Agent': 'NetBox Labs Documentation Builder'
+      }
+    });
+    
+    clearTimeout(timeoutId);
+    
     if (!response.ok) {
-      throw new Error(`Failed to fetch options: ${response.status} ${response.statusText}`);
+      throw new Error(`HTTP ${response.status} ${response.statusText}`);
     }
-    const data = await response.json();
-    console.log('Successfully fetched options data.');
+    
+    const contentType = response.headers.get('content-type');
+    const text = await response.text();
+    
+    // Handle WordPress responses that mix HTML notices with JSON
+    let jsonData;
+    if (contentType && contentType.includes('application/json')) {
+      // Try to find JSON in the response (may have HTML prefix from WordPress notices)
+      const jsonStart = text.indexOf('{');
+      if (jsonStart === -1) {
+        throw new Error(`No JSON found in response. Response: ${text.substring(0, 200)}...`);
+      }
+      
+      const jsonPortion = text.substring(jsonStart);
+      try {
+        jsonData = JSON.parse(jsonPortion);
+        if (jsonStart > 0) {
+          console.log('⚠️ Note: WordPress notices detected in CMS response, but JSON was extracted successfully.');
+        }
+      } catch (parseError) {
+        throw new Error(`Failed to parse JSON from response. Parse error: ${parseError.message}. JSON portion: ${jsonPortion.substring(0, 200)}...`);
+      }
+    } else {
+      throw new Error(`Expected JSON but received ${contentType || 'unknown content type'}. Response: ${text.substring(0, 200)}...`);
+    }
+    
+    const data = jsonData;
+    console.log('✅ Successfully fetched options data from CMS.');
 
     // Ensure the target directory exists
     await fs.mkdir(OUTPUT_DIR, { recursive: true });
@@ -77,7 +117,7 @@ export const options = ${JSON.stringify(data, null, 2)} as const;
     console.log(`Successfully saved options to ${OUTPUT_FILE}`);
 
   } catch (error) {
-    console.warn('⚠️ Warning: Error fetching options from CMS:', error.message);
+    console.warn('⚠️ Warning: CMS options fetch failed:', error.message);
     
     // Check if options file already exists
     const optionsFileExists = await fileExists(OUTPUT_FILE);
@@ -88,7 +128,7 @@ export const options = ${JSON.stringify(data, null, 2)} as const;
     }
     
     // Create fallback file if none exists
-    console.log('📝 Creating fallback options.data.ts with default structure');
+    console.log('📝 Creating fallback options.data.ts with default navigation structure');
     
     try {
       await fs.mkdir(OUTPUT_DIR, { recursive: true });
