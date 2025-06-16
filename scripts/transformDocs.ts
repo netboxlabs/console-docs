@@ -217,7 +217,7 @@ const transformRules: TransformRule[] = [
     // Escape <pk\> tag.
     { find: /<pk\\>/g, replace: '\\<pk\\>' },
     // Convert markdown image with MkDocs-style class and width attributes to a styled div.
-    { find: /!\[(.*?)\]\((.*?)\)\{:class="([^"]+)" width="(\d+)"\}/g, replace: '<div className="$3" style={{ width: "$4px" }}>![$1]($2)</div>' },
+    { find: /!\[(.*?)\]\((.*?)\)\{:class="([^"]+)" width="(\d+)"\}/g, replace: '<div className="$3" style="width:$4px">![$1]($2)</div>' },
     // Convert markdown image with complex inline styles attribute to a styled div with React style object.
     {
         find: /!\[(.*?)\]\(([^)]*?)\)\{.*?style="([^"]*)".*?\}/g,
@@ -252,10 +252,6 @@ const transformRules: TransformRule[] = [
     // Remove leading slash from image paths starting with /images/.
     { find: /!\[(.*?)\]\(\/(images\/[^)]+)\)/g, replace: '![$1]($2)' },
 
-    // Escape standalone { unless part of {{ or escaped \{
-    { find: /(?<![{\\]){(?!{)/g, replace: '\\{' },
-    // Escape standalone } unless part of }} or escaped \}
-    { find: /(?<![}\\])}(?!})/g, replace: '\\}' },
     // New rule for specific emoji-like icons (e.g., :bug:, :bulb:)
     {
         find: /:(bug|bulb|arrow_heading_up|jigsaw|rescue_worker_helmet|heart|information_source|thumbsup|thumbsdown):/g,
@@ -268,25 +264,10 @@ const transformRules: TransformRule[] = [
         find: /:warning:/g,
         replace: '⚠️' // Replace with unicode warning emoji
     },
-    // Remove leading slash from image paths starting with /images/.
-    { find: /!\[(.*?)\]\(\/(images\/[^)]+)\)/g, replace: '![$1]($2)' },
 
-    // Escape standalone { unless part of {{ or escaped \{
-    { find: /(?<![{\\]){(?!{)/g, replace: '\\{' },
-    // Escape standalone } unless part of }} or escaped \}
-    { find: /(?<![}\\])}(?!})/g, replace: '\\}' },
-    // New rule for specific emoji-like icons (e.g., :bug:, :bulb:)
-    {
-        find: /:(bug|bulb|arrow_heading_up|jigsaw|rescue_worker_helmet|heart|information_source|thumbsup|thumbsdown):/g,
-        replace: (match: string, iconName: string): string => {
-            return iconName; // Remove colons, leave the name (hoping for unicode rendering or just text)
-        }
-    },
-    // Rule for :warning:
-    {
-        find: /:warning:/g,
-        replace: '⚠️' // Replace with unicode warning emoji
-    },
+    // Escape curly braces for placeholder patterns only (not JSX)  
+    // Only escape specific known placeholder patterns to avoid breaking JSX
+    { find: /(^|[^\\{])\{(CLIENT_ID|CLIENT_SECRET|APPLICATION_ID|SECRET_VALUE|netbox|module)\}(?![}])/g, replace: '$1\\{$2\\}' },
     // Remove standalone mkdocstrings configuration blocks that weren't captured above
     {
         find: /```\n\n\n    options:\n(?:      .*\n)*/gm,
