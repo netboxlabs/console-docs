@@ -550,13 +550,10 @@ const transformContent = async (content: string, sourceFilePath: string, outputB
     // Hotfix to escape {} tags (applied before restoring code blocks)
     // Use a more compatible approach without negative lookbehind for Node.js 18 compatibility
     // This replaces {content} with \{content\} but only if not already escaped
-    transformedContentWithPlaceholders = transformedContentWithPlaceholders.replace(/{([^{}]+)}/g, (match, content) => {
-        // Check if this brace is already escaped by looking at the character before the match
-        const matchIndex = transformedContentWithPlaceholders.indexOf(match);
-        if (matchIndex > 0 && transformedContentWithPlaceholders[matchIndex - 1] === '\\') {
-            return match; // Already escaped, don't change
-        }
-        return `\\\\{${content}\\\\}`; // Escape with literal backslashes
+    transformedContentWithPlaceholders = transformedContentWithPlaceholders.replace(/(^|[^\\]){([^{}]+)}/g, (match, prefix, content) => {
+        // If there's a prefix (not start of string), include it and escape the braces
+        // If it's start of string, just escape the braces
+        return `${prefix}\\{${content}\\}`;
     });
 
     // 4. Restore inline code blocks
