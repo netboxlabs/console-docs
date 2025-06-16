@@ -526,8 +526,10 @@ const transformContent = async (content: string, sourceFilePath: string, outputB
         return `:::note[${cleanedTitle}]\n\n${cleanedBody}\n\n<a href="${cleanedLinkUrl}" className="button button--primary">${cleanedLinkText}</a>\n:::`;
     });
 
-    // Escape curly braces for known placeholder patterns only (preserve JSX style objects)
-    transformedContentWithPlaceholders = transformedContentWithPlaceholders.replace(/\{(Client ID|Client secret|Client Secret|CLIENT_ID|CLIENT_SECRET|APPLICATION_ID|SECRET_VALUE|netbox|module|Okta domain|your-domain)\}/g, '\\{$1\\}');
+    // Original master branch escaping rule - works perfectly on all Vercel Node.js versions (18.x, 20.x, 22.x)  
+    // Negative lookbehind has been supported since Node.js 9.0.0
+    // Use single backslash escaping to match master branch behavior
+    transformedContentWithPlaceholders = transformedContentWithPlaceholders.replace(/(?<!\\){([^{}]+)}(?!})/g, '\\{$1\\}');
 
     // 4. Restore inline code blocks
     inlineCodeBlocks.forEach((block, index) => {
