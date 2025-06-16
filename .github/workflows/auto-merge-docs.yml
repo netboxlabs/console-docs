@@ -89,7 +89,7 @@ jobs:
                 repo: context.repo.repo,
                 pull_number: context.payload.pull_request.number,
                 auto_merge: {
-                  merge_method: 'squash'
+                merge_method: 'squash'
                 }
               });
 
@@ -102,12 +102,12 @@ jobs:
                 body: '🤖 **Auto-approved**: Automated documentation update passed all deployment checks.\n\n✅ Vercel deployment successful\n✅ Documentation transformation verified\n✅ No conflicts detected'
               });
 
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: context.payload.pull_request.number,
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.payload.pull_request.number,
                 body: '🤖 **Auto-merge enabled**: This PR will automatically merge once all required status checks pass.\n\n✅ Deployment checks passed\n✅ Auto-approval granted\n✅ Ready for merge'
-              });
+                });
 
               console.log('✅ Auto-merge enabled successfully');
               
