@@ -548,14 +548,16 @@ const transformContent = async (content: string, sourceFilePath: string, outputB
     });
 
     // Hotfix to escape {} tags (applied before restoring code blocks)
-    // Regex: (?<!\){([^{}]+)}(?!}) - Explanation:
-    // (?<!\) - Negative lookbehind for a literal backslash (ensuring we don't escape already escaped braces like \{)
-    // {       - Matches the literal opening curly brace
-    // ([^{}]+) - Captures one or more characters that are NOT curly braces (this is group 1, $1)
-    // }       - Matches the literal closing curly brace
-    // (?!})   - Negative lookahead to ensure the closing brace is not followed by another (to avoid {{ a }} issues)
-    // Replacement: \\{$1\\} - Escapes the captured group with literal backslashes
-    transformedContentWithPlaceholders = transformedContentWithPlaceholders.replace(/(?<!\\){([^{}]+)}(?!})/g, '\\\\{$1\\\\}');
+    // Use a more compatible approach without negative lookbehind for Node.js 18 compatibility
+    // This replaces {content} with \{content\} but only if not already escaped
+    transformedContentWithPlaceholders = transformedContentWithPlaceholders.replace(/{([^{}]+)}/g, (match, content) => {
+        // Check if this brace is already escaped by looking at the character before the match
+        const matchIndex = transformedContentWithPlaceholders.indexOf(match);
+        if (matchIndex > 0 && transformedContentWithPlaceholders[matchIndex - 1] === '\\') {
+            return match; // Already escaped, don't change
+        }
+        return `\\\\{${content}\\\\}`; // Escape with literal backslashes
+    });
 
     // 4. Restore inline code blocks
     inlineCodeBlocks.forEach((block, index) => {
