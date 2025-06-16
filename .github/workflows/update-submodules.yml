@@ -185,6 +185,14 @@ jobs:
             echo "has_changes=false" >> $GITHUB_OUTPUT
           fi
 
+      - name: Early exit notification for no changes
+        if: steps.changes.outputs.has_changes == 'false'
+        run: |
+          echo "✅ No submodule changes detected - workflow completing successfully"
+          echo "- NetBox: ${{ steps.check-before.outputs.netbox_before }} (unchanged)"
+          echo "- Console: ${{ steps.check-before.outputs.console_before }} (unchanged)"
+          echo "- Force update: ${{ inputs.force_update }}"
+
       - name: Close existing automated PR if no changes
         if: steps.changes.outputs.has_changes == 'false' && steps.check-existing-prs.outputs.has_existing_pr == 'true'
         uses: actions/github-script@v7
@@ -356,7 +364,14 @@ jobs:
       - name: Commit changes
         if: steps.changes.outputs.has_changes == 'true'
         run: |
+          # Stage all changes
           git add .
+          
+          # Check if there are actually changes to commit
+          if git diff --cached --quiet; then
+            echo "No changes to commit after transformation"
+            exit 0
+          fi
           
           # Create detailed commit message with dynamic content
           NETBOX_CHANGED="${{ steps.changes.outputs.netbox_changed }}"
@@ -671,13 +686,26 @@ jobs:
       - name: Summary
         if: always()
         run: |
-          if [ "${{ steps.changes.outputs.has_changes }}" = "true" ]; then
+          echo "=== Workflow Summary ==="
+          
+          HAS_CHANGES="${{ steps.changes.outputs.has_changes }}"
+          NETBOX_CHANGED="${{ steps.changes.outputs.netbox_changed }}"
+          CONSOLE_CHANGED="${{ steps.changes.outputs.console_changed }}"
+          FORCE_UPDATE="${{ inputs.force_update }}"
+          
+          echo "Has changes: $HAS_CHANGES"
+          echo "NetBox changed: $NETBOX_CHANGED"
+          echo "Console changed: $CONSOLE_CHANGED"
+          echo "Force update: $FORCE_UPDATE"
+          
+          if [ "$HAS_CHANGES" = "true" ]; then
             echo "✅ Documentation updates detected and PR ${{ steps.branch-strategy.outputs.strategy }}d"
-            echo "- NetBox changed: ${{ steps.changes.outputs.netbox_changed }}"
-            echo "- Console changed: ${{ steps.changes.outputs.console_changed }}"
+            echo "- NetBox changed: $NETBOX_CHANGED"
+            echo "- Console changed: $CONSOLE_CHANGED"
             echo "- Strategy: ${{ steps.branch-strategy.outputs.strategy }}"
           else
-            echo "ℹ️ No documentation changes detected - no action taken"
+            echo "✅ No documentation changes detected - workflow completed successfully"
+            echo "- All submodules are up to date"
             if [ "${{ steps.check-existing-prs.outputs.has_existing_pr }}" = "true" ]; then
               echo "🧹 Closed existing automated PR as no changes were needed"
             fi
