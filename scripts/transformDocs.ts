@@ -206,9 +206,9 @@ const transformRules: TransformRule[] = [
     // Standardise <br> and </br> to self-closing <br/> with a newline.
     { find: /<\/?br>/g, replace: '<br/>\n' },
     // Convert markdown image with simple width percentage to a styled div.
-    { find: /!\[(.*?)\]\((.*?)\)\{ width=(\d+)% \}/g, replace: '<div style={{ width: "$3%" }}>![$1]($2)</div>' },
+    { find: /!\[(.*?)\]\((.*?)\)\{ width=(\d+)% \}/g, replace: '<div style={{width:"$3%"}}>![$1]($2)</div>' },
     // Convert markdown image with max-width style to a styled div.
-    { find: /!\[(.*?)\]\((.*?)\)\{\s*style="max-width:\s*(\d+)\s*%"\s*\}/g, replace: '<div style={{ maxWidth: "$3%" }}>![$1]($2)</div>' },
+    { find: /!\[(.*?)\]\((.*?)\)\{\s*style="max-width:\s*(\d+)\s*%"\s*\}/g, replace: '<div style={{maxWidth:"$3%"}}>![$1]($2)</div>' },
     // Escape angle brackets around raw URLs.
     { find: /<https?:\/\/[^>]+>/g, replace: (match: string) => `\\<${match.slice(1, -1)}\\>` },
     // Escape placeholder patterns in angle brackets (e.g., <netbox-server>, <diode-server:port>)
@@ -217,7 +217,7 @@ const transformRules: TransformRule[] = [
     // Escape <pk\> tag.
     { find: /<pk\\>/g, replace: '\\<pk\\>' },
     // Convert markdown image with MkDocs-style class and width attributes to a styled div.
-    { find: /!\[(.*?)\]\((.*?)\)\{:class="([^"]+)" width="(\d+)"\}/g, replace: '<div className="$3" style="width:$4px">![$1]($2)</div>' },
+    { find: /!\[(.*?)\]\((.*?)\)\{:class="([^"]+)" width="(\d+)"\}/g, replace: '<div className="$3" style={{width:"$4px"}}>![$1]($2)</div>' },
     // Convert markdown image with complex inline styles attribute to a styled div with React style object.
     {
         find: /!\[(.*?)\]\(([^)]*?)\)\{.*?style="([^"]*)".*?\}/g,
@@ -246,7 +246,7 @@ const transformRules: TransformRule[] = [
             }
 
             const reactStyleObjectInner = stylePairs.join(', ');
-            return `<div style={{ ${reactStyleObjectInner} }}>![${altText}](${urlPart})</div>`;
+            return `<div style={{${reactStyleObjectInner}}}>![${altText}](${urlPart})</div>`;
         }
     },
     // Remove leading slash from image paths starting with /images/.
@@ -265,9 +265,7 @@ const transformRules: TransformRule[] = [
         replace: '⚠️' // Replace with unicode warning emoji
     },
 
-    // Escape curly braces for placeholder patterns only (not JSX)  
-    // Only escape specific known placeholder patterns to avoid breaking JSX
-    { find: /(^|[^\\{])\{(CLIENT_ID|CLIENT_SECRET|APPLICATION_ID|SECRET_VALUE|netbox|module)\}(?![}])/g, replace: '$1\\{$2\\}' },
+    // Note: Removed curly brace escaping to avoid interfering with JSX style objects
     // Remove standalone mkdocstrings configuration blocks that weren't captured above
     {
         find: /```\n\n\n    options:\n(?:      .*\n)*/gm,
@@ -528,14 +526,8 @@ const transformContent = async (content: string, sourceFilePath: string, outputB
         return `:::note[${cleanedTitle}]\n\n${cleanedBody}\n\n<a href="${cleanedLinkUrl}" className="button button--primary">${cleanedLinkText}</a>\n:::`;
     });
 
-    // Hotfix to escape {} tags (applied before restoring code blocks)
-    // Use a more compatible approach without negative lookbehind for Node.js 18 compatibility
-    // This replaces {content} with \{content\} but only if not already escaped
-    transformedContentWithPlaceholders = transformedContentWithPlaceholders.replace(/(^|[^\\]){([^{}]+)}/g, (match, prefix, content) => {
-        // If there's a prefix (not start of string), include it and escape the braces
-        // If it's start of string, just escape the braces
-        return `${prefix}\\{${content}\\}`;
-    });
+    // Escape curly braces for known placeholder patterns only (preserve JSX style objects)
+    transformedContentWithPlaceholders = transformedContentWithPlaceholders.replace(/\{(Client ID|Client secret|Client Secret|CLIENT_ID|CLIENT_SECRET|APPLICATION_ID|SECRET_VALUE|netbox|module|Okta domain|your-domain)\}/g, '\\{$1\\}');
 
     // 4. Restore inline code blocks
     inlineCodeBlocks.forEach((block, index) => {
