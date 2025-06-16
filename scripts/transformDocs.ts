@@ -206,9 +206,9 @@ const transformRules: TransformRule[] = [
     // Standardise <br> and </br> to self-closing <br/> with a newline.
     { find: /<\/?br>/g, replace: '<br/>\n' },
     // Convert markdown image with simple width percentage to a styled div.
-    { find: /!\[(.*?)\]\((.*?)\)\{ width=(\d+)% \}/g, replace: '<div style={{ width: "$3%" }}>![$1]($2)</div>' },
+    { find: /!\[(.*?)\]\((.*?)\)\{ width=(\d+)% \}/g, replace: '<div style={{width:"$3%"}}>![$1]($2)</div>' },
     // Convert markdown image with max-width style to a styled div.
-    { find: /!\[(.*?)\]\((.*?)\)\{\s*style="max-width:\s*(\d+)\s*%"\s*\}/g, replace: '<div style={{ maxWidth: "$3%" }}>![$1]($2)</div>' },
+    { find: /!\[(.*?)\]\((.*?)\)\{\s*style="max-width:\s*(\d+)\s*%"\s*\}/g, replace: '<div style={{maxWidth:"$3%"}}>![$1]($2)</div>' },
     // Escape angle brackets around raw URLs.
     { find: /<https?:\/\/[^>]+>/g, replace: (match: string) => `\\<${match.slice(1, -1)}\\>` },
     // Escape placeholder patterns in angle brackets (e.g., <netbox-server>, <diode-server:port>)
@@ -217,7 +217,7 @@ const transformRules: TransformRule[] = [
     // Escape <pk\> tag.
     { find: /<pk\\>/g, replace: '\\<pk\\>' },
     // Convert markdown image with MkDocs-style class and width attributes to a styled div.
-    { find: /!\[(.*?)\]\((.*?)\)\{:class="([^"]+)" width="(\d+)"\}/g, replace: '<div className="$3" style={{ width: "$4px" }}>![$1]($2)</div>' },
+    { find: /!\[(.*?)\]\((.*?)\)\{:class="([^"]+)" width="(\d+)"\}/g, replace: '<div className="$3" style={{width:"$4px"}}>![$1]($2)</div>' },
     // Convert markdown image with complex inline styles attribute to a styled div with React style object.
     {
         find: /!\[(.*?)\]\(([^)]*?)\)\{.*?style="([^"]*)".*?\}/g,
@@ -246,16 +246,12 @@ const transformRules: TransformRule[] = [
             }
 
             const reactStyleObjectInner = stylePairs.join(', ');
-            return `<div style={{ ${reactStyleObjectInner} }}>![${altText}](${urlPart})</div>`;
+            return `<div style={{${reactStyleObjectInner}}}>![${altText}](${urlPart})</div>`;
         }
     },
     // Remove leading slash from image paths starting with /images/.
     { find: /!\[(.*?)\]\(\/(images\/[^)]+)\)/g, replace: '![$1]($2)' },
 
-    // Escape standalone { unless part of {{ or escaped \{
-    { find: /(?<![{\\]){(?!{)/g, replace: '\\{' },
-    // Escape standalone } unless part of }} or escaped \}
-    { find: /(?<![}\\])}(?!})/g, replace: '\\}' },
     // New rule for specific emoji-like icons (e.g., :bug:, :bulb:)
     {
         find: /:(bug|bulb|arrow_heading_up|jigsaw|rescue_worker_helmet|heart|information_source|thumbsup|thumbsdown):/g,
@@ -268,29 +264,17 @@ const transformRules: TransformRule[] = [
         find: /:warning:/g,
         replace: '⚠️' // Replace with unicode warning emoji
     },
-    // Remove leading slash from image paths starting with /images/.
-    { find: /!\[(.*?)\]\(\/(images\/[^)]+)\)/g, replace: '![$1]($2)' },
 
-    // Escape standalone { unless part of {{ or escaped \{
-    { find: /(?<![{\\]){(?!{)/g, replace: '\\{' },
-    // Escape standalone } unless part of }} or escaped \}
-    { find: /(?<![}\\])}(?!})/g, replace: '\\}' },
-    // New rule for specific emoji-like icons (e.g., :bug:, :bulb:)
-    {
-        find: /:(bug|bulb|arrow_heading_up|jigsaw|rescue_worker_helmet|heart|information_source|thumbsup|thumbsdown):/g,
-        replace: (match: string, iconName: string): string => {
-            return iconName; // Remove colons, leave the name (hoping for unicode rendering or just text)
-        }
-    },
-    // Rule for :warning:
-    {
-        find: /:warning:/g,
-        replace: '⚠️' // Replace with unicode warning emoji
-    },
+    // Note: Removed curly brace escaping to avoid interfering with JSX style objects
     // Remove standalone mkdocstrings configuration blocks that weren't captured above
     {
         find: /```\n\n\n    options:\n(?:      .*\n)*/gm,
         replace: '```\n\n'
+    },
+    // Fix broken anchor links that reference the old autodoc format
+    {
+        find: /\(([^)]+)#netbox\.search\.SearchIndex\)/g,
+        replace: '($1#searchindex)'
     }
 ];
 
@@ -547,15 +531,10 @@ const transformContent = async (content: string, sourceFilePath: string, outputB
         return `:::note[${cleanedTitle}]\n\n${cleanedBody}\n\n<a href="${cleanedLinkUrl}" className="button button--primary">${cleanedLinkText}</a>\n:::`;
     });
 
-    // Hotfix to escape {} tags (applied before restoring code blocks)
-    // Regex: (?<!\){([^{}]+)}(?!}) - Explanation:
-    // (?<!\) - Negative lookbehind for a literal backslash (ensuring we don't escape already escaped braces like \{)
-    // {       - Matches the literal opening curly brace
-    // ([^{}]+) - Captures one or more characters that are NOT curly braces (this is group 1, $1)
-    // }       - Matches the literal closing curly brace
-    // (?!})   - Negative lookahead to ensure the closing brace is not followed by another (to avoid {{ a }} issues)
-    // Replacement: \\{$1\\} - Escapes the captured group with literal backslashes
-    transformedContentWithPlaceholders = transformedContentWithPlaceholders.replace(/(?<!\\){([^{}]+)}(?!})/g, '\\\\{$1\\\\}');
+    // Original master branch escaping rule - works perfectly on all Vercel Node.js versions (18.x, 20.x, 22.x)  
+    // Negative lookbehind has been supported since Node.js 9.0.0
+    // Use single backslash escaping to match master branch behavior
+    transformedContentWithPlaceholders = transformedContentWithPlaceholders.replace(/(?<!\\){([^{}]+)}(?!})/g, '\\{$1\\}');
 
     // 4. Restore inline code blocks
     inlineCodeBlocks.forEach((block, index) => {
