@@ -72,7 +72,7 @@ jobs:
             const currentNetboxCommit = execSync('git ls-tree HEAD external-repos/netbox | awk \'{print $3}\'', { encoding: 'utf8' }).trim();
             const currentConsoleCommit = execSync('git ls-tree HEAD external-repos/console-docs | awk \'{print $3}\'', { encoding: 'utf8' }).trim();
             
-            console.log(`Current submodule commits after merge:`);
+            console.log("Current submodule commits after merge:");
             console.log("- NetBox: " + currentNetboxCommit);
             console.log("- Console: " + currentConsoleCommit);
             
