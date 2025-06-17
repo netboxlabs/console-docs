@@ -1,9 +1,19 @@
+<<<<<<< HEAD
 # NetBox Discovery
 
 <span class="pill pill-cloud">NetBox Cloud</span>
 <span class="pill pill-enterprise">NetBox Enterprise</span>
 
 NetBox Discovery is a family of applications that automate network discovery and data collection to keep your NetBox instance current and comprehensive. Through a combination of active network scanning, device discovery, and controller integrations, NetBox Discovery provides multiple pathways to populate and maintain accurate network documentation.
+=======
+---
+tags:
+  - netbox-cloud
+  - netbox-enterprise
+  - netbox-community
+---!!! info "*Public Preview*"
+    **NetBox Discovery** is currently in Public Preview. Please refer to [NetBox Labs Product and Feature Lifecycle](https://docs.netboxlabs.com/product_feature_lifecycle/) to get more details. We actively welcome feedback to help identify and prioritize bugs, new features and areas of improvement.
+>>>>>>> origin/feature/product-tagging-system
 
 ## What It Includes
 

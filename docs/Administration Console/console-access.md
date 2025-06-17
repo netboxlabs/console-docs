@@ -1,4 +1,8 @@
-# NetBox Cloud
+---
+title: NetBox Cloud
+tags:
+  - netbox-cloud
+---# NetBox Cloud
 
 ## Setting up Console Access
 

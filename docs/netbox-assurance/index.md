@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 <span class="pill pill-cloud">NetBox Cloud</span>
 <span class="pill pill-enterprise">NetBox Enterprise</span>
 
 !!! info "*Coming June 2025 for NetBox Enterprise, July 2025 for NetBox Cloud*"
+=======
+---
+tags:
+  - netbox-cloud
+  - netbox-enterprise
+---!!! info "*Coming early 2025*"
+>>>>>>> origin/feature/product-tagging-system
     Be among the first to experience **NetBox Assurance**. [Sign up](https://netboxlabs.com/netbox-assurance/) to be notified when we launch.
 
 NetBox Assurance allows customers to control which data goes into NetBox. It does this by giving users a view of the difference between the data in their NetBox (representing the intended state of the infrastructure) and the data in their network (the operational state of the infrastructure). We call this difference **"operational drift"**, or simply "drift". 

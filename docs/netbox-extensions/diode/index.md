@@ -1,4 +1,9 @@
-# Diode
+---
+title: Diode
+tags:
+  - netbox-community
+  - netbox-enterprise
+---# Diode
 
 !!! info "Currently in Public Preview"
 

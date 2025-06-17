@@ -1,4 +1,9 @@
-# Change Diffs
+---
+title: Change Diffs
+tags:
+  - netbox-community
+  - netbox-enterprise
+---# Change Diffs
 
 A change diff summarized all changes to particular NetBox object within a [branch](./branch.md). It serves to simplify the process of reviewing changes within a branch, and avoids the need to review successive individual changes which might otherwise prove tedious.
 

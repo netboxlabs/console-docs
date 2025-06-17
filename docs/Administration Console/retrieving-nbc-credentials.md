@@ -1,4 +1,8 @@
-# Retrieving the NetBox Cloud Admin Credentials 
+---
+title: Retrieving the NetBox Cloud Admin Credentials 
+tags:
+  - netbox-cloud
+---# Retrieving the NetBox Cloud Admin Credentials 
 
 To log into a NetBox Cloud instance with the **admin** username and password, you first need to login to the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/) and then retrieve the credentials. Follow these steps: 
 

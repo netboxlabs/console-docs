@@ -54,6 +54,8 @@ markdown_extensions:
           format: pymdownx.superfences.fence_code_format
 plugins:
   - search
+  - tags:
+      tags_file: tags.yml
 nav:
   - Home: index.md
   - Community:

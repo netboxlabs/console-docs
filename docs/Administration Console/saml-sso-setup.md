@@ -1,4 +1,8 @@
-# NetBox Cloud SAML Configuration Guide
+---
+title: NetBox Cloud SAML Configuration Guide
+tags:
+  - netbox-cloud
+---# NetBox Cloud SAML Configuration Guide
 
 ## Overview
 This document details the procedure for configuring SAML-based Single Sign-On (SSO) for your NetBox Cloud environment.

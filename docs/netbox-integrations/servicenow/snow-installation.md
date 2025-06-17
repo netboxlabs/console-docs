@@ -1,4 +1,10 @@
-# Installation and Setup
+---
+title: Installation and Setup
+tags:
+  - netbox-cloud
+  - netbox-enterprise
+  - netbox-community
+---# Installation and Setup
 
 ## Before Starting
 

@@ -1,8 +1,18 @@
+<<<<<<< HEAD
 # NetBox Discovery Agent
 
 <span class="pill pill-cloud">NetBox Cloud</span>
 <span class="pill pill-enterprise">NetBox Enterprise</span>
 <span class="pill pill-community">NetBox Community</span>
+=======
+---
+title: NetBox Discovery agent
+tags:
+  - netbox-cloud
+  - netbox-enterprise
+  - netbox-community
+---# NetBox Discovery agent
+>>>>>>> origin/feature/product-tagging-system
 
 The NetBox Discovery Agent is part of the **Orb distributed agent framework** developed by NetBox Labs. This powerful discovery engine automatically collects network data from your infrastructure and seamlessly ingests it into NetBox, enabling you to maintain accurate, up-to-date network documentation without manual intervention.
 

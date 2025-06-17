@@ -1,4 +1,10 @@
-# FAQ and Troubleshooting
+---
+title: FAQ and Troubleshooting
+tags:
+  - netbox-cloud
+  - netbox-enterprise
+  - netbox-community
+---# FAQ and Troubleshooting
 
 ## Installation Issues
 

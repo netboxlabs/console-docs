@@ -1,3 +1,4 @@
 mkdocs-material
 mkdocs
 mike
+mkdocs-tags-plugin
