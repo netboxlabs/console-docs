@@ -667,7 +667,7 @@ jobs:
 
             if (isUpdate) {
               // Update existing PR
-              const prNumber = ${{ steps.branch-strategy.outputs.pr_number }};
+              const prNumber = parseInt('${{ steps.branch-strategy.outputs.pr_number }}');
               await github.rest.pulls.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
