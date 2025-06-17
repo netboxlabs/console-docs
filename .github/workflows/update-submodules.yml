@@ -40,50 +40,66 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const { data: prs } = await github.rest.pulls.list({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              base: 'master'
-            });
-            
-            // Find automated documentation PRs
-            const automatedPRs = prs.filter(pr => 
-              pr.head.ref.startsWith('automated-docs-update') || 
-              pr.title.includes('🤖 Automated Documentation Updates')
-            );
-            
-            console.log(`Found ${automatedPRs.length} existing automated PRs`);
-            
-            if (automatedPRs.length > 0) {
-              const latestPR = automatedPRs[0]; // Most recent
-              console.log(`Latest automated PR: #${latestPR.number} - ${latestPR.title}`);
-              core.setOutput('has_existing_pr', 'true');
-              core.setOutput('existing_pr_number', latestPR.number.toString());
-              core.setOutput('existing_pr_branch', latestPR.head.ref);
+            try {
+              const { data: prs } = await github.rest.pulls.list({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'open',
+                base: 'master'
+              });
               
-              // Close older automated PRs (keep only the latest)
-              for (let i = 1; i < automatedPRs.length; i++) {
-                const oldPR = automatedPRs[i];
-                console.log(`Closing outdated automated PR #${oldPR.number}`);
-                try {
-                  await github.rest.pulls.update({
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    pull_number: oldPR.number,
-                    state: 'closed'
-                  });
-                  await github.rest.issues.createComment({
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    issue_number: oldPR.number,
-                    body: `🤖 **Auto-closed**: This automated PR has been superseded by a newer update (#${latestPR.number}).`
-                  });
-                } catch (error) {
-                  console.log(`Failed to close PR #${oldPR.number}: ${error.message}`);
+              // Find automated documentation PRs
+              const automatedPRs = prs.filter(pr => 
+                pr.head.ref.startsWith('automated-docs-update') || 
+                pr.title.includes('🤖 Automated Documentation Updates')
+              );
+              
+              console.log(`Found ${automatedPRs.length} existing automated PRs`);
+              
+              if (automatedPRs.length > 0) {
+                const latestPR = automatedPRs[0]; // Most recent
+                if (latestPR && latestPR.number) {
+                  console.log(`Latest automated PR: #${latestPR.number} - ${latestPR.title}`);
+                  core.setOutput('has_existing_pr', 'true');
+                  core.setOutput('existing_pr_number', latestPR.number.toString());
+                  core.setOutput('existing_pr_branch', latestPR.head.ref);
+                  
+                  // Close older automated PRs (keep only the latest)
+                  for (let i = 1; i < automatedPRs.length; i++) {
+                    const oldPR = automatedPRs[i];
+                    if (oldPR && oldPR.number) {
+                      console.log(`Closing outdated automated PR #${oldPR.number}`);
+                      try {
+                        await github.rest.pulls.update({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          pull_number: oldPR.number,
+                          state: 'closed'
+                        });
+                        await github.rest.issues.createComment({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          issue_number: oldPR.number,
+                          body: `🤖 **Auto-closed**: This automated PR has been superseded by a newer update (#${latestPR.number}).`
+                        });
+                      } catch (error) {
+                        console.log(`Failed to close PR #${oldPR.number}: ${error.message}`);
+                      }
+                    }
+                  }
+                } else {
+                  console.log('Latest PR is missing required fields, treating as no existing PR');
+                  core.setOutput('has_existing_pr', 'false');
+                  core.setOutput('existing_pr_number', '');
+                  core.setOutput('existing_pr_branch', '');
                 }
+              } else {
+                core.setOutput('has_existing_pr', 'false');
+                core.setOutput('existing_pr_number', '');
+                core.setOutput('existing_pr_branch', '');
               }
-            } else {
+            } catch (error) {
+              console.error('Error checking existing PRs:', error);
               core.setOutput('has_existing_pr', 'false');
               core.setOutput('existing_pr_number', '');
               core.setOutput('existing_pr_branch', '');
