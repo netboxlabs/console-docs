@@ -43,7 +43,7 @@ jobs:
               pr.title.includes('🤖 Automated Documentation Updates')
             );
             
-            console.log(`Found ${automatedPRs.length} automated PRs`);
+            console.log("Found " + automatedPRs.length + " automated PRs");
             
             if (automatedPRs.length === 0) {
               console.log('No automated PRs found');
@@ -54,9 +54,9 @@ jobs:
             const maxAgeDays = parseInt('${{ inputs.max_age_days }}');
             const cutoffDate = maxAgeDays > 0 ? new Date(Date.now() - maxAgeDays * 24 * 60 * 60 * 1000) : null;
             
-            console.log(`Cleanup mode: ${closeAll ? 'Close all' : 'Close outdated only'}`);
+            console.log("Cleanup mode: " + (closeAll ? 'Close all' : 'Close outdated only'));
             if (cutoffDate) {
-              console.log(`Age cutoff: ${cutoffDate.toISOString()} (${maxAgeDays} days ago)`);
+              console.log("Age cutoff: " + cutoffDate.toISOString() + " (" + maxAgeDays + " days ago)");
             }
             
             let closedCount = 0;
@@ -80,7 +80,7 @@ jobs:
                   // This is the newest automated PR
                   if (cutoffDate && prAge < cutoffDate) {
                     shouldClose = true;
-                    reason = `Automated PR is older than ${maxAgeDays} days`;
+                    reason = "Automated PR is older than " + maxAgeDays + " days";
                   } else {
                     reason = 'Keeping newest automated PR';
                   }
@@ -92,7 +92,7 @@ jobs:
               }
               
               if (shouldClose) {
-                console.log(`Closing PR #${pr.number}: ${reason}`);
+                console.log("Closing PR #" + pr.number + ": " + reason);
                 
                 await github.rest.pulls.update({
                   owner: context.repo.owner,
@@ -106,14 +106,14 @@ jobs:
                   repo: context.repo.repo,
                   issue_number: pr.number,
                   body: [
-                    `🧹 **Manual Cleanup**: ${reason}`,
+                    "🧹 **Manual Cleanup**: " + reason,
                     '',
-                    `This automated PR was closed as part of manual cleanup.`,
+                    "This automated PR was closed as part of manual cleanup.",
                     '',
                     '**Cleanup Parameters:**',
-                    `- Close all: \`${closeAll}\``,
-                    `- Max age: \`${maxAgeDays} days\``,
-                    `- PR age: \`${Math.floor((Date.now() - prAge.getTime()) / (1000 * 60 * 60 * 24))} days\``,
+                    "- Close all: `" + closeAll + "`",
+                    "- Max age: `" + maxAgeDays + " days`",
+                    "- PR age: `" + Math.floor((Date.now() - prAge.getTime()) / (1000 * 60 * 60 * 24)) + " days`",
                     '',
                     '*Manual cleanup triggered via workflow dispatch.*'
                   ].join('\n')
@@ -121,14 +121,14 @@ jobs:
                 
                 closedCount++;
               } else {
-                console.log(`Keeping PR #${pr.number}: ${reason}`);
+                console.log("Keeping PR #" + pr.number + ": " + reason);
                 keptCount++;
               }
             }
             
-            console.log(`\n📊 Cleanup Summary:`);
-            console.log(`- Closed: ${closedCount} PRs`);
-            console.log(`- Kept: ${keptCount} PRs`);
+            console.log("\n📊 Cleanup Summary:");
+            console.log("- Closed: " + closedCount + " PRs");
+            console.log("- Kept: " + keptCount + " PRs");
             
             // Set outputs for the summary
             core.setOutput('closed_count', closedCount);
