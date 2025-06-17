@@ -56,6 +56,32 @@ plugins:
   - search
 nav:
   - Home: index.md
+  - Community:
+    - NetBox Discovery:
+      - Overview: "netbox-discovery/index.md"
+      - Quickstart Guide: "netbox-discovery/quickstart-guide.md"
+      - Discovery Agent:
+        - Overview: "netbox-discovery/agent/index.md"
+        - Getting started: "netbox-discovery/agent/get-started.md"
+        - Configuration format: "netbox-discovery/agent/configuration-file.md"
+        - Network Discovery: "netbox-discovery/agent/network_discovery.md"
+        - Device Discovery: "netbox-discovery/agent/device_discovery.md"
+    - Extensions:
+      - Diode:
+        - Overview: "netbox-extensions/diode/index.md"
+        - Get Started: "netbox-extensions/diode/diode-get-started.md"
+      - Product and Feature Lifecycle: "product_feature_lifecycle.md"
+    - Integrations: 
+      - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
+      - pyATS: "netbox-integrations/pyats.md"
+      - ServiceNow: 
+        - Overview: "netbox-integrations/servicenow/index.md"
+        - Installation: "netbox-integrations/servicenow/snow-installation.md"
+        - Technical Info: "netbox-integrations/servicenow/snow-technical-info.md"
+        - FAQ and Troubleshooting: "netbox-integrations/servicenow/snow-faq.md"
+        - Upgrading: "netbox-integrations/servicenow/snow-upgrading.md"
+    - SDKs:
+      - Pynetbox: "sdks/pynetbox.md"
   - Cloud:
     - Migrating to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
     - Administration via Console:
@@ -96,6 +122,58 @@ nav:
       - Frequently Asked Questions: "cloud-connectivity/cloud-connectivity-faq.md"
     - Maintenance:
       - Scheduled Maintenance: "maintenance.md"
+    - NetBox Discovery:
+      - Overview: "netbox-discovery/index.md"
+      - Quickstart Guide: "netbox-discovery/quickstart-guide.md"
+      - Discovery Agent:
+        - Overview: "netbox-discovery/agent/index.md"
+        - Getting started: "netbox-discovery/agent/get-started.md"
+        - Configuration format: "netbox-discovery/agent/configuration-file.md"
+        - Network Discovery: "netbox-discovery/agent/network_discovery.md"
+        - Device Discovery: "netbox-discovery/agent/device_discovery.md"
+    - NetBox Assurance:
+      - Overview: "netbox-assurance/index.md"
+    - Extensions:
+      - Branching:
+        - Overview: "netbox-extensions/branching/index.md"
+        - Configuration: "netbox-extensions/branching/configuration.md"
+        - Using Branches:
+          - Creating a Branch: "netbox-extensions/branching/using-branches/creating-a-branch.md"
+          - Syncing & Merging Changes: "netbox-extensions/branching/using-branches/syncing-merging.md"
+          - Reverting a Branch: "netbox-extensions/branching/using-branches/reverting-a-branch.md"
+          - Interact with Branches via API: "netbox-extensions/branching/using-branches/api.md"
+        - Models:
+          - Branches: "netbox-extensions/branching/models/branch.md"
+          - Branch Events: "netbox-extensions/branching/models/branchevent.md"
+          - Change Diffs: "netbox-extensions/branching/models/changediff.md"
+          - Object Changes: "netbox-extensions/branching/models/objectchange.md"
+        - Changelog: "netbox-extensions/branching/changelog.md"
+      - Change Management:
+        - Overview: "netbox-extensions/changes/index.md"
+        - Configuration: "netbox-extensions/changes/configuration.md"
+        - Models:
+          - Change Request: "netbox-extensions/changes/models/changerequest.md"
+          - Comment: "netbox-extensions/changes/models/comment.md"
+          - Comment Reply: "netbox-extensions/changes/models/commentreply.md"
+          - Policy: "netbox-extensions/changes/models/policy.md"
+          - Policy Rule: "netbox-extensions/changes/models/policyrule.md"
+          - Review: "netbox-extensions/changes/models/review.md"
+        - Changelog: "netbox-extensions/changes/changelog.md"
+      - Diode:
+        - Overview: "netbox-extensions/diode/index.md"
+        - Get Started: "netbox-extensions/diode/diode-get-started.md"
+      - Product and Feature Lifecycle: "product_feature_lifecycle.md"
+    - Integrations: 
+      - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
+      - pyATS: "netbox-integrations/pyats.md"
+      - ServiceNow: 
+        - Overview: "netbox-integrations/servicenow/index.md"
+        - Installation: "netbox-integrations/servicenow/snow-installation.md"
+        - Technical Info: "netbox-integrations/servicenow/snow-technical-info.md"
+        - FAQ and Troubleshooting: "netbox-integrations/servicenow/snow-faq.md"
+        - Upgrading: "netbox-integrations/servicenow/snow-upgrading.md"
+    - SDKs:
+      - Pynetbox: "sdks/pynetbox.md"
   - Enterprise:
     - Overview: "netbox-enterprise/nbe-overview.md"
     - NetBox Enterprise Installer:
@@ -124,11 +202,9 @@ nav:
       #- "Installing Custom NetBox Plugins": "netbox-enterprise/nbe-ec-custom-plugins.md"
       - "Advanced Tools and Troubleshooting": "netbox-enterprise/nbe-troubleshooting.md"
     - "Release Notes": "netbox-enterprise/nbe-release-notes.md"
-  - Discovery & Assurance:
-    - Solution Overview: "discovery-assurance.md"
-    - Quickstart Guide: "netbox-discovery/quickstart-guide.md"
     - NetBox Discovery:
-      - NetBox Discovery: "netbox-discovery/index.md"
+      - Overview: "netbox-discovery/index.md"
+      - Quickstart Guide: "netbox-discovery/quickstart-guide.md"
       - Discovery Agent:
         - Overview: "netbox-discovery/agent/index.md"
         - Getting started: "netbox-discovery/agent/get-started.md"
@@ -136,48 +212,48 @@ nav:
         - Network Discovery: "netbox-discovery/agent/network_discovery.md"
         - Device Discovery: "netbox-discovery/agent/device_discovery.md"
     - NetBox Assurance:
-      - NetBox Assurance: "netbox-assurance/index.md"
-  - Integrations: 
-    - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
-    - pyATS: "netbox-integrations/pyats.md"
-    - ServiceNow: 
-      - Overview: "netbox-integrations/servicenow/index.md"
-      - Installation: "netbox-integrations/servicenow/snow-installation.md"
-      - Technical Info: "netbox-integrations/servicenow/snow-technical-info.md"
-      - FAQ and Troubleshooting: "netbox-integrations/servicenow/snow-faq.md"
-      - Upgrading: "netbox-integrations/servicenow/snow-upgrading.md"
-  - SDKs:
-    - Pynetbox: "sdks/pynetbox.md"
-  - Extensions:
-    - Branching:
-      - Overview: "netbox-extensions/branching/index.md"
-      - Configuration: "netbox-extensions/branching/configuration.md"
-      - Using Branches:
-        - Creating a Branch: "netbox-extensions/branching/using-branches/creating-a-branch.md"
-        - Syncing & Merging Changes: "netbox-extensions/branching/using-branches/syncing-merging.md"
-        - Reverting a Branch: "netbox-extensions/branching/using-branches/reverting-a-branch.md"
-        - Interact with Branches via API: "netbox-extensions/branching/using-branches/api.md"
-      - Models:
-        - Branches: "netbox-extensions/branching/models/branch.md"
-        - Branch Events: "netbox-extensions/branching/models/branchevent.md"
-        - Change Diffs: "netbox-extensions/branching/models/changediff.md"
-        - Object Changes: "netbox-extensions/branching/models/objectchange.md"
-      - Changelog: "netbox-extensions/branching/changelog.md"
-    - Change Management:
-      - Overview: "netbox-extensions/changes/index.md"
-      - Configuration: "netbox-extensions/changes/configuration.md"
-      - Models:
-        - Change Request: "netbox-extensions/changes/models/changerequest.md"
-        - Comment: "netbox-extensions/changes/models/comment.md"
-        - Comment Reply: "netbox-extensions/changes/models/commentreply.md"
-        - Policy: "netbox-extensions/changes/models/policy.md"
-        - Policy Rule: "netbox-extensions/changes/models/policyrule.md"
-        - Review: "netbox-extensions/changes/models/review.md"
-      - Changelog: "netbox-extensions/changes/changelog.md"
-    - Diode:
-      - Overview: "netbox-extensions/diode/index.md"
-      - Get Started: "netbox-extensions/diode/diode-get-started.md"
-    - Product and Feature Lifecycle: "product_feature_lifecycle.md"
+      - Overview: "netbox-assurance/index.md"
+    - Extensions:
+      - Branching:
+        - Overview: "netbox-extensions/branching/index.md"
+        - Configuration: "netbox-extensions/branching/configuration.md"
+        - Using Branches:
+          - Creating a Branch: "netbox-extensions/branching/using-branches/creating-a-branch.md"
+          - Syncing & Merging Changes: "netbox-extensions/branching/using-branches/syncing-merging.md"
+          - Reverting a Branch: "netbox-extensions/branching/using-branches/reverting-a-branch.md"
+          - Interact with Branches via API: "netbox-extensions/branching/using-branches/api.md"
+        - Models:
+          - Branches: "netbox-extensions/branching/models/branch.md"
+          - Branch Events: "netbox-extensions/branching/models/branchevent.md"
+          - Change Diffs: "netbox-extensions/branching/models/changediff.md"
+          - Object Changes: "netbox-extensions/branching/models/objectchange.md"
+        - Changelog: "netbox-extensions/branching/changelog.md"
+      - Change Management:
+        - Overview: "netbox-extensions/changes/index.md"
+        - Configuration: "netbox-extensions/changes/configuration.md"
+        - Models:
+          - Change Request: "netbox-extensions/changes/models/changerequest.md"
+          - Comment: "netbox-extensions/changes/models/comment.md"
+          - Comment Reply: "netbox-extensions/changes/models/commentreply.md"
+          - Policy: "netbox-extensions/changes/models/policy.md"
+          - Policy Rule: "netbox-extensions/changes/models/policyrule.md"
+          - Review: "netbox-extensions/changes/models/review.md"
+        - Changelog: "netbox-extensions/changes/changelog.md"
+      - Diode:
+        - Overview: "netbox-extensions/diode/index.md"
+        - Get Started: "netbox-extensions/diode/diode-get-started.md"
+      - Product and Feature Lifecycle: "product_feature_lifecycle.md"
+    - Integrations: 
+      - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
+      - pyATS: "netbox-integrations/pyats.md"
+      - ServiceNow: 
+        - Overview: "netbox-integrations/servicenow/index.md"
+        - Installation: "netbox-integrations/servicenow/snow-installation.md"
+        - Technical Info: "netbox-integrations/servicenow/snow-technical-info.md"
+        - FAQ and Troubleshooting: "netbox-integrations/servicenow/snow-faq.md"
+        - Upgrading: "netbox-integrations/servicenow/snow-upgrading.md"
+    - SDKs:
+      - Pynetbox: "sdks/pynetbox.md"
 extra:
   version:
     provider: mike
