@@ -236,7 +236,7 @@ jobs:
                 body: "🤖 **Auto-closed**: No new documentation changes detected. All submodules are up to date."
               });
             } catch (error) {
-              console.log(`Failed to close automated PR #${prNumber}: ${error.message}`);
+              console.log("Failed to close automated PR #" + prNumber + ": " + error.message);
             }
 
       - name: Setup Node.js
@@ -451,7 +451,7 @@ jobs:
             const netboxChanged = '${{ steps.changes.outputs.netbox_changed }}' === 'true';
             const consoleChanged = '${{ steps.changes.outputs.console_changed }}' === 'true';
             
-            console.log(`NetBox changed: ${netboxChanged}, Console changed: ${consoleChanged}`);
+            console.log("NetBox changed: " + netboxChanged + ", Console changed: " + consoleChanged);
             
             // Get file change counts
             const netboxAdded = parseInt('${{ steps.analyze-changes.outputs.netbox_added }}') || 0;
@@ -461,24 +461,24 @@ jobs:
             const consoleModified = parseInt('${{ steps.analyze-changes.outputs.console_modified }}') || 0;
             const consoleRemoved = parseInt('${{ steps.analyze-changes.outputs.console_removed }}') || 0;
             
-            console.log(`File change counts:`);
-            console.log(`- NetBox: +${netboxAdded} ~${netboxModified} -${netboxRemoved}`);
-            console.log(`- Console: +${consoleAdded} ~${consoleModified} -${consoleRemoved}`);
+            console.log("File change counts:");
+            console.log("- NetBox: +" + netboxAdded + " ~" + netboxModified + " -" + netboxRemoved);
+            console.log("- Console: +" + consoleAdded + " ~" + consoleModified + " -" + consoleRemoved);
             
             // Build the PR body content
             let netboxStatus = '';
             let consoleStatus = '';
             
             if (netboxChanged) {
-              const netboxChangeSummary = `+${netboxAdded} ~${netboxModified} -${netboxRemoved}`;
-              netboxStatus = `- ✅ **NetBox Documentation**: Updated from \`${{ steps.check-before.outputs.netbox_before }}\` to \`${{ steps.check-after.outputs.netbox_after }}\` (${netboxChangeSummary})`;
+              const netboxChangeSummary = "+" + netboxAdded + " ~" + netboxModified + " -" + netboxRemoved;
+                                netboxStatus = "- ✅ **NetBox Documentation**: Updated from " + "${{ steps.check-before.outputs.netbox_before }}" + " to " + "${{ steps.check-after.outputs.netbox_after }}" + " (" + netboxChangeSummary + ")";
             } else {
               netboxStatus = '- ⚪ **NetBox Documentation**: No changes';
             }
             
             if (consoleChanged) {
-              const consoleChangeSummary = `+${consoleAdded} ~${consoleModified} -${consoleRemoved}`;
-              consoleStatus = `- ✅ **Console Documentation**: Updated from \`${{ steps.check-before.outputs.console_before }}\` to \`${{ steps.check-after.outputs.console_after }}\` (${consoleChangeSummary})`;
+              const consoleChangeSummary = "+" + consoleAdded + " ~" + consoleModified + " -" + consoleRemoved;
+                                consoleStatus = "- ✅ **Console Documentation**: Updated from " + "${{ steps.check-before.outputs.console_before }}" + " to " + "${{ steps.check-after.outputs.console_after }}" + " (" + consoleChangeSummary + ")";
             } else {
               consoleStatus = '- ⚪ **Console Documentation**: No changes';
             }
@@ -488,9 +488,9 @@ jobs:
             if (netboxChanged) titleParts.push('NetBox');
             if (consoleChanged) titleParts.push('Console');
             
-            const dynamicTitle = titleParts.length > 0 
-              ? `🤖 Automated Documentation Updates - ${titleParts.join(' + ')}`
-              : '🤖 Automated Documentation Updates';
+                          const dynamicTitle = titleParts.length > 0 
+                ? "🤖 Automated Documentation Updates - " + titleParts.join(' + ')
+                : '🤖 Automated Documentation Updates';
             
             const isUpdate = '${{ steps.branch-strategy.outputs.strategy }}' === 'update';
             const updateText = isUpdate ? ' (Updated)' : '';
@@ -504,10 +504,10 @@ jobs:
               whatsIncluded.push('- 🖼️ Copied new/updated static assets');
               
               if (netboxChanged) {
-                whatsIncluded.push(`- 📖 **NetBox docs**: ~284 files processed and transformed (${netboxAdded + netboxModified + netboxRemoved} changes)`);
+                whatsIncluded.push("- 📖 **NetBox docs**: ~284 files processed and transformed (" + (netboxAdded + netboxModified + netboxRemoved) + " changes)");
               }
               if (consoleChanged) {
-                whatsIncluded.push(`- 🏢 **Console docs**: ~324 files processed and transformed (${consoleAdded + consoleModified + consoleRemoved} changes)`);
+                whatsIncluded.push("- 🏢 **Console docs**: ~324 files processed and transformed (" + (consoleAdded + consoleModified + consoleRemoved) + " changes)");
               }
             }
             
@@ -526,11 +526,11 @@ jobs:
                     const addedFiles = execSync('cat /tmp/doc-changes/netbox-added.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
                     if (addedFiles) {
                       const fileList = addedFiles.split('\n').filter(f => f.trim()).slice(0, 10);
-                      const moreText = addedFiles.split('\n').length > 10 ? ` (+${addedFiles.split('\n').length - 10} more)` : '';
-                      netboxChanges.push(`**Added (${netboxAdded}):** ${fileList.join(', ')}${moreText}`);
+                                          const moreText = addedFiles.split('\n').length > 10 ? " (+" + (addedFiles.split('\n').length - 10) + " more)" : '';
+                    netboxChanges.push("**Added (" + netboxAdded + "):** " + fileList.join(', ') + moreText);
                     }
                   } catch (e) {
-                    netboxChanges.push(`**Added:** ${netboxAdded} files`);
+                    netboxChanges.push("**Added:** " + netboxAdded + " files");
                   }
                 }
                 
@@ -539,11 +539,11 @@ jobs:
                     const modifiedFiles = execSync('cat /tmp/doc-changes/netbox-modified.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
                     if (modifiedFiles) {
                       const fileList = modifiedFiles.split('\n').filter(f => f.trim()).slice(0, 10);
-                      const moreText = modifiedFiles.split('\n').length > 10 ? ` (+${modifiedFiles.split('\n').length - 10} more)` : '';
-                      netboxChanges.push(`**Modified (${netboxModified}):** ${fileList.join(', ')}${moreText}`);
+                                          const moreText = modifiedFiles.split('\n').length > 10 ? " (+" + (modifiedFiles.split('\n').length - 10) + " more)" : '';
+                    netboxChanges.push("**Modified (" + netboxModified + "):** " + fileList.join(', ') + moreText);
                     }
                   } catch (e) {
-                    netboxChanges.push(`**Modified:** ${netboxModified} files`);
+                    netboxChanges.push("**Modified:** " + netboxModified + " files");
                   }
                 }
                 
@@ -552,16 +552,16 @@ jobs:
                     const removedFiles = execSync('cat /tmp/doc-changes/netbox-removed.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
                     if (removedFiles) {
                       const fileList = removedFiles.split('\n').filter(f => f.trim()).slice(0, 10);
-                      const moreText = removedFiles.split('\n').length > 10 ? ` (+${removedFiles.split('\n').length - 10} more)` : '';
-                      netboxChanges.push(`**Removed (${netboxRemoved}):** ${fileList.join(', ')}${moreText}`);
+                                          const moreText = removedFiles.split('\n').length > 10 ? " (+" + (removedFiles.split('\n').length - 10) + " more)" : '';
+                    netboxChanges.push("**Removed (" + netboxRemoved + "):** " + fileList.join(', ') + moreText);
                     }
                   } catch (e) {
-                    netboxChanges.push(`**Removed:** ${netboxRemoved} files`);
+                    netboxChanges.push("**Removed:** " + netboxRemoved + " files");
                   }
                 }
                 
                 if (netboxChanges.length > 0) {
-                  fileChangesParts.push(`#### 📖 NetBox Documentation\n${netboxChanges.join('\n')}`);
+                  fileChangesParts.push("#### 📖 NetBox Documentation\n" + netboxChanges.join('\n'));
                 }
               }
               
@@ -573,11 +573,11 @@ jobs:
                     const addedFiles = execSync('cat /tmp/doc-changes/console-added.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
                     if (addedFiles) {
                       const fileList = addedFiles.split('\n').filter(f => f.trim()).slice(0, 10);
-                      const moreText = addedFiles.split('\n').length > 10 ? ` (+${addedFiles.split('\n').length - 10} more)` : '';
-                      consoleChanges.push(`**Added (${consoleAdded}):** ${fileList.join(', ')}${moreText}`);
+                                          const moreText = addedFiles.split('\n').length > 10 ? " (+" + (addedFiles.split('\n').length - 10) + " more)" : '';
+                    consoleChanges.push("**Added (" + consoleAdded + "):** " + fileList.join(', ') + moreText);
                     }
                   } catch (e) {
-                    consoleChanges.push(`**Added:** ${consoleAdded} files`);
+                    consoleChanges.push("**Added:** " + consoleAdded + " files");
                   }
                 }
                 
@@ -586,11 +586,11 @@ jobs:
                     const modifiedFiles = execSync('cat /tmp/doc-changes/console-modified.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
                     if (modifiedFiles) {
                       const fileList = modifiedFiles.split('\n').filter(f => f.trim()).slice(0, 10);
-                      const moreText = modifiedFiles.split('\n').length > 10 ? ` (+${modifiedFiles.split('\n').length - 10} more)` : '';
-                      consoleChanges.push(`**Modified (${consoleModified}):** ${fileList.join(', ')}${moreText}`);
+                                          const moreText = modifiedFiles.split('\n').length > 10 ? " (+" + (modifiedFiles.split('\n').length - 10) + " more)" : '';
+                    consoleChanges.push("**Modified (" + consoleModified + "):** " + fileList.join(', ') + moreText);
                     }
                   } catch (e) {
-                    consoleChanges.push(`**Modified:** ${consoleModified} files`);
+                    consoleChanges.push("**Modified:** " + consoleModified + " files");
                   }
                 }
                 
@@ -599,16 +599,16 @@ jobs:
                     const removedFiles = execSync('cat /tmp/doc-changes/console-removed.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
                     if (removedFiles) {
                       const fileList = removedFiles.split('\n').filter(f => f.trim()).slice(0, 10);
-                      const moreText = removedFiles.split('\n').length > 10 ? ` (+${removedFiles.split('\n').length - 10} more)` : '';
-                      consoleChanges.push(`**Removed (${consoleRemoved}):** ${fileList.join(', ')}${moreText}`);
+                                          const moreText = removedFiles.split('\n').length > 10 ? " (+" + (removedFiles.split('\n').length - 10) + " more)" : '';
+                    consoleChanges.push("**Removed (" + consoleRemoved + "):** " + fileList.join(', ') + moreText);
                     }
                   } catch (e) {
-                    consoleChanges.push(`**Removed:** ${consoleRemoved} files`);
+                    consoleChanges.push("**Removed:** " + consoleRemoved + " files");
                   }
                 }
                 
                 if (consoleChanges.length > 0) {
-                  fileChangesParts.push(`#### 🏢 Console Documentation\n${consoleChanges.join('\n')}`);
+                  fileChangesParts.push("#### 🏢 Console Documentation\n" + consoleChanges.join('\n'));
                 }
               }
               
@@ -683,7 +683,7 @@ jobs:
                 body: "🤖 **Auto-updated** with latest documentation changes (" + new Date().toISOString() + ")"
               });
               
-              console.log(`Updated existing PR #${prNumber}`);
+              console.log("Updated existing PR #" + prNumber);
             } else {
               // Create new PR
               const { data: pr } = await github.rest.pulls.create({
@@ -704,7 +704,7 @@ jobs:
                 labels: ['documentation', 'automated', 'submodule-update']
               });
 
-              console.log(`Created PR #${pr.number}: ${pr.html_url}`);
+              console.log("Created PR #" + pr.number + ": " + pr.html_url);
             }
 
       - name: Summary
