@@ -1,4 +1,9 @@
-# Policy Rules
+---
+title: Policy Rules
+tags:
+  - netbox-community
+  - netbox-enterprise
+---# Policy Rules
 
 Each [policy](./policy.md) contains one or more rules which assert certain conditions that must be met for the policy to be met. For example, you might define a policy that requires the approval of two engineers and one manager.
 

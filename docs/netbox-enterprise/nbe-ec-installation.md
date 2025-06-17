@@ -1,4 +1,8 @@
-# NetBox Enterprise Installation
+---
+title: NetBox Enterprise Installation
+tags:
+  - netbox-enterprise
+---# NetBox Enterprise Installation
 
 You should be able to follow these instructions for installing NetBox Enterprise in most environments.
 

@@ -1,4 +1,10 @@
-# NetBox SDKs
+---
+title: NetBox SDKs
+tags:
+  - netbox-cloud
+  - netbox-enterprise
+  - netbox-community
+---# NetBox SDKs
 
 ## Pynetbox
 Python API client library for [NetBox](https://github.com/netbox-community/netbox).

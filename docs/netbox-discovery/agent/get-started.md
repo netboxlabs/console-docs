@@ -1,8 +1,9 @@
-<span class="pill pill-cloud">NetBox Cloud</span>
-<span class="pill pill-enterprise">NetBox Enterprise</span>
-<span class="pill pill-community">NetBox Community</span>
-
-## Before getting started
+---
+tags:
+  - netbox-cloud
+  - netbox-enterprise
+  - netbox-community
+---## Before getting started
 You'll need the following to successfully run the NetBox Discovery agent end-to-end:
 
 - **NetBox**: a running instance of [NetBox](https://github.com/netbox-community/netbox).

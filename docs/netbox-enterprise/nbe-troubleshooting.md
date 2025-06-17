@@ -1,4 +1,8 @@
-# Advanced Tools and Troubleshooting
+---
+title: Advanced Tools and Troubleshooting
+tags:
+  - netbox-enterprise
+---# Advanced Tools and Troubleshooting
 
 NetBox Enterprise is designed to harness the power of Kubernetes while minimizing the amount of work the average person needs to manage it.
 However, sometimes it's still useful or necessary to peek under the hood.

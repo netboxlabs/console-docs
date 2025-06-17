@@ -1,4 +1,7 @@
-## IPSEC VPN Tunnels
+---
+tags:
+  - netbox-cloud
+---## IPSEC VPN Tunnels
 
 **Q. Why 2 tunnels?** </br>
 **A.** The AWS VPN Gateway product provides 2 tunnels by default for resilience. Each terminates in a different availability zone.

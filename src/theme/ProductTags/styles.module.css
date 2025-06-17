@@ -1,0 +1,42 @@
+.productTags {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.productTag {
+  display: inline-block;
+  padding: 0.0em 1.0em;
+  border-radius: 99px;
+  color: white;
+  font-size: 0.8em;
+  font-weight: 500;
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.productTag:hover {
+  color: white;
+  text-decoration: none;
+  opacity: 0.8;
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+/* Specific product tag colors - these will be overridden by inline styles */
+.pill-cloud {
+  background-color: #00d9be;
+}
+
+.pill-enterprise {
+  background-color: #ffac00;
+}
+
+.pill-community {
+  background-color: #00bee0;
+}
+
+.pill-airgap {
+  background-color: #ff0078;
+} 

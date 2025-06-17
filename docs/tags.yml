@@ -1,0 +1,19 @@
+netbox-cloud:
+  label: 'NetBox Cloud'
+  permalink: '/netbox-cloud'
+  description: 'Documentation specific to NetBox Cloud deployments and features'
+
+netbox-enterprise:
+  label: 'NetBox Enterprise'
+  permalink: '/netbox-enterprise'
+  description: 'Documentation specific to NetBox Enterprise deployments and features'
+
+netbox-community:
+  label: 'NetBox Community'
+  permalink: '/netbox-community'
+  description: 'Documentation applicable to NetBox Community edition'
+
+netbox-airgap:
+  label: 'NetBox Air-Gap'
+  permalink: '/netbox-airgap'
+  description: 'Documentation for air-gapped NetBox deployments' 

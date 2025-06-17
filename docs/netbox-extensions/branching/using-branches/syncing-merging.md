@@ -1,4 +1,10 @@
-# Syncing & Merging Changes
+---
+title: Syncing & Merging Changes
+tags:
+  - netbox-community
+  - netbox-enterprise
+  - netbox-cloud
+---# Syncing & Merging Changes
 
 ## Syncing a Branch
 

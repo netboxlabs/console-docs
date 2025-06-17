@@ -1,4 +1,10 @@
-# Accessing the Console from NetBox Cloud
+---
+title: Accessing the Console from NetBox Cloud
+tags:
+  - netbox-cloud
+  - netbox-enterprise
+  - netbox-community
+---# Accessing the Console from NetBox Cloud
 
 From within the NetBox Cloud Web Interface, you can easily switch to the NetBox Labs Console. Simply follow the steps outlined below: 
 

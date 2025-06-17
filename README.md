@@ -13,6 +13,36 @@ This repository contains the commercial/enterprise documentation for NetBox Labs
 - ✅ **Maintain stable documentation for current customers**
 - ✅ **Seamlessly activate new versions when ready**
 
+### 🏷️ Product Tagging System (New!)
+
+We've migrated from HTML pills to a **frontmatter-based tagging system** for better Docusaurus integration:
+
+#### **Before (Deprecated HTML Pills):**
+```html
+<span class="pill pill-cloud">NetBox Cloud</span>
+<span class="pill pill-enterprise">NetBox Enterprise</span>
+<span class="pill pill-community">NetBox Community</span>
+```
+
+#### **After (New Frontmatter Tags):**
+```yaml
+---
+title: Document Title
+description: Brief description for SEO
+tags:
+  - netbox-cloud
+  - netbox-enterprise
+  - netbox-community
+---
+```
+
+**Benefits of the new system:**
+- ✅ **Better SEO**: Search engines understand product categories
+- ✅ **Automatic tag pages**: Generated browse pages for each product
+- ✅ **Enhanced search**: Product filtering in search results
+- ✅ **Dochub integration**: Easier for upstream site to categorize content
+- ✅ **Consistent styling**: Maintains visual design with better functionality
+
 ### Where Your Content Goes Live
 
 ```mermaid
@@ -49,6 +79,72 @@ pip install -r requirements.txt
 mkdocs serve
 # Visit: http://127.0.0.1:8000
 ```
+
+### 🔄 Quick Migration Guide
+
+**To migrate existing documents:**
+
+1. **Smart Auto-Tagging (Recommended):**
+   ```bash
+   # Install dependencies
+   npm install
+   
+   # Preview what tags would be applied
+   npm run preview-tags
+   
+   # Apply tags automatically based on file location
+   npm run auto-tag
+   
+   # Review changes
+   git diff
+   ```
+
+2. **HTML Pills Migration:**
+   ```bash
+   # Convert existing HTML pills to frontmatter tags
+   npm run migrate-pills
+   
+   # Review changes
+   git diff
+   ```
+
+3. **Manual Migration:**
+   - Remove HTML `<span>` pills from top of document
+   - Add frontmatter with appropriate tags
+   - Use tag names: `netbox-cloud`, `netbox-enterprise`, `netbox-community`, `netbox-airgap`
+
+**Available Product Tags:**
+| Tag | Display | Color |
+|-----|---------|-------|
+| `netbox-cloud` | NetBox Cloud | 🟢 Teal |
+| `netbox-enterprise` | NetBox Enterprise | 🟠 Orange |
+| `netbox-community` | NetBox Community | 🔵 Blue |
+| `netbox-airgap` | NetBox Air-Gap | 🔴 Pink |
+
+### 🤖 Smart Auto-Tagging Logic
+
+The auto-tagging system analyzes files based on:
+
+**📁 Directory Location:**
+- `Administration Console/` → `netbox-cloud`
+- `netbox-enterprise/` → `netbox-enterprise`
+- `netbox-discovery/` → `netbox-cloud, netbox-enterprise, netbox-community`
+- `cloud-connectivity/` → `netbox-cloud`
+- `netbox-extensions/` → `netbox-community, netbox-enterprise`
+
+**📝 Content Analysis:**
+- Mentions of "NetBox Cloud", "console.netboxlabs.com" → `netbox-cloud`
+- Mentions of "NetBox Enterprise", "nbe-", "installer" → `netbox-enterprise`
+- Mentions of "community edition", "open source" → `netbox-community`
+- Mentions of "air-gap", "offline" → `netbox-airgap`
+
+**🔧 Smart Refinements:**
+- Free plan features → Cloud only
+- SSO in Administration Console → Cloud
+- Enterprise installer content → Enterprise only
+- Discovery/Assurance → All products (unless content suggests otherwise)
+
+See `PRODUCT_TAGGING_GUIDE.md` for complete documentation.
 
 ## 📝 Documentation Team Workflow Guide
 
@@ -253,8 +349,9 @@ git push origin v1.10
 #### **Today's Checklist:**
 1. **Is this for current customers?** → Use `main` branch and tag when ready
 2. **Is this for future features?** → Use feature branch, don't merge yet
-3. **Test locally** before committing to `main`
-4. **Ask DevOps if unsure** about version targeting or transition timing
+3. **Use new tagging system** → Add `tags:` to frontmatter instead of HTML pills
+4. **Test locally** before committing to `main`
+5. **Ask DevOps if unsure** about version targeting or transition timing
 
 #### **Future Checklist (After Transition):**
 1. **Check which NetBox Enterprise version** the feature is targeting
@@ -285,6 +382,8 @@ main              # v1.11 alpha (Helm capabilities) - HIDDEN from customers
 - `versions.json` - Controls which versions are visible to customers
 - `mkdocs.yml` - Local development configuration  
 - `.github/workflows/version-deploy.yml` - Automated deployment system
+- `docs/tags.yml` - Product tag definitions for the new tagging system
+- `package.json` - npm scripts for migration and development
 
 ### 🔄 **Transition Plan**
 
@@ -316,6 +415,32 @@ main              # v1.11 alpha (Helm capabilities) - HIDDEN from customers
 - 📢 **Before Phase 2**: Announce transition timeline to documentation team
 - 📢 **During Phase 2**: Update team workflows and training
 - 📢 **After Phase 2**: Monitor and refine new branch strategy
+
+## 🔗 Integration with netboxlabs-website-dochub
+
+The new product tagging system provides multiple integration points for the upstream dochub repository:
+
+### **Required Changes for Dochub**
+
+1. **Content Ingestion**: Update to read frontmatter tags instead of parsing HTML spans
+2. **API Updates**: Add product filtering endpoints using structured tag metadata  
+3. **UI Components**: Update product pill components to use new tag structure
+4. **Search Integration**: Enable product filtering in search results
+5. **SEO Enhancement**: Generate product-specific sitemaps and metadata
+
+### **Migration Timeline**
+- **Phase 1**: Backward compatibility (read both HTML pills AND frontmatter tags)
+- **Phase 2**: Switch to frontmatter tags as primary source
+- **Phase 3**: Remove HTML parsing, fully leverage new tag system features
+
+### **Integration Benefits**
+- 🚀 **Performance**: Faster categorization using structured metadata
+- 🔍 **Search**: Enhanced search with product filtering
+- 📱 **UX**: Better user experience with clickable product categories
+- 🤖 **SEO**: Improved search engine optimization
+- 📊 **Analytics**: Better tracking of product-specific documentation usage
+
+**See `DOCHUB_INTEGRATION_REQUIREMENTS.md` for complete technical specifications.**
 
 ## 🛠️ For DevOps/Maintainers: Technical Details
 

@@ -1,4 +1,9 @@
-# Change Log
+---
+title: Change Log
+tags:
+  - netbox-community
+  - netbox-enterprise
+---# Change Log
 
 ## v0.5.2
 

@@ -1,4 +1,10 @@
-# Get Started with Diode
+---
+title: Get Started with Diode
+tags:
+  - netbox-community
+  - netbox-enterprise
+  - netbox-cloud
+---# Get Started with Diode
 
 This guide will help you set up and start using Diode to ingest data into NetBox.
 

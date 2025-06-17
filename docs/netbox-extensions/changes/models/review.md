@@ -1,4 +1,9 @@
-# Reviews
+---
+title: Reviews
+tags:
+  - netbox-community
+  - netbox-enterprise
+---# Reviews
 
 Reviews are submitted to approve, reject, or comment on a [change request](./changerequest.md). The users eligible to review a particular change request are determined by its assigned [change policy](./policy.md).
 
