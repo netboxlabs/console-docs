@@ -116,15 +116,16 @@ jobs:
           while IFS='|' read -r hash subject author email; do
             if [ -z "$hash" ]; then continue; fi
             
-            # Extract conventional commit type
+            # Extract conventional commit type using sed instead of BASH_REMATCH
             TYPE=""
             SCOPE=""
             DESCRIPTION="$subject"
             
-            if [[ "$subject" =~ ^([a-z]+)(\([^)]+\))?!?:\ (.+)$ ]]; then
-              TYPE="${BASH_REMATCH[1]}"
-              SCOPE="${BASH_REMATCH[2]}"
-              DESCRIPTION="${BASH_REMATCH[3]}"
+            # Check if it matches conventional commit pattern
+            if echo "$subject" | grep -qE '^[a-z]+(\([^)]+\))?!?:\ '; then
+              TYPE=$(echo "$subject" | sed -E 's/^([a-z]+)(\([^)]+\))?!?:\ .*/\1/')
+              SCOPE=$(echo "$subject" | sed -E 's/^[a-z]+(\([^)]+\))?!?:\ .*/\1/' | sed 's/[()]//g')
+              DESCRIPTION=$(echo "$subject" | sed -E 's/^[a-z]+(\([^)]+\))?!?:\ (.*)/\2/')
             fi
             
             # Format entry

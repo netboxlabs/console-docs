@@ -137,8 +137,7 @@ jobs:
       - name: Summary
         run: |
           echo "🧹 Manual cleanup completed"
-          echo "- Closed: ${{ steps.find-and-close-automated-prs.outputs.closed_count }} PRs"
-          echo "- Kept: ${{ steps.find-and-close-automated-prs.outputs.kept_count }} PRs"
+          echo "- Check logs above for detailed results"
           echo ""
           echo "Settings used:"
           echo "- Close all: ${{ inputs.close_all }}"
