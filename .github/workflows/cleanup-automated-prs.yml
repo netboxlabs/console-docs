@@ -60,7 +60,7 @@ jobs:
               pr.title.includes('🤖 Automated Documentation Updates')
             );
             
-            console.log(`Found ${automatedPRs.length} open automated PRs to evaluate`);
+            console.log("Found " + automatedPRs.length + " open automated PRs to evaluate");
             
             if (automatedPRs.length === 0) {
               console.log('No automated PRs found - nothing to clean up');
@@ -73,8 +73,8 @@ jobs:
             const currentConsoleCommit = execSync('git ls-tree HEAD external-repos/console-docs | awk \'{print $3}\'', { encoding: 'utf8' }).trim();
             
             console.log(`Current submodule commits after merge:`);
-            console.log(`- NetBox: ${currentNetboxCommit}`);
-            console.log(`- Console: ${currentConsoleCommit}`);
+            console.log("- NetBox: " + currentNetboxCommit);
+            console.log("- Console: " + currentConsoleCommit);
             
             for (const pr of automatedPRs) {
               try {
@@ -115,7 +115,7 @@ jobs:
                 }
                 
                 if (shouldClose) {
-                  console.log(`Closing automated PR #${pr.number}: ${reason}`);
+                  console.log("Closing automated PR #" + pr.number + ": " + reason);
                   
                   await github.rest.pulls.update({
                     owner: context.repo.owner,
@@ -129,23 +129,23 @@ jobs:
                     repo: context.repo.repo,
                     issue_number: pr.number,
                     body: [
-                      `🤖 **Auto-closed**: ${reason}`,
+                      "🤖 **Auto-closed**: " + reason,
                       '',
-                      `This automated PR has been superseded by manual PR #${{ github.event.pull_request.number }} which included the same or newer documentation updates.`,
+                      "This automated PR has been superseded by manual PR #${{ github.event.pull_request.number }} which included the same or newer documentation updates.",
                       '',
                       '**Submodule versions after merge:**',
-                      `- NetBox: \`${currentNetboxCommit}\``,
-                      `- Console: \`${currentConsoleCommit}\``,
+                      "- NetBox: `" + currentNetboxCommit + "`",
+                      "- Console: `" + currentConsoleCommit + "`",
                       '',
                       '*Automated cleanup triggered by PR merge event.*'
                     ].join('\n')
                   });
                 } else {
-                  console.log(`Keeping automated PR #${pr.number} - contains newer updates`);
+                  console.log("Keeping automated PR #" + pr.number + " - contains newer updates");
                 }
                 
               } catch (error) {
-                console.error(`Error processing automated PR #${pr.number}:`, error.message);
+                console.error("Error processing automated PR #" + pr.number + ":", error.message);
               }
             }
 
