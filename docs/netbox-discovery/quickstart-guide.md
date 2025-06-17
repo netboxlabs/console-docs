@@ -1,17 +1,11 @@
-<<<<<<< HEAD
-# NetBox Discovery Quickstart Guide
-=======
 ---
 tags:
   - netbox-cloud
   - netbox-enterprise
   - netbox-community
----Looking to try NetBox Discovery as quickly and easily as possible? The [Quickstart Guide](https://netboxlabs.com/blog/netbox-discovery-quickstart-guide/) on the NetBox Labs blog has you covered! In a few commands you will install and pre-configure everything you need to start experimenting:
->>>>>>> origin/feature/product-tagging-system
+---
 
-<span class="pill pill-cloud">NetBox Cloud</span>
-<span class="pill pill-enterprise">NetBox Enterprise</span>
-<span class="pill pill-community">NetBox Community</span>
+# NetBox Discovery Quickstart Guide
 
 Get started with NetBox Discovery quickly and see the power of automated network documentation in action. This guide provides multiple pathways to begin your journey with NetBox Discovery, from simple experiments to production deployments.
 

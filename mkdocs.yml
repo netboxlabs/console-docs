@@ -135,6 +135,8 @@ nav:
         - Device Discovery: "netbox-discovery/agent/device_discovery.md"
     - NetBox Assurance:
       - Overview: "netbox-assurance/index.md"
+    - NetBox Operator:
+      - Overview: "netbox-operator/index.md"
     - Extensions:
       - Branching:
         - Overview: "netbox-extensions/branching/index.md"
@@ -215,6 +217,8 @@ nav:
         - Device Discovery: "netbox-discovery/agent/device_discovery.md"
     - NetBox Assurance:
       - Overview: "netbox-assurance/index.md"
+    - NetBox Operator:
+      - Overview: "netbox-operator/index.md"
     - Extensions:
       - Branching:
         - Overview: "netbox-extensions/branching/index.md"
