@@ -1,6 +1,10 @@
-<span class="pill pill-enterprise">Enterprise</span>
-
-# Assurance Workflows
+---
+tags:
+  - cloud
+  - enterprise
+  - assurance
+title: "Assurance Workflows"
+---
 
 !!! note "NetBox Cloud Support"
     NetBox Cloud support coming early July 2025.

@@ -1,6 +1,10 @@
-<span class="pill pill-enterprise">Enterprise</span>
-
-# Data Ingestion and Analysis
+---
+tags:
+  - cloud
+  - enterprise
+  - assurance
+title: "Data Ingestion and Analysis"
+---
 
 !!! note "NetBox Cloud Support"
     NetBox Cloud support coming early July 2025.

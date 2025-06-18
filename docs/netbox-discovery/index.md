@@ -2,6 +2,9 @@
 tags:
   - cloud
   - enterprise
+  - community
+  - discovery
+title: "NetBox Discovery"
 ---
 
 # NetBox Discovery

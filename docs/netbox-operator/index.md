@@ -2,6 +2,8 @@
 tags:
   - cloud
   - enterprise
+  - operator
+title: "NetBox Operator"
 ---
 
 # NetBox Operator
