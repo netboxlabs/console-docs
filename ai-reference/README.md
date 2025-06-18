@@ -34,17 +34,11 @@ ai-reference/
 ├── README.md                           # This file
 ├── templates/                          # Document templates using enhanced frontmatter system
 │   ├── netbox-feature-doc-template.md  # Standard feature documentation template
-│   ├── product-landing-page.md         # Landing page template (like NetBox Operator)
-│   ├── quickstart-guide-template.md    # Quickstart guide template
-│   └── integration-guide-template.md   # Integration/setup guide template
+│   └── product-landing-page.md         # Landing page template (like NetBox Operator)
 ├── style-guides/                       # Writing style and formatting guidelines
 │   ├── netbox-docs-style-guide.md      # Complete style guide with enhanced frontmatter
 │   ├── product-tagging-guide.md        # Complete product tagging system documentation
 │   └── ai-prompting-guide.md           # Best practices for AI assistance with version tracking
-├── examples/                           # Example content and best practices
-│   ├── good-documentation-examples.md  # Examples of well-written docs
-│   ├── tagging-examples.md            # Product tagging examples
-│   └── content-patterns.md            # Common content patterns and structures
 ├── content-strategy/                   # Strategy docs and planning materials
 │   ├── navigation-strategy.md          # Our navigation restructuring approach
 │   ├── version-management.md           # How we handle versions and releases
@@ -53,6 +47,7 @@ ai-reference/
     ├── netbox-assurance-kb.md         # LLM KB NetBox Assurance content
     ├── netbox-assurance-blog.md       # Blog post content
     ├── auto-tagging-analysis.md       # Auto-tagging system analysis and results
+    ├── product-tagging-migration.md   # Product tagging migration documentation
     ├── dochub-coordination.md         # Navigation restructuring coordination spec
     └── dochub-integration-requirements.md # Detailed technical implementation requirements
 ```
@@ -130,11 +125,12 @@ versions:
 ```
 
 ### Version Mapping Reference
-| NetBox Cloud/Enterprise | NetBox Community | Release Period |
-|------------------------|------------------|----------------|
-| v1.9 | v4.2 | Current stable |
-| v1.10 | v4.2 | Current/Recent updates |
-| v1.11 | v4.2 | Future releases |
+| NetBox Cloud/Enterprise | NetBox Community | Release Period | Key Features |
+|------------------------|------------------|----------------|--------------|
+| v1.9 | v4.2 | Current stable | Base functionality |
+| v1.10 | v4.2 | Current/Recent updates | + Enterprise Assurance & Discovery |
+| v1.11 | v4.2 | Future releases | + Enterprise High Availability (HA) |
+| v1.12 | v4.3 | Next major release cycle | TBD |
 
 ### Deprecated Format (Don't Use)
 ```html
@@ -226,20 +222,13 @@ When adding materials to this directory:
 1. Use `templates/netbox-feature-doc-template.md`
 2. Apply appropriate product tags and version mapping
 3. Follow `style-guides/netbox-docs-style-guide.md`
-4. Check `examples/good-documentation-examples.md` for patterns
-5. Include complete frontmatter with version tracking
+4. Include complete frontmatter with version tracking
 
 ### For Product Landing Pages:
 1. Use `templates/product-landing-page.md` 
 2. Reference NetBox Operator page as example
 3. Include design partner or beta information if applicable
 4. Apply correct version mapping based on product availability
-
-### For Integration Guides:
-1. Use `templates/integration-guide-template.md`
-2. Include all necessary setup steps with version requirements
-3. Provide troubleshooting section
-4. Specify version compatibility for all components
 
 ### For AI-Assisted Content Creation:
 1. Reference `style-guides/ai-prompting-guide.md` for best practices

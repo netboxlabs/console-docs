@@ -123,8 +123,9 @@ We use **branch-based versioning** to control what customers see on the live doc
 | Version | Status | Branch | Customer Visibility | Purpose |
 |---------|--------|--------|-------------------|---------|
 | **v1.9** | 🟢 **LIVE** | `main` | ✅ **Visible** | Current customer documentation |
-| **v1.10** | 🟡 **Beta** | *not created yet* | ❌ **Hidden** | NetBox Enterprise + Assurance features |
-| **v1.11** | 🔴 **Alpha** | *future* | ❌ **Hidden** | NetBox Enterprise + Helm features |
+| **v1.10** | 🟡 **Beta** | *not created yet* | ❌ **Hidden** | Enterprise + Assurance & Discovery |
+| **v1.11** | 🔴 **Alpha** | *future* | ❌ **Hidden** | Enterprise + High Availability (HA) |
+| **v1.12** | 🔴 **Future** | *future* | ❌ **Hidden** | Next major release (NetBox v4.3) |
 
 ### Where to Add New Documentation
 
@@ -140,19 +141,26 @@ git push origin v1.9.1
 ```
 **Result**: ✅ Changes appear immediately on https://netboxlabs.com/docs
 
-#### 🔄 **For NetBox Enterprise + Assurance Features (v1.10 Beta) - PREPARE FOR FUTURE**
+#### 🔄 **For Enterprise Features (v1.10+ Beta) - PREPARE FOR FUTURE**
 ```bash
-# Branch doesn't exist yet - will be created when v1.10 development starts
+# Branches don't exist yet - will be created when development starts
 # For now, document in feature branches and merge when ready
 
-git checkout -b feature/assurance-monitoring
-# Add documentation for Assurance features
-git add docs/netbox-assurance/new-feature.md
-git commit -m "Add documentation for network monitoring workflows"
-git push origin feature/assurance-monitoring
-# DON'T merge to main yet - wait for v1.10 branch creation
+# For v1.10: Assurance & Discovery Enterprise features
+git checkout -b feature/assurance-enterprise
+git add docs/netbox-assurance/enterprise-features.md
+git commit -m "Add Enterprise Assurance documentation"
+
+# For v1.11: High Availability Enterprise features  
+git checkout -b feature/ha-enterprise
+git add docs/netbox-enterprise/high-availability.md
+git commit -m "Add Enterprise HA documentation"
+
+git push origin feature/assurance-enterprise
+git push origin feature/ha-enterprise
+# DON'T merge to main yet - wait for version branch creation
 ```
-**Result**: ❌ Content prepared but not visible to customers until v1.10 branch exists
+**Result**: ❌ Content prepared but not visible to customers until version branches exist
 
 ## ⚠️ Important Guidelines for Documentation Team
 
@@ -177,8 +185,9 @@ git push origin feature/assurance-monitoring
 
 #### **FOR TODAY (Current Workflow):**
 - **YES** → Work on `main` branch and tag when ready (deploys v1.9 immediately)
-- **NO, it's for Assurance features** → Work on feature branch (wait for v1.10 branch)
-- **NO, it's for Helm features** → Work on feature branch (wait for transition)
+- **NO, it's for Enterprise Assurance/Discovery** → Work on feature branch (wait for v1.10 branch)
+- **NO, it's for Enterprise High Availability** → Work on feature branch (wait for v1.11 branch)
+- **NO, it's for NetBox v4.3 features** → Work on feature branch (wait for v1.12 branch)
 
 ## 📚 AI Reference Materials
 
