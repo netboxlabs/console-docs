@@ -4,7 +4,7 @@ tags:
   - netbox-enterprise
   - netbox-community
 author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-02"
+last_updated: "2025-01-27"
 versions:
   cloud: "v1.10"
   enterprise: "v1.10"
@@ -39,7 +39,7 @@ ai-reference/
 │   └── integration-guide-template.md   # Integration/setup guide template
 ├── style-guides/                       # Writing style and formatting guidelines
 │   ├── netbox-docs-style-guide.md      # Complete style guide with enhanced frontmatter
-│   ├── product-tagging-guide.md        # How to use our tagging system
+│   ├── product-tagging-guide.md        # Complete product tagging system documentation
 │   └── ai-prompting-guide.md           # Best practices for AI assistance with version tracking
 ├── examples/                           # Example content and best practices
 │   ├── good-documentation-examples.md  # Examples of well-written docs
@@ -48,12 +48,13 @@ ai-reference/
 ├── content-strategy/                   # Strategy docs and planning materials
 │   ├── navigation-strategy.md          # Our navigation restructuring approach
 │   ├── version-management.md           # How we handle versions and releases
-│   └── dochub-integration-notes.md     # Integration requirements and coordination
+│   └── dochub-integration-strategy.md  # DocHub integration strategy and quick reference
 └── reference-docs/                     # External reference materials and authoritative sources
     ├── netbox-assurance-kb.md         # LLM KB NetBox Assurance content
     ├── netbox-assurance-blog.md       # Blog post content
-    ├── product-tagging-migration.md   # Migration documentation
-    └── dochub-coordination.md         # Coordination specifications
+    ├── auto-tagging-analysis.md       # Auto-tagging system analysis and results
+    ├── dochub-coordination.md         # Navigation restructuring coordination spec
+    └── dochub-integration-requirements.md # Detailed technical implementation requirements
 ```
 
 ## Enhanced Frontmatter System
@@ -188,10 +189,11 @@ When working with AI/LLM tools:
 - Use version-specific branches for future releases
 - Reference `content-strategy/version-management.md` for details
 
-### Dochub Coordination
+### DocHub Coordination
 - All content must work with netboxlabs-website-dochub integration
 - Use structured frontmatter for better categorization and version tracking
-- Reference `reference-docs/dochub-coordination.md` for requirements
+- Reference `content-strategy/dochub-integration-strategy.md` for quick overview
+- See `reference-docs/dochub-coordination.md` and `reference-docs/dochub-integration-requirements.md` for detailed specifications
 
 ### Quality Assurance
 - Test all templates locally with `mkdocs serve`

@@ -1,216 +1,327 @@
-# Dochub Integration and Coordination Reference
+# NetBox Labs Documentation Navigation Restructuring Specification
 
-This document consolidates information from DOCHUB_COORDINATION_SPEC.md and DOCHUB_INTEGRATION_REQUIREMENTS.md for AI reference.
+**Document Version:** 1.0  
+**Date:** January 2025  
+**From:** Console-Docs Team  
+**To:** Dochub Integration Team  
 
-## Integration Overview
+## 🎯 Executive Summary
 
-The console-docs repository integrates with the netboxlabs-website-dochub system to publish documentation to https://netboxlabs.com/docs/console/. This integration requires specific formatting, structure, and coordination.
+The console-docs repository has implemented a major navigation restructuring to organize NetBox Discovery, NetBox Assurance, Extensions, Integrations, and SDKs under edition-specific sections (Community, Cloud, Enterprise). This change requires coordination with the dochub repository to implement the same structure on the customer-facing documentation site at netboxlabs.com/docs.
 
-## Technical Requirements
+## 📋 Current vs. Proposed Navigation Structure
 
-### File Structure
-- All publishable content must be in the `docs/` directory
-- Use proper directory structure matching navigation hierarchy
-- Maintain consistent file naming conventions
-- Include proper frontmatter in all documents
-
-### Frontmatter Requirements
-```yaml
----
-tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
-title: "Document Title"
-description: "SEO-friendly description"
----
+### **BEFORE (Current Live Structure)**
+```
+netboxlabs.com/docs/
+├── Community (from netbox/netbox repo)
+├── Cloud (from console-docs repo)
+├── Enterprise (from console-docs repo)
+├── Discovery & Assurance (from console-docs repo)
+│   ├── NetBox Discovery
+│   └── NetBox Assurance
+├── Extensions (from console-docs repo)
+│   ├── Branching
+│   ├── Change Management
+│   └── Diode
+├── Integrations (from console-docs repo)
+└── SDKs (from console-docs repo)
 ```
 
-### Content Standards
-- All content must use YAML frontmatter tags (not HTML pills)
-- Proper heading hierarchy (H1 → H2 → H3)
-- Valid markdown syntax
-- Working internal and external links
-- Accessible image alt text
+### **AFTER (Proposed New Structure)**
+```
+netboxlabs.com/docs/
+├── Community
+│   ├── [NetBox Core] (from netbox/netbox repo)
+│   ├── NetBox Discovery (from console-docs repo)
+│   ├── Extensions
+│   │   └── Diode (from console-docs repo)
+│   ├── Integrations (from console-docs repo)
+│   └── SDKs (from console-docs repo)
+├── Cloud
+│   ├── [Cloud Admin] (from console-docs repo)
+│   ├── NetBox Discovery (from console-docs repo)
+│   ├── NetBox Assurance (from console-docs repo)
+│   ├── Extensions
+│   │   ├── Branching (from console-docs repo)
+│   │   ├── Change Management (from console-docs repo)
+│   │   └── Diode (from console-docs repo)
+│   ├── Integrations (from console-docs repo)
+│   └── SDKs (from console-docs repo)
+└── Enterprise
+    ├── [Enterprise Admin] (from console-docs repo)
+    ├── NetBox Discovery (from console-docs repo)
+    ├── NetBox Assurance (from console-docs repo)
+    ├── Extensions
+    │   ├── Branching (from console-docs repo)
+    │   ├── Change Management (from console-docs repo)
+    │   └── Diode (from console-docs repo)
+    ├── Integrations (from console-docs repo)
+    └── SDKs (from console-docs repo)
+```
 
-## Navigation Integration
+## 🔧 Technical Implementation Requirements
 
-### MkDocs Configuration
-- Navigation structure defined in `mkdocs.yml`
-- Must align with dochub navigation expectations
-- Support for nested navigation hierarchies
-- Proper section organization (Cloud, Enterprise, Extensions)
+### **1. Content Availability Matrix**
 
-### URL Structure
-- Clean URLs without file extensions
-- Consistent path structure
-- Proper redirects for moved content
-- SEO-friendly URL patterns
+| Feature | Community | Cloud | Enterprise | Source Repository |
+|---------|-----------|-------|------------|-------------------|
+| **NetBox Core** | ✅ | ✅ | ✅ | netbox/netbox |
+| **NetBox Discovery** | ✅ | ✅ | ✅ | console-docs |
+| **NetBox Assurance** | ❌ | ✅ | ✅ | console-docs |
+| **Extensions - Diode** | ✅ | ✅ | ✅ | console-docs |
+| **Extensions - Branching** | ❌ | ✅ | ✅ | console-docs |
+| **Extensions - Change Mgmt** | ❌ | ✅ | ✅ | console-docs |
+| **Integrations - All** | ✅ | ✅ | ✅ | console-docs |
+| **SDKs - All** | ✅ | ✅ | ✅ | console-docs |
 
-## Build Process
+### **2. Navigation Mapping Configuration**
 
-### Validation Pipeline
-1. **Syntax Validation**: Markdown and YAML syntax checking
-2. **Link Validation**: Internal and external link verification
-3. **Image Validation**: Image accessibility and loading
-4. **Tag Validation**: Product tag consistency and accuracy
-5. **Content Validation**: Style guide compliance
+```yaml
+# Proposed dochub navigation configuration
+navigation_structure:
+  community:
+    sources:
+      - repository: "netbox/netbox"
+        content: "core documentation"
+        nav_prefix: ""
+      - repository: "console-docs"
+        content: "netbox-discovery/**"
+        nav_prefix: "NetBox Discovery"
+      - repository: "console-docs"
+        content: "netbox-extensions/diode/**"
+        nav_prefix: "Extensions/Diode"
+      - repository: "console-docs"
+        content: "netbox-integrations/**"
+        nav_prefix: "Integrations"
+      - repository: "console-docs"
+        content: "sdks/**"  
+        nav_prefix: "SDKs"
 
-### Deployment Process
-1. **Staging Environment**: Test all changes before production
-2. **Content Review**: Ensure accuracy and completeness
-3. **Integration Testing**: Verify dochub integration works
-4. **Production Deployment**: Automated deployment to live site
+  cloud:
+    sources:
+      - repository: "console-docs"
+        content: "Administration Console/**"
+        nav_prefix: "Administration"
+      - repository: "console-docs"
+        content: "cloud-connectivity/**"
+        nav_prefix: "Cloud Connectivity"
+      - repository: "console-docs"
+        content: "netbox-discovery/**"
+        nav_prefix: "NetBox Discovery"
+      - repository: "console-docs"
+        content: "netbox-assurance/**"
+        nav_prefix: "NetBox Assurance"
+      - repository: "console-docs"
+        content: "netbox-extensions/**"
+        nav_prefix: "Extensions"
+      - repository: "console-docs"
+        content: "netbox-integrations/**"
+        nav_prefix: "Integrations"
+      - repository: "console-docs"
+        content: "sdks/**"
+        nav_prefix: "SDKs"
 
-## Content Categorization
+  enterprise:
+    sources:
+      - repository: "console-docs"
+        content: "netbox-enterprise/**"
+        nav_prefix: "Installation & Admin"
+      - repository: "console-docs"
+        content: "netbox-discovery/**"
+        nav_prefix: "NetBox Discovery"
+      - repository: "console-docs"
+        content: "netbox-assurance/**"
+        nav_prefix: "NetBox Assurance"
+      - repository: "console-docs"
+        content: "netbox-extensions/**"
+        nav_prefix: "Extensions"
+      - repository: "console-docs"
+        content: "netbox-integrations/**"
+        nav_prefix: "Integrations"
+      - repository: "console-docs"
+        content: "sdks/**"
+        nav_prefix: "SDKs"
+```
 
-### Product-Specific Content
-- **NetBox Cloud**: Cloud-specific features and administration
-- **NetBox Enterprise**: Enterprise installation and features
-- **NetBox Community**: Open source features and community tools
-- **Universal**: Features available across all editions
+### **3. Content Filtering Logic**
 
-### Content Types
-- **Feature Documentation**: Product capabilities and usage
-- **Integration Guides**: Setup and configuration instructions
-- **Administration**: Management and operational procedures
-- **Getting Started**: Onboarding and quickstart content
+```python
+# Proposed content filtering logic for dochub
+def filter_content_by_edition(content_path, edition):
+    """
+    Filter content based on NetBox edition availability
+    """
+    edition_rules = {
+        'community': {
+            'allowed_paths': [
+                'netbox-discovery/**',
+                'netbox-extensions/diode/**',
+                'netbox-integrations/**',
+                'sdks/**'
+            ],
+            'blocked_paths': [
+                'netbox-assurance/**',
+                'netbox-extensions/branching/**',
+                'netbox-extensions/changes/**'
+            ]
+        },
+        'cloud': {
+            'allowed_paths': ['**'],  # All content allowed
+            'blocked_paths': []
+        },
+        'enterprise': {
+            'allowed_paths': ['**'],  # All content allowed  
+            'blocked_paths': []
+        }
+    }
+    
+    return check_path_allowed(content_path, edition_rules[edition])
+```
 
-## Quality Assurance
+## 📄 File Changes in Console-Docs Repository
 
-### Content Standards
-- Accurate technical information
-- Up-to-date screenshots and examples
-- Working code examples
-- Proper product naming and terminology
-- Consistent voice and tone
+### **Modified Files:**
+1. **`mkdocs.yml`** - Complete navigation restructuring
+2. **`docs/netbox-discovery/index.md`** - Enhanced with Orb framework details
+3. **`docs/netbox-discovery/quickstart-guide.md`** - Expanded quickstart content
+4. **`docs/netbox-discovery/agent/index.md`** - Comprehensive agent overview
+5. **`docs/netbox-discovery/agent/device_discovery.md`** - Enhanced device discovery
+6. **`docs/netbox-discovery/agent/network_discovery.md`** - Enhanced network discovery
+7. **`docs/netbox-assurance/index.md`** - Complete rewrite with release dates
 
-### Review Process
-- Technical accuracy review
-- Editorial review for clarity and style
-- Product tag validation
-- Link and image verification
-- Cross-reference validation
+### **Key Content Updates:**
+- **NetBox Assurance release dates**: June 2025 (Enterprise), July 2025 (Cloud)
+- **Enhanced use case framework**: Day 1/Day 1.5/Day 2 scenarios
+- **Controller integration roadmap**: Specific dates for VMware, Juniper, Cisco, etc.
+- **Operational drift detection**: Comprehensive workflow documentation
+- **Security and performance guidance**: Enhanced technical details
 
-## Branch Strategy
+## 🔄 Integration Architecture Questions
 
-### Development Workflow
-- **Feature branches**: For specific documentation updates
-- **Main branch**: Stable, production-ready content
-- **Staging integration**: Test dochub integration before merge
-- **Version control**: Track changes and maintain history
+### **Questions for Dochub Team:**
 
-### Coordination Requirements
-- Coordinate with website team for major changes
-- Test integration in staging environment
-- Validate navigation and URL structure
-- Ensure proper content categorization
+#### **1. Current Integration Mechanism**
+- How does dochub currently merge content from multiple repositories?
+- What's the existing logic for combining netbox/netbox and console-docs content?
+- Are there existing content filtering mechanisms by edition?
 
-## Image and Asset Management
+#### **2. Navigation Configuration**
+- Where is the master navigation configuration stored in dochub?
+- How are navigation updates currently deployed and tested?
+- Is there existing support for nested navigation structures?
 
-### Image Requirements
-- Store images in `docs/images/[feature-name]/` directories
-- Use descriptive filenames
-- Provide proper alt text for accessibility
-- Optimize for web performance
-- Maintain current screenshots
+#### **3. Content Processing**
+- How are the edition pills (`<span class="pill pill-cloud">`) currently processed?
+- Is there existing logic to show/hide content based on NetBox edition?
+- How are duplicate content paths handled across editions?
 
-### Asset Organization
-- Logical directory structure
-- Consistent naming conventions
-- Version control for assets
-- Proper file formats (PNG, JPG, SVG)
+#### **4. Version Management**
+- How does dochub handle version-specific content from console-docs?
+- Are there mechanisms to show/hide content based on release dates?
+- How is the version strategy coordinated between repositories?
 
-## SEO and Metadata
+#### **5. URL Management**
+- Will this restructuring break existing customer bookmarks?
+- Are there redirect mechanisms to maintain backward compatibility?
+- How are canonical URLs managed for shared content?
 
-### SEO Requirements
-- Descriptive page titles
-- Meta descriptions in frontmatter
-- Proper heading hierarchy
-- Internal linking strategy
-- Keyword optimization
+## 🚨 Risk Assessment & Mitigation
 
-### Social Sharing
-- Open Graph metadata
-- Twitter Card support
-- Social media-friendly descriptions
-- Proper image sharing tags
+### **High Risk Items:**
+1. **Broken Customer Links** - Existing bookmarks may break
+   - **Mitigation**: Implement URL redirects for old paths
+   
+2. **Content Duplication** - Same content appearing in multiple sections
+   - **Mitigation**: Implement content deduplication logic
+   
+3. **Edition Confusion** - Users may access wrong edition content
+   - **Mitigation**: Clear edition indicators and content filtering
 
-## Integration Testing
+4. **Search Functionality** - Search results may be confusing with new structure
+   - **Mitigation**: Update search indexing and result presentation
 
-### Pre-Deployment Checklist
-- [ ] All links work correctly
-- [ ] Images load properly
-- [ ] Navigation structure is correct
-- [ ] Product tags are accurate
-- [ ] Content renders properly
-- [ ] Mobile responsiveness
-- [ ] Search functionality
-- [ ] Cross-browser compatibility
+### **Medium Risk Items:**
+1. **Navigation Complexity** - Deeper nesting may confuse users
+   - **Mitigation**: User testing and feedback collection
+   
+2. **Maintenance Overhead** - More complex navigation to maintain
+   - **Mitigation**: Automated testing and validation
 
-### Post-Deployment Validation
-- [ ] Live site functionality
-- [ ] Search indexing
-- [ ] Analytics tracking
-- [ ] Error monitoring
-- [ ] Performance metrics
+## 📅 Implementation Timeline
 
-## Troubleshooting Common Issues
+### **Phase 1: Planning & Coordination (Week 1-2)**
+- [ ] Dochub team reviews this specification
+- [ ] Technical architecture discussion and alignment
+- [ ] Implementation approach agreement
+- [ ] Risk mitigation strategy finalization
 
-### Build Failures
-- **Invalid YAML**: Check frontmatter syntax
-- **Broken Links**: Verify internal and external links
-- **Missing Images**: Ensure proper image paths
-- **Tag Errors**: Validate product tag usage
+### **Phase 2: Development (Week 3-4)**
+- [ ] Dochub navigation configuration updates
+- [ ] Content filtering logic implementation
+- [ ] URL redirect mapping creation
+- [ ] Automated testing setup
 
-### Integration Issues
-- **Navigation Problems**: Check mkdocs.yml structure
-- **URL Issues**: Verify path consistency
-- **Content Missing**: Ensure proper file placement
-- **Styling Problems**: Check markdown formatting
+### **Phase 3: Testing (Week 5-6)**
+- [ ] Staging environment deployment
+- [ ] Navigation structure validation
+- [ ] Content availability testing per edition
+- [ ] URL backward compatibility verification
+- [ ] Search functionality testing
 
-## Coordination Protocols
+### **Phase 4: Deployment (Week 7)**
+- [ ] Production deployment coordination
+- [ ] Monitoring and issue response
+- [ ] Customer communication if needed
+- [ ] Rollback plan activation if required
 
-### Communication Requirements
-- Notify website team of major structural changes
-- Coordinate navigation updates
-- Plan content releases
-- Manage breaking changes
+## 🧪 Testing Requirements
 
-### Change Management
-- Document all significant changes
-- Test integration thoroughly
-- Maintain backward compatibility
-- Plan migration strategies
+### **Pre-Deployment Testing Checklist:**
+- [ ] **Navigation Structure**: All sections render correctly
+- [ ] **Content Filtering**: Edition-specific content shows/hides properly
+- [ ] **URL Compatibility**: Existing links continue to work
+- [ ] **Search Functionality**: Results are relevant and properly categorized
+- [ ] **Mobile Responsiveness**: Navigation works on mobile devices
+- [ ] **Performance**: Page load times remain acceptable
+- [ ] **Cross-Browser**: Functionality works across major browsers
 
-## Future Considerations
+### **Post-Deployment Monitoring:**
+- [ ] **404 Error Tracking**: Monitor for broken links
+- [ ] **User Behavior**: Track navigation usage patterns
+- [ ] **Search Analytics**: Monitor search success rates
+- [ ] **Customer Feedback**: Collect user experience feedback
 
-### Planned Enhancements
-- Enhanced search capabilities
-- Improved mobile experience
-- Better content discovery
-- Advanced filtering options
+## 📞 Contact Information
 
-### Scalability
-- Support for growing content volume
-- Improved build performance
-- Better asset management
-- Enhanced collaboration tools
+### **Console-Docs Team:**
+- **Primary Contact**: [Your Name/Email]
+- **Technical Lead**: [Technical Lead Name/Email]
+- **Repository**: https://github.com/netboxlabs/console-docs
+- **PR Reference**: feat/navigation-restructure-and-docs-enhancement
 
-## AI Tool Integration
+### **Required Response:**
+1. **Technical feasibility assessment** - Can dochub implement this structure?
+2. **Implementation timeline estimate** - How long will changes take?
+3. **Resource requirements** - What resources are needed from console-docs team?
+4. **Risk concerns** - Any additional risks we haven't considered?
+5. **Testing coordination** - How should we coordinate testing efforts?
 
-### Context for AI Tools
-- This directory (`ai-reference/`) is not published to dochub
-- Use for development and AI assistance only
-- Contains templates, style guides, and reference materials
-- Provides context for consistent content generation
+## 📋 Next Steps
 
-### Best Practices
-- Reference style guides for consistency
-- Use templates for new content
-- Validate against integration requirements
-- Test locally before committing
+### **Immediate Actions Required:**
+1. **Dochub team review** of this specification document
+2. **Technical architecture meeting** to discuss implementation approach
+3. **Timeline coordination** with console-docs team
+4. **Risk assessment validation** and mitigation planning
+
+### **Success Criteria:**
+- ✅ Customer-facing site reflects new navigation structure
+- ✅ Edition-specific content filtering works correctly
+- ✅ No broken links or 404 errors for existing customers
+- ✅ Search functionality maintains effectiveness
+- ✅ User experience improves with clearer content organization
 
 ---
 
-*This coordination document ensures smooth integration between console-docs development and the dochub publishing system, maintaining quality and consistency across all NetBox documentation.* 
+**This document serves as the primary coordination artifact between console-docs and dochub teams. Please review, provide feedback, and schedule coordination meetings to begin implementation planning.** 
