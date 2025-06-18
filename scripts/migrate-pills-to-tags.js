@@ -6,9 +6,9 @@ const glob = require('glob');
 
 // Mapping of pill classes to tag names
 const PILL_TO_TAG_MAP = {
-  'pill-cloud': 'netbox-cloud',
-  'pill-enterprise': 'netbox-enterprise', 
-  'pill-community': 'netbox-community',
+    'pill-cloud': 'cloud',
+  'pill-enterprise': 'enterprise',
+  'pill-community': 'community',
   'pill-airgap': 'airgap'
 };
 

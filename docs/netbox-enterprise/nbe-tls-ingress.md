@@ -1,7 +1,7 @@
 ---
 title: "TLS and Ingress: Accessing NetBox Enterprise"
 tags:
-  - netbox-enterprise
+  - enterprise
 ---
 
 # TLS and Ingress: Accessing NetBox Enterprise

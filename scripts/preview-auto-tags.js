@@ -9,32 +9,32 @@ const glob = require('glob');
 
 // Directory-based tagging rules
 const DIRECTORY_RULES = {
-  'Administration Console': ['netbox-cloud'],
-  'NetBox Cloud': ['netbox-cloud'],
-  'cloud-connectivity': ['netbox-cloud'],
-  'netbox-enterprise': ['netbox-enterprise'],
-  'netbox-discovery': ['netbox-cloud', 'netbox-enterprise', 'netbox-community'],
-  'netbox-assurance': ['netbox-cloud', 'netbox-enterprise'],
-  'netbox-extensions': ['netbox-community', 'netbox-enterprise'],
-  'sdks': ['netbox-cloud', 'netbox-enterprise', 'netbox-community'],
-  'netbox-integrations': ['netbox-cloud', 'netbox-enterprise', 'netbox-community'],
+  'Administration Console': ['cloud'],
+  'NetBox Cloud': ['cloud'],
+  'cloud-connectivity': ['cloud'],
+  'netbox-enterprise': ['enterprise'],
+  'netbox-discovery': ['cloud', 'enterprise', 'community'],
+  'netbox-assurance': ['cloud', 'enterprise'],
+  'netbox-extensions': ['community', 'enterprise'],
+  'sdks': ['cloud', 'enterprise', 'community'],
+  'netbox-integrations': ['cloud', 'enterprise', 'community'],
 };
 
 // Content-based tagging rules
 const CONTENT_RULES = [
   {
     pattern: /netbox cloud|administration console|console\.netboxlabs\.com/gi,
-    tags: ['netbox-cloud'],
+    tags: ['cloud'],
     weight: 3
   },
   {
     pattern: /netbox enterprise|nbe-|enterprise installer|embedded cluster/gi,
-    tags: ['netbox-enterprise'],
+    tags: ['enterprise'],
     weight: 3
   },
   {
     pattern: /netbox community|community edition|open source/gi,
-    tags: ['netbox-community'],
+    tags: ['community'],
     weight: 2
   },
   {
@@ -44,17 +44,17 @@ const CONTENT_RULES = [
   },
   {
     pattern: /free plan|trial/gi,
-    tags: ['netbox-cloud'],
+    tags: ['cloud'],
     weight: 1
   },
   {
     pattern: /plugin|extension/gi,
-    tags: ['netbox-enterprise', 'netbox-community'],
+    tags: ['enterprise', 'community'],
     weight: 1
   },
   {
     pattern: /sso|saml|ldap|oauth/gi,
-    tags: ['netbox-cloud', 'netbox-enterprise'],
+    tags: ['cloud', 'enterprise'],
     weight: 1
   }
 ];
@@ -98,24 +98,24 @@ function determineProductTags(filePath, content) {
   
   // Apply refinements
   if (filePath.includes('Administration Console')) {
-    return allTags.includes('netbox-cloud') ? allTags : ['netbox-cloud', ...allTags];
+    return allTags.includes('cloud') ? allTags : ['cloud', ...allTags];
   }
   
   if (filePath.includes('free-plan') || content.includes('Free Plan')) {
-    return ['netbox-cloud'];
+    return ['cloud'];
   }
   
   if (filePath.includes('netbox-discovery') || filePath.includes('netbox-assurance')) {
-    return allTags.length > 0 ? allTags : ['netbox-cloud', 'netbox-enterprise', 'netbox-community'];
+    return allTags.length > 0 ? allTags : ['cloud', 'enterprise', 'community'];
   }
   
   if (allTags.length === 0) {
     if (filePath.includes('cloud') || filePath.includes('Administration')) {
-      return ['netbox-cloud'];
+      return ['cloud'];
     } else if (filePath.includes('enterprise')) {
-      return ['netbox-enterprise'];
+      return ['enterprise'];
     } else {
-      return ['netbox-cloud', 'netbox-enterprise', 'netbox-community'];
+      return ['cloud', 'enterprise', 'community'];
     }
   }
   

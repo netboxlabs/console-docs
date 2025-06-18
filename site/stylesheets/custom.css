@@ -1,0 +1,117 @@
+.pill {
+    display: inline-block;
+    padding: 0.0em 1.0em;
+    border-radius: 99px;
+    background-color: var(--pill-bg, #00f2d4);
+    color: white;
+    font-size: 0.8em;
+}
+.pill-enterprise {
+    background-color: #ffac00;
+}
+.pill-cloud {
+    background-color: #00d9be;
+}
+.pill-community {
+    background-color: #00bee0;
+}
+.pill-airgap {
+    background-color: #ff0078;
+}
+
+/* Default: Hide dark mode images */
+.nbl-light-img {
+    display: block;
+  }
+  
+  .nbl-dark-img {
+    display: none;
+  }
+  
+  /* Show the correct images based on the data-md-color-scheme attribute */
+  [data-md-color-scheme="nbl-light"] .nbl-light-img {
+    display: block;
+  }
+  
+  [data-md-color-scheme="nbl-light"] .nbl-dark-img {
+    display: none;
+  }
+  
+  [data-md-color-scheme="nbl-dark"] .nbl-light-img {
+    display: none;
+  }
+  
+  [data-md-color-scheme="nbl-dark"] .nbl-dark-img {
+    display: block;
+  }
+
+  /* Ensure light and dark images behave as intended */
+[data-md-color-scheme="nbl-light"] .nbl-light-img {
+    display: inline; /* Inline to align with text */
+  }
+  
+  [data-md-color-scheme="nbl-light"] .nbl-dark-img {
+    display: none;
+  }
+  
+  [data-md-color-scheme="nbl-dark"] .nbl-light-img {
+    display: none;
+  }
+  
+  [data-md-color-scheme="nbl-dark"] .nbl-dark-img {
+    display: inline; /* Inline to align with text */
+  }
+  /* Adjust spacing between the image and the text */
+  ul li img {
+    vertical-align: middle; /* Align images with text */
+    margin-right: 5px; /* Add space after the image */
+  }
+
+  /* Default style for light mode -THIS SECTION NOT WORKING PROPERLY- */
+hr {
+    border: 0;
+    height: 1px;
+    background: #00857d; /* Dark teal for light mode */
+}
+
+/* Style for dark mode */
+@media (prefers-color-scheme: dark) {
+    hr {
+        background: #00857d; /* Dark teal for dark mode */
+    }
+}
+/* -------------------------------
+   Search result readability - dark mode
+---------------------------------- */
+
+/* Make all search result text white */
+[data-md-color-scheme="nbl-dark"] .md-search-result__title,
+[data-md-color-scheme="nbl-dark"] .md-search-result__teaser,
+[data-md-color-scheme="nbl-dark"] .md-search-result__meta,
+[data-md-color-scheme="nbl-dark"] .md-search-result__article,
+[data-md-color-scheme="nbl-dark"] a.md-search-result__link,
+[data-md-color-scheme="nbl-dark"] a.md-search-result__link *,
+[data-md-color-scheme="nbl-dark"] a.md-search-result__link article {
+  color: #ffffff !important;
+}
+
+/* Highlight matched terms with text color only (no background) */
+[data-md-color-scheme="nbl-dark"] .md-search-result__teaser mark,
+[data-md-color-scheme="nbl-dark"] .md-search-result__title mark,
+[data-md-color-scheme="nbl-dark"] .md-search-result__meta mark,
+[data-md-color-scheme="nbl-dark"] .md-search-result__article mark,
+[data-md-color-scheme="nbl-dark"] .md-search-result__link mark {
+  background-color: transparent !important;
+  color: #00f2d4 !important;  /* Bright teal */
+}
+
+/* White text in the search input box */
+[data-md-color-scheme="nbl-dark"] .md-search__input {
+  color: #ffffff !important;
+}
+
+/* Optional: hover/focus effect for result titles */
+[data-md-color-scheme="nbl-dark"] a.md-search-result__link:hover,
+[data-md-color-scheme="nbl-dark"] a.md-search-result__link:focus {
+  color: #66ccff !important;
+}

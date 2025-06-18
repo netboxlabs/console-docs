@@ -8,40 +8,40 @@ const matter = require('gray-matter');
 // Directory-based tagging rules
 const DIRECTORY_RULES = {
   // NetBox Cloud specific paths
-  'Administration Console': ['netbox-cloud'],
-  'NetBox Cloud': ['netbox-cloud'],
-  'cloud-connectivity': ['netbox-cloud'],
+  'Administration Console': ['cloud'],
+  'NetBox Cloud': ['cloud'],
+  'cloud-connectivity': ['cloud'],
   
   // NetBox Enterprise specific paths  
-  'netbox-enterprise': ['netbox-enterprise'],
+  'netbox-enterprise': ['enterprise'],
   
   // NetBox Discovery - usually multi-product
-  'netbox-discovery': ['netbox-cloud', 'netbox-enterprise', 'netbox-community'],
-  'netbox-assurance': ['netbox-cloud', 'netbox-enterprise'],
+  'netbox-discovery': ['cloud', 'enterprise', 'community'],
+  'netbox-assurance': ['cloud', 'enterprise'],
   
   // NetBox Extensions - usually community + enterprise
-  'netbox-extensions': ['netbox-community', 'netbox-enterprise'],
+  'netbox-extensions': ['community', 'enterprise'],
   
   // SDKs and Integrations - usually all products
-  'sdks': ['netbox-cloud', 'netbox-enterprise', 'netbox-community'],
-  'netbox-integrations': ['netbox-cloud', 'netbox-enterprise', 'netbox-community'],
+  'sdks': ['cloud', 'enterprise', 'community'],
+  'netbox-integrations': ['cloud', 'enterprise', 'community'],
 };
 
 // Content-based tagging rules
 const CONTENT_RULES = [
   {
     pattern: /netbox cloud|administration console|console\.netboxlabs\.com/gi,
-    tags: ['netbox-cloud'],
+    tags: ['cloud'],
     weight: 3
   },
   {
     pattern: /netbox enterprise|nbe-|enterprise installer|embedded cluster/gi,
-    tags: ['netbox-enterprise'],
+    tags: ['enterprise'],
     weight: 3
   },
   {
     pattern: /netbox community|community edition|open source/gi,
-    tags: ['netbox-community'],
+    tags: ['community'],
     weight: 2
   },
   {
@@ -51,17 +51,17 @@ const CONTENT_RULES = [
   },
   {
     pattern: /free plan|trial/gi,
-    tags: ['netbox-cloud'],
+    tags: ['cloud'],
     weight: 1
   },
   {
     pattern: /plugin|extension/gi,
-    tags: ['netbox-enterprise', 'netbox-community'],
+    tags: ['enterprise', 'community'],
     weight: 1
   },
   {
     pattern: /sso|saml|ldap|oauth/gi,
-    tags: ['netbox-cloud', 'netbox-enterprise'],
+    tags: ['cloud', 'enterprise'],
     weight: 1
   }
 ];
@@ -70,19 +70,19 @@ const CONTENT_RULES = [
 const FILENAME_RULES = [
   {
     pattern: /nbc-|cloud-/gi,
-    tags: ['netbox-cloud']
+    tags: ['cloud']
   },
   {
     pattern: /nbe-|enterprise-/gi,
-    tags: ['netbox-enterprise']
+    tags: ['enterprise']
   },
   {
     pattern: /free-plan/gi,
-    tags: ['netbox-cloud']
+    tags: ['cloud']
   },
   {
     pattern: /console-/gi,
-    tags: ['netbox-cloud']
+    tags: ['cloud']
   }
 ];
 
@@ -152,7 +152,7 @@ function refineTags(tags, filePath, content) {
   if (content.includes('NetBox Enterprise') && 
       content.includes('installer') && 
       !content.includes('community')) {
-    const communityIndex = refined.indexOf('netbox-community');
+    const communityIndex = refined.indexOf('community');
     if (communityIndex > -1) {
       refined.splice(communityIndex, 1);
     }
@@ -160,29 +160,29 @@ function refineTags(tags, filePath, content) {
   
   // If it's in Administration Console, it's definitely Cloud
   if (filePath.includes('Administration Console')) {
-    if (!refined.includes('netbox-cloud')) {
-      refined.unshift('netbox-cloud');
+    if (!refined.includes('cloud')) {
+      refined.unshift('cloud');
     }
   }
   
   // If it's a free plan feature, it's Cloud only
   if (filePath.includes('free-plan') || content.includes('Free Plan')) {
-    return ['netbox-cloud'];
+    return ['cloud'];
   }
   
   // If it's about SSO and in cloud docs, prioritize cloud
   if (content.includes('SSO') && filePath.includes('Administration Console')) {
-    return ['netbox-cloud'];
+    return ['cloud'];
   }
   
   // If it's about enterprise SSO, prioritize enterprise
   if (content.includes('SSO') && filePath.includes('netbox-enterprise')) {
-    return ['netbox-enterprise'];
+    return ['enterprise'];
   }
   
   // Default Discovery and Assurance to all products unless specifically limited
   if (filePath.includes('netbox-discovery') || filePath.includes('netbox-assurance')) {
-    const defaultTags = ['netbox-cloud', 'netbox-enterprise', 'netbox-community'];
+    const defaultTags = ['cloud', 'enterprise', 'community'];
     return refined.length > 0 ? refined : defaultTags;
   }
   
@@ -190,12 +190,12 @@ function refineTags(tags, filePath, content) {
   if (refined.length === 0) {
     // Try to infer from broader context
     if (filePath.includes('cloud') || filePath.includes('Administration')) {
-      return ['netbox-cloud'];
+      return ['cloud'];
     } else if (filePath.includes('enterprise')) {
-      return ['netbox-enterprise'];
+      return ['enterprise'];
     } else {
       // Default to all products for general content
-      return ['netbox-cloud', 'netbox-enterprise', 'netbox-community'];
+      return ['cloud', 'enterprise', 'community'];
     }
   }
   
@@ -323,8 +323,8 @@ function main() {
   console.log('4. Commit the changes when satisfied');
   
   console.log('\n📊 Tagging Summary:');
-  console.log('- Files in "Administration Console/" → netbox-cloud');
-  console.log('- Files in "netbox-enterprise/" → netbox-enterprise');
+  console.log('- Files in "Administration Console/" → cloud');
+  console.log('- Files in "netbox-enterprise/" → enterprise');
   console.log('- Files in "netbox-discovery/" → cloud + enterprise + community');
   console.log('- Content analysis used for additional tag suggestions');
 }
