@@ -2,7 +2,9 @@
 title: Configuring SAML Group Mapping in NetBox Enterprise 
 tags:
   - enterprise
----# Configuring SAML Group Mapping in NetBox Enterprise 
+---
+
+# Configuring SAML Group Mapping in NetBox Enterprise 
 
 Setting up Group Mapping for SAML requires the [base SAML SSO Setup](./nbe-saml.md) to be configured and working first.
 

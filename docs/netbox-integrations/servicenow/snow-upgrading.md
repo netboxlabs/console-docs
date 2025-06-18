@@ -4,7 +4,9 @@ tags:
   - cloud
   - enterprise
   - community
----# Upgrades and Bug Fixes
+---
+
+# Upgrades and Bug Fixes
 
 ## Distribution and Installation
 

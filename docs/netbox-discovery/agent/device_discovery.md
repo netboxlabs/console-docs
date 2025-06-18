@@ -4,7 +4,9 @@ tags:
   - cloud
   - enterprise
   - community
----# Device Discovery
+---
+
+# Device Discovery
 
 The device discovery backend is a core component of NetBox Discovery that automatically connects to network devices to collect configuration data, interface information, and operational state. Built on the industry-standard [NAPALM](https://napalm.readthedocs.io/en/latest/index.html) library, it provides consistent multi-vendor support across diverse network infrastructures.
 

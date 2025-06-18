@@ -4,7 +4,9 @@ tags:
   - cloud
   - enterprise
   - community
----# Network Discovery
+---
+
+# Network Discovery
 
 The network discovery backend is a powerful component of NetBox Discovery that performs active network scanning to discover IP addresses, detect network topology, and maintain accurate IP address management (IPAM) data. Built on the industry-standard [NMAP](https://nmap.org/) scanning engine, it provides comprehensive network visibility and automated IP inventory management.
 

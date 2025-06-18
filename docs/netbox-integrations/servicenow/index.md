@@ -3,7 +3,9 @@ tags:
   - cloud
   - enterprise
   - community
----## ServiceNow Integration Overview
+---
+
+## ServiceNow Integration Overview
 
 The **NetBox ServiceNow Integration** provides API and CMDB integration capabilities between ServiceNow and NetBox instances. This application enables bidirectional synchronization of infrastructure data, allowing organizations to maintain consistent configuration management data across both platforms.
 

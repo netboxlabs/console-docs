@@ -4,7 +4,9 @@ tags:
   - cloud
   - enterprise
   - community
----# Upgrading NetBox Cloud
+---
+
+# Upgrading NetBox Cloud
 
 To safely and easily upgrade your NetBox Cloud instance without worrying about any plugin compatibility issues, follow the steps outlined below:
 

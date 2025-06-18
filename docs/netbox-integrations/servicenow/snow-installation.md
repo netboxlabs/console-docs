@@ -4,7 +4,9 @@ tags:
   - cloud
   - enterprise
   - community
----# Installation and Setup
+---
+
+# Installation and Setup
 
 ## Before Starting
 

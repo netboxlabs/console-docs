@@ -1,7 +1,9 @@
 ---
 tags:
   - cloud
----To invite additional Admins to NetBox Cloud Console, follow these steps: 
+---
+
+To invite additional Admins to NetBox Cloud Console, follow these steps: 
 
 - Login to the [console](https://console.netboxlabs.com/)
 - Click on **Settings** and then click on the **Administrators**

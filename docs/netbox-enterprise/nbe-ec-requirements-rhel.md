@@ -3,7 +3,9 @@ title: NetBox Enterprise Requirements for Red Hat Enterprise Linux (RHEL)
 tags:
   - enterprise
   - community
----# NetBox Enterprise Requirements for Red Hat Enterprise Linux (RHEL)
+---
+
+# NetBox Enterprise Requirements for Red Hat Enterprise Linux (RHEL)
 
 ## Tested Versions
 

@@ -3,7 +3,9 @@ title: NetBox Change Management
 tags:
   - community
   - enterprise
----# NetBox Change Management
+---
+
+# NetBox Change Management
 
 This plugin adds change management support to [NetBox](http://netboxlabs.com/oss/netbox/). Leveraging the [netbox-branching](https://github.com/netboxlabs/netbox-branching) plugin, it implements policy and workflow controls to ensure proposed changes undergo formal review prior to being merged. It also retains a written record of all approved changes.
 

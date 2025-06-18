@@ -4,7 +4,9 @@ tags:
   - cloud
   - enterprise
   - community
----# Configuration Samples
+---
+
+# Configuration Samples
 
 Here is a collection of configuration samples supported by orb agent
 

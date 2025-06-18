@@ -2,7 +2,9 @@
 title: NetBox Enterprise Backups
 tags:
   - enterprise
----# NetBox Enterprise Backups
+---
+
+# NetBox Enterprise Backups
 
 Much like the NetBox software itself, NetBox Enterprise uses 2 main datastores: PostgreSQL, and Redis.
 

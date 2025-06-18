@@ -3,7 +3,9 @@ title: Reverting a Branch
 tags:
   - community
   - enterprise
----# Reverting a Branch
+---
+
+# Reverting a Branch
 
 Once a branch has been merged, it is generally no longer needed, and can no longer be activated. However, occasionally you may find it necessary to undo the changes from a branch (due to an error or an otherwise undesired state). This can be done by _reverting_ the branch. Only merged branches can be reverted.
 

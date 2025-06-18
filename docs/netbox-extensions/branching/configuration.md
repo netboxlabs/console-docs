@@ -3,7 +3,9 @@ title: Configuration Parameters
 tags:
   - community
   - enterprise
----# Configuration Parameters
+---
+
+# Configuration Parameters
 
 ## `exempt_models`
 

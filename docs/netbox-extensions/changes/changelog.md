@@ -3,7 +3,9 @@ title: Change Log
 tags:
   - community
   - enterprise
----# Change Log
+---
+
+# Change Log
 
 ## v0.2.0
 

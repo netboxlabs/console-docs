@@ -3,7 +3,9 @@ title: Migrating to NetBox Cloud
 tags:
   - cloud
   - community
----# Migrating to NetBox Cloud
+---
+
+# Migrating to NetBox Cloud
 
 Migrating from an on-premises NetBox open source instance to a NetBox Labs NetBox Cloud environment is a straightforward
 process. Since NetBox Cloud is built using the same open source software you’re already using, most imports can be

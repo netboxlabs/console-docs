@@ -2,7 +2,9 @@
 title: Okta SSO Setup
 tags:
   - cloud
----# Okta SSO Setup
+---
+
+# Okta SSO Setup
 This guide explains how to configure single sign-on (SSO) support for NetBox Cloud using Okta as an authentication backend.
 
 ## Okta Configuration

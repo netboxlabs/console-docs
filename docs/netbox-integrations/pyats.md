@@ -4,7 +4,9 @@ tags:
   - cloud
   - enterprise
   - community
----# Getting Started With NetBox, PyATS and Genie
+---
+
+# Getting Started With NetBox, PyATS and Genie
 
 !!! info "Learn More"
     You can view an on-demand Webinar [Getting Started with Network Test Automation: NetBox + pyATS](https://netboxlabs.com/events/webinar-getting-started-with-network-test-automation-netbox-pyats-genie/) hosted by NetBox Labs. 

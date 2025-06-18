@@ -2,7 +2,9 @@
 title: Working with NetBox Cloud Database Backups
 tags:
   - cloud
----# Working with NetBox Cloud Database Backups
+---
+
+# Working with NetBox Cloud Database Backups
 
 Within the NetBox Labs [Console](https://console.netboxlabs.com/dashboard/) you can access the backups of your NetBox Cloud database, and are able to perform the following actions:  
 

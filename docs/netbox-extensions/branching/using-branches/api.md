@@ -2,7 +2,9 @@
 tags:
   - community
   - enterprise
----Unlike the web UI, where a user's selected branch remains active until it is changed, the desired branch must be specified with each REST API request. This is accomplished by including the `X-NetBox-Branch` HTTP header specifying the branch's schema ID.
+---
+
+Unlike the web UI, where a user's selected branch remains active until it is changed, the desired branch must be specified with each REST API request. This is accomplished by including the `X-NetBox-Branch` HTTP header specifying the branch's schema ID.
 
 ```no-highlight
 X-NetBox-Branch: $SCHEMA_ID

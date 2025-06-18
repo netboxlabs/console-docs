@@ -3,7 +3,9 @@ title: Configuration Parameters
 tags:
   - community
   - enterprise
----# Configuration Parameters
+---
+
+# Configuration Parameters
 
 The following plugin configuration parameters are available.
 

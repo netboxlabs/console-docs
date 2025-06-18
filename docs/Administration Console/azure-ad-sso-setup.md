@@ -2,7 +2,9 @@
 title: Microsoft Entra ID Setup (formerly Azure Active Directory)
 tags:
   - cloud
----# Microsoft Entra ID Setup (formerly Azure Active Directory)
+---
+
+# Microsoft Entra ID Setup (formerly Azure Active Directory)
 
 This guide explains how to configure single sign-on (SSO) support for NetBox Cloud using Microsoft Entra ID(formerly Azure Active Directory) as an authentication backend.
 

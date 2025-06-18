@@ -4,7 +4,9 @@ tags:
   - cloud
   - enterprise
   - community
----# FAQ and Troubleshooting
+---
+
+# FAQ and Troubleshooting
 
 ## Installation Issues
 

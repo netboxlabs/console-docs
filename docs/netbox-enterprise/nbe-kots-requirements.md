@@ -2,7 +2,9 @@
 title: NetBox Enterprise KOTS Requirements
 tags:
   - enterprise
----# NetBox Enterprise KOTS Requirements
+---
+
+# NetBox Enterprise KOTS Requirements
 
 ### System requirements
 

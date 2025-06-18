@@ -3,7 +3,9 @@ tags:
   - cloud
   - enterprise
   - community
----## Before getting started
+---
+
+## Before getting started
 You'll need the following to successfully run the NetBox Discovery agent end-to-end:
 
 - **NetBox**: a running instance of [NetBox](https://github.com/netbox-community/netbox).

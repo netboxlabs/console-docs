@@ -4,7 +4,9 @@ tags:
   - community
   - enterprise
   - cloud
----# Syncing & Merging Changes
+---
+
+# Syncing & Merging Changes
 
 ## Syncing a Branch
 

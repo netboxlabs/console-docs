@@ -3,7 +3,9 @@ title: Diode
 tags:
   - community
   - enterprise
----# Diode
+---
+
+# Diode
 
 !!! info "Currently in Public Preview"
 

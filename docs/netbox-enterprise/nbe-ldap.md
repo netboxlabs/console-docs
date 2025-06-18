@@ -3,7 +3,9 @@ title: LDAP Configuration for NetBox Enterprise
 tags:
   - enterprise
   - cloud
----# LDAP Configuration for NetBox Enterprise
+---
+
+# LDAP Configuration for NetBox Enterprise
 
 1. In the Admin Console for NetBox Enterprise, navigate to the **Config** tab and scroll to the bottom to check **Advanced Settings**
 2. Apply the following into **NetBox Python Configuration Overrides**

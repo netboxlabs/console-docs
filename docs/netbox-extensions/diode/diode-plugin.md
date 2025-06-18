@@ -3,7 +3,9 @@ title: API key for the Diode service to interact with NetBox
 tags:
   - community
   - enterprise
----!!! info
+---
+
+!!! info
     The following instructions assume you have installed NetBox in the `/opt/netbox` directory. Adjust instructions as necessary if you've installed NetBox in a different directory. 
 
 ### Install the plugin

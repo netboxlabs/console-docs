@@ -4,7 +4,9 @@ tags:
   - cloud
   - enterprise
   - community
----# Technical Information
+---
+
+# Technical Information
 
 
 ## New Tables in ServiceNow

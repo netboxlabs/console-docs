@@ -3,7 +3,9 @@ title: Branch Events
 tags:
   - community
   - enterprise
----# Branch Events
+---
+
+# Branch Events
 
 Branch operations, such as syncing and merging, are tracked as events. This record of events serves as a history for each branch.
 

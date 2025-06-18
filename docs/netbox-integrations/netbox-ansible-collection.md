@@ -2,7 +2,9 @@
 title: NetBox Integrations
 tags:
   - cloud
----# NetBox Integrations
+---
+
+# NetBox Integrations
 
 ## NetBox Ansible Collection - Quick Start
 
@@ -185,6 +187,7 @@ ansible-playbook -i netbox_inv.yml <PLAYBOOK NAME>
 To target hosts or groups from the inventory in your playbook, reference the hosts or groups as normal in the playbook:
 ```
 ---
+
 - name: Playbook using NetBox Inventory Plugin for Ansible
   hosts: device_roles_distribution, device_roles_access
 ```
