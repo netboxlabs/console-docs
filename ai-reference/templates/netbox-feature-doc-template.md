@@ -5,6 +5,21 @@ tags:
   - netbox-community
 title: "[Feature Name]"
 description: "Brief description for SEO and social sharing"
+author: "Author Name or NetBox Labs Documentation Team"
+last_updated: "YYYY-MM-DD"
+versions:
+  cloud: "v1.9 | v1.10"
+  enterprise: "v1.9 | v1.10" 
+  community: "v4.2"
+status: "current | beta | coming-soon | deprecated"
+category: "feature | integration | admin | getting-started"
+audience: "end-users | admins | developers | all"
+complexity: "beginner | intermediate | advanced"
+related_docs:
+  - "path/to/related-doc.md"
+  - "path/to/another-doc.md"
+external_links:
+  - "https://example.com/relevant-resource"
 ---
 
 # [Feature Name]
@@ -222,15 +237,41 @@ command --option value
 
 ## Template Usage Notes
 
-### Metadata Guidelines
+### Frontmatter Guidelines
+Complete all frontmatter fields based on your specific document:
+
 ```yaml
-# Use this metadata structure for AI context
-product: [NetBox Cloud | NetBox Enterprise | NetBox Community | All]
-version: [v1.9 | v1.10 | v1.11 | current]
-feature_status: [current | beta | alpha | coming_soon]
-audience: [end_users | admins | developers | all]
-complexity: [beginner | intermediate | advanced]
-content_type: [feature_overview | integration_guide | quickstart | reference]
+# Version Guidelines by Document Type:
+
+# For existing docs not updated since May 1, 2025:
+versions:
+  cloud: "v1.9"
+  enterprise: "v1.9"
+  community: "v4.2"
+
+# For docs modified since May 1, 2025:
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v4.2"
+
+# For NetBox Discovery documents:
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v4.2"
+
+# For NetBox Assurance documents (premium only):
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  # Note: no community version as it's premium-only
+
+# For NetBox Operator documents (premium only):
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  # Note: no community version as it's premium-only
 ```
 
 ### Content Guidelines
@@ -248,6 +289,12 @@ content_type: [feature_overview | integration_guide | quickstart | reference]
 - Include `netbox-enterprise` for enterprise-specific features
 - Use all three tags for universal features
 
+### Version Tracking
+- Always include version information in frontmatter
+- Use correct version mappings (v1.9/v1.10 → v4.2)
+- Update `last_updated` field when making changes
+- Set appropriate `status` field (current, beta, coming-soon, deprecated)
+
 ---
 
-*This template incorporates proven patterns from our NetBox Operator, Discovery, and Assurance documentation.* 
+*This template incorporates proven patterns from our NetBox Operator, Discovery, and Assurance documentation with comprehensive frontmatter tracking.* 

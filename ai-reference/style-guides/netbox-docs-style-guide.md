@@ -1,9 +1,22 @@
+---
+tags:
+  - netbox-cloud
+  - netbox-enterprise
+  - netbox-community
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-02"
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v4.2"
+---
+
 # NetBox Documentation Style Guide
 
 ## Product Tagging System (REQUIRED)
 
-### Use YAML Frontmatter Tags
-**Always include appropriate product tags at the top of every document:**
+### Enhanced YAML Frontmatter
+**Always include comprehensive frontmatter at the top of every document:**
 
 ```yaml
 ---
@@ -11,6 +24,109 @@ tags:
   - netbox-cloud
   - netbox-enterprise
   - netbox-community
+title: "Document Title"
+description: "SEO-friendly description for search and social sharing"
+author: "Author Name or NetBox Labs Documentation Team"
+last_updated: "YYYY-MM-DD"
+versions:
+  cloud: "v1.9 | v1.10"
+  enterprise: "v1.9 | v1.10"
+  community: "v4.2"
+status: "current | beta | coming-soon | deprecated"
+---
+```
+
+### Version Guidelines
+Use these version mappings based on document age and content:
+
+#### For Existing Documents (Not Updated Since May 1, 2025)
+```yaml
+versions:
+  cloud: "v1.9"
+  enterprise: "v1.9"
+  community: "v4.2"
+```
+
+#### For Documents Modified Since May 1, 2025
+```yaml
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v4.2"
+```
+
+#### For NetBox Discovery Documents
+```yaml
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v4.2"
+```
+
+#### For NetBox Assurance Documents
+```yaml
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  # Note: community not included as Assurance is premium-only
+```
+
+#### For NetBox Operator Documents
+```yaml
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  # Note: community not included as Operator is premium-only
+```
+
+### Version Mapping Reference
+| NetBox Cloud/Enterprise | NetBox Community | Release Period |
+|------------------------|------------------|----------------|
+| v1.9 | v4.2 | Current stable |
+| v1.10 | v4.2 | Current/Recent updates |
+| v1.11 | v4.2 | Future releases |
+
+### Complete Frontmatter Fields
+
+#### Required Fields
+- **tags**: Product availability tags (required)
+- **title**: Document title for SEO and navigation
+- **author**: Author name or "NetBox Labs Documentation Team"
+- **last_updated**: Date in YYYY-MM-DD format
+- **versions**: Version compatibility information
+
+#### Optional Fields
+- **description**: SEO meta description
+- **status**: Document status (current, beta, coming-soon, deprecated)
+- **category**: Content category (feature, integration, admin, getting-started)
+- **audience**: Target audience (end-users, admins, developers, all)
+- **complexity**: Content complexity (beginner, intermediate, advanced)
+- **related_docs**: Array of related document paths
+- **external_links**: Array of important external references
+
+#### Example Complete Frontmatter
+```yaml
+---
+tags:
+  - netbox-cloud
+  - netbox-enterprise
+title: "NetBox Discovery Agent Configuration"
+description: "Complete guide to configuring the NetBox Discovery Agent for automated network discovery and data collection"
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-02"
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v4.2"
+status: "current"
+category: "feature"
+audience: "admins"
+complexity: "intermediate"
+related_docs:
+  - "../quickstart-guide.md"
+  - "device_discovery.md"
+external_links:
+  - "https://docs.netbox.dev/"
 ---
 ```
 
@@ -28,6 +144,12 @@ tags:
 - **All products**: Integrations, SDKs, general NetBox concepts
 - **Community + Enterprise**: Open source extensions, plugins
 - **Cloud only**: Administration Console, free plan features, cloud connectivity
+
+### Status Field Values
+- **current**: Generally available and fully supported
+- **beta**: Available in beta or design partner programs
+- **coming-soon**: Announced but not yet available
+- **deprecated**: Still available but superseded by newer functionality
 
 ### Deprecated: HTML Pills
 ❌ **Don't use HTML pills anymore:**
@@ -111,7 +233,7 @@ DEBUG = False
 ## Content Structure Patterns
 
 ### Feature Documentation Pattern
-1. **Product tags** (frontmatter)
+1. **Complete frontmatter** (tags, versions, author, etc.)
 2. **Title and overview** - What the feature does
 3. **Prerequisites** (if applicable)
 4. **Key benefits** - Why users should care
@@ -122,7 +244,7 @@ DEBUG = False
 9. **Related information** - Links to other docs
 
 ### Landing Page Pattern (like NetBox Operator)
-1. **Product tags** (frontmatter)
+1. **Complete frontmatter** (tags, versions, author, etc.)
 2. **Coming soon notice** (if applicable)
 3. **Overview** - What the product does
 4. **Key differentiators** - What makes it special
@@ -133,7 +255,7 @@ DEBUG = False
 9. **FAQ section**
 
 ### Integration Guide Pattern
-1. **Product tags** (frontmatter)
+1. **Complete frontmatter** (tags, versions, author, etc.)
 2. **Overview** - What the integration provides
 3. **Prerequisites** - Requirements and setup
 4. **Installation steps** - Complete setup process
@@ -141,6 +263,37 @@ DEBUG = False
 6. **Validation** - How to test it works
 7. **Troubleshooting** - Common issues
 8. **Advanced topics** - Optional enhancements
+
+## Version and Release Information
+
+### Version Formatting
+- Use consistent version numbering: v1.9, v1.10, v1.11
+- Include specific release dates when known
+- Use "Coming [Month Year]" format for future releases
+
+### Release Status Language
+- **Current**: Available now for customers
+- **Beta**: Available to design partners or limited users
+- **Alpha**: In development, not yet available
+- **Coming Soon**: Planned for future release with timeline
+
+### Version-Specific Content
+```markdown
+!!! info "Version Information"
+    This feature is available in NetBox Enterprise v1.10 and later (June 2025).
+
+!!! info "Coming Soon"
+    NetBox Operator is currently in active development with design partners. 
+    [Become a design partner](https://netboxlabs.com/products/netbox-operator/) 
+    to shape the roadmap and gain early access.
+```
+
+### Version Compatibility Notes
+When documenting features across versions:
+- Clearly state minimum version requirements
+- Note any version-specific differences
+- Provide migration guidance for version updates
+- Reference NetBox Community version compatibility
 
 ## Common Terminology
 
@@ -225,30 +378,6 @@ DEBUG = False
 [Click here](https://docs.netbox.dev/)
 ```
 
-## Version and Release Information
-
-### Version Formatting
-- Use consistent version numbering: v1.9, v1.10, v1.11
-- Include specific release dates when known
-- Use "Coming [Month Year]" format for future releases
-
-### Release Status Language
-- **Current**: Available now for customers
-- **Beta**: Available to design partners or limited users
-- **Alpha**: In development, not yet available
-- **Coming Soon**: Planned for future release with timeline
-
-### Version-Specific Content
-```markdown
-!!! info "Version Information"
-    This feature is available in NetBox Enterprise v1.10 and later (June 2025).
-
-!!! info "Coming Soon"
-    NetBox Operator is currently in active development with design partners. 
-    [Become a design partner](https://netboxlabs.com/products/netbox-operator/) 
-    to shape the roadmap and gain early access.
-```
-
 ## Use Case Framework
 
 ### Day 1/Day 1.5/Day 2 Pattern
@@ -286,6 +415,7 @@ Structure benefits by user type:
 - ❌ Using "we" instead of "you" when addressing the reader
 - ❌ Inconsistent product naming
 - ❌ Forgetting product tags in frontmatter
+- ❌ Missing version information in frontmatter
 
 ### Technical Issues
 - ❌ Untested code examples
@@ -293,6 +423,7 @@ Structure benefits by user type:
 - ❌ Outdated screenshots
 - ❌ Broken internal links
 - ❌ Using deprecated HTML pills instead of frontmatter tags
+- ❌ Incorrect version mappings
 
 ### Structure Issues
 - ❌ Poor heading hierarchy
@@ -300,22 +431,25 @@ Structure benefits by user type:
 - ❌ Long paragraphs without breaks
 - ❌ Missing or unclear section organization
 - ❌ Inconsistent use of our content patterns
+- ❌ Incomplete frontmatter metadata
 
 ## AI-Specific Guidelines
 
 ### When Using AI Tools
-- Always specify our product tagging system in prompts
+- Always specify our complete frontmatter system in prompts
 - Reference this style guide for consistency
 - Validate all technical information against authoritative sources
 - Test generated code examples before publishing
 - Review for proper NetBox terminology and naming
+- Ensure correct version mappings
 
 ### Prompt Best Practices
 - Include product context (Cloud, Enterprise, Community)
 - Specify target audience (admins, end users, developers)
 - Reference existing documentation patterns
 - Ask for specific content structures (Day 1/1.5/2, audience benefits, etc.)
+- Always request complete frontmatter with version information
 
 ---
 
-*This style guide should be referenced when creating or editing NetBox documentation, especially when using AI tools for content generation. It incorporates our modern frontmatter tagging system and proven content patterns.* 
+*This style guide should be referenced when creating or editing NetBox documentation, especially when using AI tools for content generation. It incorporates our modern frontmatter tagging system, version tracking, and proven content patterns.* 

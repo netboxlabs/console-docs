@@ -4,6 +4,21 @@ tags:
   - netbox-enterprise
 title: "[Product Name]"
 description: "Brief description of the product for SEO and social sharing"
+author: "Author Name or NetBox Labs Documentation Team"
+last_updated: "YYYY-MM-DD"
+versions:
+  cloud: "v1.9 | v1.10"
+  enterprise: "v1.9 | v1.10"
+  # Note: community typically excluded for premium products
+status: "current | beta | coming-soon | deprecated"
+category: "product-overview"
+audience: "all"
+complexity: "beginner"
+related_docs:
+  - "path/to/getting-started.md"
+  - "path/to/detailed-docs.md"
+external_links:
+  - "https://netboxlabs.com/products/[product-name]/"
 ---
 
 # [Product Name]
@@ -208,6 +223,43 @@ Result: [Specific outcome achieved]
 
 ## Template Usage Notes
 
+### Frontmatter Guidelines
+Complete all frontmatter fields based on your specific product:
+
+```yaml
+# Version Guidelines for Product Landing Pages:
+
+# For existing products not updated since May 1, 2025:
+versions:
+  cloud: "v1.9"
+  enterprise: "v1.9"
+  # community: typically excluded for premium products
+
+# For products modified/launched since May 1, 2025:
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  # community: typically excluded for premium products
+
+# For NetBox Discovery (universal availability):
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v4.2"
+
+# For NetBox Assurance (premium only):
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  # Note: no community version
+
+# For NetBox Operator (premium only):
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  # Note: no community version
+```
+
 ### Status Options
 Choose the appropriate status notice:
 - **Available Now**: For generally available products
@@ -227,6 +279,13 @@ Choose the appropriate status notice:
 - Add `netbox-community` only if there's community edition support
 - Consider `netbox-airgap` for products supporting air-gapped deployments
 
+### Version Tracking
+- Always include version information in frontmatter
+- Use correct version mappings (v1.9/v1.10 → v4.2 for community)
+- Update `last_updated` field when making changes
+- Set appropriate `status` field based on product availability
+- Premium products typically don't include community versions
+
 ---
 
-*This template is based on the successful NetBox Operator landing page and incorporates proven patterns for product marketing and documentation.* 
+*This template is based on the successful NetBox Operator landing page and incorporates proven patterns for product marketing and documentation with comprehensive frontmatter tracking.* 

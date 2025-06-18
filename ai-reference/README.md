@@ -1,3 +1,20 @@
+---
+tags:
+  - netbox-cloud
+  - netbox-enterprise
+  - netbox-community
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-02"
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v4.2"
+status: "current"
+category: "ai-reference"
+audience: "developers"
+complexity: "intermediate"
+---
+
 # AI Reference Materials
 
 This directory contains reference materials, templates, and documentation resources for use with AI/LLM tools when building NetBox Labs documentation. **This directory is not published to dochub** and is intended for internal development use only.
@@ -5,25 +22,25 @@ This directory contains reference materials, templates, and documentation resour
 ## Purpose
 
 - 📝 Store reference documentation and examples for AI-assisted writing
-- 🤖 Provide context and templates for LLM tools using our frontmatter tagging system
-- 📋 Maintain style guides and content patterns
+- 🤖 Provide context and templates for LLM tools using our comprehensive frontmatter system
+- 📋 Maintain style guides and content patterns with version tracking
 - 🔧 Keep development notes and content strategy documents
-- 🏷️ Demonstrate proper use of our new product tagging system
+- 🏷️ Demonstrate proper use of our enhanced frontmatter tagging and versioning system
 
 ## Structure
 
 ```
 ai-reference/
 ├── README.md                           # This file
-├── templates/                          # Document templates using new tagging system
+├── templates/                          # Document templates using enhanced frontmatter system
 │   ├── netbox-feature-doc-template.md  # Standard feature documentation template
 │   ├── product-landing-page.md         # Landing page template (like NetBox Operator)
 │   ├── quickstart-guide-template.md    # Quickstart guide template
 │   └── integration-guide-template.md   # Integration/setup guide template
 ├── style-guides/                       # Writing style and formatting guidelines
-│   ├── netbox-docs-style-guide.md      # Complete style guide
+│   ├── netbox-docs-style-guide.md      # Complete style guide with enhanced frontmatter
 │   ├── product-tagging-guide.md        # How to use our tagging system
-│   └── ai-prompting-guide.md           # Best practices for AI assistance
+│   └── ai-prompting-guide.md           # Best practices for AI assistance with version tracking
 ├── examples/                           # Example content and best practices
 │   ├── good-documentation-examples.md  # Examples of well-written docs
 │   ├── tagging-examples.md            # Product tagging examples
@@ -39,27 +56,93 @@ ai-reference/
     └── dochub-coordination.md         # Coordination specifications
 ```
 
-## Our Product Tagging System
+## Enhanced Frontmatter System
 
-We use **YAML frontmatter tags** instead of HTML pills for better Docusaurus integration:
+We use **comprehensive YAML frontmatter** with version tracking for better organization and AI context:
 
-### Correct Format (Use This):
+### Complete Frontmatter Format
 ```yaml
 ---
 tags:
   - netbox-cloud
   - netbox-enterprise
   - netbox-community
+title: "Document Title"
+description: "SEO-friendly description for search and social sharing"
+author: "Author Name or NetBox Labs Documentation Team"
+last_updated: "YYYY-MM-DD"
+versions:
+  cloud: "v1.9 | v1.10"
+  enterprise: "v1.9 | v1.10"
+  community: "v4.2"
+status: "current | beta | coming-soon | deprecated"
+category: "feature | integration | admin | getting-started | product-overview"
+audience: "end-users | admins | developers | all"
+complexity: "beginner | intermediate | advanced"
+related_docs:
+  - "path/to/related-doc.md"
+external_links:
+  - "https://example.com/resource"
 ---
 ```
 
-### Deprecated Format (Don't Use):
+### Version Guidelines
+
+#### For Existing Documents (Not Updated Since May 1, 2025)
+```yaml
+versions:
+  cloud: "v1.9"
+  enterprise: "v1.9"
+  community: "v4.2"
+```
+
+#### For Documents Modified Since May 1, 2025
+```yaml
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v4.2"
+```
+
+#### For NetBox Discovery Documents
+```yaml
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v4.2"
+```
+
+#### For NetBox Assurance Documents (Premium Only)
+```yaml
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  # Note: community not included as Assurance is premium-only
+```
+
+#### For NetBox Operator Documents (Premium Only)
+```yaml
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  # Note: community not included as Operator is premium-only
+```
+
+### Version Mapping Reference
+| NetBox Cloud/Enterprise | NetBox Community | Release Period |
+|------------------------|------------------|----------------|
+| v1.9 | v4.2 | Current stable |
+| v1.10 | v4.2 | Current/Recent updates |
+| v1.11 | v4.2 | Future releases |
+
+### Deprecated Format (Don't Use)
 ```html
+<!-- OLD - Don't use HTML pills -->
 <span class="pill pill-cloud">NetBox Cloud</span>
 <span class="pill pill-enterprise">NetBox Enterprise</span>
 ```
 
-### Available Product Tags:
+### Available Product Tags
 | Tag | Display | Use For |
 |-----|---------|---------|
 | `netbox-cloud` | NetBox Cloud | Cloud-specific features and administration |
@@ -71,12 +154,12 @@ tags:
 
 ### What Goes Here
 ✅ **DO include:**
-- Document templates using our tagging system
-- Style guides and writing standards
+- Document templates using our enhanced frontmatter system
+- Style guides and writing standards with version tracking
 - Example content patterns from our existing docs
 - Reference materials from authoritative sources
 - Development notes and planning documents
-- AI prompts and content generation helpers
+- AI prompts and content generation helpers with version context
 - Migration guides and coordination specs
 
 ### What Doesn't Go Here
@@ -91,11 +174,12 @@ tags:
 When working with AI/LLM tools:
 
 1. **Reference this directory** for context and examples
-2. **Use our tagging system** - always include appropriate frontmatter tags
+2. **Use our enhanced frontmatter system** - always include comprehensive metadata with version tracking
 3. **Follow our style guide** to maintain consistency with existing docs
 4. **Check examples** for patterns and structures that work well
 5. **Update templates** when you create good patterns
 6. **Document your prompts** for future reference
+7. **Include version information** in all AI prompts for accuracy
 
 ## Integration with Our Workflow
 
@@ -106,13 +190,14 @@ When working with AI/LLM tools:
 
 ### Dochub Coordination
 - All content must work with netboxlabs-website-dochub integration
-- Use structured frontmatter for better categorization
+- Use structured frontmatter for better categorization and version tracking
 - Reference `reference-docs/dochub-coordination.md` for requirements
 
 ### Quality Assurance
 - Test all templates locally with `mkdocs serve`
-- Validate tagging with our auto-tagging scripts
+- Validate frontmatter syntax and version mappings
 - Ensure consistency with existing documentation patterns
+- Verify version compatibility information accuracy
 
 ## Directory Safety
 
@@ -127,29 +212,55 @@ This directory is safe from publication because:
 When adding materials to this directory:
 - Keep files organized in appropriate subdirectories
 - Use clear, descriptive filenames following our naming conventions
-- Always include proper frontmatter tags in templates
+- Always include proper frontmatter with version tracking
 - Add a brief description in this README when adding new categories
 - Don't commit sensitive information
 - Test templates before committing
+- Update version information when making changes
 
 ## Quick Reference
 
 ### For New Feature Documentation:
 1. Use `templates/netbox-feature-doc-template.md`
-2. Apply appropriate product tags
+2. Apply appropriate product tags and version mapping
 3. Follow `style-guides/netbox-docs-style-guide.md`
 4. Check `examples/good-documentation-examples.md` for patterns
+5. Include complete frontmatter with version tracking
 
 ### For Product Landing Pages:
 1. Use `templates/product-landing-page.md` 
 2. Reference NetBox Operator page as example
 3. Include design partner or beta information if applicable
+4. Apply correct version mapping based on product availability
 
 ### For Integration Guides:
 1. Use `templates/integration-guide-template.md`
-2. Include all necessary setup steps
+2. Include all necessary setup steps with version requirements
 3. Provide troubleshooting section
+4. Specify version compatibility for all components
+
+### For AI-Assisted Content Creation:
+1. Reference `style-guides/ai-prompting-guide.md` for best practices
+2. Always specify complete frontmatter requirements in prompts
+3. Include version context appropriate for the document type
+4. Validate generated content against our style guide and version requirements
+
+## Version-Specific Content Guidelines
+
+### When Creating Content:
+- **Always include version information** in frontmatter
+- **Use appropriate version mapping** based on document type and age
+- **Update last_updated field** when making changes
+- **Set correct status field** (current, beta, coming-soon, deprecated)
+- **Include version compatibility notes** in content when relevant
+
+### Version Tracking Best Practices:
+- Existing docs not updated since May 1, 2025: use v1.9 for Cloud/Enterprise
+- Modified docs since May 1, 2025: use v1.10 for Cloud/Enterprise
+- NetBox Community always maps to v4.2
+- Premium features (Assurance, Operator) don't include community versions
+- Discovery features include all three product versions
 
 ---
 
-*This directory supports the NetBox Labs documentation enhancement project, providing AI tools with proper context for creating high-quality, consistent documentation using our modern tagging and navigation systems.* 
+*This directory supports the NetBox Labs documentation enhancement project, providing AI tools with proper context for creating high-quality, consistent documentation using our enhanced frontmatter system with comprehensive version tracking and modern tagging.* 
