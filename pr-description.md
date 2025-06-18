@@ -1,97 +1,56 @@
-## 🏷️ Product Tagging System Implementation
+## Overview
 
-This PR introduces a comprehensive product tagging system that migrates from HTML pill spans to Docusaurus-native frontmatter tags for better SEO, programmatic access, and upstream dochub integration.
+This PR implements comprehensive updates to NetBox Assurance documentation to support the Enterprise launch and prepare for Cloud availability in early July 2025.
 
-## 🎯 Key Features
+## Key Changes
 
-### ✅ **Smart Auto-Tagging System**
-- **92 files automatically tagged** with intelligent categorization
-- **Directory-based rules**: Administration Console → netbox-cloud, netbox-enterprise → netbox-enterprise
-- **Content analysis**: Pattern matching for multi-product features
-- **Weighted scoring**: Ensures accurate product associations
+### 📁 **Documentation Restructure**
+- Broke out NetBox Assurance docs into comprehensive structure similar to NetBox Discovery
+- Created new sections: quickstart guide, workflows, and data ingestion
+- Added proper navigation hierarchy in mkdocs.yml
 
-### ✅ **Centralized Tag Management**
-- `docs/tags.yml` with standardized tag definitions and colors
-- Consistent visual design maintained from existing pill system
-- Easy to update and maintain product categories
+### 🏷️ **Product Availability Updates**  
+- Updated product pills to Enterprise-only (since Enterprise is now available)
+- Added simple note about Cloud support coming early July 2025
+- Removed outdated launch messaging since Enterprise is live
 
-### ✅ **React Components**
-- `ProductTags` component for automatic tag display
-- `DocItem/Layout` wrapper for seamless integration
-- Maintains existing visual consistency
+### 📝 **Content Alignment**
+- Corrected terminology: use 'operational drift' instead of 'configuration drift'
+- Aligned all content with authoritative NetBox Assurance knowledge base
+- Added proper Diode SDK integration documentation
+- Included NetBox Discovery integration details
+- Updated workflows to reflect actual user journey (Data Ingestion → Analysis → Review → Action)
 
-### ✅ **Backward Compatibility**
-- Designed to work alongside existing HTML pills during transition
-- Phased migration approach documented
-- No breaking changes to existing documentation
 
-## 📊 Migration Results
 
-**Auto-Tagging Summary:**
-- **Total files processed**: 100 markdown files
-- **Files already tagged**: 9 (discovery docs)
-- **Files auto-tagged**: 92
-- **Categories identified**:
-  - 21 cloud-only files
-  - 6 enterprise-only files  
-  - 14 cloud + enterprise files
-  - 29 all-products files
-  - 22 community + enterprise files
+## New Documentation Structure
 
-## 🔧 Technical Implementation
-
-### Core Files Added:
-- `docs/tags.yml` - Tag definitions with colors
-- `src/theme/ProductTags/` - React components
-- `scripts/` - Migration and auto-tagging scripts
-- `package.json` - NPM dependencies and scripts
-
-### Configuration Updates:
-- `mkdocs.yml` - Tags plugin configuration
-- `requirements.txt` - Python dependencies
-
-### Documentation:
-- `PRODUCT_TAGGING_GUIDE.md` - Comprehensive user guide
-- `DOCHUB_INTEGRATION_REQUIREMENTS.md` - Integration specs
-- `AUTO_TAGGING_SUMMARY.md` - Analysis results
-
-## 🌐 Dochub Integration Ready
-
-This implementation provides everything needed for upstream dochub integration:
-- **Structured metadata** instead of HTML parsing
-- **API-friendly format** for programmatic access
-- **SEO optimization** with proper document categorization
-- **Search enhancement** with product filtering capabilities
-
-## 🧪 Testing
-
-To test locally:
-```bash
-# Install dependencies
-npm install
-
-# Preview auto-tagging (without changes)
-npm run preview-tags
-
-# Test site build
-mkdocs serve
+```
+docs/netbox-assurance/
+├── index.md                           # Updated main overview
+├── quickstart-guide.md               # New quick start guide
+├── workflows/                         # New workflow documentation
+│   ├── index.md                      # Workflows overview  
+│   ├── configuration.md              # Workflow configuration guide
+│   ├── deviation-detection.md        # Deviation detection details
+│   └── remediation.md                # Remediation workflows
+├── monitoring/                        # Renamed to data ingestion
+│   └── index.md                      # Data ingestion overview
+└── images/                           # Screenshots and assets
 ```
 
-## 📋 Next Steps
+## Testing
+- [ ] Local mkdocs build successful
+- [ ] Navigation structure verified
+- [ ] All internal links working
+- [ ] Content accuracy reviewed against knowledge base
 
-1. **Review auto-tagging results** - verify product categorizations
-2. **Test local site build** - ensure proper rendering
-3. **Manual adjustments** - fine-tune any edge cases
-4. **Coordinate with dochub team** - implement integration requirements
+## Related
+- Addresses PRD-439 requirements for NetBox Assurance documentation updates
+- Prepares documentation for NetBox Enterprise launch (available now)
+- Sets foundation for NetBox Cloud support (early July 2025)
 
-## 🔄 Migration Strategy
-
-**Phase 1**: Backward compatibility (this PR)
-**Phase 2**: Dochub integration updates  
-**Phase 3**: Remove legacy HTML pills
-
-This maintains stability while enabling the new tagging system.
-
----
-
-**Impact**: Improves documentation discoverability, SEO, and enables better integration with the upstream netboxlabs-website-dochub repository. 
+## Next Steps
+- Review content accuracy and completeness
+- Validate technical details with product team
+- Confirm Cloud timeline messaging 
