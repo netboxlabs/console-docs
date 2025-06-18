@@ -1,8 +1,10 @@
 ---
-title: NetBox Cloud: Administrative Console Overview
+title: "NetBox Cloud: Administrative Console Overview"
 tags:
   - netbox-cloud
----# NetBox Cloud: Administrative Console Overview
+---
+
+# NetBox Cloud: Administrative Console Overview
 
 ## Console Access
 To access your NetBox Cloud Administrative Console, follow these steps: 
