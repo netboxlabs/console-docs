@@ -1,17 +1,18 @@
 {
   "name": "console-docs",
   "version": "1.0.0",
-  "description": "NetBox Labs Documentation Repository",
+  "description": "NetBox Enterprise Documentation",
   "scripts": {
-    "migrate-pills": "node scripts/migrate-pills-to-tags.js",
-    "auto-tag": "node scripts/auto-tag-by-location.js",
-    "preview-tags": "node scripts/preview-auto-tags.js",
     "serve": "mkdocs serve",
-    "build": "mkdocs build"
+    "build": "mkdocs build",
+    "migrate-pills": "node scripts/migrate-pills-to-tags.js",
+    "preview-tags": "node scripts/preview-auto-tags.js",
+    "auto-tag": "node scripts/auto-tag-by-location.js"
   },
   "devDependencies": {
-    "glob": "^10.3.10",
     "gray-matter": "^4.0.3"
   },
-  "private": true
+  "keywords": ["netbox", "documentation", "enterprise"],
+  "author": "NetBox Labs",
+  "license": "MIT"
 } 

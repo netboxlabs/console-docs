@@ -1,4 +1,44 @@
-site_name: NetBox Labs Documentation
+site_name: NetBox Enterprise Documentation
+site_url: https://netboxlabs.com/docs/
+site_description: NetBox Enterprise, Cloud, Discovery, and Assurance Documentation
+
+# DocHub Integration Configuration
+extra:
+  # Product tagging system for DocHub
+  product_tags:
+    netbox-cloud:
+      label: "NetBox Cloud"
+      color: "#00d9be"
+      description: "NetBox Cloud features and administration"
+    netbox-enterprise:
+      label: "NetBox Enterprise"
+      color: "#ffac00"
+      description: "NetBox Enterprise on-premises features"
+    netbox-community:
+      label: "NetBox Community"
+      color: "#00bee0"
+      description: "NetBox Community edition features"
+    netbox-airgap:
+      label: "NetBox Air-Gap"
+      color: "#ff0078"
+      description: "NetBox Air-Gap deployment features"
+  
+  # Version information for DocHub
+  version:
+    provider: mike
+    default: latest
+    
+  # DocHub integration metadata
+  dochub:
+    source_repo: "console-docs"
+    integration_version: "2.0"
+    content_type: "enterprise"
+    
+# Repository information
+repo_url: https://github.com/netboxlabs/console-docs
+repo_name: netboxlabs/console-docs
+edit_uri: edit/main/docs/
+
 theme:
   name: material
   custom_dir: overrides
@@ -14,17 +54,21 @@ theme:
     - navigation.sections
     - navigation.prune
     - search.suggest
-    # - toc.integrate
+    - toc.integrate
     - content.code.copy
     - content.code.select
   palette:
-    - scheme: nbl-light
+    - scheme: default
+      primary: teal
+      accent: orange
       toggle:
-        icon: material/lightbulb 
+        icon: material/brightness-7
         name: Switch to dark mode
-    - scheme: nbl-dark
+    - scheme: slate
+      primary: teal
+      accent: orange
       toggle:
-        icon: material/lightbulb-outline
+        icon: material/brightness-4
         name: Switch to light mode
 extra_css:
   - stylesheets/extra.css
@@ -56,6 +100,10 @@ plugins:
   - search
   - tags:
       tags_file: tags.yml
+  - git-revision-date-localized:
+      type: date
+      enable_creation_date: true
+      fallback_to_build_date: true
 nav:
   - Home: index.md
   - Community:
