@@ -1,3 +1,4 @@
+# Product-Specific Tags
 netbox-cloud:
   label: 'NetBox Cloud'
   permalink: '/netbox-cloud'
@@ -16,4 +17,195 @@ netbox-community:
 netbox-airgap:
   label: 'NetBox Air-Gap'
   permalink: '/netbox-airgap'
-  description: 'Documentation for air-gapped NetBox deployments' 
+  description: 'Documentation for air-gapped NetBox deployments'
+
+netbox-discovery:
+  label: 'NetBox Discovery'
+  permalink: '/netbox-discovery'
+  description: 'Network discovery and device detection features'
+
+netbox-assurance:
+  label: 'NetBox Assurance'
+  permalink: '/netbox-assurance'
+  description: 'Network monitoring and assurance capabilities'
+
+netbox-operator:
+  label: 'NetBox Operator'
+  permalink: '/netbox-operator'
+  description: 'AI-powered network operations and automation'
+
+# Authentication & Security Tags
+authentication:
+  label: 'Authentication'
+  permalink: '/authentication'
+  description: 'User authentication and identity management'
+
+sso:
+  label: 'Single Sign-On'
+  permalink: '/sso'
+  description: 'Single sign-on configuration and setup'
+
+ldap:
+  label: 'LDAP'
+  permalink: '/ldap'
+  description: 'LDAP authentication and directory services'
+
+saml:
+  label: 'SAML'
+  permalink: '/saml'
+  description: 'SAML-based authentication and federation'
+
+permissions:
+  label: 'Permissions'
+  permalink: '/permissions'
+  description: 'User permissions and access control'
+
+rbac:
+  label: 'Role-Based Access Control'
+  permalink: '/rbac'
+  description: 'Role-based access control and group management'
+
+security:
+  label: 'Security'
+  permalink: '/security'
+  description: 'Security features and best practices'
+
+two-factor:
+  label: 'Two-Factor Authentication'
+  permalink: '/two-factor'
+  description: 'Multi-factor authentication setup and management'
+
+# Database & Operations Tags
+database:
+  label: 'Database'
+  permalink: '/database'
+  description: 'Database management and operations'
+
+backup:
+  label: 'Backup'
+  permalink: '/backup'
+  description: 'Data backup and recovery procedures'
+
+migration:
+  label: 'Migration'
+  permalink: '/migration'
+  description: 'Data migration and transfer processes'
+
+upgrade:
+  label: 'Upgrade'
+  permalink: '/upgrade'
+  description: 'System upgrades and version management'
+
+monitoring:
+  label: 'Monitoring'
+  permalink: '/monitoring'
+  description: 'System monitoring and health checks'
+
+notifications:
+  label: 'Notifications'
+  permalink: '/notifications'
+  description: 'Alert notifications and messaging'
+
+alerting:
+  label: 'Alerting'
+  permalink: '/alerting'
+  description: 'Alert configuration and management'
+
+logging:
+  label: 'Logging'
+  permalink: '/logging'
+  description: 'System logging and audit trails'
+
+# APIs & Integration Tags
+rest-api:
+  label: 'REST API'
+  permalink: '/rest-api'
+  description: 'REST API usage and integration'
+
+graphql:
+  label: 'GraphQL'
+  permalink: '/graphql'
+  description: 'GraphQL API and queries'
+
+webhooks:
+  label: 'Webhooks'
+  permalink: '/webhooks'
+  description: 'Webhook configuration and event handling'
+
+automation:
+  label: 'Automation'
+  permalink: '/automation'
+  description: 'Automation tools and workflows'
+
+# Cloud Infrastructure Tags
+cloud-connectivity:
+  label: 'Cloud Connectivity'
+  permalink: '/cloud-connectivity'
+  description: 'Cloud network connectivity options'
+
+networking:
+  label: 'Networking'
+  permalink: '/networking'
+  description: 'Network configuration and management'
+
+infrastructure:
+  label: 'Infrastructure'
+  permalink: '/infrastructure'
+  description: 'Infrastructure setup and management'
+
+connectivity:
+  label: 'Connectivity'
+  permalink: '/connectivity'
+  description: 'Network connectivity and communication'
+
+# Content Type Tags
+getting-started:
+  label: 'Getting Started'
+  permalink: '/getting-started'
+  description: 'Introductory guides and quick start documentation'
+
+installation:
+  label: 'Installation'
+  permalink: '/installation'
+  description: 'Installation guides and setup procedures'
+
+configuration:
+  label: 'Configuration'
+  permalink: '/configuration'
+  description: 'Configuration guides and settings'
+
+administration:
+  label: 'Administration'
+  permalink: '/administration'
+  description: 'Administrative tasks and management'
+
+troubleshooting:
+  label: 'Troubleshooting'
+  permalink: '/troubleshooting'
+  description: 'Problem resolution and debugging guides'
+
+# Cross-Cutting Topic Tags
+high-availability:
+  label: 'High Availability'
+  permalink: '/high-availability'
+  description: 'High availability setup and configuration'
+
+performance:
+  label: 'Performance'
+  permalink: '/performance'
+  description: 'Performance optimization and tuning'
+
+scalability:
+  label: 'Scalability'
+  permalink: '/scalability'
+  description: 'Scaling and capacity planning'
+
+compliance:
+  label: 'Compliance'
+  permalink: '/compliance'
+  description: 'Compliance and regulatory requirements'
+
+integration:
+  label: 'Integration'
+  permalink: '/integration'
+  description: 'Third-party integrations and connectors' 

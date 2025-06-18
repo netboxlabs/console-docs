@@ -48,6 +48,8 @@ ai-reference/
     ├── netbox-assurance-blog.md       # Blog post content
     ├── auto-tagging-analysis.md       # Auto-tagging system analysis and results
     ├── product-tagging-migration.md   # Product tagging migration documentation
+    ├── semantic-tagging-enhancement-summary.md # Complete project summary of semantic tagging implementation
+    ├── semantic-tagging-system.md     # Comprehensive semantic tagging system documentation
     ├── dochub-coordination.md         # Navigation restructuring coordination spec
     └── dochub-integration-requirements.md # Detailed technical implementation requirements
 ```
@@ -190,6 +192,7 @@ When working with AI/LLM tools:
 - Use structured frontmatter for better categorization and version tracking
 - Reference `content-strategy/dochub-integration-strategy.md` for quick overview
 - See `reference-docs/dochub-coordination.md` and `reference-docs/dochub-integration-requirements.md` for detailed specifications
+- Use semantic tagging system for enhanced content discovery - see `reference-docs/semantic-tagging-enhancement-summary.md` for complete implementation details
 
 ### Quality Assurance
 - Test all templates locally with `mkdocs serve`
@@ -235,6 +238,12 @@ When adding materials to this directory:
 2. Always specify complete frontmatter requirements in prompts
 3. Include version context appropriate for the document type
 4. Validate generated content against our style guide and version requirements
+
+### For Semantic Tagging Enhancement:
+1. Use `npm run semantic-tag-dry` to preview tag enhancements
+2. Apply tags with `npm run semantic-tag` after review
+3. Reference `reference-docs/semantic-tagging-system.md` for technical details
+4. See `reference-docs/semantic-tagging-enhancement-summary.md` for complete project overview
 
 ## Version-Specific Content Guidelines
 
