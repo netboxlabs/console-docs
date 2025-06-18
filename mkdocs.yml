@@ -4,7 +4,7 @@ site_description: NetBox Enterprise, Cloud, Discovery, and Assurance Documentati
 
 # DocHub Integration Configuration
 extra:
-  # Product tagging system for DocHub
+  # Product tagging system for DocHub integration
   product_tags:
     netbox-cloud:
       label: "NetBox Cloud"
@@ -26,19 +26,35 @@ extra:
   # Version information for DocHub
   version:
     provider: mike
-    default: latest
-    
+    default: v1.9
+    current: v1.9
+    available:
+      - v1.9 (Current)
+      
   # DocHub integration metadata
   dochub:
     source_repo: "console-docs"
     integration_version: "2.0"
     content_type: "enterprise"
     
+  # Social and contact links
+  social:
+    - icon: fontawesome/solid/globe
+      link: https://netboxlabs.com
+    - icon: octicons/mail-24
+      link: "mailto:support@netboxlabs.com"
+      
+  # Analytics
+  analytics:
+    provider: google
+    property: G-Q107GMDTJM
+
 # Repository information
 repo_url: https://github.com/netboxlabs/console-docs
 repo_name: netboxlabs/console-docs
 edit_uri: edit/main/docs/
 
+# Theme configuration optimized for DocHub
 theme:
   name: material
   custom_dir: overrides
@@ -54,289 +70,92 @@ theme:
     - navigation.sections
     - navigation.prune
     - search.suggest
+    - search.highlight
     - toc.integrate
     - content.code.copy
     - content.code.select
+    - content.action.edit
+    - content.tabs.link
   palette:
-    - scheme: default
-      primary: teal
-      accent: orange
+    - scheme: nbl-light
       toggle:
-        icon: material/brightness-7
+        icon: material/lightbulb 
         name: Switch to dark mode
-    - scheme: slate
-      primary: teal
-      accent: orange
+    - scheme: nbl-dark
       toggle:
-        icon: material/brightness-4
+        icon: material/lightbulb-outline
         name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+
+# Enhanced plugins for DocHub compatibility
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+  - tags:
+      tags_file: tags.yml
+
+# Markdown extensions for enhanced content processing
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      title: On this page
+      toc_depth: 3
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: netboxlabs
+      repo: console-docs
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Simple navigation - DocHub will handle the complex structure
+nav:
+  - Home: index.md
+  - Getting Started:
+    - NetBox Cloud: NetBox Cloud/getting-started-with-nbc.md
+    - Migration Guide: NetBox Cloud/migrating-to-netbox-cloud.md
+  - Maintenance: maintenance.md
+  - Product Feature Lifecycle: product_feature_lifecycle.md
+
+# CSS and JavaScript for enhanced functionality
 extra_css:
   - stylesheets/extra.css
   - stylesheets/custom.css
-markdown_extensions:
-  - abbr
-  - attr_list
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.snippets
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
-  - pymdownx.caret
-  - pymdownx.mark
-  - pymdownx.tilde
-  - pymdownx.superfences
-  - admonition
-  - pymdownx.details
-  - attr_list
-  - md_in_html
-  - toc:
-      toc_depth: 3
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: pymdownx.superfences.fence_code_format
-plugins:
-  - search
-  - tags:
-      tags_file: tags.yml
-  - git-revision-date-localized:
-      type: date
-      enable_creation_date: true
-      fallback_to_build_date: true
-nav:
-  - Home: index.md
-  - Community:
-    - NetBox Discovery:
-      - Overview: "netbox-discovery/index.md"
-      - Quickstart Guide: "netbox-discovery/quickstart-guide.md"
-      - Discovery Agent:
-        - Overview: "netbox-discovery/agent/index.md"
-        - Getting started: "netbox-discovery/agent/get-started.md"
-        - Configuration format: "netbox-discovery/agent/configuration-file.md"
-        - Network Discovery: "netbox-discovery/agent/network_discovery.md"
-        - Device Discovery: "netbox-discovery/agent/device_discovery.md"
-    - Extensions:
-      - Diode:
-        - Overview: "netbox-extensions/diode/index.md"
-        - Get Started: "netbox-extensions/diode/diode-get-started.md"
-      - Product and Feature Lifecycle: "product_feature_lifecycle.md"
-    - Integrations: 
-      - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
-      - pyATS: "netbox-integrations/pyats.md"
-      - ServiceNow: 
-        - Overview: "netbox-integrations/servicenow/index.md"
-        - Installation: "netbox-integrations/servicenow/snow-installation.md"
-        - Technical Info: "netbox-integrations/servicenow/snow-technical-info.md"
-        - FAQ and Troubleshooting: "netbox-integrations/servicenow/snow-faq.md"
-        - Upgrading: "netbox-integrations/servicenow/snow-upgrading.md"
-    - SDKs:
-      - Pynetbox: "sdks/pynetbox.md"
-  - Cloud:
-    - Migrating to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
-    - Administration via Console:
-      - Getting Console Access: "Administration Console/console-access.md"
-      - Setting up Two-Factor Authentication: "Administration Console/set_up_2fa.md"
-      - Retrieving NetBox Admin Credentials: "Administration Console/retrieving-nbc-credentials.md"
-      - Adding Admin Users to Console: "Administration Console/console-admin-accounts.md"
-      #- Accessing the Console From the NetBox Cloud UI: "Administration Console/console-access-from-ui.md"
-      - Viewing Installed Plugins: "Administration Console/netbox-cloud-plugins.md"
-      - Database Backups: "Administration Console/working_with_database_backups.md"
-      - Upgrading NetBox: "Administration Console/upgrading-nbc.md"
-      - Managing Hostnames: "Administration Console/managing-hostnames.md"
-    - Security:
-        - Prefix Lists: "Administration Console/prefix-lists.md"
-        - Public IP Addressing: "Administration Console/public-ip-addressing.md"
-    - Single Sign-On (SSO):
-      - Entra ID:
-        - Microsoft Entra ID SSO: "Administration Console/azure-ad-sso-setup.md"
-        - Entra ID Group Mapping: "Administration Console/azure-group-mapping.md"
-      - Okta:
-        - Okta SSO: "Administration Console/okta-sso-setup.md"
-        - Okta Group Mapping: "Administration Console/okta-group-mapping.md"
-      - SAML: 
-        - SAML SSO Setup: "Administration Console/saml-sso-setup.md"
-        - SAML Group Mapping: "Administration Console/saml-group-map.md"
-    - Free Plan:
-      - Features: "Administration Console/free-plan-features.md"
-      - Add a New User: "Administration Console/free-plan-new-user.md"
-    - Cloud Connectivity:
-      - Do I Need Cloud Connectivity Options?: "cloud-connectivity/do-i-need-cloud-connectivity.md"
-      - Cloud Connectivity Options:
-        - Which Cloud Connectivity Option is Right for Me?: "cloud-connectivity/which-connectivity-option.md"
-        - Internet Delivery (Single Region): "cloud-connectivity/internet-delivery.md"
-        - AWS Private Link (Single Region): "cloud-connectivity/aws-private-link.md"
-        - IPSEC VPN Tunnels (Single Region): "cloud-connectivity/ipsec-vpn-tunnels.md"
-        - AWS Direct Connect (Single Region): "cloud-connectivity/aws-direct-connect.md"
-        - AWS Direct Connect (Multi-Region): "cloud-connectivity/aws-direct-connect-multi-region.md"
-      - Frequently Asked Questions: "cloud-connectivity/cloud-connectivity-faq.md"
-    - Maintenance:
-      - Scheduled Maintenance: "maintenance.md"
-    - NetBox Discovery:
-      - Overview: "netbox-discovery/index.md"
-      - Quickstart Guide: "netbox-discovery/quickstart-guide.md"
-      - Discovery Agent:
-        - Overview: "netbox-discovery/agent/index.md"
-        - Getting started: "netbox-discovery/agent/get-started.md"
-        - Configuration format: "netbox-discovery/agent/configuration-file.md"
-        - Network Discovery: "netbox-discovery/agent/network_discovery.md"
-        - Device Discovery: "netbox-discovery/agent/device_discovery.md"
-    - NetBox Assurance:
-      - Overview: "netbox-assurance/index.md"
-      - Quickstart Guide: "netbox-assurance/quickstart-guide.md"
-      - Assurance Workflows:
-        - Overview: "netbox-assurance/workflows/index.md"
-        - Configuration: "netbox-assurance/workflows/configuration.md"
-        - Deviation Detection: "netbox-assurance/workflows/deviation-detection.md"
-        - Remediation: "netbox-assurance/workflows/remediation.md"
-      - Data Ingestion:
-        - Overview: "netbox-assurance/monitoring/index.md"
-    - NetBox Operator:
-      - Overview: "netbox-operator/index.md"
-    - Extensions:
-      - Branching:
-        - Overview: "netbox-extensions/branching/index.md"
-        - Configuration: "netbox-extensions/branching/configuration.md"
-        - Using Branches:
-          - Creating a Branch: "netbox-extensions/branching/using-branches/creating-a-branch.md"
-          - Syncing & Merging Changes: "netbox-extensions/branching/using-branches/syncing-merging.md"
-          - Reverting a Branch: "netbox-extensions/branching/using-branches/reverting-a-branch.md"
-          - Interact with Branches via API: "netbox-extensions/branching/using-branches/api.md"
-        - Models:
-          - Branches: "netbox-extensions/branching/models/branch.md"
-          - Branch Events: "netbox-extensions/branching/models/branchevent.md"
-          - Change Diffs: "netbox-extensions/branching/models/changediff.md"
-          - Object Changes: "netbox-extensions/branching/models/objectchange.md"
-        - Changelog: "netbox-extensions/branching/changelog.md"
-      - Change Management:
-        - Overview: "netbox-extensions/changes/index.md"
-        - Configuration: "netbox-extensions/changes/configuration.md"
-        - Models:
-          - Change Request: "netbox-extensions/changes/models/changerequest.md"
-          - Comment: "netbox-extensions/changes/models/comment.md"
-          - Comment Reply: "netbox-extensions/changes/models/commentreply.md"
-          - Policy: "netbox-extensions/changes/models/policy.md"
-          - Policy Rule: "netbox-extensions/changes/models/policyrule.md"
-          - Review: "netbox-extensions/changes/models/review.md"
-        - Changelog: "netbox-extensions/changes/changelog.md"
-      - Diode:
-        - Overview: "netbox-extensions/diode/index.md"
-        - Get Started: "netbox-extensions/diode/diode-get-started.md"
-      - Product and Feature Lifecycle: "product_feature_lifecycle.md"
-    - Integrations: 
-      - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
-      - pyATS: "netbox-integrations/pyats.md"
-      - ServiceNow: 
-        - Overview: "netbox-integrations/servicenow/index.md"
-        - Installation: "netbox-integrations/servicenow/snow-installation.md"
-        - Technical Info: "netbox-integrations/servicenow/snow-technical-info.md"
-        - FAQ and Troubleshooting: "netbox-integrations/servicenow/snow-faq.md"
-        - Upgrading: "netbox-integrations/servicenow/snow-upgrading.md"
-    - SDKs:
-      - Pynetbox: "sdks/pynetbox.md"
-  - Enterprise:
-    - Overview: "netbox-enterprise/nbe-overview.md"
-    - NetBox Enterprise Installer:
-      - Requirements: "netbox-enterprise/nbe-ec-requirements.md"
-      - Distribution Specific Requirements:
-        - RHEL: "netbox-enterprise/nbe-ec-requirements-rhel.md"
-      - Linux System Changes: "netbox-enterprise/nbe-ec-linux-changes.md"
-      - Installation: "netbox-enterprise/nbe-ec-installation.md"
-      - Migrating: "netbox-enterprise/nbe-migrating.md"
-      - Built-in Plugin Installation: "netbox-enterprise/nbe-ec-built-in-plugins.md"
-      - Custom Plugin Installation: "netbox-enterprise/nbe-ec-custom-plugins.md"
-    #- KOTS:
-    #  - Requirements: "netbox-enterprise/nbe-kots-requirements.md"
-    #  - Installation: "netbox-enterprise/nbe-kots-installation.md"
-    - Single Sign-On (SSO):
-      - Entra ID:
-        - Microsoft Entra ID SSO: "netbox-enterprise/nbe-azure-sso.md"
-        - Entra ID Group Mapping: "netbox-enterprise/nbe-azure-group-mapping.md"
-      - SAML: 
-        - SAML SSO Setup: "netbox-enterprise/nbe-saml.md"
-        - SAML Group Mapping: "netbox-enterprise/nbe-saml-group-map.md"
-      - LDAP: "netbox-enterprise/nbe-ldap.md"
-    - "Administration":
-      - "TLS and Ingress": "netbox-enterprise/nbe-tls-ingress.md"
-      - "Backups": "netbox-enterprise/nbe-backups.md"
-      #- "Installing Custom NetBox Plugins": "netbox-enterprise/nbe-ec-custom-plugins.md"
-      - "Advanced Tools and Troubleshooting": "netbox-enterprise/nbe-troubleshooting.md"
-    - "Release Notes": "netbox-enterprise/nbe-release-notes.md"
-    - NetBox Discovery:
-      - Overview: "netbox-discovery/index.md"
-      - Quickstart Guide: "netbox-discovery/quickstart-guide.md"
-      - Discovery Agent:
-        - Overview: "netbox-discovery/agent/index.md"
-        - Getting started: "netbox-discovery/agent/get-started.md"
-        - Configuration format: "netbox-discovery/agent/configuration-file.md"
-        - Network Discovery: "netbox-discovery/agent/network_discovery.md"
-        - Device Discovery: "netbox-discovery/agent/device_discovery.md"
-    - NetBox Assurance:
-      - Overview: "netbox-assurance/index.md"
-      - Quickstart Guide: "netbox-assurance/quickstart-guide.md"
-      - Assurance Workflows:
-        - Overview: "netbox-assurance/workflows/index.md"
-        - Configuration: "netbox-assurance/workflows/configuration.md"
-        - Deviation Detection: "netbox-assurance/workflows/deviation-detection.md"
-        - Remediation: "netbox-assurance/workflows/remediation.md"
-      - Data Ingestion:
-        - Overview: "netbox-assurance/monitoring/index.md"
-    - NetBox Operator:
-      - Overview: "netbox-operator/index.md"
-    - Extensions:
-      - Branching:
-        - Overview: "netbox-extensions/branching/index.md"
-        - Configuration: "netbox-extensions/branching/configuration.md"
-        - Using Branches:
-          - Creating a Branch: "netbox-extensions/branching/using-branches/creating-a-branch.md"
-          - Syncing & Merging Changes: "netbox-extensions/branching/using-branches/syncing-merging.md"
-          - Reverting a Branch: "netbox-extensions/branching/using-branches/reverting-a-branch.md"
-          - Interact with Branches via API: "netbox-extensions/branching/using-branches/api.md"
-        - Models:
-          - Branches: "netbox-extensions/branching/models/branch.md"
-          - Branch Events: "netbox-extensions/branching/models/branchevent.md"
-          - Change Diffs: "netbox-extensions/branching/models/changediff.md"
-          - Object Changes: "netbox-extensions/branching/models/objectchange.md"
-        - Changelog: "netbox-extensions/branching/changelog.md"
-      - Change Management:
-        - Overview: "netbox-extensions/changes/index.md"
-        - Configuration: "netbox-extensions/changes/configuration.md"
-        - Models:
-          - Change Request: "netbox-extensions/changes/models/changerequest.md"
-          - Comment: "netbox-extensions/changes/models/comment.md"
-          - Comment Reply: "netbox-extensions/changes/models/commentreply.md"
-          - Policy: "netbox-extensions/changes/models/policy.md"
-          - Policy Rule: "netbox-extensions/changes/models/policyrule.md"
-          - Review: "netbox-extensions/changes/models/review.md"
-        - Changelog: "netbox-extensions/changes/changelog.md"
-      - Diode:
-        - Overview: "netbox-extensions/diode/index.md"
-        - Get Started: "netbox-extensions/diode/diode-get-started.md"
-      - Product and Feature Lifecycle: "product_feature_lifecycle.md"
-    - Integrations: 
-      - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
-      - pyATS: "netbox-integrations/pyats.md"
-      - ServiceNow: 
-        - Overview: "netbox-integrations/servicenow/index.md"
-        - Installation: "netbox-integrations/servicenow/snow-installation.md"
-        - Technical Info: "netbox-integrations/servicenow/snow-technical-info.md"
-        - FAQ and Troubleshooting: "netbox-integrations/servicenow/snow-faq.md"
-        - Upgrading: "netbox-integrations/servicenow/snow-upgrading.md"
-    - SDKs:
-      - Pynetbox: "sdks/pynetbox.md"
-extra:
-  version:
-    provider: mike
-    default: v1.9
-    current: v1.9
-    available:
-      - v1.9 (Current)
-  social:
-    - icon: fontawesome/solid/globe
-      link: https://netboxlabs.com
-    - icon: octicons/mail-24
-      link: "mailto:support@netboxlabs.com"
-  analytics:
-    provider: google
-    property: G-Q107GMDTJM
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Copyright
 copyright: Copyright &copy; 2025 NetBox Labs
