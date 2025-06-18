@@ -142,16 +142,25 @@ versions:
 ```
 
 ### Available Product Tags
-| Tag | Display | Use For |
-|-----|---------|---------|
-| `cloud` | Cloud | Cloud-specific features and administration |
-| `enterprise` | Enterprise | Enterprise-specific features and installation |
-| `community` | Community | Open source features and community tools |
-| `discovery` | Discovery | Network discovery and device detection features |
-| `assurance` | Assurance | Network monitoring and assurance capabilities |
-| `operator` | Operator | AI-powered network operations and automation |
-| `netbox` | NetBox | Core NetBox features and functionality |
-| `airgap` | Air-Gap | Air-gapped deployment scenarios |
+
+#### Edition Tags (Display as Prominent Pills)
+| Tag | Display | Use For | Display Style |
+|-----|---------|---------|---------------|
+| `cloud` | Cloud | Cloud-specific features and administration | **Prominent pill at top** |
+| `enterprise` | Enterprise | Enterprise-specific features and installation | **Prominent pill at top** |
+| `community` | Community | Open source features and community tools | **Prominent pill at top** |
+| `airgap` | Air-Gap | Air-gapped deployment scenarios | **Prominent pill at top** |
+
+#### Product Feature Tags (Display as Regular Tags)
+| Tag | Display | Use For | Display Style |
+|-----|---------|---------|---------------|
+| `discovery` | Discovery | Network discovery and device detection features | Regular tag at bottom |
+| `assurance` | Assurance | Network monitoring and assurance capabilities | Regular tag at bottom |
+| `operator` | Operator | AI-powered network operations and automation | Regular tag at bottom |
+| `netbox` | NetBox | Core NetBox features and functionality | Regular tag at bottom |
+
+#### Category Tags (Display as Regular Tags)
+All other tags (authentication, sso, ldap, saml, security, database, backup, etc.) display as smaller regular tags at the bottom under "Related Topics".
 
 ## Guidelines for AI-Assisted Documentation
 

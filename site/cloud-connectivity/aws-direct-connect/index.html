@@ -50,6 +50,8 @@
     
       <link rel="stylesheet" href="../../stylesheets/custom.css">
     
+      <link rel="stylesheet" href="../../stylesheets/tags.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -485,7 +487,30 @@
               <article class="md-content__inner md-typeset">
                 
                   
-
+  
+  
+  
+  
+  
+    
+      
+    
+  
+  
+  <!-- Edition Pills at Top -->
+  
+    <div class="md-tags md-tags--edition">
+      
+        <a href="https://netboxlabs.com/docs/tags/#cloud" class="md-tag" data-tag="cloud">
+          Cloud
+        </a>
+      
+    </div>
+  
+  
+  <!-- Other Tags at Bottom (if any) -->
+  
+ 
 
   
     <a href="https://github.com/netboxlabs/console-docs/edit/main/docs/cloud-connectivity/aws-direct-connect.md" title="Edit this page" class="md-content__button md-icon">
@@ -498,10 +523,7 @@
 
   <h1>Aws direct connect</h1>
 
-<hr />
-<p>tags:
-  - netbox-cloud
----<a href="https://aws.amazon.com/directconnect/">AWS Direct Connect</a> is available via hosted connections from BT, Equinix Fabric, MegaPort, Optus, PCCW, Zayo etc. VLAN hand-off is with BGP and Single or Dual Direct Connect services are available. Customer IP space (/24 or /25) is assigned for the VPC, as this is required to host load balancers and proxies within the dedicated customer Account/VPC. Internally we will allocate a /27 per availability zone for each of the 3 availability zones.</p>
+<p><a href="https://aws.amazon.com/directconnect/">AWS Direct Connect</a> is available via hosted connections from BT, Equinix Fabric, MegaPort, Optus, PCCW, Zayo etc. VLAN hand-off is with BGP and Single or Dual Direct Connect services are available. Customer IP space (/24 or /25) is assigned for the VPC, as this is required to host load balancers and proxies within the dedicated customer Account/VPC. Internally we will allocate a /27 per availability zone for each of the 3 availability zones.</p>
 <p>The connection does not have to be dedicated, a VLAN can be added to an existing layer 2 fabric provider, such as Equinix Fabric. In terms of bandwidth requirements, 50Mbps is fine.</p>
 <p><img alt="AWS Direct Connect" src="../../images/cloud-connectivity/aws-direct-connect.png" /></p>
 
@@ -510,6 +532,9 @@
 
 
 
+
+  
+  
 
 
 

@@ -15,6 +15,37 @@ tags:
 <div style="background-color: #02060A; margin: -2rem -2rem 0 -2rem; padding: 3rem 2rem;">
 
 <style>
+.product-card {
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card .product-links {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 90px;
+}
+
+.product-card .product-links a,
+.product-card .product-links span {
+  display: block;
+  padding: 0.5rem 0;
+  line-height: 1.3;
+  font-size: 0.95rem;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
 .product-card:hover {
   transform: translateY(-2px);
   border-color: #555 !important;
@@ -49,7 +80,7 @@ The home of documentation for NetBox <a href="Administration Console/console-acc
   <div style="width: 64px; height: 4px; background: linear-gradient(to right, #00d9be, #007bff); margin: 0 auto; border-radius: 2px;"></div>
 </div>
 
-<div class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 3rem 0;">
+<div class="products-grid">
   
   <!-- NetBox Card -->
   <div class="product-card" style="background: #1a1a1a; border: 1px solid #333; border-radius: 12px; padding: 1.5rem; transition: all 0.3s ease;">
@@ -62,7 +93,7 @@ The home of documentation for NetBox <a href="Administration Console/console-acc
     <p style="color: #ccc; margin-bottom: 1.5rem; line-height: 1.5;">
       The world's leading network source of truth. Model, document, and automate your infrastructure.
     </p>
-    <div class="product-links" style="display: flex; flex-direction: column; gap: 0.5rem;">
+    <div class="product-links">
       <a href="https://github.com/netbox-community/netbox" style="color: #00bee0; text-decoration: none; font-weight: 500;">Community</a>
       <a href="netbox-enterprise/nbe-overview" style="color: #ffac00; text-decoration: none; font-weight: 500;">Enterprise</a>
       <a href="NetBox Cloud/getting-started-with-nbc" style="color: #00d9be; text-decoration: none; font-weight: 500;">Cloud</a>
@@ -80,7 +111,7 @@ The home of documentation for NetBox <a href="Administration Console/console-acc
     <p style="color: #ccc; margin-bottom: 1.5rem; line-height: 1.5;">
       Automatically map your networks and infrastructure. Accelerate documentation and streamline operations.
     </p>
-    <div class="product-links" style="display: flex; flex-direction: column; gap: 0.5rem;">
+    <div class="product-links">
       <a href="netbox-discovery/index" style="color: #00bee0; text-decoration: none; font-weight: 500;">Community</a>
       <a href="netbox-discovery/index" style="color: #ffac00; text-decoration: none; font-weight: 500;">Enterprise</a>
       <a href="netbox-discovery/index" style="color: #00d9be; text-decoration: none; font-weight: 500;">Cloud</a>
@@ -98,7 +129,7 @@ The home of documentation for NetBox <a href="Administration Console/console-acc
     <p style="color: #ccc; margin-bottom: 1.5rem; line-height: 1.5;">
       Find and fix operational drift. Continuously monitor and detect deviations in your infrastructure.
     </p>
-    <div class="product-links" style="display: flex; flex-direction: column; gap: 0.5rem;">
+    <div class="product-links">
       <span style="color: #666; font-weight: 500;">Community (Not Available)</span>
       <a href="netbox-assurance/index" style="color: #ffac00; text-decoration: none; font-weight: 500;">Enterprise</a>
       <a href="netbox-assurance/index" style="color: #00d9be; text-decoration: none; font-weight: 500;">Cloud (Coming Soon)</a>
@@ -116,7 +147,7 @@ The home of documentation for NetBox <a href="Administration Console/console-acc
     <p style="color: #ccc; margin-bottom: 1.5rem; line-height: 1.5;">
       AI superpowers for network engineers. Agentic AI operations with NetBox as your infrastructure map.
     </p>
-    <div class="product-links" style="display: flex; flex-direction: column; gap: 0.5rem;">
+    <div class="product-links">
       <span style="color: #666; font-weight: 500;">Community (Not Available)</span>
       <a href="netbox-operator/index" style="color: #ffac00; text-decoration: none; font-weight: 500;">Enterprise (Coming Soon)</a>
       <a href="netbox-operator/index" style="color: #00d9be; text-decoration: none; font-weight: 500;">Cloud (Coming Soon)</a>

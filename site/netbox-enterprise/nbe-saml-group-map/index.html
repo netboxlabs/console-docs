@@ -20,7 +20,7 @@
     
     
       
-        <title>Nbe saml group map - NetBox Enterprise Documentation</title>
+        <title>Configuring SAML Group Mapping in NetBox Enterprise - NetBox Enterprise Documentation</title>
       
     
     
@@ -49,6 +49,8 @@
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
       <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/tags.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -86,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configure-the-idp" class="md-skip">
+        <a href="#configuring-saml-group-mapping-in-netbox-enterprise" class="md-skip">
           Skip to content
         </a>
       
@@ -125,7 +127,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Nbe saml group map
+              Configuring SAML Group Mapping in NetBox Enterprise
             
           </span>
         </div>
@@ -490,7 +492,30 @@
               <article class="md-content__inner md-typeset">
                 
                   
-
+  
+  
+  
+  
+  
+    
+      
+    
+  
+  
+  <!-- Edition Pills at Top -->
+  
+    <div class="md-tags md-tags--edition">
+      
+        <a href="https://netboxlabs.com/docs/tags/#enterprise" class="md-tag" data-tag="enterprise">
+          Enterprise
+        </a>
+      
+    </div>
+  
+  
+  <!-- Other Tags at Bottom (if any) -->
+  
+ 
 
   
     <a href="https://github.com/netboxlabs/console-docs/edit/main/docs/netbox-enterprise/nbe-saml-group-map.md" title="Edit this page" class="md-content__button md-icon">
@@ -501,13 +526,7 @@
   
 
 
-  <h1>Nbe saml group map</h1>
-
-<hr />
-<p>title: Configuring SAML Group Mapping in NetBox Enterprise 
-tags:
-  - netbox-enterprise
----# Configuring SAML Group Mapping in NetBox Enterprise </p>
+<h1 id="configuring-saml-group-mapping-in-netbox-enterprise">Configuring SAML Group Mapping in NetBox Enterprise<a class="headerlink" href="#configuring-saml-group-mapping-in-netbox-enterprise" title="Permanent link">&para;</a></h1>
 <p>Setting up Group Mapping for SAML requires the <a href="../nbe-saml/">base SAML SSO Setup</a> to be configured and working first.</p>
 <h2 id="configure-the-idp">Configure the IdP<a class="headerlink" href="#configure-the-idp" title="Permanent link">&para;</a></h2>
 <p>NetBox Enterprise expects a SAML group attribute statement to be named <code>groups</code>, which contains a list of group names the user belongs to. If your IdP sends group information under a different attribute name, such as <code>MemberOf</code>, you must update its configuration to use <code>groups</code> to ensure proper mapping.</p>
@@ -554,6 +573,9 @@ tags:
 
 
 
+
+  
+  
 
 
 

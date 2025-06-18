@@ -1,0 +1,36 @@
+{% if page.meta.tags %}
+  {% set edition_tags = ['community', 'enterprise', 'cloud', 'airgap'] %}
+  {% set edition_found = [] %}
+  {% set other_tags = [] %}
+  
+  {% for tag in page.meta.tags %}
+    {% if tag in edition_tags %}
+      {% set _ = edition_found.append(tag) %}
+    {% else %}
+      {% set _ = other_tags.append(tag) %}
+    {% endif %}
+  {% endfor %}
+  
+  <!-- Edition Pills at Top -->
+  {% if edition_found %}
+    <div class="md-tags md-tags--edition">
+      {% for tag in edition_found %}
+        <a href="{{ config.site_url }}tags/#{{ tag }}" class="md-tag" data-tag="{{ tag }}">
+          {{ tag | title }}
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
+  
+  <!-- Other Tags at Bottom (if any) -->
+  {% if other_tags %}
+    <div class="md-tags md-tags--categories">
+      <h4>Related Topics</h4>
+      {% for tag in other_tags %}
+        <a href="{{ config.site_url }}tags/#{{ tag }}" class="md-tag" data-tag="{{ tag }}">
+          {{ tag | replace('-', ' ') | title }}
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endif %} 

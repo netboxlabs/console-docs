@@ -20,7 +20,7 @@
     
     
       
-        <title>Saml group map - NetBox Enterprise Documentation</title>
+        <title>Configuring SAML Group Mapping in NetBox Cloud - NetBox Enterprise Documentation</title>
       
     
     
@@ -49,6 +49,8 @@
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
       <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/tags.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -86,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#group-attribute-mapping" class="md-skip">
+        <a href="#configuring-saml-group-mapping-in-netbox-cloud" class="md-skip">
           Skip to content
         </a>
       
@@ -125,7 +127,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Saml group map
+              Configuring SAML Group Mapping in NetBox Cloud
             
           </span>
         </div>
@@ -490,7 +492,38 @@
               <article class="md-content__inner md-typeset">
                 
                   
-
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+  <!-- Edition Pills at Top -->
+  
+    <div class="md-tags md-tags--edition">
+      
+        <a href="https://netboxlabs.com/docs/tags/#cloud" class="md-tag" data-tag="cloud">
+          Cloud
+        </a>
+      
+        <a href="https://netboxlabs.com/docs/tags/#enterprise" class="md-tag" data-tag="enterprise">
+          Enterprise
+        </a>
+      
+    </div>
+  
+  
+  <!-- Other Tags at Bottom (if any) -->
+  
+ 
 
   
     <a href="https://github.com/netboxlabs/console-docs/edit/main/docs/Administration Console/saml-group-map.md" title="Edit this page" class="md-content__button md-icon">
@@ -501,14 +534,7 @@
   
 
 
-  <h1>Saml group map</h1>
-
-<hr />
-<p>title: Configuring SAML Group Mapping in NetBox Cloud<br />
-tags:
-  - netbox-cloud
-  - netbox-enterprise
----# Configuring SAML Group Mapping in NetBox Cloud  </p>
+<h1 id="configuring-saml-group-mapping-in-netbox-cloud">Configuring SAML Group Mapping in NetBox Cloud<a class="headerlink" href="#configuring-saml-group-mapping-in-netbox-cloud" title="Permanent link">&para;</a></h1>
 <p>NetBox Cloud supports SAML-based authentication, including group mappings to enforce role-based access control. For group mapping, you will need to provide your Identity Provider (IdP) group names so we can associate them with the desired NetBox groups.</p>
 <h2 id="group-attribute-mapping">Group Attribute Mapping<a class="headerlink" href="#group-attribute-mapping" title="Permanent link">&para;</a></h2>
 <p>By default, NetBox Cloud expects the SAML group attribute statement to be named <code>groups</code>, which contains a list of group names the user belongs to. If your IdP sends group information under a different attribute name, such as <code>MemberOf</code>, you must update its configuration to use <code>groups</code> to ensure proper mapping.</p>
@@ -530,6 +556,9 @@ tags:
 
 
 
+
+  
+  
 
 
 

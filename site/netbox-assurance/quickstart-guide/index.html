@@ -20,7 +20,7 @@
     
     
       
-        <title>Quickstart guide - NetBox Enterprise Documentation</title>
+        <title>NetBox Assurance Quickstart Guide - NetBox Enterprise Documentation</title>
       
     
     
@@ -49,6 +49,8 @@
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
       <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/tags.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -86,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#netbox-assurance-quickstart-guide" class="md-skip">
+        <a href="#prerequisites" class="md-skip">
           Skip to content
         </a>
       
@@ -125,7 +127,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Quickstart guide
+              NetBox Assurance Quickstart Guide
             
           </span>
         </div>
@@ -490,7 +492,51 @@
               <article class="md-content__inner md-typeset">
                 
                   
-
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+  <!-- Edition Pills at Top -->
+  
+    <div class="md-tags md-tags--edition">
+      
+        <a href="https://netboxlabs.com/docs/tags/#cloud" class="md-tag" data-tag="cloud">
+          Cloud
+        </a>
+      
+        <a href="https://netboxlabs.com/docs/tags/#enterprise" class="md-tag" data-tag="enterprise">
+          Enterprise
+        </a>
+      
+    </div>
+  
+  
+  <!-- Other Tags at Bottom (if any) -->
+  
+    <div class="md-tags md-tags--categories">
+      <h4>Related Topics</h4>
+      
+        <a href="https://netboxlabs.com/docs/tags/#assurance" class="md-tag" data-tag="assurance">
+          Assurance
+        </a>
+      
+    </div>
+  
+ 
 
   
     <a href="https://github.com/netboxlabs/console-docs/edit/main/docs/netbox-assurance/quickstart-guide.md" title="Edit this page" class="md-content__button md-icon">
@@ -501,34 +547,63 @@
   
 
 
-<p><span class="pill pill-enterprise">Enterprise</span></p>
-<h1 id="netbox-assurance-quickstart-guide">NetBox Assurance Quickstart Guide<a class="headerlink" href="#netbox-assurance-quickstart-guide" title="Permanent link">&para;</a></h1>
+  <h1>NetBox Assurance Quickstart Guide</h1>
+
 <div class="admonition note">
 <p class="admonition-title">NetBox Cloud Support</p>
 <p>NetBox Cloud support coming early July 2025.</p>
 </div>
-<p>This quickstart guide will help you get up and running with NetBox Assurance to control which data goes into NetBox by reviewing operational drift between your intended network state in NetBox and the actual network state.</p>
+<p>This quickstart guide will help you get NetBox Assurance up and running to detect and manage operational drift between your intended network state in NetBox and the actual state of your network infrastructure.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li>NetBox Enterprise installation</li>
-<li>NetBox Discovery configured and running (recommended)</li>
-<li>Network data sources (devices, controllers, or other systems)</li>
-<li>Appropriate permissions to configure assurance workflows and review data</li>
+<li>NetBox Enterprise installation with Assurance enabled</li>
+<li>Network data sources configured (NetBox Discovery recommended)</li>
+<li>Administrative access to NetBox Enterprise</li>
+<li>Network devices accessible for data collection</li>
 </ul>
-<h2 id="quick-setup">Quick Setup<a class="headerlink" href="#quick-setup" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Access NetBox Assurance</strong> through your NetBox interface</li>
-<li><strong>Configure data ingestion</strong> from NetBox Discovery or other sources via Diode SDK</li>
-<li><strong>Review operational drift</strong> and examine proposed change sets</li>
-<li><strong>Apply approved changes</strong> to NetBox or ignore deviations as needed</li>
-</ol>
-<p>For detailed setup instructions, see the <a href="../">NetBox Assurance overview</a>. </p>
+<h2 id="installation-and-setup">Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-enable-netbox-assurance">Step 1: Enable NetBox Assurance<a class="headerlink" href="#step-1-enable-netbox-assurance" title="Permanent link">&para;</a></h3>
+<p>During NetBox Enterprise installation, ensure NetBox Assurance is selected in the configuration screen:</p>
+<p><img alt="NetBox Enterprise Installation" src="../images/assurance-console-install.png" /></p>
+<h3 id="step-2-access-netbox-assurance">Step 2: Access NetBox Assurance<a class="headerlink" href="#step-2-access-netbox-assurance" title="Permanent link">&para;</a></h3>
+<p>Once installed, NetBox Assurance appears in your NetBox navigation sidebar:</p>
+<p><img alt="NetBox Assurance Interface" src="../images/assurance-main-page.png" /></p>
+<h3 id="step-3-configure-data-sources">Step 3: Configure Data Sources<a class="headerlink" href="#step-3-configure-data-sources" title="Permanent link">&para;</a></h3>
+<p>Set up data ingestion from one or more sources:</p>
+<ul>
+<li><strong>NetBox Discovery</strong>: Leverage existing network and device discovery data</li>
+<li><strong>Diode SDK</strong>: Configure custom integrations with monitoring systems, CMDBs, or other data sources</li>
+<li><strong>Direct API</strong>: Send data directly from scripts or automation tools</li>
+</ul>
+<h3 id="step-4-review-your-first-deviations">Step 4: Review Your First Deviations<a class="headerlink" href="#step-4-review-your-first-deviations" title="Permanent link">&para;</a></h3>
+<p>Once data flows in, Assurance will detect operational drift and present deviations for review:</p>
+<p><img alt="Deviations Dashboard" src="../images/Assurance_all_deviations.png" /></p>
+<h3 id="step-5-take-action">Step 5: Take Action<a class="headerlink" href="#step-5-take-action" title="Permanent link">&para;</a></h3>
+<p>For each deviation, you can:
+- <strong>Apply</strong>: Update NetBox with the discovered network state
+- <strong>Ignore</strong>: Mark as acceptable deviation
+- <strong>Recalculate</strong>: Refresh the comparison after making changes</p>
+<p><img alt="Apply Changes" src="../images/assurance-detail-apply-confirm.png" /></p>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="../workflows/">Configure Workflows</a></strong>: Set up automated drift detection rules</li>
+<li><strong><a href="../monitoring/">Data Ingestion Setup</a></strong>: Configure additional data sources</li>
+<li><strong><a href="../workflows/configuration/">Workflow Configuration</a></strong>: Customize detection and review processes</li>
+</ul>
+<h2 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Community Support</strong>: Join the <a href="https://netdev.chat/">NetBox Slack</a> <code>#netbox</code> channel</li>
+<li><strong>Documentation</strong>: Explore the detailed workflow and configuration guides </li>
+</ul>
 
 
 
 
 
 
+
+  
+  
 
 
 

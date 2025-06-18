@@ -20,7 +20,7 @@
     
     
       
-        <title>Netbox ansible collection - NetBox Enterprise Documentation</title>
+        <title>NetBox Integrations - NetBox Enterprise Documentation</title>
       
     
     
@@ -49,6 +49,8 @@
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
       <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/tags.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -86,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#netbox-ansible-collection-quick-start" class="md-skip">
+        <a href="#netbox-integrations" class="md-skip">
           Skip to content
         </a>
       
@@ -125,7 +127,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Netbox ansible collection
+              NetBox Integrations
             
           </span>
         </div>
@@ -490,7 +492,30 @@
               <article class="md-content__inner md-typeset">
                 
                   
-
+  
+  
+  
+  
+  
+    
+      
+    
+  
+  
+  <!-- Edition Pills at Top -->
+  
+    <div class="md-tags md-tags--edition">
+      
+        <a href="https://netboxlabs.com/docs/tags/#cloud" class="md-tag" data-tag="cloud">
+          Cloud
+        </a>
+      
+    </div>
+  
+  
+  <!-- Other Tags at Bottom (if any) -->
+  
+ 
 
   
     <a href="https://github.com/netboxlabs/console-docs/edit/main/docs/netbox-integrations/netbox-ansible-collection.md" title="Edit this page" class="md-content__button md-icon">
@@ -501,13 +526,7 @@
   
 
 
-  <h1>Netbox ansible collection</h1>
-
-<hr />
-<p>title: NetBox Integrations
-tags:
-  - netbox-cloud
----# NetBox Integrations</p>
+<h1 id="netbox-integrations">NetBox Integrations<a class="headerlink" href="#netbox-integrations" title="Permanent link">&para;</a></h1>
 <h2 id="netbox-ansible-collection-quick-start">NetBox Ansible Collection - Quick Start<a class="headerlink" href="#netbox-ansible-collection-quick-start" title="Permanent link">&para;</a></h2>
 <p>A short guide to getting started with the Ansible Collection for Netbox. </p>
 <p><img alt="netbox ansible collection" src="../../images/integrations/ansible-colection/ansible_collection.png" /></p>
@@ -650,8 +669,9 @@ tags:
 </span></code></pre></div>
 <p>To target hosts or groups from the inventory in your playbook, reference the hosts or groups as normal in the playbook:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>---
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>- name: Playbook using NetBox Inventory Plugin for Ansible
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>  hosts: device_roles_distribution, device_roles_access
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>- name: Playbook using NetBox Inventory Plugin for Ansible
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>  hosts: device_roles_distribution, device_roles_access
 </span></code></pre></div></p>
 <h2 id="use-case-2-define-intended-network-state-in-netbox">Use Case 2 - Define Intended Network State in NetBox<a class="headerlink" href="#use-case-2-define-intended-network-state-in-netbox" title="Permanent link">&para;</a></h2>
 <p>Define the intended state of your network in NetBox, by interacting with the NetBox database to define objects and their associated state in the following ways:</p>
@@ -830,6 +850,9 @@ tags:
 
 
 
+
+  
+  
 
 
 

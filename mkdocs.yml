@@ -94,6 +94,7 @@ theme:
 plugins:
   - search:
       separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+  - material/tags
 
 # Markdown extensions for enhanced content processing
 markdown_extensions:
@@ -150,6 +151,7 @@ nav:
 extra_css:
   - stylesheets/extra.css
   - stylesheets/custom.css
+  - stylesheets/tags.css
 
 extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6

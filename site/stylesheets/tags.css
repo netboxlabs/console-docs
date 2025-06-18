@@ -1,0 +1,82 @@
+/* Edition Tags - Display as Prominent Pills */
+.md-tag[data-tag="community"],
+.md-tag[data-tag="enterprise"], 
+.md-tag[data-tag="cloud"],
+.md-tag[data-tag="airgap"] {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-right: 0.75rem;
+  margin-bottom: 0.5rem;
+  color: white !important;
+  text-decoration: none !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-transform: capitalize;
+}
+
+/* Edition-specific colors */
+.md-tag[data-tag="community"] {
+  background: linear-gradient(135deg, #00bee0, #0099cc);
+}
+
+.md-tag[data-tag="enterprise"] {
+  background: linear-gradient(135deg, #ffac00, #e6990a);
+}
+
+.md-tag[data-tag="cloud"] {
+  background: linear-gradient(135deg, #00d9be, #00b8a3);
+}
+
+.md-tag[data-tag="airgap"] {
+  background: linear-gradient(135deg, #ff0078, #cc0060);
+}
+
+/* Other Tags - Display as Smaller Regular Tags */
+.md-tag:not([data-tag="community"]):not([data-tag="enterprise"]):not([data-tag="cloud"]):not([data-tag="airgap"]) {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-right: 0.5rem;
+  margin-bottom: 0.25rem;
+  background-color: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+}
+
+/* Edition tags container */
+.md-tags--edition {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  padding-bottom: 1rem;
+}
+
+/* Other tags container */
+.md-tags--categories {
+  margin-top: 2rem;
+  padding-top: 1rem;
+}
+
+.md-tags--categories h4 {
+  font-size: 0.9rem;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+/* Hover effects */
+.md-tag[data-tag="community"]:hover,
+.md-tag[data-tag="enterprise"]:hover,
+.md-tag[data-tag="cloud"]:hover,
+.md-tag[data-tag="airgap"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.md-tag:not([data-tag="community"]):not([data-tag="enterprise"]):not([data-tag="cloud"]):not([data-tag="airgap"]):hover {
+  background-color: var(--md-default-fg-color--light);
+  transform: translateY(-1px);
+} 

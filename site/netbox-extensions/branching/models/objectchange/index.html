@@ -20,7 +20,7 @@
     
     
       
-        <title>Objectchange - NetBox Enterprise Documentation</title>
+        <title>Object Changes - NetBox Enterprise Documentation</title>
       
     
     
@@ -49,6 +49,8 @@
       <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
       <link rel="stylesheet" href="../../../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/tags.css">
     
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -85,6 +87,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#object-changes" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -120,7 +127,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Objectchange
+              Object Changes
             
           </span>
         </div>
@@ -485,7 +492,38 @@
               <article class="md-content__inner md-typeset">
                 
                   
-
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+  <!-- Edition Pills at Top -->
+  
+    <div class="md-tags md-tags--edition">
+      
+        <a href="https://netboxlabs.com/docs/tags/#community" class="md-tag" data-tag="community">
+          Community
+        </a>
+      
+        <a href="https://netboxlabs.com/docs/tags/#enterprise" class="md-tag" data-tag="enterprise">
+          Enterprise
+        </a>
+      
+    </div>
+  
+  
+  <!-- Other Tags at Bottom (if any) -->
+  
+ 
 
   
     <a href="https://github.com/netboxlabs/console-docs/edit/main/docs/netbox-extensions/branching/models/objectchange.md" title="Edit this page" class="md-content__button md-icon">
@@ -496,14 +534,7 @@
   
 
 
-  <h1>Objectchange</h1>
-
-<hr />
-<p>title: Object Changes
-tags:
-  - netbox-community
-  - netbox-enterprise
----# Object Changes</p>
+<h1 id="object-changes">Object Changes<a class="headerlink" href="#object-changes" title="Permanent link">&para;</a></h1>
 <p>This model serves as a <a href="https://docs.djangoproject.com/en/stable/topics/db/models/#proxy-models">proxy</a> for NetBox's native <code>ObjectChange</code> model.</p>
 <p>It does not introduce any new database fields. Rather, it implements several functions which assist in the application and reversal of changes from a <a href="../branch/">branch</a> (namely <code>apply()</code> and <code>undo()</code>).</p>
 <div class="admonition tip">
@@ -516,6 +547,9 @@ tags:
 
 
 
+
+  
+  
 
 
 

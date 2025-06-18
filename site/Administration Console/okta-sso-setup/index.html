@@ -20,7 +20,7 @@
     
     
       
-        <title>Okta sso setup - NetBox Enterprise Documentation</title>
+        <title>Okta SSO Setup - NetBox Enterprise Documentation</title>
       
     
     
@@ -49,6 +49,8 @@
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
       <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/tags.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -86,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#okta-configuration" class="md-skip">
+        <a href="#okta-sso-setup" class="md-skip">
           Skip to content
         </a>
       
@@ -125,7 +127,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Okta sso setup
+              Okta SSO Setup
             
           </span>
         </div>
@@ -490,7 +492,30 @@
               <article class="md-content__inner md-typeset">
                 
                   
-
+  
+  
+  
+  
+  
+    
+      
+    
+  
+  
+  <!-- Edition Pills at Top -->
+  
+    <div class="md-tags md-tags--edition">
+      
+        <a href="https://netboxlabs.com/docs/tags/#cloud" class="md-tag" data-tag="cloud">
+          Cloud
+        </a>
+      
+    </div>
+  
+  
+  <!-- Other Tags at Bottom (if any) -->
+  
+ 
 
   
     <a href="https://github.com/netboxlabs/console-docs/edit/main/docs/Administration Console/okta-sso-setup.md" title="Edit this page" class="md-content__button md-icon">
@@ -501,14 +526,8 @@
   
 
 
-  <h1>Okta sso setup</h1>
-
-<hr />
-<p>title: Okta SSO Setup
-tags:
-  - netbox-cloud
----# Okta SSO Setup
-This guide explains how to configure single sign-on (SSO) support for NetBox Cloud using Okta as an authentication backend.</p>
+<h1 id="okta-sso-setup">Okta SSO Setup<a class="headerlink" href="#okta-sso-setup" title="Permanent link">&para;</a></h1>
+<p>This guide explains how to configure single sign-on (SSO) support for NetBox Cloud using Okta as an authentication backend.</p>
 <h2 id="okta-configuration">Okta Configuration<a class="headerlink" href="#okta-configuration" title="Permanent link">&para;</a></h2>
 <p>Note that Okta offers <a href="https://developer.okta.com/">free developer accounts</a></p>
 <ol>
@@ -556,6 +575,9 @@ SOCIAL_AUTH_OKTA_OPENIDCONNECT_API_URL = 'https://{Okta domain}/oauth2/'</p>
 
 
 
+
+  
+  
 
 
 

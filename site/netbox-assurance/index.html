@@ -9,8 +9,6 @@
         <meta name="description" content="NetBox Enterprise, Cloud, Discovery, and Assurance Documentation">
       
       
-        <meta name="author" content="NetBox Labs Documentation Team">
-      
       
         <link rel="canonical" href="https://netboxlabs.com/docs/netbox-assurance/">
       
@@ -52,6 +50,8 @@
     
       <link rel="stylesheet" href="../stylesheets/custom.css">
     
+      <link rel="stylesheet" href="../stylesheets/tags.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#problem-being-solved" class="md-skip">
+        <a href="#key-features" class="md-skip">
           Skip to content
         </a>
       
@@ -492,7 +492,51 @@
               <article class="md-content__inner md-typeset">
                 
                   
-
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+  <!-- Edition Pills at Top -->
+  
+    <div class="md-tags md-tags--edition">
+      
+        <a href="https://netboxlabs.com/docs/tags/#cloud" class="md-tag" data-tag="cloud">
+          Cloud
+        </a>
+      
+        <a href="https://netboxlabs.com/docs/tags/#enterprise" class="md-tag" data-tag="enterprise">
+          Enterprise
+        </a>
+      
+    </div>
+  
+  
+  <!-- Other Tags at Bottom (if any) -->
+  
+    <div class="md-tags md-tags--categories">
+      <h4>Related Topics</h4>
+      
+        <a href="https://netboxlabs.com/docs/tags/#assurance" class="md-tag" data-tag="assurance">
+          Assurance
+        </a>
+      
+    </div>
+  
+ 
 
   
     <a href="https://github.com/netboxlabs/console-docs/edit/main/docs/netbox-assurance/index.md" title="Edit this page" class="md-content__button md-icon">
@@ -509,136 +553,48 @@
 <p class="admonition-title"><em>Coming June 2025 for NetBox Enterprise, July 2025 for NetBox Cloud</em></p>
 <p>Be among the first to experience <strong>NetBox Assurance</strong>. <a href="https://netboxlabs.com/netbox-assurance/">Sign up</a> to be notified when we launch.</p>
 </div>
-<p>NetBox Assurance allows customers to control which data goes into NetBox. It does this by giving users a view of the difference between the data in their NetBox (representing the intended state of the infrastructure) and the data in their network (the operational state of the infrastructure). We call this difference <strong>"operational drift"</strong>, or simply "drift". </p>
-<p>This is different from "configuration drift", which is the difference between the running configuration on a network device and the intended configuration. NetBox Assurance detects and manages "operational drift", but not "configuration drift" today.</p>
-<h2 id="problem-being-solved">Problem Being Solved<a class="headerlink" href="#problem-being-solved" title="Permanent link">&para;</a></h2>
-<p>Finding and fixing operational drift is a game-changer for network teams striving to maintain reliable documentation of intent as the foundation for network automation, compliance, and operational excellence.</p>
-<p>Without good network documentation networking teams suffer friction in their manual and automated processes, but all network documentation is eventually out of date. NetBox Assurance gives operators the tools to make sure that their documentation is always up-to-date while keeping them fully in control.</p>
-<ul>
-<li><strong>Assurance allows operators onboarding to NetBox</strong> the ability to review the data (including the proposed updates to NetBox) prior to adding it to NetBox</li>
-<li><strong>Most importantly, Assurance enables operators to identify changes</strong> in the operational configuration of the network that indicate drift from the intended configuration as documented in NetBox, and quickly understand and resolve that drift</li>
-</ul>
+<div class="admonition note">
+<p class="admonition-title">NetBox Cloud Support</p>
+<p>NetBox Cloud support coming early July 2025.</p>
+</div>
+<p>NetBox Assurance allows you to control which data goes into NetBox by detecting and managing "operational drift"—the difference between your intended network state documented in NetBox and the actual operational state of your network infrastructure.</p>
 <h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Operational Drift Detection</strong>: Automatically identify deviations between NetBox documented intent and actual network state</li>
-<li><strong>Data Ingestion Control</strong>: Review and approve all data before it enters NetBox</li>
-<li><strong>Efficient Remediation</strong>: Correct detected deviations through guided workflows with options to apply changes, re-analyze, or archive</li>
-<li><strong>Seamless Integration</strong>: Enhance NetBox Cloud and NetBox Enterprise with continuous network validation and state synchronization</li>
-<li><strong>Multiple Data Sources</strong>: Works with NetBox Discovery agents, controller integrations, and Diode API/SDKs</li>
-<li><strong>Detailed Reports</strong>: Generate actionable reports highlighting network consistency and detected deviations</li>
-<li><strong>User Branch Workflows</strong>: Apply changes to specific user branches for controlled updates</li>
+<li><strong>Operational Drift Detection</strong>: Identify differences between NetBox's intended state and actual network state</li>
+<li><strong>Data Ingestion Control</strong>: Review and approve data before it enters NetBox, maintaining data quality</li>
+<li><strong>Seamless Integration</strong>: Works with NetBox Discovery and supports custom integrations via the Diode SDK</li>
+<li><strong>Change Set Management</strong>: Review proposed updates and apply them to NetBox branches or ignore as needed</li>
+<li><strong>Audit Trail</strong>: Track all changes and decisions for compliance and operational history</li>
 </ul>
 <h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
-<p>NetBox Assurance provides automated operational drift detection by continuously comparing ingested network data against your documented intent in NetBox. The workflow follows these key steps:</p>
-<h3 id="1-data-ingestion">1. Data Ingestion<a class="headerlink" href="#1-data-ingestion" title="Permanent link">&para;</a></h3>
-<p>Network information is sent to NetBox Assurance as ingested messages. These messages can originate from:
-- <strong>NetBox Discovery agents</strong> scanning your network using SSH, API calls, ping sweeps, and port scanning
-- <strong>Controller integrations</strong> with VMware vCenter, Juniper Mist, Cisco Catalyst Center, Microsoft DHCP, AWS VPC IPAM
-- <strong>Diode API and SDKs</strong> for custom integrations from monitoring systems, inventory systems, CMDBs, or spreadsheets</p>
-<h3 id="2-analysis-comparison">2. Analysis &amp; Comparison<a class="headerlink" href="#2-analysis-comparison" title="Permanent link">&para;</a></h3>
-<p>Ingested messages are analyzed against existing NetBox data to identify matches and detect potential deviations from the intended network state. These deviations are considered "operational drift".</p>
-<h3 id="3-deviation-review">3. Deviation Review<a class="headerlink" href="#3-deviation-review" title="Permanent link">&para;</a></h3>
-<p>Users can review detected deviations and examine proposed updates (change sets) based on identified operational drift with NetBox.</p>
-<h3 id="4-action-resolution">4. Action &amp; Resolution<a class="headerlink" href="#4-action-resolution" title="Permanent link">&para;</a></h3>
-<p>Users can take action on deviations by:
-- <strong>Applying changes</strong> to NetBox, either in the main branch or a specific user branch
-- <strong>Recalculating drift</strong> by rediffing changes against updated data
-- <strong>Archiving deviations</strong> as needed for historical tracking</p>
+<p>NetBox Assurance follows a structured four-step workflow:</p>
+<ol>
+<li><strong>Data Ingestion</strong>: Network information flows in from NetBox Discovery, direct device interrogation, or other sources via the Diode SDK</li>
+<li><strong>Analysis &amp; Comparison</strong>: Ingested data is analyzed against existing NetBox records to identify operational drift</li>
+<li><strong>Deviation Review</strong>: Review detected deviations and examine proposed change sets</li>
+<li><strong>Action &amp; Resolution</strong>: Apply changes to NetBox, recalculate drift, or ignore deviations as needed</li>
+</ol>
+<p><img alt="NetBox Assurance Main Interface" src="images/assurance-main-page.png" /></p>
 <h2 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h2>
-<h3 id="day-1-initial-population-of-netbox">Day 1 - Initial population of NetBox<a class="headerlink" href="#day-1-initial-population-of-netbox" title="Permanent link">&para;</a></h3>
-<p>All teams start with an empty NetBox. Using NetBox Assurance teams can stay in control as they rapidly populate their NetBox instance with data from the NetBox Discovery family of capabilities (network discovery, device discovery, controller integrations discovery). This gives teams insight into the data being onboarded and the ability to refine that data as they move through the first important steps of getting in control of their networks.</p>
-<p><strong>Outcome</strong>: Faster time to value with NetBox, confidence in the data going into NetBox</p>
-<h3 id="day-15-staying-in-control-while-improving-network-management-maturity">Day 1.5 - Staying in control while improving network management maturity<a class="headerlink" href="#day-15-staying-in-control-while-improving-network-management-maturity" title="Permanent link">&para;</a></h3>
-<p>Getting networking documentation under control is a gradual process and it is imperative that teams are able to keep going with day to day operations while this is underway. NetBox Assurance gives teams a clear understanding of how their documentation processes are progressing, while also highlighting areas that need further improvement. For example it may be that after documenting a part of the network NetBox Assurance shows that the network is drifting from the documentation. This points teams in the right direction for process improvements, including network automation efforts.</p>
-<p><strong>Outcome</strong>: Accelerating transformation/automation</p>
-<h3 id="day-2-staying-in-control">Day 2 - Staying in control<a class="headerlink" href="#day-2-staying-in-control" title="Permanent link">&para;</a></h3>
-<p>As teams approach higher levels of operational maturity the drift between their documentation and their network reduces, but they need to remain hyper vigilant not to slide backwards. NetBox Assurance gives network operators timely and accurate information about parts of their network that are changing outside of the process, whether due to human error or technical fault. This allows teams to respond immediately to operational drift, armed with full context about the issue at hand.</p>
-<p><strong>Outcome</strong>: Faster time to remediate drift, reduction in time to resolve operational issues, less downtime, less risk, confidence to move faster</p>
-<h3 id="additional-use-cases">Additional Use Cases<a class="headerlink" href="#additional-use-cases" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Network Drift Detection</strong>: Ensure network configurations remain consistent with the source of truth</li>
-<li><strong>Compliance Audits</strong>: Support compliance efforts by detecting unauthorized changes and providing audit trails</li>
-<li><strong>Incident Prevention</strong>: Identify and address deviations before they cause major disruptions</li>
-<li><strong>Change Management</strong>: Improve coordination between teams by highlighting discrepancies early</li>
+<li><strong>Day 1 - Initial NetBox Population</strong>: Control data quality while rapidly populating NetBox with discovery data</li>
+<li><strong>Day 1.5 - Improving Network Maturity</strong>: Maintain operations while gradually improving documentation and automation processes  </li>
+<li><strong>Day 2 - Operational Excellence</strong>: Proactively detect and resolve operational drift to maintain network reliability</li>
 </ul>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong><a href="quickstart-guide/">Quickstart Guide</a></strong>: Get up and running quickly with NetBox Assurance</li>
-<li><strong><a href="workflows/">Assurance Workflows</a></strong>: Configure operational drift detection and data review processes</li>
-<li><strong><a href="monitoring/">Data Ingestion</a></strong>: Set up data sources and ingestion from NetBox Discovery and other systems</li>
+<li><strong><a href="workflows/">Assurance Workflows</a></strong>: Configure drift detection and review processes</li>
+<li><strong><a href="monitoring/">Data Ingestion</a></strong>: Set up data sources from NetBox Discovery and other systems</li>
 </ol>
-<h2 id="documentation-sections">Documentation Sections<a class="headerlink" href="#documentation-sections" title="Permanent link">&para;</a></h2>
-<h3 id="workflows">Workflows<a class="headerlink" href="#workflows" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong><a href="workflows/configuration/">Workflow Configuration</a></strong>: Configure monitoring targets, detection rules, and actions</li>
-<li><strong><a href="workflows/deviation-detection/">Deviation Detection</a></strong>: Understand how deviations are identified and classified</li>
-<li><strong><a href="workflows/remediation/">Remediation</a></strong>: Automated and guided remediation of detected issues</li>
-</ul>
-<h3 id="data-ingestion">Data Ingestion<a class="headerlink" href="#data-ingestion" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong><a href="monitoring/">Data Ingestion Overview</a></strong>: NetBox Discovery integration and Diode SDK data sources</li>
-</ul>
-<h2 id="integration-with-netbox-editions">Integration with NetBox Editions<a class="headerlink" href="#integration-with-netbox-editions" title="Permanent link">&para;</a></h2>
-<h3 id="netbox-community-edition">NetBox Community Edition<a class="headerlink" href="#netbox-community-edition" title="Permanent link">&para;</a></h3>
-<p>NetBox Assurance is a commercial product that is available to NetBox Cloud and NetBox Enterprise customers, however some of the underlying technologies including Diode and Orb agents are available to all users.</p>
-<h3 id="netbox-cloud">NetBox Cloud<a class="headerlink" href="#netbox-cloud" title="Permanent link">&para;</a></h3>
-<p>NetBox Assurance is an optional add-on for NetBox Cloud. When purchased, its services are provisioned in the cloud and securely integrated with the NetBox Cloud instance. Additionally, the NetBox Assurance UI and Diode data plugins are automatically installed on the instance.</p>
-<h3 id="netbox-enterprise">NetBox Enterprise<a class="headerlink" href="#netbox-enterprise" title="Permanent link">&para;</a></h3>
-<p>NetBox Assurance is an optional component of NetBox Enterprise and is included in the installation bundle. During installation, the customer license file determines whether NetBox Assurance is enabled. If entitled, the installation deploys NetBox Assurance services along with the NetBox Assurance UI and Diode data plugins.</p>
-<h2 id="relationship-to-diode">Relationship to Diode<a class="headerlink" href="#relationship-to-diode" title="Permanent link">&para;</a></h2>
-<p>Diode is a source-available project from NetBox Labs that offers a subset of NetBox Assurance functionality for loading data into NetBox. It is fully compatible with the NetBox Discovery agent and works across all NetBox editions.</p>
-<p>Diode and NetBox Assurance share a common API for data ingestion, the Diode SDK, which is available for Python and Golang. This interface provides an alternative API for sending data to NetBox, featuring built-in idempotence, automatic ordering, and other capabilities designed to simplify the development of high-performance, low-maintenance integrations.</p>
-<h2 id="pricing-and-packaging">Pricing and Packaging<a class="headerlink" href="#pricing-and-packaging" title="Permanent link">&para;</a></h2>
-<ul>
-<li>NetBox Assurance is available as an add-on for NetBox Cloud and NetBox Enterprise but is not offered as a standalone product for the NetBox Community edition</li>
-<li>Each Assurance tier includes a designated volume of ingested entities per month, with the option to purchase additional capacity as needed</li>
-<li>The NetBox Discovery agent is included with NetBox Assurance, while agent extensions—provided as controller discovery integrations—are available in Standard and Premium bundles for Professional and Enterprise tiers</li>
-</ul>
-<h2 id="roadmap">Roadmap<a class="headerlink" href="#roadmap" title="Permanent link">&para;</a></h2>
-<h3 id="netbox-assurance">NetBox Assurance:<a class="headerlink" href="#netbox-assurance" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Released for NetBox Enterprise</strong>: June 2025</li>
-<li><strong>Released for NetBox Cloud</strong>: July 2025</li>
-<li><strong>Planned feature enhancements</strong>:</li>
-<li>Event triggers and notifications</li>
-<li>API</li>
-<li>Analytics</li>
-<li>Automated actions</li>
-<li>Drift detection of device configurations ("configuration drift")</li>
-</ul>
-<h2 id="business-value">Business Value<a class="headerlink" href="#business-value" title="Permanent link">&para;</a></h2>
-<p>Accurate network documentation is foundational for high-performance networking teams, enabling them to scale operations efficiently, minimize downtime, and improve service quality. NetBox Assurance delivers:</p>
-<h3 id="improved-network-reliability-and-stability">Improved Network Reliability and Stability<a class="headerlink" href="#improved-network-reliability-and-stability" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Ensures teams always have an up-to-date view of their infrastructure</li>
-<li>Reduces troubleshooting time by providing accurate, real-time insights</li>
-<li>Detects and flags unauthorized or unintended changes</li>
-</ul>
-<h3 id="increased-operational-efficiency">Increased Operational Efficiency<a class="headerlink" href="#increased-operational-efficiency" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Streamlines network management by eliminating manual validation effort</li>
-<li>Reduces reliance on custom scripts and manual audits</li>
-<li>Enables automation efforts by ensuring NetBox data remains accurate and trustworthy</li>
-</ul>
-<h3 id="faster-incident-resolution-and-reduced-downtime">Faster Incident Resolution and Reduced Downtime<a class="headerlink" href="#faster-incident-resolution-and-reduced-downtime" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Provides immediate visibility into changes that may be impacting network performance</li>
-<li>Reduces Mean Time to Repair (MTTR) with full context about intended versus actual state</li>
-<li>Enhances root cause analysis with clear historical records</li>
-</ul>
-<h3 id="strengthened-security-and-compliance">Strengthened Security and Compliance<a class="headerlink" href="#strengthened-security-and-compliance" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Helps enforce governance and compliance policies by identifying unauthorized changes</li>
-<li>Supports regulatory frameworks (PCI-DSS, SOC 2, NIST, ISO 27001)</li>
-<li>Reduces security breach risks from undocumented modifications</li>
-</ul>
 <h2 id="support-and-resources">Support and Resources<a class="headerlink" href="#support-and-resources" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Community Support</strong>: Connect with the community on <a href="https://netdev.chat/">Slack</a> in the <code>#netbox</code> channel.</li>
-<li><strong>Documentation</strong>: Additional resources and integration guides available in related sections.</li>
+<li><strong>Community Support</strong>: Connect with the community on <a href="https://netdev.chat/">Slack</a> in the <code>#netbox</code> channel</li>
+<li><strong>Documentation</strong>: Additional resources and integration guides available in related sections</li>
+<li><strong>GitHub Repository</strong>: Find NetBox Discovery integration <a href="https://github.com/netboxlabs/orb-agent">here</a></li>
 </ul>
 <hr />
-<p>With <strong>NetBox Assurance</strong>, teams can detect, report, and resolve network deviations in real time, ensuring a consistent and reliable network environment through continuous validation and corrective actions.</p>
+<p>By leveraging <strong>NetBox Assurance</strong>, organizations can maintain accurate network documentation, reduce operational risk, and build confidence in their network automation initiatives through continuous validation and drift detection.</p>
 
 
 
