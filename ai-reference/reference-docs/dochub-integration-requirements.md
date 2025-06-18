@@ -46,14 +46,14 @@ const TAG_LABELS = {
   'netbox-cloud': 'NetBox Cloud',
   'netbox-enterprise': 'NetBox Enterprise', 
   'netbox-community': 'NetBox Community',
-  'netbox-airgap': 'NetBox Air-Gap'
+  'airgap': 'Air-Gap'
 };
 
 const TAG_COLORS = {
   'netbox-cloud': '#00d9be',
   'netbox-enterprise': '#ffac00',
   'netbox-community': '#00bee0', 
-  'netbox-airgap': '#ff0078'
+  'airgap': '#ff0078'
 };
 ```
 

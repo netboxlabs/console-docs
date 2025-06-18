@@ -9,7 +9,7 @@ const PILL_TO_TAG_MAP = {
   'pill-cloud': 'netbox-cloud',
   'pill-enterprise': 'netbox-enterprise', 
   'pill-community': 'netbox-community',
-  'pill-airgap': 'netbox-airgap'
+  'pill-airgap': 'airgap'
 };
 
 function extractPillsFromContent(content) {

@@ -23,7 +23,7 @@ The `console-docs` repository is now optimized for DocHub integration with:
 | `netbox-cloud` | NetBox Cloud | #00d9be | Cloud features and administration |
 | `netbox-enterprise` | NetBox Enterprise | #ffac00 | On-premises features |
 | `netbox-community` | NetBox Community | #00bee0 | Community edition features |
-| `netbox-airgap` | NetBox Air-Gap | #ff0078 | Air-gap deployment features |
+| `airgap` | Air-Gap | #ff0078 | Air-gap deployment features |
 
 ## Format Migration
 

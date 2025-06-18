@@ -6,20 +6,20 @@ site_description: NetBox Enterprise, Cloud, Discovery, and Assurance Documentati
 extra:
   # Product tagging system for DocHub integration
   product_tags:
-    netbox-cloud:
-      label: "NetBox Cloud"
+    cloud:
+      label: "Cloud"
       color: "#00d9be"
       description: "NetBox Cloud features and administration"
-    netbox-enterprise:
-      label: "NetBox Enterprise"
+    enterprise:
+      label: "Enterprise"
       color: "#ffac00"
       description: "NetBox Enterprise on-premises features"
-    netbox-community:
-      label: "NetBox Community"
+    community:
+      label: "Community"
       color: "#00bee0"
       description: "NetBox Community edition features"
-    netbox-airgap:
-      label: "NetBox Air-Gap"
+    airgap:
+      label: "Air-Gap"
       color: "#ff0078"
       description: "NetBox Air-Gap deployment features"
   

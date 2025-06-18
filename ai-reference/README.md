@@ -1,8 +1,8 @@
 ---
 tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
+  - cloud
+  - enterprise
+  - community
 author: "NetBox Labs Documentation Team"
 last_updated: "2025-01-27"
 versions:
@@ -62,9 +62,9 @@ We use **comprehensive YAML frontmatter** with version tracking for better organ
 ```yaml
 ---
 tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
+  - cloud
+  - enterprise
+  - community
 title: "Document Title"
 description: "SEO-friendly description for search and social sharing"
 author: "Author Name or NetBox Labs Documentation Team"
@@ -144,10 +144,14 @@ versions:
 ### Available Product Tags
 | Tag | Display | Use For |
 |-----|---------|---------|
-| `netbox-cloud` | NetBox Cloud | Cloud-specific features and administration |
-| `netbox-enterprise` | NetBox Enterprise | Enterprise-specific features and installation |
-| `netbox-community` | NetBox Community | Open source features and community tools |
-| `netbox-airgap` | NetBox Air-Gap | Air-gapped deployment scenarios |
+| `cloud` | Cloud | Cloud-specific features and administration |
+| `enterprise` | Enterprise | Enterprise-specific features and installation |
+| `community` | Community | Open source features and community tools |
+| `discovery` | Discovery | Network discovery and device detection features |
+| `assurance` | Assurance | Network monitoring and assurance capabilities |
+| `operator` | Operator | AI-powered network operations and automation |
+| `netbox` | NetBox | Core NetBox features and functionality |
+| `airgap` | Air-Gap | Air-gapped deployment scenarios |
 
 ## Guidelines for AI-Assisted Documentation
 

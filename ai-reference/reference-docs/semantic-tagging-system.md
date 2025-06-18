@@ -9,13 +9,14 @@ The semantic tagging system provides comprehensive content categorization and cr
 ### Product-Specific Tags
 These tags identify which NetBox products the content applies to:
 
-- `netbox-cloud` - NetBox Cloud features and administration
-- `netbox-enterprise` - NetBox Enterprise features and installation
-- `netbox-community` - NetBox Community edition features
-- `netbox-discovery` - Network discovery and device detection
-- `netbox-assurance` - Network monitoring and assurance capabilities
-- `netbox-operator` - AI-powered network operations and automation
-- `netbox-airgap` - Air-gapped deployment scenarios
+- `cloud` - NetBox Cloud features and administration
+- `enterprise` - NetBox Enterprise features and installation
+- `community` - NetBox Community edition features
+- `discovery` - Network discovery and device detection
+- `assurance` - Network monitoring and assurance capabilities
+- `operator` - AI-powered network operations and automation
+- `netbox` - Core NetBox features and functionality
+- `airgap` - Air-gapped deployment scenarios
 
 ### Authentication & Security Tags
 These tags cover identity management and security features:

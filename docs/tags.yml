@@ -1,38 +1,43 @@
 # Product-Specific Tags
-netbox-cloud:
-  label: 'NetBox Cloud'
-  permalink: '/netbox-cloud'
+cloud:
+  label: 'Cloud'
+  permalink: '/cloud'
   description: 'Documentation specific to NetBox Cloud deployments and features'
 
-netbox-enterprise:
-  label: 'NetBox Enterprise'
-  permalink: '/netbox-enterprise'
+enterprise:
+  label: 'Enterprise'
+  permalink: '/enterprise'
   description: 'Documentation specific to NetBox Enterprise deployments and features'
 
-netbox-community:
-  label: 'NetBox Community'
-  permalink: '/netbox-community'
+community:
+  label: 'Community'
+  permalink: '/community'
   description: 'Documentation applicable to NetBox Community edition'
 
-netbox-airgap:
-  label: 'NetBox Air-Gap'
-  permalink: '/netbox-airgap'
+airgap:
+  label: 'Air-Gap'
+  permalink: '/airgap'
   description: 'Documentation for air-gapped NetBox deployments'
 
-netbox-discovery:
-  label: 'NetBox Discovery'
-  permalink: '/netbox-discovery'
+discovery:
+  label: 'Discovery'
+  permalink: '/discovery'
   description: 'Network discovery and device detection features'
 
-netbox-assurance:
-  label: 'NetBox Assurance'
-  permalink: '/netbox-assurance'
+assurance:
+  label: 'Assurance'
+  permalink: '/assurance'
   description: 'Network monitoring and assurance capabilities'
 
-netbox-operator:
-  label: 'NetBox Operator'
-  permalink: '/netbox-operator'
+operator:
+  label: 'Operator'
+  permalink: '/operator'
   description: 'AI-powered network operations and automation'
+
+netbox:
+  label: 'NetBox'
+  permalink: '/netbox'
+  description: 'Core NetBox features and functionality'
 
 # Authentication & Security Tags
 authentication:

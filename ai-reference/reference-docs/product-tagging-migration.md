@@ -30,7 +30,7 @@ tags:
 | `netbox-cloud` | NetBox Cloud | Cloud-specific features, Administration Console, cloud connectivity, free plan features |
 | `netbox-enterprise` | NetBox Enterprise | Enterprise installation, enterprise-specific features, on-premises deployment |
 | `netbox-community` | NetBox Community | Open source features, community plugins, SDKs, general NetBox concepts |
-| `netbox-airgap` | NetBox Air-Gap | Air-gapped deployment scenarios, offline installations |
+| `airgap` | Air-Gap | Air-gapped deployment scenarios, offline installations |
 
 ## Tagging Strategy by Content Type
 

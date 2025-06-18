@@ -136,7 +136,7 @@ external_links:
 | `netbox-cloud` | NetBox Cloud | Cloud-specific features, Administration Console, cloud connectivity |
 | `netbox-enterprise` | NetBox Enterprise | Enterprise installation, enterprise-specific features |
 | `netbox-community` | NetBox Community | Open source features, community plugins, SDKs |
-| `netbox-airgap` | NetBox Air-Gap | Air-gapped deployment scenarios |
+| `airgap` | Air-Gap | Air-gapped deployment scenarios |
 
 ### Tagging Guidelines
 - **Use only relevant tags** - don't include all tags if feature is product-specific

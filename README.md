@@ -111,7 +111,7 @@ mkdocs serve
 | `netbox-cloud` | NetBox Cloud | 🟢 Teal |
 | `netbox-enterprise` | NetBox Enterprise | 🟠 Orange |
 | `netbox-community` | NetBox Community | 🔵 Blue |
-| `netbox-airgap` | NetBox Air-Gap | 🔴 Pink |
+| `airgap` | Air-Gap | 🔴 Pink |
 
 ## 📝 Documentation Team Workflow Guide
 

@@ -59,7 +59,7 @@ The following product tags are available in `docs/tags.yml`:
 | `netbox-cloud` | NetBox Cloud | 🟢 Teal (`#00d9be`) | Documentation for NetBox Cloud |
 | `netbox-enterprise` | NetBox Enterprise | 🟠 Orange (`#ffac00`) | Documentation for NetBox Enterprise |
 | `netbox-community` | NetBox Community | 🔵 Blue (`#00bee0`) | Documentation for NetBox Community |
-| `netbox-airgap` | NetBox Air-Gap | 🔴 Pink (`#ff0078`) | Documentation for air-gapped deployments |
+| `airgap` | Air-Gap | 🔴 Pink (`#ff0078`) | Documentation for air-gapped deployments |
 
 ## How to Use
 

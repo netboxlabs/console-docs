@@ -46,7 +46,7 @@ const CONTENT_RULES = [
   },
   {
     pattern: /air.?gap|airgap|offline|disconnected/gi,
-    tags: ['netbox-airgap'],
+    tags: ['airgap'],
     weight: 2
   },
   {

@@ -8,40 +8,46 @@ const matter = require('gray-matter');
 const SEMANTIC_TAG_RULES = {
   // Product-specific tags based on file paths
   productTags: {
-    'netbox-cloud': [
+    'cloud': [
       '/Administration Console/',
       '/NetBox Cloud/',
       'cloud.netboxapp.com',
       'NetBox Cloud',
       'cloud-specific'
     ],
-    'netbox-enterprise': [
+    'enterprise': [
       '/netbox-enterprise/',
       'NetBox Enterprise',
       'enterprise-specific',
       'on-premises',
       'self-hosted'
     ],
-    'netbox-discovery': [
+    'discovery': [
       '/netbox-discovery/',
       'NetBox Discovery',
       'device discovery',
       'network discovery',
       'discovery agent'
     ],
-    'netbox-assurance': [
+    'assurance': [
       '/netbox-assurance/',
       'NetBox Assurance',
       'network monitoring',
       'assurance',
       'monitoring workflows'
     ],
-    'netbox-operator': [
+    'operator': [
       '/netbox-operator/',
       'NetBox Operator',
       'AI-powered',
       'agentic AI',
       'semantic map'
+    ],
+    'netbox': [
+      'NetBox',
+      'core NetBox',
+      'NetBox features',
+      'NetBox functionality'
     ]
   },
 
@@ -306,12 +312,12 @@ const SEMANTIC_TAG_RULES = {
 
 // File path-based tagging rules
 const PATH_BASED_TAGS = {
-  'Administration Console': ['netbox-cloud', 'administration', 'configuration'],
-  'NetBox Cloud': ['netbox-cloud', 'getting-started'],
-  'netbox-enterprise': ['netbox-enterprise', 'installation', 'configuration'],
-  'netbox-discovery': ['netbox-discovery', 'networking'],
-  'netbox-assurance': ['netbox-assurance', 'monitoring'],
-  'netbox-operator': ['netbox-operator', 'automation'],
+  'Administration Console': ['cloud', 'administration', 'configuration'],
+  'NetBox Cloud': ['cloud', 'getting-started'],
+  'netbox-enterprise': ['enterprise', 'installation', 'configuration'],
+  'netbox-discovery': ['discovery', 'networking'],
+  'netbox-assurance': ['assurance', 'monitoring'],
+  'netbox-operator': ['operator', 'automation'],
   'cloud-connectivity': ['cloud-connectivity', 'networking', 'infrastructure'],
   'netbox-integrations': ['integration', 'automation'],
   'netbox-extensions': ['integration', 'automation'],
