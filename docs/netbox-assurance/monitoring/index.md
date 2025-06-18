@@ -5,73 +5,88 @@
 !!! note "NetBox Cloud Support"
     NetBox Cloud support coming early July 2025.
 
-NetBox Assurance provides data ingestion and analysis capabilities to identify operational drift between the intended state in NetBox and actual network information from various data sources.
+NetBox Assurance ingests network data from multiple sources and analyzes it against your NetBox documentation to identify operational drift. This process ensures your network documentation stays accurate and up-to-date.
 
-## Data Ingestion Overview
-
-NetBox Assurance receives network information as ingested messages from various data sources and analyzes them against the intended state stored in NetBox. This analysis identifies operational drift and provides you with change sets to review before updating NetBox.
-
-## Data Sources and Integration
+## Data Sources
 
 ### NetBox Discovery Integration
-- **Discovery Agent**: Leverage network discovery, device discovery, and controller integrations
-- **Controller Discovery**: VMware vCenter, Juniper Mist, Cisco Catalyst Center, Microsoft DHCP, AWS VPC IPAM
-- **Automated Data Collection**: Device inventory, topology, and network state information
+The primary source for automated network data collection:
+
+- **Network Discovery**: Automated discovery of network devices and topology
+- **Device Discovery**: Detailed device inventory and configuration collection
+- **Controller Integrations**: VMware vCenter, Cisco Catalyst Center, Juniper Mist, Microsoft DHCP, AWS VPC IPAM
+
+![Diode Configuration](../images/diode_settings_endpoint.png)
 
 ### Diode SDK Integration
-- **Public API**: Ingest data from any system or data source
-- **Python and Golang SDKs**: Available development kits for custom integrations
-- **Monitoring Systems**: Integration with observability systems like Prometheus, Grafana, DataDog
-- **Inventory Systems**: CMDB, spreadsheets, and other data sources
+Public API for custom data sources and integrations:
 
-### Analysis and Comparison
-- **Operational Drift Detection**: Compare ingested data against existing NetBox records
-- **Change Set Generation**: Create proposed updates based on identified differences
-- **Data Quality Control**: Review and approve data before it enters NetBox
+- **Python and Golang SDKs**: Development kits for building custom integrations
+- **Monitoring Systems**: Prometheus, Grafana, DataDog, Splunk
+- **Inventory Systems**: CMDBs, spreadsheets, asset management systems
+- **Automation Tools**: Ansible, Terraform, custom scripts
 
-## Monitoring Modes
+![Diode Credentials](../images/diode_credentials.png)
+
+### Direct API Access
+Send data directly to NetBox Assurance:
+- **REST API**: Standard HTTP-based data submission
+- **Bulk Operations**: Efficient handling of large data sets
+- **Real-time Updates**: Immediate processing of network changes
+- **Idempotent Operations**: Safe to retry without duplicating data
+
+## Analysis Process
+
+### Operational Drift Detection
+NetBox Assurance compares ingested data against existing NetBox records to identify:
+
+- **Missing Objects**: Network elements discovered but not documented in NetBox
+- **Obsolete Objects**: NetBox entries that no longer exist in the actual network
+- **Configuration Drift**: Differences in device attributes, IP addresses, or relationships
+- **Topology Changes**: New connections or removed links between devices
+
+### Data Quality Control
+Before data enters NetBox, Assurance provides:
+
+- **Change Preview**: See exactly what would be modified in NetBox
+- **Impact Analysis**: Understand the scope of proposed changes
+- **Conflict Resolution**: Handle overlapping or contradictory data
+- **Validation Rules**: Ensure data meets organizational standards
+
+![Deviation Review](../images/assurance-detail.png)
+
+## Integration Patterns
 
 ### Continuous Monitoring
-Real-time observation of network state with immediate deviation detection:
-- Low-latency change detection
-- Critical infrastructure monitoring
-- Security event monitoring
-- Performance threshold monitoring
+Real-time observation of network state:
+- **Event-driven Updates**: Process changes as they occur
+- **Low-latency Detection**: Immediate identification of drift
+- **Critical Infrastructure Focus**: Priority monitoring for essential systems
 
-### Scheduled Monitoring  
-Periodic comprehensive validation of network state:
-- Daily configuration audits
-- Weekly compliance reports
-- Monthly trend analysis
-- Quarterly infrastructure reviews
+### Scheduled Collection
+Periodic comprehensive data gathering:
+- **Daily Discovery Runs**: Regular network scans
+- **Weekly Compliance Audits**: Systematic validation of network state
+- **Monthly Trend Analysis**: Long-term drift pattern identification
 
-### Event-driven Monitoring
-Triggered monitoring based on specific network events:
-- Configuration change notifications
-- Device restart events
-- Interface state changes
-- Maintenance window activities
-
-## Integration Points
-
-### NetBox Discovery
-- Leverage existing discovery data for monitoring
-- Automatic target identification from discovery results
-- Shared credential management
-- Unified reporting and alerting
-
-### External Systems
-- **ITSM Integration**: ServiceNow, Jira Service Desk
-- **Monitoring Tools**: Prometheus, Grafana, DataDog
-- **Communication**: Slack, Microsoft Teams, Email
-- **Automation**: Ansible, Terraform, custom APIs
+### Hybrid Approach
+Combination of real-time and scheduled monitoring:
+- **Critical Systems**: Continuous monitoring for core infrastructure
+- **Standard Systems**: Scheduled collection for routine equipment
+- **Flexible Policies**: Different monitoring strategies per device type
 
 ## Getting Started
 
-1. **Configure Monitoring Targets**: Define which devices and services to monitor
-2. **Set Up Data Sources**: Configure SNMP, APIs, and other data collection methods
-3. **Define Monitoring Rules**: Establish what constitutes normal vs. deviant behavior
-4. **Configure Alerting**: Set up notifications and escalation procedures
-5. **Enable Continuous Monitoring**: Start real-time network state observation
+1. **Configure NetBox Discovery**: Set up automated network and device discovery
+2. **Enable Diode Integration**: Connect monitoring systems and data sources
+3. **Define Data Sources**: Specify which systems should send data to Assurance
+4. **Set Collection Schedules**: Determine how frequently to gather network data
+5. **Review Initial Results**: Examine first deviations and tune detection sensitivity
 
-For detailed configuration instructions, see the monitoring-specific documentation pages. 
+## Best Practices
+
+- **Start with Discovery**: Use NetBox Discovery as your primary data source
+- **Gradual Expansion**: Add custom integrations incrementally
+- **Data Validation**: Verify data quality before large-scale ingestion
+- **Monitor Performance**: Track ingestion rates and processing times
+- **Document Sources**: Maintain clear records of all data integration points 

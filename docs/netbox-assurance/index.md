@@ -3,47 +3,40 @@
 !!! note "NetBox Cloud Support"
     NetBox Cloud support coming early July 2025.
 
-NetBox Assurance allows you to control which data goes into NetBox by giving you a view of the difference between the data in your NetBox (representing the intended state of the infrastructure) and the data in your network (the operational state of the infrastructure). We call this difference "operational drift", which helps teams maintain accurate documentation as the foundation for network automation, compliance, and operational excellence.
+NetBox Assurance allows you to control which data goes into NetBox by detecting and managing "operational drift"—the difference between your intended network state documented in NetBox and the actual operational state of your network infrastructure.
 
 ## Key Features
-- **Operational Drift Detection**: Identify differences between NetBox's intended state and actual network state.
-- **Data Ingestion Control**: Review and approve data before it enters NetBox, maintaining data quality.
-- **NetBox Discovery Integration**: Leverage existing discovery data and controller integrations.
-- **Diode SDK Integration**: Public API for ingesting data from any system or data source.
-- **Change Set Management**: Review proposed updates and apply them to NetBox branches.
+- **Operational Drift Detection**: Identify differences between NetBox's intended state and actual network state
+- **Data Ingestion Control**: Review and approve data before it enters NetBox, maintaining data quality
+- **Seamless Integration**: Works with NetBox Discovery and supports custom integrations via the Diode SDK
+- **Change Set Management**: Review proposed updates and apply them to NetBox branches or ignore as needed
+- **Audit Trail**: Track all changes and decisions for compliance and operational history
 
 ## How It Works
-NetBox Assurance follows a four-step process:
+NetBox Assurance follows a structured four-step workflow:
 
-1. **Data Ingestion**: Network information is sent to NetBox Assurance as ingested messages from NetBox Discovery, direct device interrogation, or other network data sources via the Diode SDK.
-2. **Analysis & Comparison**: Ingested messages are analyzed against existing NetBox data to identify matches and detect operational drift.
-3. **Deviation Review**: You can review detected deviations and examine proposed updates (change sets) based on identified operational drift.
-4. **Action & Resolution**: Take action by applying changes to NetBox (main branch or user branches), recalculating drift, or ignoring deviations as needed.
+1. **Data Ingestion**: Network information flows in from NetBox Discovery, direct device interrogation, or other sources via the Diode SDK
+2. **Analysis & Comparison**: Ingested data is analyzed against existing NetBox records to identify operational drift
+3. **Deviation Review**: Review detected deviations and examine proposed change sets
+4. **Action & Resolution**: Apply changes to NetBox, recalculate drift, or ignore deviations as needed
+
+![NetBox Assurance Main Interface](images/assurance-main-page.png)
 
 ## Use Cases
-- **Day 1 - Initial NetBox Population**: Stay in control while rapidly populating NetBox with discovery data, ensuring data quality from the start.
-- **Day 1.5 - Improving Network Management**: Maintain operational continuity while gradually improving documentation processes and automation maturity.
-- **Day 2 - Operational Excellence**: Achieve high maturity with timely, accurate information about operational drift to respond immediately and maintain confidence.
+- **Day 1 - Initial NetBox Population**: Control data quality while rapidly populating NetBox with discovery data
+- **Day 1.5 - Improving Network Maturity**: Maintain operations while gradually improving documentation and automation processes  
+- **Day 2 - Operational Excellence**: Proactively detect and resolve operational drift to maintain network reliability
 
 ## Getting Started
 
 1. **[Quickstart Guide](quickstart-guide.md)**: Get up and running quickly with NetBox Assurance
-2. **[Assurance Workflows](workflows/index.md)**: Configure operational drift detection and data review processes
-3. **[Data Ingestion](monitoring/index.md)**: Set up data sources and ingestion from NetBox Discovery and other systems
-
-## Documentation Sections
-
-### Workflows
-- **[Workflow Configuration](workflows/configuration.md)**: Configure monitoring targets, detection rules, and actions
-- **[Deviation Detection](workflows/deviation-detection.md)**: Understand how deviations are identified and classified
-- **[Remediation](workflows/remediation.md)**: Automated and guided remediation of detected issues
-
-### Data Ingestion
-- **[Data Ingestion Overview](monitoring/index.md)**: NetBox Discovery integration and Diode SDK data sources
+2. **[Assurance Workflows](workflows/index.md)**: Configure drift detection and review processes
+3. **[Data Ingestion](monitoring/index.md)**: Set up data sources from NetBox Discovery and other systems
 
 ## Support and Resources
-- **Community Support**: Connect with the community on [Slack](https://netdev.chat/) in the `#netbox` channel.
-- **Documentation**: Additional resources and integration guides available in related sections.
+- **Community Support**: Connect with the community on [Slack](https://netdev.chat/) in the `#netbox` channel
+- **Documentation**: Additional resources and integration guides available in related sections
+- **GitHub Repository**: Find NetBox Discovery integration [here](https://github.com/netboxlabs/orb-agent)
 
 ---
-With **NetBox Assurance**, teams can detect, report, and resolve network deviations in real time, ensuring a consistent and reliable network environment through continuous validation and corrective actions.
+By leveraging **NetBox Assurance**, organizations can maintain accurate network documentation, reduce operational risk, and build confidence in their network automation initiatives through continuous validation and drift detection.
