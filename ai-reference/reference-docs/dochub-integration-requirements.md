@@ -43,16 +43,16 @@ function extractProductTags(frontmatter) {
 }
 
 const TAG_LABELS = {
-  'netbox-cloud': 'NetBox Cloud',
-  'netbox-enterprise': 'NetBox Enterprise', 
-  'netbox-community': 'NetBox Community',
+  'cloud': 'NetBox Cloud',
+'enterprise': 'NetBox Enterprise',
+'community': 'NetBox Community',
   'airgap': 'Air-Gap'
 };
 
 const TAG_COLORS = {
-  'netbox-cloud': '#00d9be',
-  'netbox-enterprise': '#ffac00',
-  'netbox-community': '#00bee0', 
+  'cloud': '#00d9be',
+'enterprise': '#ffac00',
+'community': '#00bee0', 
   'airgap': '#ff0078'
 };
 ```
@@ -302,7 +302,7 @@ describe('Console Docs Integration', () => {
   test('product filtering works', async () => {
     const cloudDocs = await fetchDocsByProduct('cloud');
     cloudDocs.forEach(doc => {
-      expect(doc.productTags.some(tag => tag.key === 'netbox-cloud')).toBe(true);
+      expect(doc.productTags.some(tag => tag.key === 'cloud')).toBe(true);
     });
   });
 });

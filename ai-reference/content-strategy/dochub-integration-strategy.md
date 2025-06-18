@@ -20,9 +20,9 @@ The `console-docs` repository is now optimized for DocHub integration with:
 
 | Tag | Label | Color | Description |
 |-----|-------|-------|-------------|
-| `netbox-cloud` | NetBox Cloud | #00d9be | Cloud features and administration |
-| `netbox-enterprise` | NetBox Enterprise | #ffac00 | On-premises features |
-| `netbox-community` | NetBox Community | #00bee0 | Community edition features |
+| `cloud` | NetBox Cloud | #00d9be | Cloud features and administration |
+| `enterprise` | NetBox Enterprise | #ffac00 | On-premises features |
+| `community` | NetBox Community | #00bee0 | Community edition features |
 | `airgap` | Air-Gap | #ff0078 | Air-gap deployment features |
 
 ## Format Migration
@@ -36,8 +36,8 @@ The `console-docs` repository is now optimized for DocHub integration with:
 ```yaml
 ---
 tags:
-  - netbox-cloud
-  - netbox-enterprise
+  - cloud
+  - enterprise
 ---
 ```
 

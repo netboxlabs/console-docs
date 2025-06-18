@@ -8,7 +8,7 @@ Successfully enhanced the console-docs repository with a comprehensive semantic 
 
 ### 1. Enhanced Tag Taxonomy (`docs/tags.yml`)
 - **Expanded from 4 to 30+ semantic tags** covering all major content categories
-- **Product-specific tags**: `netbox-cloud`, `netbox-enterprise`, `netbox-discovery`, `netbox-assurance`, `netbox-operator`
+- **Product-specific tags**: `cloud`, `enterprise`, `discovery`, `assurance`, `operator`
 - **Authentication & Security**: `authentication`, `sso`, `ldap`, `saml`, `permissions`, `rbac`, `security`, `two-factor`
 - **Database & Operations**: `database`, `backup`, `migration`, `upgrade`, `monitoring`, `notifications`, `alerting`, `logging`
 - **APIs & Integration**: `rest-api`, `graphql`, `webhooks`, `automation`
@@ -93,8 +93,8 @@ Successfully enhanced the console-docs repository with a comprehensive semantic 
 ### Intelligent Analysis Engine
 ```javascript
 // Path-based tagging
-'Administration Console' → ['netbox-cloud', 'administration', 'configuration']
-'netbox-enterprise' → ['netbox-enterprise', 'installation', 'configuration']
+'Administration Console' → ['cloud', 'administration', 'configuration']
+'netbox-enterprise' → ['enterprise', 'installation', 'configuration']
 
 // Content pattern recognition
 /SAML|x509cert|Identity Provider/ → ['saml', 'sso', 'authentication']
@@ -142,7 +142,7 @@ Top semantic tags to be applied:
 ## 🔗 Integration with Existing Systems
 
 ### DocHub Compatibility
-- **Maintains existing product tags**: `netbox-cloud`, `netbox-enterprise`, etc.
+- **Maintains existing product tags**: `cloud`, `enterprise`, etc.
 - **Adds semantic layers**: Cross-cutting topics and content types
 - **Structured metadata**: Provides rich categorization for upstream processing
 

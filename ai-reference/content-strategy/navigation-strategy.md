@@ -122,18 +122,18 @@ Our YAML frontmatter tagging system enables:
 ```yaml
 # Universal content
 tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
+  - cloud
+  - enterprise
+  - community
 
 # Premium features
 tags:
-  - netbox-cloud
-  - netbox-enterprise
+  - cloud
+  - enterprise
 
 # Edition-specific
 tags:
-  - netbox-cloud  # Cloud-only features
+  - cloud  # Cloud-only features
 ```
 
 ## Information Architecture Patterns
