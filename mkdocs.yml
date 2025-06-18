@@ -124,19 +124,10 @@ nav:
       #- "Installing Custom NetBox Plugins": "netbox-enterprise/nbe-ec-custom-plugins.md"
       - "Advanced Tools and Troubleshooting": "netbox-enterprise/nbe-troubleshooting.md"
     - "Release Notes": "netbox-enterprise/nbe-release-notes.md"
-  - Discovery & Assurance:
-    - Solution Overview: "discovery-assurance.md"
-    - Quickstart Guide: "netbox-discovery/quickstart-guide.md"
-    - NetBox Discovery:
-      - NetBox Discovery: "netbox-discovery/index.md"
-      - Discovery Agent:
-        - Overview: "netbox-discovery/agent/index.md"
-        - Getting started: "netbox-discovery/agent/get-started.md"
-        - Configuration format: "netbox-discovery/agent/configuration-file.md"
-        - Network Discovery: "netbox-discovery/agent/network_discovery.md"
-        - Device Discovery: "netbox-discovery/agent/device_discovery.md"
-    - NetBox Assurance:
-      - NetBox Assurance: "netbox-assurance/index.md"
+  - NetBox Discovery:
+    - Overview: "netbox-discovery/index.md"
+  - NetBox Assurance:
+    - Overview: "netbox-assurance/index.md"
   - Integrations: 
     - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
     - pyATS: "netbox-integrations/pyats.md"

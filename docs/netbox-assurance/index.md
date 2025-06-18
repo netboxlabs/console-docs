@@ -1,28 +1,31 @@
 <span class="pill pill-cloud">NetBox Cloud</span>
 <span class="pill pill-enterprise">NetBox Enterprise</span>
 
-!!! info "*Coming early 2025*"
-    Be among the first to experience **NetBox Assurance**. [Sign up](https://netboxlabs.com/netbox-assurance/) to be notified when we launch.
-
-NetBox Assurance empowers organizations to continuously detect and address network drift by identifying deviations between the intended state in NetBox and the actual state of the network. It extends NetBox with automated deviation detection and corrective actions, helping teams maintain a consistent and reliable network infrastructure.
+NetBox Assurance automatically detects operational drift, allowing you to understand and address deviations swiftly and maintain a resilient infrastructure. It continuously monitors network and infrastructure, comparing your intended design against real-world infrastructure to uncover discrepancies and provide proactive remediation capabilities.
 
 ## Key Features
-- **Deviation Detection**: Identify configuration drift between NetBox and the network.
-- **Efficient Remediation**: Correct detected deviations through guided workflows.
-- **Seamless Integration**: Enhance NetBox with continuous network validation and state synchronization.
-- **Detailed Reports**: Generate actionable reports highlighting network consistency and detected deviations.
+- **Instant Drift Detection**: Continuously compare your intended design against real-world infrastructure to uncover discrepancies
+- **Proactive Issue Resolution**: Act on real-time data to remediate drift before it escalates, reducing downtime and troubleshooting delays
+- **Automated Documentation**: Automatically keep your NetBox documentation aligned with operational reality, ensuring a consistent source of truth
+- **Real-time Monitoring**: Provides real-time insights into network configuration changes
+- **Integration Ready**: Works seamlessly with existing network and infrastructure operations investments
 
 ## How It Works
-NetBox Assurance continuously compares the documented or intended network state stored in NetBox with the observed network state being provided by NetBox Discovery and other network data sources. When deviations are detected, workflows allow effecient remediation of deviations by updating NetBox or by taking corrective actions on the network.
+NetBox Assurance continuously monitors your network infrastructure in real-time, comparing current configurations against the intended design stored in NetBox. When operational drift is detected, the system generates alerts and provides proposed remediation steps, enabling swift resolution before issues escalate into major disruptions.
 
 ## Use Cases
-- **Network Drift Detection**: Ensure network configurations remain consistent with the source of truth.
-- **Compliance Audits**: Support compliance efforts by detecting unauthorized changes.
-- **Incident Prevention**: Identify and address deviations before they cause major disruptions.
+- **Network Operations**: Maintain network configurations consistent with documented standards
+- **Infrastructure Management**: Ensure infrastructure remains aligned with planned designs  
+- **Compliance and Security**: Support compliance efforts by detecting unauthorized changes and configuration drift
+- **Incident Prevention**: Identify and address deviations proactively to prevent major disruptions
+- **Change Management**: Track and validate configuration changes across your infrastructure
+
+## Documentation
+- **Using the UI**: Learn how to navigate and use the [NetBox Assurance plugin interface](using-the-ui.md)
+- **Additional Resources**: For development and setup information, refer to the [Diode](../netbox-extensions/diode/index.md) project documentation
 
 ## Support and Resources
-- **Documentation**: Until NetBox Assurance is officially released, please refer to the [Diode](../netbox-extensions/diode/index.md) project documentation.
-- **Community Support**: Connect with the community on [Slack](https://netdev.chat/) in the `#netbox` channel.
+- **Community Support**: Connect with the community on [Slack](https://netdev.chat/) in the `#netbox` channel
 
 ---
 With **NetBox Assurance**, teams can detect, report, and resolve network deviations in real time, ensuring a consistent and reliable network environment through continuous validation and corrective actions.
