@@ -1,8 +1,8 @@
 ---
 title: Using the REST API
 tags:
-  - netbox-community
-  - netbox-enterprise
+  - community
+  - enterprise
 ---# Using the REST API
 
 This plugin includes support for activating and deactivating branches via the REST API in addition to conventional creation, modification, and deletion operations.

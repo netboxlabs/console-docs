@@ -1,8 +1,8 @@
 ---
 title: Configuring SAML Group Mapping in NetBox Cloud  
 tags:
-  - netbox-cloud
-  - netbox-enterprise
+  - cloud
+  - enterprise
 ---# Configuring SAML Group Mapping in NetBox Cloud  
 
 NetBox Cloud supports SAML-based authentication, including group mappings to enforce role-based access control. For group mapping, you will need to provide your Identity Provider (IdP) group names so we can associate them with the desired NetBox groups.

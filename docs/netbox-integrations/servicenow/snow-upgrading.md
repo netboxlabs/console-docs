@@ -1,9 +1,9 @@
 ---
 title: Upgrades and Bug Fixes
 tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
+  - cloud
+  - enterprise
+  - community
 ---# Upgrades and Bug Fixes
 
 ## Distribution and Installation

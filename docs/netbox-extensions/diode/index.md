@@ -1,8 +1,8 @@
 ---
 title: Diode
 tags:
-  - netbox-community
-  - netbox-enterprise
+  - community
+  - enterprise
 ---# Diode
 
 !!! info "Currently in Public Preview"

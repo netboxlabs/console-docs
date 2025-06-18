@@ -1,8 +1,8 @@
 ---
 title: Change Log
 tags:
-  - netbox-community
-  - netbox-enterprise
+  - community
+  - enterprise
 ---# Change Log
 
 ## v0.5.2

@@ -1,4 +1,4 @@
 ---
 tags:
-  - netbox-cloud
+  - cloud
 ---## Coming Soon

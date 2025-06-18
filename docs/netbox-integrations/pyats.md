@@ -1,9 +1,9 @@
 ---
 title: Getting Started With NetBox, PyATS and Genie
 tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
+  - cloud
+  - enterprise
+  - community
 ---# Getting Started With NetBox, PyATS and Genie
 
 !!! info "Learn More"

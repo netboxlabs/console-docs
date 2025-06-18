@@ -1,9 +1,9 @@
 ---
 title: Technical Information
 tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
+  - cloud
+  - enterprise
+  - community
 ---# Technical Information
 
 

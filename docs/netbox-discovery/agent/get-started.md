@@ -1,8 +1,8 @@
 ---
 tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
+  - cloud
+  - enterprise
+  - community
 ---## Before getting started
 You'll need the following to successfully run the NetBox Discovery agent end-to-end:
 

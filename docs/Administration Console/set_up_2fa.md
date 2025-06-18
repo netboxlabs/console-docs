@@ -1,7 +1,7 @@
 ---
 title: Setting up Two-Factor Authentication for the Admin Console
 tags:
-  - netbox-cloud
+  - cloud
 ---# Setting up Two-Factor Authentication for the Admin Console
 
 <!-- COMMENTING VIDEO OUT OF CODE! 

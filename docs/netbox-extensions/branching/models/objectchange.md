@@ -1,8 +1,8 @@
 ---
 title: Object Changes
 tags:
-  - netbox-community
-  - netbox-enterprise
+  - community
+  - enterprise
 ---# Object Changes
 
 This model serves as a [proxy](https://docs.djangoproject.com/en/stable/topics/db/models/#proxy-models) for NetBox's native `ObjectChange` model.

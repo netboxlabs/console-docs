@@ -1,7 +1,7 @@
 ---
 tags:
-  - netbox-community
-  - netbox-enterprise
+  - community
+  - enterprise
 ---### Requirements
 
 The Diode server requires a Docker environment (and `docker compose`), version 27.0.3 or above.

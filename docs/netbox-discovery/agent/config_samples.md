@@ -1,9 +1,9 @@
 ---
 title: Configuration Samples
 tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
+  - cloud
+  - enterprise
+  - community
 ---# Configuration Samples
 
 Here is a collection of configuration samples supported by orb agent

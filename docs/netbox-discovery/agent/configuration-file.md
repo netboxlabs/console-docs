@@ -1,8 +1,8 @@
 ---
 tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
+  - cloud
+  - enterprise
+  - community
 ---## Agent configuration file
 To run, the NetBox Discovery agent requires a YAML configuration file. This configuration file consists of three main sections: `config_manager`, `backends`, and `policies`.
 

@@ -1,8 +1,8 @@
 ---
 tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
+  - cloud
+  - enterprise
+  - community
 title: "[Feature Name]"
 description: "Brief description for SEO and social sharing"
 author: "Author Name or NetBox Labs Documentation Team"

@@ -1,7 +1,7 @@
 ---
 tags:
-  - netbox-cloud
-  - netbox-enterprise
+  - cloud
+  - enterprise
 title: "NetBox Assurance"
 author: "NetBox Labs Documentation Team"
 last_updated: "2025-01-27"

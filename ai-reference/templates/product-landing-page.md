@@ -1,7 +1,7 @@
 ---
 tags:
-  - netbox-cloud
-  - netbox-enterprise
+  - cloud
+  - enterprise
 title: "[Product Name]"
 description: "Brief description of the product for SEO and social sharing"
 author: "Author Name or NetBox Labs Documentation Team"

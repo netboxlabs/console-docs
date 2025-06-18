@@ -1,7 +1,7 @@
 ---
 title: NetBox Enterprise Requirements
 tags:
-  - netbox-enterprise
+  - enterprise
 ---# NetBox Enterprise Requirements
 
 ### Host system requirements

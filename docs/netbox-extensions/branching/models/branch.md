@@ -1,8 +1,8 @@
 ---
 title: Branches
 tags:
-  - netbox-community
-  - netbox-enterprise
+  - community
+  - enterprise
 ---# Branches
 
 A branch represents a divergent state from the main database.

@@ -1,8 +1,8 @@
 ---
 title: Configuration Parameters
 tags:
-  - netbox-community
-  - netbox-enterprise
+  - community
+  - enterprise
 ---# Configuration Parameters
 
 ## `exempt_models`

@@ -1,8 +1,8 @@
 ---
 title: Migrating to NetBox Enterprise
 tags:
-  - netbox-enterprise
-  - netbox-community
+  - enterprise
+  - community
 ---# Migrating to NetBox Enterprise
 
 Migrating from NetBox open source to NetBox Labs Enterprise is a simple and efficient process. Because NetBox Enterprise is built on the same open source platform, database imports can be completed quickly, enabling a smooth transition.

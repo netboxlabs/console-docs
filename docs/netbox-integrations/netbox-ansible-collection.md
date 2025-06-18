@@ -1,7 +1,7 @@
 ---
 title: NetBox Integrations
 tags:
-  - netbox-cloud
+  - cloud
 ---# NetBox Integrations
 
 ## NetBox Ansible Collection - Quick Start

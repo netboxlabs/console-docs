@@ -1,7 +1,7 @@
 ---
 title: NetBox Cloud Public IP Addresses
 tags:
-  - netbox-cloud
+  - cloud
 ---# NetBox Cloud Public IP Addresses
 
 ## Traffic Originating From NetBox Cloud

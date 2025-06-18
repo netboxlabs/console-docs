@@ -1,9 +1,9 @@
 ---
 title: NetBox SDKs
 tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
+  - cloud
+  - enterprise
+  - community
 ---# NetBox SDKs
 
 ## Pynetbox

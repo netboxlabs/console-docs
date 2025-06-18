@@ -1,7 +1,7 @@
 ---
 tags:
-  - netbox-cloud
-  - netbox-enterprise
+  - cloud
+  - enterprise
 ---
 
 # NetBox Discovery

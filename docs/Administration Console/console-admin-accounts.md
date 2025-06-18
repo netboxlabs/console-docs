@@ -1,6 +1,6 @@
 ---
 tags:
-  - netbox-cloud
+  - cloud
 ---To invite additional Admins to NetBox Cloud Console, follow these steps: 
 
 - Login to the [console](https://console.netboxlabs.com/)

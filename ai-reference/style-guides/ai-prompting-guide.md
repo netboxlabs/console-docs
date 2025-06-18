@@ -1,8 +1,8 @@
 ---
 tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
+  - cloud
+  - enterprise
+  - community
 author: "NetBox Labs Documentation Team"
 last_updated: "2025-01-02"
 versions:

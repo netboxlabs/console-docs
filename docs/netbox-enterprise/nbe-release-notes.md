@@ -1,7 +1,7 @@
 ---
 title: NetBox Enterprise 1.x Release Notes
 tags:
-  - netbox-enterprise
+  - enterprise
 ---# NetBox Enterprise 1.x Release Notes
 
 ### 1.9.2

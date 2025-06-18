@@ -1,9 +1,9 @@
 ---
 title: FAQ and Troubleshooting
 tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
+  - cloud
+  - enterprise
+  - community
 ---# FAQ and Troubleshooting
 
 ## Installation Issues

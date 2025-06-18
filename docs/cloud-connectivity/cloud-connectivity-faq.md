@@ -1,6 +1,6 @@
 ---
 tags:
-  - netbox-cloud
+  - cloud
 ---## IPSEC VPN Tunnels
 
 **Q. Why 2 tunnels?** </br>

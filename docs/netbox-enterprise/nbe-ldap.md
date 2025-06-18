@@ -1,8 +1,8 @@
 ---
 title: LDAP Configuration for NetBox Enterprise
 tags:
-  - netbox-enterprise
-  - netbox-cloud
+  - enterprise
+  - cloud
 ---# LDAP Configuration for NetBox Enterprise
 
 1. In the Admin Console for NetBox Enterprise, navigate to the **Config** tab and scroll to the bottom to check **Advanced Settings**

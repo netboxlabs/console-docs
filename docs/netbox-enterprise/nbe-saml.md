@@ -1,7 +1,7 @@
 ---
 title: NetBox Enterprise SAML Configuration Guide
 tags:
-  - netbox-enterprise
+  - enterprise
 ---# NetBox Enterprise SAML Configuration Guide
 
 ## Required Information

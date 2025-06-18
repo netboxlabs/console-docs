@@ -1,7 +1,7 @@
 ---
 tags:
-  - netbox-community
-  - netbox-enterprise
+  - community
+  - enterprise
 ---The Diode SDK is a Python library for sending data to the Diode server over gRPC/protbuf for ingestion in to NetBox.
 
 ### Requirements 

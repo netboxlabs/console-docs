@@ -1,8 +1,8 @@
 ---
 title: NetBox Labs Product and Feature Lifecycle
 tags:
-  - netbox-cloud
-  - netbox-enterprise
+  - cloud
+  - enterprise
 ---# NetBox Labs Product and Feature Lifecycle
 
 NetBox Labs products and features can go through multiple release stages before becoming generally available. These stages in the release life cycle can present varying degrees of stability and support. The following are the NetBox Labs release stages:

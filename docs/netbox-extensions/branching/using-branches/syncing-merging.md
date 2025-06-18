@@ -1,9 +1,9 @@
 ---
 title: Syncing & Merging Changes
 tags:
-  - netbox-community
-  - netbox-enterprise
-  - netbox-cloud
+  - community
+  - enterprise
+  - cloud
 ---# Syncing & Merging Changes
 
 ## Syncing a Branch

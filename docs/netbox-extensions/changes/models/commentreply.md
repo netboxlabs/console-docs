@@ -1,8 +1,8 @@
 ---
 title: Comment Replies
 tags:
-  - netbox-community
-  - netbox-enterprise
+  - community
+  - enterprise
 ---# Comment Replies
 
 Each [comment](./comment.md) on a [change request](./changerequest.md) starts a new discussion thread to which users can reply. This helps keep the discussion around a change request organized.

@@ -1,7 +1,7 @@
 ---
 title: NetBox Enterprise
 tags:
-  - netbox-enterprise
+  - enterprise
 ---# NetBox Enterprise
 
 ## Overview
