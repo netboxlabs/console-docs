@@ -31,9 +31,9 @@ You are helping create documentation for NetBox Labs products. Key requirements:
    Format: 
    ---
    tags:
-     - netbox-cloud
-     - netbox-enterprise
-     - netbox-community
+     - cloud
+- enterprise
+- community
    title: "Document Title"
    author: "Author Name or NetBox Labs Documentation Team"
    last_updated: "YYYY-MM-DD"
@@ -106,7 +106,7 @@ versions:
 ```
 Context: NetBox Discovery includes Network Discovery, Device Discovery, and Controller Discovery integrations (VMware vCenter, Juniper Mist, Cisco Catalyst Center, Microsoft DHCP, AWS VPC IPAM). Uses Orb distributed agent framework and Diode SDK. Available across all NetBox editions with different capabilities.
 
-Tags to use: netbox-cloud, netbox-enterprise, netbox-community
+Tags to use: cloud, enterprise, community
 Versions: cloud: "v1.10", enterprise: "v1.10", community: "v4.2"
 Key terms: "Discovery Agent", "Orb distributed agent framework", "Diode SDK"
 ```

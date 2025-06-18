@@ -46,7 +46,7 @@ node scripts/semantic-tagging.js docs/netbox-enterprise --dry-run
 ---
 title: NetBox Cloud SAML Configuration Guide
 tags:
-  - netbox-cloud
+  - cloud
 ---
 ```
 
@@ -55,7 +55,7 @@ tags:
 ---
 title: NetBox Cloud SAML Configuration Guide
 tags:
-  - netbox-cloud
+  - cloud
   - administration
   - configuration
   - authentication
@@ -69,7 +69,7 @@ last_updated: "2025-01-27"
 ## Tag Categories Applied
 
 ### Product Tags
-- `netbox-cloud`, `netbox-enterprise`, `netbox-discovery`, `netbox-assurance`, `netbox-operator`
+- `cloud`, `enterprise`, `community`, `discovery`, `assurance`, `operator`, `netbox`, `airgap`
 
 ### Cross-Cutting Topics
 - **Authentication**: `authentication`, `sso`, `ldap`, `saml`, `two-factor`
@@ -117,7 +117,7 @@ You can still manually add tags that the system doesn't detect:
 ```yaml
 ---
 tags:
-  - netbox-cloud
+  - cloud
   - custom-tag
   - specific-use-case
 ---
@@ -145,7 +145,7 @@ The semantic tagging system will preserve these and add its detected tags.
 ## Integration with Existing Workflow
 
 The semantic tagging system works alongside:
-- Existing product tagging (preserves `netbox-cloud`, etc.)
+- Existing product tagging (preserves `cloud`, etc.)
 - Manual frontmatter tags (never removes user-added tags)
 - DocHub integration requirements (provides required metadata)
 - Version management system (respects version-specific content)

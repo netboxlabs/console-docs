@@ -82,12 +82,12 @@ These tags cover topics that span multiple products:
 The system automatically applies tags based on file location:
 
 ```
-Administration Console/ → netbox-cloud, administration, configuration
-NetBox Cloud/ → netbox-cloud, getting-started
-netbox-enterprise/ → netbox-enterprise, installation, configuration
-netbox-discovery/ → netbox-discovery, networking
-netbox-assurance/ → netbox-assurance, monitoring
-netbox-operator/ → netbox-operator, automation
+Administration Console/ → cloud, administration, configuration
+NetBox Cloud/ → cloud, getting-started
+netbox-enterprise/ → enterprise, installation, configuration
+netbox-discovery/ → discovery, networking
+netbox-assurance/ → assurance, monitoring
+netbox-operator/ → operator, automation
 cloud-connectivity/ → cloud-connectivity, networking, infrastructure
 ```
 
@@ -163,24 +163,24 @@ The semantic tagging system:
 ### SSO Configuration Across Products
 
 Files tagged with `sso` + `saml`:
-- `docs/Administration Console/saml-sso-setup.md` (`netbox-cloud`, `sso`, `saml`, `authentication`)
-- `docs/netbox-enterprise/nbe-saml.md` (`netbox-enterprise`, `sso`, `saml`, `authentication`)
+- `docs/Administration Console/saml-sso-setup.md` (`cloud`, `sso`, `saml`, `authentication`)
+- `docs/netbox-enterprise/nbe-saml.md` (`enterprise`, `sso`, `saml`, `authentication`)
 
 Files tagged with `sso` + `ldap`:
-- `docs/netbox-enterprise/nbe-ldap.md` (`netbox-enterprise`, `ldap`, `authentication`)
+- `docs/netbox-enterprise/nbe-ldap.md` (`enterprise`, `ldap`, `authentication`)
 
 ### Group Mapping Across Identity Providers
 
 Files tagged with `rbac` + `permissions`:
-- `docs/Administration Console/azure-group-mapping.md` (`netbox-cloud`, `rbac`, `permissions`)
-- `docs/Administration Console/okta-group-mapping.md` (`netbox-cloud`, `rbac`, `permissions`)
-- `docs/netbox-enterprise/nbe-azure-group-mapping.md` (`netbox-enterprise`, `rbac`, `permissions`)
+- `docs/Administration Console/azure-group-mapping.md` (`cloud`, `rbac`, `permissions`)
+- `docs/Administration Console/okta-group-mapping.md` (`cloud`, `rbac`, `permissions`)
+- `docs/netbox-enterprise/nbe-azure-group-mapping.md` (`enterprise`, `rbac`, `permissions`)
 
 ### Database Operations
 
 Files tagged with `backup` + `database`:
-- `docs/Administration Console/working_with_database_backups.md` (`netbox-cloud`, `backup`, `database`)
-- `docs/netbox-enterprise/nbe-backups.md` (`netbox-enterprise`, `backup`, `database`)
+- `docs/Administration Console/working_with_database_backups.md` (`cloud`, `backup`, `database`)
+- `docs/netbox-enterprise/nbe-backups.md` (`enterprise`, `backup`, `database`)
 
 ### Cloud Connectivity Options
 

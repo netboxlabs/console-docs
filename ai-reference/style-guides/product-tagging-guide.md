@@ -40,9 +40,9 @@ Content here...
 title: Document Title
 description: Brief description for SEO
 tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
+  - cloud
+  - enterprise
+  - community
 ---
 
 # Document Title
@@ -56,9 +56,9 @@ The following product tags are available in `docs/tags.yml`:
 
 | Tag Key | Display Label | Color | Description |
 |---------|---------------|-------|-------------|
-| `netbox-cloud` | NetBox Cloud | 🟢 Teal (`#00d9be`) | Documentation for NetBox Cloud |
-| `netbox-enterprise` | NetBox Enterprise | 🟠 Orange (`#ffac00`) | Documentation for NetBox Enterprise |
-| `netbox-community` | NetBox Community | 🔵 Blue (`#00bee0`) | Documentation for NetBox Community |
+| `cloud` | NetBox Cloud | 🟢 Teal (`#00d9be`) | Documentation for NetBox Cloud |
+| `enterprise` | NetBox Enterprise | 🟠 Orange (`#ffac00`) | Documentation for NetBox Enterprise |
+| `community` | NetBox Community | 🔵 Blue (`#00bee0`) | Documentation for NetBox Community |
 | `airgap` | Air-Gap | 🔴 Pink (`#ff0078`) | Documentation for air-gapped deployments |
 
 ## How to Use
@@ -71,8 +71,8 @@ Add tags to your frontmatter and they'll automatically appear at the top of the 
 ---
 title: My Document
 tags:
-  - netbox-cloud
-  - netbox-enterprise
+  - cloud
+  - enterprise
 ---
 
 # My Document
@@ -88,7 +88,7 @@ You can also manually place the component anywhere in your document:
 ---
 title: My Document
 tags:
-  - netbox-cloud
+  - cloud
 ---
 
 # My Document
@@ -97,7 +97,7 @@ tags:
 
 Some content...
 
-<ProductTags tags={['netbox-enterprise', 'netbox-community']} />
+<ProductTags tags={['enterprise', 'community']} />
 
 More content...
 ```
@@ -109,7 +109,7 @@ You can override the automatic tags by passing them directly:
 ```jsx
 import ProductTags from '@theme/ProductTags';
 
-<ProductTags tags={['netbox-cloud', 'netbox-enterprise']} />
+<ProductTags tags={['cloud', 'enterprise']} />
 ```
 
 ## Migration Scripts
@@ -147,8 +147,8 @@ For individual files:
    ```yaml
    ---
    tags:
-     - netbox-cloud
-     - netbox-enterprise
+     - cloud
+     - enterprise
    ---
    ```
 
@@ -165,7 +165,7 @@ import { useDoc } from '@docusaurus/plugin-content-docs/client';
 function MyComponent() {
   const doc = useDoc();
   const productTags = doc.frontMatter.tags?.filter(tag => 
-    tag.startsWith('netbox-')
+    ['cloud', 'enterprise', 'community', 'discovery', 'assurance', 'operator', 'netbox', 'airgap'].includes(tag)
   );
   
   return <div>This doc applies to: {productTags.join(', ')}</div>;
@@ -185,7 +185,7 @@ module.exports = {
           // Access all docs with their tags for categorization
           const docs = await loadDocs();
           return docs.filter(doc => 
-            doc.frontMatter.tags?.includes('netbox-cloud')
+            doc.frontMatter.tags?.includes('cloud')
           );
         }
       };
@@ -204,7 +204,7 @@ The dochub integration can export document metadata including tags:
     {
       "id": "discovery-assurance",
       "title": "NetBox Discovery & Assurance", 
-      "tags": ["netbox-cloud", "netbox-enterprise", "netbox-community"],
+      "tags": ["cloud", "enterprise", "community"],
       "products": ["NetBox Cloud", "NetBox Enterprise", "NetBox Community"],
       "url": "/docs/discovery-assurance"
     }
@@ -218,8 +218,8 @@ The dochub integration can export document metadata including tags:
 
 Docusaurus automatically generates tag pages at:
 - `/docs/tags` - List of all tags
-- `/docs/tags/netbox-cloud` - All docs tagged with netbox-cloud
-- `/docs/tags/netbox-enterprise` - All docs tagged with netbox-enterprise
+- `/docs/tags/cloud` - All docs tagged with cloud
+- `/docs/tags/enterprise` - All docs tagged with enterprise
 
 ### 2. **Search Integration**
 
@@ -229,7 +229,7 @@ Tags are included in search metadata, improving discoverability:
 // Search results include tag information
 {
   "title": "Document Title",
-  "tags": ["netbox-cloud", "netbox-enterprise"],
+  "tags": ["cloud", "enterprise"],
   "excerpt": "...",
   "url": "/docs/path"
 }
@@ -242,7 +242,7 @@ Tags are included in generated sitemaps and RSS feeds:
 ```xml
 <url>
   <loc>https://netboxlabs.com/docs/discovery-assurance</loc>
-  <meta name="tags" content="netbox-cloud,netbox-enterprise,netbox-community" />
+  <meta name="tags" content="cloud,enterprise,community" />
 </url>
 ```
 
@@ -254,16 +254,16 @@ Tags are included in generated sitemaps and RSS feeds:
    ```yaml
    # Correct
    tags:
-     - netbox-cloud
-     - netbox-enterprise
+     - cloud
+     - enterprise
    
    # Also correct
-   tags: [netbox-cloud, netbox-enterprise]
+   tags: [cloud, enterprise]
    ```
 
 2. **Verify tag names match `tags.yml`**:
    - Use exact tag keys from `docs/tags.yml`
-   - Common mistake: `netbox_cloud` vs `netbox-cloud`
+   - Common mistake: `netbox_cloud` vs `cloud`
 
 3. **Check component import**:
    ```jsx

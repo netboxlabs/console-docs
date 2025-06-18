@@ -21,9 +21,9 @@ versions:
 ```yaml
 ---
 tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
+  - cloud
+  - enterprise
+  - community
 title: "Document Title"
 description: "SEO-friendly description for search and social sharing"
 author: "Author Name or NetBox Labs Documentation Team"
@@ -108,8 +108,8 @@ versions:
 ```yaml
 ---
 tags:
-  - netbox-cloud
-  - netbox-enterprise
+  - cloud
+  - enterprise
 title: "NetBox Discovery Agent Configuration"
 description: "Complete guide to configuring the NetBox Discovery Agent for automated network discovery and data collection"
 author: "NetBox Labs Documentation Team"
@@ -133,9 +133,9 @@ external_links:
 ### Available Product Tags
 | Tag | Display Name | Use For |
 |-----|--------------|---------|
-| `netbox-cloud` | NetBox Cloud | Cloud-specific features, Administration Console, cloud connectivity |
-| `netbox-enterprise` | NetBox Enterprise | Enterprise installation, enterprise-specific features |
-| `netbox-community` | NetBox Community | Open source features, community plugins, SDKs |
+| `cloud` | NetBox Cloud | Cloud-specific features, Administration Console, cloud connectivity |
+| `enterprise` | NetBox Enterprise | Enterprise installation, enterprise-specific features |
+| `community` | NetBox Community | Open source features, community plugins, SDKs |
 | `airgap` | Air-Gap | Air-gapped deployment scenarios |
 
 ### Tagging Guidelines
