@@ -94,8 +94,6 @@ theme:
 plugins:
   - search:
       separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
-  - tags:
-      tags_file: tags.yml
 
 # Markdown extensions for enhanced content processing
 markdown_extensions:
