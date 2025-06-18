@@ -135,6 +135,14 @@ nav:
         - Device Discovery: "netbox-discovery/agent/device_discovery.md"
     - NetBox Assurance:
       - Overview: "netbox-assurance/index.md"
+      - Quickstart Guide: "netbox-assurance/quickstart-guide.md"
+      - Assurance Workflows:
+        - Overview: "netbox-assurance/workflows/index.md"
+        - Configuration: "netbox-assurance/workflows/configuration.md"
+        - Deviation Detection: "netbox-assurance/workflows/deviation-detection.md"
+        - Remediation: "netbox-assurance/workflows/remediation.md"
+      - Data Ingestion:
+        - Overview: "netbox-assurance/monitoring/index.md"
     - NetBox Operator:
       - Overview: "netbox-operator/index.md"
     - Extensions:
@@ -217,6 +225,14 @@ nav:
         - Device Discovery: "netbox-discovery/agent/device_discovery.md"
     - NetBox Assurance:
       - Overview: "netbox-assurance/index.md"
+      - Quickstart Guide: "netbox-assurance/quickstart-guide.md"
+      - Assurance Workflows:
+        - Overview: "netbox-assurance/workflows/index.md"
+        - Configuration: "netbox-assurance/workflows/configuration.md"
+        - Deviation Detection: "netbox-assurance/workflows/deviation-detection.md"
+        - Remediation: "netbox-assurance/workflows/remediation.md"
+      - Data Ingestion:
+        - Overview: "netbox-assurance/monitoring/index.md"
     - NetBox Operator:
       - Overview: "netbox-operator/index.md"
     - Extensions:
