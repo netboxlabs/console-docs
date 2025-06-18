@@ -137,6 +137,14 @@ nav:
         - Device Discovery: "netbox-discovery/agent/device_discovery.md"
     - NetBox Assurance:
       - NetBox Assurance: "netbox-assurance/index.md"
+      - Quickstart Guide: "netbox-assurance/quickstart-guide.md"
+      - Assurance Workflows:
+        - Overview: "netbox-assurance/workflows/index.md"
+        - Configuration: "netbox-assurance/workflows/configuration.md"
+        - Deviation Detection: "netbox-assurance/workflows/deviation-detection.md"
+        - Remediation: "netbox-assurance/workflows/remediation.md"
+      - Data Ingestion:
+        - Overview: "netbox-assurance/monitoring/index.md"
   - Integrations: 
     - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
     - pyATS: "netbox-integrations/pyats.md"
