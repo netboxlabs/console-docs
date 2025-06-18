@@ -30,9 +30,9 @@ We've migrated from HTML pills to a **frontmatter-based tagging system** for bet
 title: Document Title
 description: Brief description for SEO
 tags:
-  - netbox-cloud
-  - netbox-enterprise
-  - netbox-community
+  - cloud
+  - enterprise
+  - community
 ---
 ```
 
@@ -108,9 +108,9 @@ mkdocs serve
 **Available Product Tags:**
 | Tag | Display | Color |
 |-----|---------|-------|
-| `netbox-cloud` | NetBox Cloud | 🟢 Teal |
-| `netbox-enterprise` | NetBox Enterprise | 🟠 Orange |
-| `netbox-community` | NetBox Community | 🔵 Blue |
+| `cloud` | Cloud | 🟢 Teal |
+| `enterprise` | Enterprise | 🟠 Orange |
+| `community` | Community | 🔵 Blue |
 | `airgap` | Air-Gap | 🔴 Pink |
 
 ## 📝 Documentation Team Workflow Guide

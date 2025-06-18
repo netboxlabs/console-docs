@@ -275,8 +275,8 @@ Choose the appropriate status notice:
 - **Provide clear next steps**: Don't leave users wondering what to do next
 
 ### Tagging Guidelines
-- Use `netbox-cloud` + `netbox-enterprise` for premium products
-- Add `netbox-community` only if there's community edition support
+- Use `cloud` + `enterprise` for premium products
+- Add `community` only if there's community edition support
 - Consider `airgap` for products supporting air-gapped deployments
 
 ### Version Tracking

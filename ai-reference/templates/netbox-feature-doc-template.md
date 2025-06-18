@@ -284,9 +284,9 @@ versions:
 
 ### Tagging Guidelines
 - Use only relevant product tags
-- Include `netbox-community` for open source features
-- Include `netbox-cloud` for cloud-specific features
-- Include `netbox-enterprise` for enterprise-specific features
+- Include `community` for open source features
+- Include `cloud` for cloud-specific features
+- Include `enterprise` for enterprise-specific features
 - Use all three tags for universal features
 
 ### Version Tracking

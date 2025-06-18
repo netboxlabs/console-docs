@@ -106,7 +106,7 @@ versions:
 ```
 Context: NetBox Discovery includes Network Discovery, Device Discovery, and Controller Discovery integrations (VMware vCenter, Juniper Mist, Cisco Catalyst Center, Microsoft DHCP, AWS VPC IPAM). Uses Orb distributed agent framework and Diode SDK. Available across all NetBox editions with different capabilities.
 
-Tags to use: cloud, enterprise, community
+Tags to use: cloud, enterprise (NOT community)
 Versions: cloud: "v1.10", enterprise: "v1.10", community: "v4.2"
 Key terms: "Discovery Agent", "Orb distributed agent framework", "Diode SDK"
 ```
@@ -115,7 +115,7 @@ Key terms: "Discovery Agent", "Orb distributed agent framework", "Diode SDK"
 ```
 Context: NetBox Assurance detects "operational drift" (not "configuration drift") between intended NetBox state and actual network state. Premium feature for Cloud/Enterprise only. Coming April 2025 for Enterprise, May 2025 for Cloud.
 
-Tags to use: netbox-cloud, netbox-enterprise (NOT netbox-community)
+Tags to use: cloud, enterprise (NOT community)
 Versions: cloud: "v1.10", enterprise: "v1.10" (no community version)
 Key terms: "operational drift", "Assurance workflows", "Day 1/Day 1.5/Day 2 framework"
 Status: "coming-soon"
@@ -125,7 +125,7 @@ Status: "coming-soon"
 ```
 Context: NetBox Operator provides AI-powered network operations using NetBox as the semantic map. Currently in design partner program. Uses "agentic AI" and provides "semantic awareness" for network operations.
 
-Tags to use: netbox-cloud, netbox-enterprise (NOT netbox-community)
+Tags to use: cloud, enterprise (NOT community)
 Versions: cloud: "v1.10", enterprise: "v1.10" (no community version)
 Key terms: "agentic AI", "semantic map", "design partner program", "AI superpowers"
 Status: "coming-soon"
@@ -135,7 +135,7 @@ Status: "coming-soon"
 ```
 Context: Administration Console is NetBox Cloud's management interface. Cloud-specific feature for managing instances, users, connectivity, and billing.
 
-Tags to use: netbox-cloud (ONLY - not Enterprise or Community)
+Tags to use: cloud (ONLY - not Enterprise or Community)
 Versions: cloud: "v1.10" (no enterprise or community versions)
 Key terms: "Administration Console", "NetBox Cloud", cloud-specific features
 ```
@@ -288,7 +288,7 @@ For technical content:
 
 ### ✅ Do This Instead
 ```
-"Create NetBox Assurance documentation using complete YAML frontmatter (tags: netbox-cloud, netbox-enterprise only - not community; versions: cloud v1.10, enterprise v1.10; status: coming-soon). Focus on operational drift detection, premium feature status, and Day 1/1.5/2 framework. Include coming soon notice for April 2025 Enterprise, May 2025 Cloud. Author: NetBox Labs Documentation Team, last_updated: 2025-01-02."
+"Create NetBox Assurance documentation using complete YAML frontmatter (tags: cloud, enterprise only - not community; versions: cloud v1.10, enterprise v1.10; status: coming-soon). Focus on operational drift detection, premium feature status, and Day 1/1.5/2 framework. Include coming soon notice for April 2025 Enterprise, May 2025 Cloud. Author: NetBox Labs Documentation Team, last_updated: 2025-01-02."
 ```
 
 ## Effective Prompting Patterns
