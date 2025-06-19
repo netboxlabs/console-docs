@@ -597,22 +597,75 @@ const postProcessConsoleSidebar = (sidebar: DocusaurusSidebarItem[]): Docusaurus
     // Remove the original sections
     const newSidebar = sidebar.filter((_, index) => index !== discoveryIndex && index !== assuranceIndex);
     
-    // Create the new Discovery & Assurance structure
+    // Create enhanced Discovery & Assurance structure with complete navigation
     const discoveryAssuranceSection: DocusaurusSidebarItem = {
         type: 'category',
         label: 'Discovery & Assurance',
         items: [
-            // Add NetBox Discovery as a category with its items
+            // NetBox Discovery with complete navigation
             {
                 type: 'category',
                 label: 'NetBox Discovery',
-                items: discoverySection.items || []
+                items: [
+                    {
+                        type: 'doc',
+                        id: 'console/netbox-discovery/index',
+                        label: 'Overview'
+                    },
+                    {
+                        type: 'category',
+                        label: 'Discovery Agent',
+                        items: [
+                            {
+                                type: 'doc',
+                                id: 'console/netbox-discovery/agent/index',
+                                label: 'Overview'
+                            },
+                            {
+                                type: 'doc',
+                                id: 'console/netbox-discovery/agent/get-started',
+                                label: 'Getting Started'
+                            },
+                            {
+                                type: 'doc',
+                                id: 'console/netbox-discovery/agent/configuration-file',
+                                label: 'Configuration Format'
+                            },
+                            {
+                                type: 'doc',
+                                id: 'console/netbox-discovery/agent/network_discovery',
+                                label: 'Network Discovery'
+                            },
+                            {
+                                type: 'doc',
+                                id: 'console/netbox-discovery/agent/device_discovery',
+                                label: 'Device Discovery'
+                            },
+                            {
+                                type: 'doc',
+                                id: 'console/netbox-discovery/agent/config_samples',
+                                label: 'Configuration Samples'
+                            }
+                        ]
+                    }
+                ]
             },
-            // Add NetBox Assurance as a category with its items
+            // NetBox Assurance with complete navigation
             {
                 type: 'category', 
                 label: 'NetBox Assurance',
-                items: assuranceSection.items || []
+                items: [
+                    {
+                        type: 'doc',
+                        id: 'console/netbox-assurance/index',
+                        label: 'Overview'
+                    },
+                    {
+                        type: 'doc',
+                        id: 'console/netbox-assurance/using-the-ui',
+                        label: 'Using the UI'
+                    }
+                ]
             }
         ]
     };
