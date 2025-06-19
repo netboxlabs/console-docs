@@ -431,6 +431,70 @@ graph TD
 - **`generate-changelog.yml`**: Before major releases or when updating project documentation
 - **`update-changelog-weekly.yml`**: Can be triggered manually if weekly run fails
 
+### 🔧 Critical Workflow Design Details
+
+#### **The Submodule vs Postinstall Conflict**
+
+The biggest challenge in this workflow is handling a fundamental conflict:
+
+1. **Workflow Goal**: Update submodules to latest remote commits (`git submodule update --remote`)
+2. **Postinstall Script**: Resets submodules to committed state (`git submodule update --init --recursive`)
+3. **The Problem**: `yarn install` triggers postinstall, undoing the remote updates
+
+#### **Solution: Commit Protection Strategy**
+
+```bash
+# Step 1: Update submodules to latest
+git submodule update --remote
+NETBOX_COMMIT=$(cd external-repos/netbox && git rev-parse HEAD)
+
+# Step 2: Install dependencies (this WILL reset submodules)
+yarn install --frozen-lockfile
+# ↑ Triggers postinstall: git submodule update --init --recursive
+# ↑ Resets NetBox to committed state (e.g., 334b45f)
+
+# Step 3: Restore to updated commits
+cd external-repos/netbox && git checkout $NETBOX_COMMIT
+# ↑ Restores NetBox to latest state (e.g., c660f1c)
+```
+
+#### **Why This Works for Vercel**
+
+- **Vercel Build Process**: Runs `yarn build` which includes `yarn update-submodules`
+- **Submodule Handling**: Vercel gets submodules at the committed state (expected behavior)
+- **No Conflicts**: Vercel doesn't need the `--remote` updates; it uses committed versions
+- **CI/CD Separation**: Workflow updates commits, Vercel builds from those commits
+
+#### **Workflow Reliability Features**
+
+1. **Comprehensive Verification**: Each step validates submodule states
+2. **Build Testing**: Tests full `yarn build` to ensure Vercel compatibility  
+3. **Error Handling**: Explicit failure modes with clear error messages
+4. **Debug Logging**: Tracks git status and submodule states throughout
+
+#### **PR Management Strategy**
+
+The workflow implements intelligent PR management:
+
+1. **Single Active PR**: Only one automated documentation PR exists at a time
+2. **PR Updates**: If changes occur during the run window, the existing PR is updated rather than creating new ones
+3. **Detailed Descriptions**: PRs include comprehensive file change analysis and commit details
+4. **Auto-Merge Ready**: PRs are structured for safe automatic merging with proper validation
+
+**PR Update Process**:
+```bash
+# If existing automated PR found:
+git checkout existing-pr-branch
+git rebase master  # Bring up to date
+# Apply new changes
+git commit --amend  # Update existing commit
+git push --force-with-lease  # Update PR
+
+# If no existing PR:
+git checkout -b automated-docs-update-YYYYMMDD
+# Apply changes and create new PR
+```
+
 ### 🧪 Testing Workflow Changes
 
 **Before modifying workflows**, test the core functionality locally:
@@ -440,22 +504,33 @@ graph TD
 git submodule update --remote
 git status  # Should show changes in external-repos/
 
-# 2. Test transformation pipeline  
-yarn install --frozen-lockfile
+# 2. Test the postinstall conflict
+cd external-repos/netbox && BEFORE=$(git rev-parse HEAD) && cd ../..
+yarn install --frozen-lockfile  # This will reset submodules
+cd external-repos/netbox && AFTER=$(git rev-parse HEAD) && cd ../..
+echo "Before: $BEFORE, After: $AFTER"  # Should be different
+
+# 3. Test restoration
+cd external-repos/netbox && git checkout $BEFORE && cd ../..
+# Should restore to updated commit
+
+# 4. Test full pipeline
 yarn transform-docs
 yarn build
 
-# 3. Test change detection logic
+# 5. Test change detection logic
 git diff --name-only  # Should show docs/ changes
 git add . && git commit -m "test: workflow changes"
 
-# 4. Force trigger workflow (if needed)
+# 6. Force trigger workflow (if needed)
 # Go to Actions → Update Documentation Submodules → Run workflow
 # Set force_update: true
 ```
 
 **Workflow Testing Checklist**:
 - [ ] Submodules update correctly with `--remote`
+- [ ] Postinstall resets submodules (expected behavior)
+- [ ] Restoration brings submodules back to updated commits
 - [ ] Transformation completes without errors  
 - [ ] Build succeeds after transformation
 - [ ] Change detection identifies modified files
