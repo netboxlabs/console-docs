@@ -342,23 +342,13 @@
     "label": "Discovery & Assurance",
     "items": [
       {
-        "type": "doc",
-        "id": "console/discovery-assurance",
-        "label": "Solution Overview"
-      },
-      {
-        "type": "doc",
-        "id": "console/netbox-discovery/quickstart-guide",
-        "label": "Quickstart Guide"
-      },
-      {
         "type": "category",
         "label": "NetBox Discovery",
         "items": [
           {
             "type": "doc",
             "id": "console/netbox-discovery/index",
-            "label": "NetBox Discovery"
+            "label": "Overview"
           },
           {
             "type": "category",
@@ -372,12 +362,12 @@
               {
                 "type": "doc",
                 "id": "console/netbox-discovery/agent/get-started",
-                "label": "Getting started"
+                "label": "Getting Started"
               },
               {
                 "type": "doc",
                 "id": "console/netbox-discovery/agent/configuration-file",
-                "label": "Configuration format"
+                "label": "Configuration Format"
               },
               {
                 "type": "doc",
@@ -388,6 +378,11 @@
                 "type": "doc",
                 "id": "console/netbox-discovery/agent/device_discovery",
                 "label": "Device Discovery"
+              },
+              {
+                "type": "doc",
+                "id": "console/netbox-discovery/agent/config_samples",
+                "label": "Configuration Samples"
               }
             ]
           }
@@ -400,7 +395,12 @@
           {
             "type": "doc",
             "id": "console/netbox-assurance/index",
-            "label": "NetBox Assurance"
+            "label": "Overview"
+          },
+          {
+            "type": "doc",
+            "id": "console/netbox-assurance/using-the-ui",
+            "label": "Using the UI"
           }
         ]
       }

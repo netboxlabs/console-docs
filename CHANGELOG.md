@@ -12,6 +12,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial changelog automation system with GitHub Actions workflow
 - Support for conventional commit parsing and automatic categorization
 - Integration with protected branch workflows via pull requests
+- Complete Discovery & Assurance navigation structure with all sub-sections
+- Enhanced workflow documentation with troubleshooting guides
+
+### Fixed
+
+- Critical submodule update workflow issue preventing PR creation
+- Submodule protection strategy to prevent postinstall script conflicts
+- Discovery & Assurance navigation now shows proper nested structure
+- Missing navbar items for NetBox Discovery Agent and NetBox Assurance sections
 
 ### Infrastructure
 
@@ -20,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Created auto-merge workflows with branch protection compatibility
 - Added security vulnerability fixes for webpack-dev-server
 - Enhanced README with comprehensive developer documentation
+- Improved workflow reliability with better error handling and debugging
 
 ### Documentation
 

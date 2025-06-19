@@ -133,10 +133,14 @@ jobs:
         run: |
           echo "=== Before submodule update ==="
           git submodule status
+          git status --porcelain
           echo "=== Running submodule update ==="
           git submodule update --remote --merge
           echo "=== After submodule update ==="
           git submodule status
+          git status --porcelain
+          echo "=== Git diff for submodules ==="
+          git diff --name-only || true
           
       - name: Check updated submodule commits
         id: check-after
@@ -246,13 +250,116 @@ jobs:
           node-version: '22'
           cache: 'yarn'
 
-      - name: Install dependencies
+      - name: Install dependencies and handle submodule conflict
         if: steps.changes.outputs.has_changes == 'true'
-        run: yarn install --frozen-lockfile
+        run: |
+          echo "=== Installing dependencies with submodule protection ==="
+          
+          # Save current submodule commits before yarn install
+          NETBOX_COMMIT="${{ steps.check-after.outputs.netbox_after }}"
+          CONSOLE_COMMIT="${{ steps.check-after.outputs.console_after }}"
+          
+          echo "Protecting commits - NetBox: $NETBOX_COMMIT, Console: $CONSOLE_COMMIT"
+          
+          # Store current git status for debugging
+          echo "=== Git status before yarn install ==="
+          git status --porcelain
+          git submodule status
+          
+          # Install dependencies (this WILL trigger postinstall and reset submodules)
+          echo "=== Running yarn install (will reset submodules) ==="
+          yarn install --frozen-lockfile
+          
+          # Verify postinstall reset occurred
+          echo "=== Git status after yarn install ==="
+          git status --porcelain
+          git submodule status
+          
+          # Restore submodules to the updated commits after installation
+          echo "=== Restoring submodules to updated commits ==="
+          cd external-repos/netbox
+          echo "NetBox: Checking out $NETBOX_COMMIT"
+          git checkout $NETBOX_COMMIT || (echo "Failed to checkout NetBox commit $NETBOX_COMMIT" && exit 1)
+          cd ../console-docs
+          echo "Console: Checking out $CONSOLE_COMMIT"  
+          git checkout $CONSOLE_COMMIT || (echo "Failed to checkout Console commit $CONSOLE_COMMIT" && exit 1)
+          cd ../..
+          
+          # Verify final state and ensure we're in the right commits
+          NETBOX_FINAL=$(cd external-repos/netbox && git rev-parse HEAD)
+          CONSOLE_FINAL=$(cd external-repos/console-docs && git rev-parse HEAD)
+          
+          echo "=== Final verification ==="
+          echo "NetBox Final: $NETBOX_FINAL (expected: $NETBOX_COMMIT)"
+          echo "Console Final: $CONSOLE_FINAL (expected: $CONSOLE_COMMIT)"
+          
+          if [ "$NETBOX_FINAL" != "$NETBOX_COMMIT" ]; then
+            echo "❌ NetBox submodule restoration failed!"
+            echo "Expected: $NETBOX_COMMIT"
+            echo "Got: $NETBOX_FINAL"
+            exit 1
+          fi
+          
+          if [ "$CONSOLE_FINAL" != "$CONSOLE_COMMIT" ]; then
+            echo "❌ Console submodule restoration failed!"
+            echo "Expected: $CONSOLE_COMMIT"
+            echo "Got: $CONSOLE_FINAL"
+            exit 1
+          fi
+          
+          echo "✅ Submodules successfully protected and restored"
+          
+          # Final git status check
+          echo "=== Final git status ==="
+          git status --porcelain
+          git submodule status
 
       - name: Run documentation transformation
         if: steps.changes.outputs.has_changes == 'true'
-        run: yarn transform-docs
+        run: |
+          echo "=== Running documentation transformation ==="
+          yarn transform-docs
+          
+          echo "=== Verifying transformation output ==="
+          # Check that key directories exist
+          if [ ! -d "docs/netbox" ]; then
+            echo "❌ NetBox documentation not transformed - docs/netbox missing"
+            exit 1
+          fi
+          
+          if [ ! -d "docs/console" ]; then
+            echo "❌ Console documentation not transformed - docs/console missing"
+            exit 1
+          fi
+          
+          # Check that sidebars were generated
+          if [ ! -f "sidebars/netbox.json" ]; then
+            echo "❌ NetBox sidebar not generated"
+            exit 1
+          fi
+          
+          if [ ! -f "sidebars/console.json" ]; then
+            echo "❌ Console sidebar not generated"
+            exit 1
+          fi
+          
+          echo "✅ Documentation transformation completed successfully"
+          
+          # Show what files were generated/changed
+          echo "=== Files changed by transformation ==="
+          git status --porcelain | head -20
+
+      - name: Test build for Vercel compatibility
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          echo "=== Testing Docusaurus build ==="
+          # Test that the build works (this is what Vercel will run)
+          yarn build
+          
+          echo "✅ Build test successful - Vercel deployment should work"
+          
+          # Clean up build directory to avoid committing it
+          rm -rf build/
 
       - name: Analyze documentation file changes
         if: steps.changes.outputs.has_changes == 'true'
@@ -389,7 +496,9 @@ jobs:
         id: commit
         if: steps.changes.outputs.has_changes == 'true'
         run: |
-          # Stage all changes
+          # Force stage submodule changes
+          git add external-repos/netbox external-repos/console-docs
+          # Stage all other changes
           git add .
           
           # Check if there are actually changes to commit

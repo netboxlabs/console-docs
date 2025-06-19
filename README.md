@@ -232,10 +232,38 @@ git commit -m "Update NetBox docs to latest"
 3. **Missing images**: Ensure image paths in source docs are relative and correct
 4. **Sidebar not updating**: Delete and regenerate with `yarn transform-docs`
 
+**GitHub Actions Issues:**
+
+5. **Workflow not creating PRs**: 
+   - Check if external repos have new commits: `git submodule update --remote && git status`
+   - Verify workflow permissions in repository settings
+   - Look for "No changes detected" in workflow logs
+   - Try manual trigger with `force_update: true`
+
+6. **PRs created but builds fail**:
+   - Check if `yarn build` works locally after `yarn transform-docs`
+   - Look for submodule restoration errors in workflow logs
+   - Verify Node.js version compatibility (requires >=22.0.0)
+
+7. **Submodule conflicts in CI**:
+   - The workflow includes protection against `postinstall` script conflicts
+   - Check "Submodule Protection Strategy" logs for restoration failures
+   - Ensure submodule URLs are accessible from GitHub Actions
+
 **Debug Mode:**
 ```bash
 # Enable verbose transformation logging
 DEBUG=true yarn transform-docs
+
+# Test workflow components locally
+git submodule update --remote
+yarn install --frozen-lockfile
+yarn transform-docs
+yarn build
+
+# Check submodule status
+git submodule status
+git diff --name-only
 ```
 
 ## 🚀 Deployment
@@ -259,15 +287,46 @@ This repository uses several GitHub Actions workflows for automation. Here's a c
 ### 🔄 Documentation Automation
 
 #### `update-submodules.yml` - **Automated Documentation Updates**
-- **Trigger**: Hourly during EST business hours (7 AM - 6 PM), every 6 hours off-hours
-- **Purpose**: Automatically checks for and pulls latest documentation from external repositories
-- **What it does**:
-  - Updates git submodules (`netbox` and `console-docs`)
-  - Detects changes in documentation content
-  - Transforms MkDocs content to Docusaurus format
-  - Creates/updates automated PRs with detailed change summaries
-  - Analyzes file-level changes (added/modified/removed pages)
-- **Smart Features**: Only creates PRs when actual changes detected, prevents PR buildup
+
+**🎯 Purpose**: Automatically detects when NetBox or Console documentation is updated and creates PRs with transformed content.
+
+**⏰ Schedule**: 
+- **Business hours**: Every hour (7 AM - 6 PM EST, Mon-Fri)
+- **Off hours**: Every 6 hours (nights/weekends)
+- **Manual trigger**: Available via GitHub Actions UI
+
+**🔍 How It Works**:
+
+1. **Submodule Check**: Compares current submodule commits vs latest remote commits
+2. **Change Detection**: Only proceeds if actual changes are detected
+3. **Dependency Installation**: Installs yarn dependencies with submodule protection
+4. **Documentation Transformation**: Runs `yarn transform-docs` to convert MkDocs → Docusaurus
+5. **PR Management**: Creates new PR or updates existing automated PR
+6. **File Analysis**: Provides detailed breakdown of added/modified/removed files
+
+**🛡️ Submodule Protection Strategy**:
+The workflow solves a critical issue where `yarn install` triggers a `postinstall` script that resets submodules:
+```bash
+# Problem: postinstall runs "git submodule update --init --recursive" 
+# This resets submodules to committed state, undoing remote updates
+
+# Solution: Save commits → Install → Restore commits
+NETBOX_COMMIT="abc123..."     # Save updated commit
+yarn install --frozen-lockfile # Install (may reset submodules)  
+git checkout $NETBOX_COMMIT   # Restore to updated commit
+```
+
+**🚨 Common Failure Points**:
+- **Submodule conflicts**: Fixed by commit protection strategy above
+- **Missing GitHub permissions**: Requires `contents: write` and `pull-requests: write`
+- **Network timeouts**: Workflow includes retry logic for external API calls
+- **Change detection edge cases**: Extensive debugging output helps identify issues
+
+**🔧 Troubleshooting**:
+- **No PR created**: Check workflow logs for "No changes detected" or permission errors
+- **PR created but empty**: Look for submodule restoration failures in logs
+- **Build failures**: Check if transformation script errors are breaking the workflow
+- **Manual override**: Use workflow dispatch with `force_update: true`
 
 #### `auto-merge-docs.yml` - **Automated PR Merging**
 - **Trigger**: When automated documentation PRs are opened
@@ -371,6 +430,111 @@ graph TD
 - **`manual-cleanup-automated-prs.yml`**: When automated PRs accumulate or need bulk cleanup
 - **`generate-changelog.yml`**: Before major releases or when updating project documentation
 - **`update-changelog-weekly.yml`**: Can be triggered manually if weekly run fails
+
+### 🔧 Critical Workflow Design Details
+
+#### **The Submodule vs Postinstall Conflict**
+
+The biggest challenge in this workflow is handling a fundamental conflict:
+
+1. **Workflow Goal**: Update submodules to latest remote commits (`git submodule update --remote`)
+2. **Postinstall Script**: Resets submodules to committed state (`git submodule update --init --recursive`)
+3. **The Problem**: `yarn install` triggers postinstall, undoing the remote updates
+
+#### **Solution: Commit Protection Strategy**
+
+```bash
+# Step 1: Update submodules to latest
+git submodule update --remote
+NETBOX_COMMIT=$(cd external-repos/netbox && git rev-parse HEAD)
+
+# Step 2: Install dependencies (this WILL reset submodules)
+yarn install --frozen-lockfile
+# ↑ Triggers postinstall: git submodule update --init --recursive
+# ↑ Resets NetBox to committed state (e.g., 334b45f)
+
+# Step 3: Restore to updated commits
+cd external-repos/netbox && git checkout $NETBOX_COMMIT
+# ↑ Restores NetBox to latest state (e.g., c660f1c)
+```
+
+#### **Why This Works for Vercel**
+
+- **Vercel Build Process**: Runs `yarn build` which includes `yarn update-submodules`
+- **Submodule Handling**: Vercel gets submodules at the committed state (expected behavior)
+- **No Conflicts**: Vercel doesn't need the `--remote` updates; it uses committed versions
+- **CI/CD Separation**: Workflow updates commits, Vercel builds from those commits
+
+#### **Workflow Reliability Features**
+
+1. **Comprehensive Verification**: Each step validates submodule states
+2. **Build Testing**: Tests full `yarn build` to ensure Vercel compatibility  
+3. **Error Handling**: Explicit failure modes with clear error messages
+4. **Debug Logging**: Tracks git status and submodule states throughout
+
+#### **PR Management Strategy**
+
+The workflow implements intelligent PR management:
+
+1. **Single Active PR**: Only one automated documentation PR exists at a time
+2. **PR Updates**: If changes occur during the run window, the existing PR is updated rather than creating new ones
+3. **Detailed Descriptions**: PRs include comprehensive file change analysis and commit details
+4. **Auto-Merge Ready**: PRs are structured for safe automatic merging with proper validation
+
+**PR Update Process**:
+```bash
+# If existing automated PR found:
+git checkout existing-pr-branch
+git rebase master  # Bring up to date
+# Apply new changes
+git commit --amend  # Update existing commit
+git push --force-with-lease  # Update PR
+
+# If no existing PR:
+git checkout -b automated-docs-update-YYYYMMDD
+# Apply changes and create new PR
+```
+
+### 🧪 Testing Workflow Changes
+
+**Before modifying workflows**, test the core functionality locally:
+
+```bash
+# 1. Test submodule updates
+git submodule update --remote
+git status  # Should show changes in external-repos/
+
+# 2. Test the postinstall conflict
+cd external-repos/netbox && BEFORE=$(git rev-parse HEAD) && cd ../..
+yarn install --frozen-lockfile  # This will reset submodules
+cd external-repos/netbox && AFTER=$(git rev-parse HEAD) && cd ../..
+echo "Before: $BEFORE, After: $AFTER"  # Should be different
+
+# 3. Test restoration
+cd external-repos/netbox && git checkout $BEFORE && cd ../..
+# Should restore to updated commit
+
+# 4. Test full pipeline
+yarn transform-docs
+yarn build
+
+# 5. Test change detection logic
+git diff --name-only  # Should show docs/ changes
+git add . && git commit -m "test: workflow changes"
+
+# 6. Force trigger workflow (if needed)
+# Go to Actions → Update Documentation Submodules → Run workflow
+# Set force_update: true
+```
+
+**Workflow Testing Checklist**:
+- [ ] Submodules update correctly with `--remote`
+- [ ] Postinstall resets submodules (expected behavior)
+- [ ] Restoration brings submodules back to updated commits
+- [ ] Transformation completes without errors  
+- [ ] Build succeeds after transformation
+- [ ] Change detection identifies modified files
+- [ ] Local git operations work as expected
 
 ## 📋 Key Commands Reference
 

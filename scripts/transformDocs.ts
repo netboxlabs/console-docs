@@ -582,6 +582,100 @@ const processFile = async (sourceFilePath: string, outputBaseDir: string, source
     }
 };
 
+const postProcessConsoleSidebar = (sidebar: DocusaurusSidebarItem[]): DocusaurusSidebarItem[] => {
+    // Find NetBox Discovery and NetBox Assurance sections
+    const discoveryIndex = sidebar.findIndex(item => item.label === 'NetBox Discovery');
+    const assuranceIndex = sidebar.findIndex(item => item.label === 'NetBox Assurance');
+    
+    if (discoveryIndex === -1 || assuranceIndex === -1) {
+        return sidebar; // Return unchanged if sections not found
+    }
+    
+    const discoverySection = sidebar[discoveryIndex];
+    const assuranceSection = sidebar[assuranceIndex];
+    
+    // Remove the original sections
+    const newSidebar = sidebar.filter((_, index) => index !== discoveryIndex && index !== assuranceIndex);
+    
+    // Create enhanced Discovery & Assurance structure with complete navigation
+    const discoveryAssuranceSection: DocusaurusSidebarItem = {
+        type: 'category',
+        label: 'Discovery & Assurance',
+        items: [
+            // NetBox Discovery with complete navigation
+            {
+                type: 'category',
+                label: 'NetBox Discovery',
+                items: [
+                    {
+                        type: 'doc',
+                        id: 'console/netbox-discovery/index',
+                        label: 'Overview'
+                    },
+                    {
+                        type: 'category',
+                        label: 'Discovery Agent',
+                        items: [
+                            {
+                                type: 'doc',
+                                id: 'console/netbox-discovery/agent/index',
+                                label: 'Overview'
+                            },
+                            {
+                                type: 'doc',
+                                id: 'console/netbox-discovery/agent/get-started',
+                                label: 'Getting Started'
+                            },
+                            {
+                                type: 'doc',
+                                id: 'console/netbox-discovery/agent/configuration-file',
+                                label: 'Configuration Format'
+                            },
+                            {
+                                type: 'doc',
+                                id: 'console/netbox-discovery/agent/network_discovery',
+                                label: 'Network Discovery'
+                            },
+                            {
+                                type: 'doc',
+                                id: 'console/netbox-discovery/agent/device_discovery',
+                                label: 'Device Discovery'
+                            },
+                            {
+                                type: 'doc',
+                                id: 'console/netbox-discovery/agent/config_samples',
+                                label: 'Configuration Samples'
+                            }
+                        ]
+                    }
+                ]
+            },
+            // NetBox Assurance with complete navigation
+            {
+                type: 'category', 
+                label: 'NetBox Assurance',
+                items: [
+                    {
+                        type: 'doc',
+                        id: 'console/netbox-assurance/index',
+                        label: 'Overview'
+                    },
+                    {
+                        type: 'doc',
+                        id: 'console/netbox-assurance/using-the-ui',
+                        label: 'Using the UI'
+                    }
+                ]
+            }
+        ]
+    };
+    
+    // Insert the new section at the position where NetBox Discovery was
+    newSidebar.splice(discoveryIndex, 0, discoveryAssuranceSection);
+    
+    return newSidebar;
+};
+
 const transformDocs = async (): Promise<void> => {
     console.log('\nStarting documentation transformation and copy...');
     for (const dirConfig of docsDirectories) {
@@ -611,8 +705,14 @@ const transformDocs = async (): Promise<void> => {
 
                 if (mkdocsConfig?.nav) {
 
-                    const docusaurusSidebarItems = mapNavToDocusaurus(mkdocsConfig.nav, output).filter(item => item.label !== 'Home' && item.id !== `${output}/index`);
+                    let docusaurusSidebarItems = mapNavToDocusaurus(mkdocsConfig.nav, output).filter(item => item.label !== 'Home' && item.id !== `${output}/index`);
                     docusaurusSidebarItems.unshift({ type: 'doc', id: `${output}/index`, label: 'Home' });
+                    
+                    // Post-process console sidebar to reorganize Discovery & Assurance
+                    if (output === 'console') {
+                        docusaurusSidebarItems = postProcessConsoleSidebar(docusaurusSidebarItems);
+                    }
+                    
                     const sidebarJsonPath = pathModule.join('sidebars', `${output}.json`); // Dynamic output path
                     await writeFile(sidebarJsonPath, JSON.stringify(docusaurusSidebarItems, null, 2));
                     console.log(`Successfully generated and wrote sidebar to ${sidebarJsonPath}`);
