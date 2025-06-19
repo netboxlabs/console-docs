@@ -133,10 +133,14 @@ jobs:
         run: |
           echo "=== Before submodule update ==="
           git submodule status
+          git status --porcelain
           echo "=== Running submodule update ==="
           git submodule update --remote --merge
           echo "=== After submodule update ==="
           git submodule status
+          git status --porcelain
+          echo "=== Git diff for submodules ==="
+          git diff --name-only || true
           
       - name: Check updated submodule commits
         id: check-after
@@ -248,7 +252,31 @@ jobs:
 
       - name: Install dependencies
         if: steps.changes.outputs.has_changes == 'true'
-        run: yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile --ignore-scripts
+
+      - name: Verify submodules after installation
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          echo "=== Verifying submodules are still at updated commits ==="
+          echo "Expected NetBox: ${{ steps.check-after.outputs.netbox_after }}"
+          echo "Expected Console: ${{ steps.check-after.outputs.console_after }}"
+          
+          NETBOX_CURRENT=$(cd external-repos/netbox && git rev-parse HEAD 2>/dev/null || echo "")
+          CONSOLE_CURRENT=$(cd external-repos/console-docs && git rev-parse HEAD 2>/dev/null || echo "")
+          
+          echo "Current NetBox: $NETBOX_CURRENT"
+          echo "Current Console: $CONSOLE_CURRENT"
+          
+          # Ensure submodules are still at the expected commits
+          if [ "$NETBOX_CURRENT" != "${{ steps.check-after.outputs.netbox_after }}" ]; then
+            echo "⚠️ NetBox submodule was reset, updating again..."
+            cd external-repos/netbox && git checkout ${{ steps.check-after.outputs.netbox_after }}
+          fi
+          
+          if [ "$CONSOLE_CURRENT" != "${{ steps.check-after.outputs.console_after }}" ]; then
+            echo "⚠️ Console submodule was reset, updating again..."
+            cd external-repos/console-docs && git checkout ${{ steps.check-after.outputs.console_after }}
+          fi
 
       - name: Run documentation transformation
         if: steps.changes.outputs.has_changes == 'true'
@@ -389,7 +417,9 @@ jobs:
         id: commit
         if: steps.changes.outputs.has_changes == 'true'
         run: |
-          # Stage all changes
+          # Force stage submodule changes
+          git add external-repos/netbox external-repos/console-docs
+          # Stage all other changes
           git add .
           
           # Check if there are actually changes to commit

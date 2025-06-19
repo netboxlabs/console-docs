@@ -339,70 +339,23 @@
   },
   {
     "type": "category",
-    "label": "Discovery & Assurance",
+    "label": "NetBox Discovery",
     "items": [
       {
         "type": "doc",
-        "id": "console/discovery-assurance",
-        "label": "Solution Overview"
-      },
+        "id": "console/netbox-discovery/index",
+        "label": "Overview"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "NetBox Assurance",
+    "items": [
       {
         "type": "doc",
-        "id": "console/netbox-discovery/quickstart-guide",
-        "label": "Quickstart Guide"
-      },
-      {
-        "type": "category",
-        "label": "NetBox Discovery",
-        "items": [
-          {
-            "type": "doc",
-            "id": "console/netbox-discovery/index",
-            "label": "NetBox Discovery"
-          },
-          {
-            "type": "category",
-            "label": "Discovery Agent",
-            "items": [
-              {
-                "type": "doc",
-                "id": "console/netbox-discovery/agent/index",
-                "label": "Overview"
-              },
-              {
-                "type": "doc",
-                "id": "console/netbox-discovery/agent/get-started",
-                "label": "Getting started"
-              },
-              {
-                "type": "doc",
-                "id": "console/netbox-discovery/agent/configuration-file",
-                "label": "Configuration format"
-              },
-              {
-                "type": "doc",
-                "id": "console/netbox-discovery/agent/network_discovery",
-                "label": "Network Discovery"
-              },
-              {
-                "type": "doc",
-                "id": "console/netbox-discovery/agent/device_discovery",
-                "label": "Device Discovery"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "category",
-        "label": "NetBox Assurance",
-        "items": [
-          {
-            "type": "doc",
-            "id": "console/netbox-assurance/index",
-            "label": "NetBox Assurance"
-          }
-        ]
+        "id": "console/netbox-assurance/index",
+        "label": "Overview"
       }
     ]
   },

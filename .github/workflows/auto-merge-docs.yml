@@ -99,7 +99,7 @@ jobs:
               });
               console.log('✅ PR auto-approved');
 
-              // Try to enable auto-merge using the correct API
+              // Try to merge the PR directly
               try {
                 await github.rest.pulls.merge({
                   owner: context.repo.owner,
