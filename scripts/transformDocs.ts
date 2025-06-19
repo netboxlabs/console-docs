@@ -582,6 +582,47 @@ const processFile = async (sourceFilePath: string, outputBaseDir: string, source
     }
 };
 
+const postProcessConsoleSidebar = (sidebar: DocusaurusSidebarItem[]): DocusaurusSidebarItem[] => {
+    // Find NetBox Discovery and NetBox Assurance sections
+    const discoveryIndex = sidebar.findIndex(item => item.label === 'NetBox Discovery');
+    const assuranceIndex = sidebar.findIndex(item => item.label === 'NetBox Assurance');
+    
+    if (discoveryIndex === -1 || assuranceIndex === -1) {
+        return sidebar; // Return unchanged if sections not found
+    }
+    
+    const discoverySection = sidebar[discoveryIndex];
+    const assuranceSection = sidebar[assuranceIndex];
+    
+    // Remove the original sections
+    const newSidebar = sidebar.filter((_, index) => index !== discoveryIndex && index !== assuranceIndex);
+    
+    // Create the new Discovery & Assurance structure
+    const discoveryAssuranceSection: DocusaurusSidebarItem = {
+        type: 'category',
+        label: 'Discovery & Assurance',
+        items: [
+            // Add NetBox Discovery as a category with its items
+            {
+                type: 'category',
+                label: 'NetBox Discovery',
+                items: discoverySection.items || []
+            },
+            // Add NetBox Assurance as a category with its items
+            {
+                type: 'category', 
+                label: 'NetBox Assurance',
+                items: assuranceSection.items || []
+            }
+        ]
+    };
+    
+    // Insert the new section at the position where NetBox Discovery was
+    newSidebar.splice(discoveryIndex, 0, discoveryAssuranceSection);
+    
+    return newSidebar;
+};
+
 const transformDocs = async (): Promise<void> => {
     console.log('\nStarting documentation transformation and copy...');
     for (const dirConfig of docsDirectories) {
@@ -611,8 +652,14 @@ const transformDocs = async (): Promise<void> => {
 
                 if (mkdocsConfig?.nav) {
 
-                    const docusaurusSidebarItems = mapNavToDocusaurus(mkdocsConfig.nav, output).filter(item => item.label !== 'Home' && item.id !== `${output}/index`);
+                    let docusaurusSidebarItems = mapNavToDocusaurus(mkdocsConfig.nav, output).filter(item => item.label !== 'Home' && item.id !== `${output}/index`);
                     docusaurusSidebarItems.unshift({ type: 'doc', id: `${output}/index`, label: 'Home' });
+                    
+                    // Post-process console sidebar to reorganize Discovery & Assurance
+                    if (output === 'console') {
+                        docusaurusSidebarItems = postProcessConsoleSidebar(docusaurusSidebarItems);
+                    }
+                    
                     const sidebarJsonPath = pathModule.join('sidebars', `${output}.json`); // Dynamic output path
                     await writeFile(sidebarJsonPath, JSON.stringify(docusaurusSidebarItems, null, 2));
                     console.log(`Successfully generated and wrote sidebar to ${sidebarJsonPath}`);

@@ -339,23 +339,29 @@
   },
   {
     "type": "category",
-    "label": "NetBox Discovery",
+    "label": "Discovery & Assurance",
     "items": [
       {
-        "type": "doc",
-        "id": "console/netbox-discovery/index",
-        "label": "Overview"
-      }
-    ]
-  },
-  {
-    "type": "category",
-    "label": "NetBox Assurance",
-    "items": [
+        "type": "category",
+        "label": "NetBox Discovery",
+        "items": [
+          {
+            "type": "doc",
+            "id": "console/netbox-discovery/index",
+            "label": "Overview"
+          }
+        ]
+      },
       {
-        "type": "doc",
-        "id": "console/netbox-assurance/index",
-        "label": "Overview"
+        "type": "category",
+        "label": "NetBox Assurance",
+        "items": [
+          {
+            "type": "doc",
+            "id": "console/netbox-assurance/index",
+            "label": "Overview"
+          }
+        ]
       }
     ]
   },
