@@ -250,33 +250,39 @@ jobs:
           node-version: '22'
           cache: 'yarn'
 
-      - name: Install dependencies
-        if: steps.changes.outputs.has_changes == 'true'
-        run: yarn install --frozen-lockfile --ignore-scripts
-
-      - name: Verify submodules after installation
+      - name: Install dependencies and handle submodule conflict
         if: steps.changes.outputs.has_changes == 'true'
         run: |
-          echo "=== Verifying submodules are still at updated commits ==="
-          echo "Expected NetBox: ${{ steps.check-after.outputs.netbox_after }}"
-          echo "Expected Console: ${{ steps.check-after.outputs.console_after }}"
+          echo "=== Installing dependencies with submodule protection ==="
           
-          NETBOX_CURRENT=$(cd external-repos/netbox && git rev-parse HEAD 2>/dev/null || echo "")
-          CONSOLE_CURRENT=$(cd external-repos/console-docs && git rev-parse HEAD 2>/dev/null || echo "")
+          # Save current submodule commits before yarn install
+          NETBOX_COMMIT="${{ steps.check-after.outputs.netbox_after }}"
+          CONSOLE_COMMIT="${{ steps.check-after.outputs.console_after }}"
           
-          echo "Current NetBox: $NETBOX_CURRENT"
-          echo "Current Console: $CONSOLE_CURRENT"
+          echo "Protecting commits - NetBox: $NETBOX_COMMIT, Console: $CONSOLE_COMMIT"
           
-          # Ensure submodules are still at the expected commits
-          if [ "$NETBOX_CURRENT" != "${{ steps.check-after.outputs.netbox_after }}" ]; then
-            echo "⚠️ NetBox submodule was reset, updating again..."
-            cd external-repos/netbox && git checkout ${{ steps.check-after.outputs.netbox_after }}
+          # Install dependencies (this may trigger postinstall and reset submodules)
+          yarn install --frozen-lockfile
+          
+          # Restore submodules to the updated commits after installation
+          echo "=== Restoring submodules to updated commits ==="
+          cd external-repos/netbox && git checkout $NETBOX_COMMIT
+          cd ../console-docs && git checkout $CONSOLE_COMMIT
+          cd ../..
+          
+          # Verify final state
+          NETBOX_FINAL=$(cd external-repos/netbox && git rev-parse HEAD)
+          CONSOLE_FINAL=$(cd external-repos/console-docs && git rev-parse HEAD)
+          
+          echo "Final NetBox: $NETBOX_FINAL (expected: $NETBOX_COMMIT)"
+          echo "Final Console: $CONSOLE_FINAL (expected: $CONSOLE_COMMIT)"
+          
+          if [ "$NETBOX_FINAL" != "$NETBOX_COMMIT" ] || [ "$CONSOLE_FINAL" != "$CONSOLE_COMMIT" ]; then
+            echo "❌ Submodule restoration failed!"
+            exit 1
           fi
           
-          if [ "$CONSOLE_CURRENT" != "${{ steps.check-after.outputs.console_after }}" ]; then
-            echo "⚠️ Console submodule was reset, updating again..."
-            cd external-repos/console-docs && git checkout ${{ steps.check-after.outputs.console_after }}
-          fi
+          echo "✅ Submodules successfully protected and restored"
 
       - name: Run documentation transformation
         if: steps.changes.outputs.has_changes == 'true'

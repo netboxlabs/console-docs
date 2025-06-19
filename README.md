@@ -232,10 +232,38 @@ git commit -m "Update NetBox docs to latest"
 3. **Missing images**: Ensure image paths in source docs are relative and correct
 4. **Sidebar not updating**: Delete and regenerate with `yarn transform-docs`
 
+**GitHub Actions Issues:**
+
+5. **Workflow not creating PRs**: 
+   - Check if external repos have new commits: `git submodule update --remote && git status`
+   - Verify workflow permissions in repository settings
+   - Look for "No changes detected" in workflow logs
+   - Try manual trigger with `force_update: true`
+
+6. **PRs created but builds fail**:
+   - Check if `yarn build` works locally after `yarn transform-docs`
+   - Look for submodule restoration errors in workflow logs
+   - Verify Node.js version compatibility (requires >=22.0.0)
+
+7. **Submodule conflicts in CI**:
+   - The workflow includes protection against `postinstall` script conflicts
+   - Check "Submodule Protection Strategy" logs for restoration failures
+   - Ensure submodule URLs are accessible from GitHub Actions
+
 **Debug Mode:**
 ```bash
 # Enable verbose transformation logging
 DEBUG=true yarn transform-docs
+
+# Test workflow components locally
+git submodule update --remote
+yarn install --frozen-lockfile
+yarn transform-docs
+yarn build
+
+# Check submodule status
+git submodule status
+git diff --name-only
 ```
 
 ## 🚀 Deployment
@@ -259,15 +287,46 @@ This repository uses several GitHub Actions workflows for automation. Here's a c
 ### 🔄 Documentation Automation
 
 #### `update-submodules.yml` - **Automated Documentation Updates**
-- **Trigger**: Hourly during EST business hours (7 AM - 6 PM), every 6 hours off-hours
-- **Purpose**: Automatically checks for and pulls latest documentation from external repositories
-- **What it does**:
-  - Updates git submodules (`netbox` and `console-docs`)
-  - Detects changes in documentation content
-  - Transforms MkDocs content to Docusaurus format
-  - Creates/updates automated PRs with detailed change summaries
-  - Analyzes file-level changes (added/modified/removed pages)
-- **Smart Features**: Only creates PRs when actual changes detected, prevents PR buildup
+
+**🎯 Purpose**: Automatically detects when NetBox or Console documentation is updated and creates PRs with transformed content.
+
+**⏰ Schedule**: 
+- **Business hours**: Every hour (7 AM - 6 PM EST, Mon-Fri)
+- **Off hours**: Every 6 hours (nights/weekends)
+- **Manual trigger**: Available via GitHub Actions UI
+
+**🔍 How It Works**:
+
+1. **Submodule Check**: Compares current submodule commits vs latest remote commits
+2. **Change Detection**: Only proceeds if actual changes are detected
+3. **Dependency Installation**: Installs yarn dependencies with submodule protection
+4. **Documentation Transformation**: Runs `yarn transform-docs` to convert MkDocs → Docusaurus
+5. **PR Management**: Creates new PR or updates existing automated PR
+6. **File Analysis**: Provides detailed breakdown of added/modified/removed files
+
+**🛡️ Submodule Protection Strategy**:
+The workflow solves a critical issue where `yarn install` triggers a `postinstall` script that resets submodules:
+```bash
+# Problem: postinstall runs "git submodule update --init --recursive" 
+# This resets submodules to committed state, undoing remote updates
+
+# Solution: Save commits → Install → Restore commits
+NETBOX_COMMIT="abc123..."     # Save updated commit
+yarn install --frozen-lockfile # Install (may reset submodules)  
+git checkout $NETBOX_COMMIT   # Restore to updated commit
+```
+
+**🚨 Common Failure Points**:
+- **Submodule conflicts**: Fixed by commit protection strategy above
+- **Missing GitHub permissions**: Requires `contents: write` and `pull-requests: write`
+- **Network timeouts**: Workflow includes retry logic for external API calls
+- **Change detection edge cases**: Extensive debugging output helps identify issues
+
+**🔧 Troubleshooting**:
+- **No PR created**: Check workflow logs for "No changes detected" or permission errors
+- **PR created but empty**: Look for submodule restoration failures in logs
+- **Build failures**: Check if transformation script errors are breaking the workflow
+- **Manual override**: Use workflow dispatch with `force_update: true`
 
 #### `auto-merge-docs.yml` - **Automated PR Merging**
 - **Trigger**: When automated documentation PRs are opened
@@ -371,6 +430,36 @@ graph TD
 - **`manual-cleanup-automated-prs.yml`**: When automated PRs accumulate or need bulk cleanup
 - **`generate-changelog.yml`**: Before major releases or when updating project documentation
 - **`update-changelog-weekly.yml`**: Can be triggered manually if weekly run fails
+
+### 🧪 Testing Workflow Changes
+
+**Before modifying workflows**, test the core functionality locally:
+
+```bash
+# 1. Test submodule updates
+git submodule update --remote
+git status  # Should show changes in external-repos/
+
+# 2. Test transformation pipeline  
+yarn install --frozen-lockfile
+yarn transform-docs
+yarn build
+
+# 3. Test change detection logic
+git diff --name-only  # Should show docs/ changes
+git add . && git commit -m "test: workflow changes"
+
+# 4. Force trigger workflow (if needed)
+# Go to Actions → Update Documentation Submodules → Run workflow
+# Set force_update: true
+```
+
+**Workflow Testing Checklist**:
+- [ ] Submodules update correctly with `--remote`
+- [ ] Transformation completes without errors  
+- [ ] Build succeeds after transformation
+- [ ] Change detection identifies modified files
+- [ ] Local git operations work as expected
 
 ## 📋 Key Commands Reference
 
