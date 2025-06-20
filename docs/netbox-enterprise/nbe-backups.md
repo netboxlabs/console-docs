@@ -226,8 +226,8 @@ To restore from a dump file, pipe the `netbox-enterprise.pgsql` created during b
 ```shell
 NETBOX_NAMESPACE="kotsadm" && \
 NETBOX_DATABASE_FILE="netbox-enterprise.pgsql" && \
-HAS_DIODE="$(kubectl get deployments -n "${NETBOX_NAMESPACE}" -o name | grep -c diode)" && \
-HAS_HYDRA="$(kubectl get deployments -n "${NETBOX_NAMESPACE}" -o name | grep -c hydra)" && \
+DIODE_POD_COUNT="$(kubectl get deployments -n "${NETBOX_NAMESPACE}" -o name | grep -c diode || :)" && \
+HYDRA_POD_COUNT="$(kubectl get deployments -n "${NETBOX_NAMESPACE}" -o name | grep -c hydra || :)" && \
 POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
@@ -242,10 +242,10 @@ for DB in netbox diode hydra; do
 done && \
 ( \
   if ! grep --quiet -E '^CREATE DATABASE ' "${NETBOX_DATABASE_FILE}"; then \
-    if [ "${HAS_DIODE}" -gt 0 ]; then \
+    if [ "${DIODE_POD_COUNT}" -gt 0 ]; then \
       echo "CREATE DATABASE diode WITH TEMPLATE = template0 ENCODING = 'UTF8';"; \
     fi && \
-    if [ "${HAS_HYDRA}" -gt 0 ]; then \
+    if [ "${HYDRA_POD_COUNT}" -gt 0 ]; then \
       echo "CREATE DATABASE hydra WITH TEMPLATE = template0 ENCODING = 'UTF8';"; \
     fi && \
     echo "CREATE DATABASE netbox WITH TEMPLATE = template0 ENCODING = 'UTF8';" && \
