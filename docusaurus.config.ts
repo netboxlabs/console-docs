@@ -41,8 +41,13 @@ const config: Config = {
 					sidebarPath: "./sidebars.ts",
 					// Ensure all MDX files are processed
 					include: ['**/*.md', '**/*.mdx'],
-					// Exclude internal documentation files
-					exclude: ['**/AUTOMATED_DOCS_SYSTEM.md', '**/CHANGELOG_SYSTEM.md'],
+					// Exclude internal documentation files and AI reference system
+					exclude: [
+						'**/AUTOMATED_DOCS_SYSTEM.md', 
+						'**/CHANGELOG_SYSTEM.md',
+						'**/ai-reference/**',
+						'../ai-reference/**'
+					],
 				},
 				blog: false,
 				theme: {

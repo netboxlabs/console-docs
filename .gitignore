@@ -11,6 +11,9 @@
 .cache-loader
 logs/
 
+# Internal documentation (not for public deployment)
+# ai-reference/ - Commented out since it should be tracked in git but not deployed
+
 # Misc
 .DS_Store
 .env.local

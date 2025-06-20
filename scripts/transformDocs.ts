@@ -5,6 +5,43 @@ const { promisify } = require('util');
 const pathModule = require('path');
 const yaml = require('js-yaml');
 
+// Enhanced frontmatter interface for the new system
+interface EnhancedFrontmatter {
+    tags?: string[];
+    title?: string;
+    author?: string;
+    last_updated?: string;
+    versions?: {
+        netbox_cloud?: string;
+        netbox_enterprise?: string;
+        netbox_community?: string;
+    };
+    status?: 'current' | 'deprecated' | 'beta' | 'alpha' | 'archived';
+    description?: string;
+    category?: string;
+    audience?: string;
+    complexity?: string;
+    // Legacy fields for backward compatibility
+    hide?: {
+        navigation?: boolean;
+        toc?: boolean;
+    };
+}
+
+// Version configuration for filtering
+interface VersionConfig {
+    netbox_cloud: string;
+    netbox_enterprise: string;
+    netbox_community: string;
+}
+
+// Default version configuration - should be updated based on current versions
+const DEFAULT_VERSIONS: VersionConfig = {
+    netbox_cloud: "v1.10",
+    netbox_enterprise: "v1.10", 
+    netbox_community: "v4.2"
+};
+
 // Custom YAML schema to handle !ENV tags
 const EnvYamlType = new yaml.Type('!ENV', {
     kind: 'scalar',
@@ -24,6 +61,128 @@ const CUSTOM_YAML_SCHEMA = yaml.DEFAULT_SCHEMA.extend({
 });
 
 const execAsync = promisify(exec);
+
+// Function to check if content should be visible based on version and status
+const shouldShowContent = (frontmatter: EnhancedFrontmatter): boolean => {
+    // Always show current content
+    if (!frontmatter.status || frontmatter.status === 'current') {
+        return true;
+    }
+    
+    // Hide deprecated, beta, alpha, and archived content by default
+    // This can be overridden by environment variables in production
+    const showBeta = process.env.SHOW_BETA_CONTENT === 'true';
+    const showAlpha = process.env.SHOW_ALPHA_CONTENT === 'true';
+    const showDeprecated = process.env.SHOW_DEPRECATED_CONTENT === 'true';
+    
+    switch (frontmatter.status) {
+        case 'beta':
+            return showBeta;
+        case 'alpha':
+            return showAlpha;
+        case 'deprecated':
+            return showDeprecated;
+        case 'archived':
+            return false; // Never show archived content
+        default:
+            return true;
+    }
+};
+
+// Function to convert enhanced frontmatter to Docusaurus format
+const convertFrontmatterToDocusaurus = (frontmatter: EnhancedFrontmatter): any => {
+    const docusaurusFrontmatter: any = {};
+    
+    // Convert title
+    if (frontmatter.title) {
+        docusaurusFrontmatter.title = frontmatter.title;
+    }
+    
+    // Convert description for SEO
+    if (frontmatter.description) {
+        docusaurusFrontmatter.description = frontmatter.description;
+    }
+    
+    // Convert tags
+    if (frontmatter.tags && frontmatter.tags.length > 0) {
+        docusaurusFrontmatter.tags = frontmatter.tags;
+    }
+    
+    // Add custom fields for filtering and display
+    if (frontmatter.author) {
+        docusaurusFrontmatter.custom_author = frontmatter.author;
+    }
+    
+    if (frontmatter.last_updated) {
+        docusaurusFrontmatter.custom_last_updated = frontmatter.last_updated;
+    }
+    
+    if (frontmatter.versions) {
+        docusaurusFrontmatter.custom_versions = frontmatter.versions;
+    }
+    
+    if (frontmatter.status) {
+        docusaurusFrontmatter.custom_status = frontmatter.status;
+    }
+    
+    if (frontmatter.category) {
+        docusaurusFrontmatter.custom_category = frontmatter.category;
+    }
+    
+    if (frontmatter.audience) {
+        docusaurusFrontmatter.custom_audience = frontmatter.audience;
+    }
+    
+    if (frontmatter.complexity) {
+        docusaurusFrontmatter.custom_complexity = frontmatter.complexity;
+    }
+    
+    // Handle legacy hide options
+    if (frontmatter.hide) {
+        if (frontmatter.hide.navigation) {
+            docusaurusFrontmatter.sidebar_class_name = 'hidden-sidebar-item';
+        }
+        if (frontmatter.hide.toc) {
+            docusaurusFrontmatter.hide_table_of_contents = true;
+        }
+    }
+    
+    return docusaurusFrontmatter;
+};
+
+// Function to extract and parse frontmatter
+const extractFrontmatter = (content: string): { frontmatter: EnhancedFrontmatter | null, content: string } => {
+    const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n/;
+    const match = content.match(frontmatterRegex);
+    
+    if (!match) {
+        return { frontmatter: null, content };
+    }
+    
+    try {
+        const frontmatter = yaml.load(match[1], { schema: CUSTOM_YAML_SCHEMA }) as EnhancedFrontmatter;
+        const contentWithoutFrontmatter = content.replace(frontmatterRegex, '');
+        return { frontmatter, content: contentWithoutFrontmatter };
+    } catch (error) {
+        console.warn('Failed to parse frontmatter:', error);
+        return { frontmatter: null, content };
+    }
+};
+
+// Function to reconstruct frontmatter
+const reconstructFrontmatter = (frontmatter: any): string => {
+    if (!frontmatter || Object.keys(frontmatter).length === 0) {
+        return '';
+    }
+    
+    const frontmatterYaml = yaml.dump(frontmatter, {
+        lineWidth: -1, // Disable line wrapping
+        noRefs: true,
+        sortKeys: false
+    });
+    
+    return `---\n${frontmatterYaml}---\n\n`;
+};
 
 interface TransformRule {
     find: string | RegExp;
@@ -373,9 +532,18 @@ const mapNavToDocusaurus = (navItems: MkDocsNavItem[], basePathForId: string): D
 };
 
 const transformContent = async (content: string, sourceFilePath: string, outputBaseDir: string): Promise<string> => {
+    // Extract and process frontmatter first
+    const { frontmatter, content: contentWithoutFrontmatter } = extractFrontmatter(content);
+    
+    // Check if content should be visible based on version and status
+    if (frontmatter && !shouldShowContent(frontmatter)) {
+        console.log(`Skipping ${sourceFilePath} due to version/status filtering`);
+        return ''; // Return empty content to skip this file
+    }
+    
     const fencedCodeBlocks: string[] = [];
     const inlineCodeBlocks: string[] = [];
-    let tempContent = content;
+    let tempContent = contentWithoutFrontmatter;
 
     // Transformation for console docs image paths
     if (outputBaseDir === 'console') {
@@ -558,7 +726,52 @@ const transformContent = async (content: string, sourceFilePath: string, outputB
         }
     });
 
-    return transformedContentWithPlaceholders;
+    // 7. Process and reconstruct frontmatter
+    let docusaurusFrontmatter: any = {};
+    if (frontmatter) {
+        docusaurusFrontmatter = convertFrontmatterToDocusaurus(frontmatter);
+        
+        // Add enhanced metadata if not present
+        if (!frontmatter.author) {
+            docusaurusFrontmatter.custom_author = 'NetBox Labs';
+        }
+        
+        if (!frontmatter.last_updated) {
+            // Use current date as fallback
+            docusaurusFrontmatter.custom_last_updated = new Date().toISOString().split('T')[0];
+        }
+        
+        if (!frontmatter.versions) {
+            // Apply default versions based on output directory
+            if (outputBaseDir === 'console') {
+                docusaurusFrontmatter.custom_versions = DEFAULT_VERSIONS;
+            } else {
+                // For NetBox community docs
+                docusaurusFrontmatter.custom_versions = {
+                    netbox_community: DEFAULT_VERSIONS.netbox_community
+                };
+            }
+        }
+        
+        if (!frontmatter.status) {
+            docusaurusFrontmatter.custom_status = 'current';
+        }
+    } else {
+        // Add basic metadata for files without frontmatter
+        docusaurusFrontmatter = {
+            custom_author: 'NetBox Labs',
+            custom_last_updated: new Date().toISOString().split('T')[0],
+            custom_status: 'current',
+            custom_versions: outputBaseDir === 'console' ? DEFAULT_VERSIONS : {
+                netbox_community: DEFAULT_VERSIONS.netbox_community
+            }
+        };
+    }
+
+    // Reconstruct the content with Docusaurus-compatible frontmatter
+    const frontmatterString = reconstructFrontmatter(docusaurusFrontmatter);
+    
+    return frontmatterString + transformedContentWithPlaceholders;
 };
 
 const processFile = async (sourceFilePath: string, outputBaseDir: string, sourceBaseDir: string): Promise<void> => {
@@ -571,6 +784,13 @@ const processFile = async (sourceFilePath: string, outputBaseDir: string, source
         if (sourceFilePath.endsWith('.md')) {
             const content = await readFile(sourceFilePath, 'utf-8');
             const transformedContent = await transformContent(content, sourceFilePath, outputBaseDir);
+            
+            // Skip writing if content is empty (filtered out due to version/status)
+            if (transformedContent.trim() === '') {
+                console.log(`Skipped writing ${outputFilePath} - content filtered out`);
+                return;
+            }
+            
             await writeFile(outputFilePath, transformedContent);
         } else {
             // For non-markdown files, just copy them

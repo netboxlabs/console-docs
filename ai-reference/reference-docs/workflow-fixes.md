@@ -1,3 +1,21 @@
+---
+tags:
+  - ai-reference
+  - github-actions
+  - workflow-fixes
+  - automation
+  - development
+  - troubleshooting
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-27"
+category: "reference"
+audience: "developers"
+complexity: "advanced"
+description: "Critical fixes for GitHub Actions workflows to resolve errors and improve reliability"
+internal_only: true
+draft: true
+---
+
 # GitHub Actions Workflow Fixes
 
 This document summarizes the critical fixes applied to resolve workflow errors and improve reliability.
