@@ -162,6 +162,8 @@ yarn build
 | Understand navigation | `content-strategy/navigation-guidelines.md` |
 | System overview | `SYSTEM_OVERVIEW.md` |
 | This quick reference | `QUICK_REFERENCE.md` |
+| DocHub integration details | `reference-docs/dochub-integration-summary.md` |
+| Workflow troubleshooting | `reference-docs/workflow-fixes.md` |
 
 ## ⚡ Quick Checks
 

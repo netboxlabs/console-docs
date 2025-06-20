@@ -108,7 +108,9 @@ yarn dev
 - `navigation-guidelines.md` - User-centric organization
 - `version-management.md` - Version coordination (to be added)
 
-### Reference Docs (2 files)
+### Reference Docs (4 files)
+- `dochub-integration-summary.md` - Complete DocHub integration implementation summary
+- `workflow-fixes.md` - GitHub Actions workflow fixes and troubleshooting
 - `semantic-tagging-system.md` - Complete tagging documentation (to be added)
 - `dochub-integration-requirements.md` - Technical specs (to be added)
 
@@ -153,7 +155,7 @@ versions:
 
 ## 📊 System Metrics
 
-- **Total Files**: 15+ comprehensive reference files
+- **Total Files**: 17+ comprehensive reference files
 - **Edition Tags**: 4 (cloud, enterprise, community, airgap)
 - **Product Tags**: 5 (netbox, discovery, assurance, operator, branching)
 - **Semantic Categories**: 38+ across 8 major areas

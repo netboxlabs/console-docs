@@ -63,8 +63,10 @@ ai-reference/
 │   ├── navigation-guidelines.md        # Our navigation restructuring approach
 │   └── version-management.md           # How we handle versions and releases
 └── reference-docs/                     # External reference materials and authoritative sources
-    ├── semantic-tagging-system.md      # Comprehensive semantic tagging system documentation
-    └── dochub-integration-requirements.md # Detailed technical implementation requirements
+    ├── dochub-integration-summary.md   # Complete DocHub integration implementation summary
+    ├── workflow-fixes.md               # GitHub Actions workflow fixes and troubleshooting
+    ├── semantic-tagging-system.md      # Comprehensive semantic tagging system documentation (to be added)
+    └── dochub-integration-requirements.md # Detailed technical implementation requirements (to be added)
 ```
 
 ## Enhanced Frontmatter System
