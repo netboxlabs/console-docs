@@ -1,103 +1,241 @@
-# AI Reference Documentation System
+---
+tags:
+  - cloud
+  - enterprise
+  - community
+  - ai-reference
+  - assurance
+  - discovery
+  - operator
+  - template
+  - style-guide
+  - reference
+  - strategy
+  - ai-tools
+  - authentication
+  - tagging
+  - navigation
+  - documentation
+author: NetBox Labs Documentation Team
+last_updated: '2025-01-27'
+versions:
+  cloud: v1.10
+  enterprise: v1.10
+  community: v4.2
+status: current
+category: ai-reference
+audience: developers
+complexity: intermediate
+sidebar_position: 999
+description: AI Reference material for NetBox Labs documentation development
+internal_only: true
+draft: true
+---
 
-## Overview
-This directory contains the standardized templates, style guides, and reference materials for consistent NetBox documentation across all products and platforms.
+# AI Reference Materials
 
-## Directory Structure
+This directory contains reference materials, templates, and documentation resources for use with AI/LLM tools when building NetBox Labs documentation. **This directory is not published to the live site** and is intended for internal development use only.
+
+## Purpose
+
+- 📝 Store reference documentation and examples for AI-assisted writing
+- 🤖 Provide context and templates for LLM tools using our comprehensive frontmatter system
+- 📋 Maintain style guides and content patterns with version tracking
+- 🔧 Keep development notes and content strategy documents
+- 🏷️ Demonstrate proper use of our enhanced frontmatter tagging and versioning system
+
+## Structure
 
 ```
 ai-reference/
-├── README.md                          # This file
-├── style-guides/
-│   ├── netbox-docs-style-guide.md     # Comprehensive documentation standards
-│   ├── frontmatter-specification.md   # Enhanced frontmatter system
-│   └── markdown-conventions.md        # Markdown formatting guidelines
-├── templates/
-│   ├── netbox-feature-doc-template.md # Standard feature documentation
-│   ├── product-landing-page.md        # Product overview pages
-│   ├── api-documentation.md           # API reference template
-│   └── troubleshooting-guide.md       # Troubleshooting template
-├── content-strategy/
-│   ├── navigation-guidelines.md       # Navigation structure standards
-│   ├── version-management.md          # Version handling guidelines
-│   └── content-organization.md        # Content categorization
-└── prompts/
-    ├── content-generation.md          # AI prompting guidelines
-    ├── review-checklist.md            # Content review standards
-    └── optimization-guide.md          # Content optimization
-
+├── README.md                           # This file - comprehensive guide
+├── SYSTEM_OVERVIEW.md                  # Complete system documentation
+├── QUICK_REFERENCE.md                  # Fast lookup guide
+├── templates/                          # Document templates using enhanced frontmatter
+│   ├── netbox-feature-doc-template.md  # Standard feature documentation template
+│   ├── product-landing-page.md         # Landing page template (like NetBox Operator)
+│   └── semantic-tagging-usage.md       # Tag usage examples
+├── style-guides/                       # Writing style and formatting guidelines
+│   ├── netbox-docs-style-guide.md      # Complete style guide with enhanced frontmatter
+│   ├── product-tagging-guide.md        # Complete product tagging system documentation
+│   └── ai-prompting-guide.md           # Best practices for AI assistance with version tracking
+├── content-strategy/                   # Strategy docs and planning materials
+│   ├── navigation-guidelines.md        # Our navigation restructuring approach
+│   └── version-management.md           # How we handle versions and releases
+└── reference-docs/                     # External reference materials and authoritative sources
+    ├── semantic-tagging-system.md      # Comprehensive semantic tagging system documentation
+    └── dochub-integration-requirements.md # Detailed technical implementation requirements
 ```
 
-## Key Features
+## Enhanced Frontmatter System
 
-### Enhanced Frontmatter System
-All documentation now uses comprehensive metadata:
+We use **comprehensive YAML frontmatter** with version tracking for better organization and AI context:
 
+### Complete Frontmatter Format
 ```yaml
 ---
-tags: [netbox-cloud, netbox-enterprise, administration]
+tags:
+  - cloud                    # Edition tags (display as prominent pills)
+  - enterprise
+  - community
+  - discovery                # Product tags (display as regular tags)
+  - assurance
+  - authentication           # Semantic tags (display as smaller tags)
+  - sso
 title: "Document Title"
-author: "NetBox Labs"
-last_updated: "2025-01-XX"
+description: "SEO-friendly description for search and social sharing"
+author: "Author Name or NetBox Labs Documentation Team"
+last_updated: "YYYY-MM-DD"
 versions:
-  netbox_cloud: "v1.10"
-  netbox_enterprise: "v1.10"
-  netbox_community: "v4.2"
-status: "current"
-description: "Brief description of the document"
-category: "administration"
-audience: "administrators"
-complexity: "intermediate"
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v4.2"
+status: "current | beta | coming-soon | deprecated"
+category: "feature | integration | admin | getting-started | product-overview"
+audience: "end-users | admins | developers | all"
+complexity: "beginner | intermediate | advanced"
+related_docs:
+  - "path/to/related-doc.md"
+external_links:
+  - "https://example.com/resource"
 ---
 ```
 
-### Standardized Templates
-Pre-built templates ensure consistent documentation structure across all NetBox products.
+### Available Product Tags
 
-### AI-Assisted Content Generation
-Guidelines and prompts for leveraging AI in documentation creation while maintaining quality and consistency.
+#### Edition Tags (Display as Prominent Pills)
+| Tag | Display | Use For | Display Style |
+|-----|---------|---------|---------------|
+| `cloud` | Cloud | Cloud-specific features and administration | **Prominent pill at top** |
+| `enterprise` | Enterprise | Enterprise-specific features and installation | **Prominent pill at top** |
+| `community` | Community | Open source features and community tools | **Prominent pill at top** |
+| `airgap` | Air-Gap | Air-gapped deployment scenarios | **Prominent pill at top** |
 
-## Usage Guidelines
+#### Product Feature Tags (Display as Regular Tags)
+| Tag | Display | Use For | Display Style |
+|-----|---------|---------|---------------|
+| `discovery` | Discovery | Network discovery and device detection features | Regular tag at bottom |
+| `assurance` | Assurance | Network monitoring and assurance capabilities | Regular tag at bottom |
+| `operator` | Operator | AI-powered network operations and automation | Regular tag at bottom |
+| `netbox` | NetBox | Core NetBox features and functionality | Regular tag at bottom |
+| `branching` | Branching | NetBox Branching extension features | Regular tag at bottom |
 
-### For Documentation Writers
-1. **Always use templates** from the `templates/` directory
-2. **Follow style guides** in `style-guides/`
-3. **Apply consistent frontmatter** using the enhanced metadata system
-4. **Review content** using the provided checklists
+#### Semantic Category Tags (Display as Regular Tags)
+All other tags display as smaller regular tags at the bottom under "Related Topics":
+- **Authentication**: `authentication`, `sso`, `ldap`, `saml`, `rbac`, `two-factor`
+- **Security**: `security`, `encryption`, `certificates`, `compliance`
+- **Database**: `database`, `backup`, `migration`, `upgrade`, `maintenance`
+- **APIs**: `rest-api`, `graphql`, `webhooks`, `automation`, `scripting`
+- **Monitoring**: `monitoring`, `notifications`, `alerting`, `logging`, `metrics`
+- **Development**: `custom-fields`, `plugins`, `customization`, `extensibility`
+- **Networking**: `networking`, `infrastructure`, `connectivity`, `dns`
+- **User Experience**: `getting-started`, `installation`, `configuration`, `administration`
 
-### For Developers
-1. **Reference API templates** when documenting new features
-2. **Use version management guidelines** for feature documentation
-3. **Follow navigation standards** for new documentation sections
+### Version Guidelines
 
-### For AI Content Generation
-1. **Use prompts** from the `prompts/` directory
-2. **Apply content optimization** guidelines
-3. **Ensure consistency** with existing documentation standards
+#### For Documents Modified Since May 1, 2025
+```yaml
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v4.2"
+```
 
-## Integration with DocHub
+#### For NetBox Assurance Documents (Premium Only)
+```yaml
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  # Note: community not included as Assurance is premium-only
+```
 
-This AI reference system integrates with the DocHub transformation pipeline:
+#### For NetBox Operator Documents (Premium Only)
+```yaml
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  # Note: community not included as Operator is premium-only
+```
 
-1. **Template Conversion**: MkDocs templates are adapted to Docusaurus format
-2. **Frontmatter Processing**: Enhanced metadata is converted to DocHub-compatible format
-3. **Content Validation**: Automated checks ensure compliance with style guides
-4. **Version Management**: Content visibility controlled by version metadata
+### Version Mapping Reference
+| NetBox Cloud/Enterprise | NetBox Community | Release Period | Key Features |
+|------------------------|------------------|----------------|--------------|
+| v1.9 | v4.2 | Previous stable | Base functionality |
+| v1.10 | v4.2 | Current/Recent updates | + Enterprise Assurance & Discovery |
+| v1.11 | v4.2 | Future releases | + Enterprise High Availability (HA) |
+| v1.12 | v4.3 | Next major release cycle | TBD |
 
-## Future Enhancements
+## Guidelines for AI-Assisted Documentation
 
-- **Automated Style Checking**: Integration with linting tools
-- **Content Analytics**: Usage metrics and optimization suggestions
-- **Dynamic Templates**: Template generation based on content type
-- **Multi-language Support**: Internationalization guidelines
+### What Goes Here
+✅ **DO include:**
+- Document templates using our enhanced frontmatter system
+- Style guides and writing standards with version tracking
+- Example content patterns from our existing docs
+- Reference materials from authoritative sources
+- Development notes and planning documents
+- AI prompts and content generation helpers with version context
 
-## Support
+### What Doesn't Go Here
+❌ **DON'T include:**
+- Customer-facing documentation (belongs in `docs/`)
+- Sensitive information or credentials
+- Large binary files or images
 
-For questions about the AI reference system or documentation standards:
-- **Internal Documentation**: Refer to specific style guides
-- **Template Issues**: Check the templates directory
-- **Integration Problems**: Review the content strategy guidelines
+### Common Usage Scenarios
+
+#### Writing Feature Documentation
+1. Start with `templates/netbox-feature-doc-template.md`
+2. Apply appropriate edition/product/semantic tags
+3. Follow `style-guides/netbox-docs-style-guide.md`
+4. Use correct version mapping
+
+#### Premium Features (Cloud/Enterprise Only)
+```yaml
+tags:
+  - cloud
+  - enterprise
+  - assurance                # Premium product
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  # Note: community not included
+```
+
+#### Universal Features (All Editions)
+```yaml
+tags:
+  - cloud
+  - enterprise
+  - community
+  - discovery                # Available everywhere
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v4.2"
+```
+
+## Security & Deployment
+
+### Protection Status
+- ✅ **Git tracked**: Available to team members and contributors
+- ✅ **Build excluded**: Never appears on live site (netboxlabs.com/docs)
+- ✅ **Docusaurus ignored**: Explicitly excluded in docusaurus.config.ts
+- ✅ **Directory separation**: Located outside docs/ processing path
+
+### How It's Protected
+1. **Build-time exclusion**: Docusaurus configuration excludes `ai-reference/**`
+2. **Directory separation**: Outside the public `docs/` path
+3. **Multiple exclusion patterns**: Comprehensive protection in build process
+
+This ensures the ai-reference system enhances your internal workflow without any risk to the live documentation site.
+
+## Quick Reference
+
+For fast lookup of common tasks, see [QUICK_REFERENCE.md](./QUICK_REFERENCE.md).
+For comprehensive system details, see [SYSTEM_OVERVIEW.md](./SYSTEM_OVERVIEW.md).
 
 ---
 
-This AI reference system provides the foundation for consistent, high-quality documentation across all NetBox products and platforms. 
+**AI Reference System** | **Last Updated**: 2025-01-27  
+**Status**: Production Ready | **Security**: Internal Only 
