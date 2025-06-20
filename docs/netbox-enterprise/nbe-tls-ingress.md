@@ -1,9 +1,3 @@
----
-title: "TLS and Ingress: Accessing NetBox Enterprise"
-tags:
-  - enterprise
----
-
 # TLS and Ingress: Accessing NetBox Enterprise
 
 ## NetBox Enterprise Installs

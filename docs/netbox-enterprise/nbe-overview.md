@@ -1,9 +1,3 @@
----
-title: NetBox Enterprise
-tags:
-  - enterprise
----
-
 # NetBox Enterprise
 
 ## Overview

@@ -1,10 +1,3 @@
----
-title: Linux Root-Level Changes
-tags:
-  - enterprise
-  - community
----
-
 # Linux Root-Level Changes
 
 This document summarizes the system-level changes made to a Linux host when installing a NetBox Enterprise Embedded Cluster, particularly in relation to directories, files, and runtime configurations affected under `/`.

@@ -1,10 +1,3 @@
----
-title: NetBox Branching
-tags:
-  - community
-  - enterprise
----
-
 # NetBox Branching
 
 [NetBox](https://github.com/netbox-community/netbox) is the world's leading source of truth for network infrastructure, featuring an extensive and complex data model. But sometimes it can be challenging to orchestrate changes, especially when working within a large team. This plugin introduces a new paradigm for NetBox to help overcome these challenges: branching.

@@ -1,11 +1,3 @@
----
-title: Installation and Setup
-tags:
-  - cloud
-  - enterprise
-  - community
----
-
 # Installation and Setup
 
 ## Before Starting

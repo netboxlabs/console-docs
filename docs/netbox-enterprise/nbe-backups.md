@@ -1,9 +1,3 @@
----
-title: NetBox Enterprise Backups
-tags:
-  - enterprise
----
-
 # NetBox Enterprise Backups
 
 Much like the NetBox software itself, NetBox Enterprise uses 2 main datastores: PostgreSQL, and Redis.
@@ -140,6 +134,33 @@ Save it somewhere safe for future restores.
 
 For more details on backing up NetBox databases, see [the official NetBox documentation](https://netboxlabs.com/docs/netbox/en/stable/administration/replicating-netbox/).
 
+#### Diode and Hydra Secrets (NetBox 1.10 and Up)
+
+To ensure that Diode OAuth login information is not lost, you will also need to save the Diode and Hydra secrets from the cluster.
+
+Run this set of commands:
+
+```shell
+NETBOX_NAMESPACE="kotsadm" && \
+(
+  kubectl get secrets \
+    --namespace "${NETBOX_NAMESPACE}" \
+    --no-headers \
+    --output name \
+  | grep secret/diode \
+  | while read -r SECRET; do \
+    echo "---" && \
+    kubectl get \
+      "${SECRET}" \
+      --namespace "${NETBOX_NAMESPACE}" \
+      -o yaml \
+    | grep -v -E '^  (creationTimestamp|resourceVersion|uid):'; \
+  done \
+) > netbox-enterprise-diode-secrets.yaml
+```
+
+Save it alongside your `netbox-enterprise.pgsql` for future restores.
+
 ### Restoring Your Backups
 
 Restoring is almost as simple as backing up.
@@ -184,6 +205,20 @@ cat netbox-data.tar.gz | kubectl exec ${NETBOX_RESTORE_POD} \
     -C /opt/netbox/netbox
 ```
 
+#### Diode and Hydra Secrets (NetBox 1.10 and Up)
+
+To restore from a secrets yaml file, pass it to `kubectl apply` like so:
+
+```shell
+# add/replace existing diode secrets
+NETBOX_NAMESPACE="kotsadm" && \
+kubectl apply \
+  --server-side \
+  --force-conflicts \
+  --namespace "${NETBOX_NAMESPACE}" \
+  --filename netbox-enterprise-diode-secrets.yaml
+```
+
 #### Built-In PostgreSQL
 
 To restore from a dump file, pipe the `netbox-enterprise.pgsql` created during backup into `psql` in the PostgreSQL pod:
@@ -191,44 +226,70 @@ To restore from a dump file, pipe the `netbox-enterprise.pgsql` created during b
 ```shell
 NETBOX_NAMESPACE="kotsadm" && \
 NETBOX_DATABASE_FILE="netbox-enterprise.pgsql" && \
+DIODE_DEPLOYMENT_COUNT="$(kubectl get deployments -n "${NETBOX_NAMESPACE}" -o name | grep -c diode || :)" && \
+HYDRA_DEPLOYMENT_COUNT="$(kubectl get deployments -n "${NETBOX_NAMESPACE}" -o name | grep -c hydra || :)" && \
 POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
   -l 'postgres-operator.crunchydata.com/role=master' \
   | head -n 1 \
   )" && \
-grep -E '^CREATE DATABASE ' "${NETBOX_DATABASE_FILE}" | awk '{ print $3 }' | \
-while read -r DB; do
+for DB in netbox diode hydra; do
   kubectl exec "${POSTGRESQL_MAIN_POD}" \
     -n "${NETBOX_NAMESPACE}" \
     -c database \
     -- dropdb --if-exists --force "${DB}"; \
 done && \
-cat "${NETBOX_DATABASE_FILE}" \
-  | kubectl exec "${POSTGRESQL_MAIN_POD}" \
-    -n "${NETBOX_NAMESPACE}" \
-    -i \
-    -c database \
-      -- psql -d template1 -f-
+( \
+  if ! grep --quiet -E '^CREATE DATABASE ' "${NETBOX_DATABASE_FILE}"; then \
+    if [ "${DIODE_DEPLOYMENT_COUNT}" -gt 0 ]; then \
+      echo "CREATE DATABASE diode WITH TEMPLATE = template0 ENCODING = 'UTF8';"; \
+    fi && \
+    if [ "${HYDRA_DEPLOYMENT_COUNT}" -gt 0 ]; then \
+      echo "CREATE DATABASE hydra WITH TEMPLATE = template0 ENCODING = 'UTF8';"; \
+    fi && \
+    echo "CREATE DATABASE netbox WITH TEMPLATE = template0 ENCODING = 'UTF8';" && \
+    echo "" && \
+    echo "\\connect netbox" && \
+    echo ""
+  fi && \
+  cat "${NETBOX_DATABASE_FILE}" \
+) \
+| kubectl exec "${POSTGRESQL_MAIN_POD}" \
+  -n "${NETBOX_NAMESPACE}" \
+  -i \
+  -c database \
+    -- psql -d template1 -f-
 ```
 
 Following this run the below to ensure all database permissions are correct:
 
 ```shell
 NETBOX_NAMESPACE="kotsadm" && \
-NETBOX_DATABASE_FILE="netbox-enterprise.pgsql" && \
 POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
   -l 'postgres-operator.crunchydata.com/role=master' \
   | head -n 1 \
   )" && \
-grep -E '^CREATE DATABASE ' "${NETBOX_DATABASE_FILE}" | awk '{ print $3 }' | \
-while read -r DB; do
+for DB in $(kubectl exec "${POSTGRESQL_MAIN_POD}" \
+  -n "${NETBOX_NAMESPACE}" \
+  -c database \
+  -- \
+    psql -t -c "SELECT datname FROM pg_database WHERE datname IN ('netbox', 'hydra', 'diode');"; \
+); do \
   kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
   -i \
   -c database \
-  -- psql -c "ALTER DATABASE ${DB} OWNER TO ${DB}; GRANT ALL PRIVILEGES ON DATABASE ${DB} TO ${DB};";
+  -- \
+    psql --dbname "${DB}" -e -c "\
+      ALTER DATABASE ${DB} OWNER TO ${DB}; \
+      GRANT ALL PRIVILEGES ON DATABASE ${DB} TO ${DB}; \
+      GRANT CREATE ON SCHEMA public TO ${DB}; \
+      GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO ${DB}; \
+      GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO ${DB}; \
+      GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO ${DB}; \
+    "; \
 done
 ```

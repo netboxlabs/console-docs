@@ -1,10 +1,3 @@
----
-title: Branches
-tags:
-  - community
-  - enterprise
----
-
 # Branches
 
 A branch represents a divergent state from the main database.

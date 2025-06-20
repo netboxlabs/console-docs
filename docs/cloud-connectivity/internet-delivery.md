@@ -1,9 +1,3 @@
----
-tags:
-  - cloud
-  - enterprise
----
-
 Internet Delivery (Single Region) is the standard product offering for NetBox Cloud. It comes with extensive security features (see below) and is suitable for the majority of use cases and environments:
 
 ![Internet Delivery](../images/cloud-connectivity/internet-delivery.png)

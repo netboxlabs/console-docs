@@ -1,10 +1,3 @@
----
-title: Change Log
-tags:
-  - community
-  - enterprise
----
-
 # Change Log
 
 ## v0.5.2

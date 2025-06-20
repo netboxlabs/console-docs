@@ -1,8 +1,3 @@
----
-tags:
-  - cloud
----
-
 In many cases where cloud connectivity options seem necessary, NetBox Cloud offers [features](../cloud-connectivity/do-i-need-cloud-connectivity.md) that can address your needs without additional setup. In the majority of cases [Internet Delivery (Single Region)](../cloud-connectivity/internet-delivery.md) is the most appropriate connectivity option, but there are some general recommendations depending on your use case:
 
 

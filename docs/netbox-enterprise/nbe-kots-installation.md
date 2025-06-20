@@ -1,9 +1,3 @@
----
-title: NetBox Enterprise KOTS Installation
-tags:
-  - enterprise
----
-
 # NetBox Enterprise KOTS Installation
 
 ### Kubernetes dependencies

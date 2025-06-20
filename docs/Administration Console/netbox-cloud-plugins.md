@@ -1,11 +1,3 @@
----
-title: NetBox Cloud Plugins
-tags:
-  - cloud
-  - enterprise
-  - community
----
-
 # NetBox Cloud Plugins
 
 From within the NetBox Labs Console, you can easily view installed NetBox Cloud **Plugins**, along with their **Scope** and **Version number**. Simply follow these steps: 

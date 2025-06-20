@@ -1,11 +1,3 @@
----
-title: FAQ and Troubleshooting
-tags:
-  - cloud
-  - enterprise
-  - community
----
-
 # FAQ and Troubleshooting
 
 ## Installation Issues

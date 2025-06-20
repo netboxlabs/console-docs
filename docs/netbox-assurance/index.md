@@ -1,10 +1,5 @@
----
-tags:
-  - cloud
-  - enterprise
-  - assurance
-title: "NetBox Assurance"
----
+<span class="pill pill-cloud">NetBox Cloud</span>
+<span class="pill pill-enterprise">NetBox Enterprise</span>
 
 NetBox Assurance automatically detects operational drift, allowing you to understand and address deviations swiftly and maintain a resilient infrastructure. It continuously monitors network and infrastructure, comparing your intended design against real-world infrastructure to uncover discrepancies and provide proactive remediation capabilities.
 
@@ -33,4 +28,4 @@ NetBox Assurance continuously monitors your network infrastructure in real-time,
 - **Community Support**: Connect with the community on [Slack](https://netdev.chat/) in the `#netbox` channel
 
 ---
-By leveraging **NetBox Assurance**, organizations can maintain accurate network documentation, reduce operational risk, and build confidence in their network automation initiatives through continuous validation and drift detection.
+With **NetBox Assurance**, teams can detect, report, and resolve network deviations in real time, ensuring a consistent and reliable network environment through continuous validation and corrective actions.

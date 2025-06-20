@@ -1,11 +1,6 @@
----
-tags:
-  - cloud
-  - enterprise
-  - community
-  - discovery
-title: "NetBox Discovery"
----
+<span class="pill pill-cloud">NetBox Cloud</span>
+<span class="pill pill-enterprise">NetBox Enterprise</span>
+<span class="pill pill-community">NetBox Community</span>
 
 NetBox Discovery is an advanced network discovery and observability solution designed to simplify documenting your network and help detect network drift. It extends NetBox by providing automated network and device discovery capabilities through the orb-agent, a lightweight and scalable discovery component.
 
@@ -28,45 +23,23 @@ NetBox Discovery leverages the orb-agent, a containerized Go application that us
 Discovered data is sent to Diode for ingestion into NetBox, where it can be matched and reconciled to identify drift and deviations. The NetBox database is updated where relevant, ensuring data accuracy and reducing manual entry.
 
 ## Use Cases
+- **Data Center Infrastructure Management**: Keep track of routers, switches, and other network devices.
+- **Network Asset Management**: Maintain an up-to-date inventory of network assets.
+- **Network Audits**: Perform network audits for compliance and troubleshooting.
 
-### Day 1 - Initial Network Documentation
-**Challenge**: Starting with an empty NetBox instance and needing to document an existing network infrastructure.
+## Architecture
 
-**Solution**: NetBox Discovery rapidly populates NetBox with comprehensive network data through automated discovery and controller integrations, providing teams with immediate visibility into their infrastructure.
+The orb-agent is built with the following components:
 
-**Outcome**: Dramatically reduced time to initial NetBox population, comprehensive baseline documentation, and confidence in data accuracy.
-
-### Day 1.5 - Improving Network Management Maturity
-**Challenge**: Gradually improving network documentation processes while maintaining day-to-day operations.
-
-**Solution**: NetBox Discovery provides continuous data updates and validation, helping teams identify areas where documentation processes need improvement while maintaining operational continuity.
-
-**Outcome**: Accelerated network automation initiatives, improved process maturity, and reduced manual documentation overhead.
-
-### Day 2 - Maintaining Operational Excellence
-**Challenge**: Keeping network documentation current as infrastructure evolves and changes.
-
-**Solution**: Scheduled discovery jobs and real-time controller integrations ensure NetBox remains synchronized with actual network state, detecting changes as they occur.
-
-**Outcome**: Always-current network documentation, reduced incident resolution time, and confidence in automation systems.
-
-### Additional Use Cases
-- **Network Audits**: Generate comprehensive reports of network infrastructure for compliance and security audits
-- **Capacity Planning**: Track device utilization and interface capacity for informed infrastructure decisions
-- **Change Detection**: Identify unauthorized or undocumented network changes through continuous monitoring
-- **Migration Planning**: Document existing infrastructure before major network changes or migrations
-- **Asset Management**: Maintain accurate inventory of network devices and their configurations
-
-## Getting Started
-
-For detailed setup and configuration instructions, see our [Quickstart Guide](quickstart-guide.md).
+- **Configuration Manager**: Handles configuration retrieval from local files or Git repositories
+- **Secrets Manager**: Manages secure credential storage and retrieval
+- **Discovery Backends**: Pluggable discovery engines for different network protocols and methods
+- **Policy Engine**: Processes discovery policies and orchestrates scanning activities
 
 ## Support and Resources
-- **Community Support**: Connect with the community on [Slack](https://netdev.chat/) in the `#netbox` channel
-- **Documentation**: Additional resources and integration guides available in related sections
-- **GitHub Repository**: Find NetBox Discovery integration [here](https://github.com/netboxlabs/orb-agent)
+- **GitHub Repository**: Find the orb-agent source code [here](https://github.com/netboxlabs/orb-agent).
+- **Community Support**: Connect with the community on [Slack](https://netdev.chat/) in the `#netbox` channel.
 
 ---
-
-**NetBox Discovery** transforms network documentation from a manual, error-prone process into an automated, reliable foundation for network operations, enabling teams to focus on strategic initiatives while maintaining comprehensive and current network visibility.
+By leveraging **NetBox Discovery**, organizations can enhance their network visibility, streamline IT operations, and maintain an accurate source of truth for their network infrastructure.
 

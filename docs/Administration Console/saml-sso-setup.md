@@ -1,9 +1,3 @@
----
-title: NetBox Cloud SAML Configuration Guide
-tags:
-  - cloud
----
-
 # NetBox Cloud SAML Configuration Guide
 
 ## Overview

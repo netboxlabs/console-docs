@@ -1,11 +1,3 @@
----
-title: Technical Information
-tags:
-  - cloud
-  - enterprise
-  - community
----
-
 # Technical Information
 
 

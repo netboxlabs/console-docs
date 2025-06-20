@@ -1,12 +1,8 @@
----
-title: Configuration Samples
-tags:
-  - cloud
-  - enterprise
-  - community
----
-
 # Configuration Samples
+
+<span class="pill pill-cloud">NetBox Cloud</span>
+<span class="pill pill-enterprise">NetBox Enterprise</span>
+<span class="pill pill-community">NetBox Community</span>
 
 Here is a collection of configuration samples supported by orb agent
 

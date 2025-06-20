@@ -1,10 +1,3 @@
----
-title: NetBox Cloud Hostnames
-tags:
-  - cloud
-  - enterprise
----
-
 # NetBox Cloud Hostnames
 
 1. From within the [NetBox Labs Console](https://console.netboxlabs.com) click on **Settings** and then **Hostnames Manager** in the left-hand main menu to view the settings for your Organization: 

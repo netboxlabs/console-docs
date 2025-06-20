@@ -1,10 +1,3 @@
----
-title: Diode
-tags:
-  - community
-  - enterprise
----
-
 # Diode
 
 !!! info "Currently in Public Preview"

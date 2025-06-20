@@ -1,10 +1,153 @@
----
-title: NetBox Enterprise 1.x Release Notes
-tags:
-  - enterprise
----
-
 # NetBox Enterprise 1.x Release Notes
+
+### 1.10.1/1.10.2
+
+Minor releases to fix a number of issues with Diode
+and Assurance integration.
+
+#### Bug Fixes
+
+* **db:** move postgresql permissions-setting to an init
+* **diode:** backport runtime-secret script from 1.11
+* **netbox:** make sure netbox refreshes when override hostname changes
+* **redis:** remove redis modules no longer needed for diode
+
+#### Features
+
+* **config:** add hostname override to the KOTS config
+* **config:** show Diode/Assurance license status in KOTS UI
+* **diode:** add deployments and services for diode components in replicated-app.yaml
+
+#### Versions
+
+This release uses the following upstream software:
+
+* NetBox 4.2.9
+* Redis 7.4.2 (if built-in Redis is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)
+* Diode 1.2.0
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| netbox-acls | netbox_acls | 1.8.1 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.15.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.9.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.2 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.6.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.6 | ☐ |
+| netbox-inventory | netbox_inventory | 2.3.0 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.5 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.2.6 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.17 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.2.0 | ☑︎ |
+| netbox-topology-views | netbox_topology_views | 4.2.1 | ☑︎ |
+| netbox-validity | validity | 3.1.3 | ☐ |
+| netboxlabs-diode-netbox-plugin | netbox_diode_plugin | 1.1.0 | ☑︎ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.6 | ☑︎ |
+| slurpit_netbox | slurpit_netbox | 1.1.13 | ☑︎ |
+
+### 1.10.0
+
+This in the first release to include Diode and the
+NetBox Assurance plugin.
+
+#### Features
+
+* *cluster:* import basic diode chart
+* *cluster:* only pull images if necessary
+* *diode:* add diode chart dependency and enable configuration
+* *diode:* add diode reconciler and ingester configuration to netbox enterprise chart
+* *diode:* add proxy to diode image pull
+* *diode:* auto-configure diode plugin in netbox config
+* *diode:* always update the host secret
+* *diode:* bump assurance plugin to 1.0.1
+* *diode:* change diode/hydra to use NBE PostgreSQL
+* *diode:* configure plugin based on ingress hostname
+* *diode:* don't auto-apply changesets if assurance is enabled
+* *diode:* generate a secret containing the external host reliably
+* *diode:* wait for backend to be running before configuring the diode plugin
+* *docker:* switch chart to use production (1.20.0) nbe image
+
+#### Versions
+
+This release uses the following upstream software:
+
+* NetBox 4.2.9
+* Redis 7.4.2 (if built-in Redis is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)
+* Diode 1.2.0
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| netbox-acls | netbox_acls | 1.8.1 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.15.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.9.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.2 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.6.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.6 | ☐ |
+| netbox-inventory | netbox_inventory | 2.3.0 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.5 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.2.6 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.17 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.2.0 | ☐ |
+| netbox-topology-views | netbox_topology_views | 4.2.1 | ☑︎ |
+| netbox-validity | validity | 3.1.3 | ☐ |
+| netboxlabs-diode-netbox-plugin | netbox_diode_plugin | 1.0.0 | ☑︎ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.4 | ☑︎ |
+| slurpit_netbox | slurpit_netbox | 1.1.13 | ☑︎ |
+
+### 1.9.3
+
+Fix a bug that caused failure to download resources
+in airgap and proxied environments. Also includes
+an updated Branching plugin that fixes a number of
+bugs.
+
+#### Bug Fixes
+
+* *cluster:* clean up proxy references for dependencies
+
+#### Versions
+
+This release uses the following upstream software:
+
+* NetBox 4.2.9
+* Redis 7.4.2 (if built-in Redis is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)
+
+#### Plugins
+
+The following plugins are included in this release:
+
+| Plugin | Config Name | Version | Certified |
+| ------ | ----------- | ------- | --------- |
+| netbox-acls | netbox_acls | 1.8.1 | ☑︎ |
+| netbox-bgp | netbox_bgp | 0.15.0 | ☑︎ |
+| netbox-config-diff | netbox_config_diff | 2.9.0 | ☐ |
+| netbox-documents | netbox_documents | 0.7.2 | ☐ |
+| netbox-floorplan-plugin | netbox_floorplan | 0.6.0 | ☑︎ |
+| netbox-interface-synchronization | netbox_interface_synchronization | 4.1.6 | ☐ |
+| netbox-inventory | netbox_inventory | 2.3.0 | ☐ |
+| netbox-lifecycle | netbox_lifecycle | 1.1.5 | ☐ |
+| netbox-plugin-dns | netbox_dns | 1.2.6 | ☑︎ |
+| netbox-qrcode | netbox_qrcode | 0.0.17 | ☑︎ |
+| netbox-reorder-rack | netbox_reorder_rack | 1.1.3 | ☐ |
+| netbox-secrets | netbox_secrets | 2.2.0 | ☑︎ |
+| netbox-topology-views | netbox_topology_views | 4.2.1 | ☑︎ |
+| netbox-validity | validity | 3.1.3 | ☐ |
+| netboxlabs-diode-netbox-plugin | netbox_diode_plugin | 1.1.0 | ☑︎ |
+| netboxlabs-netbox-branching | netbox_branching | 0.5.6 | ☐ |
+| slurpit_netbox | slurpit_netbox | 1.1.13 | ☑︎ |
 
 ### 1.9.2
 

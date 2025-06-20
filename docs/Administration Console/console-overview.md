@@ -1,9 +1,3 @@
----
-title: "NetBox Cloud: Administrative Console Overview"
-tags:
-  - cloud
----
-
 # NetBox Cloud: Administrative Console Overview
 
 ## Console Access

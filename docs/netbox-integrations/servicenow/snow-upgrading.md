@@ -1,11 +1,3 @@
----
-title: Upgrades and Bug Fixes
-tags:
-  - cloud
-  - enterprise
-  - community
----
-
 # Upgrades and Bug Fixes
 
 ## Distribution and Installation

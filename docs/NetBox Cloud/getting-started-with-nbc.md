@@ -1,11 +1,3 @@
----
-title: Getting Started With NetBox Cloud
-tags:
-  - cloud
-  - enterprise
-  - community
----
-
 # Getting Started With NetBox Cloud
 
 This document will help you get up and running with NetBox Cloud quickly. It highlights all the unique features provided by NetBox Cloud.

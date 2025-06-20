@@ -1,10 +1,3 @@
----
-title: Installing Custom NetBox Plugins
-tags:
-  - enterprise
-  - community
----
-
 # Installing Custom NetBox Plugins
 
 While NetBox Enterprise comes with a variety of certified and other community plugins built-in, there are cases where you will want to include additional plugins in your NetBox runtime.

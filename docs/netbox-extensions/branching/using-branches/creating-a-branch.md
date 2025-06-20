@@ -1,10 +1,3 @@
----
-title: Creating a Branch
-tags:
-  - community
-  - enterprise
----
-
 # Creating a Branch
 
 First, navigate to Branching > Branches to view the list of any existing branches. Click the "Add" button at top right to create a new branch.

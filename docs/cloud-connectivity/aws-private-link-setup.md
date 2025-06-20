@@ -1,6 +1,1 @@
----
-tags:
-  - cloud
----
-
 ## Coming Soon

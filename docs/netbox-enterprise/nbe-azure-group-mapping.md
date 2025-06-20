@@ -1,9 +1,3 @@
----
-title: NetBox Enterprise Entra ID Group Mapping
-tags:
-  - enterprise
----
-
 # NetBox Enterprise Entra ID Group Mapping
 Place the following in configuration overrides python section
 

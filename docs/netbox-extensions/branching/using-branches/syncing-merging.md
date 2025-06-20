@@ -1,11 +1,3 @@
----
-title: Syncing & Merging Changes
-tags:
-  - community
-  - enterprise
-  - cloud
----
-
 # Syncing & Merging Changes
 
 ## Syncing a Branch

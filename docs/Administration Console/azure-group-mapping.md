@@ -1,9 +1,3 @@
----
-title: Group Mapping For Microsoft Entra ID Single Sign-On (SSO)
-tags:
-  - cloud
----
-
 # Group Mapping For Microsoft Entra ID Single Sign-On (SSO)
 
 Upgrade your Single Sign-On experience with Group Mapping for Microsoft Entra ID SSO – a smarter, more secure way to manage user access. The Group Mapping feature for Entra ID Single Sign-On, streamlines the synchronization of group memberships from Microsoft Entra ID to groups in NetBox Cloud, allowing you to align your user access efficiently and accurately. 

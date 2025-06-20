@@ -1,8 +1,3 @@
----
-tags:
-  - cloud
----
-
 ## NetBox Upgrade Maintenance Windows
 NetBox Labs designates the following weekly upgrade windows specifically to upgrade the version of NetBox and NetBox components for NetBox Cloud customers on Tuesdays and Thursdays. These upgrade windows are used for patch, minor, and major upgrades to NetBox. Customers are assigned to one of these windows based on their time zone.
 

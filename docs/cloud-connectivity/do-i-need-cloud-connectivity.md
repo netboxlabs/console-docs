@@ -1,9 +1,3 @@
----
-tags:
-  - cloud
-  - enterprise
----
-
 [Internet Delivery (Single Region)](../cloud-connectivity/internet-delivery.md) is the standard product offering for NetBox Cloud. It comes with extensive security features (see below) and is suitable for the majority of use cases and environments.
 
 If you have special connectivity needs, there are several [options](../cloud-connectivity/which-connectivity-option.md) available. However, in many cases where cloud connectivity options seem necessary, NetBox Cloud offers features that can address your needs without additional setup cost. This guide explores some of those features.

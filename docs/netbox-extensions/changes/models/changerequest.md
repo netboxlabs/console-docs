@@ -1,10 +1,3 @@
----
-title: Change Requests
-tags:
-  - community
-  - enterprise
----
-
 # Change Requests
 
 A change request is submitted to request approval of proposed changes in a branch before it can be merged. All rules of the assigned [change policy](./policy.md) must be met for the request to be approved. When submitting a change request for a branch, the owner selects the governing policy and designates a priority.
