@@ -125,6 +125,24 @@ This document summarizes the successful implementation of the enhanced NetBox do
 3. **Efficiency**: Reusable templates and patterns
 4. **Integration**: Seamless DocHub compatibility
 
+### Automated Documentation Workflow ✅
+**Status**: Enhanced and Operational
+
+**File**: `.github/workflows/update-submodules.yml`
+
+**Recent Improvements**:
+1. **Submodule Restoration**: Fixed git fetch issues preventing commit checkout
+2. **Source Analysis**: Enhanced to analyze actual source files in submodules
+3. **Error Handling**: Graceful handling of permission errors and git operations
+4. **PR Descriptions**: Detailed file change summaries with specific filenames
+
+**Key Features**:
+- ✅ **Automatic Updates**: Monitors NetBox and Console documentation repositories
+- ✅ **Smart Detection**: Analyzes changes in `external-repos/netbox/docs/` and `external-repos/console-docs/docs/` + `overrides/`
+- ✅ **Reliable Processing**: Git fetch operations ensure commit availability
+- ✅ **Detailed Reporting**: PR descriptions show specific added/modified/removed files
+- ✅ **Permission Handling**: Graceful label creation with fallback for restricted environments
+
 ## 📊 Integration Results
 
 ### Build Status
@@ -144,6 +162,12 @@ This document summarizes the successful implementation of the enhanced NetBox do
 - ✅ **Backward Compatibility**: Legacy frontmatter formats supported
 - ✅ **Error Handling**: Graceful degradation for edge cases
 - ✅ **Performance**: Build times remain acceptable (< 30 seconds)
+
+### Workflow Automation
+- ✅ **Submodule Handling**: Resolved git fetch conflicts during dependency installation
+- ✅ **Source Monitoring**: Accurate detection of changes in source repositories
+- ✅ **Permission Management**: Graceful handling of GitHub API limitations
+- ✅ **Detailed Reporting**: Enhanced PR descriptions with specific file change details
 
 ## 🎯 Key Success Criteria Met
 

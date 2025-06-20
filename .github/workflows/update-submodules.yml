@@ -21,6 +21,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      issues: write
 
     steps:
       - name: Checkout repository
@@ -277,10 +278,15 @@ jobs:
           
           # Restore submodules to the updated commits after installation
           echo "=== Restoring submodules to updated commits ==="
+          
+          # Fetch all commits first to ensure they're available
           cd external-repos/netbox
+          git fetch --all --tags
           echo "NetBox: Checking out $NETBOX_COMMIT"
           git checkout $NETBOX_COMMIT || (echo "Failed to checkout NetBox commit $NETBOX_COMMIT" && exit 1)
+          
           cd ../console-docs
+          git fetch --all --tags
           echo "Console: Checking out $CONSOLE_COMMIT"  
           git checkout $CONSOLE_COMMIT || (echo "Failed to checkout Console commit $CONSOLE_COMMIT" && exit 1)
           cd ../..
@@ -313,6 +319,131 @@ jobs:
           echo "=== Final git status ==="
           git status --porcelain
           git submodule status
+
+      - name: Analyze source documentation changes
+        if: steps.changes.outputs.has_changes == 'true'
+        id: analyze-source-changes
+        run: |
+          echo "=== Analyzing source documentation changes in submodules ==="
+          
+          # Initialize counters and lists
+          NETBOX_ADDED=0
+          NETBOX_MODIFIED=0
+          NETBOX_REMOVED=0
+          CONSOLE_ADDED=0
+          CONSOLE_MODIFIED=0
+          CONSOLE_REMOVED=0
+          
+          # Create temporary files for change lists
+          mkdir -p /tmp/source-changes
+          touch /tmp/source-changes/netbox-added.txt
+          touch /tmp/source-changes/netbox-modified.txt
+          touch /tmp/source-changes/netbox-removed.txt
+          touch /tmp/source-changes/console-added.txt
+          touch /tmp/source-changes/console-modified.txt
+          touch /tmp/source-changes/console-removed.txt
+          
+          # Analyze NetBox source documentation changes
+          if [ "${{ steps.changes.outputs.netbox_changed }}" = "true" ]; then
+            echo "Analyzing NetBox source documentation changes..."
+            
+            cd external-repos/netbox
+            
+            # Compare with previous commit to see what changed in docs/
+            BEFORE_COMMIT="${{ steps.check-before.outputs.netbox_before }}"
+            AFTER_COMMIT="${{ steps.check-after.outputs.netbox_after }}"
+            
+            echo "NetBox: Comparing $BEFORE_COMMIT..$AFTER_COMMIT in docs/"
+            
+            # Get added files in docs/
+            git diff --name-status $BEFORE_COMMIT..$AFTER_COMMIT -- docs/ | grep "^A" | cut -f2 | while read file; do
+              if [[ "$file" == *.md ]]; then
+                basename "$file" .md >> /tmp/source-changes/netbox-added.txt
+              fi
+            done
+            
+            # Get modified files in docs/
+            git diff --name-status $BEFORE_COMMIT..$AFTER_COMMIT -- docs/ | grep "^M" | cut -f2 | while read file; do
+              if [[ "$file" == *.md ]]; then
+                basename "$file" .md >> /tmp/source-changes/netbox-modified.txt
+              fi
+            done
+            
+            # Get removed files in docs/
+            git diff --name-status $BEFORE_COMMIT..$AFTER_COMMIT -- docs/ | grep "^D" | cut -f2 | while read file; do
+              if [[ "$file" == *.md ]]; then
+                basename "$file" .md >> /tmp/source-changes/netbox-removed.txt
+              fi
+            done
+            
+            cd ../..
+          fi
+          
+          # Analyze Console source documentation changes
+          if [ "${{ steps.changes.outputs.console_changed }}" = "true" ]; then
+            echo "Analyzing Console source documentation changes..."
+            
+            cd external-repos/console-docs
+            
+            # Compare with previous commit to see what changed in docs/ and overrides/
+            BEFORE_COMMIT="${{ steps.check-before.outputs.console_before }}"
+            AFTER_COMMIT="${{ steps.check-after.outputs.console_after }}"
+            
+            echo "Console: Comparing $BEFORE_COMMIT..$AFTER_COMMIT in docs/ and overrides/"
+            
+            # Get added files in docs/ and overrides/
+            git diff --name-status $BEFORE_COMMIT..$AFTER_COMMIT -- docs/ overrides/ | grep "^A" | cut -f2 | while read file; do
+              if [[ "$file" == *.md ]] || [[ "$file" == *.html ]]; then
+                basename "$file" | sed 's/\.[^.]*$//' >> /tmp/source-changes/console-added.txt
+              fi
+            done
+            
+            # Get modified files in docs/ and overrides/
+            git diff --name-status $BEFORE_COMMIT..$AFTER_COMMIT -- docs/ overrides/ | grep "^M" | cut -f2 | while read file; do
+              if [[ "$file" == *.md ]] || [[ "$file" == *.html ]]; then
+                basename "$file" | sed 's/\.[^.]*$//' >> /tmp/source-changes/console-modified.txt
+              fi
+            done
+            
+            # Get removed files in docs/ and overrides/
+            git diff --name-status $BEFORE_COMMIT..$AFTER_COMMIT -- docs/ overrides/ | grep "^D" | cut -f2 | while read file; do
+              if [[ "$file" == *.md ]] || [[ "$file" == *.html ]]; then
+                basename "$file" | sed 's/\.[^.]*$//' >> /tmp/source-changes/console-removed.txt
+              fi
+            done
+            
+            cd ../..
+          fi
+          
+          # Filter out empty lines if any
+          sed -i '/^$/d' /tmp/source-changes/*.txt 2>/dev/null || true
+          
+          # Count files
+          NETBOX_ADDED=$(wc -l < /tmp/source-changes/netbox-added.txt 2>/dev/null || echo "0")
+          NETBOX_MODIFIED=$(wc -l < /tmp/source-changes/netbox-modified.txt 2>/dev/null || echo "0") 
+          NETBOX_REMOVED=$(wc -l < /tmp/source-changes/netbox-removed.txt 2>/dev/null || echo "0")
+          CONSOLE_ADDED=$(wc -l < /tmp/source-changes/console-added.txt 2>/dev/null || echo "0")
+          CONSOLE_MODIFIED=$(wc -l < /tmp/source-changes/console-modified.txt 2>/dev/null || echo "0")
+          CONSOLE_REMOVED=$(wc -l < /tmp/source-changes/console-removed.txt 2>/dev/null || echo "0")
+          
+          echo "=== Source Change Summary ==="
+          echo "NetBox: +$NETBOX_ADDED ~$NETBOX_MODIFIED -$NETBOX_REMOVED"
+          echo "Console: +$CONSOLE_ADDED ~$CONSOLE_MODIFIED -$CONSOLE_REMOVED"
+          
+          # Validate and set outputs - ensure they're valid integers
+          NETBOX_ADDED_SAFE=$(echo "$NETBOX_ADDED" | grep -E '^[0-9]+$' || echo "0")
+          NETBOX_MODIFIED_SAFE=$(echo "$NETBOX_MODIFIED" | grep -E '^[0-9]+$' || echo "0")
+          NETBOX_REMOVED_SAFE=$(echo "$NETBOX_REMOVED" | grep -E '^[0-9]+$' || echo "0")
+          CONSOLE_ADDED_SAFE=$(echo "$CONSOLE_ADDED" | grep -E '^[0-9]+$' || echo "0")
+          CONSOLE_MODIFIED_SAFE=$(echo "$CONSOLE_MODIFIED" | grep -E '^[0-9]+$' || echo "0")
+          CONSOLE_REMOVED_SAFE=$(echo "$CONSOLE_REMOVED" | grep -E '^[0-9]+$' || echo "0")
+          
+          echo "netbox_added=$NETBOX_ADDED_SAFE" >> $GITHUB_OUTPUT
+          echo "netbox_modified=$NETBOX_MODIFIED_SAFE" >> $GITHUB_OUTPUT  
+          echo "netbox_removed=$NETBOX_REMOVED_SAFE" >> $GITHUB_OUTPUT
+          echo "console_added=$CONSOLE_ADDED_SAFE" >> $GITHUB_OUTPUT
+          echo "console_modified=$CONSOLE_MODIFIED_SAFE" >> $GITHUB_OUTPUT
+          echo "console_removed=$CONSOLE_REMOVED_SAFE" >> $GITHUB_OUTPUT
 
       - name: Run documentation transformation
         if: steps.changes.outputs.has_changes == 'true'
@@ -360,111 +491,6 @@ jobs:
           
           # Clean up build directory to avoid committing it
           rm -rf build/
-
-      - name: Analyze documentation file changes
-        if: steps.changes.outputs.has_changes == 'true'
-        id: analyze-changes
-        run: |
-          echo "=== Analyzing documentation file changes ==="
-          
-          # Initialize counters and lists
-          NETBOX_ADDED=0
-          NETBOX_MODIFIED=0
-          NETBOX_REMOVED=0
-          CONSOLE_ADDED=0
-          CONSOLE_MODIFIED=0
-          CONSOLE_REMOVED=0
-          
-          # Create temporary files for change lists
-          mkdir -p /tmp/doc-changes
-          touch /tmp/doc-changes/netbox-added.txt
-          touch /tmp/doc-changes/netbox-modified.txt
-          touch /tmp/doc-changes/netbox-removed.txt
-          touch /tmp/doc-changes/console-added.txt
-          touch /tmp/doc-changes/console-modified.txt
-          touch /tmp/doc-changes/console-removed.txt
-          
-          # Get git status for changed files
-          git status --porcelain > /tmp/git-status.txt
-          
-          # Analyze NetBox documentation changes
-          if [ "${{ steps.changes.outputs.netbox_changed }}" = "true" ]; then
-            echo "Analyzing NetBox documentation changes..."
-            
-            # Find added files
-            grep "^A.*docs/netbox/.*\.md$" /tmp/git-status.txt | sed 's/^A[[:space:]]*//' | while read file; do
-              basename "$file" .md >> /tmp/doc-changes/netbox-added.txt
-            done
-            
-            # Find modified files  
-            grep "^M.*docs/netbox/.*\.md$" /tmp/git-status.txt | sed 's/^M[[:space:]]*//' | while read file; do
-              basename "$file" .md >> /tmp/doc-changes/netbox-modified.txt
-            done
-            
-            # Find removed files
-            grep "^D.*docs/netbox/.*\.md$" /tmp/git-status.txt | sed 's/^D[[:space:]]*//' | while read file; do
-              basename "$file" .md >> /tmp/doc-changes/netbox-removed.txt
-            done
-          fi
-          
-          # Analyze Console documentation changes
-          if [ "${{ steps.changes.outputs.console_changed }}" = "true" ]; then
-            echo "Analyzing Console documentation changes..."
-            
-            # Find added files
-            grep "^A.*docs/console/.*\.md$" /tmp/git-status.txt | sed 's/^A[[:space:]]*//' | while read file; do
-              basename "$file" .md >> /tmp/doc-changes/console-added.txt
-            done
-            
-            # Find modified files
-            grep "^M.*docs/console/.*\.md$" /tmp/git-status.txt | sed 's/^M[[:space:]]*//' | while read file; do
-              basename "$file" .md >> /tmp/doc-changes/console-modified.txt
-            done
-            
-            # Find removed files
-            grep "^D.*docs/console/.*\.md$" /tmp/git-status.txt | sed 's/^D[[:space:]]*//' | while read file; do
-              basename "$file" .md >> /tmp/doc-changes/console-removed.txt
-            done
-          fi
-          
-          # Count files manually since variables don't persist in subshells
-          # Use safer counting that handles empty files properly
-          NETBOX_ADDED=$(grep -c "^.*" /tmp/doc-changes/netbox-added.txt 2>/dev/null | grep -v "^0$" || echo "0")
-          NETBOX_MODIFIED=$(grep -c "^.*" /tmp/doc-changes/netbox-modified.txt 2>/dev/null | grep -v "^0$" || echo "0")
-          NETBOX_REMOVED=$(grep -c "^.*" /tmp/doc-changes/netbox-removed.txt 2>/dev/null | grep -v "^0$" || echo "0")
-          CONSOLE_ADDED=$(grep -c "^.*" /tmp/doc-changes/console-added.txt 2>/dev/null | grep -v "^0$" || echo "0")
-          CONSOLE_MODIFIED=$(grep -c "^.*" /tmp/doc-changes/console-modified.txt 2>/dev/null | grep -v "^0$" || echo "0")
-          CONSOLE_REMOVED=$(grep -c "^.*" /tmp/doc-changes/console-removed.txt 2>/dev/null | grep -v "^0$" || echo "0")
-          
-          # Filter out empty lines if any
-          sed -i '/^$/d' /tmp/doc-changes/*.txt 2>/dev/null || true
-          
-          # Re-count after filtering empty lines
-          NETBOX_ADDED=$(wc -l < /tmp/doc-changes/netbox-added.txt 2>/dev/null || echo "0")
-          NETBOX_MODIFIED=$(wc -l < /tmp/doc-changes/netbox-modified.txt 2>/dev/null || echo "0") 
-          NETBOX_REMOVED=$(wc -l < /tmp/doc-changes/netbox-removed.txt 2>/dev/null || echo "0")
-          CONSOLE_ADDED=$(wc -l < /tmp/doc-changes/console-added.txt 2>/dev/null || echo "0")
-          CONSOLE_MODIFIED=$(wc -l < /tmp/doc-changes/console-modified.txt 2>/dev/null || echo "0")
-          CONSOLE_REMOVED=$(wc -l < /tmp/doc-changes/console-removed.txt 2>/dev/null || echo "0")
-          
-          echo "=== Change Summary ==="
-          echo "NetBox: +$NETBOX_ADDED ~$NETBOX_MODIFIED -$NETBOX_REMOVED"
-          echo "Console: +$CONSOLE_ADDED ~$CONSOLE_MODIFIED -$CONSOLE_REMOVED"
-          
-          # Validate and set outputs - ensure they're valid integers
-          NETBOX_ADDED_SAFE=$(echo "$NETBOX_ADDED" | grep -E '^[0-9]+$' || echo "0")
-          NETBOX_MODIFIED_SAFE=$(echo "$NETBOX_MODIFIED" | grep -E '^[0-9]+$' || echo "0")
-          NETBOX_REMOVED_SAFE=$(echo "$NETBOX_REMOVED" | grep -E '^[0-9]+$' || echo "0")
-          CONSOLE_ADDED_SAFE=$(echo "$CONSOLE_ADDED" | grep -E '^[0-9]+$' || echo "0")
-          CONSOLE_MODIFIED_SAFE=$(echo "$CONSOLE_MODIFIED" | grep -E '^[0-9]+$' || echo "0")
-          CONSOLE_REMOVED_SAFE=$(echo "$CONSOLE_REMOVED" | grep -E '^[0-9]+$' || echo "0")
-          
-          echo "netbox_added=$NETBOX_ADDED_SAFE" >> $GITHUB_OUTPUT
-          echo "netbox_modified=$NETBOX_MODIFIED_SAFE" >> $GITHUB_OUTPUT  
-          echo "netbox_removed=$NETBOX_REMOVED_SAFE" >> $GITHUB_OUTPUT
-          echo "console_added=$CONSOLE_ADDED_SAFE" >> $GITHUB_OUTPUT
-          echo "console_modified=$CONSOLE_MODIFIED_SAFE" >> $GITHUB_OUTPUT
-          echo "console_removed=$CONSOLE_REMOVED_SAFE" >> $GITHUB_OUTPUT
 
       - name: Determine branch strategy
         if: steps.changes.outputs.has_changes == 'true'
@@ -570,15 +596,15 @@ jobs:
             
             console.log("NetBox changed: " + netboxChanged + ", Console changed: " + consoleChanged);
             
-            // Get file change counts
-            const netboxAdded = parseInt('${{ steps.analyze-changes.outputs.netbox_added }}') || 0;
-            const netboxModified = parseInt('${{ steps.analyze-changes.outputs.netbox_modified }}') || 0;
-            const netboxRemoved = parseInt('${{ steps.analyze-changes.outputs.netbox_removed }}') || 0;
-            const consoleAdded = parseInt('${{ steps.analyze-changes.outputs.console_added }}') || 0;
-            const consoleModified = parseInt('${{ steps.analyze-changes.outputs.console_modified }}') || 0;
-            const consoleRemoved = parseInt('${{ steps.analyze-changes.outputs.console_removed }}') || 0;
+            // Get file change counts from source analysis
+            const netboxAdded = parseInt('${{ steps.analyze-source-changes.outputs.netbox_added }}') || 0;
+            const netboxModified = parseInt('${{ steps.analyze-source-changes.outputs.netbox_modified }}') || 0;
+            const netboxRemoved = parseInt('${{ steps.analyze-source-changes.outputs.netbox_removed }}') || 0;
+            const consoleAdded = parseInt('${{ steps.analyze-source-changes.outputs.console_added }}') || 0;
+            const consoleModified = parseInt('${{ steps.analyze-source-changes.outputs.console_modified }}') || 0;
+            const consoleRemoved = parseInt('${{ steps.analyze-source-changes.outputs.console_removed }}') || 0;
             
-            console.log("File change counts:");
+            console.log("Source file change counts:");
             console.log("- NetBox: +" + netboxAdded + " ~" + netboxModified + " -" + netboxRemoved);
             console.log("- Console: +" + consoleAdded + " ~" + consoleModified + " -" + consoleRemoved);
             
@@ -588,14 +614,14 @@ jobs:
             
             if (netboxChanged) {
               const netboxChangeSummary = "+" + netboxAdded + " ~" + netboxModified + " -" + netboxRemoved;
-                                netboxStatus = "- ✅ **NetBox Documentation**: Updated from " + "${{ steps.check-before.outputs.netbox_before }}" + " to " + "${{ steps.check-after.outputs.netbox_after }}" + " (" + netboxChangeSummary + ")";
+              netboxStatus = "- ✅ **NetBox Documentation**: Updated from " + "${{ steps.check-before.outputs.netbox_before }}" + " to " + "${{ steps.check-after.outputs.netbox_after }}" + " (" + netboxChangeSummary + ")";
             } else {
               netboxStatus = '- ⚪ **NetBox Documentation**: No changes';
             }
             
             if (consoleChanged) {
               const consoleChangeSummary = "+" + consoleAdded + " ~" + consoleModified + " -" + consoleRemoved;
-                                consoleStatus = "- ✅ **Console Documentation**: Updated from " + "${{ steps.check-before.outputs.console_before }}" + " to " + "${{ steps.check-after.outputs.console_after }}" + " (" + consoleChangeSummary + ")";
+              consoleStatus = "- ✅ **Console Documentation**: Updated from " + "${{ steps.check-before.outputs.console_before }}" + " to " + "${{ steps.check-after.outputs.console_after }}" + " (" + consoleChangeSummary + ")";
             } else {
               consoleStatus = '- ⚪ **Console Documentation**: No changes';
             }
@@ -605,7 +631,7 @@ jobs:
             if (netboxChanged) titleParts.push('NetBox');
             if (consoleChanged) titleParts.push('Console');
             
-                          const dynamicTitle = titleParts.length > 0 
+            const dynamicTitle = titleParts.length > 0 
                 ? "🤖 Automated Documentation Updates - " + titleParts.join(' + ')
                 : '🤖 Automated Documentation Updates';
             
@@ -621,10 +647,10 @@ jobs:
               whatsIncluded.push('- 🖼️ Copied new/updated static assets');
               
               if (netboxChanged) {
-                whatsIncluded.push("- 📖 **NetBox docs**: ~284 files processed and transformed (" + (netboxAdded + netboxModified + netboxRemoved) + " changes)");
+                whatsIncluded.push("- 📖 **NetBox docs**: Source files analyzed (" + (netboxAdded + netboxModified + netboxRemoved) + " changes)");
               }
               if (consoleChanged) {
-                whatsIncluded.push("- 🏢 **Console docs**: ~324 files processed and transformed (" + (consoleAdded + consoleModified + consoleRemoved) + " changes)");
+                whatsIncluded.push("- 🏢 **Console docs**: Source files analyzed (" + (consoleAdded + consoleModified + consoleRemoved) + " changes)");
               }
             }
             
@@ -640,11 +666,11 @@ jobs:
                 
                 if (netboxAdded > 0) {
                   try {
-                    const addedFiles = execSync('cat /tmp/doc-changes/netbox-added.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
+                    const addedFiles = execSync('cat /tmp/source-changes/netbox-added.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
                     if (addedFiles) {
                       const fileList = addedFiles.split('\n').filter(f => f.trim()).slice(0, 10);
-                                          const moreText = addedFiles.split('\n').length > 10 ? " (+" + (addedFiles.split('\n').length - 10) + " more)" : '';
-                    netboxChanges.push("**Added (" + netboxAdded + "):** " + fileList.join(', ') + moreText);
+                      const moreText = addedFiles.split('\n').length > 10 ? " (+" + (addedFiles.split('\n').length - 10) + " more)" : '';
+                      netboxChanges.push("**Added (" + netboxAdded + "):** " + fileList.join(', ') + moreText);
                     }
                   } catch (e) {
                     netboxChanges.push("**Added:** " + netboxAdded + " files");
@@ -653,11 +679,11 @@ jobs:
                 
                 if (netboxModified > 0) {
                   try {
-                    const modifiedFiles = execSync('cat /tmp/doc-changes/netbox-modified.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
+                    const modifiedFiles = execSync('cat /tmp/source-changes/netbox-modified.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
                     if (modifiedFiles) {
                       const fileList = modifiedFiles.split('\n').filter(f => f.trim()).slice(0, 10);
-                                          const moreText = modifiedFiles.split('\n').length > 10 ? " (+" + (modifiedFiles.split('\n').length - 10) + " more)" : '';
-                    netboxChanges.push("**Modified (" + netboxModified + "):** " + fileList.join(', ') + moreText);
+                      const moreText = modifiedFiles.split('\n').length > 10 ? " (+" + (modifiedFiles.split('\n').length - 10) + " more)" : '';
+                      netboxChanges.push("**Modified (" + netboxModified + "):** " + fileList.join(', ') + moreText);
                     }
                   } catch (e) {
                     netboxChanges.push("**Modified:** " + netboxModified + " files");
@@ -666,11 +692,11 @@ jobs:
                 
                 if (netboxRemoved > 0) {
                   try {
-                    const removedFiles = execSync('cat /tmp/doc-changes/netbox-removed.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
+                    const removedFiles = execSync('cat /tmp/source-changes/netbox-removed.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
                     if (removedFiles) {
                       const fileList = removedFiles.split('\n').filter(f => f.trim()).slice(0, 10);
-                                          const moreText = removedFiles.split('\n').length > 10 ? " (+" + (removedFiles.split('\n').length - 10) + " more)" : '';
-                    netboxChanges.push("**Removed (" + netboxRemoved + "):** " + fileList.join(', ') + moreText);
+                      const moreText = removedFiles.split('\n').length > 10 ? " (+" + (removedFiles.split('\n').length - 10) + " more)" : '';
+                      netboxChanges.push("**Removed (" + netboxRemoved + "):** " + fileList.join(', ') + moreText);
                     }
                   } catch (e) {
                     netboxChanges.push("**Removed:** " + netboxRemoved + " files");
@@ -678,7 +704,7 @@ jobs:
                 }
                 
                 if (netboxChanges.length > 0) {
-                  fileChangesParts.push("#### 📖 NetBox Documentation\n" + netboxChanges.join('\n'));
+                  fileChangesParts.push("#### 📖 NetBox Documentation (Source Files)\n" + netboxChanges.join('\n'));
                 }
               }
               
@@ -687,11 +713,11 @@ jobs:
                 
                 if (consoleAdded > 0) {
                   try {
-                    const addedFiles = execSync('cat /tmp/doc-changes/console-added.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
+                    const addedFiles = execSync('cat /tmp/source-changes/console-added.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
                     if (addedFiles) {
                       const fileList = addedFiles.split('\n').filter(f => f.trim()).slice(0, 10);
-                                          const moreText = addedFiles.split('\n').length > 10 ? " (+" + (addedFiles.split('\n').length - 10) + " more)" : '';
-                    consoleChanges.push("**Added (" + consoleAdded + "):** " + fileList.join(', ') + moreText);
+                      const moreText = addedFiles.split('\n').length > 10 ? " (+" + (addedFiles.split('\n').length - 10) + " more)" : '';
+                      consoleChanges.push("**Added (" + consoleAdded + "):** " + fileList.join(', ') + moreText);
                     }
                   } catch (e) {
                     consoleChanges.push("**Added:** " + consoleAdded + " files");
@@ -700,11 +726,11 @@ jobs:
                 
                 if (consoleModified > 0) {
                   try {
-                    const modifiedFiles = execSync('cat /tmp/doc-changes/console-modified.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
+                    const modifiedFiles = execSync('cat /tmp/source-changes/console-modified.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
                     if (modifiedFiles) {
                       const fileList = modifiedFiles.split('\n').filter(f => f.trim()).slice(0, 10);
-                                          const moreText = modifiedFiles.split('\n').length > 10 ? " (+" + (modifiedFiles.split('\n').length - 10) + " more)" : '';
-                    consoleChanges.push("**Modified (" + consoleModified + "):** " + fileList.join(', ') + moreText);
+                      const moreText = modifiedFiles.split('\n').length > 10 ? " (+" + (modifiedFiles.split('\n').length - 10) + " more)" : '';
+                      consoleChanges.push("**Modified (" + consoleModified + "):** " + fileList.join(', ') + moreText);
                     }
                   } catch (e) {
                     consoleChanges.push("**Modified:** " + consoleModified + " files");
@@ -713,11 +739,11 @@ jobs:
                 
                 if (consoleRemoved > 0) {
                   try {
-                    const removedFiles = execSync('cat /tmp/doc-changes/console-removed.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
+                    const removedFiles = execSync('cat /tmp/source-changes/console-removed.txt 2>/dev/null || echo ""', { encoding: 'utf8' }).trim();
                     if (removedFiles) {
                       const fileList = removedFiles.split('\n').filter(f => f.trim()).slice(0, 10);
-                                          const moreText = removedFiles.split('\n').length > 10 ? " (+" + (removedFiles.split('\n').length - 10) + " more)" : '';
-                    consoleChanges.push("**Removed (" + consoleRemoved + "):** " + fileList.join(', ') + moreText);
+                      const moreText = removedFiles.split('\n').length > 10 ? " (+" + (removedFiles.split('\n').length - 10) + " more)" : '';
+                      consoleChanges.push("**Removed (" + consoleRemoved + "):** " + fileList.join(', ') + moreText);
                     }
                   } catch (e) {
                     consoleChanges.push("**Removed:** " + consoleRemoved + " files");
@@ -725,7 +751,7 @@ jobs:
                 }
                 
                 if (consoleChanges.length > 0) {
-                  fileChangesParts.push("#### 🏢 Console Documentation\n" + consoleChanges.join('\n'));
+                  fileChangesParts.push("#### 🏢 Console Documentation (Source Files)\n" + consoleChanges.join('\n'));
                 }
               }
               
@@ -735,7 +761,7 @@ jobs:
                   '### 📄 Detailed File Changes',
                   '',
                   '<details>',
-                  '<summary>Click to view specific file changes</summary>',
+                  '<summary>Click to view specific file changes in source repositories</summary>',
                   '',
                   ...fileChangesParts,
                   '',
@@ -813,13 +839,23 @@ jobs:
                 draft: false
               });
 
-              // Add labels
-              await github.rest.issues.addLabels({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: pr.number,
-                labels: ['documentation', 'automated', 'submodule-update']
-              });
+              // Add labels with graceful error handling
+              try {
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  labels: ['documentation', 'automated', 'submodule-update']
+                });
+                console.log("Added labels to PR #" + pr.number);
+              } catch (error) {
+                if (error.message.includes('permission') || error.message.includes('unauthorized')) {
+                  console.warn('Skipping label creation: insufficient permissions. This is expected for some configurations.');
+                } else {
+                  console.error('Unexpected error adding labels:', error.message);
+                  // Don't fail the workflow for label issues
+                }
+              }
 
               console.log("Created PR #" + pr.number + ": " + pr.html_url);
             }
