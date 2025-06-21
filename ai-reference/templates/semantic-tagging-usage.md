@@ -63,13 +63,13 @@ last_updated: "2025-01-27"
 
 ## Streamlined Tag Categories (20 Total)
 
-### Edition Tags (4) - Top Pills
+### Platform Tags (4) - Top Pills
 - `cloud`, `enterprise`, `community`, `airgap`
 
 ### Product Tags (4)
 - `netbox`, `discovery`, `assurance`, `operator`
 
-### Platform Tags (2)
+### Deployment Tags (2)
 - `kubernetes`, `helm`
 
 ### Technical Categories (4)

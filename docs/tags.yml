@@ -1,30 +1,30 @@
-# Edition Tags (Display as Pills)
+# Platform Tags (Display as Top Pills)
 cloud:
   label: 'Cloud'
   permalink: '/cloud'
   description: 'Documentation specific to NetBox Cloud deployments and features'
-  type: 'edition'
+  type: 'platform'
   color: '#00d9be'
 
 enterprise:
   label: 'Enterprise'
   permalink: '/enterprise'
   description: 'Documentation specific to NetBox Enterprise deployments and features'
-  type: 'edition'
+  type: 'platform'
   color: '#ffac00'
 
 community:
   label: 'Community'
   permalink: '/community'
   description: 'Documentation applicable to NetBox Community edition'
-  type: 'edition'
+  type: 'platform'
   color: '#00bee0'
 
 airgap:
   label: 'Air-Gap'
   permalink: '/airgap'
   description: 'Documentation for air-gapped NetBox deployments'
-  type: 'edition'
+  type: 'platform'
   color: '#ff0078'
 
 # Product Tags (Display as Regular Tags)
@@ -56,18 +56,18 @@ operator:
   type: 'product'
   color: '#fd7e14'
 
-# Platform & Deployment Tags (Display as Regular Tags)
+# Deployment Tags (Display as Regular Tags)
 kubernetes:
   label: 'Kubernetes'
   permalink: '/kubernetes'
   description: 'Kubernetes deployments, kubectl commands, and container orchestration'
-  type: 'platform'
+  type: 'deployment'
 
 helm:
   label: 'Helm'
   permalink: '/helm'
   description: 'Helm chart deployments and Kubernetes package management'
-  type: 'platform'
+  type: 'deployment'
 
 # Technical Categories (Display as Regular Tags)
 api:

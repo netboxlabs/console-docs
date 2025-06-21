@@ -48,9 +48,8 @@ ai-reference/
     ├── netbox-assurance-blog.md       # Blog post content
     ├── auto-tagging-analysis.md       # Auto-tagging system analysis and results
     ├── product-tagging-migration.md   # Product tagging migration documentation
-    ├── semantic-tagging-enhancement-summary.md # (ARCHIVED) Original 43-tag system summary
-├── semantic-tagging-system.md     # (ARCHIVED) Legacy semantic tagging documentation
-├── tag-consolidation-summary.md   # Current streamlined 20-tag system overview
+    ├── tag-consolidation-summary.md   # Current streamlined 20-tag system overview
+    ├── comprehensive-review-summary.md # Complete cleanup and consolidation summary
     ├── dochub-coordination.md         # Navigation restructuring coordination spec
     └── dochub-integration-requirements.md # Detailed technical implementation requirements
 ```
@@ -144,7 +143,7 @@ versions:
 
 ### Available Product Tags
 
-#### Edition Tags (Display as Prominent Pills)
+#### Platform Tags (Display as Prominent Pills)
 | Tag | Display | Use For | Display Style |
 |-----|---------|---------|---------------|
 | `cloud` | Cloud | Cloud-specific features and administration | **Prominent pill at top** |

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide explains the new product tagging system that replaces HTML `<span>` pills with Docusaurus-native frontmatter tags. This system provides better integration with the upstream netboxlabs-website-dochub repository and enables powerful categorization and filtering capabilities.
+This guide explains the streamlined product tagging system that replaces HTML `<span>` pills with Docusaurus-native frontmatter tags. This system provides better integration with the upstream netboxlabs-website-dochub repository and enables powerful categorization and filtering capabilities.
 
 ## Why We Changed
 
@@ -52,11 +52,11 @@ Content here...
 
 ## Available Tags
 
-The tagging system uses a **two-tier approach**: Edition tags (displayed as prominent pills at the top) and semantic tags (displayed as clickable references at the bottom).
+The tagging system uses a **two-tier approach**: Platform tags (displayed as prominent pills at the top) and semantic tags (displayed as clickable references at the bottom).
 
-### Edition Tags (Top-Level Pills)
+### Platform Tags (Top-Level Pills)
 
-The following edition tags are displayed as prominent pills at the top of documents:
+The following platform tags are displayed as prominent pills at the top of documents:
 
 | Tag Key | Display Label | Color | Description |
 |---------|---------------|-------|-------------|
@@ -77,7 +77,7 @@ The following semantic tags appear as clickable references at the bottom of docu
 | `assurance` | Assurance | Network monitoring and assurance capabilities |
 | `operator` | Operator | AI-powered network operations and automation |
 
-#### Platform Tags (2)
+#### Deployment Tags (2)
 | Tag Key | Display Label | Description |
 |---------|---------------|-------------|
 | `kubernetes` | Kubernetes | Kubernetes deployments, kubectl commands, container orchestration |
@@ -185,16 +185,16 @@ npm run serve
 
 The enhanced semantic tagging script (`enhanced-tag`) applies comprehensive product and semantic tags based on:
 
-- **File location**: Automatically detects edition tags from directory structure
+- **File location**: Automatically detects platform tags from directory structure
 - **Content analysis**: Scans document content for relevant keywords and concepts
 - **Product inference**: Identifies NetBox products (Discovery, Assurance, Operator)
 - **Feature detection**: Finds authentication, security, Kubernetes, API usage, etc.
 
 **Features:**
-- ✅ **Comprehensive**: Applies both edition and semantic tags
+- ✅ **Comprehensive**: Applies both platform and semantic tags
 - ✅ **Intelligent**: Uses content analysis and file location
 - ✅ **Safe**: Preserves existing frontmatter and titles
-- ✅ **Consistent**: Ensures proper tag ordering (edition tags first)
+- ✅ **Consistent**: Ensures proper tag ordering (platform tags first)
 
 ### Manual Migration
 

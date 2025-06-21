@@ -13,7 +13,7 @@ This repository contains the commercial/enterprise documentation for NetBox Labs
 - ✅ **Maintain stable documentation for current customers**
 - ✅ **Seamlessly activate new versions when ready**
 
-### 🏷️ Product Tagging System (New!)
+### 🏷️ Product Tagging System (Streamlined!)
 
 We've migrated from HTML pills to a **frontmatter-based tagging system** for better DocHub integration:
 
@@ -105,9 +105,9 @@ mkdocs serve
    git diff
    ```
 
-**Available Tags (Streamlined System):**
+**Available Tags (Streamlined System - 20 Total):**
 
-**Edition Tags (Top Pills):**
+**Platform Tags (Top Pills - 4):**
 | Tag | Display | Color |
 |-----|---------|-------|
 | `cloud` | Cloud | 🟢 Teal |
@@ -116,11 +116,11 @@ mkdocs serve
 | `airgap` | Air-Gap | 🔴 Pink |
 
 **Semantic Tags (Bottom References - 16 total):**
-- **Product**: `netbox`, `discovery`, `assurance`, `operator`
-- **Platform**: `kubernetes`, `helm`
-- **Technical**: `api`, `authentication`, `administration`, `operations`
-- **Content**: `installation`, `configuration`, `troubleshooting`, `getting-started`
-- **Features**: `automation`, `networking`, `integration`, `ai`
+- **Product** (4): `netbox`, `discovery`, `assurance`, `operator`
+- **Deployment** (2): `kubernetes`, `helm`
+- **Technical** (4): `api`, `authentication`, `administration`, `operations`
+- **Content** (4): `installation`, `configuration`, `troubleshooting`, `getting-started`
+- **Features** (4): `automation`, `networking`, `integration`, `ai`
 
 ## 📝 Documentation Team Workflow Guide
 
@@ -219,22 +219,23 @@ For comprehensive documentation guides, templates, and integration specification
 
 ## 🔗 Integration with netboxlabs-website-dochub
 
-The new product tagging system provides multiple integration points for the upstream DocHub repository:
+The streamlined product tagging system provides multiple integration points for the upstream DocHub repository:
 
 ### **Migration Status**
-- ✅ **Product tagging system** - Complete
+- ✅ **Streamlined tagging system** - Complete (20 tags total)
 - ✅ **Enhanced frontmatter** - Complete  
 - ✅ **DocHub metadata** - Complete
 - ✅ **Simplified navigation** - Complete
 
 ### **For DocHub Team**
-See `ai-reference/content-strategy/dochub-integration-strategy.md` for quick reference and detailed implementation guides in `ai-reference/reference-docs/`.
+See `ai-reference/content-strategy/dochub-integration-strategy.md` for comprehensive integration guide and implementation details.
 
 ### **Integration Benefits**
 - 🚀 **Performance**: Faster categorization using structured metadata
 - 🔍 **Search**: Enhanced search with product filtering
 - 📱 **UX**: Better user experience with clickable product categories
 - 🤖 **SEO**: Improved search engine optimization
+- 🎯 **Simplified**: 53% reduction in tags (43 → 20) reduces cognitive load
 
 ## 🛠️ For DevOps/Maintainers
 
