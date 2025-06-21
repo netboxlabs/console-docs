@@ -41,6 +41,8 @@ ai-reference/
 │   └── ai-prompting-guide.md           # Best practices for AI assistance with version tracking
 ├── content-strategy/                   # Strategy docs and planning materials
 │   ├── navigation-strategy.md          # Our navigation restructuring approach
+│   ├── navigation-restructure-implementation.md # Platform-first navigation restructure plan
+│   ├── dochub-navigation-restructure-prompt.md # Complete DocHub implementation prompt
 │   ├── version-management.md           # How we handle versions and releases
 │   └── dochub-integration-strategy.md  # DocHub integration strategy and quick reference
 └── reference-docs/                     # External reference materials and authoritative sources

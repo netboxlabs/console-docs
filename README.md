@@ -55,6 +55,46 @@ graph LR
 
 **Key Point**: Only content from specific version branches appears on the live site. Development content stays hidden until activated.
 
+### 🔄 **Major Navigation Restructure in Progress**
+
+We're implementing a **platform-first navigation structure** that organizes content by deployment type:
+
+#### **New Structure (Implementation in Progress)**
+```
+📁 Community/
+├── 📖 NetBox (Core documentation)
+├── 🔌 NetBox Plugins (Branching, Diode, Custom Objects)
+├── 🔗 Diode (Server, Python SDK, Go SDK)
+└── ⚙️ Orb (Orb Agent)
+
+📁 Cloud/
+├── 📖 NetBox (Shared + Cloud-specific features)
+├── 🔌 Plugins (Cloud plugin management)
+├── ⚙️ Administration (Console access, management, security)
+├── 🌐 Cloud Connectivity (AWS, VPN, Direct Connect)
+├── 📊 NetBox Assurance
+├── 🔍 NetBox Discovery
+├── 🔗 Integrations (Ansible, pyATS, ServiceNow)
+└── 📋 Product Lifecycle
+
+📁 Enterprise/
+├── 📖 NetBox (Shared + Enterprise-specific features)
+├── 🔌 Plugins (Enterprise plugin management)
+├── ⚙️ Administration (Installation, SSO, management)
+├── 📊 NetBox Assurance
+├── 🔍 NetBox Discovery
+├── 🔗 Integrations
+└── 📋 Product Lifecycle
+```
+
+#### **Benefits of New Structure**
+- ✅ **User-centric**: Find content based on your deployment type
+- ✅ **Reduced complexity**: Clear separation of platform-specific content
+- ✅ **Better discoverability**: Related content grouped logically
+- ✅ **Shared content management**: Core NetBox docs shared across platforms
+
+**See `ai-reference/content-strategy/navigation-restructure-implementation.md` for complete details.**
+
 ## 🚀 Local Development Setup
 
 ### 1. Clone and Setup
@@ -228,7 +268,8 @@ The streamlined product tagging system provides multiple integration points for 
 - ✅ **Simplified navigation** - Complete
 
 ### **For DocHub Team**
-See `ai-reference/content-strategy/dochub-integration-strategy.md` for comprehensive integration guide and implementation details.
+- **Navigation Restructure**: See `ai-reference/content-strategy/dochub-navigation-restructure-prompt.md` for complete implementation instructions
+- **Integration Strategy**: See `ai-reference/content-strategy/dochub-integration-strategy.md` for tagging system and technical details
 
 ### **Integration Benefits**
 - 🚀 **Performance**: Faster categorization using structured metadata
