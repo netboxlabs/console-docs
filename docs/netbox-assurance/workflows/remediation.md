@@ -1,3 +1,20 @@
+---
+tags:
+  - cloud
+  - enterprise
+  - netbox
+  - assurance
+  - operator
+  - authentication
+  - administration
+  - operations
+  - configuration
+  - troubleshooting
+  - automation
+  - networking
+  - integration
+title: Remediation Workflows
+---
 <span class="pill pill-enterprise">Enterprise</span>
 
 # Remediation Workflows

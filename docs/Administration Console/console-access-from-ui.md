@@ -2,8 +2,12 @@
 title: Accessing the Console from NetBox Cloud
 tags:
   - cloud
-  - enterprise
   - community
+  - netbox
+  - administration
+  - troubleshooting
+  - networking
+  - integration
 ---
 
 # Accessing the Console from NetBox Cloud

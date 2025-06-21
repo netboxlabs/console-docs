@@ -2,6 +2,12 @@
 title: NetBox Cloud Free Plan Features
 tags:
   - cloud
+  - netbox
+  - api
+  - operations
+  - automation
+  - networking
+  - integration
 ---
 
 # NetBox Cloud Free Plan Features

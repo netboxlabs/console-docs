@@ -2,8 +2,14 @@
 tags:
   - cloud
   - enterprise
+  - discovery
   - assurance
-title: "Assurance Workflows"
+  - api
+  - administration
+  - configuration
+  - getting-started
+  - networking
+title: Assurance Workflows
 ---
 
 !!! note "NetBox Cloud Support"

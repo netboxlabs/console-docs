@@ -1,6 +1,8 @@
 ---
 tags:
   - cloud
+  - authentication
+title: Ipsec Vpn Tunnels
 ---
 
 In this solution NetBox Cloud is securely delivered over an IPSEC VPN. You have single or dual tunnel options, and use a static route or the preferred option of BGP routing. Customer IP space (/24 or /25) is assigned for the VPC as this is required to host load balancers and proxies within the dedicated customer Account/VPC.

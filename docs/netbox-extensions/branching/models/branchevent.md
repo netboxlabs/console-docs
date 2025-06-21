@@ -3,6 +3,8 @@ title: Branch Events
 tags:
   - community
   - enterprise
+  - operations
+  - automation
 ---
 
 # Branch Events

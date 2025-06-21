@@ -2,6 +2,10 @@
 title: NetBox Cloud
 tags:
   - cloud
+  - netbox
+  - authentication
+  - administration
+  - configuration
 ---
 
 # NetBox Cloud

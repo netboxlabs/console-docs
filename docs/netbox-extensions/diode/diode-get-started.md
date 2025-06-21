@@ -3,7 +3,18 @@ title: Get Started with Diode
 tags:
   - community
   - enterprise
-  - cloud
+  - netbox
+  - discovery
+  - api
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - troubleshooting
+  - automation
+  - networking
+  - integration
 ---
 
 # Get Started with Diode

@@ -50,9 +50,13 @@ tags:
 Content here...
 ```
 
-## Available Product Tags
+## Available Tags
 
-The following product tags are available in `docs/tags.yml`:
+The tagging system uses a **two-tier approach**: Edition tags (displayed as prominent pills at the top) and semantic tags (displayed as clickable references at the bottom).
+
+### Edition Tags (Top-Level Pills)
+
+The following edition tags are displayed as prominent pills at the top of documents:
 
 | Tag Key | Display Label | Color | Description |
 |---------|---------------|-------|-------------|
@@ -60,6 +64,48 @@ The following product tags are available in `docs/tags.yml`:
 | `enterprise` | NetBox Enterprise | 🟠 Orange (`#ffac00`) | Documentation for NetBox Enterprise |
 | `community` | NetBox Community | 🔵 Blue (`#00bee0`) | Documentation for NetBox Community |
 | `airgap` | Air-Gap | 🔴 Pink (`#ff0078`) | Documentation for air-gapped deployments |
+
+### Semantic Tags (Bottom References)
+
+The following semantic tags appear as clickable references at the bottom of documents. **Total: 16 streamlined tags** (down from 43 original tags).
+
+#### Product Tags (4)
+| Tag Key | Display Label | Description |
+|---------|---------------|-------------|
+| `netbox` | NetBox | Core NetBox features and functionality |
+| `discovery` | Discovery | Network discovery and device detection features |
+| `assurance` | Assurance | Network monitoring and assurance capabilities |
+| `operator` | Operator | AI-powered network operations and automation |
+
+#### Platform Tags (2)
+| Tag Key | Display Label | Description |
+|---------|---------------|-------------|
+| `kubernetes` | Kubernetes | Kubernetes deployments, kubectl commands, container orchestration |
+| `helm` | Helm | Helm chart deployments and Kubernetes package management |
+
+#### Technical Categories (4)
+| Tag Key | Display Label | Description |
+|---------|---------------|-------------|
+| `api` | API | APIs, SDKs, integrations, and development tools |
+| `authentication` | Authentication | Authentication, SSO, security, and access control |
+| `administration` | Administration | System administration, configuration, and management |
+| `operations` | Operations | Monitoring, backups, upgrades, and operational tasks |
+
+#### Content Types (4)
+| Tag Key | Display Label | Description |
+|---------|---------------|-------------|
+| `installation` | Installation | Installation guides and setup procedures |
+| `configuration` | Configuration | Configuration guides, settings, and customization |
+| `troubleshooting` | Troubleshooting | Problem resolution, debugging, and support guides |
+| `getting-started` | Getting Started | Introductory guides and quick start documentation |
+
+#### Features (4)
+| Tag Key | Display Label | Description |
+|---------|---------------|-------------|
+| `automation` | Automation | Automation, workflows, and scripting |
+| `networking` | Networking | Network connectivity, cloud connectivity, and infrastructure |
+| `integration` | Integration | Third-party integrations, plugins, and extensions |
+| `ai` | AI | Artificial Intelligence and machine learning features |
 
 ## How to Use
 
@@ -122,8 +168,11 @@ Run the migration script to automatically convert all files:
 # Install dependencies
 npm install
 
-# Run migration
+# Run migration (convert HTML pills to tags)
 npm run migrate-pills
+
+# Apply enhanced semantic tagging (recommended)
+npm run enhanced-tag
 
 # Review changes
 git diff
@@ -131,6 +180,21 @@ git diff
 # Test locally
 npm run serve
 ```
+
+### Enhanced Semantic Tagging
+
+The enhanced semantic tagging script (`enhanced-tag`) applies comprehensive product and semantic tags based on:
+
+- **File location**: Automatically detects edition tags from directory structure
+- **Content analysis**: Scans document content for relevant keywords and concepts
+- **Product inference**: Identifies NetBox products (Discovery, Assurance, Operator)
+- **Feature detection**: Finds authentication, security, Kubernetes, API usage, etc.
+
+**Features:**
+- ✅ **Comprehensive**: Applies both edition and semantic tags
+- ✅ **Intelligent**: Uses content analysis and file location
+- ✅ **Safe**: Preserves existing frontmatter and titles
+- ✅ **Consistent**: Ensures proper tag ordering (edition tags first)
 
 ### Manual Migration
 

@@ -3,6 +3,8 @@ title: Branches
 tags:
   - community
   - enterprise
+  - netbox
+  - operations
 ---
 
 # Branches

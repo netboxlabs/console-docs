@@ -4,6 +4,17 @@ tags:
   - cloud
   - enterprise
   - community
+  - netbox
+  - api
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - troubleshooting
+  - automation
+  - networking
+  - integration
 ---
 
 # FAQ and Troubleshooting

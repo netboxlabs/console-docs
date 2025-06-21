@@ -3,6 +3,8 @@ title: Policy Rules
 tags:
   - community
   - enterprise
+  - administration
+  - configuration
 ---
 
 # Policy Rules

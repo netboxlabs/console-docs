@@ -3,6 +3,15 @@ tags:
   - cloud
   - enterprise
   - community
+  - netbox
+  - discovery
+  - api
+  - administration
+  - operations
+  - configuration
+  - automation
+  - networking
+title: NetBox Discovery Agent
 ---
 
 # NetBox Discovery Agent

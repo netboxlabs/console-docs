@@ -3,6 +3,18 @@ title: NetBox Branching
 tags:
   - community
   - enterprise
+  - netbox
+  - api
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - troubleshooting
+  - getting-started
+  - automation
+  - networking
+  - integration
 ---
 
 # NetBox Branching

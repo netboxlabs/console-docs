@@ -2,6 +2,15 @@
 title: Advanced Tools and Troubleshooting
 tags:
   - enterprise
+  - netbox
+  - operator
+  - kubernetes
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - troubleshooting
 ---
 
 # Advanced Tools and Troubleshooting

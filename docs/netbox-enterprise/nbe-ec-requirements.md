@@ -2,6 +2,15 @@
 title: NetBox Enterprise Requirements
 tags:
   - enterprise
+  - netbox
+  - kubernetes
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - automation
+  - networking
 ---
 
 # NetBox Enterprise Requirements

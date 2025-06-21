@@ -4,6 +4,18 @@ tags:
   - cloud
   - enterprise
   - community
+  - netbox
+  - discovery
+  - assurance
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - getting-started
+  - automation
+  - networking
+  - integration
 ---
 
 # Device Discovery

@@ -27,7 +27,14 @@ airgap:
   type: 'edition'
   color: '#ff0078'
 
-# Product Feature Tags (Display as Regular Tags)
+# Product Tags (Display as Regular Tags)
+netbox:
+  label: 'NetBox'
+  permalink: '/netbox'
+  description: 'Core NetBox features and functionality'
+  type: 'product'
+  color: '#6c757d'
+
 discovery:
   label: 'Discovery'
   permalink: '/discovery'
@@ -49,219 +56,90 @@ operator:
   type: 'product'
   color: '#fd7e14'
 
-netbox:
-  label: 'NetBox'
-  permalink: '/netbox'
-  description: 'Core NetBox features and functionality'
-  type: 'product'
-  color: '#6c757d'
+# Platform & Deployment Tags (Display as Regular Tags)
+kubernetes:
+  label: 'Kubernetes'
+  permalink: '/kubernetes'
+  description: 'Kubernetes deployments, kubectl commands, and container orchestration'
+  type: 'platform'
 
-# Authentication & Security Tags (Display as Regular Tags)
+helm:
+  label: 'Helm'
+  permalink: '/helm'
+  description: 'Helm chart deployments and Kubernetes package management'
+  type: 'platform'
+
+# Technical Categories (Display as Regular Tags)
+api:
+  label: 'API'
+  permalink: '/api'
+  description: 'APIs, SDKs, integrations, and development tools'
+  type: 'category'
+
 authentication:
   label: 'Authentication'
   permalink: '/authentication'
-  description: 'User authentication and identity management'
-  type: 'category'
-
-sso:
-  label: 'Single Sign-On'
-  permalink: '/sso'
-  description: 'Single sign-on configuration and setup'
-  type: 'category'
-
-ldap:
-  label: 'LDAP'
-  permalink: '/ldap'
-  description: 'LDAP authentication and directory services'
-  type: 'category'
-
-saml:
-  label: 'SAML'
-  permalink: '/saml'
-  description: 'SAML-based authentication and federation'
-  type: 'category'
-
-permissions:
-  label: 'Permissions'
-  permalink: '/permissions'
-  description: 'User permissions and access control'
-  type: 'category'
-
-rbac:
-  label: 'Role-Based Access Control'
-  permalink: '/rbac'
-  description: 'Role-based access control and group management'
-  type: 'category'
-
-security:
-  label: 'Security'
-  permalink: '/security'
-  description: 'Security features and best practices'
-  type: 'category'
-
-two-factor:
-  label: 'Two-Factor Authentication'
-  permalink: '/two-factor'
-  description: 'Multi-factor authentication setup and management'
-  type: 'category'
-
-# Database & Operations Tags (Display as Regular Tags)
-database:
-  label: 'Database'
-  permalink: '/database'
-  description: 'Database management and operations'
-  type: 'category'
-
-backup:
-  label: 'Backup'
-  permalink: '/backup'
-  description: 'Data backup and recovery procedures'
-  type: 'category'
-
-migration:
-  label: 'Migration'
-  permalink: '/migration'
-  description: 'Data migration and transfer processes'
-  type: 'category'
-
-upgrade:
-  label: 'Upgrade'
-  permalink: '/upgrade'
-  description: 'System upgrades and version management'
-  type: 'category'
-
-monitoring:
-  label: 'Monitoring'
-  permalink: '/monitoring'
-  description: 'System monitoring and health checks'
-  type: 'category'
-
-notifications:
-  label: 'Notifications'
-  permalink: '/notifications'
-  description: 'Alert notifications and messaging'
-  type: 'category'
-
-alerting:
-  label: 'Alerting'
-  permalink: '/alerting'
-  description: 'Alert configuration and management'
-  type: 'category'
-
-logging:
-  label: 'Logging'
-  permalink: '/logging'
-  description: 'System logging and audit trails'
-  type: 'category'
-
-# APIs & Integration Tags (Display as Regular Tags)
-rest-api:
-  label: 'REST API'
-  permalink: '/rest-api'
-  description: 'REST API usage and integration'
-  type: 'category'
-
-graphql:
-  label: 'GraphQL'
-  permalink: '/graphql'
-  description: 'GraphQL API and queries'
-  type: 'category'
-
-webhooks:
-  label: 'Webhooks'
-  permalink: '/webhooks'
-  description: 'Webhook configuration and event handling'
-  type: 'category'
-
-automation:
-  label: 'Automation'
-  permalink: '/automation'
-  description: 'Automation tools and workflows'
-  type: 'category'
-
-# Cloud Infrastructure Tags (Display as Regular Tags)
-cloud-connectivity:
-  label: 'Cloud Connectivity'
-  permalink: '/cloud-connectivity'
-  description: 'Cloud network connectivity options'
-  type: 'category'
-
-networking:
-  label: 'Networking'
-  permalink: '/networking'
-  description: 'Network configuration and management'
-  type: 'category'
-
-infrastructure:
-  label: 'Infrastructure'
-  permalink: '/infrastructure'
-  description: 'Infrastructure setup and management'
-  type: 'category'
-
-connectivity:
-  label: 'Connectivity'
-  permalink: '/connectivity'
-  description: 'Network connectivity and communication'
-  type: 'category'
-
-# Content Type Tags (Display as Regular Tags)
-getting-started:
-  label: 'Getting Started'
-  permalink: '/getting-started'
-  description: 'Introductory guides and quick start documentation'
-  type: 'category'
-
-installation:
-  label: 'Installation'
-  permalink: '/installation'
-  description: 'Installation guides and setup procedures'
-  type: 'category'
-
-configuration:
-  label: 'Configuration'
-  permalink: '/configuration'
-  description: 'Configuration guides and settings'
+  description: 'Authentication, SSO, security, and access control'
   type: 'category'
 
 administration:
   label: 'Administration'
   permalink: '/administration'
-  description: 'Administrative tasks and management'
+  description: 'System administration, configuration, and management'
   type: 'category'
+
+operations:
+  label: 'Operations'
+  permalink: '/operations'
+  description: 'Monitoring, backups, upgrades, and operational tasks'
+  type: 'category'
+
+# Content Types (Display as Regular Tags)
+installation:
+  label: 'Installation'
+  permalink: '/installation'
+  description: 'Installation guides and setup procedures'
+  type: 'content'
+
+configuration:
+  label: 'Configuration'
+  permalink: '/configuration'
+  description: 'Configuration guides, settings, and customization'
+  type: 'content'
 
 troubleshooting:
   label: 'Troubleshooting'
   permalink: '/troubleshooting'
-  description: 'Problem resolution and debugging guides'
-  type: 'category'
+  description: 'Problem resolution, debugging, and support guides'
+  type: 'content'
 
-# Cross-Cutting Topic Tags (Display as Regular Tags)
-high-availability:
-  label: 'High Availability'
-  permalink: '/high-availability'
-  description: 'High availability setup and configuration'
-  type: 'category'
+getting-started:
+  label: 'Getting Started'
+  permalink: '/getting-started'
+  description: 'Introductory guides and quick start documentation'
+  type: 'content'
 
-performance:
-  label: 'Performance'
-  permalink: '/performance'
-  description: 'Performance optimization and tuning'
-  type: 'category'
+# Feature Categories (Display as Regular Tags)
+automation:
+  label: 'Automation'
+  permalink: '/automation'
+  description: 'Automation, workflows, and scripting'
+  type: 'feature'
 
-scalability:
-  label: 'Scalability'
-  permalink: '/scalability'
-  description: 'Scaling and capacity planning'
-  type: 'category'
-
-compliance:
-  label: 'Compliance'
-  permalink: '/compliance'
-  description: 'Compliance and regulatory requirements'
-  type: 'category'
+networking:
+  label: 'Networking'
+  permalink: '/networking'
+  description: 'Network connectivity, cloud connectivity, and infrastructure'
+  type: 'feature'
 
 integration:
   label: 'Integration'
   permalink: '/integration'
-  description: 'Third-party integrations and connectors'
-  type: 'category' 
+  description: 'Third-party integrations, plugins, and extensions'
+  type: 'feature'
+
+ai:
+  label: 'AI'
+  permalink: '/ai'
+  description: 'Artificial Intelligence and machine learning features'
+  type: 'feature' 

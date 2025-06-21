@@ -2,6 +2,11 @@
 title: Working with NetBox Cloud Database Backups
 tags:
   - cloud
+  - netbox
+  - administration
+  - operations
+  - troubleshooting
+  - networking
 ---
 
 # Working with NetBox Cloud Database Backups

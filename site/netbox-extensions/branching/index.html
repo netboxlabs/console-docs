@@ -584,40 +584,40 @@
 <p>The first step is to <a href="using-branches/creating-a-branch/">create a new branch</a>. Upon creation, a background job is automatically queued to provision a dedicated PostgreSQL schema for the branch. When provisioning is complete, the branch's status is updated to "ready."</p>
 <p>Users can now activate the branch and begin making changes within it. These changes will be contained to the branch, and will not impact main. Likewise, any changes to main will not be reflected in the branch until it has been <a href="using-branches/syncing-merging/#syncing-a-branch">synchronized</a> by a user. A branch may be synchronized repeatedly to keep it up to date with main over time.</p>
 <p>Once work in the branch has been completed, it can be <a href="using-branches/syncing-merging/#merging-a-branch">merged</a> into main.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sequenceDiagram
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    actor User B
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    participant Main
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    participant Branch
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    actor User A
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    Main-&gt;&gt;Branch: Provision new branch
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    User A-&gt;&gt;Branch: Make changes
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    User B-&gt;&gt;Main: Make unrelated changes
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    Main-&gt;&gt;Branch: Synchronize changes
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    User A-&gt;&gt;Branch: Make more changes
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    Branch-&gt;&gt;Main: Merge branch
-</span></code></pre></div>
+<p><code>mermaid
+sequenceDiagram
+    actor User B
+    participant Main
+    participant Branch
+    actor User A
+    Main-&gt;&gt;Branch: Provision new branch
+    User A-&gt;&gt;Branch: Make changes
+    User B-&gt;&gt;Main: Make unrelated changes
+    Main-&gt;&gt;Branch: Synchronize changes
+    User A-&gt;&gt;Branch: Make more changes
+    Branch-&gt;&gt;Main: Merge branch</code></p>
 <p>In the event a branch should not have been merged, it can be reverted. Previously merged changes to main will be unwound and the branch will be restored to its pre-merge state. The branch is again marked as ready for additional changes, if needed, and can be merged again.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sequenceDiagram
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    participant Main
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    participant Branch
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    actor User A
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    Main-&gt;&gt;Branch: Provision new branch
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    User A-&gt;&gt;Branch: Make changes
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    Branch-&gt;&gt;Main: Merge branch
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    Note left of Main: Error detected!
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    Main-&gt;&gt;Branch: Revert changes
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    User A-&gt;&gt;Branch: Correct error
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    Branch-&gt;&gt;Main: Merge branch
-</span></code></pre></div>
+<p><code>mermaid
+sequenceDiagram
+    participant Main
+    participant Branch
+    actor User A
+    Main-&gt;&gt;Branch: Provision new branch
+    User A-&gt;&gt;Branch: Make changes
+    Branch-&gt;&gt;Main: Merge branch
+    Note left of Main: Error detected!
+    Main-&gt;&gt;Branch: Revert changes
+    User A-&gt;&gt;Branch: Correct error
+    Branch-&gt;&gt;Main: Merge branch</code></p>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <h3 id="database-preparation">Database Preparation<a class="headerlink" href="#database-preparation" title="Permanent link">&para;</a></h3>
 <p>Before installing this plugin, ensure that the PostgreSQL user as which NetBox authenticates has permission to create new schemas in the database. This can be achieved by issuing the following command in the PostgreSQL shell (substituting <code>$database</code> and <code>$user</code> with their respective values):</p>
-<div class="language-postgresql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">GRANT</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="err">$</span><span class="k">database</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="err">$</span><span class="k">user</span><span class="p">;</span>
+<div class="language-postgresql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">GRANT</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="err">$</span><span class="k">database</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="err">$</span><span class="k">user</span><span class="p">;</span>
 </span></code></pre></div>
 <h3 id="plugin-installation">Plugin Installation<a class="headerlink" href="#plugin-installation" title="Permanent link">&para;</a></h3>
 <h4 id="1-virtual-environment">1. Virtual Environment<a class="headerlink" href="#1-virtual-environment" title="Permanent link">&para;</a></h4>
 <p>The plugin can be installed from <a href="https://pypi.org/project/netboxlabs-netbox-branching/">PyPI</a>. First, activate the Python virtual environment used by NetBox (which is typically located at <code>/opt/netbox/venv/</code>):</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>source /opt/netbox/venv/bin/activate
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>source /opt/netbox/venv/bin/activate
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -625,14 +625,14 @@
 </div>
 <h4 id="2-python-package">2. Python Package<a class="headerlink" href="#2-python-package" title="Permanent link">&para;</a></h4>
 <p>Use <code>pip</code> to install the Python package:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip install netboxlabs-netbox-branching
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip install netboxlabs-netbox-branching
 </span></code></pre></div>
 <h4 id="3-enable-plugin">3. Enable Plugin<a class="headerlink" href="#3-enable-plugin" title="Permanent link">&para;</a></h4>
 <p>Add <code>netbox_branching</code> to <strong>the end</strong> of the <code>PLUGINS</code> list in <code>configuration.py</code>.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="c1"># ...</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="s1">&#39;netbox_branching&#39;</span><span class="p">,</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">]</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="c1"># ...</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="s1">&#39;netbox_branching&#39;</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">]</span>
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -645,23 +645,23 @@
 <h4 id="4-configuration">4. Configuration<a class="headerlink" href="#4-configuration" title="Permanent link">&para;</a></h4>
 <p>This plugin employs dynamic schema resolution, which requires that we override two low-level Django settings. First, we'll wrap NetBox's configured <code>DATABASE</code> parameter with <code>DynamicSchemaDict</code> to support dynamic schemas. Second, we'll employ the plugin's custom database router.</p>
 <p>Create a new file named <code>local_settings.py</code> in the same directory as <code>settings.py</code>, and add the content below.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">netbox_branching.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">DynamicSchemaDict</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">.configuration</span><span class="w"> </span><span class="kn">import</span> <span class="n">DATABASE</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Wrap DATABASES with DynamicSchemaDict for dynamic schema support</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">DATABASES</span> <span class="o">=</span> <span class="n">DynamicSchemaDict</span><span class="p">({</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">DATABASE</span><span class="p">,</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">})</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="c1"># Employ our custom database router</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="n">DATABASE_ROUTERS</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="s1">&#39;netbox_branching.database.BranchAwareRouter&#39;</span><span class="p">,</span>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="p">]</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">netbox_branching.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">DynamicSchemaDict</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">.configuration</span><span class="w"> </span><span class="kn">import</span> <span class="n">DATABASE</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Wrap DATABASES with DynamicSchemaDict for dynamic schema support</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">DATABASES</span> <span class="o">=</span> <span class="n">DynamicSchemaDict</span><span class="p">({</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">DATABASE</span><span class="p">,</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">})</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># Employ our custom database router</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">DATABASE_ROUTERS</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="s1">&#39;netbox_branching.database.BranchAwareRouter&#39;</span><span class="p">,</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="p">]</span>
 </span></code></pre></div>
 <h4 id="5-database-migrations">5. Database Migrations<a class="headerlink" href="#5-database-migrations" title="Permanent link">&para;</a></h4>
 <p>Run the included database migrations:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cd /opt/netbox/netbox
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>./manage.py migrate
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cd /opt/netbox/netbox
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>./manage.py migrate
 </span></code></pre></div>
 <h2 id="known-limitations">Known Limitations<a class="headerlink" href="#known-limitations" title="Permanent link">&para;</a></h2>
 <p>There are currently a few limitations to the functionality provided by this plugin that are worth highlighting. We hope to address these in future releases.</p>

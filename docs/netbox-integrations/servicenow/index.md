@@ -3,6 +3,13 @@ tags:
   - cloud
   - enterprise
   - community
+  - administration
+  - operations
+  - installation
+  - configuration
+  - troubleshooting
+  - integration
+title: Index
 ---
 
 ## ServiceNow Integration Overview

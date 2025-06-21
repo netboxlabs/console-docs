@@ -2,6 +2,17 @@
 title: NetBox Enterprise Backups
 tags:
   - enterprise
+  - netbox
+  - operator
+  - kubernetes
+  - api
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - troubleshooting
+  - automation
 ---
 
 # NetBox Enterprise Backups

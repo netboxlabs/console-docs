@@ -1,6 +1,11 @@
 ---
 tags:
   - cloud
+  - netbox
+  - authentication
+  - operations
+  - automation
+title: Maintenance
 ---
 
 ## NetBox Upgrade Maintenance Windows

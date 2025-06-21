@@ -2,8 +2,18 @@
 title: Getting Started With NetBox Cloud
 tags:
   - cloud
-  - enterprise
   - community
+  - netbox
+  - kubernetes
+  - api
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - getting-started
+  - networking
+  - integration
 ---
 
 # Getting Started With NetBox Cloud

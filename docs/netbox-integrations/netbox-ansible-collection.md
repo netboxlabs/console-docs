@@ -2,6 +2,19 @@
 title: NetBox Integrations
 tags:
   - cloud
+  - enterprise
+  - community
+  - netbox
+  - api
+  - authentication
+  - administration
+  - operations
+  - configuration
+  - troubleshooting
+  - getting-started
+  - automation
+  - networking
+  - integration
 ---
 
 # NetBox Integrations

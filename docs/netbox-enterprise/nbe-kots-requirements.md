@@ -2,6 +2,12 @@
 title: NetBox Enterprise KOTS Requirements
 tags:
   - enterprise
+  - kubernetes
+  - authentication
+  - administration
+  - operations
+  - installation
+  - troubleshooting
 ---
 
 # NetBox Enterprise KOTS Requirements

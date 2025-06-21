@@ -2,8 +2,18 @@
 tags:
   - cloud
   - enterprise
+  - community
+  - discovery
   - assurance
-title: "NetBox Assurance Quickstart Guide"
+  - api
+  - administration
+  - operations
+  - installation
+  - configuration
+  - getting-started
+  - automation
+  - integration
+title: NetBox Assurance Quickstart Guide
 ---
 
 !!! note "NetBox Cloud Support"

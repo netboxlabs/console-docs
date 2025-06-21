@@ -2,6 +2,23 @@
 title: NetBox Enterprise 1.x Release Notes
 tags:
   - enterprise
+  - community
+  - airgap
+  - netbox
+  - assurance
+  - kubernetes
+  - helm
+  - api
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - troubleshooting
+  - getting-started
+  - automation
+  - networking
+  - integration
 ---
 
 # NetBox Enterprise 1.x Release Notes

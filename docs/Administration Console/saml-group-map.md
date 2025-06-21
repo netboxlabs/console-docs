@@ -1,8 +1,12 @@
 ---
-title: Configuring SAML Group Mapping in NetBox Cloud  
+title: Configuring SAML Group Mapping in NetBox Cloud
 tags:
   - cloud
-  - enterprise
+  - netbox
+  - authentication
+  - administration
+  - operations
+  - configuration
 ---
 
 # Configuring SAML Group Mapping in NetBox Cloud  

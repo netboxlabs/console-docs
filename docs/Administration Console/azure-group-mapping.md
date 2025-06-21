@@ -2,6 +2,13 @@
 title: Group Mapping For Microsoft Entra ID Single Sign-On (SSO)
 tags:
   - cloud
+  - netbox
+  - api
+  - authentication
+  - administration
+  - operations
+  - configuration
+  - networking
 ---
 
 # Group Mapping For Microsoft Entra ID Single Sign-On (SSO)

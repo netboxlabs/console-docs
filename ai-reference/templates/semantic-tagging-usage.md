@@ -1,29 +1,26 @@
-# Semantic Tagging Quick Usage Guide
+# Streamlined Semantic Tagging Quick Usage Guide
 
 ## Overview
-The semantic tagging system automatically enhances documentation with comprehensive tags for better content discovery and cross-referencing.
+The streamlined semantic tagging system automatically enhances documentation with 20 carefully curated tags for better content discovery while avoiding tag overload.
 
 ## Quick Start
 
-### 1. Preview Changes (Recommended First Step)
+### 1. Apply Streamlined Semantic Tags
 ```bash
-npm run semantic-tag-dry
+npm run enhanced-tag
 ```
-This shows what tags would be added without making any changes.
+This analyzes and updates all markdown files with the streamlined tag system (20 total tags).
 
-### 2. Apply Semantic Tags
+### 2. Preview Basic Location Tags (Optional)
 ```bash
-npm run semantic-tag
+npm run preview-tags
 ```
-This analyzes and updates all markdown files with appropriate semantic tags.
+This shows basic location-based tags without applying them.
 
 ### 3. Targeted Tagging
 ```bash
-# Tag specific directory
-node scripts/semantic-tagging.js docs/Administration\ Console
-
-# Dry run on specific directory
-node scripts/semantic-tagging.js docs/netbox-enterprise --dry-run
+# Tag specific files directly
+node scripts/enhanced-semantic-tagging.js
 ```
 
 ## What It Does
@@ -56,47 +53,53 @@ tags:
 title: NetBox Cloud SAML Configuration Guide
 tags:
   - cloud
+  - netbox
+  - authentication
   - administration
   - configuration
-  - authentication
-  - sso
-  - saml
-  - security
 last_updated: "2025-01-27"
 ---
 ```
 
-## Tag Categories Applied
+## Streamlined Tag Categories (20 Total)
 
-### Product Tags
-- `cloud`, `enterprise`, `community`, `discovery`, `assurance`, `operator`, `netbox`, `airgap`
+### Edition Tags (4) - Top Pills
+- `cloud`, `enterprise`, `community`, `airgap`
 
-### Cross-Cutting Topics
-- **Authentication**: `authentication`, `sso`, `ldap`, `saml`, `two-factor`
-- **Security**: `security`, `permissions`, `rbac`
-- **Operations**: `database`, `backup`, `upgrade`, `monitoring`
-- **Integration**: `rest-api`, `automation`, `webhooks`
-- **Infrastructure**: `cloud-connectivity`, `networking`, `infrastructure`
+### Product Tags (4)
+- `netbox`, `discovery`, `assurance`, `operator`
 
-### Content Types
-- `getting-started`, `installation`, `configuration`, `administration`, `troubleshooting`
+### Platform Tags (2)
+- `kubernetes`, `helm`
+
+### Technical Categories (4)
+- `api`, `authentication`, `administration`, `operations`
+
+### Content Types (4)
+- `installation`, `configuration`, `troubleshooting`, `getting-started`
+
+### Features (4)
+- `automation`, `networking`, `integration`, `ai`
 
 ## Benefits
 
 ### For Users
-- Find all SSO-related content across products with `sso` tag
-- Discover related authentication methods through consistent tagging
-- Browse by topic rather than just product
+- Find all authentication-related content with the `authentication` tag
+- Discover related content through broad, intuitive categories
+- Avoid tag overload while maintaining comprehensive coverage
+- Browse by clear, meaningful categories
 
 ### For DocHub Integration
-- Structured metadata for better categorization
-- Enhanced search and filtering capabilities
-- Consistent cross-referencing across products
+- Simplified metadata with 20 well-defined tags
+- Reduced complexity for better performance
+- Clear categorization for easier content management
+- Consistent cross-referencing with broad tag coverage
 
 ### For Documentation Team
-- Automated tagging reduces manual effort
-- Consistent tag application across all content
-- Easy identification of content relationships
+- Streamlined tagging reduces cognitive load
+- Intuitive tag categories are easier to understand
+- Automated application with meaningful groupings
+- Better user experience with focused tag sets
 
 ## Best Practices
 
@@ -152,4 +155,6 @@ The semantic tagging system works alongside:
 
 ---
 
-For detailed technical information, see `ai-reference/reference-docs/semantic-tagging-system.md`. 
+For current technical information, see:
+- `ai-reference/reference-docs/tag-consolidation-summary.md` - Streamlined system overview
+- `ai-reference/style-guides/product-tagging-guide.md` - Complete tagging guide 

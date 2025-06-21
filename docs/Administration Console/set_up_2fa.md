@@ -2,6 +2,12 @@
 title: Setting up Two-Factor Authentication for the Admin Console
 tags:
   - cloud
+  - netbox
+  - authentication
+  - administration
+  - installation
+  - configuration
+  - troubleshooting
 ---
 
 # Setting up Two-Factor Authentication for the Admin Console

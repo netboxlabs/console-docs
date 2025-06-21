@@ -1,3 +1,20 @@
+---
+tags:
+  - cloud
+  - enterprise
+  - netbox
+  - assurance
+  - operator
+  - authentication
+  - administration
+  - operations
+  - configuration
+  - troubleshooting
+  - automation
+  - networking
+  - integration
+title: Using the NetBox Assurance UI
+---
 # Using the NetBox Assurance UI
 
 <span class="pill pill-cloud">NetBox Cloud</span>

@@ -1,8 +1,14 @@
-# Semantic Tagging System for Console Docs
+# Semantic Tagging System for Console Docs (ARCHIVED)
 
-## Overview
+> **⚠️ ARCHIVED DOCUMENT**  
+> This document describes the legacy 43-tag semantic system that has been replaced by a streamlined 20-tag system. For current documentation, see:
+> - `tag-consolidation-summary.md` - Current streamlined system overview
+> - `../style-guides/product-tagging-guide.md` - Complete tagging guide
+> - Use `npm run enhanced-tag` instead of the old semantic tagging commands
 
-The semantic tagging system provides comprehensive content categorization and cross-referencing capabilities for the NetBox Labs console documentation. This system enhances content discovery by automatically analyzing file paths and content to apply appropriate semantic tags.
+## Overview (Legacy System)
+
+The semantic tagging system provided comprehensive content categorization and cross-referencing capabilities for the NetBox Labs console documentation. This system was replaced in January 2025 with a streamlined approach.
 
 ## Tag Categories
 

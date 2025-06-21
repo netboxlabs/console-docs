@@ -3,6 +3,16 @@ title: Migrating to NetBox Enterprise
 tags:
   - enterprise
   - community
+  - netbox
+  - kubernetes
+  - api
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - automation
+  - networking
 ---
 
 # Migrating to NetBox Enterprise

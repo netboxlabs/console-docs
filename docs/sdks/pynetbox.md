@@ -4,6 +4,7 @@ tags:
   - cloud
   - enterprise
   - community
+  - netbox
 ---
 
 # NetBox SDKs

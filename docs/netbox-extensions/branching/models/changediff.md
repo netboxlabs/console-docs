@@ -3,6 +3,8 @@ title: Change Diffs
 tags:
   - community
   - enterprise
+  - netbox
+  - operations
 ---
 
 # Change Diffs

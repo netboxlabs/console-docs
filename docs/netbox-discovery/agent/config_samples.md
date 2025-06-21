@@ -4,6 +4,12 @@ tags:
   - cloud
   - enterprise
   - community
+  - netbox
+  - administration
+  - installation
+  - configuration
+  - networking
+  - discovery
 ---
 
 # Configuration Samples

@@ -3,6 +3,7 @@ title: Change Requests
 tags:
   - community
   - enterprise
+  - automation
 ---
 
 # Change Requests

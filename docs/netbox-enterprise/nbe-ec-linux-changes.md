@@ -3,6 +3,15 @@ title: Linux Root-Level Changes
 tags:
   - enterprise
   - community
+  - kubernetes
+  - api
+  - authentication
+  - administration
+  - installation
+  - configuration
+  - automation
+  - networking
+  - integration
 ---
 
 # Linux Root-Level Changes

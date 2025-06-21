@@ -1,9 +1,20 @@
 ---
-title: Getting Started With NetBox, PyATS and Genie
+title: 'Getting Started With NetBox, PyATS and Genie'
 tags:
   - cloud
   - enterprise
   - community
+  - netbox
+  - api
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - troubleshooting
+  - automation
+  - networking
+  - integration
 ---
 
 # Getting Started With NetBox, PyATS and Genie

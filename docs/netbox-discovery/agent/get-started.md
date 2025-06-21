@@ -3,6 +3,13 @@ tags:
   - cloud
   - enterprise
   - community
+  - discovery
+  - api
+  - installation
+  - getting-started
+  - networking
+  - integration
+title: Get Started
 ---
 
 ## Before getting started

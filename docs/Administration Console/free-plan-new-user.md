@@ -2,6 +2,11 @@
 title: Add a New User to Free Plan
 tags:
   - cloud
+  - netbox
+  - authentication
+  - administration
+  - installation
+  - configuration
 ---
 
 # Add a New User to Free Plan

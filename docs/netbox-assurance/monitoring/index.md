@@ -2,8 +2,19 @@
 tags:
   - cloud
   - enterprise
+  - netbox
+  - discovery
   - assurance
-title: "Data Ingestion and Analysis"
+  - api
+  - authentication
+  - administration
+  - operations
+  - configuration
+  - getting-started
+  - automation
+  - networking
+  - integration
+title: Data Ingestion and Analysis
 ---
 
 !!! note "NetBox Cloud Support"

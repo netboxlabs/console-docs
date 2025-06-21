@@ -3,6 +3,9 @@ title: Creating a Branch
 tags:
   - community
   - enterprise
+  - netbox
+  - authentication
+  - operations
 ---
 
 # Creating a Branch

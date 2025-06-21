@@ -3,6 +3,9 @@ title: Object Changes
 tags:
   - community
   - enterprise
+  - netbox
+  - operations
+  - getting-started
 ---
 
 # Object Changes

@@ -1,7 +1,18 @@
 ---
 tags:
   - cloud
-  - enterprise
+  - netbox
+  - api
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - getting-started
+  - automation
+  - networking
+  - integration
+title: Do I Need Cloud Connectivity
 ---
 
 [Internet Delivery (Single Region)](../cloud-connectivity/internet-delivery.md) is the standard product offering for NetBox Cloud. It comes with extensive security features (see below) and is suitable for the majority of use cases and environments.

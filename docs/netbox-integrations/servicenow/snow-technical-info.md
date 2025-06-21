@@ -4,6 +4,11 @@ tags:
   - cloud
   - enterprise
   - community
+  - netbox
+  - api
+  - authentication
+  - automation
+  - integration
 ---
 
 # Technical Information

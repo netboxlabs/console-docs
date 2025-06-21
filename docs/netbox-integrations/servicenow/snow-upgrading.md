@@ -4,6 +4,14 @@ tags:
   - cloud
   - enterprise
   - community
+  - netbox
+  - kubernetes
+  - api
+  - administration
+  - operations
+  - installation
+  - configuration
+  - networking
 ---
 
 # Upgrades and Bug Fixes

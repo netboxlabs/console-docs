@@ -1,6 +1,9 @@
 ---
 tags:
   - cloud
+  - netbox
+  - networking
+title: Aws Direct Connect Multi Region
 ---
 
 Delivery via [AWS Direct Connect](https://aws.amazon.com/directconnect/) in two regions, with replicated NetBoxes, Single (or Dual) Direct Connect in each region. Customer IP space (2 x /25's) is assigned for the VPCs. This is to host load balancers and proxies within the dedicated customer Account/VPC. Internally we will allocate a /27 per availability zone for each of the 3 availability zones.

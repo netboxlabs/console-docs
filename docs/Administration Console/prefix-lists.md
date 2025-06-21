@@ -2,6 +2,13 @@
 title: Prefix Lists
 tags:
   - cloud
+  - netbox
+  - api
+  - administration
+  - configuration
+  - troubleshooting
+  - automation
+  - networking
 ---
 
 # Prefix Lists

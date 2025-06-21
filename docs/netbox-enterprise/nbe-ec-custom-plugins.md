@@ -3,6 +3,13 @@ title: Installing Custom NetBox Plugins
 tags:
   - enterprise
   - community
+  - netbox
+  - kubernetes
+  - administration
+  - operations
+  - installation
+  - configuration
+  - integration
 ---
 
 # Installing Custom NetBox Plugins

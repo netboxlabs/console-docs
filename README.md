@@ -81,16 +81,16 @@ mkdocs serve
 
 **To migrate existing documents:**
 
-1. **Smart Auto-Tagging (Recommended):**
+1. **Streamlined Semantic Tagging (Recommended):**
    ```bash
    # Install dependencies
    npm install
    
-   # Preview what tags would be applied
+   # Preview what tags would be applied (optional)
    npm run preview-tags
    
-   # Apply tags automatically based on file location
-   npm run auto-tag
+   # Apply streamlined semantic tags
+   npm run enhanced-tag
    
    # Review changes
    git diff
@@ -105,13 +105,22 @@ mkdocs serve
    git diff
    ```
 
-**Available Product Tags:**
+**Available Tags (Streamlined System):**
+
+**Edition Tags (Top Pills):**
 | Tag | Display | Color |
 |-----|---------|-------|
 | `cloud` | Cloud | 🟢 Teal |
 | `enterprise` | Enterprise | 🟠 Orange |
 | `community` | Community | 🔵 Blue |
 | `airgap` | Air-Gap | 🔴 Pink |
+
+**Semantic Tags (Bottom References - 16 total):**
+- **Product**: `netbox`, `discovery`, `assurance`, `operator`
+- **Platform**: `kubernetes`, `helm`
+- **Technical**: `api`, `authentication`, `administration`, `operations`
+- **Content**: `installation`, `configuration`, `troubleshooting`, `getting-started`
+- **Features**: `automation`, `networking`, `integration`, `ai`
 
 ## 📝 Documentation Team Workflow Guide
 

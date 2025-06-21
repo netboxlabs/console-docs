@@ -3,6 +3,8 @@ title: Built-in Plugins in NetBox Enterprise
 tags:
   - enterprise
   - community
+  - netbox
+  - installation
 ---
 
 # Built-in Plugins in NetBox Enterprise

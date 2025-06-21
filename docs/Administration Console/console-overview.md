@@ -1,7 +1,16 @@
 ---
-title: "NetBox Cloud: Administrative Console Overview"
+title: 'NetBox Cloud: Administrative Console Overview'
 tags:
   - cloud
+  - netbox
+  - kubernetes
+  - api
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - networking
 ---
 
 # NetBox Cloud: Administrative Console Overview

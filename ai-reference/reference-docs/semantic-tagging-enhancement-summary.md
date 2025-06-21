@@ -1,8 +1,13 @@
-# Console Docs Semantic Tagging Enhancement Summary
+# Console Docs Semantic Tagging Enhancement Summary (ARCHIVED)
 
-## 🎯 Project Overview
+> **⚠️ ARCHIVED DOCUMENT**  
+> This document describes the original semantic tagging enhancement that expanded from 4 to 43 tags. The system has since been streamlined to 20 tags for better usability. For current information, see:
+> - `tag-consolidation-summary.md` - Current streamlined system
+> - `../style-guides/product-tagging-guide.md` - Updated tagging guide
 
-Successfully enhanced the console-docs repository with a comprehensive semantic tagging system to improve content discovery and cross-referencing. This system enables better content organization and seamless integration with the main DocHub repository.
+## 🎯 Project Overview (Original Implementation)
+
+Successfully enhanced the console-docs repository with a comprehensive semantic tagging system to improve content discovery and cross-referencing. This system was later streamlined to reduce cognitive load while maintaining functionality.
 
 ## ✅ Deliverables Completed
 

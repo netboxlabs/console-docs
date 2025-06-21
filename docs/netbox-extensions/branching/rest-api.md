@@ -3,6 +3,15 @@ title: Using the REST API
 tags:
   - community
   - enterprise
+  - netbox
+  - api
+  - authentication
+  - administration
+  - operations
+  - configuration
+  - troubleshooting
+  - automation
+  - integration
 ---
 
 # Using the REST API

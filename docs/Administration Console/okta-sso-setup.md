@@ -2,6 +2,12 @@
 title: Okta SSO Setup
 tags:
   - cloud
+  - netbox
+  - authentication
+  - administration
+  - installation
+  - configuration
+  - integration
 ---
 
 # Okta SSO Setup

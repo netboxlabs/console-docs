@@ -1,8 +1,11 @@
 ---
 title: NetBox Labs Product and Feature Lifecycle
 tags:
-  - cloud
-  - enterprise
+  - netbox
+  - authentication
+  - administration
+  - configuration
+  - troubleshooting
 ---
 
 # NetBox Labs Product and Feature Lifecycle

@@ -2,6 +2,16 @@
 title: NetBox Enterprise KOTS Installation
 tags:
   - enterprise
+  - netbox
+  - kubernetes
+  - helm
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - networking
+  - integration
 ---
 
 # NetBox Enterprise KOTS Installation

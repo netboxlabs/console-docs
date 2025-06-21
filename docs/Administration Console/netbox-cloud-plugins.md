@@ -2,8 +2,10 @@
 title: NetBox Cloud Plugins
 tags:
   - cloud
-  - enterprise
   - community
+  - operations
+  - installation
+  - integration
 ---
 
 # NetBox Cloud Plugins

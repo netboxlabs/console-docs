@@ -3,8 +3,22 @@ tags:
   - cloud
   - enterprise
   - community
+  - netbox
   - discovery
-title: "NetBox Discovery"
+  - assurance
+  - operator
+  - kubernetes
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - troubleshooting
+  - getting-started
+  - automation
+  - networking
+  - integration
+title: NetBox Discovery
 ---
 
 NetBox Discovery is an advanced network discovery and observability solution designed to simplify documenting your network and help detect network drift. It extends NetBox by providing automated network and device discovery capabilities through the orb-agent, a lightweight and scalable discovery component.

@@ -2,6 +2,13 @@
 title: NetBox Enterprise Installation
 tags:
   - enterprise
+  - netbox
+  - kubernetes
+  - authentication
+  - administration
+  - operations
+  - installation
+  - integration
 ---
 
 # NetBox Enterprise Installation

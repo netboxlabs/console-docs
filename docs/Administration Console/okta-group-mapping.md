@@ -2,6 +2,11 @@
 title: Group Mapping For Okta Single Sign-On (SSO)
 tags:
   - cloud
+  - netbox
+  - authentication
+  - administration
+  - operations
+  - networking
 ---
 
 # Group Mapping For Okta Single Sign-On (SSO)

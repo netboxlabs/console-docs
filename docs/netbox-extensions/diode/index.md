@@ -3,6 +3,16 @@ title: Diode
 tags:
   - community
   - enterprise
+  - netbox
+  - discovery
+  - kubernetes
+  - api
+  - administration
+  - operations
+  - troubleshooting
+  - getting-started
+  - automation
+  - networking
 ---
 
 # Diode

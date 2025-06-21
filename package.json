@@ -8,8 +8,7 @@
     "migrate-pills": "node scripts/migrate-pills-to-tags.js",
     "preview-tags": "node scripts/preview-auto-tags.js",
     "auto-tag": "node scripts/auto-tag-by-location.js",
-    "semantic-tag": "node scripts/semantic-tagging.js",
-    "semantic-tag-dry": "node scripts/semantic-tagging.js --dry-run"
+    "enhanced-tag": "node scripts/enhanced-semantic-tagging.js"
   },
   "devDependencies": {
     "gray-matter": "^4.0.3"

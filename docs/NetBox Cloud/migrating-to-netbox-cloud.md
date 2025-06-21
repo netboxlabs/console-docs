@@ -3,6 +3,10 @@ title: Migrating to NetBox Cloud
 tags:
   - cloud
   - community
+  - netbox
+  - authentication
+  - operations
+  - automation
 ---
 
 # Migrating to NetBox Cloud

@@ -4,12 +4,23 @@ hide:
   - toc
 tags:
   - cloud
-  - enterprise
   - community
+  - netbox
   - discovery
   - assurance
   - operator
-  - netbox
+  - api
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - getting-started
+  - automation
+  - networking
+  - integration
+  - ai
+title: Welcome to the NetBox Labs Documentation Site
 ---
 
 <div class="homepage-hero">

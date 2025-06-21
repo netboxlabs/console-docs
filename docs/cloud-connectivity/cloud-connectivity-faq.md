@@ -1,6 +1,8 @@
 ---
 tags:
   - cloud
+  - networking
+title: Cloud Connectivity Faq
 ---
 
 ## IPSEC VPN Tunnels

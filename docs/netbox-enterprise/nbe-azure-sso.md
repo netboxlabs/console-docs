@@ -2,6 +2,13 @@
 title: Microsoft Entra ID Setup (formerly Azure Active Directory)
 tags:
   - enterprise
+  - netbox
+  - administration
+  - operations
+  - installation
+  - configuration
+  - troubleshooting
+  - networking
 ---
 
 # Microsoft Entra ID Setup (formerly Azure Active Directory)

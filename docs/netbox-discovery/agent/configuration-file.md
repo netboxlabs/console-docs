@@ -3,6 +3,12 @@ tags:
   - cloud
   - enterprise
   - community
+  - netbox
+  - discovery
+  - administration
+  - configuration
+  - networking
+title: Configuration File
 ---
 
 ## Agent configuration file

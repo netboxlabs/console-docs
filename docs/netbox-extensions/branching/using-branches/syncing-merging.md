@@ -3,7 +3,10 @@ title: Syncing & Merging Changes
 tags:
   - community
   - enterprise
-  - cloud
+  - netbox
+  - authentication
+  - troubleshooting
+  - networking
 ---
 
 # Syncing & Merging Changes

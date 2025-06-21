@@ -1,6 +1,8 @@
 ---
 tags:
   - cloud
+  - networking
+title: Aws Direct Connect
 ---
 
 [AWS Direct Connect](https://aws.amazon.com/directconnect/) is available via hosted connections from BT, Equinix Fabric, MegaPort, Optus, PCCW, Zayo etc. VLAN hand-off is with BGP and Single or Dual Direct Connect services are available. Customer IP space (/24 or /25) is assigned for the VPC, as this is required to host load balancers and proxies within the dedicated customer Account/VPC. Internally we will allocate a /27 per availability zone for each of the 3 availability zones.

@@ -1,3 +1,15 @@
+---
+tags:
+  - cloud
+  - enterprise
+  - netbox
+  - assurance
+  - administration
+  - operations
+  - configuration
+  - networking
+title: Workflow Configuration
+---
 <span class="pill pill-enterprise">Enterprise</span>
 
 # Workflow Configuration

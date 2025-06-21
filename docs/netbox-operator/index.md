@@ -2,8 +2,22 @@
 tags:
   - cloud
   - enterprise
+  - community
+  - netbox
   - operator
-title: "NetBox Operator"
+  - kubernetes
+  - api
+  - authentication
+  - administration
+  - operations
+  - installation
+  - troubleshooting
+  - getting-started
+  - automation
+  - networking
+  - integration
+  - ai
+title: NetBox Operator
 ---
 
 # NetBox Operator

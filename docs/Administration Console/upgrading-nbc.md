@@ -2,8 +2,11 @@
 title: Upgrading NetBox Cloud
 tags:
   - cloud
-  - enterprise
   - community
+  - netbox
+  - operations
+  - installation
+  - integration
 ---
 
 # Upgrading NetBox Cloud

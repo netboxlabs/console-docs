@@ -1,7 +1,15 @@
 ---
-title: "TLS and Ingress: Accessing NetBox Enterprise"
+title: 'TLS and Ingress: Accessing NetBox Enterprise'
 tags:
   - enterprise
+  - netbox
+  - kubernetes
+  - helm
+  - api
+  - authentication
+  - administration
+  - installation
+  - networking
 ---
 
 # TLS and Ingress: Accessing NetBox Enterprise

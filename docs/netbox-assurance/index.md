@@ -2,8 +2,19 @@
 tags:
   - cloud
   - enterprise
+  - community
+  - netbox
   - assurance
-title: "NetBox Assurance"
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - troubleshooting
+  - automation
+  - networking
+  - integration
+title: NetBox Assurance
 ---
 
 NetBox Assurance automatically detects operational drift, allowing you to understand and address deviations swiftly and maintain a resilient infrastructure. It continuously monitors network and infrastructure, comparing your intended design against real-world infrastructure to uncover discrepancies and provide proactive remediation capabilities.

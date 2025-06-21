@@ -2,7 +2,10 @@
 title: NetBox Cloud Hostnames
 tags:
   - cloud
-  - enterprise
+  - netbox
+  - authentication
+  - administration
+  - configuration
 ---
 
 # NetBox Cloud Hostnames

@@ -2,6 +2,11 @@
 title: NetBox Enterprise SAML Configuration Guide
 tags:
   - enterprise
+  - netbox
+  - administration
+  - operations
+  - installation
+  - configuration
 ---
 
 # NetBox Enterprise SAML Configuration Guide

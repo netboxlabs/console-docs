@@ -1,7 +1,10 @@
 ---
-title: Retrieving the NetBox Cloud Admin Credentials 
+title: Retrieving the NetBox Cloud Admin Credentials
 tags:
   - cloud
+  - netbox
+  - authentication
+  - administration
 ---
 
 # Retrieving the NetBox Cloud Admin Credentials 

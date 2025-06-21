@@ -2,6 +2,9 @@
 title: NetBox Enterprise
 tags:
   - enterprise
+  - community
+  - kubernetes
+  - installation
 ---
 
 # NetBox Enterprise

@@ -1,7 +1,13 @@
 ---
-title: Configuring SAML Group Mapping in NetBox Enterprise 
+title: Configuring SAML Group Mapping in NetBox Enterprise
 tags:
   - enterprise
+  - netbox
+  - authentication
+  - administration
+  - operations
+  - configuration
+  - integration
 ---
 
 # Configuring SAML Group Mapping in NetBox Enterprise 

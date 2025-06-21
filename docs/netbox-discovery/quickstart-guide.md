@@ -3,6 +3,21 @@ tags:
   - cloud
   - enterprise
   - community
+  - netbox
+  - discovery
+  - assurance
+  - kubernetes
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - troubleshooting
+  - getting-started
+  - automation
+  - networking
+  - integration
+title: NetBox Discovery Quickstart Guide
 ---
 
 # NetBox Discovery Quickstart Guide

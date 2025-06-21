@@ -4,6 +4,20 @@ tags:
   - cloud
   - enterprise
   - community
+  - netbox
+  - discovery
+  - assurance
+  - kubernetes
+  - authentication
+  - administration
+  - operations
+  - installation
+  - configuration
+  - troubleshooting
+  - getting-started
+  - automation
+  - networking
+  - integration
 ---
 
 # Network Discovery

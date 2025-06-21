@@ -2,6 +2,10 @@
 title: NetBox Enterprise Entra ID Group Mapping
 tags:
   - enterprise
+  - netbox
+  - authentication
+  - networking
+  - integration
 ---
 
 # NetBox Enterprise Entra ID Group Mapping

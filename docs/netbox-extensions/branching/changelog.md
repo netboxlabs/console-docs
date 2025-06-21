@@ -3,6 +3,15 @@ title: Change Log
 tags:
   - community
   - enterprise
+  - netbox
+  - api
+  - administration
+  - operations
+  - configuration
+  - troubleshooting
+  - getting-started
+  - automation
+  - integration
 ---
 
 # Change Log

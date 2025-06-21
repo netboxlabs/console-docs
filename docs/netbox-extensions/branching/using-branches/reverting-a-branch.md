@@ -3,6 +3,8 @@ title: Reverting a Branch
 tags:
   - community
   - enterprise
+  - operations
+  - automation
 ---
 
 # Reverting a Branch
