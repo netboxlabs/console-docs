@@ -2,7 +2,6 @@
 tags:
   - cloud
   - enterprise
-  - community
   - netbox
   - assurance
   - authentication

@@ -2,7 +2,6 @@
 tags:
   - cloud
   - enterprise
-  - community
   - discovery
   - assurance
   - api
