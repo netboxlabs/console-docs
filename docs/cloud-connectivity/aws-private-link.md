@@ -3,6 +3,7 @@ tags:
   - cloud
   - netbox
   - api
+  - networking
 title: Aws Private Link
 ---
 

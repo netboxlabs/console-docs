@@ -3,6 +3,7 @@ title: Linux Root-Level Changes
 tags:
   - enterprise
   - community
+  - netbox
   - kubernetes
   - api
   - authentication

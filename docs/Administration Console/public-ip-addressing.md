@@ -2,6 +2,7 @@
 title: NetBox Cloud Public IP Addresses
 tags:
   - cloud
+  - netbox
 ---
 
 # NetBox Cloud Public IP Addresses

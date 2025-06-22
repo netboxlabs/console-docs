@@ -8,10 +8,9 @@ tags:
   - kubernetes
   - api
   - administration
-  - operations
   - installation
   - configuration
-  - networking
+  - integration
 ---
 
 # Upgrades and Bug Fixes

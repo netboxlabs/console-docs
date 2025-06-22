@@ -3,6 +3,7 @@ title: Working with NetBox Cloud Database Backups
 tags:
   - cloud
   - netbox
+  - authentication
   - administration
   - operations
   - troubleshooting

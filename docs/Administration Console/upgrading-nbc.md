@@ -6,6 +6,7 @@ tags:
   - netbox
   - operations
   - installation
+  - troubleshooting
   - integration
 ---
 

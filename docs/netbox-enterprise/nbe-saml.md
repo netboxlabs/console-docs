@@ -3,6 +3,7 @@ title: NetBox Enterprise SAML Configuration Guide
 tags:
   - enterprise
   - netbox
+  - authentication
   - administration
   - operations
   - installation

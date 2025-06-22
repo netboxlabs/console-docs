@@ -1,7 +1,10 @@
 ---
 tags:
   - cloud
+  - authentication
   - administration
+  - operations
+  - configuration
 title: Console Admin Accounts
 ---
 

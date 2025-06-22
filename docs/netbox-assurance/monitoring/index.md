@@ -18,7 +18,7 @@ title: Data Ingestion and Analysis
 ---
 
 !!! note "NetBox Cloud Support"
-    NetBox Cloud support coming early July 2025.
+    NetBox Cloud support coming July 7, 2025.
 
 NetBox Assurance provides data ingestion and analysis capabilities to identify operational drift between the intended state in NetBox and actual network information from various data sources.
 

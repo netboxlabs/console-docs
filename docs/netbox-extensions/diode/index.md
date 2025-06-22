@@ -8,11 +8,11 @@ tags:
   - kubernetes
   - api
   - administration
-  - operations
   - troubleshooting
   - getting-started
   - automation
   - networking
+  - integration
 ---
 
 # Diode

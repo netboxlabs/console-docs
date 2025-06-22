@@ -3,9 +3,9 @@ tags:
   - cloud
   - enterprise
   - community
+  - netbox
   - discovery
   - api
-  - installation
   - getting-started
   - networking
   - integration

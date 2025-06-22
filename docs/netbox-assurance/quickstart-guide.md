@@ -17,7 +17,7 @@ title: NetBox Assurance Quickstart Guide
 ---
 
 !!! note "NetBox Cloud Support"
-    NetBox Cloud support coming early July 2025.
+    NetBox Cloud support coming July 7, 2025.
 
 This quickstart guide will help you get NetBox Assurance up and running to detect and manage operational drift between your intended network state in NetBox and the actual state of your network infrastructure.
 

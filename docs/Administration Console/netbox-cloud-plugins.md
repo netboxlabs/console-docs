@@ -3,6 +3,7 @@ title: NetBox Cloud Plugins
 tags:
   - cloud
   - community
+  - netbox
   - operations
   - installation
   - integration

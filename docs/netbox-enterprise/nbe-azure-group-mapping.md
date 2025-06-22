@@ -4,6 +4,7 @@ tags:
   - enterprise
   - netbox
   - authentication
+  - administration
   - networking
   - integration
 ---

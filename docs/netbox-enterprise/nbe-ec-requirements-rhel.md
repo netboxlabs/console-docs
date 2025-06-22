@@ -3,6 +3,7 @@ title: NetBox Enterprise Requirements for Red Hat Enterprise Linux (RHEL)
 tags:
   - enterprise
   - community
+  - netbox
   - kubernetes
   - api
   - authentication

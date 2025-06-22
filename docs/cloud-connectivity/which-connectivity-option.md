@@ -2,6 +2,7 @@
 tags:
   - cloud
   - netbox
+  - authentication
   - administration
   - installation
   - configuration

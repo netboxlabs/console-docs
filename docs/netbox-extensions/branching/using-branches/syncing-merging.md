@@ -6,6 +6,7 @@ tags:
   - netbox
   - authentication
   - troubleshooting
+  - automation
   - networking
 ---
 

@@ -3,7 +3,9 @@ title: Configuration Parameters
 tags:
   - community
   - enterprise
+  - administration
   - operations
+  - configuration
   - integration
 ---
 

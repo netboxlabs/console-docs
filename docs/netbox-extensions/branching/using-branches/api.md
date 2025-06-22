@@ -3,6 +3,8 @@ tags:
   - community
   - enterprise
   - api
+  - authentication
+  - operations
 title: Api
 ---
 

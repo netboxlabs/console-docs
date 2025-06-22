@@ -3,6 +3,7 @@ tags:
   - cloud
   - enterprise
   - community
+  - netbox
   - administration
   - operations
   - installation

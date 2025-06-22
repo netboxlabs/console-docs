@@ -3,6 +3,7 @@ title: Branch Events
 tags:
   - community
   - enterprise
+  - netbox
   - operations
   - automation
 ---

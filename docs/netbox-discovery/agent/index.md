@@ -5,12 +5,15 @@ tags:
   - community
   - netbox
   - discovery
+  - kubernetes
   - api
   - administration
   - operations
+  - installation
   - configuration
   - automation
   - networking
+  - integration
 title: NetBox Discovery Agent
 ---
 

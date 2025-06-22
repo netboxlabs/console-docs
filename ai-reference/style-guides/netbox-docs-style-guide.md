@@ -280,7 +280,7 @@ DEBUG = False
 ### Version-Specific Content
 ```markdown
 !!! info "Version Information"
-    This feature is available in NetBox Enterprise v1.10 and later (June 2025).
+    This feature is available in NetBox Enterprise v1.10 and later (June 23, 2025).
 
 !!! info "Coming Soon"
     NetBox Operator is currently in active development with design partners. 

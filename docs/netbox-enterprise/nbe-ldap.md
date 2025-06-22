@@ -3,7 +3,7 @@ title: LDAP Configuration for NetBox Enterprise
 tags:
   - enterprise
   - netbox
-  - administration
+  - authentication
   - configuration
   - troubleshooting
 ---

@@ -5,7 +5,6 @@ tags:
   - enterprise
   - community
   - netbox
-  - api
   - authentication
   - administration
   - operations

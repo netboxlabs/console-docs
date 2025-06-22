@@ -3,8 +3,10 @@ title: NetBox Change Management
 tags:
   - community
   - enterprise
-  - netbox
+  - operations
+  - configuration
   - getting-started
+  - automation
 ---
 
 # NetBox Change Management

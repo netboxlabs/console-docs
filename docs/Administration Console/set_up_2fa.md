@@ -5,6 +5,7 @@ tags:
   - netbox
   - authentication
   - administration
+  - operations
   - installation
   - configuration
   - troubleshooting

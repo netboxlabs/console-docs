@@ -20,7 +20,7 @@ title: Deviation Detection
 # Deviation Detection
 
 !!! note "NetBox Cloud Support"
-    NetBox Cloud support coming early July 2025.
+    NetBox Cloud support coming July 7, 2025.
 
 Deviation detection is the core capability of NetBox Assurance, identifying operational drift between the intended network state documented in NetBox and the actual operational state of your network infrastructure.
 

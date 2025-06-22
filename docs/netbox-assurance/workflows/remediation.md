@@ -20,7 +20,7 @@ title: Remediation Workflows
 # Remediation Workflows
 
 !!! note "NetBox Cloud Support"
-    NetBox Cloud support coming early July 2025.
+    NetBox Cloud support coming July 7, 2025.
 
 Remediation workflows automatically respond to detected deviations, either by correcting the issue directly or by initiating processes to address the deviation.
 

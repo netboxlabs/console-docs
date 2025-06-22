@@ -10,7 +10,7 @@ const EDITION_TAGS = ['community', 'enterprise', 'cloud', 'airgap'];
 
 // Product tags
 const PRODUCT_TAGS = {
-  netbox: /netbox(?!\s*(cloud|enterprise|community|discovery|assurance|operator))/gi,
+  netbox: /netbox/gi,  // Match any mention of NetBox (simplified)
   discovery: /discovery|network\s*discovery|device\s*discovery/gi,
   assurance: /assurance|operational\s*drift|deviation/gi,
   operator: /operator|ai.*operations|agentic\s*ai/gi

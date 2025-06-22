@@ -1,7 +1,6 @@
 ---
 tags:
   - cloud
-  - authentication
 title: Ipsec Vpn Tunnels
 ---
 

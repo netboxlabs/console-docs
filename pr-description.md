@@ -1,6 +1,6 @@
 ## Overview
 
-This PR implements comprehensive updates to NetBox Assurance documentation to support the Enterprise launch and prepare for Cloud availability in early July 2025.
+This PR implements comprehensive updates to NetBox Assurance documentation to support the Enterprise launch and prepare for Cloud availability on July 7, 2025.
 
 ## Key Changes
 
@@ -11,7 +11,7 @@ This PR implements comprehensive updates to NetBox Assurance documentation to su
 
 ### 🏷️ **Product Availability Updates**  
 - Updated product pills to Enterprise-only (since Enterprise is now available)
-- Added simple note about Cloud support coming early July 2025
+- Added simple note about Cloud support coming July 7, 2025
 - Removed outdated launch messaging since Enterprise is live
 
 ### 📝 **Content Alignment**
@@ -48,7 +48,7 @@ docs/netbox-assurance/
 ## Related
 - Addresses PRD-439 requirements for NetBox Assurance documentation updates
 - Prepares documentation for NetBox Enterprise launch (available now)
-- Sets foundation for NetBox Cloud support (early July 2025)
+- Sets foundation for NetBox Cloud support (July 7, 2025)
 
 ## Next Steps
 - Review content accuracy and completeness

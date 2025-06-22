@@ -11,9 +11,14 @@
     "enhanced-tag": "node scripts/enhanced-semantic-tagging.js"
   },
   "devDependencies": {
+    "glob": "^11.0.3",
     "gray-matter": "^4.0.3"
   },
-  "keywords": ["netbox", "documentation", "enterprise"],
+  "keywords": [
+    "netbox",
+    "documentation",
+    "enterprise"
+  ],
   "author": "NetBox Labs",
   "license": "MIT"
-} 
+}

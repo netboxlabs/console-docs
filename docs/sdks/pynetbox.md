@@ -5,6 +5,12 @@ tags:
   - enterprise
   - community
   - netbox
+  - api
+  - administration
+  - operations
+  - installation
+  - configuration
+  - networking
 ---
 
 # NetBox SDKs

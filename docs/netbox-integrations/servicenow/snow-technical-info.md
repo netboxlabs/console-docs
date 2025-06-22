@@ -7,8 +7,8 @@ tags:
   - netbox
   - api
   - authentication
+  - operations
   - automation
-  - integration
 ---
 
 # Technical Information

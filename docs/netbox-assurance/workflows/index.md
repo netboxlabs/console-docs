@@ -2,18 +2,18 @@
 tags:
   - cloud
   - enterprise
+  - netbox
   - discovery
   - assurance
   - api
   - administration
-  - configuration
   - getting-started
   - networking
 title: Assurance Workflows
 ---
 
 !!! note "NetBox Cloud Support"
-    NetBox Cloud support coming early July 2025.
+    NetBox Cloud support coming July 7, 2025.
 
 NetBox Assurance workflows help you control data ingestion into NetBox by analyzing ingested messages and identifying operational drift between the intended state documented in NetBox and the actual network state.
 

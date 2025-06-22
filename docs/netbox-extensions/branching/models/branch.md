@@ -5,6 +5,7 @@ tags:
   - enterprise
   - netbox
   - operations
+  - automation
 ---
 
 # Branches

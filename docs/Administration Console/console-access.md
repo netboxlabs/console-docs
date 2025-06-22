@@ -5,7 +5,6 @@ tags:
   - netbox
   - authentication
   - administration
-  - configuration
 ---
 
 # NetBox Cloud

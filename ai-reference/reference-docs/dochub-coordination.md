@@ -191,7 +191,7 @@ def filter_content_by_edition(content_path, edition):
 7. **`docs/netbox-assurance/index.md`** - Complete rewrite with release dates
 
 ### **Key Content Updates:**
-- **NetBox Assurance release dates**: June 2025 (Enterprise), July 2025 (Cloud)
+- **NetBox Assurance release dates**: June 23, 2025 (Enterprise), July 7, 2025 (Cloud)
 - **Enhanced use case framework**: Day 1/Day 1.5/Day 2 scenarios
 - **Controller integration roadmap**: Specific dates for VMware, Juniper, Cisco, etc.
 - **Operational drift detection**: Comprehensive workflow documentation

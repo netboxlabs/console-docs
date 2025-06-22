@@ -4,7 +4,6 @@ tags:
   - community
   - enterprise
   - administration
-  - configuration
   - integration
 ---
 

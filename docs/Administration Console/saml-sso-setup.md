@@ -2,6 +2,7 @@
 title: NetBox Cloud SAML Configuration Guide
 tags:
   - cloud
+  - netbox
   - authentication
   - administration
   - configuration

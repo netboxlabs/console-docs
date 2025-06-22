@@ -8,6 +8,7 @@ tags:
   - authentication
   - administration
   - operations
+  - installation
   - configuration
   - troubleshooting
   - automation

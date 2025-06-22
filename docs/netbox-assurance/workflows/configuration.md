@@ -7,6 +7,8 @@ tags:
   - administration
   - operations
   - configuration
+  - troubleshooting
+  - automation
   - networking
 title: Workflow Configuration
 ---
@@ -15,7 +17,7 @@ title: Workflow Configuration
 # Workflow Configuration
 
 !!! note "NetBox Cloud Support"
-    NetBox Cloud support coming early July 2025.
+    NetBox Cloud support coming July 7, 2025.
 
 This page covers how to configure NetBox Assurance workflows to manage data ingestion and detect operational drift from the intended state in NetBox.
 

@@ -3,8 +3,12 @@ title: NetBox Enterprise
 tags:
   - enterprise
   - community
+  - netbox
   - kubernetes
+  - administration
+  - operations
   - installation
+  - integration
 ---
 
 # NetBox Enterprise
