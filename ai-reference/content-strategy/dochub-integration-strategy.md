@@ -7,7 +7,7 @@ This document provides the DocHub team with comprehensive instructions to integr
 - **Source Repository**: `netboxlabs/console-docs`
 - **Target Repository**: `netboxlabs/netboxlabs-website-dochub`
 - **Current Branch**: `origin/feat/navigation-restructure-and-docs-enhancement`
-- **Integration Date**: June 2025
+- **Integration Date**: July 7, 2025
 
 ## Key Enhancements
 
