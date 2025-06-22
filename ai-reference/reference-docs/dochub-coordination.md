@@ -1,7 +1,7 @@
 # NetBox Labs Documentation Navigation Restructuring Specification
 
 **Document Version:** 1.0  
-**Date:** January 2025  
+**Date:** June 2025  
 **From:** Console-Docs Team  
 **To:** Dochub Integration Team  
 
