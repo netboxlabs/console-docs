@@ -61,7 +61,7 @@ Keep your network documentation current by automatically updating NetBox with di
 NetBox Discovery leverages the orb-agent, a containerized Go application that uses network protocols (ICMP, TCP, UDP, SSH) to discover devices and other network assets. The agent is configured through YAML files that define:
 
 - **Configuration Sources**: Local files or Git repositories for policy management
-- **Secrets Management**: Integration with external secret stores for credential security  
+- **Secrets Management**: Integration with external secret stores for credential security
 - **Discovery Policies**: Customizable rules for network scanning and device identification
 - **Backend Selection**: Choice of discovery methods based on network requirements
 
