@@ -19,176 +19,147 @@ tags:
 title: NetBox Operator
 ---
 
-# NetBox Operator
+  # NetBox Operator
 
-!!! info "**Coming Soon: AI Superpowers for Every Network Engineer**"
-    NetBox Operator is currently in active development with design partners. [Become a design partner](https://netboxlabs.com/products/netbox-operator/#faq) to shape the roadmap and gain early access to AI-powered workflows.
+  **AI-powered network operations platform combining semantic infrastructure understanding with intelligent automation**
 
-NetBox Operator is an AI-driven network and infrastructure operations platform that unleashes agentic AI operations in your infrastructure with NetBox as the semantic map. It continuously watches, correlates, and acts – delivering always-on insight, lightning-fast incident triage, and automated workflows that eliminate operator toil.
+  NetBox Operator is an AI-driven network & infrastructure operations platform that combines NetBox's semantic model with your telemetry tools to automate monitoring, triage,
+  and remediation.
 
-## What Makes NetBox Operator Different
+  ## Overview
 
-NetBox Operator understands your network through NetBox's rich semantic context, enabling it to move beyond traditional monitoring and ML analytics to provide intelligent, contextual automation that closes the operational loop.
+  Continuously watch, correlate, and act – delivering always‑on insight, lightning‑fast incident triage, and automated workflows that erase operator toil.
 
-### Semantic Awareness
-Operator leverages NetBox to understand your infrastructure topology, relationships, and intent – accelerating agent workflows and enabling precise, efficient operations that go far beyond simple anomaly detection.
+  Unleash agentic AI operations in your infrastructure with NetBox as the map. NetBox Operator understands your network and eliminates gruntwork so you can move faster and do
+  more.
 
-### 10× Faster Resolution
-Slash Mean Time to Repair (MTTR) and Mean Time to Detect (MTTD) with Operator's autonomous triage, enrichment, and guided remediation workflows.
+  ## Two Product Approaches
 
-### Eliminate Toil
-Operator navigates your operations tools to present actionable information – focus on strategic decisions, not data gathering and manual correlation.
+  NetBox Operator encompasses two distinct but complementary approaches to network operations automation:
 
-## How It Works
+  ### AI-Powered Operations Platform
+  An intelligent operations platform that leverages artificial intelligence to transform how network teams monitor, troubleshoot, and manage infrastructure.
 
-NetBox Operator combines three key components to deliver agentic AI operations:
+  ### Kubernetes-Native Management
+  A Kubernetes operator that simplifies the deployment, management, and scaling of NetBox instances in containerized environments.
 
-### 1. NetBox-Native Semantic Map
-No other platform has the depth of context native to NetBox Operator. NetBox already functions as a source of truth for devices, circuits, IPs, racks, and other infrastructure, along with the relationships that bind them. In semantic AI terms, that's an **ontology** – a structured representation of entities plus the ways they connect.
+  ## Key Capabilities
 
-This semantic map gives AI agents two superpowers:
-- **Instant Orientation**: Instead of guessing what "10.20.30.40" might be, the agent can resolve it to *the* interface, *the* device, *the* circuit, *the* site
-- **Guided Reasoning**: Knowing relationships lets the agent ask smarter questions ("What else shares this circuit?") and skip dead ends
+  ### 🔍 Semantic Awareness
+  Operator leverages NetBox to understand your infrastructure, accelerating agent workflows and enabling precise, efficient operations.
 
-### 2. Nitro AI Platform
-NetBox Labs' AI platform powers Operator with advanced agents, context management, and a comprehensive suite of AI tools designed specifically for network and infrastructure operations.
+  ### ⚡ 10× Faster Resolution
+  Slash MTTR & MTTD with Operator's autonomous triage, enrichment, and guided remediation.
 
-### 3. Ecosystem Integration
-Works seamlessly with your existing stack. Operator's agents use the same tools you do to investigate issues and build understanding – all guided by NetBox's semantic context.
+  ### 🎯 Eliminate Toil
+  Operator navigates your operations tools to present actionable information - focus on decisions, not data gathering.
 
-**Out-of-the-box connectors include:**
-- Prometheus
-- Splunk  
-- Grafana
-- Zabbix
-- Elastic
-- Open SDK for custom integrations
+  ### 🚀 Kubernetes-Native Deployment
+  - **Automated Deployment**: One-click NetBox deployment in Kubernetes clusters
+  - **Lifecycle Management**: Automated updates, backups, and maintenance
+  - **Scaling & High Availability**: Built-in support for horizontal scaling and failover
+  - **GitOps Integration**: Configuration management through Git workflows
+  - **Monitoring & Observability**: Integrated metrics and health monitoring
 
-## Agentic AI in Action
+  ## How It Works
 
-### Context Gathering Agent
-When an alert arrives, Operator's Context Gathering Agent immediately:
+  ### NetBox‑native Semantic Map
+  No other platform has the depth of context native to NetBox Operator. Your NetBox instance becomes the foundation for AI-powered operations.
 
-1. **Resolves the Alert**: Transforms raw data (like "10.20.30.40 packet loss >80%") into rich, topology-aware context
-2. **Maps Relationships**: Identifies connected devices, circuits, and dependencies
-3. **Gathers History**: Reviews recent changes and modifications
-4. **Builds Dossier**: Creates comprehensive context for investigation
+  ### Nitro AI Integration
+  NetBox Labs' AI platform supercharges Operator with agents, context management, and powerful suite of AI tools.
 
-### Investigation Agent  
-Armed with semantic context, the Investigation Agent:
+  ### Ecosystem Integration
+  Works with your stack. Operator's agents use the same tools you do to investigate issues and build understanding - all guided by NetBox.
 
-1. **Targets Telemetry**: Makes precise queries to monitoring systems based on NetBox relationships
-2. **Correlates Evidence**: Combines data from multiple sources with topology awareness
-3. **Identifies Root Cause**: Provides confident analysis with supporting evidence
-4. **Recommends Actions**: Suggests specific remediation steps based on infrastructure knowledge
+  ## Who Benefits
 
-### Example: IP-Triggered Alert Resolution
-```
-Alert: "STATUS CRITICAL: >80% packet loss for 10.20.30.40 (Akron site)"
+  ### Network and Infrastructure Engineers
+  - Quickly gather the context you need to identify, understand, and resolve issues
+  - Reclaim hours per shift and focus on design, not dashboards
+  - Accelerate operational workflows with AI assistance
+  - Streamlined NetBox deployment and management in Kubernetes
 
-Context Agent discovers:
-- IP belongs to GigabitEthernet0/0/0 on dmi01-akron-rtr01
-- Interface connects to Level 3 MPLS circuit KKDG4923
-- Recent ACL changes detected 3 hours ago
+  ### Operations Leaders
+  - Eliminate alert fatigue
+  - Empower your engineers with AI-powered tools
+  - Remediate issues 5-10× faster
+  - Unleash teams to do their best work
 
-Investigation Agent determines:
-- Likely cause: Degraded Level 3 MPLS circuit
-- Confidence: 90%
-- Impact: All DM-Akron traffic using primary MPLS path
-- Actions: Shift to secondary circuit, open provider ticket, schedule inspection
-```
+  ### Platform Teams
+  - Simplified NetBox lifecycle management
+  - Automated scaling and high availability
+  - GitOps-ready infrastructure management
+  - Integrated monitoring and observability
 
-## Who Benefits
+  ### Consulting Partners
+  - Accelerate AI Ops initiatives in tandem with automation, observability, and security
+  - Give clients the path to AI driven network and infrastructure operations
 
-### Network and Infrastructure Engineers
-- Quickly gather context needed to identify, understand, and resolve issues
-- Reclaim hours per shift and focus on design, not dashboards
-- Reduce manual correlation and investigation time
+  ## Always Operating
+  Constant audits, immediate investigations, proactive analysis – NetBox Operator is always helping with proactive operations.
 
-### Operations Leaders
-- Eliminate alert fatigue and accelerate operational workflows
-- Empower engineering teams to focus on strategic work
-- Remediate issues 5-10× faster with intelligent automation
+  ## Design Partner Program
 
-### Consulting Partners
-- Accelerate AI Ops initiatives alongside automation, observability, and security projects
-- Provide clients with a clear path to AI-driven network and infrastructure operations
-- Differentiate services with cutting-edge operational intelligence
+  NetBox Operator is in active development, and we're seeking forward‑thinking design partners to shape the roadmap and supercharge their operations before general availability.
 
-## Key Capabilities
+  ### Benefits of Being a Design Partner
+  - Early access to AI‑powered workflows
+  - Direct input on feature development
+  - Collaborate with NetBox Labs engineering team
+  - Shape the future of AI‑powered infrastructure operations
 
-### Always-On Operations
-- **Proactive Monitoring**: Constant audits, immediate investigations, proactive analysis
-- **Continuous Correlation**: Real-time relationship mapping and impact analysis
-- **Intelligent Alerting**: Context-aware notifications that cut through noise
+  ## FAQ
 
-### Intelligent Automation
-- **Semantic Reasoning**: AI that understands your infrastructure topology and intent
-- **Guided Remediation**: Step-by-step resolution workflows based on proven practices
-- **Closed-Loop Operations**: Automated actions with approval workflows and rollback capabilities
+  ### What is NetBox Operator?
+  An AI‑driven network & infrastructure operations platform that combines NetBox's semantic model with your telemetry tools to automate monitoring, triage, and remediation. It
+  also includes Kubernetes-native capabilities for simplified NetBox deployment and management.
 
-### Operational Intelligence
-- **Topology-Aware Analysis**: Investigations that understand infrastructure relationships
-- **Historical Context**: Learning from past incidents and changes
-- **Predictive Insights**: Proactive identification of potential issues
+  ### Who should engage now?
+  Engineering & operations teams eager to collaborate as design partners, provide real‑world feedback, and gain early access to AI‑powered workflows with NetBox Operator.
 
-## Integration Requirements
+  ### Does it replace my existing NMS or AIOps tool?
+  Operator complements your stack – adding semantic reasoning, correlation, and automated action on top of traditional monitoring and ML analytics.
 
-### NetBox Dependency
-NetBox Operator requires NetBox (Community, Cloud, or Enterprise) to supply its deep semantic context. **NetBox Cloud or NetBox Enterprise will be required when NetBox Operator becomes generally available.**
+  ### What differentiates it from ML‑centric AIOps platforms?
+  Traditional AIOps stops at detecting anomalies; Operator's agentic AI reasons over those anomalies, ties them to topology & intent, and drives approved remediation – closing
+  the loop.
 
-### Deployment Options
-During the design partner program, only cloud-based deployments using NetBox Labs' cloud-based Nitro AI model providers are supported. When generally available, self-hosted LLM support is expected for some use cases.
+  ### What tools can it integrate with?
+  Out‑of‑the‑box connectors for Prometheus, Splunk, Grafana, Zabbix, Elastic, and more; an open SDK lets you add others.
 
-### Data Handling
-- No customer data trains shared LLMs
-- Secure, encrypted communication between all components
-- Compliance with enterprise security and privacy requirements
+  ### Is NetBox required?
+  Yes – Operator relies on NetBox (Community, Cloud, or Enterprise) to supply its deep semantic context. NetBox Cloud or NetBox Enterprise will be required when NetBox Operator
+  becomes generally available.
 
-## Design Partner Program
+  ### How is data handled?
+  No customer data trains shared LLMs. During our design partner program, only cloud based deployments of NetBox Operator using our cloud based Nitro AI model providers will be
+  supported. When NetBox Operator becomes generally available we expect to support self-hosted LLMs in some use cases.
 
-NetBox Operator is actively seeking forward-thinking design partners to shape the roadmap and supercharge their operations before general availability.
+  ### When will it be generally available?
+  NetBox Operator is currently in development. No specific date is set for GA; design‑partner input will shape final timing and feature set.
 
-### Who Should Engage
-Engineering and operations teams eager to:
-- Collaborate as design partners providing real-world feedback
-- Gain early access to AI-powered workflows
-- Shape the future of AI-driven infrastructure operations
+  ## Stay Informed
 
-### Program Benefits
-- Early access to NetBox Operator capabilities
-- Direct input on feature development and roadmap
-- Priority support and training
-- Opportunity to influence the future of network operations
+  To be notified when NetBox Operator becomes available:
 
-### How to Get Involved
-[Apply to become a design partner](https://netboxlabs.com/products/netbox-operator/#faq) or contact your NetBox Labs account team to discuss the program.
+  - Follow [NetBox Labs on Twitter/X](https://x.com/NetBoxLabs)
+  - Subscribe to the [NetBox Labs newsletter](https://netboxlabs.com/newsletter/)
+  - Watch the [NetBox Labs GitHub organization](https://github.com/netboxlabs)
 
-## Frequently Asked Questions
+  ## Get Involved
 
-### What is NetBox Operator?
-An AI-driven network & infrastructure operations platform that combines NetBox's semantic model with your telemetry tools to automate monitoring, triage, and remediation.
+  Interested in becoming a design partner or have questions about NetBox Operator? Contact the [NetBox Labs team](https://netboxlabs.com/contact/) to discuss the design‑partner
+  program and early access opportunities.
 
-### Does it replace my existing NMS or AIOps tool?
-Operator complements your stack – adding semantic reasoning, correlation, and automated action on top of traditional monitoring and ML analytics.
+  ---
 
-### What differentiates it from ML-centric AIOps platforms?
-Traditional AIOps stops at detecting anomalies; Operator's agentic AI reasons over those anomalies, ties them to topology & intent, and drives approved remediation – closing the loop.
+  *NetBox Operator represents the future of AI-powered network operations, combining the trusted NetBox platform with cutting-edge artificial intelligence and Kubernetes-native 
+  deployment capabilities to transform how network teams work.*
 
-### When will it be generally available?
-No specific date is set for general availability; design-partner input will shape final timing and feature set.
-
-### How is data handled?
-No customer data trains shared LLMs. During the design partner program, only cloud-based deployments are supported. Self-hosted LLM support is expected for some use cases at general availability.
-
-## Getting Started
-
-Ready to transform your network operations with AI? Join the NetBox Operator design partner program today:
-
-1. **[Apply to be a design partner](https://netboxlabs.com/products/netbox-operator/#faq)**
-2. **Contact your NetBox Labs account team** to discuss the program
-3. **Join the community** on [NetDev Slack](https://netdev.chat/) in the `#netbox` channel
-
----
-
-*NetBox Operator represents the next evolution of network operations – where AI agents work alongside human expertise to deliver unprecedented operational intelligence and automation.* 
+  This combined version:
+  - Merges both AI operations and Kubernetes operator concepts
+  - Maintains all key information from both original documents
+  - Provides a clearer structure showing the dual nature of the product
+  - Consolidates FAQ sections and contact information
+  - Creates a comprehensive single source for NetBox Operator documentation
