@@ -22,7 +22,7 @@ If you already have NetBox Enterprise running, follow this streamlined approach:
 
 ### **Enterprise Deployment Considerations**
 
-- **Security**: NetBox Discovery integrates with enterprise secret management systems (HashiCorp Vault, AWS Secrets Manager)
+- **Security**: NetBox Discovery supports secure credential handling and can integrate with external secret management systems
 - **Scalability**: Deploy multiple discovery agents across different network segments or data centers
 - **Compliance**: Supports enterprise auditing and compliance workflows through comprehensive logging
 - **High Availability**: Diode server can be deployed in high-availability configurations
@@ -36,16 +36,12 @@ If you already have NetBox Enterprise running, follow this streamlined approach:
 
 ### **Enterprise Setup Path**
 
-1. **[Review Enterprise Requirements](#enterprise-prerequisites)** - Additional considerations for enterprise deployments
+1. **[Review Enterprise Prerequisites](#enterprise-prerequisites)** - Additional considerations for enterprise deployments
 2. **[Deploy Production Diode](#deploy-diode-server)** - Set up Diode server for enterprise use
 3. **[Configure NetBox Enterprise Plugin](#install-diode-netbox-plugin)** - Integrate with your existing NetBox Enterprise
 4. **[Deploy Discovery Agents](#run-netbox-discovery-agent)** - Set up agents across your network infrastructure
 
 ---
-
-## For New or Community Deployments
-
-If you're setting up NetBox Discovery from scratch or using NetBox Community, follow the complete installation guide below.
 
 ## Prerequisites
 
@@ -249,46 +245,158 @@ We provide a `quickstart.sh` script to automate the setup process. The script wi
    - Check the agent logs for successful startup
    - Verify data appears in NetBox
 
-## View the Output
+## Configuration Examples
 
-You can view output from the running agent:
+### Basic Network Discovery
+Simple network discovery for IP and device identification:
 
-- Agent Docker container logs (displayed in the terminal)
-- Diode server Docker container logs (`docker compose logs`)
-- `Ingestion Logs` view in NetBox Diode plugin
+```yaml
+orb:
+  config_manager:
+    active: local
+  backends:
+    network_discovery:
+    common:
+      diode:
+        target: grpc://192.168.31.114:8080/diode
+        client_id: ${DIODE_CLIENT_ID}
+        client_secret: ${DIODE_CLIENT_SECRET}
+        agent_name: agent02
+  policies:
+    network_discovery:
+      policy_1:
+        config:
+          schedule: "0 */2 * * *"
+          timeout: 5
+        scope:
+          targets: [192.168.1.1/22, google.com]
+```
+
+### Basic Device Discovery
+Simple device discovery for getting started:
+
+```yaml
+orb:
+  config_manager: 
+    active: local
+  backends:
+    device_discovery:
+    common:
+      diode:
+        target: grpc://192.168.0.100:8080/diode
+        client_id: ${DIODE_CLIENT_ID}
+        client_secret: ${DIODE_CLIENT_SECRET}
+        agent_name: agent01
+  policies:
+    device_discovery:
+      discovery_1:
+        config:
+          schedule: "* * * * *"
+          defaults:
+            site: New York NY
+        scope:
+          - driver: ios
+            hostname: 192.168.0.5
+            username: admin
+            password: ${DEVICE_PASSWORD}
+```
+
+### Enterprise Multi-Site Discovery
+For organizations with multiple locations requiring coordinated discovery:
+
+```yaml
+orb:
+  config_manager:
+    active: local
+  backends:
+    network_discovery:
+    common:
+      diode:
+        target: grpc://diode.company.com:8080/diode
+        client_id: ${DIODE_CLIENT_ID}
+        client_secret: ${DIODE_CLIENT_SECRET}
+        agent_name: multi_site_agent
+  policies:
+    network_discovery:
+      headquarters:
+        config:
+          schedule: "0 */4 * * *"  # Every 4 hours
+          timeout: 5
+        scope:
+          targets: 
+            - "192.168.0.0/16"
+            - "10.0.0.0/8"
+      remote_offices:
+        config:
+          schedule: "0 */12 * * *"  # Every 12 hours
+          timeout: 10
+        scope:
+          targets:
+            - "172.16.0.0/16"
+            - "172.17.0.0/16"
+```
 
 ## Troubleshooting
 
 ### Common Issues
 
-#### **Agent Connection Issues**
-- **Problem**: Agent cannot connect to Diode server
-- **Solution**: Verify network connectivity and firewall rules
-  ```bash
-  # Test connectivity
-  telnet <diode-server> 8080
-  # Check DNS resolution
-  nslookup <diode-server>
-  ```
+1. **Connection Issues**
+   - Verify network connectivity between Diode and NetBox:
+     ```bash
+     # From Diode server
+     curl -v https://<netbox-server>
+     # From NetBox server
+     curl -v grpc://<diode-server:port>/diode
+     ```
+   - Check firewall rules:
+     ```bash
+     # Check if required ports are open
+     netstat -tulpn | grep -E '8080|443'
+     ```
+   - Validate URLs and ports in configuration files:
+     - Diode server `.env`
+     - NetBox `configuration.py`
+     - NetBox Discovery agent `agent.yaml`
 
-#### **Authentication Failures**
-- **Problem**: "Authentication failed" or "Invalid credentials" errors
-- **Solution**: Verify client credentials are correct
-  ```bash
-  # Verify environment variables
-  echo $DIODE_CLIENT_ID
-  echo $DIODE_CLIENT_SECRET
-  ```
+2. **Authentication Issues**
+   - **Problem**: "Authentication failed" or "Invalid credentials" errors
+   - **Solution**: Verify client credentials are correct
+     ```bash
+     # Verify environment variables
+     echo $DIODE_CLIENT_ID
+     echo $DIODE_CLIENT_SECRET
+     ```
 
-#### **Discovery Issues**
-- **Problem**: No devices being discovered
-- **Solution**: Check network connectivity and credentials
-  ```bash
-  # Test ICMP connectivity
-  ping <target-device>
-  # Test SSH connectivity
-  nc -zv <target-device> 22
-  ```
+3. **Discovery Issues**
+   - **Problem**: No devices being discovered
+   - **Solution**: Check network connectivity and credentials
+     ```bash
+     # Test ICMP connectivity
+     ping <target-device>
+     # Test SSH connectivity
+     nc -zv <target-device> 22
+     ```
+
+4. **Docker Issues**
+   - Check Docker service status:
+     ```bash
+     systemctl status docker
+     ```
+   - Verify Docker container logs:
+     ```bash
+     docker compose logs
+     ```
+
+5. **Permission Issues**
+   - Ensure proper file permissions:
+     ```bash
+     ls -la /opt/diode/
+     ls -la /opt/netbox/
+     ```
+   - Check Docker socket permissions:
+     ```bash
+     ls -l /var/run/docker.sock
+     ```
 
 ### Enterprise Troubleshooting
 
@@ -308,13 +416,11 @@ You can view output from the running agent:
 
 #### **Security Compliance**
 - **Problem**: Credentials stored in plain text
-- **Solution**: Integrate with enterprise secret management
+- **Solution**: Use environment variables and secure credential management
   ```yaml
-  secrets_manager:
-    active: vault
-    vault:
-      server: "https://vault.company.com:8200"
-      token: ${VAULT_TOKEN}
+  # Use environment variables for sensitive data
+  username: ${DISCOVERY_USERNAME}
+  password: ${DISCOVERY_PASSWORD}
   ```
 
 ### Log Analysis
@@ -357,11 +463,6 @@ Set up monitoring for:
 - Diode server performance
 - NetBox data ingestion rates
 
-#### **Backup and Recovery**
-- Include Diode server data in backup procedures
-- Test recovery procedures regularly
-- Document agent configurations and dependencies
-
 ### **Security Considerations**
 
 #### **Network Security**
@@ -372,43 +473,20 @@ Set up monitoring for:
 
 #### **Credential Management**
 - Never store credentials in configuration files
-- Use enterprise secret management systems
+- Use environment variables for sensitive data
 - Rotate credentials regularly
-- Implement credential lifecycle management
+- Implement proper access controls
 
-#### **Compliance Requirements**
-- Log all discovery activities
-- Implement audit trails
-- Follow data retention policies
-- Regular compliance assessments
+## Getting Help
 
-### **Scaling Considerations**
+If you encounter issues:
 
-#### **Horizontal Scaling**
-- Deploy agents across multiple network segments
-- Use site-specific configurations
-- Implement agent naming conventions
-- Coordinate discovery schedules
-
-#### **Vertical Scaling**
-- Increase agent resources for larger networks
-- Optimize discovery schedules
-- Use parallel discovery policies
-- Monitor resource utilization
-
-### **Integration with Existing Systems**
-
-#### **CMDB Integration**
-- Sync discovered data with existing CMDBs
-- Implement data reconciliation processes
-- Handle duplicate detection
-- Maintain data consistency
-
-#### **Automation Workflows**
-- Trigger automation based on discovery results
-- Integrate with configuration management
-- Implement change detection workflows
-- Automate compliance reporting
+1. Search GitHub: [Issues](https://github.com/netboxlabs/orb-agent/issues)
+2. Find us in Slack: [NetDev Community #netbox](https://netdev-community.slack.com/)
+3. Check the logs:
+   - NetBox Discovery agent logs: `docker logs <container-id>`
+   - Diode server logs: `docker compose logs`
+   - NetBox Diode plugin logs: Check NetBox logs and the `Ingestion Logs` view in the Diode plugin
 
 ## Next Steps
 
@@ -418,17 +496,11 @@ Set up monitoring for:
 3. **[Configure Security](#security-considerations)** - Implement enterprise security measures
 4. **[Set Up Monitoring](#monitoring-and-alerting)** - Implement operational monitoring
 
-### **For Advanced Configuration**
-- **[Configuration Reference](configuration-file.md)** - Complete configuration documentation
-- **[Network Discovery](network_discovery.md)** - Advanced network discovery options
-- **[Device Discovery](device_discovery.md)** - Advanced device discovery options
-- **[Configuration Examples](config_samples.md)** - Enterprise configuration examples
-
 ### **Support Resources**
-- **[Diode Documentation](../../netbox-extensions/diode/index.md)** - Advanced Diode configuration
+- **[Diode Documentation](../netbox-extensions/diode/index.md)** - Advanced Diode configuration
 - **[GitHub Issues](https://github.com/netboxlabs/orb-agent/issues)** - Report bugs and feature requests
 - **[Community Support](https://netdev.chat/)** - Connect with the community on Slack
 
 ---
 
-**Congratulations!** You now have NetBox Discovery running and ingesting network data into NetBox. The system will continue to discover and update your network infrastructure automatically based on your configured schedules.
+**Congratulations!** You now have NetBox Discovery running and ingesting network data into NetBox. The system will continue to discover and update your network infrastructure automatically based on your configured schedules. 

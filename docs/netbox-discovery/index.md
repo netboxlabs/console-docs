@@ -18,19 +18,17 @@ NetBox Discovery enables enterprise teams to:
 
 ## Getting Started
 
-### For NetBox Enterprise Users
+Ready to start discovering your network? Follow our comprehensive getting started guide:
 
-If you're running NetBox Enterprise, start here:
+**[Get Started with NetBox Discovery](getting-started.md)** - Complete setup and configuration guide
 
-- **[Quick Start for NetBox Enterprise](agent/get-started.md#for-netbox-enterprise)** - Get up and running quickly with your existing NetBox Enterprise deployment
-- **[Enterprise Use Cases](#enterprise-use-cases)** - Common enterprise scenarios and configurations
+### Quick Start Paths
 
-### For New Deployments
+**For NetBox Enterprise Users:**
+- **[Enterprise Quick Start](getting-started.md#for-netbox-enterprise)** - Get up and running quickly with your existing NetBox Enterprise deployment
 
-If you're setting up NetBox Discovery from scratch:
-
-- **[Complete Setup Guide](agent/get-started.md)** - Full end-to-end installation and configuration
-- **[Requirements](agent/index.md#requirements)** - System requirements and prerequisites
+**For New Deployments:**
+- **[Complete Setup Guide](getting-started.md#installation-steps)** - Full end-to-end installation and configuration
 
 ## Enterprise Use Cases
 
@@ -69,20 +67,9 @@ NetBox Discovery leverages the orb-agent, a containerized Go application that us
 
 Discovered data is sent to Diode for ingestion into NetBox, where it can be matched and reconciled to identify drift and deviations. The NetBox database is updated where relevant, ensuring data accuracy and reducing manual entry.
 
-## Next Steps
-
-### Quick Setup
-1. **[Review Requirements](agent/index.md#requirements)** - Ensure your environment meets the prerequisites
-2. **[Follow Quick Start](agent/get-started.md)** - Complete step-by-step setup guide
-3. **[Configure Discovery](agent/configuration-file.md)** - Customize for your network environment
-
-### Advanced Configuration  
-- **[Network Discovery](agent/network_discovery.md)** - Configure network scanning and IP discovery
-- **[Device Discovery](agent/device_discovery.md)** - Set up device connection and data collection
-- **[Configuration Examples](agent/config_samples.md)** - Pre-built configurations for common scenarios
-
 ## Support and Resources
-- **Getting Started**: For complete setup instructions, see the [NetBox Discovery Agent Getting Started Guide](agent/get-started.md)
+
+- **Getting Started**: For complete setup instructions, see the [NetBox Discovery Getting Started Guide](getting-started.md)
 - **Diode Documentation**: For advanced Diode configuration and SDK usage, see the [Diode documentation](../netbox-extensions/diode/index.md)
 - **GitHub Repository**: Find the orb-agent source code [here](https://github.com/netboxlabs/orb-agent)
 - **Community Support**: Connect with the community on [Slack](https://netdev.chat/) in the `#netbox` channel
