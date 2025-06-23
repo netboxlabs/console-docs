@@ -126,6 +126,7 @@ nav:
     - "Release Notes": "netbox-enterprise/nbe-release-notes.md"
   - NetBox Discovery:
     - Overview: "netbox-discovery/index.md"
+    - Get Started: "netbox-discovery/getting-started.md"
   - NetBox Assurance:
     - Overview: "netbox-assurance/index.md"
   - Integrations: 
