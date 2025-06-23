@@ -6,6 +6,8 @@
 
 The device discovery backend leverages [NAPALM](https://napalm.readthedocs.io/en/latest/index.html) to connect to network devices and collect network information.
 
+> **Note**: All examples use OAuth2 client credentials (`client_id` and `client_secret`) for authentication. These credentials are generated through the NetBox Diode plugin interface. For complete setup instructions including credential generation, see the [getting started guide](get-started.md).
+
 ## Configuration
 The `device_discovery` backend does not require any special configuration, though overriding `host` and `port` values can be specified. The backend will use the `diode` settings specified in the `common` subsection to forward discovery results.
 
@@ -15,7 +17,8 @@ orb:
     common:
       diode:
         target: grpc://192.168.0.100:8080/diode
-        api_key: ${DIODE_API_KEY}
+        client_id: ${DIODE_CLIENT_ID}
+        client_secret: ${DIODE_CLIENT_SECRET}
         agent_name: agent01
     device_discovery:
       host: 192.168.5.11 # default 0.0.0.0
@@ -87,7 +90,8 @@ orb:
     common:
       diode:
         target: grpc://192.168.0.100:8080/diode
-        api_key: ${DIODE_API_KEY}
+        client_id: ${DIODE_CLIENT_ID}
+        client_secret: ${DIODE_CLIENT_SECRET}
         agent_name: agent01
   policies:
     device_discovery:
@@ -106,7 +110,8 @@ orb:
 Run command:
 ```sh
  docker run -v /local/orb:/opt/orb/ \
- -e DIODE_API_KEY={YOUR_API_KEY} \
+ -e DIODE_CLIENT_ID={YOUR_CLIENT_ID} \
+ -e DIODE_CLIENT_SECRET={YOUR_CLIENT_SECRET} \
  -e PASS={DEVICE_PASSWORD} \
  netboxlabs/orb-agent:latest run -c /opt/orb/agent.yaml
 ```
@@ -133,7 +138,8 @@ napalm-ros-0.3.2.tar.gz # try install from a tar.gz
 Run command:
 ```sh
  docker run -v /local/orb:/opt/orb/ \
- -e DIODE_API_KEY={YOUR_API_KEY} \
+ -e DIODE_CLIENT_ID={YOUR_CLIENT_ID} \
+ -e DIODE_CLIENT_SECRET={YOUR_CLIENT_SECRET} \
  -e PASS={DEVICE_PASSWORD} \
  -e INSTALL_DRIVERS_PATH=/opt/orb/drivers.txt \
  netboxlabs/orb-agent:latest run -c /opt/orb/agent.yaml
