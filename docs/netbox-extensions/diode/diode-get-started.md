@@ -1,6 +1,6 @@
-# Get Started with Diode for NetBox Discovery
+# Get Started with Diode
 
-This guide will help you set up and start using Diode with NetBox Discovery to automatically ingest network data into NetBox.
+This guide will help you set up and start using Diode to ingest data into NetBox.
 
 ## Prerequisites
 
@@ -116,7 +116,7 @@ We provide a `quickstart.sh` script to automate the setup process. The script wi
    ```
 
 6. **Generate Diode Client Credentials**
-   > **Note**: These credentials will be used by the NetBox Discovery agent to send discovery results to NetBox via Diode.
+   > **Note**: These credentials will be used by the Orb agent to send discovery results to NetBox via Diode.
 
    1. Go to your NetBox instance (https://<netbox-server>)
    2. In the left-hand pane, navigate to **Diode -> Client Credentials**
@@ -125,13 +125,13 @@ We provide a `quickstart.sh` script to automate the setup process. The script wi
    5. **IMPORTANT**: Copy the _Client ID_ and _Client Secret_ and save them securely
    6. Click **Return to List**
 
-   You have now created your Diode client credentials. These will be used as environment variables when running the NetBox Discovery agent.
+   You have now created your Diode client credentials. These will be used as environment variables when running the Orb agent.
 
-### Run NetBox Discovery Agent
+### Ingest Data with Orb Agent
 
-> **Host**: These steps should be performed on the host where you want to run the NetBox Discovery agent for network discovery.
+> **Host**: These steps should be performed on the host where you want to run the Orb agent for network discovery.
 
-> **Note**: For the complete installation instructions, please refer to the [official NetBox Discovery Agent documentation](https://github.com/netboxlabs/orb-agent).
+> **Note**: For the complete installation instructions, please refer to the [official Orb Agent documentation](https://github.com/netboxlabs/orb-agent).
 
 1. **Export Client Credentials**
    ```bash
@@ -244,4 +244,3 @@ If you encounter issues:
 2. Find us in Slack: [NetDev Community #orb](https://netdev-community.slack.com/)
 3. Check the logs:
    - Diode server logs: `docker compose logs`
-   - NetBox Discovery agent logs: Check your terminal output
