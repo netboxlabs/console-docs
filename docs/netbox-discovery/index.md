@@ -37,6 +37,8 @@ The orb-agent is built with the following components:
 - **Policy Engine**: Processes discovery policies and orchestrates scanning activities
 
 ## Support and Resources
+- **Getting Started**: For complete setup instructions, see the [NetBox Discovery Agent Getting Started Guide](agent/get-started.md)
+- **Diode Documentation**: For advanced Diode configuration and SDK usage, see the [Diode documentation](../netbox-extensions/diode/index.md)
 - **GitHub Repository**: Find the orb-agent source code [here](https://github.com/netboxlabs/orb-agent).
 - **Community Support**: Connect with the community on [Slack](https://netdev.chat/) in the `#netbox` channel.
 

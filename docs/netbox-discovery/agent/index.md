@@ -21,6 +21,10 @@ To get started with the NetBox Discovery agent, you'll need the following:
 - **Network Connectivity**: Between your NetBox server and the Diode server
 - **Permissions**: Sufficient permissions to run Docker commands
 
+**Additional Requirements** (for SDK development):
+- **Python**: 3.8 or later (for Python SDK integration)
+- **Go**: 1.18 or later (for Go SDK integration)
+
 The [getting started guide](get-started.md) provides complete step-by-step instructions for setting up the entire NetBox Discovery ecosystem, including:
 
 - Diode server deployment

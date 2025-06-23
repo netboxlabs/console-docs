@@ -1,8 +1,8 @@
 # Diode
 
-!!! info "Currently in Public Preview"
+!!! info "Production Ready"
 
-    The Diode project is currently in _Public Preview_. Please see [NetBox Labs Product and Feature Lifecycle](https://docs.netboxlabs.com/product_feature_lifecycle/) for more details.
+    Diode is production-ready and actively used for NetBox Discovery and custom data ingestion workflows. For product lifecycle information, see [NetBox Labs Product and Feature Lifecycle](https://docs.netboxlabs.com/product_feature_lifecycle/).
 
 ## Overview 
 
@@ -26,14 +26,16 @@ There are several components that make up the Diode ecosystem:
 2. **Diode NetBox Plugin** - Required component that provides API key management and ORM integration into NetBox. See [installation instructions](https://github.com/netboxlabs/diode-netbox-plugin).
 
 3. **Data Ingestion Methods**:
-   * **NetBox Discovery Agent** - Automated network discovery using the Orb agent
+   * **NetBox Discovery Agent** - Automated network discovery using the orb-agent. See [NetBox Discovery documentation](../../netbox-discovery/index.md) for details.
    * **SDK Integrations**:
      * [Python SDK](https://github.com/netboxlabs/diode-sdk-python)
      * [Go SDK](https://github.com/netboxlabs/diode-sdk-go)
 
 ## Quick Start
 
-For a quick step-by-step guide, see our [Getting Started Guide](diode-get-started.md).
+For a complete step-by-step setup guide focused on NetBox Discovery, see our [Getting Started Guide](diode-get-started.md).
+
+For NetBox Discovery-specific documentation including agent configuration and advanced features, visit the [NetBox Discovery section](../../netbox-discovery/index.md).
 
 ## Additional Resources
 
