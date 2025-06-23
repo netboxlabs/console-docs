@@ -1,9 +1,12 @@
 # Using the NetBox Assurance UI
 
-<span class="pill pill-cloud">NetBox Cloud</span>
+<span class="pill pill-cloud">NetBox Cloud (Coming Soon)</span>
 <span class="pill pill-enterprise">NetBox Enterprise</span>
 
 The NetBox Assurance plugin provides a comprehensive web interface within NetBox for monitoring network drift, viewing deviation reports, and managing remediation workflows. The plugin integrates seamlessly with NetBox's existing interface while providing specialized tools for network assurance.
+
+!!! info "New to NetBox Assurance?"
+    If you're just getting started, check out the [Getting Started Guide](getting-started.md) for setup instructions and initial configuration before diving into the UI details below.
 
 ## Navigation
 
@@ -174,6 +177,23 @@ Deviations are marked with clear visual indicators:
 - Use date range filters to limit large datasets
 - Export data in smaller chunks for better performance
 - Leverage bulk operations for efficiency
+
+## Next Steps and Resources
+
+### **Setting Up Data Sources**
+If you haven't already configured data ingestion, review these guides:
+- **[NetBox Discovery Setup](../netbox-discovery/getting-started.md)** - Automated network discovery and data collection
+- **[Diode Integration](../netbox-extensions/diode/index.md)** - Custom data ingestion using APIs and SDKs
+
+### **Operational Integration**
+- **[Getting Started Guide](getting-started.md)** - Complete setup and workflow recommendations
+- **Change Management**: Integrate Assurance workflows with your existing change management processes
+- **Team Training**: Ensure team members understand deviation triage and remediation workflows
+
+### **Advanced Configuration**
+- **Custom Deviation Types**: Configure specific deviation types for your environment
+- **Integration Workflows**: Set up automated responses to specific deviation patterns
+- **Reporting Templates**: Create custom export templates for compliance and operational reporting
 
 ---
 
