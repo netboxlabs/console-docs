@@ -1,6 +1,6 @@
 # Getting Started with NetBox Assurance
 
-<span class="pill pill-cloud">NetBox Cloud</span>
+<span class="pill pill-cloud">NetBox Cloud (Coming Soon)</span>
 <span class="pill pill-enterprise">NetBox Enterprise</span>
 
 NetBox Assurance automatically detects operational drift between your intended network design (documented in NetBox) and your actual network infrastructure. This guide will help you understand, enable, and start using NetBox Assurance to maintain accurate network documentation and proactive drift detection.
@@ -72,9 +72,9 @@ NetBox Assurance is available as an **optional component** of NetBox Enterprise.
 **Installation**: When entitled, Assurance services are automatically deployed along with the NetBox Assurance UI and Diode data plugins.
 
 ### **NetBox Cloud**
-NetBox Assurance is available as an **optional add-on** for NetBox Cloud. When purchased, services are provisioned in the cloud and securely integrated with your NetBox Cloud instance.
+NetBox Assurance is **coming soon** as an optional add-on for NetBox Cloud. When available, services will be provisioned in the cloud and securely integrated with your NetBox Cloud instance.
 
-**Setup**: The NetBox Assurance UI and Diode data plugins are automatically installed on your instance.
+**Setup**: The NetBox Assurance UI and Diode data plugins will be automatically installed on your instance when released.
 
 ### **NetBox Community Edition**
 NetBox Assurance is **not available** for NetBox Community Edition. However, the underlying [Diode project](../netbox-extensions/diode/index.md) provides data ingestion capabilities that work with NetBox Discovery agents.

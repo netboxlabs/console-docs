@@ -1,6 +1,6 @@
 # Using the NetBox Assurance UI
 
-<span class="pill pill-cloud">NetBox Cloud</span>
+<span class="pill pill-cloud">NetBox Cloud (Coming Soon)</span>
 <span class="pill pill-enterprise">NetBox Enterprise</span>
 
 The NetBox Assurance plugin provides a comprehensive web interface within NetBox for monitoring network drift, viewing deviation reports, and managing remediation workflows. The plugin integrates seamlessly with NetBox's existing interface while providing specialized tools for network assurance.
