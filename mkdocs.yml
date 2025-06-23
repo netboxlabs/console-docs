@@ -129,6 +129,7 @@ nav:
     - Get Started: "netbox-discovery/getting-started.md"
   - NetBox Assurance:
     - Overview: "netbox-assurance/index.md"
+    - Get Started: "netbox-assurance/getting-started.md"
     - Using the UI: "netbox-assurance/using-the-ui.md"
   - Integrations: 
     - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"

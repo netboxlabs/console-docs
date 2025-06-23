@@ -1,0 +1,1861 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../snow-technical-info/">
+      
+      
+      <link rel="icon" href="../../../images/netbox-favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Installation - NetBox Labs Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Q107GMDTJM"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Q107GMDTJM",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Q107GMDTJM",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="nbl-light" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installation-and-setup" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="NetBox Labs Documentation" class="md-header__button md-logo" aria-label="NetBox Labs Documentation" data-md-component="logo">
+      
+  <img src="../../../images/netbox-light-favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NetBox Labs Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Installation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="nbl-light" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="nbl-dark" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../NetBox%20Cloud/migrating-to-netbox-cloud/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cloud
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../netbox-enterprise/nbe-overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Enterprise
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../netbox-discovery/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  NetBox Discovery
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../netbox-assurance/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  NetBox Assurance
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../netbox-ansible-collection/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Integrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../sdks/pynetbox/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  SDKs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../netbox-extensions/branching/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Extensions
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="NetBox Labs Documentation" class="md-nav__button md-logo" aria-label="NetBox Labs Documentation" data-md-component="logo">
+      
+  <img src="../../../images/netbox-light-favicon.png" alt="logo">
+
+    </a>
+    NetBox Labs Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../NetBox%20Cloud/migrating-to-netbox-cloud/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Cloud
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../netbox-enterprise/nbe-overview/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Enterprise
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../netbox-discovery/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    NetBox Discovery
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../netbox-assurance/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    NetBox Assurance
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Integrations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Integrations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netbox-ansible-collection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NetBox Ansible Collection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pyats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    pyATS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    ServiceNow
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            ServiceNow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#before-starting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before Starting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uploading-and-committing-the-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading and Committing the Application
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-using-guided-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Using Guided Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Using Guided Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-the-guided-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing the Guided Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-1-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 1: Plugins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 1: Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-11-install-basic-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1.1: Install Basic Plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-12-install-recommended-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1.2: Install Recommended Plugins
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-2-post-installation-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2: Post-Installation Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 2: Post-Installation Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-21-create-the-https-connection-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2.1: Create the HTTP(s) Connection Record
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-22-optional-https-connection-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2.2: (Optional) HTTP(s) Connection Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-23-create-application-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2.3: Create Application Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-24-setup-temporary-admin-connection-to-netbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2.4: Setup Temporary Admin Connection to NetBox
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-25-setup-servicenow-to-netbox-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2.5: Setup ServiceNow to NetBox Credentials
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-26-associate-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2.6: Associate Credentials
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-27-setup-netbox-to-servicenow-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2.7: Setup NetBox to ServiceNow Credentials
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-28-test-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2.8: Test Connections
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-installation-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Installation Issues
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snow-technical-info/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical Info
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snow-faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ and Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snow-upgrading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Upgrading
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../sdks/pynetbox/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    SDKs
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../netbox-extensions/branching/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Extensions
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#before-starting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before Starting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uploading-and-committing-the-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading and Committing the Application
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-using-guided-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Using Guided Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Using Guided Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-the-guided-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing the Guided Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-1-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 1: Plugins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 1: Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-11-install-basic-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1.1: Install Basic Plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-12-install-recommended-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1.2: Install Recommended Plugins
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-2-post-installation-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2: Post-Installation Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 2: Post-Installation Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-21-create-the-https-connection-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2.1: Create the HTTP(s) Connection Record
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-22-optional-https-connection-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2.2: (Optional) HTTP(s) Connection Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-23-create-application-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2.3: Create Application Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-24-setup-temporary-admin-connection-to-netbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2.4: Setup Temporary Admin Connection to NetBox
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-25-setup-servicenow-to-netbox-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2.5: Setup ServiceNow to NetBox Credentials
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-26-associate-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2.6: Associate Credentials
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-27-setup-netbox-to-servicenow-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2.7: Setup NetBox to ServiceNow Credentials
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-28-test-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2.8: Test Connections
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-installation-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Installation Issues
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="installation-and-setup">Installation and Setup</h1>
+<h2 id="before-starting">Before Starting</h2>
+<p>Before you start the installation, ensure the following requirements are met:</p>
+<ul>
+<li><strong>Administrative Privileges</strong>: You must be logged in with admin privileges on both NetBox and ServiceNow instances</li>
+<li><strong>ServiceNow Version</strong>: Washington DC or Xanadu (certified versions)</li>
+<li><strong>IntegrationHub License</strong>: Your ServiceNow instance must be licensed for IntegrationHub Starter Pack for proper integration functionality</li>
+</ul>
+<h2 id="uploading-and-committing-the-application">Uploading and Committing the Application</h2>
+<p>Follow these steps to install the NetBox ServiceNow Integration application in your ServiceNow instance:</p>
+<ol>
+<li><strong>Navigate to Retrieved Update Sets</strong></li>
+<li>
+<p>Go to <strong>All &gt; System Update Sets &gt; Retrieved Update Sets</strong></p>
+</li>
+<li>
+<p><strong>Import the Update Set</strong></p>
+</li>
+<li>Navigate to the <strong>Related Links</strong> section at the bottom of the list</li>
+<li>Click on <strong>Import Update Set From XML</strong></li>
+<li>Select the <strong>NetBox CMDB Integration</strong> application file and click <strong>Upload</strong></li>
+<li>
+<p>⏱️ <em>This operation may take several minutes</em></p>
+</li>
+<li>
+<p><strong>Preview the Update Set</strong></p>
+</li>
+<li>Once the file has uploaded, click on the <strong>Preview</strong> button</li>
+<li>⏱️ <em>This operation may take several minutes</em></li>
+<li>
+<p>Review and skip any conflicts</p>
+</li>
+<li>
+<p><strong>Commit the Update Set</strong></p>
+</li>
+<li>After the preview is complete, click the <strong>Commit</strong> button</li>
+<li>
+<p>⏱️ <em>This operation may take several minutes</em></p>
+</li>
+<li>
+<p><strong>Handle Any Errors</strong></p>
+</li>
+<li>If any errors occur during commit, check the Release Notes to determine which errors can safely be ignored</li>
+<li>Document any persistent errors for support escalation if needed</li>
+</ol>
+<h2 id="configuration-using-guided-setup">Configuration Using Guided Setup</h2>
+<p>After successful installation, use the built-in Guided Setup to configure the application:</p>
+<h3 id="accessing-the-guided-setup">Accessing the Guided Setup</h3>
+<ol>
+<li>Navigate to Guided Setup</li>
+<li>Go to <strong>All &gt; NetBox &gt; Configuration &gt; Guided Setup</strong></li>
+<li>Review the <strong>Pre-checklist</strong> and fulfill any outstanding requirements</li>
+<li>Click <strong>Get Started</strong> when ready</li>
+</ol>
+<h2 id="phase-1-plugins">Phase 1: Plugins</h2>
+<p>The guided setup begins with ensuring required plugins are installed:</p>
+<h3 id="step-11-install-basic-plugins">Step 1.1: Install Basic Plugins</h3>
+<ul>
+<li>Install essential plugins required for basic functionality</li>
+<li>These plugins are mandatory for the integration to work</li>
+</ul>
+<h3 id="step-12-install-recommended-plugins">Step 1.2: Install Recommended Plugins</h3>
+<ul>
+<li>Install additional plugins that enhance functionality</li>
+<li>These plugins are recommended but not strictly required</li>
+</ul>
+<p>📝 <em>Note: Plugin installation runs in the background. You don't need to wait for completion before proceeding to the next phase.</em></p>
+<h2 id="phase-2-post-installation-setup">Phase 2: Post-Installation Setup</h2>
+<p>Complete the following configuration steps:</p>
+<h3 id="step-21-create-the-https-connection-record">Step 2.1: Create the HTTP(s) Connection Record</h3>
+<p><strong>Configure the primary connection to your NetBox instance:</strong></p>
+<ol>
+<li><strong>Required Fields:</strong></li>
+<li><strong>Name</strong>: <code>NetBox API</code> ⚠️ <em>(case sensitive and must match exactly</em></li>
+<li><strong>Connection Alias</strong>: <code>x_990381_netbox_cl.NetBox_API</code></li>
+<li><strong>Host</strong>: Your NetBox instance hostname or IP address</li>
+<li>
+<p><strong>Connection URL</strong>: <code>https://instanceNameOrIP</code> ⚠️ <em>(no trailing slash)</em></p>
+</li>
+<li>
+<p><strong>MID Server Configuration</strong> (NetBox Enterprise Only):</p>
+</li>
+<li>Select <strong>Use MID</strong> if your NetBox instance is only accessible through a MID server</li>
+<li>
+<p>Configure MID server parameters as needed</p>
+</li>
+<li>
+<p><strong>Save the Record</strong></p>
+</li>
+<li>Save the connection record</li>
+<li>Mark the step as complete</li>
+</ol>
+<h3 id="step-22-optional-https-connection-setup">Step 2.2: (Optional) HTTP(s) Connection Setup</h3>
+<ul>
+<li>This step allows you to modify connection parameters if needed later in the setup</li>
+<li>Return to this step if connection adjustments are required</li>
+</ul>
+<h3 id="step-23-create-application-parameters">Step 2.3: Create Application Parameters</h3>
+<p>Configure application parameters based on your installation scenario:</p>
+<p><strong>For New Installations:</strong>
+- When prompted: <em>"No existing NetBox parameters detected, this looks like a new install. Parameters will be created after pressing Save"</em>
+- Press <strong>Save</strong> to create new parameters with default values</p>
+<p><strong>For Existing Installations:</strong>
+- The system displays the number of existing parameters
+- Choose whether to overwrite existing parameters with default values
+- Missing parameters will be automatically recreated with default values</p>
+<h3 id="step-24-setup-temporary-admin-connection-to-netbox">Step 2.4: Setup Temporary Admin Connection to NetBox</h3>
+<p><strong>Establish elevated access for configuration:</strong></p>
+<ol>
+<li><strong>Purpose and Security</strong></li>
+<li>Creates temporary elevated privileges on your NetBox instance for automated configuration</li>
+<li>This temporary channel enables ServiceNow to configure NetBox during setup</li>
+<li><strong>Important</strong>: The channel is automatically removed at the end of setup</li>
+<li>
+<p>Only low-privilege accounts remain after completion</p>
+</li>
+<li>
+<p><strong>Configuration</strong></p>
+</li>
+<li>Follow on-screen instructions to establish the temporary communication channel</li>
+<li>Provide temporary admin credentials for your NetBox instance</li>
+</ol>
+<h3 id="step-25-setup-servicenow-to-netbox-credentials">Step 2.5: Setup ServiceNow to NetBox Credentials</h3>
+<p><strong>Create credentials for ServiceNow to access NetBox API:</strong></p>
+<ol>
+<li><strong>Create API Credentials on NetBox</strong></li>
+<li>
+<p>Configure the following fields:</p>
+<ul>
+<li><strong>Username</strong>: Set appropriate username</li>
+<li><strong>Password</strong>: Set secure password  </li>
+<li><strong>API Token</strong>: Generate API token</li>
+</ul>
+</li>
+<li>
+<p><strong>Critical API Token Requirements</strong></p>
+</li>
+<li>⚠️ <strong>MANDATORY</strong>: The API Token MUST be a hexadecimal string of exactly 32 characters</li>
+<li>
+<p>Example format: <code>a1b2c3d4e5f67890abcdef1234567890</code></p>
+</li>
+<li>
+<p><strong>Troubleshooting Connection Issues</strong></p>
+</li>
+<li>If errors occur, verify:<ul>
+<li>API Token format (32-character hexadecimal string)</li>
+<li>HTTP(s) connection record configuration (Step 2.1)</li>
+<li>Temporary admin credentials (Step 2.4)</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-26-associate-credentials">Step 2.6: Associate Credentials</h3>
+<p><strong>Link credentials to the connection record:</strong></p>
+<ol>
+<li><strong>Manual Association Required</strong></li>
+<li>Follow on-screen instructions to manually associate the credentials created in Step 2.5</li>
+<li>Link to the HTTP(s) Connection record created in Step 2.1</li>
+<li><strong>Remember to save</strong> before proceeding to the next step</li>
+</ol>
+<h3 id="step-27-setup-netbox-to-servicenow-credentials">Step 2.7: Setup NetBox to ServiceNow Credentials</h3>
+<p><strong>Create credentials for NetBox to access ServiceNow API:</strong></p>
+<ol>
+<li><strong>Create ServiceNow API Access</strong></li>
+<li>
+<p>Configure the following:</p>
+<ul>
+<li><strong>Username</strong>: Set appropriate username (modifiable)</li>
+<li><strong>Password</strong>: Set secure password (modifiable)</li>
+<li><strong>API Key</strong>: Automatically generated (do not modify)</li>
+</ul>
+</li>
+<li>
+<p><strong>Integration Notes</strong></p>
+</li>
+<li>Credentials are stored locally and in your NetBox instance</li>
+<li>
+<p>ServiceNow credentials are stored in NetBox webhook headers</p>
+</li>
+<li>
+<p><strong>Troubleshooting</strong></p>
+</li>
+<li>If errors occur, verify:<ul>
+<li>HTTP(s) connection record configuration (Step 2.1)</li>
+<li>Temporary admin credentials (Step 2.4)</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-28-test-connections">Step 2.8: Test Connections</h3>
+<p><strong>Validate bidirectional connectivity:</strong></p>
+<ol>
+<li><strong>Connection Testing</strong></li>
+<li>Test ServiceNow to NetBox communication</li>
+<li>Test NetBox to ServiceNow communication</li>
+<li>
+<p>Verify API responses and authentication</p>
+</li>
+<li>
+<p><strong>Validation Steps</strong></p>
+</li>
+<li>Confirm all connection parameters are correct</li>
+<li>Validate credential associations</li>
+<li>Monitor for any errors or warnings</li>
+</ol>
+<h2 id="common-installation-issues">Common Installation Issues</h2>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Possible Cause</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Update Set Import Fails</td>
+<td>File corruption or version mismatch</td>
+<td>Re-download update set from NetBox Labs</td>
+</tr>
+<tr>
+<td>Plugin Installation Errors</td>
+<td>Missing dependencies or insufficient permissions</td>
+<td>Verify ServiceNow admin privileges and dependency requirements</td>
+</tr>
+<tr>
+<td>Connection Test Fails</td>
+<td>Network connectivity or firewall issues</td>
+<td>Check network configuration and firewall rules</td>
+</tr>
+<tr>
+<td>API Token Rejected</td>
+<td>Incorrect token format</td>
+<td>Ensure API token is exactly 32 hexadecimal characters</td>
+</tr>
+<tr>
+<td>Credential Association Fails</td>
+<td>Timing or configuration issues</td>
+<td>Retry association after verifying all previous steps</td>
+</tr>
+<tr>
+<td>Temporary Admin Channel Failed</td>
+<td>Invalid NetBox admin credentials</td>
+<td>Verify NetBox admin credentials and permissions</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 NetBox Labs
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://netboxlabs.com" target="_blank" rel="noopener" title="netboxlabs.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.4c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.3c2.2 20.4 3.3 41.8 3.3 64m28.8-64h123.1c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64m112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6 78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7 10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5 11.6 26 20.9 58.2 27 94.7m-209 0H18.6c30-74.1 93.6-130.9 172-151.6-25.5 34.2-45.3 87.7-55.3 151.6M8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64m186.6 254.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.6-22.2 40.7-33.5 51.5-11.2 10.7-20.5 13.9-27.8 13.9s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6-78.4-20.7-142-77.5-172-151.6zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6 25.5-34.2 45.2-87.7 55.3-151.6h116.7z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:support@netboxlabs.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14a1.75 1.75 0 0 1-1.75 1.75H1.75A1.75 1.75 0 0 1 0 18.75v-14C0 3.784.784 3 1.75 3M1.5 7.412V18.75c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25V7.412l-9.52 6.433c-.592.4-1.368.4-1.96 0Zm0-2.662v.852l10.36 7a.25.25 0 0 0 .28 0l10.36-7V4.75a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.indexes", "navigation.sections", "navigation.prune", "search.suggest", "content.code.copy", "content.code.select"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"available": ["v1.9 (Current)"], "current": "v1.9", "default": "v1.9", "provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

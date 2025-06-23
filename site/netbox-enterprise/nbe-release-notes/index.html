@@ -1,0 +1,5548 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../nbe-troubleshooting/">
+      
+      
+        <link rel="next" href="../../netbox-discovery/">
+      
+      
+      <link rel="icon" href="../../images/netbox-favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Release Notes - NetBox Labs Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Q107GMDTJM"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Q107GMDTJM",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Q107GMDTJM",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="nbl-light" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#netbox-enterprise-1x-release-notes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="NetBox Labs Documentation" class="md-header__button md-logo" aria-label="NetBox Labs Documentation" data-md-component="logo">
+      
+  <img src="../../images/netbox-light-favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NetBox Labs Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Release Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="nbl-light" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="nbl-dark" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../NetBox%20Cloud/migrating-to-netbox-cloud/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cloud
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../nbe-overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Enterprise
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../netbox-discovery/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  NetBox Discovery
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../netbox-assurance/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  NetBox Assurance
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../netbox-integrations/netbox-ansible-collection/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Integrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../sdks/pynetbox/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  SDKs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../netbox-extensions/branching/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Extensions
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="NetBox Labs Documentation" class="md-nav__button md-logo" aria-label="NetBox Labs Documentation" data-md-component="logo">
+      
+  <img src="../../images/netbox-light-favicon.png" alt="logo">
+
+    </a>
+    NetBox Labs Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../NetBox%20Cloud/migrating-to-netbox-cloud/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Cloud
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Enterprise
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Enterprise
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nbe-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    NetBox Enterprise Installer
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            NetBox Enterprise Installer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nbe-ec-requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../nbe-ec-requirements-rhel/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Distribution Specific Requirements
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nbe-ec-linux-changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Linux System Changes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nbe-ec-installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nbe-migrating/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migrating
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nbe-ec-built-in-plugins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Built-in Plugin Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nbe-ec-custom-plugins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Custom Plugin Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Single Sign-On (SSO)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Single Sign-On (SSO)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../nbe-azure-sso/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Entra ID
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../nbe-saml/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    SAML
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nbe-ldap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LDAP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Administration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Administration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nbe-tls-ingress/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TLS and Ingress
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nbe-backups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backups
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nbe-troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Advanced Tools and Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Release Notes
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release Notes
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11011102" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.10.1/1.10.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1100" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.10.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#193" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9.3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#192" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#191" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#190" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#186" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.6
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#185" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.5
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#184" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.4
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#183" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#181" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#180" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#176" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7.6
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#175" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7.5
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#174" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7.4
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#173" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7.3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#172" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#171" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#170" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#165" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.5
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#164" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.4
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#163" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#162" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#161" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#160" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#150" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#141" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#140" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#130" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#120" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#106" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.6
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#105" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.5
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#104" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.4
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#103" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#101" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.0
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../netbox-discovery/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    NetBox Discovery
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../netbox-assurance/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    NetBox Assurance
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../netbox-integrations/netbox-ansible-collection/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Integrations
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sdks/pynetbox/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    SDKs
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../netbox-extensions/branching/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Extensions
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11011102" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.10.1/1.10.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1100" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.10.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#193" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9.3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#192" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#191" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#190" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#186" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.6
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#185" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.5
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#184" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.4
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#183" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#181" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#180" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#176" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7.6
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#175" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7.5
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#174" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7.4
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#173" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7.3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#172" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#171" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#170" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#165" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.5
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#164" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.4
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#163" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#162" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#161" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#160" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#150" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#141" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#140" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#130" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#120" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#106" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.6
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#105" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.5
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#104" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.4
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#103" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#101" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.0
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="netbox-enterprise-1x-release-notes">NetBox Enterprise 1.x Release Notes</h1>
+<h3 id="11011102">1.10.1/1.10.2</h3>
+<p>Minor releases to fix a number of issues with Diode
+and Assurance integration.</p>
+<h4 id="bug-fixes">Bug Fixes</h4>
+<ul>
+<li><strong>db:</strong> move postgresql permissions-setting to an init</li>
+<li><strong>diode:</strong> backport runtime-secret script from 1.11</li>
+<li><strong>netbox:</strong> make sure netbox refreshes when override hostname changes</li>
+<li><strong>redis:</strong> remove redis modules no longer needed for diode</li>
+</ul>
+<h4 id="features">Features</h4>
+<ul>
+<li><strong>config:</strong> add hostname override to the KOTS config</li>
+<li><strong>config:</strong> show Diode/Assurance license status in KOTS UI</li>
+<li><strong>diode:</strong> add deployments and services for diode components in replicated-app.yaml</li>
+</ul>
+<h4 id="versions">Versions</h4>
+<p>This release uses the following upstream software:</p>
+<ul>
+<li>NetBox 4.2.9</li>
+<li>Redis 7.4.2 (if built-in Redis is enabled)</li>
+<li>PostgreSQL 16.8 (if built-in database is enabled)</li>
+<li>Diode 1.2.0</li>
+</ul>
+<h4 id="plugins">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.8.1</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.15.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.9.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.6</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.3.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.2.6</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.17</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.2.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.2.1</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>netbox_diode_plugin</td>
+<td>1.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.6</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.1.13</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1100">1.10.0</h3>
+<p>This in the first release to include Diode and the
+NetBox Assurance plugin.</p>
+<h4 id="features_1">Features</h4>
+<ul>
+<li><em>cluster:</em> import basic diode chart</li>
+<li><em>cluster:</em> only pull images if necessary</li>
+<li><em>diode:</em> add diode chart dependency and enable configuration</li>
+<li><em>diode:</em> add diode reconciler and ingester configuration to netbox enterprise chart</li>
+<li><em>diode:</em> add proxy to diode image pull</li>
+<li><em>diode:</em> auto-configure diode plugin in netbox config</li>
+<li><em>diode:</em> always update the host secret</li>
+<li><em>diode:</em> bump assurance plugin to 1.0.1</li>
+<li><em>diode:</em> change diode/hydra to use NBE PostgreSQL</li>
+<li><em>diode:</em> configure plugin based on ingress hostname</li>
+<li><em>diode:</em> don't auto-apply changesets if assurance is enabled</li>
+<li><em>diode:</em> generate a secret containing the external host reliably</li>
+<li><em>diode:</em> wait for backend to be running before configuring the diode plugin</li>
+<li><em>docker:</em> switch chart to use production (1.20.0) nbe image</li>
+</ul>
+<h4 id="versions_1">Versions</h4>
+<p>This release uses the following upstream software:</p>
+<ul>
+<li>NetBox 4.2.9</li>
+<li>Redis 7.4.2 (if built-in Redis is enabled)</li>
+<li>PostgreSQL 16.8 (if built-in database is enabled)</li>
+<li>Diode 1.2.0</li>
+</ul>
+<h4 id="plugins_1">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.8.1</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.15.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.9.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.6</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.3.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.2.6</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.17</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.2.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.2.1</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>netbox_diode_plugin</td>
+<td>1.0.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.4</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.1.13</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="193">1.9.3</h3>
+<p>Fix a bug that caused failure to download resources
+in airgap and proxied environments. Also includes
+an updated Branching plugin that fixes a number of
+bugs.</p>
+<h4 id="bug-fixes_1">Bug Fixes</h4>
+<ul>
+<li><em>cluster:</em> clean up proxy references for dependencies</li>
+</ul>
+<h4 id="versions_2">Versions</h4>
+<p>This release uses the following upstream software:</p>
+<ul>
+<li>NetBox 4.2.9</li>
+<li>Redis 7.4.2 (if built-in Redis is enabled)</li>
+<li>PostgreSQL 16.8 (if built-in database is enabled)</li>
+</ul>
+<h4 id="plugins_2">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.8.1</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.15.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.9.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.6</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.3.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.2.6</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.17</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.2.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.2.1</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>netbox_diode_plugin</td>
+<td>1.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.6</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.1.13</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="192">1.9.2</h3>
+<p>Updates NetBox to 4.2.9, plus includes an update to
+the cluster software which improves the handling of
+upgrades.</p>
+<p>NOTE: This update will upgrade NetBox to 4.2.9.
+If you have custom plugins installed, you will need
+to upgrade to NetBox Enterprise 1.9.2 and then create
+a new wheelhouse that contains plugins compatible
+with 4.2.9.</p>
+<p>Please review the <a href="https://github.com/netbox-community/netbox/releases">upstream NetBox release
+notes</a>
+from your current version through 4.2.9 for a
+complete list of breaking changes, enhancements,
+and bug fixes.</p>
+<h4 id="features_2">Features</h4>
+<ul>
+<li><strong>cluster:</strong> bump to 2.4.0</li>
+<li><strong>netbox:</strong> bump to NetBox 4.2.9</li>
+</ul>
+<h4 id="versions_3">Versions</h4>
+<p>This release uses the following upstream software:
+* NetBox 4.2.9
+* Redis 7.4.2 (if built-in Redis is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)</p>
+<h4 id="plugins_3">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.8.1</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.15.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.9.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.6</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.3.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.2.6</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.17</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.2.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.2.1</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.4</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.1.13</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="191">1.9.1</h3>
+<p>A minor release that contains build process updates
+under the covers, plus the Python XML fixes introduced
+in NetBox Enterprise 1.8.6.</p>
+<h4 id="versions_4">Versions</h4>
+<p>This release uses the following upstream software:
+* NetBox 4.2.6
+* Redis 7.4.2 (if built-in Redis is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)</p>
+<h4 id="plugins_4">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.8.1</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.15.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.9.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.6</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.3.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.2.6</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.17</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.2.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.2.1</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.4</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.1.13</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="190">1.9.0</h3>
+<p>Updates the embedded NetBox to 4.2.6. Also upgrades
+a number of dependencies to their latest versions,
+adds some extra system consistency validation checks,
+and reduces the number of proxied domains necessary to
+install NetBox Enterprise.</p>
+<h4 id="bug-fixes_2">Bug Fixes</h4>
+<ul>
+<li><strong>netbox:</strong> update to docker image with pydantic fix (NBE-185)</li>
+<li>add exit statements for better error handling in configmap-executable.yaml</li>
+<li>adjust formatting in cronjob-backup-labeler.yaml for consistency</li>
+<li>remove branch reference for command bar disabling from CI workflow and update Docker image tag</li>
+<li>remove unnecessary conditional for nodeSelector in cronjob-backup-labeler.yaml</li>
+<li>replace hardcoded imagePullPolicy with configurable value in cronjob-backup-labeler.yaml</li>
+<li>restore TTL and backoff limit in backup labeler CronJob configuration</li>
+<li>update Docker image tag to indicate command bar disabling</li>
+<li>update imagePullPolicy to 'IfNotPresent' in cronjob-backup-labeler.yaml</li>
+<li>update system validation query to use jq and change backup labeler image to netboxlabs/nbe-utils:latest</li>
+<li>update system validation query image version to netboxlabs/nbe-utils:1</li>
+</ul>
+<h4 id="features_3">Features</h4>
+<ul>
+<li>add CronJob for netbox sidecar task to do system validation</li>
+<li>add system validation check CronJob with service account and role binding</li>
+<li>add TTL and backoff limit to backup labeler CronJob configuration</li>
+<li><strong>cluster:</strong> add settings for the improved proxy support</li>
+<li><strong>cluster:</strong> update to 2.3.1</li>
+<li><strong>config:</strong> create some macros for nbe-utils and replace busybox</li>
+<li><strong>deps:</strong> update pgo to 5.7.4, replicated-sdk to 1.5.0</li>
+<li>increase replicas for postgres instance to improve availability</li>
+<li><strong>netbox:</strong> bump to netbox 4.2.6 and ensure versions are correct</li>
+<li>rename replicas_node_count to node_count for consistency in postgres configuration</li>
+<li>update backup labeler configuration with TTL and backoff limit</li>
+<li>update backup labeler to routines labeler and improve system validation error handling</li>
+<li>update dependencies in Chart.lock for netbox-enterprise</li>
+<li>update netbox sidecar CronJob to run every 5 minutes and improve error handling</li>
+<li>update postgres replica configuration to use dynamic node count</li>
+</ul>
+<h4 id="versions_5">Versions</h4>
+<p>This release uses the following upstream software:
+* NetBox 4.2.6
+* Redis 7.4.2 (if built-in Redis is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)</p>
+<h4 id="plugins_5">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.8.1</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.15.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.9.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.6</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.3.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.2.6</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.17</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.2.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.2.1</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.4</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="186">1.8.6</h3>
+<p>Contains a fix for mismatched XML modules used by
+some 3rd-party plugins.</p>
+<h4 id="bug-fixes_3">Bug Fixes</h4>
+<ul>
+<li><em>docker:</em> ignore low-priority trivy warning about KOTS dep</li>
+<li><em>docker:</em> make sure lxml and xmlsec match (NBE-193)</li>
+</ul>
+<h4 id="versions_6">Versions</h4>
+<p>This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)</p>
+<h4 id="plugins_6">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>nb_risk</td>
+<td>41.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.7.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.14.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.8.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.5.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.2.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.1.7</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.15</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.1.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>netbox_diode_plugin</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.3</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>phonebox_plugin</td>
+<td>0.0.10</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.0.45</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="185">1.8.5</h3>
+<p>Contains a fix for upgrades freezing in some situations.</p>
+<h4 id="bug-fixes_4">Bug Fixes</h4>
+<ul>
+<li><em>cluster:</em> remove unnecessary repository entry in ingress-nginx config</li>
+</ul>
+<h4 id="versions_7">Versions</h4>
+<p>This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)</p>
+<h4 id="plugins_7">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>nb_risk</td>
+<td>41.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.7.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.14.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.8.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.5.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.2.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.1.7</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.15</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.1.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>netbox_diode_plugin</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.3</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>phonebox_plugin</td>
+<td>0.0.10</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.0.45</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="184">1.8.4</h3>
+<p>Provides a number of updates to custom plugin
+installation, as well as other small enhancements
+and bug fixes, included in the 1.7.x series, most
+notably the security fix for the <code>ingress-nginx</code>
+controller (CVE-2025-1974).</p>
+<h4 id="bug-fixes_5">Bug Fixes</h4>
+<ul>
+<li><em>cluster:</em> properly show "ready" in restore mode</li>
+<li><em>cluster:</em> remove the admission controller from status checks</li>
+<li><em>cluster:</em> repair some shellcheck issues, remove vestigial config</li>
+<li><em>netbox:</em> a few small cosmetic fixes to plugin install</li>
+<li><em>netbox:</em> improve plugin installation issues for custom tarballs</li>
+</ul>
+<h4 id="versions_8">Versions</h4>
+<p>This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)</p>
+<h4 id="plugins_8">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>nb_risk</td>
+<td>41.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.7.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.14.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.8.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.5.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.2.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.1.7</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.15</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.1.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>netbox_diode_plugin</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.3</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>phonebox_plugin</td>
+<td>0.0.10</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.0.45</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="183">1.8.3</h3>
+<p>Provides a number of updates to custom plugin
+installation, as well as other small enhancements
+and bug fixes, included in the 1.7.x series, most
+notably the security fix for the <code>ingress-nginx</code>
+controller (CVE-2025-1974).</p>
+<h4 id="bug-fixes_6">Bug Fixes</h4>
+<ul>
+<li><em>cluster:</em> properly show "ready" in restore mode</li>
+<li><em>netbox:</em> a few small cosmetic fixes to plugin install</li>
+<li>repair some shellcheck issues, remove vestigial config</li>
+</ul>
+<h4 id="features_4">Features</h4>
+<ul>
+<li><em>cluster:</em> make a label to tag pods supporting upload</li>
+</ul>
+<h4 id="versions_9">Versions</h4>
+<p>This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.6 (if built-in database is enabled)</p>
+<h4 id="plugins_9">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>nb_risk</td>
+<td>41.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.7.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.14.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.8.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.5.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.2.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.1.7</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.15</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.1.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>netbox_diode_plugin</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.3</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>phonebox_plugin</td>
+<td>0.0.10</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.0.45</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="181">1.8.1</h3>
+<p>Fixes user creation, password validation, and group/SSO
+issues in NetBox.</p>
+<h4 id="bug-fixes_7">Bug Fixes</h4>
+<ul>
+<li><em>netbox:</em> use proper import location of the OWASP validator</li>
+<li><em>docker:</em> fix nbce-common install, remove deprecated nbc_auth</li>
+<li><em>docker:</em> make sure nbc_auth_extensions are in the right place</li>
+</ul>
+<h4 id="versions_10">Versions</h4>
+<p>This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.6 (if built-in database is enabled)</p>
+<h4 id="plugins_10">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>nb_risk</td>
+<td>41.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.7.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.14.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.8.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.5.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.2.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.1.7</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.15</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.1.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>netbox_diode_plugin</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.3</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>phonebox_plugin</td>
+<td>0.0.10</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.0.45</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="180">1.8.0</h3>
+<p>Improves logging in the NetBox containers, and adds support
+for uploading custom plugins.</p>
+<h4 id="bug-fixes_8">Bug Fixes</h4>
+<ul>
+<li><em>cluster:</em> fixed a few pod label macros</li>
+<li><em>config:</em> feedback - use bash for extra script safety</li>
+<li><em>config:</em> remove vestigial validation mount</li>
+</ul>
+<h4 id="features_5">Features</h4>
+<ul>
+<li><em>config:</em> adding log fixing branch to the CI workflow to create a release in Replicated</li>
+<li><em>config:</em> allow uploading plugins for <code>pip install</code></li>
+</ul>
+<h4 id="versions_11">Versions</h4>
+<p>This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.6 (if built-in database is enabled)</p>
+<h4 id="plugins_11">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>nb_risk</td>
+<td>41.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.7.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.14.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.8.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.5.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.2.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.1.7</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.15</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.1.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>netbox_diode_plugin</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.3</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>phonebox_plugin</td>
+<td>0.0.10</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.0.45</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="176">1.7.6</h3>
+<p>Contains a fix for incorrect permissions in the media folder
+after restore from backup.</p>
+<h4 id="bug-fixes_9">Bug Fixes</h4>
+<ul>
+<li><em>cluster:</em> remove the admission controller from status checks</li>
+<li><em>netbox:</em> make sure volume permissions are correct</li>
+</ul>
+<h4 id="versions_12">Versions</h4>
+<p>This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.8 (if built-in database is enabled)</p>
+<h4 id="plugins_12">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>nb_risk</td>
+<td>41.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.7.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.14.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.8.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.5.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.2.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.1.7</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.15</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.1.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>netbox_diode_plugin</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.3</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>phonebox_plugin</td>
+<td>0.0.10</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.0.45</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="175">1.7.5</h3>
+<p>Contains a security fix for the <code>ingress-nginx</code> controller
+(CVE-2025-1974).</p>
+<h4 id="bug-fixes_10">Bug Fixes</h4>
+<ul>
+<li><em>cluster:</em> disable ingress-nginx admission controller</li>
+</ul>
+<h4 id="versions_13">Versions</h4>
+<p>This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.6 (if built-in database is enabled)</p>
+<h4 id="plugins_13">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>nb_risk</td>
+<td>41.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.7.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.14.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.8.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.5.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.2.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.1.7</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.15</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.1.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>netbox_diode_plugin</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.2</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>phonebox_plugin</td>
+<td>0.0.10</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.0.45</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="174">1.7.4</h3>
+<p>Fix missing authentication plugins for group and SSO configs.</p>
+<h4 id="bug-fixes_11">Bug Fixes</h4>
+<ul>
+<li><em>docker:</em> make sure nbc_auth_extensions are in the right place</li>
+</ul>
+<h4 id="versions_14">Versions</h4>
+<p>This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.6 (if built-in database is enabled)</p>
+<h4 id="plugins_14">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>nb_risk</td>
+<td>41.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.7.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.14.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.8.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.5.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.2.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.1.7</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.15</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.1.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>netbox_diode_plugin</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.3</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>phonebox_plugin</td>
+<td>0.0.10</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.0.45</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="173">1.7.3</h3>
+<p>Re-release of 1.7.2 with additional password validator fixes,
+plus reverting to a previous working redis chart.</p>
+<h4 id="bug-fixes_12">Bug Fixes</h4>
+<ul>
+<li><em>netbox:</em> use proper import location of the OWASP validator</li>
+</ul>
+<h4 id="versions_15">Versions</h4>
+<p>This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.6 (if built-in database is enabled)</p>
+<h4 id="plugins_15">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>nb_risk</td>
+<td>41.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.7.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.14.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.8.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.5.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.2.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.1.7</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.15</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.1.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>netbox_diode_plugin</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.3</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>phonebox_plugin</td>
+<td>0.0.10</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.0.45</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="172">1.7.2</h3>
+<p>Fixes a bug where the custom password validator was
+missing.</p>
+<h4 id="bug-fixes_13">Bug Fixes</h4>
+<ul>
+<li><em>docker:</em> fix nbce-common install, remove deprecated nbc_auth</li>
+</ul>
+<h4 id="versions_16">Versions</h4>
+<p>This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.6 (if built-in database is enabled)</p>
+<h4 id="plugins_16">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>nb_risk</td>
+<td>41.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.7.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.14.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.8.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.5.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.2.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.1.7</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.15</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.1.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>netbox_diode_plugin</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.3</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>phonebox_plugin</td>
+<td>0.0.10</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.0.45</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="171">1.7.1</h3>
+<p>Fixes a bug in downloading the ingress Helm chart when
+using a proxy for installation.</p>
+<h4 id="bug-fixes_14">Bug Fixes</h4>
+<ul>
+<li><em>cluster:</em> use the proxy to download the ingress chart</li>
+</ul>
+<h4 id="versions_17">Versions</h4>
+<p>This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2 (if built-in database is enabled)
+* PostgreSQL 16.6 (if built-in database is enabled)</p>
+<h4 id="plugins_17">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>nb_risk</td>
+<td>41.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.7.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.14.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.8.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.5.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.2.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.1.7</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.15</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.1.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>netbox_diode_plugin</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.2</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>phonebox_plugin</td>
+<td>0.0.10</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.0.45</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="170">1.7.0</h3>
+<p>Updates the embedded NetBox to 4.1.11. Also upgrades
+the cluster software, which brings many bug fixes and
+features, including better preflight checks, and
+a direct link to the NetBox UI from the admin console.</p>
+<h4 id="features_6">Features</h4>
+<ul>
+<li><em>cluster:</em> update to 1.19.0</li>
+<li><em>cluster:</em> add a link to the NetBox UI from the admin console</li>
+<li><em>deps:</em> update to NetBox 4.1.11 + latest NetBox chart</li>
+</ul>
+<h4 id="versions_18">Versions</h4>
+<p>This release uses the following upstream software:
+* NetBox 4.1.11
+* Redis 7.4.2
+* PostgreSQL 16.6 (if built-in database is enabled)</p>
+<h4 id="plugins_18">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Config Name</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>nb_risk</td>
+<td>41.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>netbox_acls</td>
+<td>1.7.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>netbox_bgp</td>
+<td>0.14.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>netbox_config_diff</td>
+<td>2.8.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>netbox_documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>netbox_floorplan</td>
+<td>0.5.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>netbox_interface_synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>netbox_inventory</td>
+<td>2.2.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>netbox_lifecycle</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>netbox_dns</td>
+<td>1.1.7</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>netbox_qrcode</td>
+<td>0.0.15</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>netbox_reorder_rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>netbox_secrets</td>
+<td>2.1.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>netbox_topology_views</td>
+<td>4.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>netbox_diode_plugin</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>netbox_branching</td>
+<td>0.5.2</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>phonebox_plugin</td>
+<td>0.0.10</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>slurpit_netbox</td>
+<td>1.0.45</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="165">1.6.5</h3>
+<p>Fixes a small bug that would cause the admin console to
+improperly display an error on upgrade. Also updates
+a few dependencies.</p>
+<h4 id="bug-fixes_15">Bug Fixes</h4>
+<ul>
+<li><em>cluster:</em> move ingress back to <code>ingress-nginx</code> namespace</li>
+</ul>
+<h4 id="features_7">Features</h4>
+<ul>
+<li><em>deps:</em> bump to latest docker image + current plugins</li>
+<li><em>deps:</em> update bitnami-common and netbox oss charts</li>
+<li><em>netbox:</em> update to latest 4.0.x-compatible plugins</li>
+</ul>
+<h4 id="plugins_19">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>41.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>1.7.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>0.14.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>2.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>0.5.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>2.1.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>1.1.6</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>0.0.15</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>2.1.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>4.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>0.5.2</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>0.0.10</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>1.0.43</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="164">1.6.4</h3>
+<p>Disable unnecessary Redis persistence and redundant PostgreSQL backups,
+plus fix an issue with file upload limits and missing static content
+from enabled plugins.</p>
+<p>NetBox Enterprise 1.6.4 includes NetBox 4.1.7, and is anticipated to
+be a release candidate for stable.</p>
+<h4 id="plugins_20">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>41.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>1.7.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>0.14.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>2.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>0.5.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>2.1.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>1.1.6</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>0.0.15</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>2.1.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>4.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netboxlabs-netbox-branching</td>
+<td>0.5.2</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>0.0.10</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>1.0.43</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="163">1.6.3</h3>
+<p>Just a few small bug fixes, mostly related to internal changes.
+Also contains dependency updates.</p>
+<h3 id="162">1.6.2</h3>
+<p>Primarily internal and build-related changes.
+No new features.</p>
+<h3 id="161">1.6.1</h3>
+<p>Fixes a number of bugs related to file uploads and proxy environments.</p>
+<h3 id="160">1.6.0</h3>
+<p>Adds the changes plugin by default, and upgrades NetBox to 4.1.7.
+Fixes some small bugs in plugin initialization and proxied installs.</p>
+<h3 id="150">1.5.0</h3>
+<p>The 1.5.x series was released internally for development
+testing of upgrades to NetBox 4.1 and branching plugin inclusion.</p>
+<h3 id="142">1.4.2</h3>
+<p>A re-release of 1.4.1 with a fix that makes sure plugin versions
+that are only compatible with NetBox 4.1 are not included.</p>
+<h4 id="plugins_21">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>40.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>1.6.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>0.13.3</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>2.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>0.4.1</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>2.0.2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>1.0.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>1.1.5</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>0.0.14</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>2.0.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>4.0.1</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>0.3.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>0.0.9</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>0.9.84</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="141">1.4.1</h3>
+<p>A small release with some dependency updates and the latest set
+of NetBox 4.0-compatible plugins.</p>
+<h4 id="plugins_22">Plugins</h4>
+<p>The following plugins are included in this release:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Version</th>
+<th>Certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nbrisk</td>
+<td>41.0.1</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-acls</td>
+<td>1.7.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-bgp</td>
+<td>0.14.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-config-diff</td>
+<td>2.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-documents</td>
+<td>0.7.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-floorplan-plugin</td>
+<td>0.4.1</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-interface-synchronization</td>
+<td>4.1.4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-inventory</td>
+<td>2.1.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-lifecycle</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-plugin-dns</td>
+<td>1.1.5</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-qrcode</td>
+<td>0.0.15</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-reorder-rack</td>
+<td>1.1.3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-secrets</td>
+<td>2.1.0</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netbox-topology-views</td>
+<td>4.1.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>netbox-validity</td>
+<td>3.0.5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>netboxlabs-diode-netbox-plugin</td>
+<td>0.6.0</td>
+<td>☑︎</td>
+</tr>
+<tr>
+<td>phonebox-plugin</td>
+<td>0.0.10</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>slurpit_netbox</td>
+<td>1.0.33</td>
+<td>☑︎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="140">1.4.0</h3>
+<p>Adds support for supplying custom environment variables (eg, for LDAP config).
+It also contains a small auth change to allow curly braces and spaces in the new password validator.</p>
+<p>A number of included plugins were updated to their latest compatible versions:
+* <code>netbox_bgp</code> was updated to 0.13.3
+* <code>netbox_floorplan_plugin</code> was updated to 0.4.1
+* <code>netbox_plugin_dns</code> was updated to 1.1.3
+* <code>netbox_topology_views</code> was updated to 4.0.1
+* <code>slurpit_netbox</code> was updated to 0.9.84</p>
+<h3 id="130">1.3.0</h3>
+<p>Compatible with any standard Kubernetes ingress controller now in KOTS installs, rather than only Nginx.
+Also fixes a potential data loss issue with uploaded images, as well as enabling script and report uploads.</p>
+<h3 id="120">1.2.0</h3>
+<p>Improves ingress configuration, adds support for inheriting the TLS configuration from the Admin Console configuration, and adds a "restore mode" for restoring manual backup data, plus many dependency updates and internal improvements.</p>
+<h3 id="110">1.1.0</h3>
+<p>Simplifies the firewall configuration necessary for installation by making sure all initialization downloads go through our proxy domain.</p>
+<h3 id="106">1.0.6</h3>
+<p>Adds support for NetBox resource usage adjustment and some improvements to startup time on a first install.</p>
+<p>It also adds support for backup and restore, depending on your environment and license.</p>
+<h3 id="105">1.0.5</h3>
+<p>Adds support for scraping Prometheus metrics from NetBox, as well as the embedded PostgreSQL, Redis, and SeaweedFS if they are enabled.</p>
+<p>Updated to support NetBox v4.0.9, and includes additional bug fixes and startup time improvements.</p>
+<h3 id="104">1.0.4</h3>
+<p>Adds OWASP password complexity validation to NetBox, and includes dependency updates.</p>
+<h3 id="103">1.0.3</h3>
+<p>Fixes issues with preflight checks, and includes minor dependency updates.</p>
+<h3 id="102">1.0.2</h3>
+<p>Provides a number of dependency updates and bug fixes, and includes initial support for backups of built-in Redis and PostgreSQL.</p>
+<h3 id="101">1.0.1</h3>
+<p>Provides bug fixes encountered during the initial rollout of the NetBox Enterprise application.</p>
+<h3 id="100">1.0.0</h3>
+<p>Provides final cleanup of the Beta stream in preparation for the wider release.</p>
+<p>Provides a number of internal changes, and includes fixes for an issue where annotations could render improperly and cause problems with upgrades.
+Updated to support NetBox v4.0.7.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 NetBox Labs
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://netboxlabs.com" target="_blank" rel="noopener" title="netboxlabs.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.4c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.3c2.2 20.4 3.3 41.8 3.3 64m28.8-64h123.1c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64m112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6 78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7 10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5 11.6 26 20.9 58.2 27 94.7m-209 0H18.6c30-74.1 93.6-130.9 172-151.6-25.5 34.2-45.3 87.7-55.3 151.6M8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64m186.6 254.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.6-22.2 40.7-33.5 51.5-11.2 10.7-20.5 13.9-27.8 13.9s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6-78.4-20.7-142-77.5-172-151.6zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6 25.5-34.2 45.2-87.7 55.3-151.6h116.7z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:support@netboxlabs.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14a1.75 1.75 0 0 1-1.75 1.75H1.75A1.75 1.75 0 0 1 0 18.75v-14C0 3.784.784 3 1.75 3M1.5 7.412V18.75c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25V7.412l-9.52 6.433c-.592.4-1.368.4-1.96 0Zm0-2.662v.852l10.36 7a.25.25 0 0 0 .28 0l10.36-7V4.75a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.indexes", "navigation.sections", "navigation.prune", "search.suggest", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"available": ["v1.9 (Current)"], "current": "v1.9", "default": "v1.9", "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
