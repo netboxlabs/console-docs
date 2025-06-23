@@ -1,66 +1,268 @@
+# Get Started with NetBox Discovery
+
 <span class="pill pill-cloud">NetBox Cloud</span>
 <span class="pill pill-enterprise">NetBox Enterprise</span>
 <span class="pill pill-community">NetBox Community</span>
 
-## Before getting started
-You'll need the following to successfully run the NetBox Discovery agent end-to-end:
+This guide will help you set up and start using NetBox Discovery to ingest network data into NetBox.
 
-- **NetBox**: a running instance of [NetBox](https://github.com/netbox-community/netbox).
-- **Diode plugin**: NetBox Diode [plugin](https://github.com/netboxlabs/diode-netbox-plugin) installed in your NetBox instance.
-- **Diode**: a running instance of [Diode](https://github.com/netboxlabs/diode/tree/develop/diode-server#readme).
+## Prerequisites
 
-## Download agent image
-First pull the Docker image from [Docker Hub](https://hub.docker.com/r/netboxlabs/orb-agent):
+Before you begin, ensure you have:
 
-```sh
-docker pull netboxlabs/orb-agent:latest
-```
+- NetBox version 4.2.3 or later
+- Docker version 27.0.3 or newer
+- bash 4.x or newer
+- jq
+- Network connectivity between your NetBox server and the Diode server
+- Sufficient permissions to run Docker commands
 
-NetBox Discovery is based on the Orb open source project, hence the `orb-agent` image name.
+## Installation Steps
 
-## Create an agent configuration file
-The NetBox Discovery agent requires a configuration, specifying what discovery tasks you'd like it to accomplish. Here's a sample configuration:
+### Deploy Diode server
 
-```yaml
-orb:
-  config_manager:
-    active: local
-  backends:
-    network_discovery:
-    common:
-      diode:
-        target: grpc://<DIODE_IP_ADDRESS>:8080/diode
-        api_key: ${DIODE_API_KEY}
-        agent_name: agent1
-  policies:
-    network_discovery:
-      policy_1:
-        scope:
-          targets:
-            - 192.168.1.10-20
-```
+> **Host**: These steps should be performed on the host where you want to run the Diode server.
 
-Copy the configuration to a file (named `agent.yaml` for these instructions). Edit the file as necessary to match your environment:
+> **Note**: For the complete installation instructions, please refer to the [official Diode Server documentation](https://github.com/netboxlabs/diode/tree/develop/diode-server).
 
-- Replace `<DIODE_IP_ADDRESS>` with the IP address or hostname of your Diode server
-- Edit and add `targets` relevant to your environment (they can expressed as a mix of ranges, network prefixes with mask, IP addresses or domain names)
+We provide a `quickstart.sh` script to automate the setup process. The script will download and configure all necessary files:
 
-You can find more complete examples for [Device Discovery](device_discovery.md) and [Network Discovery](network_discovery.md).
+- `docker-compose.yaml` — Defines Diode server containers
+- `.env` — Environment settings for customization
+- `nginx.conf` — Nginx configuration for routing Diode endpoints
+- `client-credentials.json` — Defines OAuth2 clients for secure communication
 
-## Run the agent
-Run the agent from the same directory where you created your agent configuration file (`agent.yaml`):
+1. Create a working directory:
+   ```bash
+   mkdir -p /opt/diode
+   cd /opt/diode
+   ```
 
-```sh
- docker run -v $(PWD):/opt/orb/ \
-   -e DIODE_API_KEY=<api_key>   \
-   netboxlabs/orb-agent:latest run -c /opt/orb/agent.yaml
-```
+2. Download and prepare the quickstart script:
+   ```bash
+   curl -sSfLo quickstart.sh https://raw.githubusercontent.com/netboxlabs/diode/release/diode-server/docker/scripts/quickstart.sh
+   chmod +x quickstart.sh
+   ```
 
-Replace `<api_key>` with the actual Diode API key you used in configuring your Diode server.
+3. Run the script with your NetBox server address:
+   ```bash
+   ./quickstart.sh https://<netbox-server>
+   ```
+   > **Note**: Replace `<netbox-server>` with your actual NetBox server address. Do not include a trailing slash.
+   > Example: `./quickstart.sh https://netbox.example.com`
 
-## View the output
+   This should have created an `.env` file for your environment.
+
+4. Start the Diode server:
+   ```bash
+   docker compose up -d
+   ```
+
+5. Verify the Diode server is running:
+   ```bash
+   docker compose ps
+   ```
+   All services should show as "running" or "healthy".
+
+6. Extract the `netbox-to-diode` client secret. This will be needed for the Diode NetBox plugin installation:
+   ```bash
+   echo $(jq -r '.[] | select(.client_id == "netbox-to-diode") | .client_secret' /opt/diode/oauth2/client/client-credentials.json)
+   ```
+   > **Note**: This will return a credential that will be used by the Diode NetBox plugin to connect to the Diode server. Store it safely.
+
+### Install Diode NetBox Plugin
+
+> **Host**: These steps should be performed on the host where NetBox is installed.
+
+> **Note**: For the complete installation instructions, please refer to the [official Diode NetBox Plugin documentation](https://github.com/netboxlabs/diode-netbox-plugin/blob/develop/README.md).
+
+1. **Source the NetBox Python Virtual Environment**
+   ```bash
+   cd /opt/netbox
+   source venv/bin/activate
+   ```
+
+2. **Install the Plugin Package**
+   ```bash
+   pip install netboxlabs-diode-netbox-plugin
+   ```
+
+3. **Configure NetBox Settings**
+   Add the following to your `configuration.py`:
+   ```python
+   PLUGINS = [
+       "netbox_diode_plugin",
+   ]
+
+   PLUGINS_CONFIG = {
+       "netbox_diode_plugin": {
+           # Diode gRPC target for communication with Diode server
+           "diode_target_override": "grpc://<diode-server:port>/diode",
+           # NetBox username associated with changes applied via plugin
+           "diode_username": "diode",
+           # netbox-to-diode client secret from earlier step
+           "netbox_to_diode_client_secret": "<netbox-to-diode-secret>"
+       },
+   }
+   ```
+   > **Note**: Replace `<diode-server:port>` with your Diode server address and port (default: 8080)
+   > Example: `grpc://diode.example.com:8080/diode`
+
+4. **Apply Database Migrations**
+   ```bash
+   cd /opt/netbox/netbox
+   ./manage.py migrate netbox_diode_plugin
+   ```
+
+5. **Restart NetBox Services**
+   ```bash
+   sudo systemctl restart netbox netbox-rq
+   ```
+
+6. **Generate Diode Client Credentials**
+   > **Note**: These credentials will be used by the NetBox Discovery agent to send discovery results to NetBox via Diode.
+
+   1. Go to your NetBox instance (https://<netbox-server>)
+   2. In the left-hand pane, navigate to **Diode -> Client Credentials**
+   3. Click on **+ Add a Credential**
+   4. For Client Name, enter any name and click **Create**
+   5. **IMPORTANT**: Copy the _Client ID_ and _Client Secret_ and save them securely
+   6. Click **Return to List**
+
+   You have now created your Diode client credentials. These will be used as environment variables when running the NetBox Discovery agent.
+
+### Run NetBox Discovery Agent
+
+> **Host**: These steps should be performed on the host where you want to run the NetBox Discovery agent for network discovery.
+
+> **Note**: For the complete installation instructions, please refer to the [official NetBox Discovery Agent documentation](https://github.com/netboxlabs/orb-agent).
+
+1. **Export Client Credentials**
+   ```bash
+   # Export the client credentials you generated in NetBox
+   export DIODE_CLIENT_ID="<your-client-id>"
+   export DIODE_CLIENT_SECRET="<your-client-secret>"
+   ```
+
+2. **Create Agent Configuration File**
+   Create an `agent.yaml` file with the following content:
+   ```yaml
+   orb:
+     config_manager:
+       active: local
+     backends:
+       network_discovery:  # Enable network discovery backend
+       common:
+         diode:
+           target: grpc://<diode-server:port>/diode
+           client_id: ${DIODE_CLIENT_ID}
+           client_secret: ${DIODE_CLIENT_SECRET}
+           agent_name: my_agent
+     policies:
+       network_discovery:
+         loopback_policy:
+           config:
+           scope:
+             targets: 
+               - 127.0.0.1
+   ```
+   > **Note**: Replace `<diode-server:port>` with your Diode server address and port (default: 8080)
+   > Example: `grpc://diode.example.com:8080/diode`
+
+3. **Run the Agent**
+   
+   Using host network mode (recommended):
+   ```bash
+   docker run --net=host \
+     -v $(pwd):/opt/orb/ \
+     -e DIODE_CLIENT_ID \
+     -e DIODE_CLIENT_SECRET \
+     netboxlabs/orb-agent:latest run -c /opt/orb/agent.yaml
+   ```
+
+   Alternative using root user:
+   ```bash
+   docker run -u root \
+     -v $(pwd):/opt/orb/ \
+     -e DIODE_CLIENT_ID \
+     -e DIODE_CLIENT_SECRET \
+     netboxlabs/orb-agent:latest run -c /opt/orb/agent.yaml
+   ```
+
+   > **Note**: The container needs sufficient permissions to send ICMP and TCP packets. This can be achieved either by:
+   > - Setting the network mode to `host` (recommended)
+   > - Running the container as root user
+
+4. **Verify Agent Operation**
+   - Check the agent logs for successful startup
+   - Verify data appears in NetBox
+
+## View the Output
+
 You can view output from the running agent:
 
 - Agent Docker container logs (displayed in the terminal)
-- Diode server Docker container logs (`docker logs diode-diode-reconciler-1`)
-- `Ingestion Logs` view in Netbox Diode plugin
+- Diode server Docker container logs (`docker compose logs`)
+- `Ingestion Logs` view in NetBox Diode plugin
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Connection Issues**
+   - Verify network connectivity between Diode and NetBox:
+     ```bash
+     # From Diode server
+     curl -v https://<netbox-server>
+     # From NetBox server
+     curl -v grpc://<diode-server:port>/diode
+     ```
+   - Check firewall rules:
+     ```bash
+     # Check if required ports are open
+     netstat -tulpn | grep -E '8080|443'
+     ```
+   - Validate URLs and ports in configuration files:
+     - Diode server `.env`
+     - NetBox `configuration.py`
+     - NetBox Discovery agent `agent.yaml`
+
+2. **Docker Issues**
+   - Check Docker service status:
+     ```bash
+     systemctl status docker
+     ```
+   - Verify Docker container logs:
+     ```bash
+     docker compose logs
+     ```
+
+3. **Permission Issues**
+   - Ensure proper file permissions:
+     ```bash
+     ls -la /opt/diode/
+     ls -la /opt/netbox/
+     ```
+   - Check Docker socket permissions:
+     ```bash
+     ls -l /var/run/docker.sock
+     ```
+
+### Getting Help
+
+If you encounter issues:
+
+1. Search GitHub: [Issues](https://github.com/netboxlabs/diode/issues)
+2. Find us in Slack: [NetDev Community #orb](https://netdev-community.slack.com/)
+3. Check the logs:
+   - Diode server logs: `docker compose logs`
+   - NetBox Discovery agent logs: Check your terminal output
+
+## Next Steps
+
+Once you have NetBox Discovery running, you can:
+
+- Explore [Device Discovery](device_discovery.md) for connecting to network devices
+- Learn about [Network Discovery](network_discovery.md) for network scanning
+- Review [Configuration File](configuration-file.md) for advanced settings
+- Check [Configuration Samples](config_samples.md) for more examples

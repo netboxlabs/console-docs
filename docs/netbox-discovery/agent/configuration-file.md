@@ -41,9 +41,12 @@ A special `common` subsection of `backends` defines configuration settings that 
       common:
         diode:
             target: grpc://${DIODE_IP_ADDRESS}:8080/diode
-            api_key: ${DIODE_API_KEY}
+            client_id: ${DIODE_CLIENT_ID}
+            client_secret: ${DIODE_CLIENT_SECRET}
             agent_name: ${AGENT_NAME}
 ```
+
+**Authentication**: The NetBox Discovery agent uses OAuth2 client credentials for secure authentication with the Diode server. The `client_id` and `client_secret` are generated through the NetBox Diode plugin interface. For setup instructions, see the [getting started guide](get-started.md).
 
 ### Policies
 The `policies` section specifies what discovery policies should be passed to each backend. Policies define specific settings for discovery (such as scheduling and default properties) and the scope (targets). Backends can run multiple policies simultaneously, but for each backend all policies must have a unique name. These policies are defined in the `policies` section and are grouped by backend:
@@ -72,7 +75,8 @@ orb:
     common:
       diode:
         target: grpc://${DIODE_IP_ADDRESS}:8080/diode
-        api_key: ${DIODE_API_KEY}
+        client_id: ${DIODE_CLIENT_ID}
+        client_secret: ${DIODE_CLIENT_SECRET}
         agent_name: agent02
   policies:
     network_discovery:

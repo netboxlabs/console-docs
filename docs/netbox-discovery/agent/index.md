@@ -15,6 +15,16 @@ The NetBox Discovery agent is based on the Orb open source project. Orb agent is
 
 To get started with the NetBox Discovery agent, you'll need the following:
 
-- **NetBox**: a running instance of [NetBox](https://github.com/netbox-community/netbox).
-- **Diode plugin**: NetBox Diode [plugin](https://github.com/netboxlabs/diode-netbox-plugin) installed in your NetBox instance.
-- **Diode**: a running instance of [Diode](https://github.com/netboxlabs/diode/tree/develop/diode-server#readme).
+- **NetBox**: NetBox version 4.2.3 or later
+- **Docker**: Docker version 27.0.3 or newer
+- **System Tools**: bash 4.x or newer, jq
+- **Network Connectivity**: Between your NetBox server and the Diode server
+- **Permissions**: Sufficient permissions to run Docker commands
+
+The [getting started guide](get-started.md) provides complete step-by-step instructions for setting up the entire NetBox Discovery ecosystem, including:
+
+- Diode server deployment
+- NetBox Diode plugin installation
+- Client credential configuration
+- Agent setup and execution
+- Troubleshooting and verification
