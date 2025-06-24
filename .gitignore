@@ -3,6 +3,9 @@ docs/images/.DS_Store
 venv/
 scratch/
 
+# MkDocs build output
+site/
+
 # Node.js dependencies
 node_modules/
 npm-debug.log*
