@@ -1,0 +1,3 @@
+[submodule "docs/netbox-extensions/changes"]
+	path = docs/netbox-extensions/changes
+	url = https://github.com/netboxlabs/netbox-changes.git
