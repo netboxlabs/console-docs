@@ -3,9 +3,6 @@ docs/images/.DS_Store
 venv/
 scratch/
 
-# AI reference materials (internal use only - not for external publication)
-ai-reference/
-
 # MkDocs build output
 site/
 
