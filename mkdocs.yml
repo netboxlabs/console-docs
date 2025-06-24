@@ -54,6 +54,10 @@ markdown_extensions:
           format: pymdownx.superfences.fence_code_format
 plugins:
   - search
+
+# Exclude internal development directories from documentation build
+exclude_docs: |
+  ai-reference/
 nav:
   - Home: index.md
   - Cloud:
