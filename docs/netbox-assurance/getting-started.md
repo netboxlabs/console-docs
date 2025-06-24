@@ -1,93 +1,42 @@
+---
+tags:
+  - cloud
+  - enterprise
+title: "Getting Started with NetBox Assurance"
+description: "Complete setup and configuration guide for NetBox Assurance - from installation to your first operational workflow with step-by-step instructions"
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-27"
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+status: "current"
+category: "getting-started"
+audience: "admins"
+complexity: "intermediate"
+related_docs:
+  - "index.md"
+  - "using-the-ui.md"
+  - "../netbox-discovery/getting-started.md"
+  - "../netbox-extensions/diode/index.md"
+external_links:
+  - "https://netdev.chat/"
+---
+
 # Getting Started with NetBox Assurance
 
 <span class="pill pill-cloud">NetBox Cloud (Coming Soon)</span>
 <span class="pill pill-enterprise">NetBox Enterprise</span>
 
-NetBox Assurance automatically detects operational drift between your intended network design (documented in NetBox) and your actual network infrastructure. This guide will help you understand, enable, and start using NetBox Assurance to maintain accurate network documentation and proactive drift detection.
-
-## What is NetBox Assurance?
-
-NetBox Assurance provides **automated operational drift detection** by continuously comparing ingested network data against your documented intent in NetBox. When discrepancies are found, Assurance creates "deviations" that you can review, analyze, and remediate.
-
-### Key Capabilities
-
-- **Instant Drift Detection**: Continuously compare your intended design against real-world infrastructure
-- **Proactive Issue Resolution**: Act on real-time data to remediate drift before it escalates
-- **Automated Documentation**: Keep your NetBox documentation aligned with operational reality
-- **Real-time Monitoring**: Provides real-time insights into network configuration changes
-- **Integration Ready**: Works seamlessly with existing network operations investments
-
-## Business Value
-
-NetBox Assurance solves critical challenges that network teams face daily:
-
-### **Faster Incident Resolution**
-- **Trustworthy documentation** when you need it most during incidents
-- **Reduced Mean Time to Repair (MTTR)** with accurate network state information
-- **Proactive detection** of issues before they become major problems
-
-### **Improved Compliance Posture**
-- **Automated auditing** against documented standards
-- **Historical tracking** of network changes for compliance reporting
-- **Immediate detection** of unauthorized changes
-
-### **Reduced Operational Overhead**
-- **Eliminate manual documentation verification** processes
-- **Automated detection** of configuration drift
-- **Streamlined change management** workflows
-
-### **Better Change Management**
-- **Immediate visibility** into the impact of network changes
-- **Confidence to move faster** with reliable source of truth
-- **Reduced risk** of undocumented changes causing issues
-
-## How NetBox Assurance Works
-
-### **Data Ingestion**
-Network data flows into NetBox Enterprise through multiple sources:
-
-1. **[NetBox Discovery Agents](../netbox-discovery/index.md)** - Automated network and device discovery
-2. **Controller Integrations** - VMware vCenter, Juniper Mist, Cisco Catalyst Center, etc.
-3. **[Diode API](../netbox-extensions/diode/index.md)** - Custom integrations using Python or Go SDKs
-
-### **Analysis & Comparison**
-Assurance automatically compares ingested data against existing NetBox documentation to identify:
-- **New devices** discovered but not documented
-- **Configuration changes** that deviate from intended state
-- **Missing infrastructure** that exists in documentation but not in reality
-- **Data quality issues** that require investigation
-
-### **Deviation Management**
-When operational drift is detected, Assurance creates **deviations** that provide:
-- **Detailed change analysis** showing what differs
-- **Proposed remediation actions** to resolve the drift
-- **Historical context** for understanding patterns
-- **Workflow tools** for team collaboration
-
-## Availability and Licensing
-
-### **NetBox Enterprise**
-NetBox Assurance is available as an **optional component** of NetBox Enterprise. During installation, your license file determines whether Assurance is enabled.
-
-**Installation**: When entitled, Assurance services are automatically deployed along with the NetBox Assurance UI and Diode data plugins.
-
-### **NetBox Cloud**
-NetBox Assurance is **coming soon** as an optional add-on for NetBox Cloud. When available, services will be provisioned in the cloud and securely integrated with your NetBox Cloud instance.
-
-**Setup**: The NetBox Assurance UI and Diode data plugins will be automatically installed on your instance when released.
-
-### **NetBox Community Edition**
-NetBox Assurance is **not available** for NetBox Community Edition. However, the underlying [Diode project](../netbox-extensions/diode/index.md) provides data ingestion capabilities that work with NetBox Discovery agents.
+This guide will help you set up, configure, and start using NetBox Assurance to maintain accurate network documentation and proactive drift detection. Follow these steps to go from installation to your first operational workflow.
 
 ## Prerequisites
 
 Before enabling NetBox Assurance, ensure you have:
 
 ### **Technical Requirements**
-- NetBox Enterprise 1.10+ or NetBox Cloud with Assurance add-on
+- NetBox Enterprise 1.10+ or NetBox Cloud (coming soon) with Assurance add-on
 - Active NetBox Assurance license
 - Network connectivity for data ingestion sources
-- Appropriate user permissions in NetBox
 
 ### **Data Sources**
 To maximize value from NetBox Assurance, you'll need at least one data source:
@@ -96,66 +45,195 @@ To maximize value from NetBox Assurance, you'll need at least one data source:
 - **Controller integrations** - For centralized network management platforms
 - **Custom integrations** - Using the [Diode SDK](../netbox-extensions/diode/index.md)
 
-## Getting Started Workflow
+### **Team Preparation**
+- Identify team members who will manage deviations
+- Define your drift tolerance and remediation policies
+- Plan your initial network segment for testing
 
-### **Phase 1: Initial Setup**
-1. **Verify Assurance is enabled** in your NetBox Enterprise or NetBox Cloud instance
-2. **Set up data ingestion** using NetBox Discovery or other sources
-3. **Configure user permissions** for team members who will use Assurance
-4. **Review the [UI documentation](using-the-ui.md)** to understand the interface
+## Installation and Setup
 
-### **Phase 2: First Data Ingestion**
-1. **Start with a small network segment** to understand the workflow
-2. **Ingest initial data** from your chosen source
-3. **Review generated deviations** to understand what Assurance detected
-4. **Process your first deviations** using the [UI workflow](using-the-ui.md#workflow-best-practices)
+### **NetBox Enterprise**
+NetBox Assurance is available as an **optional component** of NetBox Enterprise. During installation, your license file determines whether Assurance is enabled.
 
-### **Phase 3: Operational Integration**
-1. **Establish daily review processes** for active deviations
-2. **Create team workflows** for deviation triage and remediation
-3. **Expand coverage** to additional network segments
-4. **Integrate with change management** processes
+**Installation Steps:**
+1. Verify your license includes NetBox Assurance entitlement
+2. During NetBox Enterprise installation, Assurance services are automatically deployed if licensed
+3. The NetBox Assurance UI and Diode data plugins are installed automatically
+4. Access the Assurance menu in your NetBox interface to confirm installation
 
-## Common Use Cases
+### **NetBox Cloud**
+NetBox Assurance will be available as an **optional add-on** for NetBox Cloud in a future release.
+
+**Coming Soon:**
+NetBox Assurance for NetBox Cloud is currently in development. When available, it will feature:
+1. Seamless integration as an optional add-on
+2. Automatic provisioning and setup
+3. Built-in UI and Diode data plugins
+4. No additional configuration required
+
+Stay tuned for availability updates.
+
+### **Verification**
+After installation, verify NetBox Assurance is working:
+1. Log into your NetBox instance
+2. Look for the **Assurance** menu in the sidebar
+3. Navigate to **Assurance > Deviations** to access the main interface
+4. Confirm you can see the deviation management interface
+
+## Initial Configuration
+
+### **Data Source Setup**
+Choose and configure your primary data source:
+
+#### **Option 1: NetBox Discovery (Recommended)**
+1. Follow the [NetBox Discovery setup guide](../netbox-discovery/getting-started.md)
+2. Configure discovery agents for your network segments
+3. Set up automated discovery schedules
+4. Verify data is flowing into NetBox
+
+#### **Option 2: Controller Integrations**
+1. Configure your network controllers (VMware vCenter, Juniper Mist, etc.)
+2. Set up API access and credentials
+3. Configure data collection schedules
+4. Test connectivity and data flow
+
+#### **Option 3: Custom Diode Integration**
+1. Review the [Diode integration documentation](../netbox-extensions/diode/index.md)
+2. Develop custom integrations using Python or Go SDKs
+3. Configure data ingestion pipelines
+4. Test data flow and validation
+
+## Your First Workflow
+
+### **Phase 1: Initial Data Ingestion**
+Start with a small, well-understood network segment:
+
+1. **Select a test segment**: Choose 10-20 devices you know well
+2. **Configure data source**: Set up discovery or integration for this segment
+3. **Initial ingestion**: Run your first data collection
+4. **Review results**: Check that devices appear correctly in NetBox
+
+### **Phase 2: Understanding Deviations**
+Learn how NetBox Assurance detects and presents drift:
+
+1. **Access deviations**: Navigate to **Assurance > Active Deviations**
+2. **Review first deviations**: Examine what Assurance detected
+3. **Understand the interface**: Familiarize yourself with the [interface documentation](using-the-ui.md)
+4. **Analyze changes**: Click on individual deviations to see detailed change analysis
+
+### **Phase 3: Processing Your First Deviations**
+Practice the remediation workflow:
+
+1. **Triage deviations**: Determine which require action
+2. **Apply safe changes**: Start with obvious corrections (e.g., missing devices)
+3. **Ignore acceptable drift**: Mark intentional differences as ignored
+4. **Document decisions**: Use NetBox's change logging for audit trails
+
+### **Phase 4: Operational Integration**
+Establish ongoing processes:
+
+1. **Daily review schedule**: Set up regular deviation review sessions
+2. **Team workflows**: Define roles and responsibilities for deviation management
+3. **Escalation procedures**: Create processes for complex or critical deviations
+4. **Expand coverage**: Gradually add more network segments
+
+## Common Implementation Patterns
 
 ### **Day 1: Initial NetBox Population**
-- **Controlled onboarding** of network data into NetBox
-- **Review and refine** data before it becomes part of your source of truth
-- **Faster time to value** with confidence in data accuracy
+Use NetBox Assurance to control the initial population of your NetBox instance:
+
+**Workflow:**
+1. Configure data sources for comprehensive network discovery
+2. Review all discovered devices before accepting into NetBox
+3. Use deviations to validate data quality and completeness
+4. Establish baseline documentation with confidence
+
+**Benefits:**
+- Controlled onboarding with review and approval workflows
+- Data quality validation before information becomes your source of truth
+- Faster time to value with confidence in documentation accuracy
 
 ### **Day 1.5: Improving Network Management Maturity**
-- **Gradual documentation improvement** while maintaining daily operations
-- **Process improvement insights** based on drift patterns
-- **Foundation building** for network automation initiatives
+Gradually improve your network documentation while maintaining operations:
+
+**Workflow:**
+1. Focus on high-priority network segments first
+2. Use drift patterns to identify process improvement opportunities
+3. Implement automation based on consistent deviation types
+4. Build foundation for advanced network automation
+
+**Benefits:**
+- Gradual documentation improvement without disrupting daily operations
+- Process improvement insights based on drift detection patterns
+- Foundation building for network automation initiatives
 
 ### **Day 2: Operational Excellence**
-- **Proactive drift detection** for mature network operations
-- **Immediate response** to unauthorized or unexpected changes
-- **Continuous validation** of network automation results
+Maintain high-quality network documentation for mature operations:
 
-## Integration with NetBox Discovery
+**Workflow:**
+1. Monitor for unauthorized or unexpected configuration changes
+2. Validate network automation results automatically
+3. Integrate with change management processes
+4. Use for compliance reporting and auditing
 
-NetBox Assurance and [NetBox Discovery](../netbox-discovery/index.md) work together seamlessly:
+**Benefits:**
+- Proactive drift detection for mature network operations teams
+- Immediate response to unauthorized or unexpected configuration changes
+- Continuous validation of network automation results and change management processes
 
-- **Discovery provides the data** - Automated collection from network devices and controllers
-- **Assurance provides the intelligence** - Analysis, drift detection, and remediation workflows
-- **Combined value** - Complete visibility and control over network documentation accuracy
+## Integration with Existing Workflows
 
-> **Recommendation**: Start with NetBox Discovery for automated data collection, then use NetBox Assurance to manage the ingestion and detect ongoing drift.
+### **Change Management Integration**
+- **Pre-change validation**: Verify current state before making changes
+- **Post-change verification**: Confirm changes were applied correctly
+- **Rollback detection**: Identify when changes need to be reverted
+
+### **Incident Response Enhancement**
+- **Faster troubleshooting**: Access to accurate, real-time network state
+- **Root cause analysis**: Historical tracking of configuration changes
+- **Documentation trust**: Confidence in network documentation during incidents
+
+### **Compliance and Auditing**
+- **Automated compliance checking**: Continuous validation against standards
+- **Audit trail maintenance**: Historical record of all network changes
+- **Reporting capabilities**: Generate compliance reports and metrics
+
+## Troubleshooting Common Issues
+
+### **No Deviations Appearing**
+1. Verify data sources are configured and running
+2. Check network connectivity between sources and NetBox
+3. Confirm permissions are set correctly
+4. Review logs for ingestion errors
+
+### **Too Many False Positives**
+1. Review your tolerance settings for acceptable drift
+2. Use the ignore function for known acceptable differences
+3. Refine your data source configurations
+4. Consider adjusting detection sensitivity
+
+### **Performance Issues**
+1. Use date range filters to limit large datasets
+2. Process deviations in smaller batches
+3. Schedule data ingestion during off-peak hours
+4. Contact support for optimization guidance
 
 ## Next Steps
 
-1. **[Explore the UI](using-the-ui.md)** - Learn how to navigate and use the NetBox Assurance interface
-2. **[Set up NetBox Discovery](../netbox-discovery/getting-started.md)** - Configure automated data collection
-3. **[Learn about Diode](../netbox-extensions/diode/index.md)** - Understand the underlying data ingestion platform
+Once you've completed your initial setup and first workflow:
+
+1. **[Master the Interface](using-the-ui.md)** - Learn advanced features and workflows
+2. **[Expand NetBox Discovery](../netbox-discovery/getting-started.md)** - Add more network segments and device types
+3. **[Explore Diode Integration](../netbox-extensions/diode/index.md)** - Build custom integrations for specialized needs
+4. **Scale Operations** - Expand to full network coverage and integrate with enterprise workflows
 
 ## Support and Resources
 
-- **UI Documentation**: Detailed guide to [using the NetBox Assurance interface](using-the-ui.md)
+- **Interface Documentation**: Detailed guide to [using the NetBox Assurance interface](using-the-ui.md)
 - **NetBox Discovery**: Complete [setup and configuration guide](../netbox-discovery/getting-started.md)
 - **Diode Integration**: Advanced [API and SDK documentation](../netbox-extensions/diode/index.md)
 - **Community Support**: Connect with the community on [Slack](https://netdev.chat/) in the `#netbox` channel
 
 ---
 
-**NetBox Assurance** transforms network operations by ensuring your documentation stays current and accurate, enabling faster incident resolution, better compliance, and the confidence to move quickly with reliable network automation. 
+**NetBox Assurance** transforms network operations by ensuring your documentation stays current and accurate. Follow this guide to establish a solid foundation for maintaining network documentation integrity and enabling confident network automation. 

@@ -50,6 +50,59 @@ mkdocs serve
 # Visit: http://127.0.0.1:8000
 ```
 
+## 📦 External Documentation Sync
+
+This repository includes documentation from external repositories while maintaining sync with authoritative sources. We use a docs-only approach to keep the repository clean and focused.
+
+### External Documentation Sources
+
+| Path | Repository | Purpose | Update Method |
+|------|------------|---------|---------------|
+| `docs/netbox-extensions/changes/` | [`netbox-changes`](https://github.com/netboxlabs/netbox-changes) | NetBox Change Management documentation | Script-based sync |
+
+### Working with External Documentation
+
+#### **For Contributors (Read-Only)**
+```bash
+# Standard clone - no special setup required
+git clone https://github.com/netboxlabs/console-docs
+cd console-docs
+pip install -r requirements.txt
+mkdocs serve
+```
+
+#### **For Maintainers (Updating Documentation)**
+```bash
+# Update NetBox Changes documentation from source
+./scripts/update-changes-docs.sh
+
+# Review the changes
+git diff docs/netbox-extensions/changes/
+
+# Test the build
+python -m mkdocs build
+
+# Commit and push updates
+git add docs/netbox-extensions/changes/
+git commit -m "Update NetBox Changes documentation"
+git push
+```
+
+#### **Why We Use This Approach**
+- **Clean Repository**: Only includes documentation content, not entire source repositories
+- **Simple Setup**: No submodule initialization required for contributors
+- **Flexible Updates**: Easy to control what content gets synced and when
+- **Maintainable**: Clear separation between local and external content
+- **Version Control**: Full control over when and what gets updated
+
+#### **Update Script Details**
+The `scripts/update-changes-docs.sh` script:
+- ✅ Clones the source repository to a temporary location
+- ✅ Copies only the `docs/` directory content
+- ✅ Replaces existing documentation with latest version
+- ✅ Cleans up temporary files
+- ✅ Provides clear next steps for review and commit
+
 ## 📝 Documentation Team Workflow Guide
 
 ### Understanding Version Control Strategy

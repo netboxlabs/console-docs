@@ -1,12 +1,33 @@
+---
+tags:
+  - cloud
+  - enterprise
+title: "Using the NetBox Assurance UI"
+description: "Comprehensive guide to the NetBox Assurance web interface - navigation, deviation management, workflows, and daily operations for network drift detection"
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-27"
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+status: "current"
+category: "feature"
+audience: "end-users"
+complexity: "beginner"
+related_docs:
+  - "index.md"
+  - "getting-started.md"
+external_links:
+  - "https://netdev.chat/"
+---
+
 # Using the NetBox Assurance UI
 
 <span class="pill pill-cloud">NetBox Cloud (Coming Soon)</span>
 <span class="pill pill-enterprise">NetBox Enterprise</span>
 
-The NetBox Assurance plugin provides a comprehensive web interface within NetBox for monitoring network drift, viewing deviation reports, and managing remediation workflows. The plugin integrates seamlessly with NetBox's existing interface while providing specialized tools for network assurance.
+The NetBox Assurance plugin provides a comprehensive web interface within NetBox for monitoring network drift, viewing deviation reports, and managing remediation workflows. This guide covers the interface features, navigation, and operational workflows for day-to-day use of NetBox Assurance.
 
-!!! info "New to NetBox Assurance?"
-    If you're just getting started, check out the [Getting Started Guide](getting-started.md) for setup instructions and initial configuration before diving into the UI details below.
+> **Prerequisites**: Before using this guide, complete the [Getting Started](getting-started.md) setup to ensure NetBox Assurance is properly configured and receiving data.
 
 ## Navigation
 
@@ -171,29 +192,11 @@ Deviations are marked with clear visual indicators:
 ### Common Issues
 - **Failed Deviations**: Check error details for specific failure reasons
 - **Missing Data**: Verify source system connectivity
-- **Permission Issues**: Ensure proper NetBox user permissions
 
 ### Performance Considerations
 - Use date range filters to limit large datasets
 - Export data in smaller chunks for better performance
 - Leverage bulk operations for efficiency
-
-## Next Steps and Resources
-
-### **Setting Up Data Sources**
-If you haven't already configured data ingestion, review these guides:
-- **[NetBox Discovery Setup](../netbox-discovery/getting-started.md)** - Automated network discovery and data collection
-- **[Diode Integration](../netbox-extensions/diode/index.md)** - Custom data ingestion using APIs and SDKs
-
-### **Operational Integration**
-- **[Getting Started Guide](getting-started.md)** - Complete setup and workflow recommendations
-- **Change Management**: Integrate Assurance workflows with your existing change management processes
-- **Team Training**: Ensure team members understand deviation triage and remediation workflows
-
-### **Advanced Configuration**
-- **Custom Deviation Types**: Configure specific deviation types for your environment
-- **Integration Workflows**: Set up automated responses to specific deviation patterns
-- **Reporting Templates**: Create custom export templates for compliance and operational reporting
 
 ---
 
