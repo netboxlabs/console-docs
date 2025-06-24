@@ -148,16 +148,16 @@ nav:
   - Extensions:
     - Branching: "netbox-extensions/branching/index.md"
     - Change Management:
-      - Overview: "netbox-extensions/changes/docs/index.md"
-      - Configuration: "netbox-extensions/changes/docs/configuration.md"
+      - Overview: "netbox-extensions/changes/index.md"
+      - Configuration: "netbox-extensions/changes/configuration.md"
       - Models:
-        - Change Request: "netbox-extensions/changes/docs/models/changerequest.md"
-        - Comment: "netbox-extensions/changes/docs/models/comment.md"
-        - Comment Reply: "netbox-extensions/changes/docs/models/commentreply.md"
-        - Policy: "netbox-extensions/changes/docs/models/policy.md"
-        - Policy Rule: "netbox-extensions/changes/docs/models/policyrule.md"
-        - Review: "netbox-extensions/changes/docs/models/review.md"
-      - Changelog: "netbox-extensions/changes/docs/changelog.md"
+        - Change Request: "netbox-extensions/changes/models/changerequest.md"
+        - Comment: "netbox-extensions/changes/models/comment.md"
+        - Comment Reply: "netbox-extensions/changes/models/commentreply.md"
+        - Policy: "netbox-extensions/changes/models/policy.md"
+        - Policy Rule: "netbox-extensions/changes/models/policyrule.md"
+        - Review: "netbox-extensions/changes/models/review.md"
+      - Changelog: "netbox-extensions/changes/changelog.md"
     - Diode:
       - Overview: "netbox-extensions/diode/index.md"
       - Get Started: "netbox-extensions/diode/diode-get-started.md"
