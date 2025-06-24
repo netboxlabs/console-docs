@@ -1,0 +1,4 @@
+[submodule "external-repos/console-docs"]
+	path = external-repos/console-docs
+	url = https://github.com/netboxlabs/console-docs/
+	branch = feat/navigation-restructure-and-docs-enhancement
