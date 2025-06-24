@@ -77,7 +77,45 @@ complexity: "intermediate"
 
 ## Integration Instructions
 
-### Step 1: Repository Setup
+### Step 1: Core Infrastructure Setup
+
+#### A. Enhanced Tagging System Files
+```bash
+# From feat/navigation-restructure-and-docs-enhancement branch
+git checkout origin/feat/navigation-restructure-and-docs-enhancement
+
+# Copy core infrastructure files to new branch
+cp docs/tags.yml [to-new-branch]                    # Streamlined 20-tag system definitions
+cp scripts/enhanced-semantic-tagging.js [to-new-branch]  # Enhanced tagging automation script
+cp package.json [to-new-branch]                     # Updated scripts section with enhanced-tag command
+
+# Update mkdocs.yml with DocHub configuration
+# Add CSS and template support for streamlined tagging system
+```
+
+**Core Infrastructure Components:**
+
+1. **`docs/tags.yml`** - Streamlined 20-tag system definitions:
+   - **Platform tags**: `cloud`, `enterprise`, `community`, `airgap` (display as top pills)
+   - **Product tags**: `netbox`, `discovery`, `assurance`, `operator` (regular tags)
+   - **Technical tags**: `api`, `authentication`, `administration`, `operations`, etc.
+   - Color schemes and permalink definitions for DocHub integration
+
+2. **`scripts/enhanced-semantic-tagging.js`** - Intelligent auto-tagging script:
+   - Semantic content analysis for automatic tag assignment
+   - Pattern matching for NetBox products and features
+   - Edition-aware tagging (community/enterprise/cloud)
+   - Technical category detection (API, auth, admin, ops)
+   - Reduces manual tagging effort by ~90%
+
+3. **`package.json`** - Updated build and automation scripts:
+   - `enhanced-tag`: Primary command for streamlined tagging system
+   - `migrate:phase2`: Platform-first structure migration
+   - `build:all`: Multi-edition build process
+   - `sync:dochub`: DocHub integration utilities
+   - `validate:structure`: Content validation tools
+
+#### B. Repository Setup
 ```bash
 # Clone the source repository
 git clone https://github.com/netboxlabs/console-docs.git
