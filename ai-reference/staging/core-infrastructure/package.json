@@ -1,0 +1,37 @@
+{
+  "name": "console-docs",
+  "version": "1.0.0",
+  "description": "NetBox Enterprise Documentation",
+  "scripts": {
+    "serve": "mkdocs serve",
+    "build": "mkdocs build",
+    "migrate-pills": "node scripts/migrate-pills-to-tags.js",
+    "preview-tags": "node scripts/preview-auto-tags.js",
+    "auto-tag": "node scripts/auto-tag-by-location.js",
+    "enhanced-tag": "node scripts/enhanced-semantic-tagging.js",
+    "migrate:phase2": "node scripts/migrate-to-platform-structure.js",
+    "migrate:dry-run": "node scripts/migrate-to-platform-structure.js --dry-run",
+    "migrate:rollback": "node scripts/migrate-to-platform-structure.js --rollback",
+    "build:community": "mkdocs build --config-file mkdocs-community.yml",
+    "build:cloud": "mkdocs build --config-file mkdocs-cloud.yml",
+    "build:enterprise": "mkdocs build --config-file mkdocs-enterprise.yml",
+    "build:all": "npm run build:community && npm run build:cloud && npm run build:enterprise",
+    "sync:dochub": "node scripts/sync-with-dochub.js",
+    "validate:structure": "node scripts/validate-platform-structure.js",
+    "test:platform-structure": "npm run validate:structure",
+    "test:content-sharing": "echo 'Content sharing tests not implemented yet'",
+    "test:build-processes": "npm run build:all",
+    "test:dochub-sync": "npm run sync:dochub"
+  },
+  "devDependencies": {
+    "glob": "^11.0.3",
+    "gray-matter": "^4.0.3"
+  },
+  "keywords": [
+    "netbox",
+    "documentation",
+    "enterprise"
+  ],
+  "author": "NetBox Labs",
+  "license": "MIT"
+}
