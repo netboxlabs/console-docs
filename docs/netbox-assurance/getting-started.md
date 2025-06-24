@@ -83,13 +83,6 @@ After installation, verify NetBox Assurance is working:
 
 ## Initial Configuration
 
-### **User Permissions**
-Configure appropriate permissions for team members:
-
-1. **Assurance Administrators**: Full access to all Assurance features
-2. **Assurance Users**: View deviations and apply approved remediation
-3. **Assurance Viewers**: Read-only access for monitoring and reporting
-
 ### **Data Source Setup**
 Choose and configure your primary data source:
 
