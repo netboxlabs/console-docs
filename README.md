@@ -44,11 +44,71 @@ pip install -r requirements.txt
 /Users/[username]/Library/Python/3.9/bin/mkdocs serve
 ```
 
-### 3. Start Local Preview
+### 3. Initialize Git Submodules
+```bash
+# Initialize submodules (required for NetBox Changes documentation)
+git submodule update --init --recursive
+
+# Or if you cloned with submodules already:
+git clone --recurse-submodules https://github.com/netboxlabs/console-docs
+```
+
+### 4. Start Local Preview
 ```bash
 mkdocs serve
 # Visit: http://127.0.0.1:8000
 ```
+
+## 📦 Git Submodules
+
+This repository uses git submodules to include documentation from external repositories while maintaining sync with authoritative sources.
+
+### Current Submodules
+
+| Path | Repository | Purpose |
+|------|------------|---------|
+| `docs/netbox-extensions/changes/` | [`netbox-changes`](https://github.com/netboxlabs/netbox-changes) | NetBox Change Management documentation |
+
+### Working with Submodules
+
+#### **For Contributors (Read-Only)**
+```bash
+# When cloning the repository
+git clone --recurse-submodules https://github.com/netboxlabs/console-docs
+
+# If you already cloned without submodules
+git submodule update --init --recursive
+
+# Pull latest changes including submodule updates
+git pull --recurse-submodules
+```
+
+#### **For Maintainers (Updating Documentation)**
+```bash
+# Update a specific submodule to latest version
+git submodule update --remote docs/netbox-extensions/changes
+
+# Commit the submodule update
+git add docs/netbox-extensions/changes
+git commit -m "Update NetBox Changes documentation"
+git push
+
+# Update all submodules to latest
+git submodule update --remote
+```
+
+#### **Why We Use Submodules**
+- **Single Source of Truth**: Documentation stays in sync with the private repository
+- **Automatic Updates**: Easy to pull latest changes from authoritative source
+- **Clean Integration**: Maintains unified navigation and site structure
+- **Version Control**: Can pin to specific commits or track latest changes
+
+#### **Submodule Best Practices**
+- ✅ Always run `git submodule update --init --recursive` after cloning
+- ✅ Use `git pull --recurse-submodules` to get all updates
+- ✅ Update submodules regularly to stay current with source repositories
+- ⚠️ Be aware that submodules point to specific commits, not branches
+- ⚠️ Contributors need access to the submodule repository to make changes
 
 ## 📝 Documentation Team Workflow Guide
 
