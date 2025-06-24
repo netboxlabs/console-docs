@@ -37,7 +37,6 @@ Before enabling NetBox Assurance, ensure you have:
 - NetBox Enterprise 1.10+ or NetBox Cloud (coming soon) with Assurance add-on
 - Active NetBox Assurance license
 - Network connectivity for data ingestion sources
-- Appropriate user permissions in NetBox
 
 ### **Data Sources**
 To maximize value from NetBox Assurance, you'll need at least one data source:

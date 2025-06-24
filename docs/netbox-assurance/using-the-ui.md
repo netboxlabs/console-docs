@@ -192,7 +192,6 @@ Deviations are marked with clear visual indicators:
 ### Common Issues
 - **Failed Deviations**: Check error details for specific failure reasons
 - **Missing Data**: Verify source system connectivity
-- **Permission Issues**: Ensure proper NetBox user permissions
 
 ### Performance Considerations
 - Use date range filters to limit large datasets
