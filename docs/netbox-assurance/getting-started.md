@@ -24,7 +24,7 @@ external_links:
 
 # Getting Started with NetBox Assurance
 
-<span class="pill pill-cloud">NetBox Cloud</span>
+<span class="pill pill-cloud">NetBox Cloud (Coming Soon)</span>
 <span class="pill pill-enterprise">NetBox Enterprise</span>
 
 This guide will help you set up, configure, and start using NetBox Assurance to maintain accurate network documentation and proactive drift detection. Follow these steps to go from installation to your first operational workflow.
@@ -34,7 +34,7 @@ This guide will help you set up, configure, and start using NetBox Assurance to 
 Before enabling NetBox Assurance, ensure you have:
 
 ### **Technical Requirements**
-- NetBox Enterprise 1.10+ or NetBox Cloud with Assurance add-on
+- NetBox Enterprise 1.10+ or NetBox Cloud (coming soon) with Assurance add-on
 - Active NetBox Assurance license
 - Network connectivity for data ingestion sources
 - Appropriate user permissions in NetBox
@@ -63,13 +63,16 @@ NetBox Assurance is available as an **optional component** of NetBox Enterprise.
 4. Access the Assurance menu in your NetBox interface to confirm installation
 
 ### **NetBox Cloud**
-NetBox Assurance is available as an **optional add-on** for NetBox Cloud.
+NetBox Assurance will be available as an **optional add-on** for NetBox Cloud in a future release.
 
-**Setup Steps:**
-1. Contact your NetBox Cloud administrator to add the Assurance add-on
-2. Services are automatically provisioned and integrated with your instance
-3. The NetBox Assurance UI and Diode data plugins are installed automatically
-4. No additional configuration required - ready to use immediately
+**Coming Soon:**
+NetBox Assurance for NetBox Cloud is currently in development. When available, it will feature:
+1. Seamless integration as an optional add-on
+2. Automatic provisioning and setup
+3. Built-in UI and Diode data plugins
+4. No additional configuration required
+
+Stay tuned for availability updates.
 
 ### **Verification**
 After installation, verify NetBox Assurance is working:

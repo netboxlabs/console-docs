@@ -23,7 +23,7 @@ external_links:
 
 # NetBox Assurance
 
-<span class="pill pill-cloud">NetBox Cloud</span>
+<span class="pill pill-cloud">NetBox Cloud (Coming Soon)</span>
 <span class="pill pill-enterprise">NetBox Enterprise</span>
 
 NetBox Assurance automatically detects operational drift between your intended network design (documented in NetBox) and your actual network infrastructure. It continuously monitors network and infrastructure, comparing your intended design against real-world infrastructure to uncover discrepancies and provide proactive remediation capabilities.
@@ -122,7 +122,7 @@ This integration enables teams to not only discover their network infrastructure
 NetBox Assurance is available as an optional component of NetBox Enterprise. Your license file determines whether Assurance services are enabled during installation.
 
 ### **NetBox Cloud**
-NetBox Assurance is available as an optional add-on for NetBox Cloud. When purchased, services are automatically provisioned and integrated with your instance.
+NetBox Assurance will be available as an optional add-on for NetBox Cloud in a future release. Stay tuned for availability updates.
 
 ### **NetBox Community Edition**
 NetBox Assurance is not available for NetBox Community Edition. However, the underlying [Diode project](../netbox-extensions/diode/index.md) provides data ingestion capabilities that work with NetBox Discovery agents.
