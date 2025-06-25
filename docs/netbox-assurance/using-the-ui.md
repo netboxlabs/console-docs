@@ -2,6 +2,9 @@
 tags:
   - cloud
   - enterprise
+  - assurance
+  - ui
+  - interface
 title: "Using the NetBox Assurance UI"
 description: "Comprehensive guide to the NetBox Assurance web interface - navigation, deviation management, workflows, and daily operations for network drift detection"
 author: "NetBox Labs Documentation Team"
@@ -21,9 +24,6 @@ external_links:
 ---
 
 # Using the NetBox Assurance UI
-
-<span class="pill pill-cloud">NetBox Cloud (Coming Soon)</span>
-<span class="pill pill-enterprise">NetBox Enterprise</span>
 
 The NetBox Assurance plugin provides a comprehensive web interface within NetBox for monitoring network drift, viewing deviation reports, and managing remediation workflows. This guide covers the interface features, navigation, and operational workflows for day-to-day use of NetBox Assurance.
 

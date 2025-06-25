@@ -5,7 +5,7 @@ tags:
   - templates
   - development
 author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
+last_updated: "2025-06-25"
 category: "ai-reference"
 audience: "developers"
 complexity: "beginner"
@@ -101,7 +101,7 @@ tags:
 title: "Document Title"
 description: "SEO description"
 author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
+last_updated: "2025-06-25"
 versions:
   cloud: "v1.10"
   enterprise: "v1.10"
@@ -201,7 +201,7 @@ yarn build
 
 ---
 
-**Quick Reference** | **Last Updated**: 2025-01-27  
+**Quick Reference** | **Last Updated**: 2025-06-25  
 **For full details**: See [README.md](./README.md) and individual files
 
 *Fast lookup for AI reference system - development team use.* 
