@@ -1,3 +1,26 @@
+---
+tags:
+  - ai-reference
+  - cloud
+  - enterprise
+  - reference
+  - ai-tools
+  - authentication
+  - tagging
+  - navigation
+  - documentation
+sidebar_position: 999
+description: AI Reference material for NetBox Labs documentation development
+internal_only: false
+draft: true
+last_updated: '2025-06-19'
+category: ai-reference
+audience: developers
+---
+:::info Development Resource
+This content is synced from console-docs/ai-reference for development team use.
+:::
+
 # Auto-Tagging Analysis Summary
 
 ## 📊 Current Status

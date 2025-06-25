@@ -3,17 +3,35 @@ tags:
   - cloud
   - enterprise
   - community
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-02"
+  - ai-reference
+  - assurance
+  - discovery
+  - operator
+  - template
+  - style-guide
+  - reference
+  - ai-tools
+  - tagging
+  - documentation
+author: NetBox Labs Documentation Team
+last_updated: '2025-01-02'
 versions:
-  cloud: "v1.10"
-  enterprise: "v1.10"
-  community: "v4.2"
-status: "current"
-category: "style-guide"
-audience: "developers"
-complexity: "intermediate"
+  cloud: v1.10
+  enterprise: v1.10
+  community: v4.2
+status: current
+category: style-guide
+audience: developers
+complexity: intermediate
+sidebar_position: 999
+description: AI Reference material for NetBox Labs documentation development
+internal_only: false
+draft: true
 ---
+:::info Development Resource
+This content is synced from console-docs/ai-reference for development team use.
+:::
+
 
 # AI Prompting Guide for NetBox Documentation
 
