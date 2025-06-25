@@ -8,7 +8,7 @@
 
 Diode is a NetBox data ingestion service that aims to simplify and enhance the process to add and update network data in NetBox. The guiding principle behind Diode has been to make it as easy as possible to get data into NetBox, removing as much burden as possible from the user while shifting that effort to technology.
 
-Diode is a sidecar service to NetBox that provides a gRPC/protobuf API designed for ingestion of common NetBox data models. Diode reduces the need to preprocess data to make it conform to the strict object hierarchy imposed by the NetBox data model. This allows data to be sent to NetBox in a more freeform manner, in blocks that are intuitive for network engineers such as by device or by interface. Related information is treated as attributes or properties of these blocks. Diode takes care of the heavy lifting of transforming this data to make it align with NetBox's structured and comprehensive data model. Diode will create placeholder objects to compensate for missing information, allowing fragmented or incomplete information about the network to be collected.
+Diode is a sidecar service to NetBox that provides a gRPC/protobuf API designed for ingestion of common NetBox data models. Diode reduces the need to preprocess data to make it conform to the strict object hierarchy of the NetBox data model. This allows data to be sent to NetBox in a more freeform manner, in blocks that are intuitive for network engineers such as by device or by interface. Related information is treated as attributes of these blocks. Diode takes care of transforming this data to make it align with NetBox's structured and comprehensive data model.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ There are several components that make up the Diode ecosystem:
 2. **Diode NetBox Plugin** - Required component that provides API key management and ORM integration into NetBox. See [installation instructions](https://github.com/netboxlabs/diode-netbox-plugin).
 
 3. **Data Ingestion Methods**:
-   * **NetBox Discovery Agent** - Automated network discovery using the Orb agent
+   * **NetBox Discovery Agent** - Automated discovery using the [Orb agent](https://github.com/netboxlabs/orb-agent).
    * **SDK Integrations**:
      * [Python SDK](https://github.com/netboxlabs/diode-sdk-python)
      * [Go SDK](https://github.com/netboxlabs/diode-sdk-go)
