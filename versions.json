@@ -2,7 +2,7 @@
   "versions": [
     {
       "version": "v1.10", 
-      "branch": "v1.10",
+      "branch": "main",
       "title": "v1.10 (Current)",
       "default": true,
       "status": "current"
@@ -27,7 +27,7 @@
     },
     {
       "version": "v1.12",
-      "branch": "main",
+      "branch": "v1.12",
       "title": "v1.12 (Alpha) - NetBox Enterprise with HA and NetBox v4.3.2",
       "description": "NetBox Enterprise with High Availability and NetBox v4.3.2",
       "status": "alpha"
