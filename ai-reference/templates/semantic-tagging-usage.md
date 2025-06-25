@@ -1,26 +1,51 @@
-# Streamlined Semantic Tagging Quick Usage Guide
+---
+tags:
+  - ai-reference
+  - cloud
+  - template
+  - reference
+  - ai-tools
+  - authentication
+  - tagging
+  - documentation
+sidebar_position: 999
+description: AI Reference material for NetBox Labs documentation development
+internal_only: false
+draft: true
+last_updated: '2025-06-19'
+category: ai-reference
+audience: developers
+---
+:::info Development Resource
+This content is synced from console-docs/ai-reference for development team use.
+:::
+
+# Semantic Tagging Quick Usage Guide
 
 ## Overview
-The streamlined semantic tagging system automatically enhances documentation with 20 carefully curated tags for better content discovery while avoiding tag overload.
+The semantic tagging system automatically enhances documentation with comprehensive tags for better content discovery and cross-referencing.
 
 ## Quick Start
 
-### 1. Apply Streamlined Semantic Tags
+### 1. Preview Changes (Recommended First Step)
 ```bash
-npm run enhanced-tag
+npm run semantic-tag-dry
 ```
-This analyzes and updates all markdown files with the streamlined tag system (20 total tags).
+This shows what tags would be added without making any changes.
 
-### 2. Preview Basic Location Tags (Optional)
+### 2. Apply Semantic Tags
 ```bash
-npm run preview-tags
+npm run semantic-tag
 ```
-This shows basic location-based tags without applying them.
+This analyzes and updates all markdown files with appropriate semantic tags.
 
 ### 3. Targeted Tagging
 ```bash
-# Tag specific files directly
-node scripts/enhanced-semantic-tagging.js
+# Tag specific directory
+node scripts/semantic-tagging.js docs/Administration\ Console
+
+# Dry run on specific directory
+node scripts/semantic-tagging.js docs/netbox-enterprise --dry-run
 ```
 
 ## What It Does
@@ -40,66 +65,56 @@ node scripts/enhanced-semantic-tagging.js
 
 **Before:**
 ```yaml
----
 title: NetBox Cloud SAML Configuration Guide
 tags:
   - cloud
----
 ```
 
 **After:**
 ```yaml
----
 title: NetBox Cloud SAML Configuration Guide
 tags:
   - cloud
-  - netbox
-  - authentication
   - administration
   - configuration
+  - authentication
+  - sso
+  - saml
+  - security
 last_updated: "2025-01-27"
----
 ```
 
-## Streamlined Tag Categories (20 Total)
+## Tag Categories Applied
 
-### Platform Tags (4) - Top Pills
-- `cloud`, `enterprise`, `community`, `airgap`
+### Product Tags
+- `cloud`, `enterprise`, `community`, `discovery`, `assurance`, `operator`, `netbox`, `airgap`
 
-### Product Tags (4)
-- `netbox`, `discovery`, `assurance`, `operator`
+### Cross-Cutting Topics
+- **Authentication**: `authentication`, `sso`, `ldap`, `saml`, `two-factor`
+- **Security**: `security`, `permissions`, `rbac`
+- **Operations**: `database`, `backup`, `upgrade`, `monitoring`
+- **Integration**: `rest-api`, `automation`, `webhooks`
+- **Infrastructure**: `cloud-connectivity`, `networking`, `infrastructure`
 
-### Deployment Tags (2)
-- `kubernetes`, `helm`
-
-### Technical Categories (4)
-- `api`, `authentication`, `administration`, `operations`
-
-### Content Types (4)
-- `installation`, `configuration`, `troubleshooting`, `getting-started`
-
-### Features (4)
-- `automation`, `networking`, `integration`, `ai`
+### Content Types
+- `getting-started`, `installation`, `configuration`, `administration`, `troubleshooting`
 
 ## Benefits
 
 ### For Users
-- Find all authentication-related content with the `authentication` tag
-- Discover related content through broad, intuitive categories
-- Avoid tag overload while maintaining comprehensive coverage
-- Browse by clear, meaningful categories
+- Find all SSO-related content across products with `sso` tag
+- Discover related authentication methods through consistent tagging
+- Browse by topic rather than just product
 
 ### For DocHub Integration
-- Simplified metadata with 20 well-defined tags
-- Reduced complexity for better performance
-- Clear categorization for easier content management
-- Consistent cross-referencing with broad tag coverage
+- Structured metadata for better categorization
+- Enhanced search and filtering capabilities
+- Consistent cross-referencing across products
 
 ### For Documentation Team
-- Streamlined tagging reduces cognitive load
-- Intuitive tag categories are easier to understand
-- Automated application with meaningful groupings
-- Better user experience with focused tag sets
+- Automated tagging reduces manual effort
+- Consistent tag application across all content
+- Easy identification of content relationships
 
 ## Best Practices
 
@@ -118,12 +133,10 @@ last_updated: "2025-01-27"
 ### Manual Tag Additions
 You can still manually add tags that the system doesn't detect:
 ```yaml
----
 tags:
   - cloud
   - custom-tag
   - specific-use-case
----
 ```
 
 The semantic tagging system will preserve these and add its detected tags.
@@ -155,6 +168,4 @@ The semantic tagging system works alongside:
 
 ---
 
-For current technical information, see:
-- `ai-reference/reference-docs/tag-consolidation-summary.md` - Streamlined system overview
-- `ai-reference/style-guides/product-tagging-guide.md` - Complete tagging guide 
+For detailed technical information, see `ai-reference/reference-docs/semantic-tagging-system.md`. 

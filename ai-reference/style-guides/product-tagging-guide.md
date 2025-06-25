@@ -1,8 +1,32 @@
+---
+tags:
+  - ai-reference
+  - cloud
+  - enterprise
+  - community
+  - discovery
+  - style-guide
+  - reference
+  - ai-tools
+  - tagging
+  - documentation
+sidebar_position: 999
+description: AI Reference material for NetBox Labs documentation development
+internal_only: false
+draft: true
+last_updated: '2025-06-19'
+category: ai-reference
+audience: developers
+---
+:::info Development Resource
+This content is synced from console-docs/ai-reference for development team use.
+:::
+
 # Product Tagging System Guide
 
 ## Overview
 
-This guide explains the streamlined product tagging system that replaces HTML `<span>` pills with Docusaurus-native frontmatter tags. This system provides better integration with the upstream netboxlabs-website-dochub repository and enables powerful categorization and filtering capabilities.
+This guide explains the new product tagging system that replaces HTML `<span>` pills with Docusaurus-native frontmatter tags. This system provides better integration with the upstream netboxlabs-website-dochub repository and enables powerful categorization and filtering capabilities.
 
 ## Why We Changed
 
@@ -25,9 +49,9 @@ This guide explains the streamlined product tagging system that replaces HTML `<
 
 ### Before (Old HTML Pills):
 ```markdown
-<span class="pill pill-cloud">NetBox Cloud</span>
-<span class="pill pill-enterprise">NetBox Enterprise</span>
-<span class="pill pill-community">NetBox Community</span>
+\<span class="pill pill-cloud"\>NetBox Cloud</span>
+\<span class="pill pill-enterprise"\>NetBox Enterprise</span>
+\<span class="pill pill-community"\>NetBox Community</span>
 
 # Document Title
 
@@ -50,13 +74,9 @@ tags:
 Content here...
 ```
 
-## Available Tags
+## Available Product Tags
 
-The tagging system uses a **two-tier approach**: Platform tags (displayed as prominent pills at the top) and semantic tags (displayed as clickable references at the bottom).
-
-### Platform Tags (Top-Level Pills)
-
-The following platform tags are displayed as prominent pills at the top of documents:
+The following product tags are available in `docs/tags.yml`:
 
 | Tag Key | Display Label | Color | Description |
 |---------|---------------|-------|-------------|
@@ -64,48 +84,6 @@ The following platform tags are displayed as prominent pills at the top of docum
 | `enterprise` | NetBox Enterprise | 🟠 Orange (`#ffac00`) | Documentation for NetBox Enterprise |
 | `community` | NetBox Community | 🔵 Blue (`#00bee0`) | Documentation for NetBox Community |
 | `airgap` | Air-Gap | 🔴 Pink (`#ff0078`) | Documentation for air-gapped deployments |
-
-### Semantic Tags (Bottom References)
-
-The following semantic tags appear as clickable references at the bottom of documents. **Total: 16 streamlined tags** (down from 43 original tags).
-
-#### Product Tags (4)
-| Tag Key | Display Label | Description |
-|---------|---------------|-------------|
-| `netbox` | NetBox | Core NetBox features and functionality |
-| `discovery` | Discovery | Network discovery and device detection features |
-| `assurance` | Assurance | Network monitoring and assurance capabilities |
-| `operator` | Operator | AI-powered network operations and automation |
-
-#### Deployment Tags (2)
-| Tag Key | Display Label | Description |
-|---------|---------------|-------------|
-| `kubernetes` | Kubernetes | Kubernetes deployments, kubectl commands, container orchestration |
-| `helm` | Helm | Helm chart deployments and Kubernetes package management |
-
-#### Technical Categories (4)
-| Tag Key | Display Label | Description |
-|---------|---------------|-------------|
-| `api` | API | APIs, SDKs, integrations, and development tools |
-| `authentication` | Authentication | Authentication, SSO, security, and access control |
-| `administration` | Administration | System administration, configuration, and management |
-| `operations` | Operations | Monitoring, backups, upgrades, and operational tasks |
-
-#### Content Types (4)
-| Tag Key | Display Label | Description |
-|---------|---------------|-------------|
-| `installation` | Installation | Installation guides and setup procedures |
-| `configuration` | Configuration | Configuration guides, settings, and customization |
-| `troubleshooting` | Troubleshooting | Problem resolution, debugging, and support guides |
-| `getting-started` | Getting Started | Introductory guides and quick start documentation |
-
-#### Features (4)
-| Tag Key | Display Label | Description |
-|---------|---------------|-------------|
-| `automation` | Automation | Automation, workflows, and scripting |
-| `networking` | Networking | Network connectivity, cloud connectivity, and infrastructure |
-| `integration` | Integration | Third-party integrations, plugins, and extensions |
-| `ai` | AI | Artificial Intelligence and machine learning features |
 
 ## How to Use
 
@@ -143,7 +121,7 @@ tags:
 
 Some content...
 
-<ProductTags tags={['enterprise', 'community']} />
+\<ProductTags tags={['enterprise', 'community']} /\>
 
 More content...
 ```
@@ -155,7 +133,7 @@ You can override the automatic tags by passing them directly:
 ```jsx
 import ProductTags from '@theme/ProductTags';
 
-<ProductTags tags={['cloud', 'enterprise']} />
+\<ProductTags tags={['cloud', 'enterprise']} /\>
 ```
 
 ## Migration Scripts
@@ -168,11 +146,8 @@ Run the migration script to automatically convert all files:
 # Install dependencies
 npm install
 
-# Run migration (convert HTML pills to tags)
+# Run migration
 npm run migrate-pills
-
-# Apply enhanced semantic tagging (recommended)
-npm run enhanced-tag
 
 # Review changes
 git diff
@@ -181,21 +156,6 @@ git diff
 npm run serve
 ```
 
-### Enhanced Semantic Tagging
-
-The enhanced semantic tagging script (`enhanced-tag`) applies comprehensive product and semantic tags based on:
-
-- **File location**: Automatically detects platform tags from directory structure
-- **Content analysis**: Scans document content for relevant keywords and concepts
-- **Product inference**: Identifies NetBox products (Discovery, Assurance, Operator)
-- **Feature detection**: Finds authentication, security, Kubernetes, API usage, etc.
-
-**Features:**
-- ✅ **Comprehensive**: Applies both platform and semantic tags
-- ✅ **Intelligent**: Uses content analysis and file location
-- ✅ **Safe**: Preserves existing frontmatter and titles
-- ✅ **Consistent**: Ensures proper tag ordering (platform tags first)
-
 ### Manual Migration
 
 For individual files:
@@ -203,8 +163,8 @@ For individual files:
 1. **Remove old HTML pills**:
    ```html
    <!-- Remove these -->
-   <span class="pill pill-cloud">NetBox Cloud</span>
-   <span class="pill pill-enterprise">NetBox Enterprise</span>
+   \<span class="pill pill-cloud"\>NetBox Cloud</span>
+   \<span class="pill pill-enterprise"\>NetBox Enterprise</span>
    ```
 
 2. **Add frontmatter tags**:
@@ -226,13 +186,13 @@ The new system provides multiple integration points for the upstream dochub repo
 // Access document metadata programmatically
 import { useDoc } from '@docusaurus/plugin-content-docs/client';
 
-function MyComponent() {
+function MyComponent() \{
   const doc = useDoc();
   const productTags = doc.frontMatter.tags?.filter(tag => 
     ['cloud', 'enterprise', 'community', 'discovery', 'assurance', 'operator', 'netbox', 'airgap'].includes(tag)
   );
   
-  return <div>This doc applies to: {productTags.join(', ')}</div>;
+  return <div>This doc applies to: {productTags.join(', ')\}</div>;
 }
 ```
 
@@ -240,7 +200,7 @@ function MyComponent() {
 
 ```javascript
 // In docusaurus.config.js or plugins
-module.exports = {
+module.exports = \{
   plugins: [
     function customPlugin() {
       return {
@@ -251,7 +211,7 @@ module.exports = {
           return docs.filter(doc => 
             doc.frontMatter.tags?.includes('cloud')
           );
-        }
+        \}
       };
     }
   ]
@@ -263,7 +223,7 @@ module.exports = {
 The dochub integration can export document metadata including tags:
 
 ```json
-{
+\{
   "documents": [
     {
       "id": "discovery-assurance",
@@ -271,7 +231,7 @@ The dochub integration can export document metadata including tags:
       "tags": ["cloud", "enterprise", "community"],
       "products": ["NetBox Cloud", "NetBox Enterprise", "NetBox Community"],
       "url": "/docs/discovery-assurance"
-    }
+    \}
   ]
 }
 ```
@@ -291,12 +251,12 @@ Tags are included in search metadata, improving discoverability:
 
 ```javascript
 // Search results include tag information
-{
+\{
   "title": "Document Title",
   "tags": ["cloud", "enterprise"],
   "excerpt": "...",
   "url": "/docs/path"
-}
+\}
 ```
 
 ### 3. **RSS/Sitemap Integration**
@@ -306,7 +266,7 @@ Tags are included in generated sitemaps and RSS feeds:
 ```xml
 <url>
   <loc>https://netboxlabs.com/docs/discovery-assurance</loc>
-  <meta name="tags" content="cloud,enterprise,community" />
+  \<meta name="tags" content="cloud,enterprise,community" /\>
 </url>
 ```
 
