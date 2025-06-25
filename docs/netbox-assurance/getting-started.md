@@ -2,6 +2,10 @@
 tags:
   - cloud
   - enterprise
+  - assurance
+  - getting-started
+  - installation
+  - configuration
 title: "Getting Started with NetBox Assurance"
 description: "Complete setup and configuration guide for NetBox Assurance - from installation to your first operational workflow with step-by-step instructions"
 author: "NetBox Labs Documentation Team"
@@ -23,9 +27,6 @@ external_links:
 ---
 
 # Getting Started with NetBox Assurance
-
-<span class="pill pill-cloud">NetBox Cloud (Coming Soon)</span>
-<span class="pill pill-enterprise">NetBox Enterprise</span>
 
 This guide will help you set up, configure, and start using NetBox Assurance to maintain accurate network documentation and proactive drift detection. Follow these steps to go from installation to your first operational workflow.
 

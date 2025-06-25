@@ -2,6 +2,7 @@
 tags:
   - cloud
   - enterprise
+  - assurance
 title: "NetBox Assurance"
 description: "Automated operational drift detection for NetBox - continuously monitor network infrastructure and maintain accurate documentation with proactive remediation capabilities"
 author: "NetBox Labs Documentation Team"
@@ -22,9 +23,6 @@ external_links:
 ---
 
 # NetBox Assurance
-
-<span class="pill pill-cloud">NetBox Cloud (Coming Soon)</span>
-<span class="pill pill-enterprise">NetBox Enterprise</span>
 
 NetBox Assurance automatically detects operational drift between your intended network design (documented in NetBox) and your actual network infrastructure. It continuously monitors network and infrastructure, comparing your intended design against real-world infrastructure to uncover discrepancies and provide proactive remediation capabilities.
 

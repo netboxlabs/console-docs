@@ -1,6 +1,29 @@
-<span class="pill pill-cloud">NetBox Cloud</span>
-<span class="pill pill-enterprise">NetBox Enterprise</span>
-<span class="pill pill-community">NetBox Community</span>
+---
+tags:
+  - cloud
+  - enterprise
+  - community
+  - discovery
+title: "NetBox Discovery"
+description: "Advanced network discovery and observability solution for automated network documentation and drift detection across all NetBox deployments"
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-27"
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v1.10"
+status: "current"
+category: "product-overview"
+audience: "all"
+complexity: "intermediate"
+related_docs:
+  - "getting-started.md"
+  - "../netbox-assurance/index.md"
+  - "../netbox-extensions/diode/index.md"
+external_links:
+  - "https://github.com/netboxlabs/orb-agent"
+  - "https://netdev.chat/"
+---
 
 # NetBox Discovery
 
