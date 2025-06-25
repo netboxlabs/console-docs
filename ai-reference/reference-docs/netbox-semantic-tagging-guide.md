@@ -13,7 +13,7 @@ sidebar_position: 999
 description: Comprehensive guide for applying semantic tags to NetBox documentation using ai-reference guidelines
 internal_only: false
 draft: true
-last_updated: '2025-01-27'
+last_updated: '2025-06-25'
 category: ai-reference
 audience: developers
 ---

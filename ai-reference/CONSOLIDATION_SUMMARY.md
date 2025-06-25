@@ -6,7 +6,7 @@ tags:
   - documentation
   - summary
 author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
+last_updated: "2025-06-25"
 category: "ai-reference"
 audience: "developers"
 complexity: "intermediate"
@@ -221,7 +221,7 @@ ai-reference/
 
 ---
 
-**Consolidation Summary** | **Last Updated**: 2025-01-27  
+**Consolidation Summary** | **Last Updated**: 2025-06-25  
 **Status**: Complete | **Files Removed**: 1 | **Coverage**: 100%  
 **Next Action**: Copy to console-docs for cross-repository consistency
 

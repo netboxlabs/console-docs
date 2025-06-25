@@ -13,7 +13,7 @@ sidebar_position: 999
 description: Directory-based edition pill mapping for NetBox documentation
 internal_only: false
 draft: true
-last_updated: '2025-01-17'
+last_updated: '2025-06-25'
 category: ai-reference
 audience: developers
 ---
