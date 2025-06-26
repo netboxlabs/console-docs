@@ -32,10 +32,10 @@ This content is synced from console-docs/ai-reference for development team use.
 ## 🎯 Smart Tagging Results by Category
 
 ### ☁️ **NetBox Cloud Only** (21 files)
-**Directory**: `Administration Console/`, `cloud-connectivity/`
+**Directory**: `administration-console/`, `cloud-connectivity/`
 **Examples**:
-- `Administration Console/free-plan-features.md` → **Cloud only** (free plan exclusive)
-- `Administration Console/console-access.md` → **Cloud only** (console-specific)
+- `administration-console/free-plan-features.md` → **Cloud only** (free plan exclusive)
+- `administration-console/console-access.md` → **Cloud only** (console-specific)
 - `cloud-connectivity/aws-private-link.md` → **Cloud only** (cloud networking)
 
 ### 🏢 **NetBox Enterprise Only** (6 files)
@@ -48,7 +48,7 @@ This content is synced from console-docs/ai-reference for development team use.
 ### 🔗 **Cloud + Enterprise** (14 files)
 **Multi-product features** (SSO, authentication, advanced features)
 **Examples**:
-- `Administration Console/azure-ad-sso-setup.md` → **Cloud + Enterprise** (SSO available in both)
+- `administration-console/azure-ad-sso-setup.md` → **Cloud + Enterprise** (SSO available in both)
 - `netbox-enterprise/nbe-saml.md` → **Enterprise + Cloud** (SAML in both platforms)
 
 ### 🌍 **All Products** (29 files)
@@ -68,7 +68,7 @@ This content is synced from console-docs/ai-reference for development team use.
 
 ### 1. **Directory-Based Rules**
 ```
-Administration Console/ → netbox-cloud
+administration-console/ → netbox-cloud
 netbox-enterprise/     → netbox-enterprise
 cloud-connectivity/    → netbox-cloud
 netbox-extensions/     → netbox-community + netbox-enterprise

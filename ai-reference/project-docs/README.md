@@ -206,7 +206,7 @@ git commit -m "Update all documentation submodules"
 {
   "redirects": [
     {
-      "source": "/Administration Console/(.*)",
+      "source": "/administration-console/(.*)",
       "destination": "/docs/console/administration-console/$1",
       "permanent": true
     },

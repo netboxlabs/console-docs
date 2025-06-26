@@ -42,13 +42,13 @@ Watch the video below for a step-by-step example of how the Group Mapping featur
 
 Group mappings are based on the **Object ID** of the group in Entra ID. For example: 
 
-![Entra ID Group Object ID](../images/Azure%20SSO/azure_group_sync_1.png)
+![Entra ID Group Object ID](../images/azure-sso/azure_group_sync_1.png)
 
 The **Object ID** is mapped to a group in NetBox Cloud, and that group could have permissions assigned to it. For example, this group called **CircuitManager** in NetBox Cloud has permissions assigned to it that allows members of the group to manage all of the **Circuit** and  **Provider** object types: 
 
-![NetBox Group Configuration](../images/Azure%20SSO/azure_group_sync_2.png)
+![NetBox Group Configuration](../images/azure-sso/azure_group_sync_2.png)
 
-![NetBox Group Permissions](../images/Azure%20SSO/azure_group_sync_3.png)
+![NetBox Group Permissions](../images/azure-sso/azure_group_sync_3.png)
 
 Optionally, members of the Entra ID groups can also be members of the NetBox built-in groups **Staff** which allows access to the NetBox admin interface, and **Superuser** which has all permissions without explicitly assigning them.
 

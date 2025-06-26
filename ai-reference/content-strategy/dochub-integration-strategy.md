@@ -71,8 +71,8 @@ The following mapping defines which edition pills should be displayed at the top
 ### Console Documentation
 - `/docs/console/netbox-enterprise/` → **Enterprise only**
 - `/docs/console/netbox-cloud/` → **Cloud only**  
-- `/docs/console/Netbox Cloud/` → **Cloud only**
-- `/docs/console/Administration Console/` → **Cloud only**
+- `/docs/console/netbox-cloud/` → **Cloud only**
+- `/docs/console/administration-console/` → **Cloud only**
 - `/docs/console/cloud-connectivity/` → **Cloud only**
 - `/docs/console/netbox-discovery/` → **Community, Cloud, Enterprise**
 - `/docs/console/netbox-assurance/` → **Cloud (Coming Soon), Enterprise**
