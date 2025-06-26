@@ -1,16 +1,28 @@
+---
+tags:
+  - cloud
+  - administration
+  - operations
+  - monitoring
+title: "NetBox Cloud: Administrative Console Overview"
+description: "Comprehensive overview of the NetBox Cloud Administrative Console interface, features, and sections including deployment, database, and monitoring panels."
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-27"
+versions:
+  netbox_cloud: "v1.10"
+status: "current"
+category: "administration"
+audience: "administrators"
+complexity: "intermediate"
+---
+
 # NetBox Cloud: Administrative Console Overview
 
 ## Console Access
-To access your NetBox Cloud Administrative Console, follow these steps: 
 
-- Login to the [console](https://console.netboxlabs.com/)
-- Click on the arrow next your **Organization Name** and then click on the **Namespace ID**
+For detailed instructions on accessing the console, see [Getting Console Access](console-access.md). 
 
-    ![org](../images/console/orgs.png)
-
-- Next scroll down and click on the **NetBox** panel, and then click on the **NetBox ID** link to launch the Administrative console
-
-    ![namespace](../images/console/netbox.png)
+This overview focuses on the features and interface of the Administrative Console once you're logged in.
 
 ## Summary View
 This compressed full page screenshot breaks the full Administrative Console down into similar sections.  Each section is designed to give you greater insight to your NetBox instance.
@@ -39,7 +51,7 @@ The NetBox Deployment panel lists various service and configuration status point
 - The cloud icon will illuminate if you select a different version of NetBox.
 - The cloud icon will change NetBox to the selected version.
 
-The Secrets section provides access to the current secret credentials for the instance API Token, local “admin” user account and Secret Key.  When the Administrative Console initially loads these values will be hidden.  
+The Secrets section provides access to the current secret credentials for the instance API Token, local "admin" user account and Secret Key.  When the Administrative Console initially loads these values will be hidden.  
 
 - Clicking the open eye will reveal the secret details
 - Clicking the closed eye will conceal the secret details
@@ -49,7 +61,7 @@ The Secrets section provides access to the current secret credentials for the in
 
 ![ingress](../images/console/ingress.png)
 
-The Ingress pannel gives the Name, Domain and DNS Name information for the NetBox Cloud instance, as well as the number of Ingress Pods and the Load Balancer status.
+The Ingress panel gives the Name, Domain and DNS Name information for the NetBox Cloud instance, as well as the number of Ingress Pods and the Load Balancer status.
 
 ### 4. Storage
 
@@ -61,9 +73,9 @@ The Storage Panel contains information on the storage bucket, user, and access k
 
 ![database](../images/console/database.png)
 
-The Postgres Database panel (left) gives the current status of the database, along with details of the host, username and database name for the instance. Clicking the open eye will reveal the Postrges Database secret details.
+The Postgres Database panel (left) gives the current status of the database, along with details of the host, username and database name for the instance. Clicking the open eye will reveal the Postgres Database secret details.
 
-The Postgres panel (right) gives the number of database instances, their status, instance names, version, Aurora capacity unit consumption, current configured backup retention period, and security group IDs. Clicking the open eye will reveal the Postrges secret details.
+The Postgres panel (right) gives the number of database instances, their status, instance names, version, Aurora capacity unit consumption, current configured backup retention period, and security group IDs. Clicking the open eye will reveal the Postgres secret details.
 
 ### 6. Redis
 

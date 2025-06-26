@@ -1,6 +1,25 @@
+---
+tags:
+  - cloud
+  - authentication
+  - sso
+  - azure
+  - configuration
+title: "Microsoft Entra ID SSO Setup"
+description: "Complete guide to configuring single sign-on (SSO) for NetBox Cloud using Microsoft Entra ID (formerly Azure Active Directory) as an authentication backend."
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-27"
+versions:
+  netbox_cloud: "v1.10"
+status: "current"
+category: "authentication"
+audience: "administrators"
+complexity: "intermediate"
+---
+
 # Microsoft Entra ID Setup (formerly Azure Active Directory)
 
-This guide explains how to configure single sign-on (SSO) support for NetBox Cloud using Microsoft Entra ID(formerly Azure Active Directory) as an authentication backend.
+This guide explains how to configure single sign-on (SSO) support for NetBox Cloud using Microsoft Entra ID (formerly Azure Active Directory) as an authentication backend.
 
 ## Entra ID Configuration
 1. Create a test user (optional)
@@ -59,7 +78,7 @@ Log out of NetBox Cloud if already authenticated, and click the "Log In" button 
 
 You should be redirected to Microsoft's authentication portal. Enter the username/email and password of your account to continue. You may also be prompted to grant this application access to your account.
 
-![NetBox Entra ID login form](../images/Azure%20SSO/azure_ad_login_portal.png)
+![Microsoft authentication portal](../images/Azure%20SSO/azure_ad_login_portal.png)
 
 If successful, you will be redirected back to the NetBox Cloud UI, and will be logged in as the Entra ID user. You can verify this by navigating to your profile (using the button at top right).
 

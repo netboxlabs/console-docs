@@ -1,3 +1,21 @@
+---
+tags:
+  - cloud
+  - free-plan
+  - features
+  - getting-started
+title: "Free Plan Features"
+description: "Overview of features and capabilities available in the NetBox Cloud Free Plan, including limitations and upgrade options."
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-27"
+versions:
+  netbox_cloud: "v1.10"
+status: "current"
+category: "features"
+audience: "decision-makers"
+complexity: "beginner"
+---
+
 # NetBox Cloud Free Plan Features
 
 The NetBox Cloud Free Plan is perfect for small networks, lab environments, and targeted use cases. It includes up to 100 devices, 500 IP addresses, 10k API requests/month, and 2 operational branches. 

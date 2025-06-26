@@ -1,3 +1,22 @@
+---
+tags:
+  - cloud
+  - administration
+  - security
+  - networking
+  - ipam
+title: "Prefix Lists"
+description: "Configure and manage IP prefix lists for NetBox Cloud security, including both synchronized and non-synchronized prefix list creation and management."
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-27"
+versions:
+  netbox_cloud: "v1.10"
+status: "current"
+category: "administration"
+audience: "administrators"
+complexity: "intermediate"
+---
+
 # Prefix Lists
 
 You can secure access to your NetBox Cloud instance by adding IPv4 and IPv6 addresses and ranges to **Prefix Lists**, which can then be applied to NetBox instances to control which source IPs your instances will accept connections from. 

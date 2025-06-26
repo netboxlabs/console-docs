@@ -1,3 +1,20 @@
+---
+tags:
+  - cloud
+  - plugins
+  - features
+title: "NetBox Cloud Plugins"
+description: "View and manage installed plugins in your NetBox Cloud instance through the administrative console."
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-27"
+versions:
+  netbox_cloud: "v1.10"
+status: "current"
+category: "features"
+audience: "administrators"
+complexity: "beginner"
+---
+
 # NetBox Cloud Plugins
 
 From within the NetBox Labs Console, you can easily view installed NetBox Cloud **Plugins**, along with their **Scope** and **Version number**. Simply follow these steps: 
