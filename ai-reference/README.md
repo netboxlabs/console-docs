@@ -1,526 +1,281 @@
 ---
 tags:
-  - ai-reference
   - cloud
   - enterprise
   - community
-  - documentation
-  - tagging
-  - development
-title: "AI Reference Materials"
-description: "Reference materials, templates, and documentation resources for AI-assisted NetBox Labs documentation development"
 author: "NetBox Labs Documentation Team"
-last_updated: "2025-06-25"
+last_updated: "2025-01-27"
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v4.2"
+status: "current"
 category: "ai-reference"
 audience: "developers"
 complexity: "intermediate"
-sidebar_position: 999
-internal_only: true
-draft: true
 ---
-
-:::info Development Resource
-This content is synced from console-docs/ai-reference for development team use.
-**This directory is not published to dochub** and is intended for internal development use only.
-:::
 
 # AI Reference Materials
 
-This directory contains reference materials, templates, and documentation resources for use with AI/LLM tools when building NetBox Labs documentation.
+This directory contains reference materials, templates, and documentation resources for use with AI/LLM tools when building NetBox Labs documentation. **This directory is not published to dochub** and is intended for internal development use only.
 
 ## Purpose
 
 - 📝 Store reference documentation and examples for AI-assisted writing
-- 🤖 Provide context and templates for LLM tools using our comprehensive semantic tagging system
+- 🤖 Provide context and templates for LLM tools using our comprehensive frontmatter system
 - 📋 Maintain style guides and content patterns with version tracking
 - 🔧 Keep development notes and content strategy documents
-- 🏷️ Demonstrate proper use of our enhanced semantic tagging system
+- 🏷️ Demonstrate proper use of our enhanced frontmatter tagging and versioning system
 
 ## Structure
 
 ```
 ai-reference/
 ├── README.md                           # This file
-├── QUICK_REFERENCE.md                  # Fast lookup for common tasks
-├── SYSTEM_OVERVIEW.md                  # High-level system architecture
-├── templates/                          # Document templates
+├── templates/                          # Document templates using enhanced frontmatter system
 │   ├── netbox-feature-doc-template.md  # Standard feature documentation template
-│   ├── product-landing-page.md         # Product overview template
-│   └── semantic-tagging-usage.md       # Tagging examples and usage
-├── style-guides/                       # Writing and formatting guidelines
-│   ├── netbox-docs-style-guide.md      # Complete style guide
-│   ├── product-tagging-guide.md        # Comprehensive tagging system guide
-│   └── ai-prompting-guide.md           # Best practices for AI assistance
-├── content-strategy/                   # Strategy docs and planning
-│   ├── navigation-strategy.md          # Navigation restructuring approach
-│   ├── navigation-guidelines.md        # Navigation best practices
-│   └── dochub-integration-strategy.md  # DocHub integration strategy
-├── reference-docs/                     # Reference materials and summaries
-│   ├── tag-reconciliation-summary.md   # Current comprehensive tagging system
-│   ├── netbox-semantic-tagging-guide.md # NetBox-specific tagging guide
-│   ├── edition-pill-mapping.md         # Edition pill directory mappings
-│   ├── auto-tagging-analysis.md        # Auto-tagging system analysis
-│   ├── dochub-coordination.md          # Cross-repository coordination
-│   └── dochub-integration-requirements.md # Technical integration specs
-└── project-docs/                       # Project documentation
-    ├── implementation_plan.md          # Implementation roadmap
-    └── DOCUMENTATION_CONSOLIDATION_SUMMARY.md # Project summary
+│   └── product-landing-page.md         # Landing page template (like NetBox Operator)
+├── style-guides/                       # Writing style and formatting guidelines
+│   ├── netbox-docs-style-guide.md      # Complete style guide with enhanced frontmatter
+│   ├── product-tagging-guide.md        # Complete product tagging system documentation
+│   └── ai-prompting-guide.md           # Best practices for AI assistance with version tracking
+├── content-strategy/                   # Strategy docs and planning materials
+│   ├── navigation-strategy.md          # Our navigation restructuring approach
+│   ├── navigation-restructure-implementation.md # Platform-first navigation restructure plan
+│   ├── dochub-navigation-restructure-prompt.md # Complete DocHub implementation prompt
+│   ├── version-management.md           # How we handle versions and releases
+│   └── dochub-integration-strategy.md  # DocHub integration strategy and quick reference
+└── reference-docs/                     # External reference materials and authoritative sources
+    ├── netbox-assurance-kb.md         # LLM KB NetBox Assurance content
+    ├── netbox-assurance-blog.md       # Blog post content
+    ├── auto-tagging-analysis.md       # Auto-tagging system analysis and results
+    ├── product-tagging-migration.md   # Product tagging migration documentation
+    ├── tag-consolidation-summary.md   # Current streamlined 20-tag system overview
+    ├── comprehensive-review-summary.md # Complete cleanup and consolidation summary
+    ├── dochub-coordination.md         # Navigation restructuring coordination spec
+    └── dochub-integration-requirements.md # Detailed technical implementation requirements
 ```
 
-## Comprehensive Semantic Tagging System
+## Enhanced Frontmatter System
 
-We use a **comprehensive semantic tagging system** organized into clear categories:
+We use **comprehensive YAML frontmatter** with version tracking for better organization and AI context:
 
-### Edition Tags (Prominent Pills at Top)
-These determine which NetBox editions can use the feature:
-
-```yaml
-tags:
-  - cloud      # NetBox Cloud features
-  - enterprise # NetBox Enterprise features  
-  - community  # NetBox Community (open source) features
-  - airgap     # Air-gapped deployment features
-```
-
-### Product Tags (Regular Tags)
-Core NetBox Labs products:
-
-```yaml
-tags:
-  - netbox     # Core NetBox functionality
-  - discovery  # NetBox Discovery features
-  - assurance  # NetBox Assurance features (premium only)
-  - operator   # NetBox Operator features (premium only)
-```
-
-### Platform and Deployment Tags
-
-```yaml
-tags:
-  - kubernetes # Kubernetes deployments
-  - helm       # Helm chart deployments
-  - docker     # Docker containers
-```
-
-### Technical Category Tags
-
-```yaml
-tags:
-  - api            # REST API, GraphQL, SDKs
-  - authentication # SSO, security, access control
-  - administration # System administration
-  - operations     # Monitoring, backups, maintenance
-```
-
-### Content Type Tags
-
-```yaml
-tags:
-  - installation     # Installation and setup guides
-  - configuration    # Configuration and settings
-  - troubleshooting  # Problem resolution guides
-  - getting-started  # Introductory guides
-```
-
-### NetBox Model Categories
-
-```yaml
-tags:
-  - circuits        # Circuit providers and connectivity
-  - dcim           # Data Center Infrastructure Management
-  - ipam           # IP Address Management
-  - tenancy        # Multi-tenancy features
-  - virtualization # Virtual machines and clusters
-  - vpn            # VPN tunnels and configurations
-  - wireless       # Wireless networks
-  - extras         # Custom fields, webhooks, templates
-  - core           # Core NetBox functionality
-```
-
-### NetBox Feature Tags
-
-```yaml
-tags:
-  - custom-fields    # Custom field functionality
-  - custom-links     # External link integration
-  - custom-scripts   # Automation scripting
-  - export-templates # Data export formatting
-  - data-validation  # Validation rules
-  - change-logging   # Audit trail
-  - journaling       # Notes and comments
-  - notifications    # Alerts and webhooks
-  - background-jobs  # Task processing
-  - search          # Search and filtering
-  - tags            # Tagging system
-  - contacts        # Contact management
-  - permissions     # Access control
-  - plugins         # Plugin development
-  - models          # Data models
-  - development     # Development guides
-```
-
-## Enhanced Frontmatter Format
-
-### Standard Document Template
-
-```yaml
----
-tags:
-  - cloud                    # Edition (prominent pill)
-  - enterprise
-  - discovery                # Product (regular tag)
-  - authentication           # Technical category (regular tag)
-  - configuration            # Content type (regular tag)
-title: "Document Title"
-description: "SEO-friendly description for search and social sharing"
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-06-25"
-category: "feature"
-audience: "end-users"
-complexity: "beginner"
----
-```
-
-### Premium Feature Example (Cloud/Enterprise Only)
-
-```yaml
----
-tags:
-  - cloud
-  - enterprise
-  - assurance                # Premium product
-  - monitoring
-  - operations
-title: "NetBox Assurance Feature"
-description: "Network monitoring and compliance with NetBox Assurance"
-# Note: community not included - premium feature only
----
-```
-
-### Universal Feature Example (All Editions)
-
+### Complete Frontmatter Format
 ```yaml
 ---
 tags:
   - cloud
   - enterprise
   - community
-  - netbox                   # Available everywhere
-  - api
-  - development
-title: "NetBox REST API"
-description: "REST API documentation for all NetBox editions"
+title: "Document Title"
+description: "SEO-friendly description for search and social sharing"
+author: "Author Name or NetBox Labs Documentation Team"
+last_updated: "YYYY-MM-DD"
+versions:
+  cloud: "v1.9 | v1.10"
+  enterprise: "v1.9 | v1.10"
+  community: "v4.2"
+status: "current | beta | coming-soon | deprecated"
+category: "feature | integration | admin | getting-started | product-overview"
+audience: "end-users | admins | developers | all"
+complexity: "beginner | intermediate | advanced"
+related_docs:
+  - "path/to/related-doc.md"
+external_links:
+  - "https://example.com/resource"
 ---
 ```
 
-## Available Tools and Scripts
+### Version Guidelines
 
-### Enhanced Tagging Scripts
-
-```bash
-# Tag all NetBox documentation with comprehensive semantic tags
-yarn enhanced-tag-netbox docs/netbox
-
-# Tag console documentation  
-yarn enhanced-tag docs/console
-
-# Transform all documentation (includes tagging)
-yarn transform-docs
+#### For Existing Documents (Not Updated Since May 1, 2025)
+```yaml
+versions:
+  cloud: "v1.9"
+  enterprise: "v1.9"
+  community: "v4.2"
 ```
 
-### Development Workflow
-
-```bash
-# Start development server with full transformation
-yarn dev
-
-# Build for production
-yarn build
-
-# Process autodoc directives in NetBox documentation
-yarn process-autodoc
+#### For Documents Modified Since May 1, 2025
+```yaml
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v4.2"
 ```
 
-## Tag Categories Reference
+#### For NetBox Discovery Documents
+```yaml
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  community: "v4.2"
+```
 
-### Edition Tags → Prominent Pills
-- `cloud`, `enterprise`, `community`, `airgap`
+#### For NetBox Assurance Documents (Premium Only)
+```yaml
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  # Note: community not included as Assurance is premium-only
+```
 
-### Product Tags → Regular Tags  
-- `netbox`, `discovery`, `assurance`, `operator`
+#### For NetBox Operator Documents (Premium Only)
+```yaml
+versions:
+  cloud: "v1.10"
+  enterprise: "v1.10"
+  # Note: community not included as Operator is premium-only
+```
 
-### Technical Category Tags
-- `api`, `authentication`, `administration`, `operations`
-- `installation`, `configuration`, `troubleshooting`, `getting-started`
-- `circuits`, `dcim`, `ipam`, `tenancy`, `virtualization`, `vpn`, `wireless`, `extras`, `core`
+### Version Mapping Reference
+| NetBox Cloud/Enterprise | NetBox Community | Release Period | Key Features |
+|------------------------|------------------|----------------|--------------|
+| v1.9 | v4.2 | Current stable | Base functionality |
+| v1.10 | v4.2 | Current/Recent updates | + Enterprise Assurance & Discovery |
+| v1.11 | v4.2 | Future releases | + Enterprise High Availability (HA) |
+| v1.12 | v4.3 | Next major release cycle | TBD |
 
-### All Other Tags → Regular Tags
-- Feature categories: `automation`, `networking`, `integration`, `ai`
-- NetBox models: `circuits`, `dcim`, `ipam`, `tenancy`, etc.
-- NetBox features: `custom-fields`, `webhooks`, `plugins`, etc.
-- Platform tags: `kubernetes`, `helm`, `docker`
-- Extension tags: `netbox-branching`, `extensions`, `diode`, etc.
+### Deprecated Format (Don't Use)
+```html
+<!-- OLD - Don't use HTML pills -->
+<span class="pill pill-cloud">NetBox Cloud</span>
+<span class="pill pill-enterprise">NetBox Enterprise</span>
+```
+
+### Available Product Tags
+
+#### Platform Tags (Display as Prominent Pills)
+| Tag | Display | Use For | Display Style |
+|-----|---------|---------|---------------|
+| `cloud` | Cloud | Cloud-specific features and administration | **Prominent pill at top** |
+| `enterprise` | Enterprise | Enterprise-specific features and installation | **Prominent pill at top** |
+| `community` | Community | Open source features and community tools | **Prominent pill at top** |
+| `airgap` | Air-Gap | Air-gapped deployment scenarios | **Prominent pill at top** |
+
+#### Product Feature Tags (Display as Regular Tags)
+| Tag | Display | Use For | Display Style |
+|-----|---------|---------|---------------|
+| `discovery` | Discovery | Network discovery and device detection features | Regular tag at bottom |
+| `assurance` | Assurance | Network monitoring and assurance capabilities | Regular tag at bottom |
+| `operator` | Operator | AI-powered network operations and automation | Regular tag at bottom |
+| `netbox` | NetBox | Core NetBox features and functionality | Regular tag at bottom |
+
+#### Category Tags (Display as Regular Tags)
+All other tags (authentication, sso, ldap, saml, security, database, backup, etc.) display as smaller regular tags at the bottom under "Related Topics".
 
 ## Guidelines for AI-Assisted Documentation
 
 ### What Goes Here
 ✅ **DO include:**
-- Document templates using our comprehensive semantic tagging system
-- Style guides and writing standards
+- Document templates using our enhanced frontmatter system
+- Style guides and writing standards with version tracking
+- Example content patterns from our existing docs
 - Reference materials from authoritative sources
 - Development notes and planning documents
-- AI prompts and content generation helpers
+- AI prompts and content generation helpers with version context
 - Migration guides and coordination specs
 
 ### What Doesn't Go Here
 ❌ **DON'T include:**
 - Customer-facing documentation (belongs in `docs/`)
 - Sensitive information or credentials
-- Large binary files or images
-- Outdated migration guides (use current comprehensive system)
+- Large binary files or images (use `scratch/images/` instead)
+- Anything that should be version controlled with the main docs
 
-## Key Files for AI Context
+### Usage with AI Tools
 
-### Essential References
-- `QUICK_REFERENCE.md` - Fast lookup for common tasks
-- `style-guides/product-tagging-guide.md` - Complete tagging system
-- `reference-docs/tag-reconciliation-summary.md` - Current tagging state
-- `templates/netbox-feature-doc-template.md` - Standard template
+When working with AI/LLM tools:
 
-### For Navigation Work
-- `content-strategy/navigation-strategy.md` - Navigation principles
-- `reference-docs/dochub-coordination.md` - Cross-repo coordination
+1. **Reference this directory** for context and examples
+2. **Use our enhanced frontmatter system** - always include comprehensive metadata with version tracking
+3. **Follow our style guide** to maintain consistency with existing docs
+4. **Check examples** for patterns and structures that work well
+5. **Update templates** when you create good patterns
+6. **Document your prompts** for future reference
+7. **Include version information** in all AI prompts for accuracy
 
-### For Tagging Work
-- `reference-docs/netbox-semantic-tagging-guide.md` - NetBox-specific guide
-- `reference-docs/edition-pill-mapping.md` - Directory-based edition rules
+## Integration with Our Workflow
 
-## Sync Strategy
+### Branch Strategy
+- Work on `feat/navigation-restructure-and-docs-enhancement` for current updates
+- Use version-specific branches for future releases
+- Reference `content-strategy/version-management.md` for details
 
-This ai-reference directory is maintained in both repositories:
-- **Primary**: `/ai-reference` (this repository)
-- **Sync Target**: `/external-repos/console-docs/ai-reference`
+### DocHub Coordination
+- All content must work with netboxlabs-website-dochub integration
+- Use structured frontmatter for better categorization and version tracking
+- Reference `content-strategy/dochub-integration-strategy.md` for quick overview
+- See `reference-docs/dochub-coordination.md` and `reference-docs/dochub-integration-requirements.md` for detailed specifications
+- Use streamlined semantic tagging system for enhanced content discovery - see `reference-docs/tag-consolidation-summary.md` for current implementation details
 
-When making changes:
-1. Update content in this repository first
-2. Test and validate changes
-3. Copy updated content to console-docs repository
-4. Ensure both repositories stay in sync
+### Quality Assurance
+- Test all templates locally with `mkdocs serve`
+- Validate frontmatter syntax and version mappings
+- Ensure consistency with existing documentation patterns
+- Verify version compatibility information accuracy
 
-This ensures AI tools have consistent context regardless of which repository they're working in.
+## Directory Safety
 
-## 🔧 Development Workflows & Technical Systems
+This directory is safe from publication because:
+- It's outside the `docs/` folder (not processed by mkdocs)
+- It's not referenced in `mkdocs.yml` navigation
+- It won't be included in GitHub Actions deployment workflows
+- It's listed in `.gitignore` patterns for dochub integration
 
-### Git Submodules Management
+## Contributing
 
-This project uses git submodules to pull in documentation from multiple repositories:
+When adding materials to this directory:
+- Keep files organized in appropriate subdirectories
+- Use clear, descriptive filenames following our naming conventions
+- Always include proper frontmatter with version tracking
+- Add a brief description in this README when adding new categories
+- Don't commit sensitive information
+- Test templates before committing
+- Update version information when making changes
 
-- **console-docs**: Official NetBox Labs Console documentation
-- **netbox**: Core NetBox documentation 
-- **netbox-branching**: NetBox Branching plugin documentation
-- **pynetbox**: Official Python API client for NetBox
-- **diode**: NetBox data ingestion service documentation
+## Quick Reference
 
-```bash
-# Initialize and update all submodules
-git submodule update --init --recursive
+### For New Feature Documentation:
+1. Use `templates/netbox-feature-doc-template.md`
+2. Apply appropriate product tags and version mapping
+3. Follow `style-guides/netbox-docs-style-guide.md`
+4. Include complete frontmatter with version tracking
 
-# Update all submodules to latest
-git submodule update --remote
+### For Product Landing Pages:
+1. Use `templates/product-landing-page.md` 
+2. Reference NetBox Operator page as example
+3. Include design partner or beta information if applicable
+4. Apply correct version mapping based on product availability
 
-# Update specific submodule
-cd external-repos/netbox
-git pull origin main
-cd ../..
-git add external-repos/
-git commit -m "Update NetBox docs to latest"
-```
+### For AI-Assisted Content Creation:
+1. Reference `style-guides/ai-prompting-guide.md` for best practices
+2. Always specify complete frontmatter requirements in prompts
+3. Include version context appropriate for the document type
+4. Validate generated content against our style guide and version requirements
 
-### GitHub Actions Workflows
+### For Semantic Tagging Enhancement:
+1. Use `npm run enhanced-tag` to apply streamlined semantic tags
+2. Review results and test locally with `npm run serve`
+3. Reference `reference-docs/tag-consolidation-summary.md` for streamlined system details
+4. See `style-guides/product-tagging-guide.md` for complete tagging documentation
 
-The repository uses several automated workflows:
+## Version-Specific Content Guidelines
 
-#### **Documentation Automation**
-- `update-submodules.yml`: Automatically detects external repo changes and creates PRs
-- `auto-merge-docs.yml`: Safely auto-merges documentation updates after validation
-- `cleanup-automated-prs.yml`: Cleans up redundant automated PRs
-- `manual-cleanup-automated-prs.yml`: Manual PR management
+### When Creating Content:
+- **Always include version information** in frontmatter
+- **Use appropriate version mapping** based on document type and age
+- **Update last_updated field** when making changes
+- **Set correct status field** (current, beta, coming-soon, deprecated)
+- **Include version compatibility notes** in content when relevant
 
-#### **Release Management**
-- `release.yml`: Creates GitHub releases with auto-generated release notes
-- `generate-changelog.yml`: Generates comprehensive changelogs
-- `update-changelog-weekly.yml`: Weekly changelog updates
+### Version Tracking Best Practices:
+- Existing docs not updated since May 1, 2025: use v1.9 for Cloud/Enterprise
+- Modified docs since May 1, 2025: use v1.10 for Cloud/Enterprise
+- NetBox Community always maps to v4.2
+- Premium features (Assurance, Operator) don't include community versions
+- Discovery features include all three product versions
 
-#### **Submodule Protection Strategy**
-Critical workflow design handles the conflict between:
-1. Updating submodules to latest (`git submodule update --remote`)
-2. Package installation resetting submodules (`yarn install` triggers postinstall)
+---
 
-**Solution**: Save commits → Install → Restore commits
-```bash
-NETBOX_COMMIT=$(cd external-repos/netbox && git rev-parse HEAD)
-yarn install --frozen-lockfile  # May reset submodules
-cd external-repos/netbox && git checkout $NETBOX_COMMIT  # Restore
-```
-
-### Version Management Strategy
-
-#### **Current State (Transition Period)**
-| Version | Status | Branch | Customer Visibility | Purpose |
-|---------|--------|--------|-------------------|---------|
-| **v1.9** | 🟢 **LIVE** | `main` | ✅ **Visible** | Current customer documentation |
-| **v1.10** | 🟡 **Beta** | *not created yet* | ❌ **Hidden** | NetBox Enterprise + Assurance features |
-| **v1.11** | 🔴 **Alpha** | *future* | ❌ **Hidden** | NetBox Enterprise + Helm features |
-
-#### **Version Control Guidelines**
-- **For current customers**: Work on `main` branch and tag when ready (deploys immediately)
-- **For future features**: Use feature branches, don't merge until version branch exists
-- **Cross-version updates**: Apply security updates to all relevant versions
-
-### URL Redirects & Routing
-
-The project uses Vercel's redirect configuration (`vercel.json`) with 200+ redirect rules:
-
-#### **Key Redirect Categories**
-- **Primary Navigation**: Root and docs redirects
-- **Console Documentation**: Legacy URL patterns to unified structure
-- **Submodule Integration**: External repo documentation integration
-- **Asset & Media**: GitHub raw content redirects
-- **Legacy Compatibility**: Backward compatibility maintenance
-
-#### **Common Redirect Patterns**
-```json
-{
-  "source": "/old-section/(.*)",
-  "destination": "/docs/new-section/$1",
-  "permanent": true
-}
-```
-
-#### **Testing Redirects**
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Test redirects locally
-vercel dev
-
-# Test specific URLs
-curl -I http://localhost:3000/old-url
-```
-
-### Content Exclusion System
-
-Pages are excluded from documentation via `docusaurus.config.ts`:
-
-```typescript
-docs: {
-  exclude: [
-    // Internal documentation
-    '**/ai-reference/**',
-    '**/AUTOMATED_DOCS_SYSTEM.md',
-    
-    // Incomplete external content
-    '**/external-repos/**/console-access-from-ui.md',
-    '**/external-repos/**/nbe-kots-installation.md',
-    
-    // Legacy/superseded files
-    '**/external-repos/**/sdks/pynetbox.md',
-  ],
-}
-```
-
-#### **When to Exclude Content**
-- ✅ Internal development documentation
-- ✅ Incomplete or placeholder content
-- ✅ Files that would confuse end users
-- ✅ Legacy content that's been superseded
-
-### Troubleshooting Guide
-
-#### **Common Issues**
-1. **Submodules not initialized**: `git submodule update --init --recursive`
-2. **Transformation errors**: Check `scripts/transformDocs.ts` output
-3. **Missing images**: Ensure relative paths in source docs
-4. **Sidebar not updating**: Delete and regenerate with `yarn transform-docs`
-
-#### **GitHub Actions Issues**
-5. **Workflow not creating PRs**: 
-   - Check external repos for new commits: `git submodule update --remote && git status`
-   - Verify workflow permissions in repository settings
-   - Look for "No changes detected" in workflow logs
-
-6. **PRs created but builds fail**:
-   - Check if `yarn build` works locally after `yarn transform-docs`
-   - Look for submodule restoration errors in workflow logs
-   - Verify Node.js version compatibility (requires 22.x)
-
-7. **Submodule conflicts in CI**:
-   - Check "Submodule Protection Strategy" logs for restoration failures
-   - Ensure submodule URLs are accessible from GitHub Actions
-
-#### **Debug Mode**
-```bash
-# Enable verbose transformation logging
-DEBUG=true yarn transform-docs
-
-# Test workflow components locally
-git submodule update --remote
-yarn install --frozen-lockfile
-yarn transform-docs
-yarn build
-
-# Check submodule status
-git submodule status
-git diff --name-only
-```
-
-### External Documentation Sync
-
-#### **Console-Docs External Sources**
-| Path | Repository | Purpose | Update Method |
-|------|------------|---------|---------------|
-| `docs/netbox-extensions/changes/` | `netbox-changes` | Change Management docs | Script-based sync |
-
-#### **Update Process**
-```bash
-# Update external documentation
-./scripts/update-changes-docs.sh
-
-# Review and commit changes
-git diff docs/netbox-extensions/changes/
-git add docs/netbox-extensions/changes/
-git commit -m "Update NetBox Changes documentation"
-```
-
-## 🚀 Integration Architecture
-
-### Documentation Flow
-```
-External Repos (MkDocs) → Git Submodules → Transformation Script → Docusaurus → Next.js Rewrites → netboxlabs.com/docs
-```
-
-### Multi-Repository Coordination
-```mermaid
-graph LR
-    A[console-docs<br/>This Repo] --> B[dochub<br/>Integration Site]
-    B --> C[netboxlabs.com/docs<br/>Customer-Facing]
-    
-    D[netbox repo<br/>Community Docs] --> B
-    E[pynetbox repo<br/>SDK Docs] --> B
-    F[netbox-branching repo<br/>Extension Docs] --> B
-    G[diode repo<br/>Ingestion Docs] --> B
-```
-
-### Transformation Pipeline
-1. **Git Submodules**: Pull latest from external repos
-2. **Content Processing**: Convert MkDocs to MDX, handle images, escape characters
-3. **Semantic Tagging**: Apply comprehensive tagging automatically
-4. **Sidebar Generation**: Parse navigation structures and convert to Docusaurus format
-5. **Integration**: Combine with custom theme and build static site
-
-### Deployment Strategy
-- **Hosting**: Vercel with automatic deployments
-- **Integration**: Next.js rewrites serve docs under `/docs/*`
-- **Performance**: Edge redirects, optimized builds, CDN distribution
-- **SEO**: Enhanced metadata, proper redirects, sitemap generation
+*This directory supports the NetBox Labs documentation enhancement project, providing AI tools with proper context for creating high-quality, consistent documentation using our enhanced frontmatter system with comprehensive version tracking and modern tagging.* 

@@ -169,6 +169,26 @@ extra:
     available:
       - v1.10 (Current)
       - v1.9
+  
+  # Service tier tagging system for DocHub integration
+  tier_tags:
+    free:
+      label: "Free"
+      color: "#28a745"
+      description: "Features available in the free tier"
+    starter:
+      label: "Starter"
+      color: "#17a2b8"
+      description: "Features available in the starter tier"
+    pro:
+      label: "Professional"
+      color: "#ffc107"
+      description: "Features available in the professional tier"
+    ent:
+      label: "Enterprise"
+      color: "#dc3545"
+      description: "Features available in the enterprise tier"
+  
   social:
     - icon: fontawesome/solid/globe
       link: https://netboxlabs.com

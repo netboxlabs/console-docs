@@ -1,0 +1,174 @@
+# Platform Tags (Display as Top Pills)
+cloud:
+  label: 'Cloud'
+  permalink: '/cloud'
+  description: 'Documentation specific to NetBox Cloud deployments and features'
+  type: 'platform'
+  color: '#00d9be'
+
+enterprise:
+  label: 'Enterprise'
+  permalink: '/enterprise'
+  description: 'Documentation specific to NetBox Enterprise deployments and features'
+  type: 'platform'
+  color: '#ffac00'
+
+community:
+  label: 'Community'
+  permalink: '/community'
+  description: 'Documentation applicable to NetBox Community edition'
+  type: 'platform'
+  color: '#00bee0'
+
+airgap:
+  label: 'Air-Gap'
+  permalink: '/airgap'
+  description: 'Documentation for air-gapped NetBox deployments'
+  type: 'platform'
+  color: '#ff0078'
+
+# Product Tags (Display as Regular Tags)
+netbox:
+  label: 'NetBox'
+  permalink: '/netbox'
+  description: 'Core NetBox features and functionality'
+  type: 'product'
+  color: '#6c757d'
+
+discovery:
+  label: 'Discovery'
+  permalink: '/discovery'
+  description: 'Network discovery and device detection features'
+  type: 'product'
+  color: '#28a745'
+
+assurance:
+  label: 'Assurance'
+  permalink: '/assurance'
+  description: 'Network monitoring and assurance capabilities'
+  type: 'product'
+  color: '#6f42c1'
+
+operator:
+  label: 'Operator'
+  permalink: '/operator'
+  description: 'AI-powered network operations and automation'
+  type: 'product'
+  color: '#fd7e14'
+
+# Deployment Tags (Display as Regular Tags)
+kubernetes:
+  label: 'Kubernetes'
+  permalink: '/kubernetes'
+  description: 'Kubernetes deployments, kubectl commands, and container orchestration'
+  type: 'deployment'
+
+helm:
+  label: 'Helm'
+  permalink: '/helm'
+  description: 'Helm chart deployments and Kubernetes package management'
+  type: 'deployment'
+
+# Technical Categories (Display as Regular Tags)
+api:
+  label: 'API'
+  permalink: '/api'
+  description: 'APIs, SDKs, integrations, and development tools'
+  type: 'category'
+
+authentication:
+  label: 'Authentication'
+  permalink: '/authentication'
+  description: 'Authentication, SSO, security, and access control'
+  type: 'category'
+
+administration:
+  label: 'Administration'
+  permalink: '/administration'
+  description: 'System administration, configuration, and management'
+  type: 'category'
+
+operations:
+  label: 'Operations'
+  permalink: '/operations'
+  description: 'Monitoring, backups, upgrades, and operational tasks'
+  type: 'category'
+
+# Content Types (Display as Regular Tags)
+installation:
+  label: 'Installation'
+  permalink: '/installation'
+  description: 'Installation guides and setup procedures'
+  type: 'content'
+
+configuration:
+  label: 'Configuration'
+  permalink: '/configuration'
+  description: 'Configuration guides, settings, and customization'
+  type: 'content'
+
+troubleshooting:
+  label: 'Troubleshooting'
+  permalink: '/troubleshooting'
+  description: 'Problem resolution, debugging, and support guides'
+  type: 'content'
+
+getting-started:
+  label: 'Getting Started'
+  permalink: '/getting-started'
+  description: 'Introductory guides and quick start documentation'
+  type: 'content'
+
+# Feature Categories (Display as Regular Tags)
+automation:
+  label: 'Automation'
+  permalink: '/automation'
+  description: 'Automation, workflows, and scripting'
+  type: 'feature'
+
+networking:
+  label: 'Networking'
+  permalink: '/networking'
+  description: 'Network connectivity, cloud connectivity, and infrastructure'
+  type: 'feature'
+
+integration:
+  label: 'Integration'
+  permalink: '/integration'
+  description: 'Third-party integrations, plugins, and extensions'
+  type: 'feature'
+
+ai:
+  label: 'AI'
+  permalink: '/ai'
+  description: 'Artificial Intelligence and machine learning features'
+  type: 'feature'
+
+# Tier Tags (Display as Service Tier Pills)
+free:
+  label: 'Free'
+  permalink: '/free'
+  description: 'Features available in the free tier'
+  type: 'tier'
+  color: '#28a745'
+
+starter:
+  label: 'Starter'
+  permalink: '/starter'
+  description: 'Features available in the starter tier'
+  type: 'tier'
+  color: '#17a2b8'
+
+pro:
+  label: 'Professional'
+  permalink: '/pro'
+  description: 'Features available in the professional tier'
+  type: 'tier'
+  color: '#ffc107'
+
+ent:
+  label: 'Enterprise'
+  permalink: '/ent'
+  description: 'Features available in the enterprise tier'
+  type: 'tier'
+  color: '#dc3545' 

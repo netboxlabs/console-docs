@@ -1,30 +1,7 @@
----
-tags:
-  - ai-reference
-  - assurance
-  - discovery
-  - reference
-  - strategy
-  - ai-tools
-  - tagging
-  - navigation
-  - documentation
-sidebar_position: 999
-description: AI Reference material for NetBox Labs documentation development
-internal_only: false
-draft: true
-last_updated: '2025-06-25'
-category: ai-reference
-audience: developers
----
-:::info Development Resource
-This content is synced from console-docs/ai-reference for development team use.
-:::
-
 # NetBox Labs Documentation Navigation Restructuring Specification
 
 **Document Version:** 1.0  
-**Date:** January 2025  
+**Date:** July 7, 2025  
 **From:** Console-Docs Team  
 **To:** Dochub Integration Team  
 
@@ -124,7 +101,7 @@ navigation_structure:
   cloud:
     sources:
       - repository: "console-docs"
-        content: "administration-console/**"
+        content: "Administration Console/**"
         nav_prefix: "Administration"
       - repository: "console-docs"
         content: "cloud-connectivity/**"
@@ -214,7 +191,7 @@ def filter_content_by_edition(content_path, edition):
 7. **`docs/netbox-assurance/index.md`** - Complete rewrite with release dates
 
 ### **Key Content Updates:**
-- **NetBox Assurance release dates**: June 2025 (Enterprise), July 2025 (Cloud)
+- **NetBox Assurance release dates**: June 23, 2025 (Enterprise), July 7, 2025 (Cloud)
 - **Enhanced use case framework**: Day 1/Day 1.5/Day 2 scenarios
 - **Controller integration roadmap**: Specific dates for VMware, Juniper, Cisco, etc.
 - **Operational drift detection**: Comprehensive workflow documentation
@@ -235,7 +212,7 @@ def filter_content_by_edition(content_path, edition):
 - Is there existing support for nested navigation structures?
 
 #### **3. Content Processing**
-- How are the edition pills (`\<span class="pill pill-cloud"\>`) currently processed?
+- How are the edition pills (`<span class="pill pill-cloud">`) currently processed?
 - Is there existing logic to show/hide content based on NetBox edition?
 - How are duplicate content paths handled across editions?
 

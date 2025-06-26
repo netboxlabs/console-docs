@@ -2,40 +2,24 @@
 tags:
   - cloud
   - enterprise
-  - ai-reference
-  - community
-  - assurance
-  - discovery
-  - operator
-  - template
-  - reference
-  - ai-tools
-  - tagging
-  - documentation
-title: '[Product Name]'
-description: Brief description of the product for SEO and social sharing
-author: Author Name or NetBox Labs Documentation Team
-last_updated: YYYY-MM-DD
+title: "[Product Name]"
+description: "Brief description of the product for SEO and social sharing"
+author: "Author Name or NetBox Labs Documentation Team"
+last_updated: "YYYY-MM-DD"
 versions:
-  cloud: v1.9 | v1.10
-  enterprise: v1.9 | v1.10
-status: current | beta | coming-soon | deprecated
-category: product-overview
-audience: all
-complexity: beginner
+  cloud: "v1.9 | v1.10"
+  enterprise: "v1.9 | v1.10"
+  # Note: community typically excluded for premium products
+status: "current | beta | coming-soon | deprecated"
+category: "product-overview"
+audience: "all"
+complexity: "beginner"
 related_docs:
-  - path/to/getting-started.md
-  - path/to/detailed-docs.md
+  - "path/to/getting-started.md"
+  - "path/to/detailed-docs.md"
 external_links:
-  - 'https://netboxlabs.com/products/[product-name]/'
-sidebar_position: 999
-internal_only: false
-draft: true
+  - "https://netboxlabs.com/products/[product-name]/"
 ---
-:::info Development Resource
-This content is synced from console-docs/ai-reference for development team use.
-:::
-
 
 # [Product Name]
 

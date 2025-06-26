@@ -1,3 +1,17 @@
+---
+title: NetBox Enterprise
+tags:
+  - enterprise
+  - community
+  - netbox
+  - kubernetes
+  - administration
+  - operations
+  - installation
+  - integration
+  - ent
+---
+
 # NetBox Enterprise
 
 ## Overview
