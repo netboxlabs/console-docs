@@ -1,4 +1,7 @@
 ---
+hide:
+  - navigation
+  - toc
 tags:
   - cloud
   - free-plan
