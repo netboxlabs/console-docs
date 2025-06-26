@@ -275,7 +275,7 @@ The home of documentation for NetBox [Cloud](Administration%20Console/console-ac
 
 <div class="grid cards" markdown="1">
 
-- ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Cloud__
+- __NetBox Cloud__
     
     All the power and flexibility of NetBox, rock solid and secure. 
 
@@ -283,7 +283,7 @@ The home of documentation for NetBox [Cloud](Administration%20Console/console-ac
 
     [Get started with NetBox Cloud](Administration%20Console/console-access.md)
 
-- ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Enterprise__
+- __NetBox Enterprise__
     
     The power of NetBox in your own infrastructure, 
     
