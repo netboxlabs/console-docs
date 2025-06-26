@@ -1,26 +1,3 @@
----
-tags:
-  - ai-reference
-  - cloud
-  - enterprise
-  - reference
-  - ai-tools
-  - authentication
-  - tagging
-  - navigation
-  - documentation
-sidebar_position: 999
-description: AI Reference material for NetBox Labs documentation development
-internal_only: false
-draft: true
-last_updated: '2025-06-25'
-category: ai-reference
-audience: developers
----
-:::info Development Resource
-This content is synced from console-docs/ai-reference for development team use.
-:::
-
 # Auto-Tagging Analysis Summary
 
 ## 📊 Current Status
@@ -32,10 +9,10 @@ This content is synced from console-docs/ai-reference for development team use.
 ## 🎯 Smart Tagging Results by Category
 
 ### ☁️ **NetBox Cloud Only** (21 files)
-**Directory**: `administration-console/`, `cloud-connectivity/`
+**Directory**: `Administration Console/`, `cloud-connectivity/`
 **Examples**:
-- `administration-console/free-plan-features.md` → **Cloud only** (free plan exclusive)
-- `administration-console/console-access.md` → **Cloud only** (console-specific)
+- `Administration Console/free-plan-features.md` → **Cloud only** (free plan exclusive)
+- `Administration Console/console-access.md` → **Cloud only** (console-specific)
 - `cloud-connectivity/aws-private-link.md` → **Cloud only** (cloud networking)
 
 ### 🏢 **NetBox Enterprise Only** (6 files)
@@ -48,7 +25,7 @@ This content is synced from console-docs/ai-reference for development team use.
 ### 🔗 **Cloud + Enterprise** (14 files)
 **Multi-product features** (SSO, authentication, advanced features)
 **Examples**:
-- `administration-console/azure-ad-sso-setup.md` → **Cloud + Enterprise** (SSO available in both)
+- `Administration Console/azure-ad-sso-setup.md` → **Cloud + Enterprise** (SSO available in both)
 - `netbox-enterprise/nbe-saml.md` → **Enterprise + Cloud** (SAML in both platforms)
 
 ### 🌍 **All Products** (29 files)
@@ -68,7 +45,7 @@ This content is synced from console-docs/ai-reference for development team use.
 
 ### 1. **Directory-Based Rules**
 ```
-administration-console/ → netbox-cloud
+Administration Console/ → netbox-cloud
 netbox-enterprise/     → netbox-enterprise
 cloud-connectivity/    → netbox-cloud
 netbox-extensions/     → netbox-community + netbox-enterprise

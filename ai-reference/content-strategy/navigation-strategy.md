@@ -1,30 +1,3 @@
----
-tags:
-  - ai-reference
-  - cloud
-  - enterprise
-  - assurance
-  - discovery
-  - operator
-  - reference
-  - strategy
-  - ai-tools
-  - authentication
-  - tagging
-  - navigation
-  - documentation
-sidebar_position: 999
-description: AI Reference material for NetBox Labs documentation development
-internal_only: false
-draft: true
-last_updated: '2025-06-25'
-category: ai-reference
-audience: developers
----
-:::info Development Resource
-This content is synced from console-docs/ai-reference for development team use.
-:::
-
 # NetBox Documentation Navigation Strategy
 
 This document outlines our strategic approach to organizing NetBox documentation for optimal user experience and discoverability.

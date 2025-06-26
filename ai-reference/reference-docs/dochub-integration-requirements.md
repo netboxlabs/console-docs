@@ -1,26 +1,3 @@
----
-tags:
-  - ai-reference
-  - cloud
-  - enterprise
-  - community
-  - reference
-  - strategy
-  - ai-tools
-  - tagging
-  - documentation
-sidebar_position: 999
-description: AI Reference material for NetBox Labs documentation development
-internal_only: false
-draft: true
-last_updated: '2025-06-25'
-category: ai-reference
-audience: developers
----
-:::info Development Resource
-This content is synced from console-docs/ai-reference for development team use.
-:::
-
 # Dochub Integration Requirements for New Product Tagging System
 
 ## Overview
@@ -34,8 +11,8 @@ The console-docs repository has migrated from HTML `<span>` pills to Docusaurus 
 #### Before (HTML Parsing):
 ```javascript
 // Old method - parsing HTML spans
-function extractProductPills(htmlContent) \{
-  const pillRegex = /\<span class="pill (pill-[^"]+)"[^\>]*>([^<]+)<\/span>/g;
+function extractProductPills(htmlContent) {
+  const pillRegex = /<span class="pill (pill-[^"]+)"[^>]*>([^<]+)<\/span>/g;
   const products = [];
   let match;
   
@@ -43,7 +20,7 @@ function extractProductPills(htmlContent) \{
     products.push({
       class: match[1],
       label: match[2]
-    \});
+    });
   }
   
   return products;
@@ -53,7 +30,7 @@ function extractProductPills(htmlContent) \{
 #### After (Frontmatter Parsing):
 ```javascript
 // New method - reading frontmatter tags
-function extractProductTags(frontmatter) \{
+function extractProductTags(frontmatter) {
   const productTags = frontmatter.tags?.filter(tag => 
     tag.startsWith('netbox-') || KNOWN_PRODUCT_TAGS.includes(tag)
   ) || [];
@@ -62,7 +39,7 @@ function extractProductTags(frontmatter) \{
     key: tag,
     label: TAG_LABELS[tag] || tag,
     color: TAG_COLORS[tag] || '#cccccc'
-  \}));
+  }));
 }
 
 const TAG_LABELS = {
@@ -127,22 +104,22 @@ app.get('/api/docs/by-product/:product', (req, res) => {
 });
 
 // GET /api/docs/tags - List all available tags
-app.get('/api/docs/tags', (req, res) => \{
-  const tagCounts = {\};
+app.get('/api/docs/tags', (req, res) => {
+  const tagCounts = {};
   
-  allDocs.forEach(doc => \{
+  allDocs.forEach(doc => {
     doc.productTags.forEach(tag => {
       tagCounts[tag.key] = (tagCounts[tag.key] || 0) + 1;
-    \});
+    });
   });
   
-  res.json(\{
+  res.json({
     tags: Object.entries(tagCounts).map(([key, count]) => ({
       key,
       label: TAG_LABELS[key] || key,
       color: TAG_COLORS[key] || '#cccccc',
       count,
-      url: `/docs/products/${key.replace('netbox-', '')\}`
+      url: `/docs/products/${key.replace('netbox-', '')}`
     }))
   });
 });
@@ -153,18 +130,18 @@ app.get('/api/docs/tags', (req, res) => \{
 #### Product Pills Component:
 ```jsx
 // React component for displaying product tags
-function ProductPills(\{ tags, size = 'normal' \}) \{
+function ProductPills({ tags, size = 'normal' }) {
   if (!tags || tags.length === 0) return null;
   
   return (
-    \<div className="product-pills"\>
+    <div className="product-pills">
       {tags.map(tag => (
-        \<Link
-          key={tag.key\}
+        <Link
+          key={tag.key}
           to={`/docs/products/${tag.key.replace('netbox-', '')}`}
           className={`product-pill product-pill--${size}`}
           style={{ backgroundColor: tag.color }}
-        \>
+        >
           {tag.label}
         </Link>
       ))}
@@ -173,12 +150,12 @@ function ProductPills(\{ tags, size = 'normal' \}) \{
 }
 
 // Usage in document display
-function DocumentCard({ document }) \{
+function DocumentCard({ document }) {
   return (
-    \<div className="document-card"\>
-      \<ProductPills tags={document.productTags\} size="small" /\>
+    <div className="document-card">
+      <ProductPills tags={document.productTags} size="small" />
       <h3>
-        \<Link to={document.url}\>{document.title}</Link>
+        <Link to={document.url}>{document.title}</Link>
       </h3>
       <p>{document.description}</p>
     </div>
@@ -190,25 +167,25 @@ function DocumentCard({ document }) \{
 
 ```javascript
 // Enhanced search with product filtering
-function searchDocuments(query, filters = {}) \{
+function searchDocuments(query, filters = {}) {
   let results = performTextSearch(query);
   
   // Filter by product if specified
   if (filters.products && filters.products.length > 0) {
     results = results.filter(doc =>
       filters.products.some(product =>
-        doc.productTags.some(tag => tag.key === `netbox-${product\}`)
+        doc.productTags.some(tag => tag.key === `netbox-${product}`)
       )
     );
   }
   
   // Add product tag highlighting in results
-  return results.map(doc => (\{
+  return results.map(doc => ({
     ...doc,
     relevantTags: doc.productTags.filter(tag =>
       filters.products?.includes(tag.key.replace('netbox-', ''))
     )
-  \}));
+  }));
 }
 ```
 
@@ -216,19 +193,19 @@ function searchDocuments(query, filters = {}) \{
 
 ```javascript
 // Generate product-specific sitemaps
-function generateProductSitemaps() \{
+function generateProductSitemaps() {
   const productDocs = groupBy(allDocs, doc => doc.productTags);
   
   Object.entries(productDocs).forEach(([product, docs]) => {
-    const sitemap = `\<?xml version="1.0" encoding="UTF-8"?\>
-\<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\>
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${docs.map(doc => `
   <url>
-    <loc>${BASE_URL\}${doc.url}</loc>
+    <loc>${BASE_URL}${doc.url}</loc>
     <lastmod>${doc.lastModified}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    \<meta name="product" content="${product}" /\>
+    <meta name="product" content="${product}" />
   </url>
 `).join('')}
 </urlset>`;
@@ -314,19 +291,19 @@ node scripts/validate-console-docs-tags.js
 ### 2. **API Testing**
 ```javascript
 // Test that all console docs are properly categorized
-describe('Console Docs Integration', () => \{
+describe('Console Docs Integration', () => {
   test('all docs have product tags', async () => {
     const docs = await fetchConsoleDocs();
     docs.forEach(doc => {
       expect(doc.productTags.length).toBeGreaterThan(0);
-    \});
+    });
   });
   
-  test('product filtering works', async () => \{
+  test('product filtering works', async () => {
     const cloudDocs = await fetchDocsByProduct('cloud');
     cloudDocs.forEach(doc => {
       expect(doc.productTags.some(tag => tag.key === 'cloud')).toBe(true);
-    \});
+    });
   });
 });
 ```
