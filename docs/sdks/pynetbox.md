@@ -15,71 +15,56 @@ tags:
 
 # NetBox SDKs
 
-## Pynetbox
-Python API client library for [NetBox](https://github.com/netbox-community/netbox).
+!!! info "Documentation Location"
+    **NetBox SDK documentation has moved!**
+    
+    For the most current and authoritative NetBox SDK documentation, please visit:
+    
+    **[NetBox SDKs Documentation →](https://docs.netboxlabs.com/netbox-sdks/)**
 
-> **Note:** Version 6.7 and later of the library only supports NetBox 3.3 and above.
+## About NetBox SDKs
 
-This guide will help you get started, but for more information, see the Pynetbox [Git Repository](https://github.com/netbox-community/pynetbox/tree/master)
+NetBox SDKs provide programmatic access to NetBox through various programming languages. These libraries simplify integration with NetBox's REST API and enable automation of network infrastructure management tasks.
 
-## Installation
+### Available SDKs
 
-To install run `pip install pynetbox`.
+- **[pynetbox](https://docs.netboxlabs.com/netbox-sdks/pynetbox/)** - Python API client library
+- **[netbox-python](https://docs.netboxlabs.com/netbox-sdks/netbox-python/)** - Alternative lightweight Python wrapper
+- **[go-netbox](https://docs.netboxlabs.com/netbox-sdks/go-netbox/)** - Go client library
+- **[netbox-client-ruby](https://docs.netboxlabs.com/netbox-sdks/ruby/)** - Ruby client library
 
-Alternatively, you can clone the repo and run `python setup.py install`.
+### Key Features
 
+- **Full API Coverage**: Complete access to NetBox's REST API endpoints
+- **Authentication Support**: Token-based authentication for secure access
+- **Query Methods**: Comprehensive filtering, searching, and pagination support
+- **CRUD Operations**: Create, read, update, and delete NetBox objects
+- **Threading Support**: Multi-threaded operations for improved performance
+- **Type Safety**: Strongly typed interfaces where applicable
 
-## Quick Start
+### Getting Started
 
-The full pynetbox API is documented on [Read the Docs](http://pynetbox.readthedocs.io/en/latest/), but the following should be enough to get started using it.
+To get started with NetBox SDKs, including installation instructions, authentication setup, and usage examples, please visit the official documentation:
 
-To begin, import pynetbox and instantiate the API.
+**[→ Visit NetBox SDKs Documentation](https://docs.netboxlabs.com/netbox-sdks/)**
 
-```
-import pynetbox
-nb = pynetbox.api(
-    'http://localhost:8000',
-    token='d6f4e314a5b5fefd164995169f28ae32d987704f'
-)
-```
+### Quick Links
 
-The first argument the .api() method takes is the NetBox URL. There are a handful of named arguments you can provide, but in most cases none are required to simply pull data. In order to write, the `token` argument should to be provided.
+- **[Installation Guides](https://docs.netboxlabs.com/netbox-sdks/installation/)**
+- **[Authentication Setup](https://docs.netboxlabs.com/netbox-sdks/authentication/)**
+- **[Usage Examples](https://docs.netboxlabs.com/netbox-sdks/examples/)**
+- **[API Reference](https://docs.netboxlabs.com/netbox-sdks/api-reference/)**
+- **[Best Practices](https://docs.netboxlabs.com/netbox-sdks/best-practices/)**
 
+### Popular Use Cases
 
-## Queries
+- **Infrastructure Automation**: Automate device provisioning and configuration management
+- **Data Migration**: Bulk import/export of network infrastructure data
+- **Reporting & Analytics**: Generate custom reports and dashboards
+- **Integration**: Connect NetBox with other network management tools
+- **CI/CD Pipelines**: Integrate network documentation into deployment workflows
 
-The pynetbox API is setup so that NetBox's apps are attributes of the `.api()` object, and in turn those apps have attribute representing each endpoint. Each endpoint has a handful of methods available to carry out actions on the endpoint. For example, in order to query all the objects in the `devices` endpoint you would do the following:
+---
 
-```
->>> devices = nb.dcim.devices.all()
->>> for device in devices:
-...     print(device.name)
-...
-test1-leaf1
-test1-leaf2
-test1-leaf3
->>>
-```
-
-Note that the all() and filter() methods are generators and return an object that can be iterated over only once.  If you are going to be iterating over it repeatedly you need to either call the all() method again, or encapsulate the results in a `list` object like this:
-```
->>> devices = list(nb.dcim.devices.all())
-```
-
-### Threading
-
-pynetbox supports multithreaded calls for `.filter()` and `.all()` queries. It is **highly recommended** you have `MAX_PAGE_SIZE` in your Netbox install set to anything *except* `0` or `None`. The default value of `1000` is usually a good value to use. To enable threading, add `threading=True` parameter to the `.api`:
-
-```python
-nb = pynetbox.api(
-    'http://localhost:8000',
-    threading=True,
-)
-```
-
-!!! info "Alternative Library"
-    For those interested in a different approach, there is an alternative Python API client library available for NetBox called [netbox-python](https://github.com/netbox-community/netbox-python). This library provides a thin Python wrapper over the NetBox API.
-
-    [netbox-python](https://github.com/netbox-community/netbox-python) offers a minimalistic interface to interact with NetBox's API. While it may not provide all the features available in pynetbox, it offers a lightweight and straightforward option for interfacing with NetBox.
-
-    To explore further details and access the documentation, please visit the [netbox-python](https://github.com/netbox-community/netbox-python).
+!!! note "Why the redirect?"
+    NetBox SDK documentation is maintained in its own dedicated repository to ensure you always have access to the most up-to-date information, including the latest features, compatibility updates, and best practices for each supported programming language.

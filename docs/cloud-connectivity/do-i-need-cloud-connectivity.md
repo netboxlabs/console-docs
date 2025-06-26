@@ -1,26 +1,29 @@
 ---
 tags:
   - cloud
-  - netbox
-  - api
-  - authentication
-  - administration
-  - operations
-  - installation
-  - configuration
-  - getting-started
-  - automation
+  - cloud-connectivity
   - networking
-  - integration
-title: Do I Need Cloud Connectivity
+  - decision-guide
+title: "Do I Need Cloud Connectivity Options?"
+description: "Comprehensive guide to help determine if you need specialized cloud connectivity options for NetBox Cloud or if standard internet delivery meets your requirements."
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-27"
+versions:
+  netbox_cloud: "v1.10"
+status: "current"
+category: "networking"
+audience: "decision-makers"
+complexity: "intermediate"
 ---
+
+# Do I Need Cloud Connectivity Options?
 
 [Internet Delivery (Single Region)](../cloud-connectivity/internet-delivery.md) is the standard product offering for NetBox Cloud. It comes with extensive security features (see below) and is suitable for the majority of use cases and environments.
 
 If you have special connectivity needs, there are several [options](../cloud-connectivity/which-connectivity-option.md) available. However, in many cases where cloud connectivity options seem necessary, NetBox Cloud offers features that can address your needs without additional setup cost. This guide explores some of those features.
 
 ## NetBox Cloud Security Features
-Security and convenience are always in focus in the NetBox Cloud Platform and we understand that with any application, getting the balance right between security and convenience is crucial. At NetBox Labs, we believe that you shouldn’t have to compromise in either area. Just a few of the Security features the NetBox Cloud platform offers are:
+Security and convenience are always in focus in the NetBox Cloud Platform and we understand that with any application, getting the balance right between security and convenience is crucial. At NetBox Labs, we believe that you shouldn't have to compromise in either area. Just a few of the Security features the NetBox Cloud platform offers are:
 
 - Securing Access with [Prefix Lists](https://docs.netboxlabs.com/Administration%20Console/prefix-lists/)
 - mTLS and Dedicated IP Addresses

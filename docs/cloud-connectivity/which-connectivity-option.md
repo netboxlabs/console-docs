@@ -1,15 +1,23 @@
 ---
 tags:
   - cloud
-  - netbox
-  - authentication
-  - administration
-  - installation
-  - configuration
+  - cloud-connectivity
   - networking
-  - integration
-title: Which Connectivity Option
+  - decision-guide
+  - aws
+title: "Which Cloud Connectivity Option is Right for Me?"
+description: "Comprehensive comparison matrix of NetBox Cloud connectivity options including Internet Delivery, AWS Private Link, IPSEC VPN, and AWS Direct Connect."
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-27"
+versions:
+  netbox_cloud: "v1.10"
+status: "current"
+category: "networking"
+audience: "decision-makers"
+complexity: "intermediate"
 ---
+
+# Which Cloud Connectivity Option is Right for Me?
 
 In many cases where cloud connectivity options seem necessary, NetBox Cloud offers [features](../cloud-connectivity/do-i-need-cloud-connectivity.md) that can address your needs without additional setup. In the majority of cases [Internet Delivery (Single Region)](../cloud-connectivity/internet-delivery.md) is the most appropriate connectivity option, but there are some general recommendations depending on your use case:
 

@@ -1,8 +1,24 @@
 ---
 tags:
   - cloud
-title: Ipsec Vpn Tunnels
+  - cloud-connectivity
+  - networking
+  - vpn
+  - ipsec
+  - security
+title: "IPSEC VPN Tunnels (Single Region)"
+description: "Secure site-to-site connectivity to NetBox Cloud using IPSEC VPN tunnels with flexible routing options and high security."
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-27"
+versions:
+  netbox_cloud: "v1.10"
+status: "current"
+category: "networking"
+audience: "administrators"
+complexity: "advanced"
 ---
+
+# IPSEC VPN Tunnels (Single Region)
 
 In this solution NetBox Cloud is securely delivered over an IPSEC VPN. You have single or dual tunnel options, and use a static route or the preferred option of BGP routing. Customer IP space (/24 or /25) is assigned for the VPC as this is required to host load balancers and proxies within the dedicated customer Account/VPC.
 

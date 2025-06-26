@@ -271,94 +271,25 @@ title: Welcome to the NetBox Labs Documentation Site
 
 # Welcome to the NetBox Labs Documentation Site 
 
-<div class="hero-subtitle">
-The home of documentation for NetBox <a href="Administration Console/console-access" class="link-cloud">Cloud</a>, <a href="netbox-enterprise/nbe-overview" class="link-enterprise">Enterprise</a>, <a href="netbox-integrations/netbox-ansible-collection" class="link-integrations">Integrations</a>, <a href="sdks/pynetbox" class="link-sdks">SDKs</a> and <a href="netbox-extensions/diode/index" class="link-extensions">Extensions</a>.
-</div>
+The home of documentation for NetBox [Cloud](Administration%20Console/console-access.md), [Enterprise](netbox-enterprise/nbe-overview.md), [Integrations](netbox-integrations/netbox-ansible-collection.md), [SDKs](sdks/pynetbox.md) and [Extensions](netbox-extensions/diode/index.md). 
 
-<div class="section-header">
-  <h2>Products</h2>
-  <div class="section-divider products-divider"></div>
-</div>
+<div class="grid cards" markdown="1">
 
-<div class="products-grid">
-  
-  <!-- NetBox Card -->
-  <div class="product-card">
-    <div class="product-header">
-      <div class="icon-container">
-        <img src="images/netbox-favicon.png" alt="NetBox" class="icon-img" />
-      </div>
-      <h3>NetBox</h3>
-    </div>
-    <p>
-      The world's leading network source of truth. Model, document, and automate your infrastructure.
-    </p>
-    <div class="product-links">
-      <a href="https://github.com/netbox-community/netbox" class="link-community">Community</a>
-      <a href="netbox-enterprise/nbe-overview" class="link-enterprise">Enterprise</a>
-      <a href="NetBox Cloud/getting-started-with-nbc" class="link-cloud">Cloud</a>
-    </div>
-  </div>
+- ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Cloud__
+    
+    All the power and flexibility of NetBox, rock solid and secure. 
 
-  <!-- Discovery Card -->
-  <div class="product-card" >
-    <div class="product-header" >
-      <div class="icon-container" >
-        <div class="icon-letter discovery-icon">D</div>
-      </div>
-      <h3 >Discovery</h3>
-    </div>
-    <p >
-      Automatically map your networks and infrastructure. Accelerate documentation and streamline operations.
-    </p>
-    <div class="product-links">
-      <a href="netbox-discovery/index" class="link-community">Community</a>
-      <a href="netbox-discovery/index" class="link-enterprise">Enterprise</a>
-      <a href="netbox-discovery/index" class="link-cloud">Cloud</a>
-    </div>
-  </div>
+    Focus on building and evolving your network.
 
-  <!-- Assurance Card -->
-  <div class="product-card" >
-    <div class="product-header" >
-      <div class="icon-container" >
-        <div class="icon-letter assurance-icon">A</div>
-      </div>
-      <h3 >Assurance</h3>
-    </div>
-    <p >
-      Find and fix operational drift. Continuously monitor and detect deviations in your infrastructure.
-    </p>
-    <div class="product-links">
-      <span class="unavailable">Community (Not Available)</span>
-      <a href="netbox-assurance/index" class="link-enterprise">Enterprise</a>
-      <a href="netbox-assurance/index" class="link-cloud">Cloud (Coming Soon)</a>
-    </div>
-  </div>
+    [Get started with NetBox Cloud](Administration%20Console/console-access.md)
 
-  <!-- Operator Card -->
-  <div class="product-card" >
-    <div class="product-header" >
-      <div class="icon-container" >
-        <div class="icon-letter operator-icon">O</div>
-      </div>
-      <h3 >Operator</h3>
-    </div>
-    <p >
-      AI superpowers for network engineers. Agentic AI operations with NetBox as your infrastructure map.
-    </p>
-    <div class="product-links">
-      <span class="unavailable">Community (Not Available)</span>
-      <a href="netbox-operator/index" class="link-enterprise">Enterprise (Coming Soon)</a>
-      <a href="netbox-operator/index" class="link-cloud">Cloud (Coming Soon)</a>
-    </div>
-  </div>
+- ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Enterprise__
+    
+    The power of NetBox in your own infrastructure, 
+    
+    backed and enhanced by NetBox Labs.
 
-</div>
-
-<div class="section-header">
-  <h2>Extensions & Integrations</h2>
-  <div class="section-divider extensions-divider"></div>
+    [Get started with NetBox Enterprise](netbox-enterprise/nbe-overview.md)
 </div>
 
 <div class="integration-grid">
