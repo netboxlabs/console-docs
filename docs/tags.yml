@@ -142,4 +142,33 @@ ai:
   label: 'AI'
   permalink: '/ai'
   description: 'Artificial Intelligence and machine learning features'
-  type: 'feature' 
+  type: 'feature'
+
+# Tier Tags (Display as Service Tier Pills)
+free:
+  label: 'Free'
+  permalink: '/free'
+  description: 'Features available in the free tier'
+  type: 'tier'
+  color: '#28a745'
+
+starter:
+  label: 'Starter'
+  permalink: '/starter'
+  description: 'Features available in the starter tier'
+  type: 'tier'
+  color: '#17a2b8'
+
+pro:
+  label: 'Professional'
+  permalink: '/pro'
+  description: 'Features available in the professional tier'
+  type: 'tier'
+  color: '#ffc107'
+
+ent:
+  label: 'Enterprise'
+  permalink: '/ent'
+  description: 'Features available in the enterprise tier'
+  type: 'tier'
+  color: '#dc3545' 

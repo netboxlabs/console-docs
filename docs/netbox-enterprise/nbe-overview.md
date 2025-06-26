@@ -9,6 +9,7 @@ tags:
   - operations
   - installation
   - integration
+  - ent
 ---
 
 # NetBox Enterprise
