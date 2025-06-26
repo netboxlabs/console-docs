@@ -1,4 +1,23 @@
-# NetBox Cloud Public IP Addresses
+---
+tags:
+  - cloud
+  - networking
+  - security
+  - ipam
+  - configuration
+title: "Public IP Addressing"
+description: "Configure and manage public IP addressing settings for NetBox Cloud instances."
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-27"
+versions:
+  netbox_cloud: "v1.10"
+status: "current"
+category: "networking"
+audience: "administrators"
+complexity: "intermediate"
+---
+
+# Public IP Addressing
 
 ## Traffic Originating From NetBox Cloud
 

@@ -1,6 +1,6 @@
 # Microsoft Entra ID Setup (formerly Azure Active Directory)
 
-This guide explains how to configure single sign-on (SSO) support for NetBox Enterprise using Microsoft Entra ID(formerly Azure Active Directory) as an authentication backend.
+This guide explains how to configure single sign-on (SSO) support for NetBox Enterprise using Microsoft Entra ID (formerly Azure Active Directory) as an authentication backend.
 
 ## Entra ID Configuration
 1. Create a test user (optional)
@@ -9,7 +9,7 @@ Create a new Entra ID user to be used for testing. You can skip this step if you
 2. Create an app registration
 Under the Microsoft Entra ID dashboard, navigate to **Add** > **App registration**.
 
-    ![Add an app registration](../images/Azure%20SSO/azure_ad_add_app_registration.png)
+    ![Add an app registration](../images/azure-sso/azure_ad_add_app_registration.png)
 
     Enter a name for the registration (e.g. "NetBox Enterprise") and ensure that the "single tenant" option is selected.
 
@@ -17,11 +17,11 @@ Under the Microsoft Entra ID dashboard, navigate to **Add** > **App registration
 
     Eg. https://{your-domain}.com/oauth/complete/azuread-oauth2/
 
-    ![Add an app registration](../images/Azure%20SSO/azure_ad_app_registration.png)
+    ![Add an app registration](../images/azure-sso/azure_ad_app_registration.png)
 
     Once finished, make note of the application (client) ID; this will be used when configuring NetBox Enterprise instance.
 
-    ![Completed app registration](../images/Azure%20SSO/azure_ad_app_registration_created.png)
+    ![Completed app registration](../images/azure-sso/azure_ad_app_registration_created.png)
 
 
     **Multitenant authentication**
@@ -32,15 +32,15 @@ Under the Microsoft Entra ID dashboard, navigate to **Add** > **App registration
 
     When viewing the newly-created app registration, click the "Add a certificate or secret" link under "Client credentials". Under the "Client secrets" tab, click the "New client secret" button.
 
-    ![Add a client secret](../images/Azure%20SSO/azure_ad_add_client_secret.png)
+    ![Add a client secret](../images/azure-sso/azure_ad_add_client_secret.png)
 
     You can optionally specify a description and select a lifetime for the secret.
 
-    ![Client secret parameters](../images/Azure%20SSO/azure_ad_client_secret.png)
+    ![Client secret parameters](../images/azure-sso/azure_ad_client_secret.png)
 
     Once finished, make note of the secret value (not the secret ID); this will be used when configuring your NetBox Enterprise instance.
 
-    ![Client secret parameters](../images/Azure%20SSO/azure_ad_client_secret_created.png)
+    ![Client secret parameters](../images/azure-sso/azure_ad_client_secret_created.png)
 
 ## NetBox Enterprise Configuration
 
@@ -61,11 +61,11 @@ Once added, scroll down to the bottom of the page and click `Save config`. Follo
 ## Testing
 Open your NetBox Instance once it is back up in the `Ready` state. Log out of NetBox instance if already authenticated, and click the "Log In" button at top right. You should see the normal login form as well as an option to authenticate using Entra ID. Click that link.
 
-![NetBox Azure AD login form](../images/Azure%20SSO/netbox_azure_ad_login.png)
+![NetBox Entra ID login form](../images/azure-sso/netbox_azure_ad_login.png)
 
 You should be redirected to Microsoft's authentication portal. Enter the username/email and password of your account to continue. You may also be prompted to grant this application access to your account.
 
-![NetBox Azure AD login form](../images/Azure%20SSO/azure_ad_login_portal.png)
+![Microsoft authentication portal](../images/azure-sso/azure_ad_login_portal.png)
 
 If successful, you will be redirected back to the NetBox Enterprise UI, and will be logged in as the Entra ID user. You can verify this by navigating to your profile (using the button at top right).
 

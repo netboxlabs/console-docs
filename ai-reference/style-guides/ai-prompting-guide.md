@@ -237,7 +237,7 @@ Optional but recommended:
 
 ### Version-Specific Frontmatter Examples
 ```
-# For existing Administration Console docs:
+# For existing administration-console docs:
 versions:
   cloud: "v1.9"
 

@@ -61,33 +61,31 @@ exclude_docs: |
 nav:
   - Home: index.md
   - Cloud:
-    - Migrating to NetBox Cloud: "NetBox Cloud/migrating-to-netbox-cloud.md"
+    - Migrating to NetBox Cloud: "netbox-cloud/migrating-to-netbox-cloud.md"
     - Administration via Console:
-      - Getting Console Access: "Administration Console/console-access.md"
-      - Setting up Two-Factor Authentication: "Administration Console/set_up_2fa.md"
-      - Retrieving NetBox Admin Credentials: "Administration Console/retrieving-nbc-credentials.md"
-      - Adding Admin Users to Console: "Administration Console/console-admin-accounts.md"
-      #- Accessing the Console From the NetBox Cloud UI: "Administration Console/console-access-from-ui.md"
-      - Viewing Installed Plugins: "Administration Console/netbox-cloud-plugins.md"
-      - Database Backups: "Administration Console/working_with_database_backups.md"
-      - Upgrading NetBox: "Administration Console/upgrading-nbc.md"
-      - Managing Hostnames: "Administration Console/managing-hostnames.md"
+      - Getting Console Access: "administration-console/console-access.md"
+      - Console Overview: "administration-console/console-overview.md"
+      - Adding Admin Users to Console: "administration-console/console-administration.md"
+      - Viewing Installed Plugins: "administration-console/netbox-cloud-plugins.md"
+      - Database Backups: "administration-console/working_with_database_backups.md"
+      - Upgrading NetBox: "administration-console/upgrading-nbc.md"
+      - Managing Hostnames: "administration-console/managing-hostnames.md"
     - Security:
-        - Prefix Lists: "Administration Console/prefix-lists.md"
-        - Public IP Addressing: "Administration Console/public-ip-addressing.md"
+        - Prefix Lists: "administration-console/prefix-lists.md"
+        - Public IP Addressing: "administration-console/public-ip-addressing.md"
     - Single Sign-On (SSO):
       - Entra ID:
-        - Microsoft Entra ID SSO: "Administration Console/azure-ad-sso-setup.md"
-        - Entra ID Group Mapping: "Administration Console/azure-group-mapping.md"
+        - Microsoft Entra ID SSO: "administration-console/azure-ad-sso-setup.md"
+        - Entra ID Group Mapping: "administration-console/azure-group-mapping.md"
       - Okta:
-        - Okta SSO: "Administration Console/okta-sso-setup.md"
-        - Okta Group Mapping: "Administration Console/okta-group-mapping.md"
+        - Okta SSO: "administration-console/okta-sso-setup.md"
+        - Okta Group Mapping: "administration-console/okta-group-mapping.md"
       - SAML: 
-        - SAML SSO Setup: "Administration Console/saml-sso-setup.md"
-        - SAML Group Mapping: "Administration Console/saml-group-map.md"
+        - SAML SSO Setup: "administration-console/saml-sso-setup.md"
+        - SAML Group Mapping: "administration-console/saml-group-map.md"
     - Free Plan:
-      - Features: "Administration Console/free-plan-features.md"
-      - Add a New User: "Administration Console/free-plan-new-user.md"
+      - Features: "administration-console/free-plan-features.md"
+      - Add a New User: "administration-console/free-plan-new-user.md"
     - Cloud Connectivity:
       - Do I Need Cloud Connectivity Options?: "cloud-connectivity/do-i-need-cloud-connectivity.md"
       - Cloud Connectivity Options:
@@ -166,10 +164,11 @@ nav:
 extra:
   version:
     provider: mike
-    default: v1.9
-    current: v1.9
+    default: v1.10
+    current: v1.10
     available:
-      - v1.9 (Current)
+      - v1.10 (Current)
+      - v1.9
   social:
     - icon: fontawesome/solid/globe
       link: https://netboxlabs.com

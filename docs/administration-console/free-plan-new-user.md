@@ -1,3 +1,21 @@
+---
+tags:
+  - cloud
+  - free-plan
+  - administration
+  - getting-started
+title: "Add a New User to Free Plan"
+description: "Step-by-step guide to inviting and adding new users to a NetBox Cloud Free Plan instance through the console administration interface."
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-27"
+versions:
+  netbox_cloud: "v1.10"
+status: "current"
+category: "administration"
+audience: "administrators"
+complexity: "beginner"
+---
+
 # Add a New User to Free Plan
 
 To invite a new user to a NetBox Cloud Free instance, the user will need to have a valid email address, and be added as an administrator in the NetBox Labs Console.
@@ -16,7 +34,7 @@ To invite a new user to a NetBox Cloud Free instance, the user will need to have
 
 4. An email will be sent containing a temporary password for the Console
 
-5. Have the user login with the tempoary information, and it will prompt for a new password to be set
+5. Have the user login with the temporary information, and it will prompt for a new password to be set
 
 6. The user can now login to the Console and click the link to access the instance
 

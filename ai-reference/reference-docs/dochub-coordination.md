@@ -124,7 +124,7 @@ navigation_structure:
   cloud:
     sources:
       - repository: "console-docs"
-        content: "Administration Console/**"
+        content: "administration-console/**"
         nav_prefix: "Administration"
       - repository: "console-docs"
         content: "cloud-connectivity/**"

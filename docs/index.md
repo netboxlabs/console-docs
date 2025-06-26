@@ -15,7 +15,7 @@ The home of documentation for NetBox [Cloud](Administration%20Console/console-ac
 
     Focus on building and evolving your network.
 
-    [Get started with NetBox Cloud](Administration%20Console/console-access.md)
+    [Get started with NetBox Cloud](administration-console/console-access.md)
 
 - ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Enterprise__
     

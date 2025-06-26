@@ -1,3 +1,22 @@
+---
+tags:
+  - cloud
+  - getting-started
+  - configuration
+  - sso
+  - features
+title: "Getting Started With NetBox Cloud"
+description: "Complete guide to getting up and running with NetBox Cloud, including unique features, configuration options, and single sign-on setup."
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-27"
+versions:
+  netbox_cloud: "v1.10"
+status: "current"
+category: "getting-started"
+audience: "administrators"
+complexity: "beginner"
+---
+
 # Getting Started With NetBox Cloud
 
 This document will help you get up and running with NetBox Cloud quickly. It highlights all the unique features provided by NetBox Cloud.

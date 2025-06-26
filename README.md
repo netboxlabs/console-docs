@@ -134,7 +134,7 @@ tags:
 ```
 console-docs/
 ├── docs/                           # 📝 Documentation content
-│   ├── Administration Console/     # NetBox Cloud admin features
+│   ├── administration-console/     # NetBox Cloud admin features
 │   ├── cloud-connectivity/         # Cloud connectivity guides
 │   ├── netbox-assurance/          # NetBox Assurance documentation
 │   ├── netbox-discovery/          # NetBox Discovery documentation

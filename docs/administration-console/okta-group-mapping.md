@@ -1,3 +1,23 @@
+---
+tags:
+  - cloud
+  - authentication
+  - sso
+  - okta
+  - rbac
+  - configuration
+title: "Okta Group Mapping"
+description: "Configure automatic group synchronization and role mapping between Okta and NetBox Cloud for streamlined user access management."
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-27"
+versions:
+  netbox_cloud: "v1.10"
+status: "current"
+category: "authentication"
+audience: "administrators"
+complexity: "intermediate"
+---
+
 # Group Mapping For Okta Single Sign-On (SSO)
 
 Upgrade your Single Sign-On experience with Group Mapping for Okta SSO – a smarter, more secure way to manage user access. The Group Mapping feature for Okta Single Sign-On, streamlines the synchronization of group memberships from Okta to groups in NetBox Cloud, allowing you to align your user access efficiently and accurately. 
@@ -14,9 +34,9 @@ If you are already securing access to NetBox Cloud using Okta for SSO, and would
 
 Group mappings are based on the **name** of the group in Okta, which is mapped to a group in NetBox Cloud, and that group could have permissions assigned to it. For example, this group called **CircuitManager** in NetBox Cloud has permissions assigned to it that allows members of the group to manage all of the **Circuit** and  **Provider** object types: 
 
-![NetBox Group](..//images/Azure%20SSO/azure_group_sync_2.png)
+![NetBox Group Configuration](../images/azure-sso/azure_group_sync_2.png)
 
-![NetBox Permissions](..//images/Azure%20SSO/azure_group_sync_3.png)
+![NetBox Group Permissions](../images/azure-sso/azure_group_sync_3.png)
 
 Optionally, members of the Okta groups can also be members of the NetBox built-in groups **Staff** which allows access to the NetBox admin interface, and **Superuser** which has all permissions without explicitly assigning them.
 
