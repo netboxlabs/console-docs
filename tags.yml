@@ -1,0 +1,389 @@
+# Platform Tags (Display as Top Pills)
+cloud:
+  label: 'Cloud'
+  permalink: '/cloud'
+  description: 'Documentation specific to NetBox Cloud deployments and features'
+  type: 'platform'
+  color: '#00d9be'
+
+enterprise:
+  label: 'Enterprise'
+  permalink: '/enterprise'
+  description: 'Documentation specific to NetBox Enterprise deployments and features'
+  type: 'platform'
+  color: '#ffac00'
+
+community:
+  label: 'Community'
+  permalink: '/community'
+  description: 'Documentation applicable to NetBox Community edition'
+  type: 'platform'
+  color: '#00bee0'
+
+airgap:
+  label: 'Air-Gap'
+  permalink: '/airgap'
+  description: 'Documentation for air-gapped NetBox deployments'
+  type: 'platform'
+  color: '#ff0078'
+
+# Product Tags (Display as Regular Tags)
+netbox:
+  label: 'NetBox'
+  permalink: '/netbox'
+  description: 'Core NetBox features and functionality'
+  type: 'product'
+  color: '#6c757d'
+
+discovery:
+  label: 'Discovery'
+  permalink: '/discovery'
+  description: 'Network discovery and device detection features'
+  type: 'product'
+  color: '#28a745'
+
+assurance:
+  label: 'Assurance'
+  permalink: '/assurance'
+  description: 'Network monitoring and assurance capabilities'
+  type: 'product'
+  color: '#6f42c1'
+
+operator:
+  label: 'Operator'
+  permalink: '/operator'
+  description: 'AI-powered network operations and automation'
+  type: 'product'
+  color: '#fd7e14'
+
+# Deployment Tags (Display as Regular Tags)
+kubernetes:
+  label: 'Kubernetes'
+  permalink: '/kubernetes'
+  description: 'Kubernetes deployments, kubectl commands, and container orchestration'
+  type: 'deployment'
+
+helm:
+  label: 'Helm'
+  permalink: '/helm'
+  description: 'Helm chart deployments and Kubernetes package management'
+  type: 'deployment'
+
+# Technical Categories (Display as Regular Tags)
+api:
+  label: 'API'
+  permalink: '/api'
+  description: 'APIs, SDKs, integrations, and development tools'
+  type: 'category'
+
+authentication:
+  label: 'Authentication'
+  permalink: '/authentication'
+  description: 'Authentication, SSO, security, and access control'
+  type: 'category'
+
+administration:
+  label: 'Administration'
+  permalink: '/administration'
+  description: 'System administration, configuration, and management'
+  type: 'category'
+
+operations:
+  label: 'Operations'
+  permalink: '/operations'
+  description: 'Monitoring, backups, upgrades, and operational tasks'
+  type: 'category'
+
+# Content Types (Display as Regular Tags)
+installation:
+  label: 'Installation'
+  permalink: '/installation'
+  description: 'Installation guides and setup procedures'
+  type: 'content'
+
+configuration:
+  label: 'Configuration'
+  permalink: '/configuration'
+  description: 'Configuration guides, settings, and customization'
+  type: 'content'
+
+troubleshooting:
+  label: 'Troubleshooting'
+  permalink: '/troubleshooting'
+  description: 'Problem resolution, debugging, and support guides'
+  type: 'content'
+
+getting-started:
+  label: 'Getting Started'
+  permalink: '/getting-started'
+  description: 'Introductory guides and quick start documentation'
+  type: 'content'
+
+# Feature Categories (Display as Regular Tags)
+automation:
+  label: 'Automation'
+  permalink: '/automation'
+  description: 'Automation, workflows, and scripting'
+  type: 'feature'
+
+networking:
+  label: 'Networking'
+  permalink: '/networking'
+  description: 'Network connectivity, cloud connectivity, and infrastructure'
+  type: 'feature'
+
+integration:
+  label: 'Integration'
+  permalink: '/integration'
+  description: 'Third-party integrations, plugins, and extensions'
+  type: 'feature'
+
+ai:
+  label: 'AI'
+  permalink: '/ai'
+  description: 'Artificial Intelligence and machine learning features'
+  type: 'feature'
+
+# Service Tier Tags (Display as Service Tier Pills)
+free-tier:
+  label: 'Free'
+  permalink: '/free-tier'
+  description: 'Features available in the free tier'
+  type: 'tier'
+  color: '#28a745'
+
+starter-tier:
+  label: 'Starter'
+  permalink: '/starter-tier'
+  description: 'Features available in the starter tier'
+  type: 'tier'
+  color: '#17a2b8'
+
+professional-tier:
+  label: 'Professional'
+  permalink: '/professional-tier'
+  description: 'Features available in the professional tier'
+  type: 'tier'
+  color: '#ffc107'
+
+enterprise-tier:
+  label: 'Enterprise'
+  permalink: '/enterprise-tier'
+  description: 'Features available in the enterprise tier'
+  type: 'tier'
+  color: '#dc3545'
+
+# Legacy tier tags (kept for backward compatibility)
+free:
+  label: 'Free'
+  permalink: '/free'
+  description: 'Features available in the free tier'
+  type: 'tier'
+  color: '#28a745'
+
+starter:
+  label: 'Starter'
+  permalink: '/starter'
+  description: 'Features available in the starter tier'
+  type: 'tier'
+  color: '#17a2b8'
+
+pro:
+  label: 'Professional'
+  permalink: '/pro'
+  description: 'Features available in the professional tier'
+  type: 'tier'
+  color: '#ffc107'
+
+ent:
+  label: 'Enterprise'
+  permalink: '/ent'
+  description: 'Features available in the enterprise tier'
+  type: 'tier'
+  color: '#dc3545'
+
+# Cloud Provider Tags (Consolidated under networking/integration)
+aws:
+  label: 'AWS'
+  permalink: '/aws'
+  description: 'Amazon Web Services integrations and connectivity'
+  type: 'provider'
+
+azure:
+  label: 'Azure'
+  permalink: '/azure'
+  description: 'Microsoft Azure integrations and authentication'
+  type: 'provider'
+
+# Authentication & Security (Consolidated under authentication)
+sso:
+  label: 'SSO'
+  permalink: '/sso'
+  description: 'Single sign-on authentication and identity management'
+  type: 'security'
+
+saml:
+  label: 'SAML'
+  permalink: '/saml'
+  description: 'SAML authentication and identity federation'
+  type: 'security'
+
+okta:
+  label: 'Okta'
+  permalink: '/okta'
+  description: 'Okta identity provider integration'
+  type: 'security'
+
+rbac:
+  label: 'RBAC'
+  permalink: '/rbac'
+  description: 'Role-based access control and permissions'
+  type: 'security'
+
+security:
+  label: 'Security'
+  permalink: '/security'
+  description: 'Security features, access control, and data protection'
+  type: 'security'
+
+# Operations & Maintenance (Consolidated under operations)
+backup:
+  label: 'Backup'
+  permalink: '/backup'
+  description: 'Data backup, restore, and disaster recovery'
+  type: 'operational'
+
+database:
+  label: 'Database'
+  permalink: '/database'
+  description: 'Database management, backups, and administration'
+  type: 'operational'
+
+upgrade:
+  label: 'Upgrade'
+  permalink: '/upgrade'
+  description: 'System upgrades, migrations, and version management'
+  type: 'operational'
+
+migration:
+  label: 'Migration'
+  permalink: '/migration'
+  description: 'Data migration, system migration, and transition guides'
+  type: 'operational'
+
+maintenance:
+  label: 'Maintenance'
+  permalink: '/maintenance'
+  description: 'System maintenance, scheduled downtime, and updates'
+  type: 'operational'
+
+monitoring:
+  label: 'Monitoring'
+  permalink: '/monitoring'
+  description: 'System monitoring, alerting, and performance tracking'
+  type: 'operational'
+
+# Network Connectivity (Consolidated under networking)
+cloud-connectivity:
+  label: 'Cloud Connectivity'
+  permalink: '/cloud-connectivity'
+  description: 'Cloud network connectivity options and configurations'
+  type: 'network'
+
+vpn:
+  label: 'VPN'
+  permalink: '/vpn'
+  description: 'Virtual private network connections and tunnels'
+  type: 'network'
+
+ipsec:
+  label: 'IPSec'
+  permalink: '/ipsec'
+  description: 'IPSec VPN tunnels and security protocols'
+  type: 'network'
+
+direct-connect:
+  label: 'Direct Connect'
+  permalink: '/direct-connect'
+  description: 'AWS Direct Connect and dedicated network connections'
+  type: 'network'
+
+private-link:
+  label: 'Private Link'
+  permalink: '/private-link'
+  description: 'AWS Private Link and private connectivity'
+  type: 'network'
+
+internet-delivery:
+  label: 'Internet Delivery'
+  permalink: '/internet-delivery'
+  description: 'Internet-based connectivity and delivery methods'
+  type: 'network'
+
+multi-region:
+  label: 'Multi-Region'
+  permalink: '/multi-region'
+  description: 'Multi-region deployments and connectivity'
+  type: 'network'
+
+# Technical Features (Consolidated under integration/networking)
+plugins:
+  label: 'Plugins'
+  permalink: '/plugins'
+  description: 'NetBox plugins, extensions, and custom integrations'
+  type: 'technical'
+
+ui:
+  label: 'User Interface'
+  permalink: '/ui'
+  description: 'User interface features, navigation, and usability'
+  type: 'technical'
+
+interface:
+  label: 'Interface'
+  permalink: '/interface'
+  description: 'User interface design and interaction patterns'
+  type: 'technical'
+
+dns:
+  label: 'DNS'
+  permalink: '/dns'
+  description: 'Domain Name System configuration and management'
+  type: 'technical'
+
+ipam:
+  label: 'IPAM'
+  permalink: '/ipam'
+  description: 'IP Address Management features and functionality'
+  type: 'technical'
+
+high-availability:
+  label: 'High Availability'
+  permalink: '/high-availability'
+  description: 'High availability configurations and redundancy'
+  type: 'technical'
+
+# Content Organization
+faq:
+  label: 'FAQ'
+  permalink: '/faq'
+  description: 'Frequently asked questions and answers'
+  type: 'content-format'
+
+features:
+  label: 'Features'
+  permalink: '/features'
+  description: 'Product features and capabilities overview'
+  type: 'content-format'
+
+free-plan:
+  label: 'Free Plan'
+  permalink: '/free-plan'
+  description: 'Free plan features and limitations'
+  type: 'content-format'
+
+decision-guide:
+  label: 'Decision Guide'
+  permalink: '/decision-guide'
+  description: 'Decision-making guides and comparison resources'
+  type: 'content-format' 
