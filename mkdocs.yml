@@ -109,9 +109,6 @@ nav:
       - Migrating: "netbox-enterprise/nbe-migrating.md"
       - Built-in Plugin Installation: "netbox-enterprise/nbe-ec-built-in-plugins.md"
       - Custom Plugin Installation: "netbox-enterprise/nbe-ec-custom-plugins.md"
-    #- KOTS:
-    #  - Requirements: "netbox-enterprise/nbe-kots-requirements.md"
-    #  - Installation: "netbox-enterprise/nbe-kots-installation.md"
     - Single Sign-On (SSO):
       - Entra ID:
         - Microsoft Entra ID SSO: "netbox-enterprise/nbe-azure-sso.md"
@@ -123,7 +120,6 @@ nav:
     - "Administration":
       - "TLS and Ingress": "netbox-enterprise/nbe-tls-ingress.md"
       - "Backups": "netbox-enterprise/nbe-backups.md"
-      #- "Installing Custom NetBox Plugins": "netbox-enterprise/nbe-ec-custom-plugins.md"
       - "Advanced Tools and Troubleshooting": "netbox-enterprise/nbe-troubleshooting.md"
     - "Release Notes": "netbox-enterprise/nbe-release-notes.md"
   - NetBox Discovery:

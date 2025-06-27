@@ -89,8 +89,8 @@ orb:
     common:
       diode:
         target: https://your-instance.netboxcloud.com/diode
-        client_id: \${DIODE_CLIENT_ID}
-        client_secret: \${DIODE_CLIENT_SECRET}
+        client_id: ${DIODE_CLIENT_ID}
+        client_secret: ${DIODE_CLIENT_SECRET}
         agent_name: cloud_agent_01
   policies:
     network_discovery:
@@ -150,9 +150,9 @@ orb:
     device_discovery:
     common:
       diode:
-        target: https://your-netbox-enterprise.company.com/diode
-        client_id: \${DIODE_CLIENT_ID}
-        client_secret: \${DIODE_CLIENT_SECRET}
+        target: https://your-instance.netboxcloud.com/diode
+        client_id: ${DIODE_CLIENT_ID}
+        client_secret: ${DIODE_CLIENT_SECRET}
         agent_name: enterprise_agent_01
   policies:
     network_discovery:
@@ -173,8 +173,8 @@ orb:
         scope:
           - driver: ios
             hostname: 192.168.1.1
-            username: \${DEVICE_USERNAME}
-            password: \${DEVICE_PASSWORD}
+            username: ${DEVICE_USERNAME}
+            password: ${DEVICE_PASSWORD}
 EOF
 
 # Run the discovery agent
@@ -200,7 +200,7 @@ orb:
     network_discovery:
     common:
       diode:
-        target: https://mycompany.netboxcloud.com/diode
+        target: https://your-instance.netboxcloud.com/diode
         client_id: ${DIODE_CLIENT_ID}
         client_secret: ${DIODE_CLIENT_SECRET}
         agent_name: cloud_network_agent
@@ -226,7 +226,7 @@ orb:
     device_discovery:
     common:
       diode:
-        target: https://netbox.enterprise.com/diode
+        target: https://your-instance.netboxcloud.com/diode
         client_id: ${DIODE_CLIENT_ID}
         client_secret: ${DIODE_CLIENT_SECRET}
         agent_name: multi_site_agent
@@ -274,7 +274,7 @@ orb:
     device_discovery:
     common:
       diode:
-        target: https://netbox-prod.company.local/diode
+        target: https://your-instance.netboxcloud.com/diode
         client_id: ${DIODE_CLIENT_ID}
         client_secret: ${DIODE_CLIENT_SECRET}
         agent_name: device_discovery_agent
