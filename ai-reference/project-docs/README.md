@@ -369,15 +369,26 @@ cat build/sitemap.xml | grep -c "docs/"  # Count pages
 - **JSON Feed**: `https://netboxlabs.com/docs/feeds/customer-messages.json`
 
 ### NetBox Enterprise Helm Documentation
+- **Installation Guides**: `https://netboxlabs.com/docs/guides/` (HTML index with links to all guides)
+- **Configuration Files**: `https://netboxlabs.com/docs/files/` (HTML index with file descriptions)
 - **Values Template**: `https://netboxlabs.com/docs/files/values-extra.yaml`
-- **Configuration Validator**: `https://netboxlabs.com/docs/scripts/validate-config.sh`
-- **Complete Usage Guide**: `https://netboxlabs.com/docs/guides/helm-values-guide.md`
+- **Private Registry Template**: `https://netboxlabs.com/docs/files/private-registry.yaml`
+- **Registry Script**: `https://netboxlabs.com/docs/files/private-registry.sh`
+
+#### Individual Guide URLs (Direct Access)
+- **Overview**: `https://netboxlabs.com/docs/guides/netbox-enterprise-helm-overview.md`
+- **Prerequisites**: `https://netboxlabs.com/docs/guides/netbox-enterprise-helm-prerequisites.md`
+- **Basic Installation**: `https://netboxlabs.com/docs/guides/netbox-enterprise-helm-basic.md`
+- **Advanced Installation**: `https://netboxlabs.com/docs/guides/netbox-enterprise-helm-advanced.md`
+- **Troubleshooting**: `https://netboxlabs.com/docs/guides/netbox-enterprise-helm-troubleshooting.md`
+- **Complete Guide**: `https://netboxlabs.com/docs/guides/netbox-enterprise-helm-complete.md`
 
 #### Usage Notes
 - **Customer Messages**: TTL set to 60 minutes for urgent message delivery
-- **Helm Resources**: Enterprise Portal compatible with `registry.replicated.com`
+- **Helm Resources**: Updated to use `registry.netboxlabs.com` and beta channel
 - **Hidden from Navigation**: All resources accessible via direct URL only
-- **No Search Indexing**: Excluded from Algolia search to maintain focus on main documentation
+- **No Search Indexing**: Excluded from Algolia search and marked with noindex meta tags
+- **Air-Gap Support**: Comprehensive private registry configuration and documentation
 
 #### Distribution Workflow
 ```bash
@@ -386,11 +397,17 @@ vim static/feeds/customer-messages.xml
 vim static/feeds/customer-messages.json
 git add static/feeds/ && git commit -m "Update customer messages" && git push
 
-# Helm Resources - Update templates
+# Helm Resources - Update templates and guides
 vim static/files/values-extra.yaml
-vim static/scripts/validate-config.sh
-vim static/guides/helm-values-guide.md
+vim static/files/private-registry.yaml
+vim static/files/private-registry.sh
+vim static/guides/netbox-enterprise-helm-*.md
 git add static/ && git commit -m "Update Helm documentation" && git push
+
+# HTML Index Pages - Update landing pages
+vim static/guides/index.html  # Main guides index
+vim static/files/index.html   # Files index with descriptions
+git add static/ && git commit -m "Update HTML index pages" && git push
 ```
 
 ---

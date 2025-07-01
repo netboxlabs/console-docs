@@ -9,7 +9,7 @@ tags:
   - helm
   - enterprise
 author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
+last_updated: "2025-07-01"
 category: "reference"
 audience: "internal"
 complexity: "beginner"
@@ -115,6 +115,6 @@ static/
 
 ---
 
-**Last Updated**: 2025-01-27  
+**Last Updated**: 2025-07-01  
 **Status**: Production Ready  
 **Next Review**: As needed for new distribution requirements 
