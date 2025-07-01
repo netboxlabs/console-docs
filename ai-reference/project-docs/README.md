@@ -206,7 +206,7 @@ git commit -m "Update all documentation submodules"
 {
   "redirects": [
     {
-      "source": "/administration-console/(.*)",
+      "source": "/Administration Console/(.*)",
       "destination": "/docs/console/administration-console/$1",
       "permanent": true
     },
@@ -361,6 +361,37 @@ cat build/sitemap.xml | grep -c "docs/"  # Count pages
 - **Community Support**: NetBox Discussions
 - **Enterprise Support**: NetBox Labs Support Portal
 - **Issue Reporting**: Respective repository issue trackers
+
+## 📦 Distribution URLs
+
+### Customer Messages Feed System
+- **RSS Feed**: `https://netboxlabs.com/docs/feeds/customer-messages.xml`
+- **JSON Feed**: `https://netboxlabs.com/docs/feeds/customer-messages.json`
+
+### NetBox Enterprise Helm Documentation
+- **Values Template**: `https://netboxlabs.com/docs/files/values-extra.yaml`
+- **Configuration Validator**: `https://netboxlabs.com/docs/scripts/validate-config.sh`
+- **Complete Usage Guide**: `https://netboxlabs.com/docs/guides/helm-values-guide.md`
+
+#### Usage Notes
+- **Customer Messages**: TTL set to 60 minutes for urgent message delivery
+- **Helm Resources**: Enterprise Portal compatible with `registry.replicated.com`
+- **Hidden from Navigation**: All resources accessible via direct URL only
+- **No Search Indexing**: Excluded from Algolia search to maintain focus on main documentation
+
+#### Distribution Workflow
+```bash
+# Customer Messages - Update feeds
+vim static/feeds/customer-messages.xml
+vim static/feeds/customer-messages.json
+git add static/feeds/ && git commit -m "Update customer messages" && git push
+
+# Helm Resources - Update templates
+vim static/files/values-extra.yaml
+vim static/scripts/validate-config.sh
+vim static/guides/helm-values-guide.md
+git add static/ && git commit -m "Update Helm documentation" && git push
+```
 
 ---
 
