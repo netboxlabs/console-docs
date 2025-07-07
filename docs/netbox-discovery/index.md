@@ -48,10 +48,10 @@ Ready to start discovering your network? Follow our comprehensive getting starte
 ### Quick Start Paths
 
 **For NetBox Enterprise Users:**
-- **[Enterprise Quick Start](getting-started.md#for-netbox-enterprise)** - Get up and running quickly with your existing NetBox Enterprise deployment
+- **[Enterprise Quick Start](getting-started.md#netbox-enterprise-setup)** - Get up and running quickly with your existing NetBox Enterprise deployment
 
 **For New Deployments:**
-- **[Complete Setup Guide](getting-started.md#installation-steps)** - Full end-to-end installation and configuration
+- **[Complete Setup Guide](getting-started.md#choose-your-deployment-type)** - Full end-to-end installation and configuration
 
 ## Enterprise Use Cases
 
