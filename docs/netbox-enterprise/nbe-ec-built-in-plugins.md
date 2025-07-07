@@ -4,7 +4,7 @@ NetBox Enterprise ships with a curated set of built-in plugins that extend the p
 
 ## Available Plugins
 
- Built-in plugins are regularly added to NetBox Enterprise as new releases become available. For the most current list of built-in plugins, refer to the [NetBox Enterprise Release Notes](https://docs.netboxlabs.com/netbox-enterprise/nbe-release-notes/).
+ Built-in plugins are regularly added to NetBox Enterprise as new releases become available. For the most current list of built-in plugins, refer to the [NetBox Enterprise Release Notes](https://netboxlabs.com/docs/netbox-enterprise/nbe-release-notes/).
 
 ## Plugin Management and Deployment
 

@@ -7,7 +7,6 @@ tags:
   - free-plan
   - features
   - getting-started
-  - free
 title: "Free Plan Features"
 description: "Overview of features and capabilities available in the NetBox Cloud Free Plan, including limitations and upgrade options."
 author: "NetBox Labs Documentation Team"

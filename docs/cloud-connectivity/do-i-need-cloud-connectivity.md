@@ -25,12 +25,12 @@ If you have special connectivity needs, there are several [options](../cloud-con
 ## NetBox Cloud Security Features
 Security and convenience are always in focus in the NetBox Cloud Platform and we understand that with any application, getting the balance right between security and convenience is crucial. At NetBox Labs, we believe that you shouldn't have to compromise in either area. Just a few of the Security features the NetBox Cloud platform offers are:
 
-- Securing Access with [Prefix Lists](https://docs.netboxlabs.com/Administration%20Console/prefix-lists/)
+- Securing Access with [Prefix Lists](https://netboxlabs.com/docs/administration-console/prefix-lists/)
 - mTLS and Dedicated IP Addresses
-- [Database Backup and Restore](https://docs.netboxlabs.com/Administration%20Console/working_with_database_backups/)
-- [Safe Upgrade Tool](https://docs.netboxlabs.com/Administration%20Console/upgrading-nbc/)
-- [Two-Factor Authentication](https://docs.netboxlabs.com/Administration%20Console/set_up_2fa/) for the NetBox Labs Admin Console
-- [SSO Options](https://docs.netboxlabs.com/Administration%20Console/azure-ad-sso-setup/) for NetBox Cloud
+- [Database Backup and Restore](https://netboxlabs.com/docs/administration-console/working_with_database_backups/)
+- [Safe Upgrade Tool](https://netboxlabs.com/docs/administration-console/upgrading-nbc/)
+- [Two-Factor Authentication](https://netboxlabs.com/docs/administration-console/set_up_2fa/) for the NetBox Labs Admin Console
+- [SSO Options](https://netboxlabs.com/docs/administration-console/azure-ad-sso-setup/) for NetBox Cloud
 
 Read more about all of these features in this [blog](https://netboxlabs.com/blog/security-and-convenience-are-always-in-focus-in-the-netbox-cloud-platform/?preview_id=19124&preview_nonce=8a862c2421&preview=true) or watch an on-demand [webinar](https://netboxlabs.com/events/webinar-new-security-and-efficiency-enhancements-in-netbox-cloud/) to learn how these NetBox Cloud features are designed to make the lives of the network team easier, whilst at the same time enhancing the security of NetBox Cloud.
 

@@ -5,7 +5,7 @@
     
     For the most current and authoritative NetBox Branching documentation, please visit:
     
-    **[NetBox Branching Documentation →](https://docs.netboxlabs.com/netbox-branching/)**
+    **[NetBox Branching Documentation →](https://netboxlabs.com/docs/netbox-branching/)**
 
 ## About NetBox Branching
 
@@ -23,14 +23,14 @@ NetBox Branching is a powerful plugin that introduces version control-like funct
 
 To get started with NetBox Branching, including installation instructions, configuration options, and detailed usage guides, please visit the official documentation:
 
-**[→ Visit NetBox Branching Documentation](https://docs.netboxlabs.com/netbox-branching/)**
+**[→ Visit NetBox Branching Documentation](https://netboxlabs.com/docs/netbox-branching/)**
 
 ### Quick Links
 
-- **[Installation Guide](https://docs.netboxlabs.com/netbox-branching/installation/)**
-- **[Configuration Options](https://docs.netboxlabs.com/netbox-branching/configuration/)**
-- **[User Guide](https://docs.netboxlabs.com/netbox-branching/user-guide/)**
-- **[API Reference](https://docs.netboxlabs.com/netbox-branching/api/)**
+- **[Installation Guide](https://netboxlabs.com/docs/netbox-branching/installation/)**
+- **[Configuration Options](https://netboxlabs.com/docs/netbox-branching/configuration/)**
+- **[User Guide](https://netboxlabs.com/docs/netbox-branching/user-guide/)**
+- **[API Reference](https://netboxlabs.com/docs/netbox-branching/api/)**
 - **[GitHub Repository](https://github.com/netboxlabs/netbox-branching)**
 
 ---

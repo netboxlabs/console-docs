@@ -2,7 +2,7 @@
 
 !!! info "Currently in Public Preview"
 
-    The Diode project is currently in _Public Preview_. Please see [NetBox Labs Product and Feature Lifecycle](https://docs.netboxlabs.com/product_feature_lifecycle/) for more details.
+    The Diode project is currently in _Public Preview_. Please see [NetBox Labs Product and Feature Lifecycle](https://netboxlabs.com/docs/product_feature_lifecycle/) for more details.
 
 ## Overview 
 
