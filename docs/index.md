@@ -5,7 +5,7 @@ hide:
 ---
 # Welcome to the NetBox Labs Documentation Site 
 
-The home of documentation for NetBox [Cloud](Administration%20Console/console-access.md), [Enterprise](netbox-enterprise/nbe-overview.md), [Integrations](netbox-integrations/netbox-ansible-collection.md), [SDKs](sdks/pynetbox.md) and [Extensions](netbox-extensions/diode/index.md). 
+The home of documentation for NetBox [Cloud](administration-console/console-access.md), [Enterprise](netbox-enterprise/nbe-overview.md), [Integrations](netbox-integrations/netbox-ansible-collection.md), [SDKs](sdks/pynetbox.md) and [Extensions](netbox-extensions/diode/index.md). 
 
 <div class="grid cards" markdown="1">
 
@@ -15,7 +15,7 @@ The home of documentation for NetBox [Cloud](Administration%20Console/console-ac
 
     Focus on building and evolving your network.
 
-    [Get started with NetBox Cloud](Administration%20Console/console-access.md)
+    [Get started with NetBox Cloud](administration-console/console-access.md)
 
 - ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Enterprise__
     

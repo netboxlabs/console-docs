@@ -5,7 +5,7 @@
     
     For the most current and authoritative NetBox SDK documentation, please visit:
     
-    **[NetBox SDKs Documentation →](https://docs.netboxlabs.com/netbox-sdks/)**
+    **[NetBox SDKs Documentation →](https://netboxlabs.com/docs/netbox-sdks/)**
 
 ## About NetBox SDKs
 
@@ -13,10 +13,10 @@ NetBox SDKs provide programmatic access to NetBox through various programming la
 
 ### Available SDKs
 
-- **[pynetbox](https://docs.netboxlabs.com/netbox-sdks/pynetbox/)** - Python API client library
-- **[netbox-python](https://docs.netboxlabs.com/netbox-sdks/netbox-python/)** - Alternative lightweight Python wrapper
-- **[go-netbox](https://docs.netboxlabs.com/netbox-sdks/go-netbox/)** - Go client library
-- **[netbox-client-ruby](https://docs.netboxlabs.com/netbox-sdks/ruby/)** - Ruby client library
+- **[pynetbox](https://netboxlabs.com/docs/netbox-sdks/pynetbox/)** - Python API client library
+- **[netbox-python](https://netboxlabs.com/docs/netbox-sdks/netbox-python/)** - Alternative lightweight Python wrapper
+- **[go-netbox](https://netboxlabs.com/docs/netbox-sdks/go-netbox/)** - Go client library
+- **[netbox-client-ruby](https://netboxlabs.com/docs/netbox-sdks/ruby/)** - Ruby client library
 
 ### Key Features
 
@@ -31,15 +31,15 @@ NetBox SDKs provide programmatic access to NetBox through various programming la
 
 To get started with NetBox SDKs, including installation instructions, authentication setup, and usage examples, please visit the official documentation:
 
-**[→ Visit NetBox SDKs Documentation](https://docs.netboxlabs.com/netbox-sdks/)**
+**[→ Visit NetBox SDKs Documentation](https://netboxlabs.com/docs/netbox-sdks/)**
 
 ### Quick Links
 
-- **[Installation Guides](https://docs.netboxlabs.com/netbox-sdks/installation/)**
-- **[Authentication Setup](https://docs.netboxlabs.com/netbox-sdks/authentication/)**
-- **[Usage Examples](https://docs.netboxlabs.com/netbox-sdks/examples/)**
-- **[API Reference](https://docs.netboxlabs.com/netbox-sdks/api-reference/)**
-- **[Best Practices](https://docs.netboxlabs.com/netbox-sdks/best-practices/)**
+- **[Installation Guides](https://netboxlabs.com/docs/netbox-sdks/installation/)**
+- **[Authentication Setup](https://netboxlabs.com/docs/netbox-sdks/authentication/)**
+- **[Usage Examples](https://netboxlabs.com/docs/netbox-sdks/examples/)**
+- **[API Reference](https://netboxlabs.com/docs/netbox-sdks/api-reference/)**
+- **[Best Practices](https://netboxlabs.com/docs/netbox-sdks/best-practices/)**
 
 ### Popular Use Cases
 
