@@ -6,7 +6,6 @@ tags:
   - development
   - comprehensive
 author: "NetBox Labs Documentation Team"
-last_updated: "2025-06-25"
 category: "system-overview"
 audience: "developers"
 complexity: "intermediate"
@@ -70,7 +69,7 @@ tags:
 title: "Document Title"
 description: "SEO description"
 author: "NetBox Labs Documentation Team"
-last_updated: "2025-06-25"
+last_updated: "2025-07-01"
 versions:
   cloud: "v1.10"
   enterprise: "v1.10"
@@ -91,12 +90,29 @@ git submodule update --remote
 # Process AI reference materials
 yarn transform-ai-reference
 
-# Transform all documentation
+# Transform all documentation (includes admonition conversion)
 yarn transform-docs
 
-# Start development server
-yarn start --port 3001
+# Start development server (with improved error handling)
+yarn dev
+
+# Fix development issues if needed
+pkill -f "yarn dev"           # Kill conflicting processes
+rm -rf .docusaurus           # Clear build cache
 ```
+
+## 🔧 Recent System Improvements (2025)
+
+### Technical Fixes
+- **✅ Admonition Conversion**: Fixed MkDocs → Docusaurus admonition rendering with dual-stage processing
+- **✅ Build Process**: Resolved EMFILE errors and improved development server stability  
+- **✅ File Links**: Environment-aware links work correctly in both local and production environments
+- **✅ Transformation Pipeline**: Removed obsolete anchor link transformation rules
+
+### Documentation Enhancements
+- **✅ Helm Guides**: Professional styling with enhanced file cards and clean presentation
+- **✅ Content Quality**: Replaced AI-generated content with professional technical documentation
+- **✅ User Experience**: Improved visual hierarchy, removed distracting emojis, enhanced readability
 
 ## 📁 File Reference
 
@@ -186,7 +202,7 @@ versions:
 
 ---
 
-**System Overview** | **Last Updated**: 2025-06-25  
+**System Overview** | **Last Updated**: 2025-07-01  
 **Status**: Production Ready | **Version**: v2.0
 
 *Complete overview of NetBox Labs AI reference system for development team use.* 

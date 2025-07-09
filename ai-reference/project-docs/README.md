@@ -282,6 +282,93 @@ git commit -m "Update NetBox Changes documentation"
 git push
 ```
 
+### Helm Documentation Reorganization (2025)
+
+#### **File Structure Reorganization**
+Recent reorganization moved all Helm-related documentation into organized subdirectories:
+
+```bash
+# Before reorganization
+static/files/
+├── values-extra.yaml
+├── private-registry.yaml
+└── private-registry.sh
+
+static/guides/
+├── netbox-enterprise-helm-overview.md
+├── netbox-enterprise-helm-prerequisites.md
+├── netbox-enterprise-helm-basic.md
+├── netbox-enterprise-helm-advanced.md
+├── netbox-enterprise-helm-troubleshooting.md
+└── netbox-enterprise-helm-complete.md
+
+# After reorganization
+static/files/
+├── index.html (simple landing page → links to helm/)
+└── helm/
+    ├── index.html (detailed file descriptions)
+    ├── values-extra.yaml
+    ├── private-registry.yaml
+    ├── private-registry.sh
+    └── validate-config.sh
+
+static/guides/
+├── index.html (simple landing page → links to helm/)
+└── helm/
+    ├── index.html (detailed guide index)
+    ├── netbox-enterprise-helm-overview.md
+    ├── netbox-enterprise-helm-prerequisites.md
+    ├── netbox-enterprise-helm-basic.md
+    ├── netbox-enterprise-helm-advanced.md
+    ├── netbox-enterprise-helm-troubleshooting.md
+    ├── netbox-enterprise-helm-complete.md
+    └── helm-values-guide.md
+```
+
+#### **Docusaurus-Processed Distribution Solution**
+Implemented hybrid approach for Helm guides:
+- **Source Files**: Stored as Markdown in `docs/guides/helm/` for Docusaurus processing
+- **HTML Generation**: Docusaurus processes markdown and generates styled HTML pages
+- **URL Structure**: Clean URLs like `/docs/guides/helm/netbox-enterprise-helm-overview/`
+- **Selective Processing**: `docs/guides/` is preserved during submodule updates (only `docs/netbox/` and `docs/console/` are overwritten)
+- **Index Pages**: HTML landing pages link to Docusaurus-generated URLs
+
+#### **Search and Navigation Exclusions**
+Helm documentation is hidden from primary navigation while remaining accessible:
+
+```typescript
+// Docusaurus Algolia Search Exclusions
+searchParameters: {
+  facetFilters: [
+    '-url_without_anchor:*/guides/helm/*',
+    '-url_without_anchor:*/guides/index.html',  
+    '-url_without_anchor:*/files/index.html',
+  ],
+}
+
+// Hidden from navbar - no sidebar entries created
+// Accessible only via:
+// 1. Direct URLs to static files
+// 2. HTML index pages  
+// 3. Distribution workflow URLs
+```
+
+#### **Important Architecture Note**
+The `docs/` directory is **selectively generated** during build from submodules:
+- `external-repos/netbox/docs` → `docs/netbox/` (overwritten)
+- `external-repos/console-docs/docs` → `docs/console/` (overwritten)
+- `docs/guides/` → **preserved** (not overwritten by submodule processing)
+- `docs/tags.yml`, `docs/index.md` → **preserved** (site-level files)
+- Standalone guides can safely live in `docs/guides/` for Docusaurus processing
+
+#### **Implementation Benefits**
+- ✅ **Organized Structure**: Clear separation of guides vs configuration files
+- ✅ **Enhanced Presentation**: Full Docusaurus styling, theming, and mobile responsiveness
+- ✅ **Hidden from Navigation**: No interference with main documentation flow (excluded from sidebars)
+- ✅ **Direct Access**: Clean URLs accessible via HTML index pages
+- ✅ **Easy Maintenance**: Editable as markdown, automatically processed by Docusaurus
+- ✅ **Best of Both Worlds**: Professional presentation with distribution-friendly access
+
 ### Quality Assurance
 
 #### **Automated Testing**
@@ -303,6 +390,10 @@ find build/ -name "*AUTOMATED_DOCS_SYSTEM*"  # Should be empty
 
 # Check navigation structure
 cat build/sitemap.xml | grep -c "docs/"  # Count pages
+
+# Verify Helm docs accessible but hidden
+curl -s https://netboxlabs.com/docs/guides/helm/ | grep -q "NetBox Enterprise Helm"
+curl -s https://netboxlabs.com/docs/files/helm/ | grep -q "Configuration Files"
 ```
 
 ## 📊 Project Metrics & Status
@@ -366,22 +457,21 @@ cat build/sitemap.xml | grep -c "docs/"  # Count pages
 
 ### Customer Messages Feed System
 - **RSS Feed**: `https://netboxlabs.com/docs/feeds/customer-messages.xml`
-- **JSON Feed**: `https://netboxlabs.com/docs/feeds/customer-messages.json`
 
 ### NetBox Enterprise Helm Documentation
-- **Installation Guides**: `https://netboxlabs.com/docs/guides/` (HTML index with links to all guides)
-- **Configuration Files**: `https://netboxlabs.com/docs/files/` (HTML index with file descriptions)
-- **Values Template**: `https://netboxlabs.com/docs/files/values-extra.yaml`
-- **Private Registry Template**: `https://netboxlabs.com/docs/files/private-registry.yaml`
-- **Registry Script**: `https://netboxlabs.com/docs/files/private-registry.sh`
+- **Installation Guides**: `https://netboxlabs.com/docs/guides/helm/` (HTML index with links to all guides)
+- **Configuration Files**: `https://netboxlabs.com/docs/files/helm/` (HTML index with file descriptions)
+- **Values Template**: `https://netboxlabs.com/docs/files/helm/values-extra.yaml`
+- **Private Registry Template**: `https://netboxlabs.com/docs/files/helm/private-registry.yaml`
+- **Registry Script**: `https://netboxlabs.com/docs/files/helm/private-registry.sh`
 
 #### Individual Guide URLs (Direct Access)
-- **Overview**: `https://netboxlabs.com/docs/guides/netbox-enterprise-helm-overview.md`
-- **Prerequisites**: `https://netboxlabs.com/docs/guides/netbox-enterprise-helm-prerequisites.md`
-- **Basic Installation**: `https://netboxlabs.com/docs/guides/netbox-enterprise-helm-basic.md`
-- **Advanced Installation**: `https://netboxlabs.com/docs/guides/netbox-enterprise-helm-advanced.md`
-- **Troubleshooting**: `https://netboxlabs.com/docs/guides/netbox-enterprise-helm-troubleshooting.md`
-- **Complete Guide**: `https://netboxlabs.com/docs/guides/netbox-enterprise-helm-complete.md`
+- **Overview**: `https://netboxlabs.com/docs/guides/helm/netbox-enterprise-helm-overview.md`
+- **Prerequisites**: `https://netboxlabs.com/docs/guides/helm/netbox-enterprise-helm-prerequisites.md`
+- **Basic Installation**: `https://netboxlabs.com/docs/guides/helm/netbox-enterprise-helm-basic.md`
+- **Advanced Installation**: `https://netboxlabs.com/docs/guides/helm/netbox-enterprise-helm-advanced.md`
+- **Troubleshooting**: `https://netboxlabs.com/docs/guides/helm/netbox-enterprise-helm-troubleshooting.md`
+- **Complete Guide**: `https://netboxlabs.com/docs/guides/helm/netbox-enterprise-helm-complete.md`
 
 #### Usage Notes
 - **Customer Messages**: TTL set to 60 minutes for urgent message delivery
@@ -394,21 +484,136 @@ cat build/sitemap.xml | grep -c "docs/"  # Count pages
 ```bash
 # Customer Messages - Update feeds
 vim static/feeds/customer-messages.xml
-vim static/feeds/customer-messages.json
 git add static/feeds/ && git commit -m "Update customer messages" && git push
 
-# Helm Resources - Update templates and guides
-vim static/files/values-extra.yaml
-vim static/files/private-registry.yaml
-vim static/files/private-registry.sh
-vim static/guides/netbox-enterprise-helm-*.md
-git add static/ && git commit -m "Update Helm documentation" && git push
+# Helm Resources - Update templates and guides (NEW LOCATION)
+vim docs/guides/helm/netbox-enterprise-helm-*.md      # Markdown guides (Docusaurus processed)
+vim docs/guides/helm/index.mdx                         # Main helm index page
+vim static/files/helm/values-extra.yaml               # Configuration templates
+vim static/files/helm/private-registry.yaml           # Registry templates
+vim static/files/helm/private-registry.sh             # Helper scripts
+git add docs/guides/helm/ static/files/helm/ && git commit -m "Update Helm documentation" && git push
 
-# HTML Index Pages - Update landing pages
-vim static/guides/index.html  # Main guides index
-vim static/files/index.html   # Files index with descriptions
-git add static/ && git commit -m "Update HTML index pages" && git push
+# Update individual guide frontmatter when making changes
+# Remember to update: author, last_updated, and content sections
 ```
+
+## 📝 Content Management Workflows
+
+### Helm Documentation Management
+
+#### **Current Architecture (Post-2025 Reorganization)**
+Helm documentation uses a **hybrid Docusaurus approach**:
+
+- **Source Location**: `docs/guides/helm/*.md` (Docusaurus processed)
+- **Configuration Files**: `static/files/helm/*` (direct download)
+- **Index Pages**: `docs/guides/helm/index.mdx` and `docs/guides/index.mdx` (Docusaurus styled)
+- **URL Access**: Clean URLs like `/docs/guides/helm/netbox-enterprise-helm-overview/`
+- **Search/Navigation**: Hidden from main navigation, excluded from search
+- **Preservation**: `docs/guides/` survives submodule updates (only `docs/netbox/` and `docs/console/` are overwritten)
+
+#### **Updating Helm Guides Workflow**
+
+```bash
+# Edit Helm documentation files
+vim docs/guides/helm/netbox-enterprise-helm-overview.md
+vim docs/guides/helm/netbox-enterprise-helm-prerequisites.md
+vim docs/guides/helm/netbox-enterprise-helm-basic.md
+vim docs/guides/helm/netbox-enterprise-helm-advanced.md
+vim docs/guides/helm/netbox-enterprise-helm-troubleshooting.md
+vim docs/guides/helm/netbox-enterprise-helm-complete.md
+vim docs/guides/helm/helm-values-guide.md
+
+# Update index pages
+vim docs/guides/helm/index.mdx        # Helm-specific index
+vim docs/guides/index.mdx             # Main installation guides index
+
+# Update configuration files
+vim static/files/helm/values-extra.yaml
+vim static/files/helm/private-registry.yaml
+vim static/files/helm/private-registry.sh
+vim static/files/helm/validate-config.sh
+
+# Test locally
+yarn dev
+# Visit http://localhost:3001/docs/guides/helm/ to verify
+
+# Commit changes
+git add docs/guides/helm/ static/files/helm/
+git commit -m "Update Helm documentation: [describe changes]"
+git push
+```
+
+#### **Helm Documentation Standards**
+When updating helm guides, ensure:
+
+```yaml
+# Frontmatter standards
+---
+title: "NetBox Enterprise Helm Installation - [Guide Name]"
+description: "Clear description of the guide purpose"
+tags:
+  - netbox-enterprise
+  - helm
+  - kubernetes
+  - installation
+  - [specific-tags]
+author: "Tom Gamull"
+last_updated: "YYYY-MM-DD"  # Update when making changes
+category: "enterprise-documentation"
+audience: "administrators"
+complexity: "beginner|intermediate|advanced"
+---
+```
+
+**Content Guidelines**:
+- Keep `registry.netboxlabs.com` URLs (current beta channel)
+- Use "environments with restricted connectivity" (not "air-gap")
+- Update version compatibility notes
+- Test all code examples and commands
+- Ensure cross-references between guides work
+
+### Customer Messages RSS Feed Management
+
+#### **For Customer Success Team**
+
+```bash
+# Edit customer messages feed
+vim static/feeds/customer-messages.xml
+
+# Add new message (insert before existing items)
+<item>
+  <title>Clear, Action-Oriented Title</title>
+  <description>Detailed message content with relevant links and instructions. Can include HTML formatting.</description>
+  <link>https://netboxlabs.com/docs</link>
+  <guid isPermaLink="false">unique-message-id-2025-07-02</guid>
+  <pubDate>Wed, 02 Jul 2025 12:00:00 GMT</pubDate>
+  <category>announcement</category>
+</item>
+
+# Update feed build date
+<lastBuildDate>Wed, 02 Jul 2025 12:00:00 GMT</lastBuildDate>
+
+# Validate and deploy
+xmllint --noout static/feeds/customer-messages.xml
+git add static/feeds/customer-messages.xml
+git commit -m "Customer message: [brief description]"
+git push
+```
+
+#### **RSS Message Categories**
+- **`announcement`**: General updates, new features, product news
+- **`security`**: Security updates, vulnerability notifications
+- **`feature`**: Feature releases, beta announcements
+- **`maintenance`**: Scheduled maintenance, service updates
+
+#### **RSS Best Practices**
+- **TTL 60 minutes**: Messages checked hourly by RSS readers
+- **Unique GUIDs**: Use descriptive IDs with dates
+- **GMT timestamps**: Consistent timezone for all messages
+- **Clear descriptions**: Customers see this in RSS readers
+- **Internal links**: Use `https://netboxlabs.com/docs/...` format
+- **XML validation**: Invalid XML breaks the entire feed
 
 ---
 

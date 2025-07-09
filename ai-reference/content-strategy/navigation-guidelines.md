@@ -1,3 +1,20 @@
+---
+title: "Navigation Structure Guidelines"
+description: "Guidelines for organizing and structuring navigation across all NetBox documentation for consistency and optimal user experience"
+tags:
+  - navigation
+  - guidelines
+  - structure
+  - user-experience
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-07-01"
+category: "ai-reference"
+audience: "developers"
+complexity: "intermediate"
+internal_only: true
+draft: true
+---
+
 # Navigation Structure Guidelines
 
 ## Overview

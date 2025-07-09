@@ -10,7 +10,6 @@ tags:
 title: "AI Reference Materials"
 description: "Reference materials, templates, and documentation resources for AI-assisted NetBox Labs documentation development"
 author: "NetBox Labs Documentation Team"
-last_updated: "2025-07-01"
 category: "ai-reference"
 audience: "developers"
 complexity: "intermediate"
@@ -443,6 +442,9 @@ docs: {
 2. **Transformation errors**: Check `scripts/transformDocs.ts` output
 3. **Missing images**: Ensure relative paths in source docs
 4. **Sidebar not updating**: Delete and regenerate with `yarn transform-docs`
+5. **EMFILE Error (too many open files)**: Kill existing Node processes with `pkill -f "yarn dev"` then restart
+6. **Admonitions not rendering**: MkDocs admonitions (`!!! note`) should auto-convert to Docusaurus (`:::note`) - check both TypeScript and Python transformation stages
+7. **File links broken in local development**: Environment-aware links automatically detect localhost vs production and adjust paths accordingly
 
 #### **GitHub Actions Issues**
 5. **Workflow not creating PRs**: 
@@ -493,6 +495,21 @@ git add docs/netbox-extensions/changes/
 git commit -m "Update NetBox Changes documentation"
 ```
 
+### Helm Documentation Enhancement (2025)
+
+#### **Professional Presentation Improvements**
+- **Removed Visual Noise**: Eliminated emojis from Configuration Files & Resources for professional appearance
+- **Enhanced File Cards**: Improved styling with better contrast, bold titles, and orange underlines for visibility
+- **Environment-Aware Links**: File download links automatically work in both local development and production
+- **Comprehensive Documentation**: Added `helm-values-guide.md` as integrated resource with professional technical tone
+- **Professional Content**: Rewrote AI-generated content to match enterprise documentation standards
+
+#### **Technical Implementation**
+- **Clean MDX Syntax**: Fixed multiline code blocks with proper template literal formatting
+- **Consistent Styling**: Dark background with light content areas for professional appearance
+- **Responsive Design**: Mobile-optimized layout with enhanced visual hierarchy
+- **Copy Functionality**: JavaScript-powered copy buttons for all code examples
+
 ## 🚀 Integration Architecture
 
 ### Documentation Flow
@@ -515,9 +532,16 @@ graph LR
 ### Transformation Pipeline
 1. **Git Submodules**: Pull latest from external repos
 2. **Content Processing**: Convert MkDocs to MDX, handle images, escape characters
-3. **Semantic Tagging**: Apply comprehensive tagging automatically
-4. **Sidebar Generation**: Parse navigation structures and convert to Docusaurus format
-5. **Integration**: Combine with custom theme and build static site
+3. **Admonition Conversion**: Transform MkDocs admonitions (`!!! note`) to Docusaurus format (`:::note`) in both TypeScript and Python processing stages
+4. **Semantic Tagging**: Apply comprehensive tagging automatically
+5. **Sidebar Generation**: Parse navigation structures and convert to Docusaurus format
+6. **Integration**: Combine with custom theme and build static site
+
+### Recent Major Improvements (2025)
+- **✅ Fixed Admonition Rendering**: Resolved issue where MkDocs admonitions (`!!! tip`, `!!! note`, etc.) weren't converting to Docusaurus format due to Python autodoc script overwriting TypeScript transformations
+- **✅ Enhanced Helm Documentation**: Professional styling improvements, removed emojis, added comprehensive file cards with environment-aware download links
+- **✅ Improved Development Experience**: Fixed EMFILE errors, optimized build process, resolved local development file link issues
+- **✅ Streamlined Transformation Rules**: Removed obsolete anchor link fixes that were resolved at source in console-docs
 
 ### Deployment Strategy
 - **Hosting**: Vercel with automatic deployments

@@ -1,10 +1,19 @@
 ---
+title: "NetBox Documentation Style Guide"
+description: "Comprehensive style guide for NetBox documentation including product tagging, naming conventions, and writing standards"
 tags:
   - cloud
   - enterprise
   - community
+  - documentation
+  - style-guide
 author: "NetBox Labs Documentation Team"
 last_updated: "2025-01-02"
+category: "ai-reference"
+audience: "developers"
+complexity: "intermediate"
+internal_only: true
+draft: true
 versions:
   cloud: "v1.10"
   enterprise: "v1.10"

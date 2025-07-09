@@ -11,7 +11,7 @@ tags:
   - documentation
 sidebar_position: 999
 description: Directory-based edition pill mapping for NetBox documentation
-internal_only: false
+internal_only: true
 draft: true
 last_updated: '2025-06-25'
 category: ai-reference
@@ -27,8 +27,8 @@ This document defines the authoritative mapping of which edition pills should be
 ### Console Documentation
 - `/docs/console/netbox-enterprise/` → **Enterprise only**
 - `/docs/console/netbox-cloud/` → **Cloud only**  
-- `/docs/console/netbox-cloud/` → **Cloud only**
-- `/docs/console/administration-console/` → **Cloud only**
+- `/docs/console/Netbox Cloud/` → **Cloud only**
+- `/docs/console/Administration Console/` → **Cloud only**
 - `/docs/console/cloud-connectivity/` → **Cloud only**
 - `/docs/console/netbox-discovery/` → **Community, Cloud, Enterprise**
 - `/docs/console/netbox-assurance/` → **Cloud (Coming Soon), Enterprise**

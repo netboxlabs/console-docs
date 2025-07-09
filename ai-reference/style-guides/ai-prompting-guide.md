@@ -3,17 +3,34 @@ tags:
   - cloud
   - enterprise
   - community
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-02"
+  - ai-reference
+  - assurance
+  - discovery
+  - operator
+  - template
+  - style-guide
+  - reference
+  - ai-tools
+  - tagging
+  - documentation
+author: NetBox Labs Documentation Team
 versions:
-  cloud: "v1.10"
-  enterprise: "v1.10"
-  community: "v4.2"
-status: "current"
-category: "style-guide"
-audience: "developers"
-complexity: "intermediate"
+  cloud: v1.10
+  enterprise: v1.10
+  community: v4.2
+status: current
+category: style-guide
+audience: developers
+complexity: intermediate
+sidebar_position: 999
+description: AI Reference material for NetBox Labs documentation development
+internal_only: true
+draft: true
 ---
+:::info Development Resource
+This content is synced from console-docs/ai-reference for development team use.
+:::
+
 
 # AI Prompting Guide for NetBox Documentation
 
@@ -288,7 +305,7 @@ For technical content:
 
 ### ✅ Do This Instead
 ```
-"Create NetBox Assurance documentation using complete YAML frontmatter (tags: cloud, enterprise only - not community; versions: cloud v1.10, enterprise v1.10; status: coming-soon). Focus on operational drift detection, premium feature status, and Day 1/1.5/2 framework. Include coming soon notice for April 2025 Enterprise, May 2025 Cloud. Author: NetBox Labs Documentation Team, last_updated: 2025-01-02."
+"Create NetBox Assurance documentation using complete YAML frontmatter (tags: cloud, enterprise only - not community; versions: cloud v1.10, enterprise v1.10; status: coming-soon). Focus on operational drift detection, premium feature status, and Day 1/1.5/2 framework. Include coming soon notice for April 2025 Enterprise, May 2025 Cloud. Author: NetBox Labs Documentation Team, last_updated: 2025-06-25."
 ```
 
 ## Effective Prompting Patterns
@@ -426,7 +443,7 @@ Update this existing documentation to:
 6. Improve [specific aspects - clarity, structure, examples]
 7. Maintain consistency with: [related documentation]
 8. Ensure technical accuracy and working examples
-9. Update last_updated field to 2025-01-02
+9. Update last_updated field to 2025-06-25
 10. Set appropriate status field
 
 Preserve good existing content while modernizing format and adding version tracking.

@@ -15,3 +15,4 @@ yarn.lock
 
 # Package lock files (keep package-lock.json, ignore yarn.lock)
 # package-lock.json is kept for npm consistency
+CLAUDE.md

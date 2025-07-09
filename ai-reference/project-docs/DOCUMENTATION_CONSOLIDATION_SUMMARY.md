@@ -1,3 +1,20 @@
+---
+title: "Documentation Consolidation Summary"
+description: "Summary of comprehensive consolidation and enhancement of the NetBox Documentation Hub system"
+tags:
+  - documentation
+  - consolidation
+  - enhancement
+  - dochub
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-07-01"
+category: "ai-reference"
+audience: "developers"
+complexity: "intermediate"
+internal_only: true
+draft: true
+---
+
 # Documentation Consolidation Summary
 
 This document summarizes the comprehensive consolidation and enhancement of the NetBox Documentation Hub system, including the setup of an AI reference system similar to the console-docs approach.
