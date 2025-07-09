@@ -4,9 +4,14 @@ hide:
   - toc
 tags:
   - cloud
-  - free-plan
-  - features
+  - administration
   - getting-started
+  - configuration
+  - billing
+  - features
+  - limitations
+  - networking
+  - automation
 title: "Free Plan Features"
 description: "Overview of features and capabilities available in the NetBox Cloud Free Plan, including limitations and upgrade options."
 author: "NetBox Labs Documentation Team"

@@ -3,8 +3,8 @@ tags:
   - cloud
   - administration
   - networking
-  - dns
   - configuration
+  - dns
 title: "Managing Hostnames"
 description: "Configure and manage custom hostnames and DNS settings for your NetBox Cloud instance."
 author: "NetBox Labs Documentation Team"

@@ -1,10 +1,10 @@
 ---
 tags:
   - cloud
+  - administration
   - authentication
   - sso
-  - azure
-  - rbac
+  - azure-ad
   - configuration
 title: "Microsoft Entra ID Group Mapping"
 description: "Configure automatic group synchronization and role mapping between Microsoft Entra ID and NetBox Cloud for streamlined user access management."

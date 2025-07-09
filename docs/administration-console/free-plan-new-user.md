@@ -1,9 +1,10 @@
 ---
 tags:
   - cloud
-  - free-plan
   - administration
   - getting-started
+  - configuration
+  - billing
 title: "Add a New User to Free Plan"
 description: "Step-by-step guide to inviting and adding new users to a NetBox Cloud Free Plan instance through the console administration interface."
 author: "NetBox Labs Documentation Team"
