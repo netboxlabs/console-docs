@@ -5,14 +5,9 @@ tags:
   - networking
   - aws
   - private-link
-title: "AWS Private Link (Single Region)"
-description: "NetBox Cloud connectivity via AWS Private Link with VPC endpoints using private IPs for enhanced security and performance."
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "networking"
-audience: "administrators"
-complexity: "intermediate"
 ---
 
 # AWS Private Link (Single Region)

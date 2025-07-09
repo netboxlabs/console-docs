@@ -6,14 +6,9 @@ tags:
   - sso
   - azure-ad
   - configuration
-title: "Microsoft Entra ID Group Mapping"
-description: "Configure automatic group synchronization and role mapping between Microsoft Entra ID and NetBox Cloud for streamlined user access management."
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "authentication"
-audience: "administrators"
-complexity: "intermediate"
 ---
 
 # Group Mapping For Microsoft Entra ID Single Sign-On (SSO)

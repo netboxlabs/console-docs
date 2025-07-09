@@ -4,14 +4,9 @@ tags:
   - administration
   - authentication
   - okta
-title: "Okta Group Mapping"
-description: "Configure automatic group synchronization and role mapping between Okta and NetBox Cloud for streamlined user access management."
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "authentication"
-audience: "administrators"
-complexity: "intermediate"
 ---
 
 # Group Mapping For Okta Single Sign-On (SSO)

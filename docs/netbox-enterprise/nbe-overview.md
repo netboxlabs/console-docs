@@ -1,5 +1,4 @@
 ---
-title: NetBox Enterprise
 tags:
   - enterprise
   - community

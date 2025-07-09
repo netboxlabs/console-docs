@@ -3,15 +3,10 @@ tags:
   - cloud
   - enterprise
   - assurance
-title: "NetBox Assurance"
-description: "Automated operational drift detection for NetBox - continuously monitor network infrastructure and maintain accurate documentation with proactive remediation capabilities"
 versions:
   cloud: "v1.10"
   enterprise: "v1.10"
 status: "current"
-category: "product-overview"
-audience: "all"
-complexity: "intermediate"
 related_docs:
   - "getting-started.md"
   - "using-the-ui.md"

@@ -6,15 +6,10 @@ tags:
   - getting-started
   - installation
   - configuration
-title: "Getting Started with NetBox Assurance"
-description: "Complete setup and configuration guide for NetBox Assurance - from installation to your first operational workflow with step-by-step instructions"
 versions:
   cloud: "v1.10"
   enterprise: "v1.10"
 status: "current"
-category: "getting-started"
-audience: "admins"
-complexity: "intermediate"
 related_docs:
   - "index.md"
   - "using-the-ui.md"

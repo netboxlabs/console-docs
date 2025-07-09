@@ -4,14 +4,9 @@ tags:
   - administration
   - upgrade
   - maintenance
-title: "Upgrading NetBox Cloud"
-description: "Step-by-step guide to upgrading your NetBox Cloud instance to newer versions through the administrative console."
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "administration"
-audience: "administrators"
-complexity: "intermediate"
 ---
 
 # Upgrading NetBox Cloud

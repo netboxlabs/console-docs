@@ -5,14 +5,9 @@ tags:
   - sso
   - saml
   - configuration
-title: "SAML SSO Setup"
-description: "Configure SAML-based single sign-on (SSO) for NetBox Cloud with your organization's identity provider."
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "authentication"
-audience: "administrators"
-complexity: "advanced"
 ---
 
 # NetBox Cloud SAML Configuration Guide

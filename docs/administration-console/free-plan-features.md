@@ -12,14 +12,9 @@ tags:
   - limitations
   - networking
   - automation
-title: "Free Plan Features"
-description: "Overview of features and capabilities available in the NetBox Cloud Free Plan, including limitations and upgrade options."
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "features"
-audience: "decision-makers"
-complexity: "beginner"
 ---
 
 # NetBox Cloud Free Plan Features

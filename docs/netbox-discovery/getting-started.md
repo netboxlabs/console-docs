@@ -7,16 +7,11 @@ tags:
   - getting-started
   - installation
   - configuration
-title: "Get Started with NetBox Discovery"
-description: "Complete setup and configuration guide for NetBox Discovery across Cloud, Enterprise, and Community deployments with step-by-step instructions"
 versions:
   cloud: "v1.10"
   enterprise: "v1.10"
   community: "v1.10"
 status: "current"
-category: "getting-started"
-audience: "admins"
-complexity: "intermediate"
 related_docs:
   - "index.md"
   - "../netbox-assurance/getting-started.md"

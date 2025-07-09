@@ -8,14 +8,9 @@ tags:
   - billing
   - networking
   - automation
-title: "NetBox Cloud: Administrative Console Overview"
-description: "Comprehensive overview of the NetBox Cloud Administrative Console interface, features, and sections including deployment, database, and monitoring panels."
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "administration"
-audience: "administrators"
-complexity: "intermediate"
 ---
 
 # NetBox Cloud: Administrative Console Overview

@@ -4,14 +4,9 @@ tags:
   - cloud-connectivity
   - networking
   - decision-guide
-title: "Do I Need Cloud Connectivity Options?"
-description: "Comprehensive guide to help determine if you need specialized cloud connectivity options for NetBox Cloud or if standard internet delivery meets your requirements."
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "networking"
-audience: "decision-makers"
-complexity: "intermediate"
 ---
 
 # Do I Need Cloud Connectivity Options?

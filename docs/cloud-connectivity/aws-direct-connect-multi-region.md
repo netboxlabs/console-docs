@@ -7,14 +7,9 @@ tags:
   - direct-connect
   - multi-region
   - high-availability
-title: "AWS Direct Connect (Multi-Region)"
-description: "High-performance, multi-region NetBox Cloud connectivity with AWS Direct Connect for maximum redundancy and scalability."
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "networking"
-audience: "administrators"
-complexity: "advanced"
 ---
 
 # AWS Direct Connect (Multi-Region)

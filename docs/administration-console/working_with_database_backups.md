@@ -4,14 +4,9 @@ tags:
   - administration
   - backup
   - database
-title: "Working with Database Backups"
-description: "Complete guide to creating, downloading, and restoring database backups in NetBox Cloud, including on-demand backups and restore procedures."
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "administration"
-audience: "administrators"
-complexity: "intermediate"
 ---
 
 # Working with NetBox Cloud Database Backups
