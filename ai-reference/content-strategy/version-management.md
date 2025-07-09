@@ -14,7 +14,7 @@ tags:
   - documentation
 sidebar_position: 999
 description: AI Reference material for NetBox Labs documentation development
-internal_only: false
+internal_only: true
 draft: true
 last_updated: '2025-06-25'
 category: ai-reference

@@ -5,16 +5,9 @@ tags:
   - configuration
   - security
   - users
-title: "Console Administration"
-description: "Administrative tasks for the NetBox Labs Console, including managing administrator accounts, permissions, and security settings."
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "administration"
-audience: "administrators"
-complexity: "intermediate"
 ---
 
 # Console Administration

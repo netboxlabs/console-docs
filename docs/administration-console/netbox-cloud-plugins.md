@@ -4,16 +4,9 @@ tags:
   - administration
   - configuration
   - plugins
-title: "NetBox Cloud Plugins"
-description: "View and manage installed plugins in your NetBox Cloud instance through the administrative console."
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "features"
-audience: "administrators"
-complexity: "beginner"
 ---
 
 # NetBox Cloud Plugins

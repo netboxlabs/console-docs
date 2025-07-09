@@ -7,16 +7,9 @@ tags:
   - security
   - configuration
   - troubleshooting
-title: "NetBox Cloud Console Access"
-description: "How to access the NetBox Labs Console through direct URL or from within NetBox Cloud UI, including login options and account setup."
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "administration"
-audience: "administrators"
-complexity: "beginner"
 ---
 
 # NetBox Cloud Console Access

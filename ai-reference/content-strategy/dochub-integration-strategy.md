@@ -1,3 +1,20 @@
+---
+title: "DocHub Integration Strategy & Implementation Guide"
+description: "Comprehensive instructions for integrating enhanced NetBox documentation structure from console-docs into dochub"
+tags:
+  - dochub
+  - integration
+  - strategy
+  - implementation
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-07-01"
+category: "ai-reference"
+audience: "developers"
+complexity: "advanced"
+internal_only: true
+draft: true
+---
+
 # DocHub Integration Strategy & Implementation Guide
 
 ## Overview

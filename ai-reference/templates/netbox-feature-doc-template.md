@@ -3,24 +3,40 @@ tags:
   - cloud
   - enterprise
   - community
-title: "[Feature Name]"
-description: "Brief description for SEO and social sharing"
-author: "Author Name or NetBox Labs Documentation Team"
-last_updated: "YYYY-MM-DD"
+  - ai-reference
+  - assurance
+  - discovery
+  - operator
+  - template
+  - reference
+  - ai-tools
+  - tagging
+  - documentation
+title: '[Feature Name]'
+description: Brief description for SEO and social sharing
+author: Author Name or NetBox Labs Documentation Team
+last_updated: YYYY-MM-DD
 versions:
-  cloud: "v1.9 | v1.10"
-  enterprise: "v1.9 | v1.10" 
-  community: "v4.2"
-status: "current | beta | coming-soon | deprecated"
-category: "feature | integration | admin | getting-started"
-audience: "end-users | admins | developers | all"
-complexity: "beginner | intermediate | advanced"
+  cloud: v1.9 | v1.10
+  enterprise: v1.9 | v1.10
+  community: v4.2
+status: current | beta | coming-soon | deprecated
+category: feature | integration | admin | getting-started
+audience: end-users | admins | developers | all
+complexity: beginner | intermediate | advanced
 related_docs:
-  - "path/to/related-doc.md"
-  - "path/to/another-doc.md"
+  - path/to/related-doc.md
+  - path/to/another-doc.md
 external_links:
-  - "https://example.com/relevant-resource"
+  - 'https://example.com/relevant-resource'
+sidebar_position: 999
+internal_only: true
+draft: true
 ---
+:::info Development Resource
+This content is synced from console-docs/ai-reference for development team use.
+:::
+
 
 # [Feature Name]
 

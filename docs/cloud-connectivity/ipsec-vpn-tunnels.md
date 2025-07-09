@@ -6,16 +6,9 @@ tags:
   - vpn
   - ipsec
   - security
-title: "IPSEC VPN Tunnels (Single Region)"
-description: "Secure site-to-site connectivity to NetBox Cloud using IPSEC VPN tunnels with flexible routing options and high security."
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "networking"
-audience: "administrators"
-complexity: "advanced"
 ---
 
 # IPSEC VPN Tunnels (Single Region)

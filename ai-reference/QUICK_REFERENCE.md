@@ -5,7 +5,6 @@ tags:
   - templates
   - development
 author: "NetBox Labs Documentation Team"
-last_updated: "2025-06-25"
 category: "ai-reference"
 audience: "developers"
 complexity: "beginner"
@@ -101,7 +100,7 @@ tags:
 title: "Document Title"
 description: "SEO description"
 author: "NetBox Labs Documentation Team"
-last_updated: "2025-06-25"
+last_updated: "2025-07-01"
 versions:
   cloud: "v1.10"
   enterprise: "v1.10"
@@ -154,15 +153,32 @@ git submodule update --remote
 # Process AI reference materials
 yarn transform-ai-reference
 
-# Transform all documentation
+# Transform all documentation (includes admonition conversion)
 yarn transform-docs
 
-# Start development server
-yarn start --port 3001
+# Start development server (with EMFILE error handling)
+yarn dev
 
 # Build for production
 yarn build
+
+# Fix common development issues
+pkill -f "yarn dev"  # Kill conflicting processes
+rm -rf .docusaurus   # Clear build cache
 ```
+
+## 🛠️ Recent Improvements (2025)
+
+### Fixed Issues
+- **✅ Admonition Rendering**: MkDocs admonitions (`!!! note`, `!!! tip`) now properly convert to Docusaurus format (`:::note`, `:::tip`)
+- **✅ EMFILE Errors**: Fixed "too many open files" errors in development
+- **✅ File Links**: Download links work correctly in both local development and production
+- **✅ Professional Styling**: Enhanced Helm documentation with clean, enterprise-appropriate presentation
+
+### Enhanced Features  
+- **✅ Dual-Stage Conversion**: Admonition conversion happens in both TypeScript and Python processing stages
+- **✅ Environment Detection**: Links automatically adapt for localhost vs production
+- **✅ Build Optimization**: Streamlined transformation rules, removed obsolete fixes
 
 ## 📁 File Finder
 
@@ -201,7 +217,7 @@ yarn build
 
 ---
 
-**Quick Reference** | **Last Updated**: 2025-06-25  
+**Quick Reference** | **Last Updated**: 2025-07-01  
 **For full details**: See [README.md](./README.md) and individual files
 
 *Fast lookup for AI reference system - development team use.* 

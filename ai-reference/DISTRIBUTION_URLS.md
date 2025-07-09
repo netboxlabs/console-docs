@@ -9,7 +9,6 @@ tags:
   - helm
   - enterprise
 author: "NetBox Labs Documentation Team"
-last_updated: "2025-07-01"
 category: "reference"
 audience: "internal"
 complexity: "beginner"
@@ -35,10 +34,10 @@ This document provides a quick reference for all distribution URLs available fro
 
 | Resource | URL | Purpose |
 |----------|-----|---------|
-| **Values Template** | `https://netboxlabs.com/docs/files/values-extra.yaml` | Customer customization overlay template |
-| **Validator Script** | `https://netboxlabs.com/docs/scripts/validate-config.sh` | Configuration validation script |
-| **Usage Guide** | `https://netboxlabs.com/docs/guides/helm-values-guide.md` | Complete deployment documentation |
-| **Full Installation Guide** | `https://netboxlabs.com/docs/guides/netbox-enterprise-helm-complete.md` | Comprehensive A-Z installation guide (1400+ lines) |
+| **Values Template** | `https://netboxlabs.com/docs/files/helm/values-extra.yaml` | Customer customization overlay template |
+| **Validator Script** | `https://netboxlabs.com/docs/files/helm/validate-config.sh` | Configuration validation script |
+| **Usage Guide** | `https://netboxlabs.com/docs/guides/helm/helm-values-guide.md` | Complete deployment documentation |
+| **Full Installation Guide** | `https://netboxlabs.com/docs/guides/helm/netbox-enterprise-helm-complete.md` | Comprehensive A-Z installation guide (1400+ lines) |
 
 **Registry Compatibility**: All resources work with `registry.replicated.com`
 
@@ -57,28 +56,28 @@ git add static/feeds/customer-messages.xml && git commit -m "Update customer mes
 ### For Enterprise Support Team (Helm)
 ```bash
 # Download resources for customer
-curl -O https://netboxlabs.com/docs/files/values-extra.yaml
-curl -O https://netboxlabs.com/docs/scripts/validate-config.sh
+curl -O https://netboxlabs.com/docs/files/helm/values-extra.yaml
+curl -O https://netboxlabs.com/docs/files/helm/validate-config.sh
 chmod +x validate-config.sh
 
 # Update documentation
-vim static/files/values-extra.yaml
-vim static/scripts/validate-config.sh
-vim static/guides/helm-values-guide.md
+vim static/files/helm/values-extra.yaml
+vim static/files/helm/validate-config.sh
+vim static/guides/helm/helm-values-guide.md
 git add static/ && git commit -m "Update Helm documentation" && git push
 ```
 
 ### For Customers (Helm Deployment)
 ```bash
 # Download and validate
-curl -O https://netboxlabs.com/docs/files/values-extra.yaml
-curl -O https://netboxlabs.com/docs/scripts/validate-config.sh
+curl -O https://netboxlabs.com/docs/files/helm/values-extra.yaml
+curl -O https://netboxlabs.com/docs/files/helm/validate-config.sh
 chmod +x validate-config.sh
 ./validate-config.sh
 
 # Deploy with overlay
 helm install netbox-enterprise \
-  oci://registry.replicated.com/netbox-enterprise/ubs/netbox-enterprise \
+  oci://registry.replicated.com/netbox-enterprise/beta/netbox-enterprise \
   --values netbox-enterprise-values.yaml \
   --values values-extra.yaml \
   --version 1.11.4
@@ -96,14 +95,17 @@ helm install netbox-enterprise \
 ```
 static/
 ├── feeds/
-│   └── customer-messages.xml     # RSS feed for console integration
-├── files/
-│   └── values-extra.yaml         # Helm values template
-├── scripts/
-│   └── validate-config.sh        # Configuration validator
-└── guides/
-    ├── helm-values-guide.md      # Complete usage guide
-    └── netbox-enterprise-helm-complete.md  # Comprehensive installation guide
+│   └── customer-messages.xml          # RSS feed for console integration
+├── files/helm/
+│   ├── index.html                     # File navigation index
+│   ├── values-extra.yaml              # Helm values template
+│   ├── validate-config.sh             # Configuration validator
+│   ├── private-registry.yaml          # Private registry template
+│   └── private-registry.sh            # Registry setup script
+└── guides/helm/
+    ├── index.html                     # Guide navigation index
+    ├── helm-values-guide.md           # Complete usage guide
+    └── netbox-enterprise-helm-*.md   # Installation guides (7 files)
 ```
 
 ## 🚀 Deployment Notes
@@ -113,8 +115,30 @@ static/
 - **Fast Updates**: Changes appear within minutes of git push
 - **High Availability**: Vercel's global CDN ensures uptime
 
+## 📂 Recent Improvements (2025)
+
+### **Reorganization & Professional Enhancement**
+**Background**: Helm documentation was reorganized and professionally enhanced for enterprise customers.
+
+**Key Changes**:
+- **Structure**: Moved all Helm files into `/helm/` subdirectories for better organization
+- **Professional Styling**: Removed emojis, enhanced file card design with improved contrast and visual hierarchy
+- **Environment-Aware Links**: Fixed file download links to work correctly in both local development and production
+- **Content Quality**: Replaced AI-generated content with professional technical documentation
+- **Navigation**: Added HTML index pages for user-friendly browsing
+- **Rendering**: Guides processed by Docusaurus for enhanced presentation while maintaining direct access
+
+### **Technical Fixes**
+- **✅ Local Development Compatibility**: File links now work correctly in `yarn dev` environment
+- **✅ Production Links**: All URLs function properly on `netboxlabs.com/docs`
+- **✅ MDX Compilation**: Fixed template literal formatting issues in code blocks
+- **✅ Professional Appearance**: Clean, enterprise-appropriate styling throughout
+
+**Benefits**: Clean organization, professional presentation, environment compatibility, direct distribution access.
+
 ---
 
-**Last Updated**: 2025-07-01  
-**Status**: Production Ready  
+**Status**: Production Ready | **Recent Improvements**: Professional enhancement completed  
 **Next Review**: As needed for new distribution requirements 
+
+*Note: Last updated timestamps are automatically managed by Git via Docusaurus configuration* 

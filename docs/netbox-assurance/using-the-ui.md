@@ -5,17 +5,10 @@ tags:
   - assurance
   - ui
   - interface
-title: "Using the NetBox Assurance UI"
-description: "Comprehensive guide to the NetBox Assurance web interface - navigation, deviation management, workflows, and daily operations for network drift detection"
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   cloud: "v1.10"
   enterprise: "v1.10"
 status: "current"
-category: "feature"
-audience: "end-users"
-complexity: "beginner"
 related_docs:
   - "index.md"
   - "getting-started.md"

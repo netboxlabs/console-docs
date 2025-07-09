@@ -6,16 +6,9 @@ tags:
   - sso
   - okta
   - configuration
-title: "Okta SSO Setup"
-description: "Step-by-step guide to configuring single sign-on (SSO) for NetBox Cloud using Okta as an authentication backend with OpenID Connect."
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "authentication"
-audience: "administrators"
-complexity: "intermediate"
 ---
 
 # Okta SSO Setup

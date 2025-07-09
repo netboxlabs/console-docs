@@ -1,3 +1,28 @@
+---
+tags:
+  - ai-reference
+  - cloud
+  - enterprise
+  - community
+  - assurance
+  - discovery
+  - reference
+  - ai-tools
+  - authentication
+  - tagging
+  - documentation
+sidebar_position: 999
+description: AI Reference material for NetBox Labs documentation development
+internal_only: true
+draft: true
+last_updated: '2025-06-25'
+category: ai-reference
+audience: developers
+---
+:::info Development Resource
+This content is synced from console-docs/ai-reference for development team use.
+:::
+
 # LLM Knowledge Base \- NetBox Assurance
 
 # LLM Behavior Instructions

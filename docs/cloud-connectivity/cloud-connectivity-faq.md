@@ -5,16 +5,9 @@ tags:
   - networking
   - faq
   - troubleshooting
-title: "Cloud Connectivity Frequently Asked Questions"
-description: "Common questions and answers about NetBox Cloud connectivity options, setup, and troubleshooting."
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "troubleshooting"
-audience: "administrators"
-complexity: "intermediate"
 ---
 
 # Cloud Connectivity Frequently Asked Questions

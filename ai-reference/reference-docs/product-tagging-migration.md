@@ -1,3 +1,20 @@
+---
+title: "Product Tagging System Migration Guide"
+description: "Complete guide for migrating from HTML pill-based to YAML frontmatter product tagging"
+tags:
+  - documentation
+  - tagging
+  - migration
+  - product-tags
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-07-01"
+category: "ai-reference"
+audience: "developers"
+complexity: "intermediate"
+internal_only: true
+draft: true
+---
+
 # Product Tagging System Migration Guide
 
 This document consolidates information from our product tagging migration and provides the complete context for AI tools.

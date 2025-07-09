@@ -1,3 +1,20 @@
+---
+title: "Phase 2: Console-Docs Coordination Implementation Plan"
+description: "Implementation plan for reorganizing console-docs to match DocHub structure and implement content sharing"
+tags:
+  - console-docs
+  - coordination
+  - implementation
+  - phase2
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-07-01"
+category: "ai-reference"
+audience: "developers"
+complexity: "advanced"
+internal_only: true
+draft: true
+---
+
 # Phase 2: Console-Docs Coordination Implementation Plan
 
 **Timeline**: 1-2 weeks after DocHub implementation  

@@ -5,16 +5,9 @@ tags:
   - networking
   - configuration
   - dns
-title: "Managing Hostnames"
-description: "Configure and manage custom hostnames and DNS settings for your NetBox Cloud instance."
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "administration"
-audience: "administrators"
-complexity: "intermediate"
 ---
 
 # NetBox Cloud Hostnames

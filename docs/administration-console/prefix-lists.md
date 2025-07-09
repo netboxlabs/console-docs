@@ -7,16 +7,9 @@ tags:
   - ipam
   - security
   - automation
-title: "Prefix Lists"
-description: "Configure and manage IP prefix lists for NetBox Cloud security, including both synchronized and non-synchronized prefix list creation and management."
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   netbox_cloud: "v1.10"
 status: "current"
-category: "administration"
-audience: "administrators"
-complexity: "intermediate"
 ---
 
 # Prefix Lists

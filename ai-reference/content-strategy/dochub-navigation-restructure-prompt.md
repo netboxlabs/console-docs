@@ -1,3 +1,20 @@
+---
+title: "DocHub Navigation Restructure Implementation Prompt"
+description: "Comprehensive instructions for implementing major navigation restructure from console-centric to platform-first organization"
+tags:
+  - dochub
+  - navigation
+  - restructure
+  - implementation
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-07-01"
+category: "ai-reference"
+audience: "developers"
+complexity: "advanced"
+internal_only: true
+draft: true
+---
+
 # DocHub Navigation Restructure Implementation Prompt
 
 ## Overview

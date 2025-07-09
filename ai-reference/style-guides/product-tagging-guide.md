@@ -1,3 +1,20 @@
+---
+title: "Product Tagging System Guide"
+description: "Comprehensive guide to the streamlined product tagging system using Docusaurus-native frontmatter tags"
+tags:
+  - product-tags
+  - tagging
+  - documentation
+  - frontmatter
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-07-01"
+category: "ai-reference"
+audience: "developers"
+complexity: "intermediate"
+internal_only: true
+draft: true
+---
+
 # Product Tagging System Guide
 
 ## Overview

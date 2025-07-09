@@ -1,3 +1,20 @@
+---
+title: "Navigation Restructure Implementation Guide"
+description: "Comprehensive navigation restructure guide transitioning from console-centric to platform-based organization"
+tags:
+  - navigation
+  - restructure
+  - implementation
+  - platform-organization
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-07-01"
+category: "ai-reference"
+audience: "developers"
+complexity: "advanced"
+internal_only: true
+draft: true
+---
+
 # Navigation Restructure Implementation Guide
 
 ## Overview

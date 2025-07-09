@@ -1,3 +1,19 @@
+---
+title: "Tag Consolidation Summary"
+description: "Summary of tag system consolidation from 43 to 20 meaningful tags"
+tags:
+  - documentation
+  - tagging
+  - consolidation
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-07-01"
+category: "ai-reference"
+audience: "developers"
+complexity: "intermediate"
+internal_only: true
+draft: true
+---
+
 # Tag Consolidation Summary
 
 ## Overview
