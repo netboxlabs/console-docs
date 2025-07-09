@@ -8,8 +8,6 @@ tags:
   - configuration
 title: "Microsoft Entra ID Group Mapping"
 description: "Configure automatic group synchronization and role mapping between Microsoft Entra ID and NetBox Cloud for streamlined user access management."
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   netbox_cloud: "v1.10"
 status: "current"

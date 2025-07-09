@@ -6,8 +6,6 @@ tags:
   - internet-delivery
 title: "Internet Delivery (Single Region)"
 description: "Overview of NetBox Cloud's standard Internet Delivery connectivity option with security features and multi-availability zone deployment."
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   netbox_cloud: "v1.10"
 status: "current"

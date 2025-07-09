@@ -6,8 +6,6 @@ tags:
   - database
 title: "Migrating to NetBox Cloud"
 description: "Complete guide to migrating your existing NetBox deployment to NetBox Cloud, including data migration and configuration transfer."
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   netbox_cloud: "v1.10"
 status: "current"

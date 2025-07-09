@@ -7,8 +7,6 @@ tags:
   - aws
 title: "Which Cloud Connectivity Option is Right for Me?"
 description: "Comprehensive comparison matrix of NetBox Cloud connectivity options including Internet Delivery, AWS Private Link, IPSEC VPN, and AWS Direct Connect."
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   netbox_cloud: "v1.10"
 status: "current"

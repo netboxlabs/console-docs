@@ -7,8 +7,6 @@ tags:
   - direct-connect
 title: "AWS Direct Connect (Single Region)"
 description: "High-performance dedicated network connectivity to NetBox Cloud via AWS Direct Connect with BGP routing and VLAN hand-off."
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   netbox_cloud: "v1.10"
 status: "current"

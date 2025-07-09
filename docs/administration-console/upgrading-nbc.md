@@ -6,8 +6,6 @@ tags:
   - maintenance
 title: "Upgrading NetBox Cloud"
 description: "Step-by-step guide to upgrading your NetBox Cloud instance to newer versions through the administrative console."
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   netbox_cloud: "v1.10"
 status: "current"

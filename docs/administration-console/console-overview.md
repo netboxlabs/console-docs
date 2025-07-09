@@ -10,8 +10,6 @@ tags:
   - automation
 title: "NetBox Cloud: Administrative Console Overview"
 description: "Comprehensive overview of the NetBox Cloud Administrative Console interface, features, and sections including deployment, database, and monitoring panels."
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   netbox_cloud: "v1.10"
 status: "current"

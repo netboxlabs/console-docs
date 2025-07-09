@@ -6,8 +6,6 @@ tags:
   - discovery
 title: "NetBox Discovery"
 description: "Advanced network discovery and observability solution for automated network documentation and drift detection across all NetBox deployments"
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   cloud: "v1.10"
   enterprise: "v1.10"

@@ -8,8 +8,6 @@ tags:
   - configuration
 title: "Getting Started with NetBox Assurance"
 description: "Complete setup and configuration guide for NetBox Assurance - from installation to your first operational workflow with step-by-step instructions"
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
 versions:
   cloud: "v1.10"
   enterprise: "v1.10"
