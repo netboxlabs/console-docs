@@ -73,7 +73,9 @@ Runtime files are stored in a volume accessible from the NetBox containers.
 To back them up, you can run this:
 
 ```shell
-NETBOX_NAMESPACE="kotsadm" && \
+NETBOX_NAMESPACE="$(kubectl get deployments \
+  -A -l 'app.kubernetes.io/component=netbox' \
+  -ojsonpath='{.items[0].metadata.namespace}')" && \
 NETBOX_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
@@ -101,7 +103,9 @@ Since the PostgreSQL CLI tools are already available inside the cluster, all we 
 To perform a database dump, run these commands:
 
 ```shell
-NETBOX_NAMESPACE="kotsadm" && \
+NETBOX_NAMESPACE="$(kubectl get deployments \
+  -A -l 'app.kubernetes.io/component=netbox' \
+  -ojsonpath='{.items[0].metadata.namespace}')" && \
 NETBOX_DATABASE_FILE="netbox-enterprise.pgsql" && \
 POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -o name \
@@ -141,7 +145,9 @@ To ensure that Diode OAuth login information is not lost, you will also need to 
 Run this set of commands:
 
 ```shell
-NETBOX_NAMESPACE="kotsadm" && \
+NETBOX_NAMESPACE="$(kubectl get deployments \
+  -A -l 'app.kubernetes.io/component=netbox' \
+  -ojsonpath='{.items[0].metadata.namespace}')" && \
 (
   kubectl get secrets \
     --namespace "${NETBOX_NAMESPACE}" \
@@ -189,7 +195,9 @@ To restore media, scripts, and reports, you just need to unpack them into the co
     If you are restoring a backup from another NetBox instance, you might need to change the name of the tarball and the path after the `-C` at the end of this command to unpack your backup into the right location.
 
 ```shell
-NETBOX_NAMESPACE="kotsadm" && \
+NETBOX_NAMESPACE="$(kubectl get deployments \
+  -A -l 'app.kubernetes.io/component=netbox' \
+  -ojsonpath='{.items[0].metadata.namespace}')" && \
 NETBOX_RESTORE_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \
@@ -211,7 +219,9 @@ To restore from a secrets yaml file, pass it to `kubectl apply` like so:
 
 ```shell
 # add/replace existing diode secrets
-NETBOX_NAMESPACE="kotsadm" && \
+NETBOX_NAMESPACE="$(kubectl get deployments \
+  -A -l 'app.kubernetes.io/component=netbox' \
+  -ojsonpath='{.items[0].metadata.namespace}')" && \
 kubectl apply \
   --server-side \
   --force-conflicts \
@@ -224,7 +234,9 @@ kubectl apply \
 To restore from a dump file, pipe the `netbox-enterprise.pgsql` created during backup into `psql` in the PostgreSQL pod:
 
 ```shell
-NETBOX_NAMESPACE="kotsadm" && \
+NETBOX_NAMESPACE="$(kubectl get deployments \
+  -A -l 'app.kubernetes.io/component=netbox' \
+  -ojsonpath='{.items[0].metadata.namespace}')" && \
 NETBOX_DATABASE_FILE="netbox-enterprise.pgsql" && \
 DIODE_DEPLOYMENT_COUNT="$(kubectl get deployments -n "${NETBOX_NAMESPACE}" -o name | grep -c diode || :)" && \
 HYDRA_DEPLOYMENT_COUNT="$(kubectl get deployments -n "${NETBOX_NAMESPACE}" -o name | grep -c hydra || :)" && \
@@ -265,7 +277,9 @@ done && \
 Following this run the below to ensure all database permissions are correct:
 
 ```shell
-NETBOX_NAMESPACE="kotsadm" && \
+NETBOX_NAMESPACE="$(kubectl get deployments \
+  -A -l 'app.kubernetes.io/component=netbox' \
+  -ojsonpath='{.items[0].metadata.namespace}')" && \
 POSTGRESQL_MAIN_POD="$(kubectl get pod \
   -o name \
   -n "${NETBOX_NAMESPACE}" \

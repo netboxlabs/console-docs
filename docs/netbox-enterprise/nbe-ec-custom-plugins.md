@@ -31,8 +31,12 @@ NBE_SOURCE_POD="$( \
   --field-selector status.phase=Running \
   | head -n 1 \
 )"
+NETBOX_NAMESPACE="$(kubectl get deployments \
+  -A -l 'app.kubernetes.io/component=netbox' \
+  -ojsonpath='{.items[0].metadata.namespace}')"
 
-kubectl cp -n kotsadm \
+kubectl cp \
+  --namespace "${NETBOX_NAMESPACE}" \
   "${NBE_SOURCE_POD}:/opt/netbox/constraints.txt" \
   /tmp/wheelhouse/constraints.txt
 ```
@@ -109,8 +113,12 @@ NBE_SOURCE_POD="$( \
   --field-selector status.phase=Running \
   | head -n 1 \
 )"
+NETBOX_NAMESPACE="$(kubectl get deployments \
+  -A -l 'app.kubernetes.io/component=netbox' \
+  -ojsonpath='{.items[0].metadata.namespace}')"
 
-kubectl cp -n kotsadm \
+kubectl cp \
+  --namespace "${NETBOX_NAMESPACE}" \
   /tmp/wheelhouse.tar.gz \
   "${NBE_SOURCE_POD}:/opt/netbox/netbox/media/wheelhouse.tar.gz"
 ```
