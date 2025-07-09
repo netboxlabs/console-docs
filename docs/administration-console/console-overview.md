@@ -2,8 +2,12 @@
 tags:
   - cloud
   - administration
-  - operations
-  - monitoring
+  - getting-started
+  - configuration
+  - overview
+  - billing
+  - networking
+  - automation
 title: "NetBox Cloud: Administrative Console Overview"
 description: "Comprehensive overview of the NetBox Cloud Administrative Console interface, features, and sections including deployment, database, and monitoring panels."
 author: "NetBox Labs Documentation Team"

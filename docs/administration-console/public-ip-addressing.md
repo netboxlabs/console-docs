@@ -1,9 +1,8 @@
 ---
 tags:
   - cloud
+  - administration
   - networking
-  - security
-  - ipam
   - configuration
 title: "Public IP Addressing"
 description: "Configure and manage public IP addressing settings for NetBox Cloud instances."

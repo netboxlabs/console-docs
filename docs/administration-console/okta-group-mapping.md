@@ -1,11 +1,9 @@
 ---
 tags:
   - cloud
+  - administration
   - authentication
-  - sso
   - okta
-  - rbac
-  - configuration
 title: "Okta Group Mapping"
 description: "Configure automatic group synchronization and role mapping between Okta and NetBox Cloud for streamlined user access management."
 author: "NetBox Labs Documentation Team"

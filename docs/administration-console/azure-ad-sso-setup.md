@@ -1,10 +1,12 @@
 ---
 tags:
   - cloud
+  - administration
   - authentication
   - sso
-  - azure
+  - azure-ad
   - configuration
+  - security
 title: "Microsoft Entra ID SSO Setup"
 description: "Complete guide to configuring single sign-on (SSO) for NetBox Cloud using Microsoft Entra ID (formerly Azure Active Directory) as an authentication backend."
 author: "NetBox Labs Documentation Team"

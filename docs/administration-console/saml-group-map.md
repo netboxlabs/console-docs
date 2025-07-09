@@ -1,11 +1,10 @@
 ---
 tags:
   - cloud
+  - administration
   - authentication
   - sso
   - saml
-  - rbac
-  - configuration
 title: "SAML Group Mapping"
 description: "Configure automatic group synchronization and role mapping between SAML identity providers and NetBox Cloud."
 author: "NetBox Labs Documentation Team"

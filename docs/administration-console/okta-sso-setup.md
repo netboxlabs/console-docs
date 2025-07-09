@@ -1,6 +1,7 @@
 ---
 tags:
   - cloud
+  - administration
   - authentication
   - sso
   - okta
