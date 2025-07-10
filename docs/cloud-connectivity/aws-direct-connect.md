@@ -1,13 +1,19 @@
 ---
 tags:
   - cloud
-  - cloud-connectivity
   - networking
-  - aws
-  - direct-connect
+  - configuration
+  - integration
+title: "AWS Direct Connect (Single Region)"
+description: "Configure AWS Direct Connect for dedicated network connectivity to NetBox Cloud"
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-02"
 versions:
   netbox_cloud: "v1.10"
 status: "current"
+category: "cloud-connectivity"
+audience: "network-engineers"
+complexity: "advanced"
 ---
 
 # AWS Direct Connect (Single Region)

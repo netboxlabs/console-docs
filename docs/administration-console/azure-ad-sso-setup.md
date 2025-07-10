@@ -1,15 +1,21 @@
 ---
 tags:
   - cloud
-  - netbox
-  - administration
   - authentication
-  - azure-ad
+  - administration
   - configuration
-  - security
+  - getting-started
+  - integration
+title: "Microsoft Entra ID SSO Setup"
+description: "Configure single sign-on (SSO) support for NetBox Cloud using Microsoft Entra ID (formerly Azure Active Directory)"
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-02"
 versions:
   netbox_cloud: "v1.10"
 status: "current"
+category: "administration"
+audience: "administrators"
+complexity: "intermediate"
 ---
 
 # Microsoft Entra ID Setup (formerly Azure Active Directory)
