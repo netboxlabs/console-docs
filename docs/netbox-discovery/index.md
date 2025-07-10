@@ -3,6 +3,7 @@ tags:
   - cloud
   - enterprise
   - community
+  - netbox
   - discovery
 versions:
   cloud: "v1.10"

@@ -1,132 +1,83 @@
 # NetBox Enterprise Documentation Repository
 
-This repository contains the commercial/enterprise documentation for NetBox Labs products. The documentation is integrated with the main NetBox Labs documentation site at **https://netboxlabs.com/docs**.
+This repository contains the commercial/enterprise documentation for NetBox Labs products. Documentation written here gets published to **https://netboxlabs.com/docs** through a multi-repository integration process.
 
-## 🚀 Quick Start - Writing Documentation
+## 🏗️ How Documentation Gets Published
 
-### 1. Clone and Setup
+This repository feeds into a **three-repository publishing pipeline**:
+
+```
+console-docs (this repo) → netboxlabs-website-dochub → netboxlabs.com/docs
+```
+
+1. **console-docs** (this repo) → Contains documentation source files
+2. **netboxlabs-website-dochub** → Integrates multiple doc repos and builds the site
+3. **netboxlabs-website** → Serves the final site at netboxlabs.com/docs via URL rewrite
+
+## 📝 How to Contribute Documentation
+
+### Two-Step Publishing Process
+
+**Step 1: Update Content (This Repo)**
+```bash
+git checkout -b feature/your-documentation
+# Write your documentation in docs/
+git add docs/your-new-file.md
+git commit -m "Add documentation for your feature"
+git push origin feature/your-documentation
+# Create and merge PR
+```
+
+**Step 2: Publish Changes (Dochub Repo)**
+```bash
+# In netboxlabs-website-dochub repository
+yarn update-submodules  # Pulls latest from console-docs
+git add external-repos/console-docs
+git commit -m "Update console documentation"
+git push origin main
+# Create and merge PR to publish live
+```
+
+**Important**: Changes in this repo don't go live until Step 2 is completed in the dochub repository.
+
+## 🚀 Quick Start
+
+### 1. Local Development
 ```bash
 git clone https://github.com/netboxlabs/console-docs
 cd console-docs
-```
-
-### 2. Install Dependencies
-```bash
-# Using Python virtual environment (recommended)
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-
-# Or using global Python (if you have permission issues)
-/Users/[username]/Library/Python/3.9/bin/mkdocs serve
+mkdocs serve  # Visit http://127.0.0.1:8000
 ```
 
-### 3. Start Local Preview
-```bash
-mkdocs serve
-# Visit: http://127.0.0.1:8000
+### 2. Write Documentation
+Create `.md` files in the `docs/` directory with proper frontmatter:
+
+```yaml
+---
+tags:
+  - cloud                    # Edition availability
+  - enterprise
+  - administration           # Category
+  - getting-started          # Content type
+  - authentication           # Feature area
+  - sso                      # Specific feature
+---
+
+# Your Documentation Title
+
+Your content here...
 ```
 
-### 4. Write Your Documentation
-- Create or edit `.md` files in the `docs/` directory
-- Use proper semantic tagging in frontmatter (see [Tagging Guide](#-semantic-tagging-system))
-- Test locally before committing
-
-### 5. Submit Your Changes
+### 3. Submit Changes
 ```bash
 git checkout -b feature/your-feature-name
-git add docs/your-new-file.md
-git commit -m "Add documentation for your feature"
+git add docs/your-file.md
+git commit -m "Add documentation for feature"
 git push origin feature/your-feature-name
-# Create a pull request on GitHub
-```
-
-## 🔄 How Documentation Goes Live (Two-Step Process)
-
-**Important**: Documentation requires **two separate pull requests** to go live:
-
-### Step 1: Content Repository (This Repo)
-1. **Create PR** in this repository (`console-docs`)
-2. **Get it reviewed and merged**
-3. **Tag the version** (for production releases)
-
-### Step 2: Integration Repository
-1. **Create PR** in [`netboxlabs-website-dochub`](https://github.com/netboxlabs/netboxlabs-website-dochub/)
-2. **Update integration configuration** to include your new content
-3. **Get it reviewed and merged**
-
-### Why Two Steps?
-- **`console-docs`** (this repo) → Contains the actual documentation content
-- **`netboxlabs-website-dochub`** → Combines content from multiple repos and publishes to the live site
-- **Integration required** → Changes here don't automatically appear on the live site
-
-### Repository Integration Flow
-
-```mermaid
-graph LR
-    A[console-docs<br/>📝 Your Content] --> B[dochub<br/>🔧 Integration Site]
-    C[netbox repo<br/>📚 Community Docs] --> B
-    D[Other Repos<br/>📖 Additional Content] --> B
-    B --> E[netboxlabs.com/docs<br/>🌐 Live Site]
-    
-    style A fill:#e1f5fe
-    style B fill:#fff3e0
-    style E fill:#e8f5e8
-```
-
-**Key Points:**
-- 🔒 **Content stays hidden** until both PRs are merged
-- 🏷️ **Version tags control** what customers see
-- 🔄 **Two-repo process** ensures content quality and integration
-
-## 📝 Documentation Standards
-
-### Required Frontmatter
-Every documentation file should include proper frontmatter with semantic tags:
-
-```yaml
----
-tags:
-  - cloud                    # Edition (NetBox Cloud, Enterprise, Community)
-  - enterprise
-  - discovery                # Product (discovery, assurance, operator, etc.)
-  - getting-started          # Content type (installation, configuration, etc.)
-title: "Your Document Title"
-description: "SEO-friendly description"
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-27"
----
-```
-
-### Edition Tags (Choose Appropriate Ones)
-```yaml
-tags:
-  - cloud      # NetBox Cloud features
-  - enterprise # NetBox Enterprise features  
-  - community  # NetBox Community (open source) features
-  - airgap     # Air-gapped deployment features
-```
-
-### Product Tags
-```yaml
-tags:
-  - netbox     # Core NetBox functionality
-  - discovery  # NetBox Discovery features
-  - assurance  # NetBox Assurance features (premium only)
-  - operator   # NetBox Operator features (premium only)
-  - branching  # NetBox Branching extension (premium only)
-```
-
-### Content Type Tags
-```yaml
-tags:
-  - installation     # Installation and setup guides
-  - configuration    # Configuration and settings
-  - troubleshooting  # Problem resolution guides
-  - getting-started  # Introductory guides
-  - administration   # System administration
-  - api             # API documentation
-  - authentication  # SSO, security, access control
+# Create pull request
 ```
 
 ## 📁 Repository Structure
@@ -134,235 +85,197 @@ tags:
 ```
 console-docs/
 ├── docs/                           # 📝 Documentation content
-│   ├── administration-console/     # NetBox Cloud admin features
+│   ├── administration-console/     # NetBox Cloud admin features  
 │   ├── cloud-connectivity/         # Cloud connectivity guides
 │   ├── netbox-assurance/          # NetBox Assurance documentation
 │   ├── netbox-discovery/          # NetBox Discovery documentation
 │   ├── netbox-enterprise/         # NetBox Enterprise guides
-│   ├── netbox-extensions/         # Extensions and add-ons
-│   └── netbox-integrations/       # Third-party integrations
+│   ├── netbox-integrations/       # Third-party integrations
+│   └── netbox-cloud/              # NetBox Cloud migration
 ├── ai-reference/                   # 🤖 AI development resources
+│   ├── README.md                   # AI reference system overview
+│   ├── QUICK_REFERENCE.md         # Quick lookup for common tasks
+│   ├── DISTRIBUTION_URLS.md       # Customer-facing URLs
+│   ├── content-strategy/          # Navigation & content strategy
+│   ├── project-docs/              # Project implementation details
+│   ├── reference-docs/            # Technical reference materials
+│   ├── style-guides/              # Writing and tagging guidelines
+│   └── templates/                 # Document templates
 ├── mkdocs.yml                      # 🔧 Local development configuration
-├── versions.json                   # 📋 Version control configuration
 └── README.md                       # 📖 This file
 ```
 
-## 🎯 Version Management
+## 🤖 AI Reference System
 
-### Current Version Structure
-| Version | Status | Branch | Customer Visibility | Purpose |
-|---------|--------|--------|-------------------|---------|
-| **v1.10** | 🟢 **Current** | `main` | ✅ **Visible** | Current customer documentation |
-| **v1.9** | 🔵 **Stable** | `v1.9` | ✅ **Visible** | Maintenance for existing customers |
-| **v1.11** | 🟡 **Beta** | `v1.11` | ❌ **Hidden** | NetBox Enterprise + Helm features |
-| **v1.12** | 🔴 **Alpha** | `v1.12` | ❌ **Hidden** | NetBox Enterprise + HA features |
+The `ai-reference/` directory contains comprehensive resources for AI-assisted documentation development:
 
-### Where to Add Your Documentation
+### Purpose
+- **Style Guides**: Writing standards and AI prompting guidelines
+- **Templates**: Standardized document templates
+- **Content Strategy**: Navigation and tagging strategies
+- **Technical Documentation**: Implementation details and workflows
+- **Distribution Management**: Customer-facing URL documentation
 
-#### ✅ **For Current Features (Immediate Visibility)**
-```bash
-git checkout main  # v1.10 content - goes live immediately
-# Edit documentation for current features
-git add docs/path/to/file.md
-git commit -m "Update SSL certificate installation steps"
-git push origin main
-# After PR merge + dochub integration → Live on website
-```
+### Key Resources
+- **[AI Reference README](ai-reference/README.md)**: Complete system overview
+- **[Quick Reference](ai-reference/QUICK_REFERENCE.md)**: Common tasks and commands
+- **[Style Guides](ai-reference/style-guides/)**: Writing standards and guidelines
+- **[Templates](ai-reference/templates/)**: Document templates and examples
 
-#### 🔄 **For Future Features (Hidden Until Release)**
-```bash
-git checkout -b feature/new-feature
-# Add documentation for future features
-git add docs/netbox-assurance/new-feature.md
-git commit -m "Add documentation for upcoming feature"
-git push origin feature/new-feature
-# Stays hidden until feature branch is merged to a live version
-```
+**Note**: The ai-reference directory is for internal development use and is not published to the customer-facing documentation site.
 
-## 🏷️ Semantic Tagging System
+## 🏷️ Documentation Standards
 
-This repository uses a comprehensive semantic tagging system for intelligent content organization:
+### Comprehensive Tagging System
 
-<details>
-<summary>Click to expand complete tagging reference</summary>
+Our documentation uses a multi-tier tagging system for better organization and discovery:
 
-### Technical Category Tags (38+ Available)
-
+#### Edition Tags (Prominent Pills)
 ```yaml
 tags:
-  # Authentication & Security
-  - authentication # SSO, security, access control
-  - sso           # Single sign-on features
-  - ldap          # LDAP integration
-  - saml          # SAML authentication
-  - rbac          # Role-based access control
-  - security      # Security features
-  - encryption    # Encryption and certificates
-  
-  # System Administration
-  - administration # System administration
-  - database      # Database management
+  - cloud        # NetBox Cloud features
+  - enterprise   # NetBox Enterprise features  
+  - community    # NetBox Community (open source) features
+  - airgap       # Air-gapped deployments
+```
+
+#### Product Tags
+```yaml
+tags:
+  - netbox       # Core NetBox functionality
+  - discovery    # NetBox Discovery features
+  - assurance    # NetBox Assurance features
+  - operator     # NetBox Operator features
+```
+
+#### Technical Category Tags
+```yaml
+tags:
+  - authentication  # Authentication and SSO
+  - administration  # System administration
+  - security       # Security features
+  - api           # API documentation
+  - integration   # Third-party integrations
   - backup        # Backup and restore
-  - migration     # Data migration
-  - upgrade       # Version upgrades
-  - maintenance   # System maintenance
-  
-  # APIs and Integration
-  - api           # REST API, GraphQL, SDKs
-  - rest-api      # REST API specific
-  - graphql       # GraphQL API
-  - webhooks      # Webhook integrations
-  - automation    # Automation and scripting
-  - plugins       # Plugin development
-  
-  # Operations and Monitoring
-  - operations    # Monitoring, backups, maintenance
-  - monitoring    # System monitoring
-  - notifications # Alerts and notifications
-  - logging       # Logging and audit trails
-  - metrics       # Performance metrics
+  - monitoring    # Monitoring and alerting
 ```
 
-### NetBox Model Categories
-
+#### Content Type Tags
 ```yaml
 tags:
-  - circuits        # Circuit providers and connectivity
-  - dcim           # Data Center Infrastructure Management
-  - ipam           # IP Address Management
-  - tenancy        # Multi-tenancy features
-  - virtualization # Virtual machines and clusters
-  - vpn            # VPN tunnels and configurations
-  - wireless       # Wireless networks
-  - extras         # Custom fields, webhooks, templates
-  - core           # Core NetBox functionality
+  - getting-started    # Introductory guides
+  - installation       # Setup procedures
+  - configuration      # Settings and customization
+  - troubleshooting    # Problem resolution
+  - reference         # Technical reference
 ```
 
-</details>
+### Enhanced Frontmatter Format
 
-## 🤖 AI-Assisted Development
-
-This repository includes comprehensive AI reference materials in the `ai-reference/` directory:
-
-### AI Reference Resources
-```
-ai-reference/
-├── README.md                           # Complete AI reference guide
-├── QUICK_REFERENCE.md                  # Fast lookup for common tasks
-├── templates/                          # Document templates
-│   ├── netbox-feature-doc-template.md  # Standard feature documentation
-│   └── product-landing-page.md         # Product overview template
-├── style-guides/                       # Writing guidelines
-│   ├── netbox-docs-style-guide.md      # Complete style guide
-│   └── product-tagging-guide.md        # Tagging system guide
-└── content-strategy/                   # Strategy and planning
-    └── navigation-strategy.md          # User-centric navigation
-```
-
-### Using AI Reference Materials
-When working with AI tools:
-1. **Reference the style guide**: `ai-reference/style-guides/netbox-docs-style-guide.md`
-2. **Use templates**: `ai-reference/templates/`
-3. **Apply proper tagging**: `ai-reference/style-guides/product-tagging-guide.md`
-
-## 📦 External Documentation Sync
-
-Some documentation is synced from external repositories:
-
-| Path | Repository | Purpose | Update Method |
-|------|------------|---------|---------------|
-| `docs/netbox-extensions/changes/` | [`netbox-changes`](https://github.com/netboxlabs/netbox-changes) | NetBox Change Management docs | Script-based sync |
-
-### Updating External Documentation
-```bash
-# For maintainers only
-./scripts/update-changes-docs.sh
-git add docs/netbox-extensions/changes/
-git commit -m "Update NetBox Changes documentation"
-git push
+```yaml
+---
+title: "Document Title"
+description: "Brief description of the document"
+tags:
+  - cloud                    # Edition availability
+  - enterprise
+  - administration           # Category
+  - authentication           # Feature area
+  - sso                      # Specific feature
+  - configuration           # Content type
+author: "NetBox Labs Documentation Team"
+last_updated: "2025-01-02"
+versions:
+  netbox_cloud: "v1.10"
+  netbox_enterprise: "v1.10"
+category: "administration"
+audience: "administrators"
+complexity: "intermediate"
+---
 ```
 
-## 📋 Important Guidelines
+## 📦 Version Management
 
-### ✅ **DO:**
-- **Use proper semantic tagging** in all documents
-- **Test locally** before committing
-- **Create feature branches** for new content
-- **Follow the two-step process** for live deployment
-- **Reference AI templates** when writing
+### Current Version Strategy
+| Version | Status | Purpose |
+|---------|---------|---------|
+| **v1.9** | 🟢 **LIVE** | Current stable customer documentation |
+| **v1.10** | 🟡 **Beta** | Enterprise + Discovery/Assurance features |
+| **v1.11** | 🔴 **Future** | Upcoming features and improvements |
 
-### ❌ **DON'T:**
-- **Don't commit directly to main** without review
-- **Don't forget frontmatter tags** in your documents
-- **Don't assume changes go live automatically** (requires dochub integration)
-- **Don't merge unreleased features** into live branches
+### Version Guidelines
+- **Current customers**: Documentation on `main` branch (v1.9)
+- **New features**: Use feature branches until version branches are created
+- **Version compatibility**: Specify in frontmatter when relevant
 
-## 🛠️ Advanced Configuration
+## 🔄 Integration with DocHub
 
-<details>
-<summary>Click to expand advanced technical details</summary>
+### What DocHub Handles
+- **Content Integration**: Combines docs from multiple repositories
+- **Site Building**: Transforms markdown to web pages using Docusaurus
+- **URL Management**: Creates customer-facing URLs
+- **Search**: Provides search functionality across all docs
+- **Navigation**: Generates unified navigation structure
+- **Tagging**: Processes semantic tags for content organization
 
-### Version Configuration Management
+### What This Repo Provides
+- **Source Content**: Raw documentation files with comprehensive metadata
+- **AI Reference Materials**: Development resources and guidelines
+- **Semantic Tagging**: Rich frontmatter for content organization
+- **Local Preview**: MkDocs for development testing
+- **Version Control**: Git history for documentation changes
 
-Version visibility is controlled by `versions.json`:
+## 🌐 Distribution URLs
 
-```json
-{
-  "versions": [
-    {
-      "version": "v1.10", 
-      "branch": "main",
-      "title": "v1.10 (Current)",
-      "default": true,
-      "status": "current"
-    }
-  ],
-  "future_versions": [
-    {
-      "version": "v1.11",
-      "branch": "v1.11",
-      "title": "v1.11 (Beta) - NetBox Enterprise with Helm",
-      "status": "beta"
-    }
-  ]
-}
-```
+This repository provides content for several customer-facing distribution endpoints:
 
-### Integration with Dochub
+### Customer Messages
+- **RSS Feed**: `https://netboxlabs.com/docs/feeds/customer-messages.xml`
+- **Purpose**: NetBox Enterprise console integration
 
-The repository sends webhook notifications to `netboxlabs-website-dochub` when versions are deployed. The semantic tagging system enables:
+### NetBox Enterprise Helm Documentation
+- **Installation Guides**: `https://netboxlabs.com/docs/guides/helm/`
+- **Configuration Files**: `https://netboxlabs.com/docs/files/helm/`
+- **Values Template**: `https://netboxlabs.com/docs/files/helm/values-extra.yaml`
 
-- **Content Filtering**: Edition-specific content visibility
-- **Navigation Generation**: Automatic sidebar generation
-- **Search Enhancement**: Tag-based search and filtering
-- **Cross-Product Discovery**: Related content recommendations
+For complete distribution URL documentation, see [ai-reference/DISTRIBUTION_URLS.md](ai-reference/DISTRIBUTION_URLS.md).
 
-### Automated Deployment Process
+## ⚠️ Important Notes
 
-```bash
-# Tagging triggers automatic deployment
-git tag v1.10.1
-git push origin v1.10.1
-# → Triggers GitHub Actions → Notifies dochub → Updates live site
-```
+- **Changes aren't live immediately** - requires dochub integration
+- **Use comprehensive tags** - helps with content organization and discovery
+- **Test locally** before submitting PRs with `mkdocs serve`
+- **Follow two-step process** for publishing
+- **Consult ai-reference** for detailed guidelines and templates
 
-</details>
+## 🛠️ Troubleshooting
 
-## ⚠️ Troubleshooting
+### Common Issues
+- **MkDocs theme errors**: Try `pip uninstall mkdocs && pip install -r requirements.txt`
+- **Changes not appearing**: Remember the two-step publishing process
+- **Local preview not working**: Check Python virtual environment is activated
+- **Tagging questions**: Consult [ai-reference/style-guides/](ai-reference/style-guides/)
 
-If you see errors like this:
-
-> ERROR - Config value 'theme': Unrecognised theme name: 'material'
-> ERROR - ModuleNotFoundError: No module named 'pymdownx'
-
-**Solution**: Try uninstalling `mkdocs` from your package manager (e.g. `brew uninstall mkdocs`) and use only the pip-installed version. MkDocs doesn't work well when installed via multiple methods.
-
-## 🆘 Getting Help
-
-- **Community Support**: Join [Slack](https://netdev.chat/) in the `#netbox` channel
+### Getting Help
 - **Documentation Issues**: Create an issue in this repository
-- **Integration Questions**: Ask in the `netboxlabs-website-dochub` repository
+- **Publishing Questions**: Ask in the netboxlabs-website-dochub repository
+- **AI Reference**: Check [ai-reference/README.md](ai-reference/README.md) for comprehensive guidelines
+- **Community Support**: Join [NetBox Slack](https://netdev.chat/) #netbox channel
+
+## 🔍 Quality Assurance
+
+### Before Publishing
+- **Use proper tagging**: Follow the comprehensive tagging system
+- **Test locally**: Run `mkdocs serve` to verify content renders correctly
+- **Check frontmatter**: Ensure all required metadata is present
+- **Review guidelines**: Consult ai-reference materials for best practices
+
+### Content Standards
+- **Professional technical writing** for network engineers
+- **Clear, concise language** without AI-generated patterns
+- **Tested procedures** with accurate examples
+- **Consistent formatting** following style guides
 
 ---
 
-**Ready to contribute?** Start with the [Quick Start](#-quick-start---writing-documentation) section above and remember the [two-step process](#-how-documentation-goes-live-two-step-process) for going live!
+**Ready to contribute?** Follow the [Quick Start](#-quick-start), consult the [AI Reference materials](ai-reference/README.md), and remember the [two-step publishing process](#two-step-publishing-process)!

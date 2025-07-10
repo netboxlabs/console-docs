@@ -1,9 +1,8 @@
 ---
 tags:
   - cloud
+  - netbox
   - authentication
-  - sso
-  - saml
   - configuration
 versions:
   netbox_cloud: "v1.10"

@@ -7,7 +7,7 @@ tags:
   - dates
   - workflow
 author: "NetBox Labs Documentation Team"
-last_updated: "2025-07-01"
+last_updated: "2025-01-02"
 category: "reference"
 audience: "developers"
 complexity: "beginner"
@@ -20,7 +20,7 @@ This guide explains why hardcoded dates keep appearing in documentation and how 
 
 ## 🔍 The Problem
 
-You may notice that `last_updated: "2025-01-27"` keeps appearing across documentation files. This happens because:
+You may notice that `last_updated: "2025-01-02"` keeps appearing across documentation files. This happens because:
 
 ### Root Causes
 
@@ -69,7 +69,7 @@ last_updated: "YYYY-MM-DD"  # Replace with current date
 ```yaml
 ---
 title: "Your Document Title" 
-last_updated: "2025-01-27"  # This will become outdated
+last_updated: "2025-01-02"  # This will become outdated
 ---
 ```
 
@@ -97,7 +97,7 @@ yarn update-dates
 grep -r "last_updated: \"2025-01-27\"" . --include="*.md" --exclude-dir=external-repos
 
 # Update specific file
-sed -i 's/last_updated: "2025-01-27"/last_updated: "2025-07-01"/g' filename.md
+sed -i 's/last_updated: "2025-01-02"/last_updated: "2025-01-02"/g' filename.md
 ```
 
 ## 📋 Workflow Integration

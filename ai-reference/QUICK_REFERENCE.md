@@ -4,220 +4,143 @@ tags:
   - quick-reference
   - templates
   - development
-author: "NetBox Labs Documentation Team"
-category: "ai-reference"
-audience: "developers"
-complexity: "beginner"
-description: "Quick reference guide for common AI reference tasks"
+author: 'NetBox Labs Documentation Team'
+category: 'ai-reference'
+audience: 'developers'
+complexity: 'beginner'
+description: "Quick reference guide for common AI reference tasks for the world's most popular platform for understanding, operating, automating, and securing networks."
 internal_only: true
 draft: true
 ---
 
 :::info Quick Reference Guide
-Fast lookup for common tasks in the AI reference system.  
+Fast lookup for common tasks in the AI reference system for NetBox - the world's most popular platform for understanding, operating, automating, and securing networks.  
 For comprehensive information, see [README.md](./README.md).
 **Excluded from public website builds.**
 :::
 
 # AI Reference Quick Reference
 
-## 🚀 Common Tasks
+**NetBox is the world's most popular platform for understanding, operating, automating, and securing networks.** This quick reference provides essential information for documenting the premier network and infrastructure management platform.
 
-### Writing New Documentation
+## 🚨 RFC: Anti-AI-Generated Patterns for Public Docs
+
+**CRITICAL**: Public documentation (anything in `/docs` or published to https://netboxlabs.com/docs) must NOT look AI-generated per our [RFC: Writing Docs with AI](https://docs.google.com/document/d/1KZtnMvyNsIGEWrHqCVD54AoiPmgnW7ALKMtYFdON-Wg/edit?usp=sharing):
+
+### ❌ Forbidden in Public Documentation
+
+- NO emojis (emojis are OK in ai-reference for internal use)
+- NO emdashes - find-and-replace every emdash with prejudice
+- NO overwrought phrasing or fluff
+- NO recognizable AI patterns
+
+### ✅ Required for Public Documentation
+
+- Crisp, clear, technical writing for network engineers
+- Concise and to the point - optimize for clarity
+- Accurate and verifiable - test all instructions
+- Professional tone - you're writing for NetBox users
+
+**"If it feels like AI wrote it, nobody will trust that you put all the work in to make sure the docs are accurate."**
+
+## 🚀 Common Commands
+
+### Vale Commands
 ```bash
-# 1. Choose template
-templates/netbox-feature-doc-template.md    # Feature docs
-templates/product-landing-page.md           # Product overviews
-templates/semantic-tagging-usage.md         # Tag examples
-
-# 2. Reference style guide
-style-guides/netbox-docs-style-guide.md
-
-# 3. Apply proper tags
-style-guides/product-tagging-guide.md
+# Quick analysis (see README.md for full list)
+yarn vale-our-content    # Our controlled content only
+yarn vale-summary        # Quick overview
+yarn vale-install        # Installation help
 ```
 
-### Understanding Navigation
+### Lefthook Commands
 ```bash
-# Strategy and principles
-content-strategy/navigation-strategy.md
+# Test hooks without committing
+lefthook run pre-commit
+lefthook run pre-push
 
-# Technical implementation
-project-docs/implementation_plan.md
-
-# Cross-repo coordination
-reference-docs/dochub-coordination.md
+# Skip hooks for urgent fixes
+SKIP_BUILD_VALIDATION=true git push
+LEFTHOOK_SKIP_BUILD=true git push
 ```
 
-### AI-Assisted Writing
+### Development Commands
 ```bash
-# Best practices
-style-guides/ai-prompting-guide.md
-
-# Template examples
-templates/semantic-tagging-usage.md
-
-# Complete style reference
-style-guides/netbox-docs-style-guide.md
-```
-
-## 🏷️ Tag Reference
-
-### Edition Tags (Prominent Pills)
-| Tag | Usage | Color |
-|-----|-------|-------|
-| `cloud` | NetBox Cloud features | #00d9be |
-| `enterprise` | NetBox Enterprise features | #ffac00 |
-| `community` | Open source features | #00bee0 |
-| `airgap` | Air-gapped deployments | #6c757d |
-
-### Product Tags (Regular)
-| Tag | Usage |
-|-----|-------|
-| `netbox` | Core NetBox functionality |
-| `discovery` | Network discovery features |
-| `assurance` | Network monitoring capabilities |
-| `operator` | AI-powered network operations |
-| `branching` | NetBox Branching extension |
-
-### Common Semantic Tags
-- **Auth**: `authentication`, `sso`, `ldap`, `saml`, `rbac`
-- **Security**: `security`, `encryption`, `certificates`
-- **Database**: `database`, `backup`, `migration`, `upgrade`
-- **APIs**: `rest-api`, `graphql`, `webhooks`, `automation`
-- **UX**: `getting-started`, `installation`, `configuration`
-
-## 🎨 Frontmatter Templates
-
-### Standard Document
-```yaml
----
-tags:
-  - cloud                    # Edition (prominent)
-  - enterprise
-  - discovery                # Product (regular)
-  - authentication           # Semantic (regular)
-title: "Document Title"
-description: "SEO description"
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-07-01"
-versions:
-  cloud: "v1.10"
-  enterprise: "v1.10"
-  community: "v4.2"
-status: "current"
-category: "feature"
-audience: "end-users"
-complexity: "beginner"
----
-```
-
-### Premium Feature (Cloud/Enterprise Only)
-```yaml
----
-tags:
-  - cloud
-  - enterprise
-  - assurance                # Premium product
-  - monitoring
-title: "NetBox Assurance Feature"
-versions:
-  cloud: "v1.10"
-  enterprise: "v1.10"
-  # Note: community not included
----
-```
-
-### Universal Feature (All Editions)
-```yaml
----
-tags:
-  - cloud
-  - enterprise
-  - community
-  - discovery                # Available everywhere
-title: "NetBox Discovery Feature"
-versions:
-  cloud: "v1.10"
-  enterprise: "v1.10"
-  community: "v4.2"
----
-```
-
-## 🔧 Development Commands
-
-```bash
-# Update source materials
-git submodule update --remote
-
-# Process AI reference materials
-yarn transform-ai-reference
-
-# Transform all documentation (includes admonition conversion)
-yarn transform-docs
-
-# Start development server (with EMFILE error handling)
+# Full development setup
 yarn dev
 
-# Build for production
-yarn build
+# Transform only
+yarn transform-docs
 
-# Fix common development issues
-pkill -f "yarn dev"  # Kill conflicting processes
-rm -rf .docusaurus   # Clear build cache
+# Build validation
+yarn build
 ```
 
-## 🛠️ Recent Improvements (2025)
+## 📋 Template Locations
 
-### Fixed Issues
-- **✅ Admonition Rendering**: MkDocs admonitions (`!!! note`, `!!! tip`) now properly convert to Docusaurus format (`:::note`, `:::tip`)
-- **✅ EMFILE Errors**: Fixed "too many open files" errors in development
-- **✅ File Links**: Download links work correctly in both local development and production
-- **✅ Professional Styling**: Enhanced Helm documentation with clean, enterprise-appropriate presentation
+### Document Templates
+- **Feature docs**: `ai-reference/templates/netbox-feature-doc-template.md`
+- **Product pages**: `ai-reference/templates/product-landing-page.md`
+- **Semantic tagging**: `ai-reference/templates/semantic-tagging-usage.md`
 
-### Enhanced Features  
-- **✅ Dual-Stage Conversion**: Admonition conversion happens in both TypeScript and Python processing stages
-- **✅ Environment Detection**: Links automatically adapt for localhost vs production
-- **✅ Build Optimization**: Streamlined transformation rules, removed obsolete fixes
+### Style Guides
+- **AI prompting**: `ai-reference/style-guides/ai-prompting-guide.md`
+- **NetBox style**: `ai-reference/style-guides/netbox-docs-style-guide.md`
+- **Product tagging**: `ai-reference/style-guides/product-tagging-guide.md`
 
-## 📁 File Finder
+## 🏷️ Tag Quick Reference
 
-### Need to...
-| Task | File |
-|------|------|
-| Write feature docs | `templates/netbox-feature-doc-template.md` |
-| Create product page | `templates/product-landing-page.md` |
-| Understand tags | `style-guides/product-tagging-guide.md` |
-| Follow style guide | `style-guides/netbox-docs-style-guide.md` |
-| Use AI prompts | `style-guides/ai-prompting-guide.md` |
-| Understand navigation | `content-strategy/navigation-strategy.md` |
-| Technical implementation | `project-docs/implementation_plan.md` |
-| Tag system details | `reference-docs/semantic-tagging-system.md` |
-| Integration specs | `reference-docs/dochub-integration-requirements.md` |
+### Platform Tags (Pills)
+```yaml
+tags:
+  - cloud        # NetBox Cloud
+  - enterprise   # NetBox Enterprise  
+  - community    # NetBox Community
+```
 
-## ⚡ Quick Checks
+### Product Tags
+```yaml
+tags:
+  - discovery    # NetBox Discovery
+  - assurance    # NetBox Assurance
+  - operator     # NetBox Operator
+```
 
-### Before Writing
-- [ ] Template selected
-- [ ] Style guide reviewed
-- [ ] Tags identified
-- [ ] Version mapping confirmed
+### Content Type Tags
+```yaml
+tags:
+  - installation      # Setup/install guides
+  - configuration     # Config guides
+  - troubleshooting   # Problem solving
+  - api              # API documentation
+```
 
-### Before Publishing
-- [ ] Frontmatter complete
-- [ ] Tags applied correctly
-- [ ] Version information accurate
-- [ ] Internal notices removed (if public)
+## 📁 Directory Structure
 
-### For AI Prompts
-- [ ] Context provided from relevant files
-- [ ] Style guide referenced
-- [ ] Tag system explained
-- [ ] Version requirements specified
+```
+ai-reference/
+├── README.md                    # Main overview
+├── QUICK_REFERENCE.md          # This file
+├── content-strategy/           # Navigation & strategy
+├── project-docs/              # Project documentation
+├── reference-docs/            # Technical references
+├── style-guides/              # Writing guidelines
+└── templates/                 # Document templates
+```
+
+## 🔗 Key Resources
+
+### External Links
+- [RFC: Writing Docs with AI](https://docs.google.com/document/d/1KZtnMvyNsIGEWrHqCVD54AoiPmgnW7ALKMtYFdON-Wg/edit?usp=sharing)
+- [Docs Site Structure](https://docs.google.com/document/d/1S1myF5S7BS2foTqo4-XP4bW-eDBU7mZmrx8P1526DFY/edit?usp=sharing)
+- [NetBoxLabs Docs Reorganization](https://docs.google.com/document/d/12kH5sMTcHw6qE4n6BbbIXQ498RBMN1Bb19O6p6-N2dw/edit?usp=sharing)
+
+### Internal References
+- **Main README**: Comprehensive system overview
+- **Documentation Quality System**: Technical implementation details
+- **Version Management**: Product versioning strategy
+- **Distribution URLs**: Customer-facing endpoints
 
 ---
 
-**Quick Reference** | **Last Updated**: 2025-07-01  
-**For full details**: See [README.md](./README.md) and individual files
-
-*Fast lookup for AI reference system - development team use.* 
+*For detailed information, see the main [README.md](./README.md) and specific files in the ai-reference directory.*

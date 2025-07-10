@@ -3,9 +3,9 @@ hide:
   - navigation
   - toc
 ---
-# Welcome to the NetBox Labs Documentation Site 
+# Welcome to NetBox Enterprise Documentation
 
-The home of documentation for NetBox [Cloud](administration-console/console-access.md), [Enterprise](netbox-enterprise/nbe-overview.md), [Integrations](netbox-integrations/netbox-ansible-collection.md), [SDKs](sdks/pynetbox.md) and [Extensions](netbox-extensions/diode/index.md). 
+Documentation for NetBox [Cloud](administration-console/console-access.md), [Enterprise](netbox-enterprise/nbe-overview.md), [Discovery & Assurance](netbox-assurance/index.md), and [Integrations](netbox-integrations/netbox-ansible-collection.md).
 
 <div class="grid cards" markdown="1">
 
@@ -40,7 +40,6 @@ The home of documentation for NetBox [Cloud](administration-console/console-acce
 
     [Learn more about NetBox Discovery](netbox-discovery/index.md)
 
-
 -   __NetBox Assurance__
 
     Identify, understand, and eliminate 
@@ -48,23 +47,17 @@ The home of documentation for NetBox [Cloud](administration-console/console-acce
 
     [Learn more about NetBox Assurance](netbox-assurance/index.md)
 
--   __NetBox Branching Plugin__
+-   __Cloud Connectivity__
 
-    This NetBox plugin introduces branching functionality. A branch is a discrete, static snapshot of the NetBox database which can be modified independently and later merged back into the main database. 
+    Secure, high-performance network connectivity options for NetBox Cloud deployments.
 
-    [Learn more about NetBox Branching](netbox-extensions/branching/index.md)
-  
--   __NetBox Change Management Plugin__
+    [Learn more about Cloud Connectivity](cloud-connectivity/do-i-need-cloud-connectivity.md)
 
-    This feature family brings powerful workflows to NetBox for team collaboration in designing, testing, and deploying network and infrastructure changes.
+-   __NetBox Integrations__
 
-    [Learn more about NetBox Change Management](netbox-extensions/changes/index.md)
+    Connect NetBox with your existing tools and workflows through proven integrations.
 
--   __Diode__
-
-    Diode is a NetBox data ingestion service that greatly simplifies and enhances the process to add and update network data in NetBox, ensuring your network source of truth is always accurate and can be trusted to power your network automation pipelines.
-
-    [Learn more about Diode](netbox-extensions/diode/index.md)
+    [Explore NetBox Integrations](netbox-integrations/netbox-ansible-collection.md)
 
 </div>
 

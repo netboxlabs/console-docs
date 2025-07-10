@@ -6,7 +6,6 @@ tags:
   - ai-reference
   - assurance
   - discovery
-  - operator
   - template
   - style-guide
   - reference
@@ -27,25 +26,72 @@ description: AI Reference material for NetBox Labs documentation development
 internal_only: true
 draft: true
 ---
+
 :::info Development Resource
 This content is synced from console-docs/ai-reference for development team use.
 :::
 
-
 # AI Prompting Guide for NetBox Documentation
 
-This guide provides best practices for using AI tools to create, edit, and enhance NetBox documentation while maintaining consistency with our style guide and tagging system.
+**NetBox is the world's most popular platform for understanding, operating, automating, and securing networks.** This guide provides best practices for using AI tools to create professional documentation for the premier network and infrastructure management platform.
+
+## 🚨 Critical: RFC Guidelines - "Don't let it smell like AI"
+
+**MANDATORY**: All public-facing documentation must follow our [RFC: Writing Docs with AI](https://docs.google.com/document/d/1KZtnMvyNsIGEWrHqCVD54AoiPmgnW7ALKMtYFdON-Wg/edit?usp=sharing) guidelines:
+
+### AI Content Standards for Public Documentation
+
+When prompting AI tools for content that will be published to `/docs` or https://netboxlabs.com/docs:
+
+```
+CRITICAL INSTRUCTION: This content will be published to our public documentation site.
+It must NOT look AI-generated. Follow these rules:
+
+- NO emojis (technical docs don't need emojis)
+- NO emdashes - use standard punctuation
+- NO overwrought phrasing or fluff
+- NO recognizable AI patterns (emoji lists, repetitive phrasing)
+- Write for network engineers and NetBox users
+- Be concise, accurate, and trustworthy
+- Focus on clarity and verifiability
+
+If it feels like AI wrote it, customers won't trust it's accurate.
+```
+
+### Example Prompts for Professional Documentation
+
+**Good prompt structure:**
+
+```
+Write a technical guide for [specific topic] for NetBox users.
+Target audience: Network engineers familiar with [relevant technology].
+Requirements:
+- Concise, professional tone
+- Clear step-by-step instructions
+- Accurate technical details
+- No marketing language or fluff
+- Include code examples that work
+```
+
+**Avoid prompts that generate AI-like content:**
+
+```
+❌ "Create an engaging guide with emojis and exciting language"
+❌ "Make this comprehensive and thorough with detailed explanations"
+❌ "Add visual elements and make it user-friendly"
+```
 
 ## Essential Context for AI Tools
 
 ### Always Include This Context
+
 When working with AI on NetBox documentation, always provide this essential context:
 
 ```
 You are helping create documentation for NetBox Labs products. Key requirements:
 
 1. Complete YAML Frontmatter: Always include comprehensive frontmatter with version tracking
-   Format: 
+   Format:
    ---
    tags:
      - cloud
@@ -69,7 +115,7 @@ You are helping create documentation for NetBox Labs products. Key requirements:
 
 3. Product Names: Use exact capitalization
    - NetBox Cloud (not Netbox Cloud)
-   - NetBox Enterprise (not Netbox Enterprise)  
+   - NetBox Enterprise (not Netbox Enterprise)
    - NetBox Discovery, NetBox Assurance, NetBox Operator
    - Administration Console (NetBox Cloud's admin interface)
 
@@ -81,6 +127,7 @@ You are helping create documentation for NetBox Labs products. Key requirements:
 ## Version-Specific Prompting
 
 ### Version Guidelines for AI Context
+
 Always specify appropriate version information when prompting:
 
 ```
@@ -120,6 +167,7 @@ versions:
 ## Product-Specific Prompting
 
 ### For NetBox Discovery Content
+
 ```
 Context: NetBox Discovery includes Network Discovery, Device Discovery, and Controller Discovery integrations (VMware vCenter, Juniper Mist, Cisco Catalyst Center, Microsoft DHCP, AWS VPC IPAM). Uses Orb distributed agent framework and Diode SDK. Available across all NetBox editions with different capabilities.
 
@@ -129,6 +177,7 @@ Key terms: "Discovery Agent", "Orb distributed agent framework", "Diode SDK"
 ```
 
 ### For NetBox Assurance Content
+
 ```
 Context: NetBox Assurance detects "operational drift" (not "configuration drift") between intended NetBox state and actual network state. Premium feature for Cloud/Enterprise only. Coming April 2025 for Enterprise, May 2025 for Cloud.
 
@@ -139,6 +188,7 @@ Status: "coming-soon"
 ```
 
 ### For NetBox Operator Content
+
 ```
 Context: NetBox Operator provides AI-powered network operations using NetBox as the semantic map. Currently in design partner program. Uses "agentic AI" and provides "semantic awareness" for network operations.
 
@@ -149,6 +199,7 @@ Status: "coming-soon"
 ```
 
 ### For Administration Console Content
+
 ```
 Context: Administration Console is NetBox Cloud's management interface. Cloud-specific feature for managing instances, users, connectivity, and billing.
 
@@ -160,6 +211,7 @@ Key terms: "Administration Console", "NetBox Cloud", cloud-specific features
 ## Content Structure Prompts
 
 ### For Feature Documentation
+
 ```
 Create feature documentation using this structure:
 1. Complete frontmatter with version tracking and metadata
@@ -177,6 +229,7 @@ Reference our NetBox Operator page as a successful example.
 ```
 
 ### For Landing Pages
+
 ```
 Create a product landing page using our proven pattern:
 1. Complete frontmatter with appropriate version tracking
@@ -196,6 +249,7 @@ Include version information appropriate for the product's availability.
 ```
 
 ### For Integration Guides
+
 ```
 Create an integration guide with:
 1. Complete frontmatter including version compatibility
@@ -214,6 +268,7 @@ Specify version requirements for all components.
 ## Enhanced Frontmatter Prompting
 
 ### Complete Frontmatter Request
+
 ```
 Always include complete frontmatter with these fields:
 
@@ -235,6 +290,7 @@ Optional but recommended:
 ```
 
 ### Version-Specific Frontmatter Examples
+
 ```
 # For existing Administration Console docs:
 versions:
@@ -261,6 +317,7 @@ versions:
 ## Style and Voice Prompts
 
 ### Writing Style
+
 ```
 Write in NetBox documentation style:
 - Active voice: "Configure the setting" not "The setting can be configured"
@@ -272,6 +329,7 @@ Write in NetBox documentation style:
 ```
 
 ### Technical Writing
+
 ```
 For technical content:
 - Provide complete, working code examples
@@ -286,24 +344,31 @@ For technical content:
 ## Common Prompting Mistakes to Avoid
 
 ### ❌ Don't Do This
+
 ```
 "Write documentation for NetBox Discovery using pills to show it works with all products"
 ```
+
 **Problems**: References deprecated HTML pills, doesn't specify our frontmatter system
 
 ### ❌ Don't Do This
+
 ```
 "Create simple docs for netbox assurance"
 ```
+
 **Problems**: Incorrect capitalization, uses "simple" (avoid this word), no context about product specifics, no version information
 
 ### ❌ Don't Do This
+
 ```
 "Update this doc with new tags but keep everything else the same"
 ```
+
 **Problems**: Doesn't specify version tracking, missing frontmatter updates
 
 ### ✅ Do This Instead
+
 ```
 "Create NetBox Assurance documentation using complete YAML frontmatter (tags: cloud, enterprise only - not community; versions: cloud v1.10, enterprise v1.10; status: coming-soon). Focus on operational drift detection, premium feature status, and Day 1/1.5/2 framework. Include coming soon notice for April 2025 Enterprise, May 2025 Cloud. Author: NetBox Labs Documentation Team, last_updated: 2025-06-25."
 ```
@@ -311,6 +376,7 @@ For technical content:
 ## Effective Prompting Patterns
 
 ### For New Content
+
 ```
 Create [content type] for [NetBox product] that:
 1. Uses complete YAML frontmatter with:
@@ -329,6 +395,7 @@ Create [content type] for [NetBox product] that:
 ```
 
 ### For Content Updates
+
 ```
 Update this [content type] to:
 1. Add complete YAML frontmatter with version tracking
@@ -343,6 +410,7 @@ Update this [content type] to:
 ```
 
 ### For Content Review
+
 ```
 Review this documentation for:
 1. Complete and correct YAML frontmatter
@@ -359,6 +427,7 @@ Review this documentation for:
 ## Advanced Prompting Techniques
 
 ### Multi-Step Content Creation
+
 ```
 Step 1: Create outline for [content] including:
 - Appropriate product tags and version mapping
@@ -373,6 +442,7 @@ Step 4: Optimize for our proven patterns and user experience
 ```
 
 ### Version-Aware Content Updates
+
 ```
 Update this content considering version requirements:
 1. Analyze current version information and document age
@@ -386,6 +456,7 @@ Update this content considering version requirements:
 ## Quality Assurance Prompts
 
 ### Content Validation
+
 ```
 Validate this documentation for:
 - Complete YAML frontmatter with all required fields
@@ -400,6 +471,7 @@ Validate this documentation for:
 ```
 
 ### Integration Testing
+
 ```
 Check this content for dochub integration:
 - Proper frontmatter structure and syntax
@@ -414,6 +486,7 @@ Check this content for dochub integration:
 ## Prompt Templates by Use Case
 
 ### Creating Feature Documentation
+
 ```
 Create comprehensive feature documentation for [Feature Name] with:
 
@@ -432,6 +505,7 @@ Ensure active voice, proper NetBox terminology, version tracking, and our proven
 ```
 
 ### Updating Existing Content
+
 ```
 Update this existing documentation to:
 
@@ -451,4 +525,4 @@ Preserve good existing content while modernizing format and adding version track
 
 ---
 
-*This prompting guide helps ensure consistent, high-quality NetBox documentation when using AI tools, incorporating our modern frontmatter system with comprehensive version tracking and proven content patterns.* 
+_This prompting guide helps ensure consistent, high-quality NetBox documentation when using AI tools, incorporating our modern frontmatter system with comprehensive version tracking and proven content patterns._

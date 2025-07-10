@@ -1,11 +1,10 @@
 ---
 tags:
   - cloud
+  - netbox
   - administration
   - getting-started
   - configuration
-  - overview
-  - billing
   - networking
   - automation
 versions:

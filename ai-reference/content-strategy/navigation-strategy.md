@@ -4,8 +4,6 @@ tags:
   - cloud
   - enterprise
   - assurance
-  - discovery
-  - operator
   - reference
   - strategy
   - ai-tools
@@ -21,6 +19,7 @@ last_updated: '2025-06-25'
 category: ai-reference
 audience: developers
 ---
+
 :::info Development Resource
 This content is synced from console-docs/ai-reference for development team use.
 :::
@@ -32,10 +31,13 @@ This document outlines our strategic approach to organizing NetBox documentation
 ## Navigation Philosophy
 
 ### User-Centric Organization
+
 Our navigation structure prioritizes **user intent and workflow** over internal product boundaries. Users don't think in terms of "Cloud vs Enterprise" first—they think about what they want to accomplish.
 
 ### Progressive Disclosure
+
 Information is organized from **general to specific**, allowing users to:
+
 1. Understand what's available to them
 2. Find their specific use case
 3. Get detailed implementation guidance
@@ -44,28 +46,31 @@ Information is organized from **general to specific**, allowing users to:
 ## Current Navigation Structure
 
 ### Primary Organization: By Product Edition
+
 ```
 NetBox Cloud
 ├── Getting Started
-├── Administration Console  
+├── Administration Console
 ├── Cloud Connectivity
 ├── NetBox Discovery
 ├── NetBox Assurance
 ├── NetBox Operator
 └── Extensions
 
-NetBox Enterprise  
+NetBox Enterprise
 ├── Getting Started
 ├── Installation & Setup
 ├── NetBox Discovery
-├── NetBox Assurance  
+├── NetBox Assurance
 ├── NetBox Operator
 ├── Extensions
 └── Advanced Topics
 ```
 
 ### Secondary Organization: By Capability
+
 Within each product section, content is organized by capability:
+
 - **Discovery**: Network discovery and data collection
 - **Assurance**: Operational drift detection and remediation
 - **Operator**: AI-powered network operations
@@ -74,15 +79,18 @@ Within each product section, content is organized by capability:
 ## Content Categorization Strategy
 
 ### By Product Availability
+
 Content is tagged and organized based on where features are available:
 
 #### Universal Features (All Editions)
+
 - REST API documentation
 - Basic NetBox concepts
 - Community integrations
 - Open source tools and SDKs
 
 #### Premium Features (Cloud + Enterprise)
+
 - Advanced authentication (SSO, SAML)
 - NetBox Discovery (full capabilities)
 - NetBox Assurance
@@ -90,6 +98,7 @@ Content is tagged and organized based on where features are available:
 - Premium integrations
 
 #### Edition-Specific Features
+
 - **Cloud Only**: Administration Console, managed connectivity
 - **Enterprise Only**: On-premises installation, air-gap deployment
 - **Community**: Community plugins, self-hosted tools
@@ -97,21 +106,25 @@ Content is tagged and organized based on where features are available:
 ### By User Journey Stage
 
 #### Day 0: Planning and Setup
+
 - Product overviews and comparisons
 - Requirements and prerequisites
 - Getting started guides
 
 #### Day 1: Initial Implementation
+
 - Installation and configuration
 - Basic setup and population
 - First-time user workflows
 
 #### Day 1.5: Process Improvement
+
 - Advanced configuration
 - Integration with existing tools
 - Process optimization
 
 #### Day 2: Ongoing Operations
+
 - Maintenance and troubleshooting
 - Advanced use cases
 - Operational best practices
@@ -119,18 +132,21 @@ Content is tagged and organized based on where features are available:
 ## Navigation Principles
 
 ### 1. Discoverability
+
 - **Clear entry points** for each major capability
 - **Logical grouping** of related functionality
 - **Cross-references** between related topics
 - **Search-friendly** organization and naming
 
 ### 2. Accessibility
+
 - **Consistent navigation patterns** across all sections
 - **Breadcrumb navigation** for orientation
 - **Mobile-friendly** structure and naming
 - **Progressive enhancement** from basic to advanced
 
 ### 3. Maintainability
+
 - **Scalable structure** that can grow with product additions
 - **Consistent naming conventions** across all sections
 - **Clear ownership** and update responsibilities
@@ -139,13 +155,16 @@ Content is tagged and organized based on where features are available:
 ## Product Tagging Integration
 
 ### Tag-Based Navigation
+
 Our YAML frontmatter tagging system enables:
+
 - **Automatic categorization** of content by product
 - **Dynamic filtering** based on user's NetBox edition
 - **Cross-product discovery** of related capabilities
 - **Personalized navigation** based on user context
 
 ### Tag Strategy
+
 ```yaml
 # Universal content
 tags:
@@ -166,12 +185,16 @@ tags:
 ## Information Architecture Patterns
 
 ### Hub and Spoke Model
+
 Each major product area follows a hub-and-spoke pattern:
+
 - **Hub**: Overview page explaining the product and its benefits
 - **Spokes**: Specific implementation guides, use cases, and advanced topics
 
 ### Layered Detail
+
 Information is presented in layers:
+
 1. **Overview**: What it is and why it matters
 2. **Getting Started**: Basic implementation
 3. **Detailed Guides**: Comprehensive configuration
@@ -181,13 +204,16 @@ Information is presented in layers:
 ## User Experience Optimization
 
 ### Reduced Cognitive Load
+
 - **Logical grouping** reduces decision paralysis
 - **Clear labels** eliminate guesswork
 - **Consistent patterns** create predictable experiences
 - **Progressive disclosure** prevents information overload
 
 ### Task-Oriented Structure
+
 Navigation supports common user tasks:
+
 - "I want to get started with NetBox Discovery"
 - "I need to configure SSO authentication"
 - "I want to integrate with my existing tools"
@@ -196,13 +222,16 @@ Navigation supports common user tasks:
 ## Cross-Product Integration
 
 ### Unified Experience
+
 While respecting product boundaries, navigation emphasizes:
+
 - **Integrated workflows** that span multiple products
 - **Complementary capabilities** between Discovery, Assurance, and Operator
 - **Shared concepts** and terminology across products
 - **Seamless transitions** between related topics
 
 ### Relationship Indicators
+
 - **Prerequisites** clearly stated for advanced features
 - **Related topics** linked at appropriate points
 - **Workflow connections** between different products
@@ -211,12 +240,14 @@ While respecting product boundaries, navigation emphasizes:
 ## Mobile and Responsive Considerations
 
 ### Mobile-First Navigation
+
 - **Collapsible sections** for easier browsing
 - **Touch-friendly** navigation elements
 - **Readable text** at all screen sizes
 - **Fast loading** with optimized images
 
 ### Progressive Enhancement
+
 - **Core functionality** works without JavaScript
 - **Enhanced features** for capable browsers
 - **Accessible** across all devices and assistive technologies
@@ -224,12 +255,14 @@ While respecting product boundaries, navigation emphasizes:
 ## SEO and Discoverability
 
 ### Search-Friendly Structure
+
 - **Descriptive URLs** that match user intent
 - **Hierarchical organization** that search engines understand
 - **Internal linking** that distributes page authority
 - **Metadata optimization** for better search results
 
 ### Content Findability
+
 - **Multiple pathways** to important content
 - **Related content** suggestions throughout
 - **Site search** optimization
@@ -238,12 +271,14 @@ While respecting product boundaries, navigation emphasizes:
 ## Future Navigation Enhancements
 
 ### Planned Improvements
+
 - **Personalized navigation** based on user's NetBox edition
 - **Dynamic content filtering** by product availability
 - **Enhanced search** with faceted filtering
 - **Interactive tutorials** integrated into navigation
 
 ### Scalability Considerations
+
 - **Modular structure** that can accommodate new products
 - **Flexible tagging system** for future categorization needs
 - **API-driven navigation** for dynamic content management
@@ -252,12 +287,14 @@ While respecting product boundaries, navigation emphasizes:
 ## Implementation Guidelines
 
 ### For Content Creators
+
 - **Follow established patterns** when creating new content
 - **Use appropriate tags** for proper categorization
 - **Consider user journey** when structuring information
 - **Test navigation paths** from user perspective
 
 ### For Developers
+
 - **Maintain consistent URL patterns** across all content
 - **Implement proper redirects** for moved content
 - **Optimize for performance** especially on mobile
@@ -266,17 +303,33 @@ While respecting product boundaries, navigation emphasizes:
 ## Success Metrics
 
 ### User Experience Metrics
+
 - **Time to find information** (reduced search time)
 - **Task completion rates** (successful user journeys)
 - **User satisfaction** (feedback and surveys)
 - **Return visitor patterns** (successful initial experiences)
 
 ### Content Performance
+
 - **Page views and engagement** (popular content identification)
 - **Search queries** (unmet user needs)
 - **Exit rates** (content gaps or confusion)
 - **Cross-product discovery** (integration success)
 
+## Related Resources
+
+### Official Documentation Strategy Documents
+
+- **[Docs Site Structure](https://docs.google.com/document/d/1S1myF5S7BS2foTqo4-XP4bW-eDBU7mZmrx8P1526DFY/edit?usp=sharing)** - Comprehensive site structure planning (last updated May 15, 2025)
+- **[RFC: NetBoxLabs Docs Reorganization](https://docs.google.com/document/d/12kH5sMTcHw6qE4n6BbbIXQ498RBMN1Bb19O6p6-N2dw/edit?usp=sharing)** - Strategic documentation reorganization plan (last updated May 23, 2025)
+- **[RFC: Writing Docs with AI](https://docs.google.com/document/d/1KZtnMvyNsIGEWrHqCVD54AoiPmgnW7ALKMtYFdON-Wg/edit?usp=sharing)** - Guidelines for AI-assisted documentation (last updated July 3, 2025)
+
+### AI Reference Materials
+
+- `content-strategy/navigation-guidelines.md` - Detailed navigation implementation guidelines
+- `project-docs/implementation_plan.md` - Technical implementation details
+- `reference-docs/dochub-coordination.md` - Cross-repository coordination strategy
+
 ---
 
-*This navigation strategy ensures NetBox documentation provides an intuitive, scalable, and user-friendly experience that grows with our product portfolio and user needs.* 
+_This navigation strategy ensures NetBox documentation provides an intuitive, scalable, and user-friendly experience that grows with our product portfolio and user needs._

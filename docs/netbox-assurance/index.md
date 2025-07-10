@@ -2,6 +2,7 @@
 tags:
   - cloud
   - enterprise
+  - netbox
   - assurance
 versions:
   cloud: "v1.10"

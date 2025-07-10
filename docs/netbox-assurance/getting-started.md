@@ -2,6 +2,7 @@
 tags:
   - cloud
   - enterprise
+  - netbox
   - assurance
   - getting-started
   - installation

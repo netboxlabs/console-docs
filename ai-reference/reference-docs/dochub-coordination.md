@@ -1,8 +1,6 @@
 ---
 tags:
   - ai-reference
-  - assurance
-  - discovery
   - reference
   - strategy
   - ai-tools
