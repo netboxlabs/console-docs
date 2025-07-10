@@ -38,7 +38,7 @@ sudo iptables -I FORWARD -s 10.244.128.0/17 -d 10.244.0.0/17 -j ACCEPT
 sudo iptables -I OUTPUT -s 10.244.128.0/17 -d 10.244.0.0/17 -j ACCEPT
 sudo netfilter-persistent save
 
-# Load kernel modules
+# Load kernel modules (identical to RHEL requirements)
 sudo modprobe br_netfilter ip_vs ip_vs_rr ip_vs_wrr ip_vs_sh overlay
 cat <<EOF | sudo tee /etc/modules-load.d/kubernetes.conf
 br_netfilter
