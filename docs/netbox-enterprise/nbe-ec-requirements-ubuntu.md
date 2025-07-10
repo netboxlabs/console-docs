@@ -35,11 +35,13 @@ sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ### Configure Firewall
 
 ```bash
-# Install and enable UFW
+# Install UFW and iptables-persistent if not already installed
 sudo apt update && sudo apt install -y ufw iptables-persistent
+
+# Enable UFW if not already enabled
 sudo ufw --force enable
 
-# Open Kubernetes ports
+# Add Kubernetes ports (safe to run multiple times)
 sudo ufw allow 6443/tcp
 sudo ufw allow 2379:2380/tcp
 sudo ufw allow 10250,10251,10252,10255,5473,10257,10259/tcp
