@@ -21,23 +21,15 @@ Ubuntu-specific preparation steps. See the main [requirements document](nbe-ec-r
 - Ubuntu 22.04 LTS (Jammy Jellyfish)
 - Ubuntu 24.04 LTS (Noble Numbat)
 
-## Ubuntu-Specific Commands
+## Required Commands
 
 ```bash
 # Disable swap
 sudo swapoff -a
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
-# Configure firewall
-sudo apt update && sudo apt install -y ufw iptables-persistent
-sudo ufw --force enable
-sudo ufw allow 6443/tcp
-sudo ufw allow 2379:2380/tcp
-sudo ufw allow 10250,10251,10252,10255,5473,10257,10259/tcp
-sudo ufw allow 30000:32767/tcp
-sudo ufw allow 4789/udp
-sudo ufw allow 179/tcp
-sudo ufw reload
+# Install iptables-persistent
+sudo apt update && sudo apt install -y iptables-persistent
 
 # Configure pod networking (required for Kubernetes)
 sudo iptables -I FORWARD -s 10.244.0.0/17 -d 10.244.128.0/17 -j ACCEPT
@@ -60,6 +52,21 @@ sudo sysctl --system
 
 # Reboot and proceed with installation
 sudo reboot now
+```
+
+## Optional: If Using UFW
+
+```bash
+# Install and configure UFW for Kubernetes ports
+sudo apt install -y ufw
+sudo ufw --force enable
+sudo ufw allow 6443/tcp
+sudo ufw allow 2379:2380/tcp
+sudo ufw allow 10250,10251,10252,10255,5473,10257,10259/tcp
+sudo ufw allow 30000:32767/tcp
+sudo ufw allow 4789/udp
+sudo ufw allow 179/tcp
+sudo ufw reload
 ```
 
 After reboot, follow the [installation guide](nbe-ec-installation.md). 
