@@ -258,7 +258,7 @@ done && \
   fi && \
   echo "CREATE DATABASE netbox WITH TEMPLATE = template0 ENCODING = 'UTF8';" && \
   echo "" && \
-  echo ""; \
+  echo "" && \
   grep -v -E '^CREATE DATABASE ' "${NETBOX_DATABASE_FILE}"; \
 ) \
 | kubectl exec "${POSTGRESQL_MAIN_POD}" \
