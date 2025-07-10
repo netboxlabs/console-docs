@@ -8,17 +8,10 @@ tags:
   - networking
   - integration
   - getting-started
-title: "NetBox Assurance"
-description: "AI-powered network monitoring and assurance for operational drift detection and remediation"
-author: "NetBox Labs Documentation Team"
-last_updated: "2025-01-02"
 versions:
   netbox_cloud: "v1.10"
   netbox_enterprise: "v1.10"
 status: "current"
-category: "product-documentation"
-audience: "network-engineers"
-complexity: "intermediate"
 related_docs:
   - "getting-started.md"
   - "using-the-ui.md"
