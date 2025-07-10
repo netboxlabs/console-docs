@@ -1,9 +1,9 @@
 ---
 tags:
   - cloud
+  - netbox
   - administration
   - authentication
-  - sso
   - azure-ad
   - configuration
   - security

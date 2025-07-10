@@ -4,7 +4,6 @@ tags:
   - cloud
   - community
   - assurance
-  - discovery
   - operator
   - reference
   - strategy

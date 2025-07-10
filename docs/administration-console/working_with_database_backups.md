@@ -1,6 +1,7 @@
 ---
 tags:
   - cloud
+  - netbox
   - administration
   - backup
   - database

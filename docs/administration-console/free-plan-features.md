@@ -4,6 +4,7 @@ hide:
   - toc
 tags:
   - cloud
+  - netbox
   - administration
   - getting-started
   - configuration

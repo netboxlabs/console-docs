@@ -4,9 +4,7 @@ tags:
   - enterprise
   - community
   - ai-reference
-  - assurance
   - discovery
-  - operator
   - template
   - reference
   - ai-tools

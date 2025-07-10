@@ -81,7 +81,7 @@ tags:
   - sso
   - saml
   - security
-last_updated: "2025-07-01"
+last_updated: "2025-01-02"
 ```
 
 ## Tag Categories Applied

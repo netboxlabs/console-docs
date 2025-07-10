@@ -1,9 +1,10 @@
 ---
 tags:
   - cloud
+  - netbox
   - administration
   - authentication
-  - okta
+  - configuration
 versions:
   netbox_cloud: "v1.10"
 status: "current"

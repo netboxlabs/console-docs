@@ -1,10 +1,9 @@
 ---
 tags:
   - cloud
+  - netbox
   - administration
   - authentication
-  - sso
-  - okta
   - configuration
 versions:
   netbox_cloud: "v1.10"

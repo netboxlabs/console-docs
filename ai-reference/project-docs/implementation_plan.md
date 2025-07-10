@@ -7,7 +7,7 @@ tags:
   - implementation
   - technical-plan
 author: "NetBox Labs Documentation Team"
-last_updated: "2025-07-01"
+last_updated: "2025-01-02"
 category: "ai-reference"
 audience: "developers"
 complexity: "advanced"
