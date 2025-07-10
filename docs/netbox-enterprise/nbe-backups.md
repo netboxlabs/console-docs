@@ -126,9 +126,6 @@ kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -c database \
   -- \
     pg_dumpall \
-      --no-role-passwords \
-      --no-privileges \
-      --no-owner \
       $EXCLUDE_DATABASES \
     > "${NETBOX_DATABASE_FILE}"
 ```
@@ -253,19 +250,16 @@ for DB in netbox diode hydra; do
     -- dropdb --if-exists --force "${DB}"; \
 done && \
 ( \
-  if ! grep --quiet -E '^CREATE DATABASE ' "${NETBOX_DATABASE_FILE}"; then \
-    if [ "${DIODE_DEPLOYMENT_COUNT}" -gt 0 ]; then \
-      echo "CREATE DATABASE diode WITH TEMPLATE = template0 ENCODING = 'UTF8';"; \
-    fi && \
-    if [ "${HYDRA_DEPLOYMENT_COUNT}" -gt 0 ]; then \
-      echo "CREATE DATABASE hydra WITH TEMPLATE = template0 ENCODING = 'UTF8';"; \
-    fi && \
-    echo "CREATE DATABASE netbox WITH TEMPLATE = template0 ENCODING = 'UTF8';" && \
-    echo "" && \
-    echo "\\connect netbox" && \
-    echo ""
+  if [ "${DIODE_DEPLOYMENT_COUNT}" -gt 0 ]; then \
+    echo "CREATE DATABASE diode WITH TEMPLATE = template0 ENCODING = 'UTF8';"; \
   fi && \
-  cat "${NETBOX_DATABASE_FILE}" \
+  if [ "${HYDRA_DEPLOYMENT_COUNT}" -gt 0 ]; then \
+    echo "CREATE DATABASE hydra WITH TEMPLATE = template0 ENCODING = 'UTF8';"; \
+  fi && \
+  echo "CREATE DATABASE netbox WITH TEMPLATE = template0 ENCODING = 'UTF8';" && \
+  echo "" && \
+  echo "" && \
+  grep -v -E '^(ALTER|CREATE|DROP) (DATABASE|ROLE) ' "${NETBOX_DATABASE_FILE}" \
 ) \
 | kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
