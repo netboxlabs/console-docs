@@ -3,8 +3,18 @@
 Migrating from NetBox open source to NetBox Labs Enterprise is a simple and efficient process. Because NetBox Enterprise is built on the same open source platform, database imports can be completed quickly, enabling a smooth transition.
 
 ## Database 
-!!! warning "Compatibility Check"
-    The database being migrated must match the major and minor version of the NetBox deployed with NetBox Enterprise. NetBox Labs support can upgrade older databases on your behalf to assist in the migration process.
+!!! danger "Version Compatibility Requirements"
+    **Critical Requirements for Database Migration:**
+    
+    - The database being migrated **must match the exact major and minor version** of NetBox deployed with NetBox Enterprise
+    - **Cross-version migrations require special handling** by NetBox Labs support
+    - **Standard restore procedures will fail** if versions don't match exactly
+    
+    **Before migrating, verify:**
+    
+    1. Your source NetBox version matches the target NetBox Enterprise version
+    2. If versions don't match, contact NetBox Labs support for upgrade assistance
+    3. Do not attempt to restore across versions using standard procedures
 
 ### Exporting the Open Source Database 
 1. Use the following command to export your existing NetBox database:
@@ -15,7 +25,22 @@ pg_dump --username netbox --password --host localhost netbox > netbox.pgsql
     Notify the NetBox Labs team if you used any additional flags for the 'pg_dump' command, or if you exported the data to a different format.
 
 ### Importing the Database to NetBox Enterprise
+
+!!! warning "Version Verification Required"
+    Before proceeding with the import:
+    
+    1. **Verify version compatibility** between your source and target systems
+    2. **Ensure NetBox Enterprise is the same version** as your source NetBox installation
+    3. **Contact support if versions don't match** rather than attempting manual import
+
 1. Follow the steps outlined [here](./nbe-backups.md#restoring-your-backups) to import the database into NetBox Enterprise.
+
+!!! info "Import Success Verification"
+    After completing the import:
+    
+    - Verify all NetBox Enterprise services start correctly
+    - Test core functionality including any branching features you use
+    - Check for any migration or permission errors in the logs
 
 
 ## Media Files (Optional)

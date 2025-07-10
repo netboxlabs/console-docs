@@ -100,6 +100,13 @@ The built-in PostgreSQL is deployed using the CrunchyData Postgres Operator.
 
 Since the PostgreSQL CLI tools are already available inside the cluster, all we need to do to dump the database is to call into the correct container and run a `pg_dump` there.
 
+!!! danger "Version Compatibility Critical Warning"
+    **Database backups can only be restored to the same NetBox Enterprise version.**
+    
+    Attempting to restore a backup from an older version (e.g., < 1.10.2) to a newer version (e.g., 1.10.2+) will break Diode and Hydra functionality and may cause data corruption.
+    
+    **For cross-version migrations, contact NetBox Labs support for assistance.**
+
 To perform a database dump, run these commands:
 
 ```shell
@@ -128,13 +135,31 @@ kubectl exec "${POSTGRESQL_MAIN_POD}" \
     pg_dumpall \
       --no-role-passwords \
       --no-privileges \
-      --no-owner \
       $EXCLUDE_DATABASES \
     > "${NETBOX_DATABASE_FILE}"
 ```
 
+!!! warning "Backup Compatibility"
+    This backup method preserves database ownership information and is **only compatible with restoring to the same NetBox Enterprise version**. 
+    
+    **Benefits of this approach:**
+    
+    - ✅ Preserves proper database permissions for branching functionality
+    - ✅ Prevents migration failures with NetBox Enterprise features
+    - ✅ Maintains schema ownership across all branches and schemas
+    
+    **Limitations:**
+    
+    - ❌ Cannot restore to different NetBox Enterprise versions
+    - ❌ May not be suitable for cross-environment migrations
+
 This will create a `netbox-enterprise.pgsql` file in your local directory.
 Save it somewhere safe for future restores.
+
+!!! info "Legacy Backup Method (Not Recommended)"
+    If you need to create a backup that can be restored across different versions, you can add the `--no-owner` flag back to the `pg_dumpall` command. However, **this will break branching functionality** and require additional manual permission fixes that may not work reliably with all NetBox Enterprise features.
+    
+    For cross-version migrations, contact NetBox Labs support for proper migration assistance.
 
 For more details on backing up NetBox databases, see [the official NetBox documentation](https://netboxlabs.com/docs/netbox/en/stable/administration/replicating-netbox/).
 
@@ -231,6 +256,18 @@ kubectl apply \
 
 #### Built-In PostgreSQL
 
+!!! danger "Version Compatibility Critical Warning"
+    **You can only restore database backups to the same NetBox Enterprise version they were created from.**
+    
+    Restoring a backup from a different version will cause:
+    
+    - ❌ **Diode and Hydra component failures**
+    - ❌ **Database migration errors** 
+    - ❌ **Potential data corruption**
+    - ❌ **Loss of branching functionality**
+    
+    **Always verify version compatibility before proceeding with restore.**
+
 To restore from a dump file, pipe the `netbox-enterprise.pgsql` created during backup into `psql` in the PostgreSQL pod:
 
 ```shell
@@ -306,4 +343,23 @@ for DB in $(kubectl exec "${POSTGRESQL_MAIN_POD}" \
       GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO ${DB}; \
     "; \
 done
+```
+
+!!! success "Restore Complete"
+    If the restore completed without errors, your NetBox Enterprise data has been successfully restored.
+    
+    **Next Steps:**
+    
+    1. **Exit restore mode** following the instructions above
+    2. **Verify all services start correctly** (NetBox, Diode, Hydra)
+    3. **Test branching functionality** if you use NetBox Enterprise branching features
+    4. **Check application logs** for any permission or migration errors
+
+!!! failure "Restore Errors?"
+    If you encounter errors during restore:
+    
+    - **Version mismatch errors**: Contact NetBox Labs support for migration assistance
+    - **Permission errors**: Verify all commands completed successfully 
+    - **Diode/Hydra failures**: Check that you're restoring to the same version the backup was created from
+    - **Branching issues**: Ensure the backup was created without the `--no-owner` flag
 ```

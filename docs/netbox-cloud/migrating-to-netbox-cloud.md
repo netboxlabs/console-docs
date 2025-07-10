@@ -29,6 +29,13 @@ Use the following command to export your existing NetBox database:
 pg_dump --no-owner --no-privileges --username [netbox] --password --host [localhost] [netbox] > [netbox.sql] 
 ```
 
+!!! info "Cloud Migration Process"
+    The `--no-owner` flag is appropriate for NetBox Cloud migrations because:
+    
+    - NetBox Labs handles the import process and permission setup
+    - Cloud environments don't use NetBox Enterprise branching features that require specific ownership
+    - The migration process includes necessary permission and compatibility adjustments
+
 > **Warning**
 > Inform the NetBox Labs team if you used any additional flags for the pg_dump command, or if you exported the data to a
 different format.
