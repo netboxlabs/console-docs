@@ -34,32 +34,30 @@ sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
 ### Configure Firewall
 
-If UFW isn't installed:
-
 ```bash
-sudo apt update
-sudo apt install -y ufw
+# Install and enable UFW
+sudo apt update && sudo apt install -y ufw iptables-persistent
 sudo ufw --force enable
-```
 
-Open required ports for the internal kubernetes platform:
-
-```bash
-# Kubernetes API, etcd, and control plane components
+# Open Kubernetes ports
 sudo ufw allow 6443/tcp
 sudo ufw allow 2379:2380/tcp
 sudo ufw allow 10250,10251,10252,10255,5473,10257,10259/tcp
-
-# NodePort range
 sudo ufw allow 30000:32767/tcp
-
-# BGP and VXLAN (optional, for Calico)
 sudo ufw allow 4789/udp
 sudo ufw allow 179/tcp
-
-# Reload firewall
 sudo ufw reload
+
+# Configure pod networking (required for Kubernetes)
+sudo iptables -I FORWARD -s 10.244.0.0/17 -d 10.244.128.0/17 -j ACCEPT
+sudo iptables -I OUTPUT -s 10.244.0.0/17 -d 10.244.128.0/17 -j ACCEPT
+sudo iptables -I FORWARD -s 10.244.128.0/17 -d 10.244.0.0/17 -j ACCEPT
+sudo iptables -I OUTPUT -s 10.244.128.0/17 -d 10.244.0.0/17 -j ACCEPT
+sudo netfilter-persistent save
 ```
+
+!!! note
+    Both UFW (general firewall) and iptables (pod networking) are required.
 
 ### Configure Kernel Modules and Parameters
 
@@ -78,22 +76,6 @@ overlay
 EOF
 
 sudo sysctl --system
-```
-
-### Configure iptables for Kubernetes
-
-Add iptables rules for Kubernetes pod networking:
-
-```bash
-# Configure pod network forwarding rules
-sudo iptables -I FORWARD -s 10.244.0.0/17 -d 10.244.128.0/17 -j ACCEPT
-sudo iptables -I OUTPUT -s 10.244.0.0/17 -d 10.244.128.0/17 -j ACCEPT
-sudo iptables -I FORWARD -s 10.244.128.0/17 -d 10.244.0.0/17 -j ACCEPT
-sudo iptables -I OUTPUT -s 10.244.128.0/17 -d 10.244.0.0/17 -j ACCEPT
-
-# Make iptables rules persistent
-sudo apt install -y iptables-persistent
-sudo netfilter-persistent save
 ```
 
 ### Install containerd (optional runtime)
