@@ -80,6 +80,22 @@ EOF
 sudo sysctl --system
 ```
 
+### Configure iptables for Kubernetes
+
+Add iptables rules for Kubernetes pod networking:
+
+```bash
+# Configure pod network forwarding rules
+sudo iptables -I FORWARD -s 10.244.0.0/17 -d 10.244.128.0/17 -j ACCEPT
+sudo iptables -I OUTPUT -s 10.244.0.0/17 -d 10.244.128.0/17 -j ACCEPT
+sudo iptables -I FORWARD -s 10.244.128.0/17 -d 10.244.0.0/17 -j ACCEPT
+sudo iptables -I OUTPUT -s 10.244.128.0/17 -d 10.244.0.0/17 -j ACCEPT
+
+# Make iptables rules persistent
+sudo apt install -y iptables-persistent
+sudo netfilter-persistent save
+```
+
 ### Install containerd (optional runtime)
 
 ```bash
