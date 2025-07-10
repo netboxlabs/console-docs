@@ -138,7 +138,6 @@ nav:
         - Technical Info: "netbox-integrations/servicenow/snow-technical-info.md"
         - FAQ and Troubleshooting: "netbox-integrations/servicenow/snow-faq.md"
         - Upgrading: "netbox-integrations/servicenow/snow-upgrading.md"
-    - Product Lifecycle: "product_feature_lifecycle.md"
   - Enterprise:
     - Administration:
       - Overview: "netbox-enterprise/nbe-overview.md"
@@ -180,7 +179,7 @@ nav:
         - Technical Info: "netbox-integrations/servicenow/snow-technical-info.md"
         - FAQ and Troubleshooting: "netbox-integrations/servicenow/snow-faq.md"
         - Upgrading: "netbox-integrations/servicenow/snow-upgrading.md"
-    - Product Lifecycle: "product_feature_lifecycle.md"
+  - Product and Feature Lifecycle: "product_feature_lifecycle.md"
 extra:
   version:
     provider: mike
