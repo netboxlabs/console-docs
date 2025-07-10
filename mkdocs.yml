@@ -145,6 +145,7 @@ nav:
         - Requirements: "netbox-enterprise/nbe-ec-requirements.md"
         - Distribution Specific Requirements:
           - RHEL: "netbox-enterprise/nbe-ec-requirements-rhel.md"
+          - Ubuntu: "netbox-enterprise/nbe-ec-requirements-ubuntu.md"
         - Linux System Changes: "netbox-enterprise/nbe-ec-linux-changes.md"
         - Installation: "netbox-enterprise/nbe-ec-installation.md"
         - Migrating: "netbox-enterprise/nbe-migrating.md"
