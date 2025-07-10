@@ -265,22 +265,7 @@ When working with AI tools:
 2. **Use templates**: `ai-reference/templates/`
 3. **Apply proper tagging**: `ai-reference/style-guides/product-tagging-guide.md`
 
-## 📦 External Documentation Sync
 
-Some documentation is synced from external repositories:
-
-| Path | Repository | Purpose | Update Method |
-|------|------------|---------|---------------|
-| `docs/netbox-extensions/changes/` | [`netbox-changes`](https://github.com/netboxlabs/netbox-changes) | NetBox Change Management docs | Script-based sync |
-
-### Updating External Documentation
-```bash
-# For maintainers only
-./scripts/update-changes-docs.sh
-git add docs/netbox-extensions/changes/
-git commit -m "Update NetBox Changes documentation"
-git push
-```
 
 ## 📋 Important Guidelines
 

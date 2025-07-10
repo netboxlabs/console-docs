@@ -54,11 +54,7 @@ The home of documentation for NetBox [Cloud](administration-console/console-acce
 
     [Learn more about NetBox Branching](netbox-extensions/branching/index.md)
   
--   __NetBox Change Management Plugin__
 
-    This feature family brings powerful workflows to NetBox for team collaboration in designing, testing, and deploying network and infrastructure changes.
-
-    [Learn more about NetBox Change Management](netbox-extensions/changes/index.md)
 
 -   __Diode__
 

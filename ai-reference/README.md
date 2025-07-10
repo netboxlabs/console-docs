@@ -477,23 +477,7 @@ git submodule status
 git diff --name-only
 ```
 
-### External Documentation Sync
 
-#### **Console-Docs External Sources**
-| Path | Repository | Purpose | Update Method |
-|------|------------|---------|---------------|
-| `docs/netbox-extensions/changes/` | `netbox-changes` | Change Management docs | Script-based sync |
-
-#### **Update Process**
-```bash
-# Update external documentation
-./scripts/update-changes-docs.sh
-
-# Review and commit changes
-git diff docs/netbox-extensions/changes/
-git add docs/netbox-extensions/changes/
-git commit -m "Update NetBox Changes documentation"
-```
 
 ### Helm Documentation Enhancement (2025)
 

@@ -258,29 +258,7 @@ docs: {
 - **Performance**: Edge redirects, CDN distribution, optimized builds
 - **Monitoring**: Analytics, error tracking, performance metrics
 
-### External Documentation Sync
 
-#### **Console-Docs External Sources**
-| Path | Repository | Purpose | Update Method |
-|------|------------|---------|---------------|
-| `docs/netbox-extensions/changes/` | `netbox-changes` | Change Management docs | Script-based sync |
-
-#### **Update Process**
-```bash
-# Update external documentation from source
-./scripts/update-changes-docs.sh
-
-# Review changes
-git diff docs/netbox-extensions/changes/
-
-# Test build
-python -m mkdocs build
-
-# Commit updates
-git add docs/netbox-extensions/changes/
-git commit -m "Update NetBox Changes documentation"
-git push
-```
 
 ### Helm Documentation Reorganization (2025)
 
