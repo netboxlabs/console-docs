@@ -1,8 +1,8 @@
 ---
 tags:
+  - community
   - cloud
   - enterprise
-  - community
   - netbox
   - discovery
 versions:

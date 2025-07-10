@@ -1,10 +1,9 @@
 ---
 tags:
   - cloud
-  - cloud-connectivity
   - networking
-  - aws
-  - direct-connect
+  - configuration
+  - integration
 versions:
   netbox_cloud: "v1.10"
 status: "current"

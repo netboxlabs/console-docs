@@ -1,12 +1,11 @@
 ---
 tags:
   - cloud
-  - netbox
-  - administration
   - authentication
-  - azure-ad
+  - administration
   - configuration
-  - security
+  - getting-started
+  - integration
 versions:
   netbox_cloud: "v1.10"
 status: "current"

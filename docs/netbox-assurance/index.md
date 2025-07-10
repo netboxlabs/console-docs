@@ -2,11 +2,15 @@
 tags:
   - cloud
   - enterprise
-  - netbox
   - assurance
+  - operations
+  - automation
+  - networking
+  - integration
+  - getting-started
 versions:
-  cloud: "v1.10"
-  enterprise: "v1.10"
+  netbox_cloud: "v1.10"
+  netbox_enterprise: "v1.10"
 status: "current"
 related_docs:
   - "getting-started.md"
