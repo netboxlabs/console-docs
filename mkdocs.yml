@@ -62,7 +62,6 @@ nav:
   - Home: index.md
   - Community:
     - NetBox Plugins:
-      - Branching: "netbox-extensions/branching/index.md"
       - Change Management:
         - Overview: "netbox-extensions/changes/index.md"
         - Configuration: "netbox-extensions/changes/configuration.md"
