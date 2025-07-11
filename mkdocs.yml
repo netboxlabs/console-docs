@@ -78,7 +78,6 @@ nav:
         - Getting Started: "netbox-extensions/diode/getting-started.md"
         - Protobuf Reference: "netbox-extensions/diode/protobuf/diode-proto.md"
         - Observability: "netbox-extensions/diode/observability/metrics.md"
-        - License: "netbox-extensions/diode/license.md"
     - NetBox Discovery:
       - Overview: "netbox-discovery/index.md"
       - Get Started: "netbox-discovery/getting-started.md"

@@ -48,4 +48,4 @@ For a quick step-by-step guide, see our [Getting Started Guide](getting-started.
 
 ## License
 
-Diode is released under the [NetBox Limited Use License 1.0](license.md). See the [License](license.md) file for details.
+Diode is released under the [NetBox Limited Use License 1.0](https://github.com/netboxlabs/diode/blob/develop/LICENSE.md).
