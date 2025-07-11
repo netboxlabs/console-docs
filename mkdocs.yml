@@ -60,93 +60,127 @@ exclude_docs: |
   ai-reference/
 nav:
   - Home: index.md
+  - Community:
+    - NetBox Plugins:
+      - Branching: "netbox-extensions/branching/index.md"
+      - Diode:
+        - Overview: "netbox-extensions/diode/index.md"
+        - Get Started: "netbox-extensions/diode/diode-get-started.md"
+    - NetBox Discovery:
+      - Overview: "netbox-discovery/index.md"
+      - Get Started: "netbox-discovery/getting-started.md"
+    - Integrations: 
+      - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
+      - pyATS: "netbox-integrations/pyats.md"
+      - ServiceNow: 
+        - Overview: "netbox-integrations/servicenow/index.md"
+        - Installation: "netbox-integrations/servicenow/snow-installation.md"
+        - Technical Info: "netbox-integrations/servicenow/snow-technical-info.md"
+        - FAQ and Troubleshooting: "netbox-integrations/servicenow/snow-faq.md"
+        - Upgrading: "netbox-integrations/servicenow/snow-upgrading.md"
+    - SDKs:
+      - Pynetbox: "sdks/pynetbox.md"
   - Cloud:
-    - Migrating to NetBox Cloud: "netbox-cloud/migrating-to-netbox-cloud.md"
-    - Administration via Console:
-      - Getting Console Access: "administration-console/console-access.md"
-      - Console Overview: "administration-console/console-overview.md"
-      - Adding Admin Users to Console: "administration-console/console-administration.md"
-      - Viewing Installed Plugins: "administration-console/netbox-cloud-plugins.md"
-      - Database Backups: "administration-console/working_with_database_backups.md"
-      - Upgrading NetBox: "administration-console/upgrading-nbc.md"
-      - Managing Hostnames: "administration-console/managing-hostnames.md"
-    - Security:
+    - Getting Started:
+      - Migrating to NetBox Cloud: "netbox-cloud/migrating-to-netbox-cloud.md"
+    - Administration:
+      - Getting Started:
+        - Getting Console Access: "administration-console/console-access.md"
+        - Console Overview: "administration-console/console-overview.md"
+        - Adding Admin Users: "administration-console/console-administration.md"
+      - Management:
+        - Database Backups: "administration-console/working_with_database_backups.md"
+        - Upgrading NetBox: "administration-console/upgrading-nbc.md"
+        - Managing Hostnames: "administration-console/managing-hostnames.md"
+        - Viewing Installed Plugins: "administration-console/netbox-cloud-plugins.md"
+      - Security:
         - Prefix Lists: "administration-console/prefix-lists.md"
         - Public IP Addressing: "administration-console/public-ip-addressing.md"
-    - Single Sign-On (SSO):
-      - Entra ID:
-        - Microsoft Entra ID SSO: "administration-console/azure-ad-sso-setup.md"
-        - Entra ID Group Mapping: "administration-console/azure-group-mapping.md"
-      - Okta:
-        - Okta SSO: "administration-console/okta-sso-setup.md"
-        - Okta Group Mapping: "administration-console/okta-group-mapping.md"
-      - SAML: 
-        - SAML SSO Setup: "administration-console/saml-sso-setup.md"
-        - SAML Group Mapping: "administration-console/saml-group-map.md"
-    - Free Plan:
-      - Features: "administration-console/free-plan-features.md"
-      - Add a New User: "administration-console/free-plan-new-user.md"
+        - Single Sign-On (SSO):
+          - Entra ID:
+            - Microsoft Entra ID SSO: "administration-console/azure-ad-sso-setup.md"
+            - Entra ID Group Mapping: "administration-console/azure-group-mapping.md"
+          - Okta:
+            - Okta SSO: "administration-console/okta-sso-setup.md"
+            - Okta Group Mapping: "administration-console/okta-group-mapping.md"
+          - SAML: 
+            - SAML SSO Setup: "administration-console/saml-sso-setup.md"
+            - SAML Group Mapping: "administration-console/saml-group-map.md"
+      - Free Plan:
+        - Features: "administration-console/free-plan-features.md"
+        - Add a New User: "administration-console/free-plan-new-user.md"
+      - Maintenance:
+        - Scheduled Maintenance: "maintenance.md"
     - Cloud Connectivity:
-      - Do I Need Cloud Connectivity Options?: "cloud-connectivity/do-i-need-cloud-connectivity.md"
-      - Cloud Connectivity Options:
-        - Which Cloud Connectivity Option is Right for Me?: "cloud-connectivity/which-connectivity-option.md"
+      - Overview:
+        - Do I Need Cloud Connectivity?: "cloud-connectivity/do-i-need-cloud-connectivity.md"
+        - Which Option is Right for Me?: "cloud-connectivity/which-connectivity-option.md"
+      - Connection Types:
         - Internet Delivery (Single Region): "cloud-connectivity/internet-delivery.md"
         - AWS Private Link (Single Region): "cloud-connectivity/aws-private-link.md"
         - IPSEC VPN Tunnels (Single Region): "cloud-connectivity/ipsec-vpn-tunnels.md"
         - AWS Direct Connect (Single Region): "cloud-connectivity/aws-direct-connect.md"
         - AWS Direct Connect (Multi-Region): "cloud-connectivity/aws-direct-connect-multi-region.md"
-      - Frequently Asked Questions: "cloud-connectivity/cloud-connectivity-faq.md"
-    - Maintenance:
-      - Scheduled Maintenance: "maintenance.md"
+      - FAQ: "cloud-connectivity/cloud-connectivity-faq.md"
+    - NetBox Assurance:
+      - Overview: "netbox-assurance/index.md"
+      - Get Started: "netbox-assurance/getting-started.md"
+      - Using the Interface: "netbox-assurance/using-the-ui.md"
+    - NetBox Discovery:
+      - Overview: "netbox-discovery/index.md"
+      - Get Started: "netbox-discovery/getting-started.md"
+    - Integrations: 
+      - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
+      - pyATS: "netbox-integrations/pyats.md"
+      - ServiceNow: 
+        - Overview: "netbox-integrations/servicenow/index.md"
+        - Installation: "netbox-integrations/servicenow/snow-installation.md"
+        - Technical Info: "netbox-integrations/servicenow/snow-technical-info.md"
+        - FAQ and Troubleshooting: "netbox-integrations/servicenow/snow-faq.md"
+        - Upgrading: "netbox-integrations/servicenow/snow-upgrading.md"
   - Enterprise:
-    - Overview: "netbox-enterprise/nbe-overview.md"
-    - NetBox Enterprise Installer:
-      - Requirements: "netbox-enterprise/nbe-ec-requirements.md"
-      - Distribution Specific Requirements:
-        - RHEL: "netbox-enterprise/nbe-ec-requirements-rhel.md"
-      - Linux System Changes: "netbox-enterprise/nbe-ec-linux-changes.md"
-      - Installation: "netbox-enterprise/nbe-ec-installation.md"
-      - Migrating: "netbox-enterprise/nbe-migrating.md"
-      - Built-in Plugin Installation: "netbox-enterprise/nbe-ec-built-in-plugins.md"
-      - Custom Plugin Installation: "netbox-enterprise/nbe-ec-custom-plugins.md"
-    - Single Sign-On (SSO):
-      - Entra ID:
-        - Microsoft Entra ID SSO: "netbox-enterprise/nbe-azure-sso.md"
-        - Entra ID Group Mapping: "netbox-enterprise/nbe-azure-group-mapping.md"
-      - SAML: 
-        - SAML SSO Setup: "netbox-enterprise/nbe-saml.md"
-        - SAML Group Mapping: "netbox-enterprise/nbe-saml-group-map.md"
-      - LDAP: "netbox-enterprise/nbe-ldap.md"
-    - "Administration":
-      - "TLS and Ingress": "netbox-enterprise/nbe-tls-ingress.md"
-      - "Backups": "netbox-enterprise/nbe-backups.md"
-      - "Advanced Tools and Troubleshooting": "netbox-enterprise/nbe-troubleshooting.md"
-    - "Release Notes": "netbox-enterprise/nbe-release-notes.md"
-  - NetBox Discovery:
-    - Overview: "netbox-discovery/index.md"
-    - Get Started: "netbox-discovery/getting-started.md"
-  - NetBox Assurance:
-    - Overview: "netbox-assurance/index.md"
-    - Get Started: "netbox-assurance/getting-started.md"
-    - Using the Interface: "netbox-assurance/using-the-ui.md"
-  - Integrations: 
-    - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
-    - pyATS: "netbox-integrations/pyats.md"
-    - ServiceNow: 
-      - Overview: "netbox-integrations/servicenow/index.md"
-      - Installation: "netbox-integrations/servicenow/snow-installation.md"
-      - Technical Info: "netbox-integrations/servicenow/snow-technical-info.md"
-      - FAQ and Troubleshooting: "netbox-integrations/servicenow/snow-faq.md"
-      - Upgrading: "netbox-integrations/servicenow/snow-upgrading.md"
-  - SDKs:
-    - Pynetbox: "sdks/pynetbox.md"
-  - Extensions:
-    - Branching: "netbox-extensions/branching/index.md"
-
-    - Diode:
-      - Overview: "netbox-extensions/diode/index.md"
-      - Get Started: "netbox-extensions/diode/diode-get-started.md"
-    - Product and Feature Lifecycle: "product_feature_lifecycle.md"
+    - Administration:
+      - Overview: "netbox-enterprise/nbe-overview.md"
+      - Installation:
+        - Requirements: "netbox-enterprise/nbe-ec-requirements.md"
+        - Distribution Specific Requirements:
+          - RHEL: "netbox-enterprise/nbe-ec-requirements-rhel.md"
+          - Ubuntu: "netbox-enterprise/nbe-ec-requirements-ubuntu.md"
+        - Linux System Changes: "netbox-enterprise/nbe-ec-linux-changes.md"
+        - Installation: "netbox-enterprise/nbe-ec-installation.md"
+        - Migrating: "netbox-enterprise/nbe-migrating.md"
+        - Built-in Plugin Installation: "netbox-enterprise/nbe-ec-built-in-plugins.md"
+        - Custom Plugin Installation: "netbox-enterprise/nbe-ec-custom-plugins.md"
+      - Management:
+        - TLS and Ingress: "netbox-enterprise/nbe-tls-ingress.md"
+        - Backups: "netbox-enterprise/nbe-backups.md"
+        - Advanced Tools and Troubleshooting: "netbox-enterprise/nbe-troubleshooting.md"
+      - Single Sign-On (SSO):
+        - Entra ID:
+          - Microsoft Entra ID SSO: "netbox-enterprise/nbe-azure-sso.md"
+          - Entra ID Group Mapping: "netbox-enterprise/nbe-azure-group-mapping.md"
+        - SAML: 
+          - SAML SSO Setup: "netbox-enterprise/nbe-saml.md"
+          - SAML Group Mapping: "netbox-enterprise/nbe-saml-group-map.md"
+        - LDAP: "netbox-enterprise/nbe-ldap.md"
+      - Release Notes: "netbox-enterprise/nbe-release-notes.md"
+    - NetBox Assurance:
+      - Overview: "netbox-assurance/index.md"
+      - Get Started: "netbox-assurance/getting-started.md"
+      - Using the Interface: "netbox-assurance/using-the-ui.md"
+    - NetBox Discovery:
+      - Overview: "netbox-discovery/index.md"
+      - Get Started: "netbox-discovery/getting-started.md"
+    - Integrations: 
+      - NetBox Ansible Collection: "netbox-integrations/netbox-ansible-collection.md"
+      - pyATS: "netbox-integrations/pyats.md"
+      - ServiceNow: 
+        - Overview: "netbox-integrations/servicenow/index.md"
+        - Installation: "netbox-integrations/servicenow/snow-installation.md"
+        - Technical Info: "netbox-integrations/servicenow/snow-technical-info.md"
+        - FAQ and Troubleshooting: "netbox-integrations/servicenow/snow-faq.md"
+        - Upgrading: "netbox-integrations/servicenow/snow-upgrading.md"
+  - Product and Feature Lifecycle: "product_feature_lifecycle.md"
 extra:
   version:
     provider: mike

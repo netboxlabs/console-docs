@@ -21,6 +21,9 @@ The following are the _recommended_ system requirements for a **production** dep
 !!! note
     For **Red Hat Enterprise Linux (RHEL)** deployments please see additional requirements [here](./nbe-ec-requirements-rhel.md).
 
+!!! note
+    For **Ubuntu** deployments please see additional requirements [here](./nbe-ec-requirements-ubuntu.md).
+
 ### Architecture
 
 - x86-64
