@@ -74,8 +74,11 @@ nav:
           - Review: "netbox-extensions/changes/models/review.md"
         - Changelog: "netbox-extensions/changes/changelog.md"
       - Diode:
-        - Overview: "netbox-extensions/diode/index.md"
-        - Get Started: "netbox-extensions/diode/diode-get-started.md"
+        - Introduction: "netbox-extensions/diode/index.md"
+        - Getting Started: "netbox-extensions/diode/getting-started.md"
+        - Protobuf Reference: "netbox-extensions/diode/protobuf/diode-proto.md"
+        - Observability: "netbox-extensions/diode/observability/metrics.md"
+        - License: "netbox-extensions/diode/license.md"
     - NetBox Discovery:
       - Overview: "netbox-discovery/index.md"
       - Get Started: "netbox-discovery/getting-started.md"
