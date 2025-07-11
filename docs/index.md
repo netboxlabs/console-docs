@@ -9,7 +9,7 @@ Documentation for NetBox [Cloud](administration-console/console-access.md), [Ent
 
 <div class="grid cards" markdown="1">
 
-- ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Cloud__
+- ![NetBox Light](images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Cloud__
     
     All the power and flexibility of NetBox, rock solid and secure. 
 
@@ -17,7 +17,7 @@ Documentation for NetBox [Cloud](administration-console/console-access.md), [Ent
 
     [Get started with NetBox Cloud](administration-console/console-access.md)
 
-- ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Enterprise__
+- ![NetBox Light](images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Enterprise__
     
     The power of NetBox in your own infrastructure, 
     
@@ -69,7 +69,7 @@ NetBox Labs builds software in the open, with thriving communities. We help deve
 
 <div class="grid cards" markdown="1">
 
--  ![NetBox Light](/images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](/images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Community__
+-  ![NetBox Light](images/netbox-favicon.png){:class="nbl-light-img" width="30"} ![NetBox Dark](images/netbox-light-favicon.png){:class="nbl-dark-img" width="30"} __NetBox Community__
 
     NetBox exists to empower network engineers. Since its release in 2016, it has become the go-to solution for modeling and documenting network infrastructure for thousands of organizations worldwide.
 
@@ -79,5 +79,5 @@ NetBox Labs builds software in the open, with thriving communities. We help deve
 
     NetBox discovery agents map network resources and gather device information to build a comprehensive model of your infrastructure.
 
-    [Learn more about the NetBox Discovery Agent](netbox-discovery/agent/index.md)
+    [Learn more about the NetBox Discovery Agent](netbox-discovery/index.md)
 </div>
