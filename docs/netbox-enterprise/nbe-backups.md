@@ -256,16 +256,19 @@ done && \
   if [ "${HYDRA_DEPLOYMENT_COUNT}" -gt 0 ]; then \
     echo "CREATE DATABASE hydra WITH TEMPLATE = template0 ENCODING = 'UTF8';"; \
   fi && \
-  echo "CREATE DATABASE netbox WITH TEMPLATE = template0 ENCODING = 'UTF8';" && \
-  echo "" && \
-  echo "" && \
-  grep -v -E '^(ALTER|CREATE|DROP) (DATABASE|ROLE) ' "${NETBOX_DATABASE_FILE}" \
+  echo "CREATE DATABASE netbox WITH TEMPLATE = template0 ENCODING = 'UTF8';"; \
 ) \
 | kubectl exec "${POSTGRESQL_MAIN_POD}" \
   -n "${NETBOX_NAMESPACE}" \
   -i \
   -c database \
-    -- psql -d template1 -f-
+    -- psql -d template1 -f- && \
+grep -v -E '^(ALTER|CREATE|DROP) (DATABASE|ROLE) ' "${NETBOX_DATABASE_FILE}" \
+| kubectl exec "${POSTGRESQL_MAIN_POD}" \
+  -n "${NETBOX_NAMESPACE}" \
+  -i \
+  -c database \
+    -- psql -d netbox -f-
 ```
 
 Following this run the below to ensure all database permissions are correct:
