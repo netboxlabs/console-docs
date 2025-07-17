@@ -1,6 +1,6 @@
 # ⚠️ DEPRECATED: NetBox Enterprise Documentation Repository
 
-> **🚨 This repository is deprecated as of January 2025**
+> **🚨 This repository is deprecated as of July 17, 2025**
 > 
 > **All documentation changes must now be made in the [netboxlabs-website-dochub](https://github.com/netboxlabs/netboxlabs-website-dochub) repository.**
 > 
