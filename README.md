@@ -1,46 +1,96 @@
-# NetBox Enterprise Documentation Repository
+# ⚠️ DEPRECATED: NetBox Enterprise Documentation Repository
 
-This repository contains the commercial/enterprise documentation for NetBox Labs products. Documentation written here gets published to **https://netboxlabs.com/docs** through a multi-repository integration process.
+> **🚨 This repository is deprecated as of January 2025**
+> 
+> **All documentation changes must now be made in the [netboxlabs-website-dochub](https://github.com/netboxlabs/netboxlabs-website-dochub) repository.**
+> 
+> **Changes made to this repository will NOT be published to the docs site.**
 
-## 🏗️ How Documentation Gets Published
+## 🔄 Where to Go Now
 
-This repository feeds into a **three-repository publishing pipeline**:
+| What you need to do | Where to do it |
+|-------------------|----------------|
+| **Edit Console/Cloud/Enterprise docs** | [netboxlabs-website-dochub](https://github.com/netboxlabs/netboxlabs-website-dochub) in `localdocs/console/` |
+| **Add new documentation** | [netboxlabs-website-dochub](https://github.com/netboxlabs/netboxlabs-website-dochub) in `localdocs/console/` |
+| **Update existing guides** | [netboxlabs-website-dochub](https://github.com/netboxlabs/netboxlabs-website-dochub) in `localdocs/console/` |
 
-```
-console-docs (this repo) → netboxlabs-website-dochub → netboxlabs.com/docs
-```
+## 🚀 Quick Migration Guide
 
-1. **console-docs** (this repo) → Contains documentation source files
-2. **netboxlabs-website-dochub** → Integrates multiple doc repos and builds the site
-3. **netboxlabs-website** → Serves the final site at netboxlabs.com/docs via URL rewrite
+### If you previously worked with this repository:
 
-## 📝 How to Contribute Documentation
-
-### Two-Step Publishing Process
-
-**Step 1: Update Content (This Repo)**
+**Old workflow (DEPRECATED):**
 ```bash
-git checkout -b feature/your-documentation
-# Write your documentation in docs/
-git add docs/your-new-file.md
-git commit -m "Add documentation for your feature"
-git push origin feature/your-documentation
-# Create and merge PR
+# ❌ Don't do this anymore - changes won't be published
+git clone https://github.com/netboxlabs/console-docs
+# Edit files in docs/
+# Submit PR to console-docs
+# Wait for dochub integration
 ```
 
-**Step 2: Publish Changes (Dochub Repo)**
+**New workflow (CURRENT):**
 ```bash
-# In netboxlabs-website-dochub repository
-yarn update-submodules  # Pulls latest from console-docs
-git add external-repos/console-docs
-git commit -m "Update console documentation"
-git push origin main
-# Create and merge PR to publish live
+# ✅ Do this instead
+git clone --recurse-submodules https://github.com/netboxlabs/netboxlabs-website-dochub
+cd netboxlabs-website-dochub
+yarn install && yarn dev
+# Edit files in localdocs/console/
+# Changes go live immediately after merge
 ```
 
-**Important**: Changes in this repo don't go live until Step 2 is completed in the dochub repository.
+## 📍 New Documentation System
 
-## 🚀 Quick Start
+The documentation has moved to a **unified system** in the [netboxlabs-website-dochub](https://github.com/netboxlabs/netboxlabs-website-dochub) repository:
+
+### What Changed
+- **Direct editing**: Edit documentation directly in `localdocs/console/`
+- **Immediate publishing**: Changes go live after merge (no two-step process)
+- **Unified system**: All NetBox documentation in one place
+- **Better development**: Live preview with `yarn dev`
+
+### File Location Mapping
+| Old Location (console-docs) | New Location (dochub) |
+|----------------------------|----------------------|
+| `docs/administration-console/` | `localdocs/console/administration-console/` |
+| `docs/cloud-connectivity/` | `localdocs/console/cloud-connectivity/` |
+| `docs/netbox-enterprise/` | `localdocs/console/netbox-enterprise/` |
+| `docs/netbox-assurance/` | `localdocs/console/netbox-assurance/` |
+| `docs/netbox-discovery/` | `localdocs/console/netbox-discovery/` |
+| `docs/netbox-integrations/` | `localdocs/console/netbox-integrations/` |
+
+## 🛠️ Getting Started with the New System
+
+### 1. Clone the New Repository
+```bash
+git clone --recurse-submodules https://github.com/netboxlabs/netboxlabs-website-dochub.git
+cd netboxlabs-website-dochub
+```
+
+### 2. Install Dependencies
+```bash
+yarn install
+```
+
+### 3. Start Development
+```bash
+yarn dev
+# Visit http://localhost:3001 to see changes live
+```
+
+### 4. Edit Documentation
+```bash
+# Edit files in localdocs/console/
+# Changes appear immediately in browser
+```
+
+### 5. Commit and Push
+```bash
+git add .
+git commit -m "docs: update console documentation"
+git push
+# Changes go live after merge - no additional steps needed
+```
+
+## 📚 Reference Information
 
 ### 1. Local Development
 ```bash
@@ -104,25 +154,6 @@ console-docs/
 ├── mkdocs.yml                      # 🔧 Local development configuration
 └── README.md                       # 📖 This file
 ```
-
-## 🤖 AI Reference System
-
-The `ai-reference/` directory contains comprehensive resources for AI-assisted documentation development:
-
-### Purpose
-- **Style Guides**: Writing standards and AI prompting guidelines
-- **Templates**: Standardized document templates
-- **Content Strategy**: Navigation and tagging strategies
-- **Technical Documentation**: Implementation details and workflows
-- **Distribution Management**: Customer-facing URL documentation
-
-### Key Resources
-- **[AI Reference README](ai-reference/README.md)**: Complete system overview
-- **[Quick Reference](ai-reference/QUICK_REFERENCE.md)**: Common tasks and commands
-- **[Style Guides](ai-reference/style-guides/)**: Writing standards and guidelines
-- **[Templates](ai-reference/templates/)**: Document templates and examples
-
-**Note**: The ai-reference directory is for internal development use and is not published to the customer-facing documentation site.
 
 ## 🏷️ Documentation Standards
 
@@ -193,6 +224,16 @@ audience: "administrators"
 complexity: "intermediate"
 ---
 ```
+
+## 🤖 AI Reference System
+
+The `ai-reference/` directory contains comprehensive resources for AI-assisted documentation development. **These materials are still useful for reference** but should be applied in the new dochub repository.
+
+### Key Resources
+- **[AI Reference README](ai-reference/README.md)**: Complete system overview
+- **[Quick Reference](ai-reference/QUICK_REFERENCE.md)**: Common tasks and commands
+- **[Style Guides](ai-reference/style-guides/)**: Writing standards and guidelines
+- **[Templates](ai-reference/templates/)**: Document templates and examples
 
 ## 📦 Version Management
 
@@ -276,6 +317,26 @@ For complete distribution URL documentation, see [ai-reference/DISTRIBUTION_URLS
 - **Tested procedures** with accurate examples
 - **Consistent formatting** following style guides
 
+## 🔄 Migration Support
+
+### Need Help Migrating?
+- **Read the dochub README**: [netboxlabs-website-dochub README](https://github.com/netboxlabs/netboxlabs-website-dochub#readme)
+- **Check the migration guide**: Available in the dochub repository
+- **Ask questions**: Create an issue in the dochub repository
+
+### Common Migration Tasks
+1. **Move your branch**: No need to migrate - start fresh in dochub
+2. **Update bookmarks**: Point to netboxlabs-website-dochub repository
+3. **Update documentation**: Reference the new workflow in team processes
+4. **Transfer knowledge**: Share the new process with team members
+
+## ⚠️ Final Reminders
+
+- **❌ This repository is READ-ONLY** for documentation purposes
+- **❌ PRs to this repository will NOT be published**
+- **✅ All changes must go to [netboxlabs-website-dochub](https://github.com/netboxlabs/netboxlabs-website-dochub)**
+- **✅ The new system is faster and more efficient**
+
 ---
 
-**Ready to contribute?** Follow the [Quick Start](#-quick-start), consult the [AI Reference materials](ai-reference/README.md), and remember the [two-step publishing process](#two-step-publishing-process)!
+**Ready to get started?** Head over to [netboxlabs-website-dochub](https://github.com/netboxlabs/netboxlabs-website-dochub) and follow the quick start guide!
